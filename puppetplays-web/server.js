@@ -21,11 +21,14 @@ app
     // Set up the proxy.
     if (dev) {
       const { createProxyMiddleware } = require('http-proxy-middleware');
-      server.use('/api', createProxyMiddleware({
-        target: 'https://puppetplays.ddev.site:7443',
-        changeOrigin: true,
-        secure: false
-      }));
+      server.use(
+        '/api',
+        createProxyMiddleware({
+          target: 'https://puppetplays.ddev.site:7443',
+          changeOrigin: true,
+          secure: false,
+        }),
+      );
     }
 
     // Default catch-all handler to allow Next.js to handle all other routes
@@ -42,4 +45,3 @@ app
     console.log('An error occurred, unable to start the server');
     console.log(err);
   });
-  
