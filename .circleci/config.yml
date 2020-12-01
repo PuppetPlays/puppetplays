@@ -21,7 +21,7 @@ jobs:
       tag: '14.15'
     working_directory: ~/project/puppetplays-web
     steps:
-      - checkout
+      - checkout:
           path: ~/project
       - node/install-packages:
           pkg-manager: yarn
