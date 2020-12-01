@@ -3,16 +3,16 @@ version: 2.1
 parameters:
   web-image:
     type: string
-    default: "intactile/puppetplays-web:<< pipeline.git.revision >>"
+    default: "intactiledesign/puppetplays-web:<< pipeline.git.revision >>"
   web-image-release:
     type: string
-    default: "intactile/puppetplays-web:latest"
+    default: "intactiledesign/puppetplays-web:latest"
   admin-image:
     type: string
-    default: "intactile/puppetplays-admin:<< pipeline.git.revision >>"
+    default: "intactiledesign/puppetplays-admin:<< pipeline.git.revision >>"
   admin-image-release:
     type: string
-    default: "intactile/puppetplays-admin:latest"
+    default: "intactiledesign/puppetplays-admin:latest"
 
 jobs:
   build_frontend:
