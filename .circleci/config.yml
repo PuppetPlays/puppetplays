@@ -24,7 +24,6 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-          app-dir: ~/project/puppetplays-web
       - run:
           name: Run build
           command: yarn run build
