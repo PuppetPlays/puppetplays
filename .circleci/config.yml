@@ -62,7 +62,12 @@ jobs:
             docker pull << pipeline.parameters.admin-image >>
             docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
             docker push << pipeline.parameters.admin-image-release >>
-              
+  deploy_staging:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - run: echo "Deploy to staging server"
+
 workflows:
   build:
     jobs:
