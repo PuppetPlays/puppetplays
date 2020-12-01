@@ -65,8 +65,26 @@ jobs:
   deploy_staging:
     docker:
       - image: cimg/base:2020.01
+    working_directory: ~/project/puppetplays-deploy
+    environment:
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
+      POSTGRES_USER: puppetplays
+      POSTGRES_DB: puppetplays
+      PUPPETPLAYS_VERSION: << pipeline.git.revision >>
+      PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
+      SECURITY_KEY: $SECURITY_KEY_STAGING
+      ENVIRONMENT: staging
+      ENVIRONMENT_URL: puppetplays.intactile.info
     steps:
-      - run: echo "Deploy to staging server"
+      - run: 
+          name: Deploy to staging server
+          command: |
+            mkdir -p ~/.docker
+            echo "$DOCKER_STAGING_TLS_CA" > ~/.docker/ca.pem
+            echo "$DOCKER_STAGING_TLS_CERT" > ~/.docker/cert.pem
+            echo "$DOCKER_STAGING_TLS_KEY" > ~/.docker/key.pem
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            ./deploy.sh
 
 orbs:
   node: circleci/node@4.1.0
