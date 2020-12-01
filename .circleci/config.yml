@@ -15,15 +15,18 @@ parameters:
     default: "intactiledesign/puppetplays-admin:latest"
 
 jobs:
-  build_frontend:
+  build_web:
     docker:
       - image: 'cimg/node:14.14.0'
     steps:
       - checkout
-      - npm install -g yarn
-      - yarn install --frozen-lockfile
-      - yarn build
-  docker_frontend:
+      - run:
+          name: Install deps and build
+          command: |
+            npm install -g yarn
+            yarn install --frozen-lockfile
+            yarn build
+  docker_web:
     docker:
       - image: cimg/base:2020.01
     steps:
@@ -31,15 +34,17 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
           docker_layer_caching: true
-      - run: |
-          echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
-          docker pull << pipeline.parameters.web-image >> || true
-          docker build --pull -t << pipeline.parameters.web-image >> --cache-from << pipeline.parameters.web-image >> puppetplays-web
-          docker push << pipeline.parameters.web-image >>
-          docker pull << pipeline.parameters.web-image >>
-          docker tag << pipeline.parameters.web-image >> << pipeline.parameters.web-image-release >>
-          docker push << pipeline.parameters.web-image-release >>
-  docker_backend:
+      - run: 
+          name: Publish web image to docker hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            docker pull << pipeline.parameters.web-image >> || true
+            docker build --pull -t << pipeline.parameters.web-image >> --cache-from << pipeline.parameters.web-image >> puppetplays-web
+            docker push << pipeline.parameters.web-image >>
+            docker pull << pipeline.parameters.web-image >>
+            docker tag << pipeline.parameters.web-image >> << pipeline.parameters.web-image-release >>
+            docker push << pipeline.parameters.web-image-release >>
+  docker_admin:
     docker:
       - image: cimg/base:2020.01
     steps:
@@ -47,29 +52,31 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
           docker_layer_caching: true
-      - run: |
-          echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
-          docker pull << pipeline.parameters.admin-image >> || true
-          docker build --pull -t << pipeline.parameters.admin-image >> --cache-from << pipeline.parameters.admin-image >> puppetplays-admin
-          docker push << pipeline.parameters.admin-image >>
-          docker pull << pipeline.parameters.admin-image >>
-          docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
-          docker push << pipeline.parameters.admin-image-release >>
+      - run:
+          name: Publish admin image to docker hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            docker pull << pipeline.parameters.admin-image >> || true
+            docker build --pull -t << pipeline.parameters.admin-image >> --cache-from << pipeline.parameters.admin-image >> puppetplays-admin
+            docker push << pipeline.parameters.admin-image >>
+            docker pull << pipeline.parameters.admin-image >>
+            docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
+            docker push << pipeline.parameters.admin-image-release >>
               
 workflows:
   build:
     jobs:
-      - build_frontend
-      - docker_frontend:
+      - build_web
+      - docker_web:
           requires:
-              - build_frontend
-      - docker_backend
+              - build_web
+      - docker_admin
       - hold:
           type: approval
           requires:
-            - build_frontend
-            - docker_frontend
-            - docker_backend
+            - build_web
+            - docker_web
+            - docker_admin
       - deploy_staging:
           requires:
             - hold
