@@ -16,16 +16,16 @@ parameters:
 
 jobs:
   build_web:
-    docker:
-      - image: 'cimg/node:14.14.0'
+    executor:
+      name: node/default
+      tag: '14'
     steps:
       - checkout
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          name: Install deps and build
-          command: |
-            npm install -g yarn
-            yarn install --frozen-lockfile
-            yarn build
+          name: Run build
+          command: yarn run build
   docker_web:
     docker:
       - image: cimg/base:2020.01
@@ -67,6 +67,9 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - run: echo "Deploy to staging server"
+
+orbs:
+  node: circleci/node@4.1.0
 
 workflows:
   build:
