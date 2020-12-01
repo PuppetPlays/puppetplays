@@ -1,0 +1,23 @@
+dateModified: 1605042296
+email:
+  fromEmail: paillot.t@intactile.com
+  fromName: puppetplays
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: puppetplays
+  retryDuration: null
+  schemaVersion: 3.5.13
+  timeZone: Europe/Paris
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
