@@ -1,0 +1,10 @@
+{
+  "locales": ["fr", "en", "de", "it"],
+  "defaultLocale": "fr",
+  "currentPagesDir": "routes",
+  "finalPagesDir": "pages",
+  "localesPath": "locales",
+  "pages": {
+    "*": ["common"]
+  }
+}

@@ -1,0 +1,17 @@
+.container {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+    margin: 0 4px;
+
+    &:global(.is-current) {
+      font-weight: 700;
+    }
+  }
+
+  a {
+  }
+}

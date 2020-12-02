@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 16px;
+  height: 100%;
+}
+
+.logo {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.language-selector {
+  flex: 0 0 auto;
+}

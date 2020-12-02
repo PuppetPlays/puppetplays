@@ -1,0 +1,20 @@
+{
+  "alias": "dit",
+  "language": "Langue :",
+  "register": "Registre :",
+  "manipulationTechnic": "Technique de manipulation :",
+  "audience": "Public visé :",
+  "summary": "Résumé :",
+  "otherTitles": "Autres titres :",
+  "firstRepresentations": "Premières représentations:",
+  "publication": "Publication :",
+  "otherPublication": "Autre publication :",
+  "characters": "Personnages :",
+  "actsCount": "Nombre d’acte(s):",
+  "license": "Licence :",
+  "results": "Un résultat",
+  "results_0": "Aucun résultat",
+  "results_plural": "{{count}} résultats",
+  "previous": "Précédent",
+  "next": "Suivant"
+}

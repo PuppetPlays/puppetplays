@@ -1,0 +1,20 @@
+{
+  "alias": "alias",
+  "language": "Language:",
+  "register": "Register:",
+  "manipulationTechnic": "Manipulation technic:",
+  "audience": "Audience:",
+  "summary": "Summary:",
+  "otherTitles": "Other titles:",
+  "firstRepresentations": "First representations:",
+  "publication": "Publication:",
+  "otherPublication": "Other Publication:",
+  "characters": "Characters:",
+  "actsCount": "Acts count:",
+  "license": "License:",
+  "results": "One result",
+  "results_0": "No result",
+  "results_plural": "{{count}} results",
+  "previous": "Previous",
+  "next": "Next"
+}

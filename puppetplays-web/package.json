@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node server.js",
-    "build": "next build",
+    "dev": "NODE_ENV=development next-translate && node server.js",
+    "build": "next-translate && next build",
     "start": "next start -p 7000"
   },
   "dependencies": {
     "express": "^4.17.1",
     "next": "10.0.1",
+    "next-translate": "^0.20.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-paginate": "^6.5.0"
   },
   "devDependencies": {
-    "http-proxy-middleware": "^1.0.6"
+    "http-proxy-middleware": "^1.0.6",
+    "sass": "^1.29.0"
   }
 }

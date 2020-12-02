@@ -1,0 +1,15 @@
+.container {
+  ul {
+    margin: 0;
+    list-style-type: none;
+  }
+
+  li {
+    display: inline-block;
+    margin-left: 4px;
+
+    &:global(.is-current) {
+      border-bottom: 1px solid black;
+    }
+  }
+}

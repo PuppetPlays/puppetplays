@@ -20,16 +20,35 @@ async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
 }
 
 export async function getAllWorks(apiUrl, locale) {
-  const data = await fetchAPI(`
+  const data = await fetchAPI(
+    `
     query GetAllWorks($locale: [String]) {
       entries(section: "works", site: $locale) {
+        id,
         title
         ... on works_works_Entry {
-          abstract
-          doi
+          author,
+          authorNickName,
+          writingDate,
+          writingPlace,
+          language,
+          keywords,
+          summary,
+          otherTitles,
+          firstRepresentations,
+          publication,
+          otherPublication,
+          register,
+          manipulationTechnic,
+          audience,
+          characters,
+          actsCount,
+          license
         }
       }
     }
-  `, { apiUrl, variables: { locale } });
+  `,
+    { apiUrl, variables: { locale } },
+  );
   return data?.entries;
 }

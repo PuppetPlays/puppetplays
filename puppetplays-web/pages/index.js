@@ -1,34 +1,43 @@
-import Head from 'next/head'
-import { getAllWorks } from 'lib/api';
-import styles from 'styles/Home.module.css'
+// @ts-nocheck
+import I18nProvider from 'next-translate/I18nProvider'
+import React from 'react'
+import C, * as _rest from '../routes'
 
-export default function Home({ allWorks }) {
+export default function Page({ _ns, _lang, ...p }){
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Puppetplays</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Puppetplays
-        </h1>
-        {allWorks.map((work) => (
-          <div>
-            <h2>{work.title}</h2>
-            <p>{work.abstract}</p>
-          </div>
-        ))}
-      </main>
-    </div>
+    <I18nProvider
+      lang={_lang}
+      namespaces={_ns}  
+      
+    >
+      <C {...p} />
+    </I18nProvider>
   )
 }
 
-export async function getServerSideProps({ locale }) {
-  const apiUrl = `${process.env.API_URL}/api`;
-  const allWorks = (await getAllWorks(apiUrl, locale)) || [];
-  return {
-    props: { allWorks },
-  };
-}
+Page = Object.assign(Page, { ...C })
+
+
+
+
+export const getServerSideProps = async ctx => {
+    const _lang = ctx.locale || ctx.router?.locale || 'fr'
+  const ns0 = await import(`../locales/${_lang}/common`).then(m => m.default)
+  const _ns = { 'common': ns0 }
+  
+    let res = _rest.getServerSideProps(ctx)
+    if(typeof res.then === 'function') res = await res
+  
+    return { 
+      ...res, 
+      props: {
+        ...(res.props || {}),
+        _ns,
+        _lang,
+      }
+    }
+  }
+
+
+
+
