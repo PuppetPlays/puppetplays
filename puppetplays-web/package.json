@@ -13,7 +13,8 @@
     "next-translate": "^0.20.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-paginate": "^6.5.0"
+    "react-paginate": "^6.5.0",
+    "swr": "^0.3.9"
   },
   "devDependencies": {
     "http-proxy-middleware": "^1.0.6",

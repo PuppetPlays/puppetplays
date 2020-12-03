@@ -19,6 +19,8 @@ async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
   return json.data;
 }
 
+export const WORKS_PAGE_SIZE = 10;
+
 export async function getAllWorks(apiUrl, locale, offset = 0) {
   // otherTitles: It seems that it should have a language associated with each other titles
   // publication: What is it?
@@ -26,8 +28,8 @@ export async function getAllWorks(apiUrl, locale, offset = 0) {
 
   const data = await fetchAPI(
     `
-    query GetAllWorks($locale: [String], $offset: Int) {
-      entries(section: "works", site: $locale, offset: $offset, limit: 20) {
+    query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
+      entries(section: "works", site: $locale, offset: $offset, limit: $limit) {
         id,
         title,
         ... on works_works_Entry {
@@ -71,7 +73,7 @@ export async function getAllWorks(apiUrl, locale, offset = 0) {
       entryCount(section: "works")
     }
   `,
-    { apiUrl, variables: { locale, offset } },
+    { apiUrl, variables: { locale, offset, limit: WORKS_PAGE_SIZE } },
   );
   return { works: data?.entries, count: data.entryCount };
 }

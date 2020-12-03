@@ -17,6 +17,7 @@ function Pagination({ initialPage = 0, pageCount, onPageChange }) {
       initialPage={initialPage}
       containerClassName={styles.container}
       activeClassName="is-current"
+      disableInitialCallback
     />
   );
 }
