@@ -5,6 +5,7 @@ import { Fragment, useState } from 'react';
 
 function WorkInList({
   id,
+  slug,
   title,
   authors,
   writingDisplayDate,
@@ -33,7 +34,7 @@ function WorkInList({
       <div className={styles.body}>
         <header>
           <h1>
-            <Link href={`/oeuvres/${id}`}>
+            <Link href={`/oeuvres/${id}/${slug}`}>
               <a>{title}</a>
             </Link>
           </h1>
