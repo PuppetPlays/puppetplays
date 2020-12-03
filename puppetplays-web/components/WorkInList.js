@@ -55,47 +55,47 @@ function WorkInList({
         </section>
 
         {isExpanded && (
-          <Fragment>
-            <div>
+          <section>
+            <div className={styles.info}>
               <span>{t('common:abstract')}</span> {abstract}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:otherTitles')}</span> {otherTitles}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:firstPerformance')}</span>{' '}
               {firstPerformanceDisplayDate}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:publication')}</span> {publication}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:otherPublication')}</span> {otherPublication}
             </div>
-          </Fragment>
+          </section>
         )}
       </div>
       <section className={styles.extra}>
-        <div>
+        <div className={styles.info}>
           <span>{t('common:register')}</span> {register[0].title}
         </div>
-        <div>
+        <div className={styles.info}>
           <span>{t('common:handlingTechniques')}</span>{' '}
           {handlingTechniques.map((t) => t.title).join(', ')}
         </div>
-        <div>
+        <div className={styles.info}>
           <span>{t('common:audience')}</span> {audience[0].title}
         </div>
         {isExpanded && (
           <Fragment>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:characters')}</span>{' '}
               {characters.map((t) => t.title).join(', ')}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:actsCount')}</span> {actsCount}
             </div>
-            <div>
+            <div className={styles.info}>
               <span>{t('common:license')}</span> {license}
             </div>
           </Fragment>

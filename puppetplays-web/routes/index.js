@@ -1,33 +1,51 @@
 import { Fragment, useCallback, useEffect, useState } from 'react';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import { getAllWorks, WORKS_PAGE_SIZE } from 'lib/api';
+import {
+  fetchAPI,
+  getAllWorksQuery,
+  getAllWorks,
+  WORKS_PAGE_SIZE,
+} from 'lib/api';
 import WorkInList from 'components/WorkInList';
 import Pagination from 'components/Pagination';
 import styles from 'styles/Home.module.css';
 
-export default function Home({ works, count }) {
+export default function Home({ initialData }) {
   const { t } = useTranslation();
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const { data } = useSWR(
-    ['/api', currentPage],
-    (url, locale, offset) => {
-      console.log(url, locale, offset);
-      return getAllWorks(url, locale, offset);
+    [getAllWorksQuery, router.locale, currentPage * WORKS_PAGE_SIZE],
+    (query, locale, offset) =>
+      fetchAPI(query, {
+        variables: { locale, offset, limit: WORKS_PAGE_SIZE },
+      }),
+    {
+      initialData,
     },
-    { initialData: { works, count } },
   );
 
   const handlePageChange = useCallback(
     (page) => {
-      setCurrentPage(page.selected);
-      router.push({ pathname: '/', query: { page: page.selected + 1 } });
+      router.push(`/?page=${page.selected + 1}`, undefined, { shallow: true });
     },
-    [router, setCurrentPage],
+    [router],
   );
+
+  useEffect(() => {
+    if (router.query && router.query.page) {
+      setCurrentPage(router.query.page - 1);
+    } else {
+      setCurrentPage(0);
+    }
+  }, [router.query, setCurrentPage]);
+
+  useEffect(() => {
+    mutate([getAllWorksQuery, router.locale, currentPage * WORKS_PAGE_SIZE]);
+  }, [router.locale, currentPage]);
 
   return (
     <Fragment>
@@ -37,15 +55,15 @@ export default function Home({ works, count }) {
       </Head>
 
       <div className={styles.worksHeader}>
-        <div>{t('common:results', { count: data.count })}</div>
-        <div>Current page {currentPage}</div>
+        <div>{t('common:results', { count: data.entryCount })}</div>
         <Pagination
-          pageCount={Math.ceil(data.count / WORKS_PAGE_SIZE)}
+          forcePage={currentPage}
+          pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
           onPageChange={handlePageChange}
         />
       </div>
       <div className={styles.works}>
-        {data.works.map((work) => (
+        {data.entries.map((work) => (
           <WorkInList key={work.id} {...work} />
         ))}
       </div>
@@ -55,8 +73,8 @@ export default function Home({ works, count }) {
 
 export async function getServerSideProps({ locale }) {
   const apiUrl = `${process.env.API_URL}/api`;
-  const allWorks = (await getAllWorks(apiUrl, locale)) || [];
+  const data = (await getAllWorks(apiUrl, locale)) || [];
   return {
-    props: { works: allWorks.works, count: allWorks.count },
+    props: { initialData: data },
   };
 }

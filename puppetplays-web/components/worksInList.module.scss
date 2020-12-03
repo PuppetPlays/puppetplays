@@ -9,9 +9,16 @@
   flex: 1 1 auto;
 
   h1 {
+    font-size: 24px;
   }
 
   h2 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  section + section {
+    margin-top: 24px;
   }
 }
 
@@ -19,9 +26,15 @@
   flex: 0 1 auto;
   max-width: 160px;
   margin-left: 48px;
+}
 
+.info {
   span {
     color: grey;
+  }
+
+  & + & {
+    margin-top: 12px;
   }
 }
 
