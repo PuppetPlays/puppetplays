@@ -32,10 +32,21 @@ export async function getAllWorks(apiUrl, locale, offset = 0) {
         title,
         ... on works_works_Entry {
           translatedTitle,
+          keywords {
+            title
+          },
           authors {
             title 
           },
           writingDisplayDate,
+          writingPlace {
+            title,
+            ... on places_places_Entry {
+              country {
+                title
+              }
+            }
+          },
           mainLanguage {
             title 
           },

@@ -8,8 +8,9 @@ function WorkInList({
   title,
   authors,
   writingDisplayDate,
+  writingPlace,
   mainLanguage,
-  keywords = [],
+  keywords,
   abstract,
   otherTitles = '',
   firstPerformanceDisplayDate,
@@ -38,6 +39,7 @@ function WorkInList({
           </h1>
           <h2>
             {authors.map((a) => a.title).join(', ')}, {writingDisplayDate} -{' '}
+            {writingPlace[0].title}, {writingPlace[0].country[0].title} -{' '}
             {t('common:language')} {mainLanguage[0].title}
           </h2>
         </header>
@@ -45,7 +47,7 @@ function WorkInList({
         <section>
           <ul className={styles.keywords}>
             {keywords.map((keyword) => (
-              <li className={styles.keyword}>{keyword}</li>
+              <li className={styles.keyword}>{keyword.title}</li>
             ))}
           </ul>
         </section>

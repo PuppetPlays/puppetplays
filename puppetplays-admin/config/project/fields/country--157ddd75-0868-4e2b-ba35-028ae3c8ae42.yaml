@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716
+handle: country
+instructions: ''
+name: Pays
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: 'Sélectionner un pays'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:e205ebe8-5557-4b7c-a43f-9cf548e90c8d'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries
