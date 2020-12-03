@@ -24,7 +24,8 @@ app
       server.use(
         '/api',
         createProxyMiddleware({
-          target: 'https://puppetplays.ddev.site:7443',
+          target:
+            process.env.PROXY_API_URL || 'https://puppetplays.ddev.site:7443',
           changeOrigin: true,
           secure: false,
         }),
