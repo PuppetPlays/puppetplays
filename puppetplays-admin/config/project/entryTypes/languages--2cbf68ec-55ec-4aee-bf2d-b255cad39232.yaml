@@ -1,0 +1,38 @@
+fieldLayouts:
+  eb985d9e-928c-4828-8ae0-75e5c1c3443b:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+        name: Contenu
+        sortOrder: 1
+handle: languages
+hasTitleField: true
+name: Langues
+section: ec7faa37-6b19-44d2-95ec-2b752648c37d
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

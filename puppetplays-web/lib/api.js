@@ -19,36 +19,48 @@ async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
   return json.data;
 }
 
-export async function getAllWorks(apiUrl, locale) {
+export async function getAllWorks(apiUrl, locale, offset = 0) {
+  // otherTitles: It seems that it should have a language associated with each other titles
+  // publication: What is it?
+  // otherPublication: What is it?,
+
   const data = await fetchAPI(
     `
-    query GetAllWorks($locale: [String]) {
-      entries(section: "works", site: $locale) {
+    query GetAllWorks($locale: [String], $offset: Int) {
+      entries(section: "works", site: $locale, offset: $offset, limit: 20) {
         id,
-        title
+        title,
         ... on works_works_Entry {
-          author,
-          authorNickName,
-          writingDate,
-          writingPlace,
-          language,
-          keywords,
-          summary,
-          otherTitles,
-          firstRepresentations,
-          publication,
-          otherPublication,
-          register,
-          manipulationTechnic,
-          audience,
-          characters,
+          translatedTitle,
+          authors {
+            title 
+          },
+          writingDisplayDate,
+          mainLanguage {
+            title 
+          },
+          abstract,
+          firstPerformanceDisplayDate,
+          register {
+            title
+          },
+          handlingTechniques {
+            title
+          },
+          audience {
+            title
+          },
+          characters {
+            title
+          },
           actsCount,
           license
         }
       }
+      entryCount(section: "works")
     }
   `,
-    { apiUrl, variables: { locale } },
+    { apiUrl, variables: { locale, offset } },
   );
-  return data?.entries;
+  return { works: data?.entries, count: data.entryCount };
 }

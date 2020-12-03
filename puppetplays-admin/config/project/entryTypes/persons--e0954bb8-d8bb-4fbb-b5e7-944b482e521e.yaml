@@ -1,0 +1,38 @@
+fieldLayouts:
+  1d88b91d-65e0-4853-b908-dc9fcf767bfc:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+        name: Contenu
+        sortOrder: 1
+handle: persons
+hasTitleField: true
+name: Personnes
+section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: none

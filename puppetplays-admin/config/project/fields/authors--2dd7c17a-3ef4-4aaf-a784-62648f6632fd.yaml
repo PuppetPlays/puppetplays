@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: authors
+instructions: ''
+name: Auteurs
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner un ou des auteur(s)'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

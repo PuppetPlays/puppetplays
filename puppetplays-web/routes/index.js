@@ -6,7 +6,7 @@ import WorkInList from 'components/WorkInList';
 import Pagination from 'components/Pagination';
 import styles from 'styles/Home.module.css';
 
-export default function Home({ allWorks }) {
+export default function Home({ works, count }) {
   const { t } = useTranslation();
 
   return (
@@ -17,11 +17,11 @@ export default function Home({ allWorks }) {
       </Head>
 
       <div className={styles.worksHeader}>
-        <div>{t('common:results', { count: allWorks.length })}</div>
-        <Pagination pageCount={10} onPageChange={() => {}} />
+        <div>{t('common:results', { count })}</div>
+        <Pagination pageCount={count} onPageChange={() => {}} />
       </div>
       <div className={styles.works}>
-        {allWorks.map((work) => (
+        {works.map((work) => (
           <WorkInList {...work} />
         ))}
       </div>
@@ -33,6 +33,6 @@ export async function getServerSideProps({ locale }) {
   const apiUrl = `${process.env.API_URL}/api`;
   const allWorks = (await getAllWorks(apiUrl, locale)) || [];
   return {
-    props: { allWorks: data },
+    props: { works: allWorks.works, count: allWorks.count },
   };
 }

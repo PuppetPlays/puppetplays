@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: characters
+instructions: ''
+name: Personnages
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectioner des personnages'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

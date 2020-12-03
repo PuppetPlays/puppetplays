@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: handlingTechniques
+instructions: ''
+name: 'Techniques de manipulation'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner une ou des technique(s) de manipulation'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:1817d1f9-6682-4c22-b338-19654ae0c45c'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

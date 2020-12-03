@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: nickname
+instructions: ''
+name: Surnom
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

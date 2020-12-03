@@ -6,19 +6,17 @@ import { Fragment, useState } from 'react';
 function WorkInList({
   id,
   title,
-  author,
-  authorNickName,
-  writingDate,
-  writingPlace,
-  language,
-  keywords,
-  summary,
-  otherTitles,
-  firstRepresentations,
-  publication,
-  otherPublication,
+  authors,
+  writingDisplayDate,
+  mainLanguage,
+  keywords = [],
+  abstract,
+  otherTitles = '',
+  firstPerformanceDisplayDate,
+  publication = '',
+  otherPublication = '',
   register,
-  manipulationTechnic,
+  handlingTechniques,
   audience,
   characters,
   actsCount,
@@ -39,8 +37,8 @@ function WorkInList({
             </Link>
           </h1>
           <h2>
-            {author} ({t('common:alias')} {authorNickName}), {writingDate} -{' '}
-            {writingPlace} - {t('common:language')} {language}
+            {authors.map((a) => a.title).join(', ')}, {writingDisplayDate} -{' '}
+            {t('common:language')} {mainLanguage[0].title}
           </h2>
         </header>
 
@@ -55,14 +53,14 @@ function WorkInList({
         {isExpanded && (
           <Fragment>
             <div>
-              <span>{t('common:summary')}</span> {summary}
+              <span>{t('common:abstract')}</span> {abstract}
             </div>
             <div>
               <span>{t('common:otherTitles')}</span> {otherTitles}
             </div>
             <div>
-              <span>{t('common:firstRepresentations')}</span>{' '}
-              {firstRepresentations}
+              <span>{t('common:firstPerformance')}</span>{' '}
+              {firstPerformanceDisplayDate}
             </div>
             <div>
               <span>{t('common:publication')}</span> {publication}
@@ -75,18 +73,20 @@ function WorkInList({
       </div>
       <section className={styles.extra}>
         <div>
-          <span>{t('common:register')}</span> {register}
+          <span>{t('common:register')}</span> {register[0].title}
         </div>
         <div>
-          <span>{t('common:manipulationTechnic')}</span> {manipulationTechnic}
+          <span>{t('common:handlingTechniques')}</span>{' '}
+          {handlingTechniques.map((t) => t.title).join(', ')}
         </div>
         <div>
-          <span>{t('common:audience')}</span> {audience}
+          <span>{t('common:audience')}</span> {audience[0].title}
         </div>
         {isExpanded && (
           <Fragment>
             <div>
-              <span>{t('common:characters')}</span> {characters.join(', ')}
+              <span>{t('common:characters')}</span>{' '}
+              {characters.map((t) => t.title).join(', ')}
             </div>
             <div>
               <span>{t('common:actsCount')}</span> {actsCount}

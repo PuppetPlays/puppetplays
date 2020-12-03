@@ -1,0 +1,38 @@
+fieldLayouts:
+  a2113871-ef7c-4978-81d9-cc9deb49e618:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+        name: Contenu
+        sortOrder: 1
+handle: handlingTechniques
+hasTitleField: true
+name: 'Techniques de manipulation'
+section: 1817d1f9-6682-4c22-b338-19654ae0c45c
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,9 +1,9 @@
-baseUrl: null
+baseUrl: $PRIMARY_SITE_URL
 enabled: true
 handle: fr
-hasUrls: false
+hasUrls: true
 language: fr-FR
-name: Français
+name: 'Puppetplays FR'
 primary: true
 siteGroup: a95459b0-9778-477e-ac36-580e1a77e951
 sortOrder: 1

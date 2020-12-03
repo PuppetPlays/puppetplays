@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: abstract
+instructions: ''
+name: Résumé
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: '1'
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

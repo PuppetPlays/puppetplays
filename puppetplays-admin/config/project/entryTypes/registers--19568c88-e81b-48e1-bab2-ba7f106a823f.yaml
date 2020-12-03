@@ -1,0 +1,38 @@
+fieldLayouts:
+  43ce7bae-184c-46d5-9831-f9a128ec0c93:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+        name: Contenu
+        sortOrder: 1
+handle: registers
+hasTitleField: true
+name: Registres
+section: 8e72b0db-f5f6-4385-9228-33dd62285d5c
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
