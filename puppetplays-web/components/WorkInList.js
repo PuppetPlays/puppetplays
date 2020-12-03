@@ -47,7 +47,9 @@ function WorkInList({
         <section>
           <ul className={styles.keywords}>
             {keywords.map((keyword) => (
-              <li className={styles.keyword}>{keyword.title}</li>
+              <li key={keyword.title} className={styles.keyword}>
+                {keyword.title}
+              </li>
             ))}
           </ul>
         </section>
@@ -114,9 +116,9 @@ function WorkInList({
           <path
             d="M12 7L6.5 1L1 7"
             stroke="#1F86FF"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </button>

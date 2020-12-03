@@ -7,7 +7,7 @@ function LanguageSelector() {
   return (
     <ul className={styles.container}>
       {locales.map((l) => (
-        <li className={l === locale ? 'is-current' : ''}>
+        <li key={l} className={l === locale ? 'is-current' : ''}>
           <Link href="/" locale={l}>
             <a>{l}</a>
           </Link>
