@@ -9,7 +9,7 @@ export default Work;
 
 export async function getServerSideProps({ locale, params }) {
   const apiUrl = `${process.env.API_URL}/api`;
-  const data = (await getWorkById(apiUrl, params.id, locale)) || [];
+  const data = await getWorkById(apiUrl, params.id, locale);
   return {
     props: { initialData: data },
   };
