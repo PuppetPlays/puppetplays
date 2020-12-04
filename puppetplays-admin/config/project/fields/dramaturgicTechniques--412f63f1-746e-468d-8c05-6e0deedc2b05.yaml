@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: dramaturgicTechniques
+instructions: ''
+name: 'Techniques dramaturgiques'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner une ou des technique(s) dramaturgique(s)'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:ccd48638-f531-4032-a057-8af4f24cd187'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

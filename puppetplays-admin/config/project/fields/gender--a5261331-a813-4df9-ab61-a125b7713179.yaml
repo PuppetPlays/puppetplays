@@ -1,0 +1,57 @@
+contentColumnType: string
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: gender
+instructions: ''
+name: Genre
+searchable: false
+settings:
+  multi: true
+  optgroups: true
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Femme
+        -
+          - value
+          - female
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Homme
+        -
+          - value
+          - male
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Autre
+        -
+          - value
+          - other
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - ''
+        -
+          - value
+          - ''
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\MultiSelect

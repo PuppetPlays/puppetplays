@@ -3,25 +3,45 @@ import useTranslation from 'next-translate/useTranslation';
 import styles from './worksInList.module.scss';
 import { Fragment, useState } from 'react';
 
+function Author({ firstName, lastName, nickname, t }) {
+  return (
+    <Fragment>
+      <span>
+        {firstName} {lastName}
+      </span>
+      {nickname && (
+        <span>
+          {' '}
+          ({t('common:alias')} {nickname})
+        </span>
+      )}
+    </Fragment>
+  );
+}
+
 function WorkInList({
   id,
   slug,
   title,
+  translatedTitle,
+  keywords,
   authors,
   writingDisplayDate,
   writingPlace,
   mainLanguage,
-  keywords,
   abstract,
-  otherTitles = '',
-  firstPerformanceDisplayDate,
-  publication = '',
-  otherPublication = '',
+  hypotexts,
+  firstPerformance,
+  firstPublication,
+  modernEditions,
+  translations,
   register,
   handlingTechniques,
   audience,
   characters,
   actsCount,
+  pageCount,
+  formats,
   license,
 }) {
   const { t } = useTranslation();
@@ -39,10 +59,17 @@ function WorkInList({
             </Link>
           </h1>
           <h2>
-            {authors.map((a) => a.title).join(', ')}, {writingDisplayDate} -{' '}
-            {writingPlace[0].title}, {writingPlace[0].country[0].title} -{' '}
-            {t('common:language')} {mainLanguage[0].title}
+            {authors.map((author, index) => (
+              <Fragment>
+                <Author {...author} t={t} />
+                {index < authors.length - 1 && ', '}
+              </Fragment>
+            ))}
+            , {writingDisplayDate} - {writingPlace[0].title},{' '}
+            {writingPlace[0].country[0].title} - {t('common:language')}{' '}
+            {mainLanguage[0].title}
           </h2>
+          {translatedTitle && <h3>{translatedTitle}</h3>}
         </header>
 
         <section>
@@ -61,17 +88,20 @@ function WorkInList({
               <span>{t('common:abstract')}</span> {abstract}
             </div>
             <div className={styles.info}>
-              <span>{t('common:otherTitles')}</span> {otherTitles}
+              <span>{t('common:otherTitles')}</span>{' '}
+              {hypotexts.map((h) => h.title).join(', ')}
             </div>
             <div className={styles.info}>
-              <span>{t('common:firstPerformance')}</span>{' '}
-              {firstPerformanceDisplayDate}
+              <span>{t('common:firstPerformance')}</span> {firstPerformance}
             </div>
             <div className={styles.info}>
-              <span>{t('common:publication')}</span> {publication}
+              <span>{t('common:firstPublication')}</span> {firstPublication}
             </div>
             <div className={styles.info}>
-              <span>{t('common:otherPublication')}</span> {otherPublication}
+              <span>{t('common:modernEditions')}</span> {modernEditions}
+            </div>
+            <div className={styles.info}>
+              <span>{t('common:translations')}</span> {translations}
             </div>
           </section>
         )}

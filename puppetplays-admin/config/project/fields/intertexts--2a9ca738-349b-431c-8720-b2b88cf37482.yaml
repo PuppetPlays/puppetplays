@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: intertexts
+instructions: ''
+name: Intertextes
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner une ou des œuvres liées'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:e2d5c38e-3607-4630-bddf-0875190aa133'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

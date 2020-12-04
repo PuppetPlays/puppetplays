@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c
+handle: linkedTo
+instructions: ''
+name: 'Est lié à'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner un ou plusieurs personnage(s) lié(s)'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

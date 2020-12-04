@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: aliases
+instructions: ''
+name: Alias
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner un ou plusieurs alias'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

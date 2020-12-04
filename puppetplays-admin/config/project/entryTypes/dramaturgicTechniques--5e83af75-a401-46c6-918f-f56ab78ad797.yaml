@@ -1,5 +1,5 @@
 fieldLayouts:
-  a2113871-ef7c-4978-81d9-cc9deb49e618:
+  dfbbb2bd-5b37-4cda-8466-7f3b67b32235:
     tabs:
       -
         elements:
@@ -26,21 +26,12 @@ fieldLayouts:
             type: craft\fieldlayoutelements\EntryTitleField
             warning: null
             width: 100
-          -
-            fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
         name: Contenu
         sortOrder: 1
-handle: handlingTechniques
+handle: dramaturgicTechniques
 hasTitleField: true
-name: 'Techniques de manipulation'
-section: 1817d1f9-6682-4c22-b338-19654ae0c45c
+name: 'Techniques dramaturgiques'
+section: ccd48638-f531-4032-a057-8af4f24cd187
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

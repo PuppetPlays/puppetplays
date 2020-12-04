@@ -1,0 +1,15 @@
+contentColumnType: datetime
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: writingMinDate
+instructions: ''
+name: 'Date d''écriture minimum'
+searchable: false
+settings:
+  max: null
+  min: null
+  minuteIncrement: '30'
+  showDate: true
+  showTime: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Date

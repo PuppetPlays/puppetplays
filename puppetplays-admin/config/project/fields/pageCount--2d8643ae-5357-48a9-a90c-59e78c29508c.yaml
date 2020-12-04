@@ -1,0 +1,19 @@
+contentColumnType: integer(10)
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: pageCount
+instructions: ''
+name: 'Nombre de pages'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '1'
+  prefix: ''
+  previewCurrency: ''
+  previewFormat: none
+  size: '4'
+  suffix: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number

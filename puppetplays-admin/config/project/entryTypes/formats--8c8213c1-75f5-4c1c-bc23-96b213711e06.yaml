@@ -1,5 +1,5 @@
 fieldLayouts:
-  a2113871-ef7c-4978-81d9-cc9deb49e618:
+  a655e86e-5976-4bb7-9715-07ba0fd5fa10:
     tabs:
       -
         elements:
@@ -26,21 +26,12 @@ fieldLayouts:
             type: craft\fieldlayoutelements\EntryTitleField
             warning: null
             width: 100
-          -
-            fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
         name: Contenu
         sortOrder: 1
-handle: handlingTechniques
+handle: formats
 hasTitleField: true
-name: 'Techniques de manipulation'
-section: 1817d1f9-6682-4c22-b338-19654ae0c45c
+name: Formats
+section: 22b828fc-b5e2-42a0-9050-446047f73230
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

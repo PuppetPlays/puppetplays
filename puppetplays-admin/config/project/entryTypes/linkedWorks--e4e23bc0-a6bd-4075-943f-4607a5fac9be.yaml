@@ -1,5 +1,5 @@
 fieldLayouts:
-  a2113871-ef7c-4978-81d9-cc9deb49e618:
+  bfcf3ee7-1bd4-41be-97db-87364aae072d:
     tabs:
       -
         elements:
@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c
+            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd
             instructions: null
             label: null
             required: false
@@ -35,12 +35,21 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
+          -
+            fieldUid: 269fbeb7-8282-427c-b9ff-7d338ab1b8ef
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
         name: Contenu
         sortOrder: 1
-handle: handlingTechniques
+handle: linkedWorks
 hasTitleField: true
-name: 'Techniques de manipulation'
-section: 1817d1f9-6682-4c22-b338-19654ae0c45c
+name: 'Œuvres liées'
+section: e2d5c38e-3607-4630-bddf-0875190aa133
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

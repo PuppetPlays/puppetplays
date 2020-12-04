@@ -1,6 +1,10 @@
 isPublic: true
 name: 'Public Schema'
 scope:
+  - 'sections.22b828fc-b5e2-42a0-9050-446047f73230:read'
+  - 'entrytypes.8c8213c1-75f5-4c1c-bc23-96b213711e06:read'
+  - 'sections.492cc09a-052e-40d6-a33b-7ca74a831805:read'
+  - 'entrytypes.e9587719-a8d4-42d6-97c2-f0259ec67922:read'
   - 'sections.ec7faa37-6b19-44d2-95ec-2b752648c37d:read'
   - 'entrytypes.2cbf68ec-55ec-4aee-bf2d-b255cad39232:read'
   - 'sections.6591dcc5-c98b-41db-91e2-1b3dcd8eb31b:read'
@@ -17,6 +21,10 @@ scope:
   - 'entrytypes.19568c88-e81b-48e1-bab2-ba7f106a823f:read'
   - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read'
   - 'entrytypes.48898581-e621-4ea2-bcf6-3c65ac54487f:read'
+  - 'sections.ccd48638-f531-4032-a057-8af4f24cd187:read'
+  - 'entrytypes.5e83af75-a401-46c6-918f-f56ab78ad797:read'
   - 'sections.29f1cf63-9c38-484a-9026-94010557c5af:read'
   - 'entrytypes.09da97ae-fc6f-4555-ade3-73e42fd9bf6a:read'
+  - 'sections.e2d5c38e-3607-4630-bddf-0875190aa133:read'
+  - 'entrytypes.e4e23bc0-a6bd-4075-943f-4607a5fac9be:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read'

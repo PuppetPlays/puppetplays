@@ -1,9 +1,9 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: otherTitles
+fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
+handle: thesaurusDefinition
 instructions: ''
-name: 'Autres titres'
-searchable: true
+name: 'Définition du thésaurus'
+searchable: false
 settings:
   byteLimit: null
   charLimit: null

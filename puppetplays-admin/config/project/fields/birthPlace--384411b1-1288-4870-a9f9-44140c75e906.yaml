@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: birthPlace
+instructions: ''
+name: 'Lieux de naissance'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: 'Sélectionner le lieux de naissance'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: hypotexts
+instructions: ''
+name: Hypotextes
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Sélectionner un ou des hypotexte(s)'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:29f1cf63-9c38-484a-9026-94010557c5af'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

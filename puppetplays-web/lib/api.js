@@ -33,7 +33,11 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         title
       },
       authors {
-        title 
+        ... on persons_persons_Entry { 
+         	firstName,
+          lastName,
+          nickname
+        }
       },
       writingDisplayDate,
       writingPlace {
@@ -48,7 +52,13 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         title 
       },
       abstract,
-      firstPerformanceDisplayDate,
+      hypotexts {
+        title
+      },
+      firstPerformance,
+      firstPublication,
+      modernEditions,
+      translations,
       register {
         title
       },
@@ -62,6 +72,10 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         title
       },
       actsCount,
+      pageCount,
+      formats {
+        title
+      },
       license
     }
   }
@@ -88,11 +102,17 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
     title,
     ... on works_works_Entry {
       translatedTitle,
+      genre,
+      note,
       keywords {
         title
       },
       authors {
-        title 
+        ... on persons_persons_Entry { 
+         	firstName,
+          lastName,
+          nickname
+        }
       },
       writingDisplayDate,
       writingPlace {
@@ -107,7 +127,19 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         title 
       },
       abstract,
-      firstPerformanceDisplayDate,
+      hypotexts {
+        title
+      },
+      firstPerformance,
+      firstPublication,
+      modernEditions,
+      translations,
+      preservedIn {
+        title,
+        ... on conservationInstitutions_conservationInstitutions_Entry {
+          typeOf
+        }
+      },
       register {
         title
       },
@@ -120,7 +152,14 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       characters {
         title
       },
+      dramaturgicTechniques {
+        title
+      },
       actsCount,
+      pageCount,
+      formats {
+        title
+      },
       license
     }
   }

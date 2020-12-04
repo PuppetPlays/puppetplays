@@ -26,13 +26,112 @@ fieldLayouts:
             type: craft\fieldlayoutelements\EntryTitleField
             warning: null
             width: 100
+          -
+            fieldUid: 23c8664d-0988-47dc-96c4-e3887b436569
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 6e506719-d279-4e2c-9e84-fbf315440712
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: c2a06b9d-03a3-471c-8452-f62e2d17e60f
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: a5261331-a813-4df9-ab61-a125b7713179
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
+            instructions: ''
+            label: 'Lieux de rattachement'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 384411b1-1288-4870-a9f9-44140c75e906
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: c18b0f9d-717f-4ce0-a996-f482d7432dba
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: a36b8a5f-17c5-46c5-8d97-43a29656c564
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 9e670e52-0ab0-4dc1-a6e1-adc8efea5c13
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2a3117bf-dd2f-46f2-802d-42fbd2e52e0a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
         name: Contenu
         sortOrder: 1
 handle: persons
-hasTitleField: true
+hasTitleField: false
 name: Personnes
 section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
 sortOrder: 1
-titleFormat: null
+titleFormat: '{firstName} {lastName}'
 titleTranslationKeyFormat: null
 titleTranslationMethod: none
