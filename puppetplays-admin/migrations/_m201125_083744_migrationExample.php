@@ -7,10 +7,10 @@ use craft\db\Migration;
 use craft\db\Query;
 
 /**
- * m201125_083744_createUserInformations migration.
+ * m201125_083744_migrationExample migration.
  * This is an exemple, underscored to not be run !!!!! 
  */
-class m201125_083744_createUserInformations extends Migration
+class m201125_083744_migrationExample extends Migration
 {
     /**
      * @inheritdoc
