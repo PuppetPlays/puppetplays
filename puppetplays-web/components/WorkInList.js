@@ -1,9 +1,14 @@
+import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
+import { getTitle, getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import Keywords from './Keywords';
+import CommaSepList from './CommaSepList';
 import styles from './worksInList.module.scss';
-import { Fragment, useState } from 'react';
 
-function Author({ firstName, lastName, nickname, t }) {
+function Author({ firstName, lastName, nickname }) {
+  const { t } = useTranslation();
+
   return (
     <Fragment>
       <span>
@@ -59,27 +64,16 @@ function WorkInList({
             </Link>
           </h1>
           <h2>
-            {authors.map((author, index) => (
-              <Fragment>
-                <Author {...author} t={t} />
-                {index < authors.length - 1 && ', '}
-              </Fragment>
-            ))}
-            , {writingDisplayDate} - {writingPlace[0].title},{' '}
-            {writingPlace[0].country[0].title} - {t('common:language')}{' '}
-            {mainLanguage[0].title}
+            <CommaSepList list={authors} itemComponent={Author} />,{' '}
+            {writingDisplayDate} - {getFirstItemTitle(writingPlace)},{' '}
+            {getFirstItemTitle(getFirstItemProp('country')(writingPlace))} -{' '}
+            {t('common:language')} {getFirstItemTitle(mainLanguage)}
           </h2>
           {translatedTitle && <h3>{translatedTitle}</h3>}
         </header>
 
         <section>
-          <ul className={styles.keywords}>
-            {keywords.map((keyword) => (
-              <li key={keyword.title} className={styles.keyword}>
-                {keyword.title}
-              </li>
-            ))}
-          </ul>
+          <Keywords keywords={keywords} />
         </section>
 
         {isExpanded && (
@@ -89,7 +83,7 @@ function WorkInList({
             </div>
             <div className={styles.info}>
               <span>{t('common:otherTitles')}</span>{' '}
-              {hypotexts.map((h) => h.title).join(', ')}
+              <CommaSepList list={hypotexts} listTransform={getTitle} />
             </div>
             <div className={styles.info}>
               <span>{t('common:firstPerformance')}</span> {firstPerformance}
@@ -108,20 +102,20 @@ function WorkInList({
       </div>
       <section className={styles.extra}>
         <div className={styles.info}>
-          <span>{t('common:register')}</span> {register[0].title}
+          <span>{t('common:register')}</span> {getFirstItemTitle(register)}
         </div>
         <div className={styles.info}>
           <span>{t('common:handlingTechniques')}</span>{' '}
-          {handlingTechniques.map((t) => t.title).join(', ')}
+          <CommaSepList list={handlingTechniques} listTransform={getTitle} />
         </div>
         <div className={styles.info}>
-          <span>{t('common:audience')}</span> {audience[0].title}
+          <span>{t('common:audience')}</span> {getFirstItemTitle(audience)}
         </div>
         {isExpanded && (
           <Fragment>
             <div className={styles.info}>
               <span>{t('common:characters')}</span>{' '}
-              {characters.map((t) => t.title).join(', ')}
+              <CommaSepList list={characters} listTransform={getTitle} />
             </div>
             <div className={styles.info}>
               <span>{t('common:actsCount')}</span> {actsCount}

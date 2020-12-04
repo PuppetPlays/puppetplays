@@ -38,23 +38,6 @@
   }
 }
 
-.keywords {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.keyword {
-  display: inline-block;
-  border: 1px solid grey;
-  padding: 2px 8px;
-  border-radius: 4px;
-
-  & + & {
-    margin-left: 8px;
-  }
-}
-
 .expandButton {
   position: absolute;
   right: 0;
