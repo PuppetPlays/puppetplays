@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# '-e' stop on the first failure
-# '-u' prevent using an undefined variable
-# '-o pipefail' force pipelines to fail on the first non-zero status code
-set -euo pipefail
+# Exit script if you try to use an uninitialized variable.
+set -o nounset
+# Exit script if a statement returns a non-true return value.
+set -o errexit
+# Use the error status of the first failure, rather than that of the last item in a pipeline.
+set -o pipefail
 
-readonly ARGS=$*
 readonly PROJECT=puppetplays
 
 
@@ -16,7 +17,7 @@ log() {
   message=$1; shift
   color=$1; shift
   nc='\033[0m\n'
-  printf "${color}[DEPLOY] $message$nc";
+  printf "%s[DEPLOY] $message$nc" "$color";
 }
 
 info() {
