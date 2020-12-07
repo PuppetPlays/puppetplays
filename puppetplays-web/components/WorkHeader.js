@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import Place from './Place';
 import WorkAuthor from './WorkAuthor';
 import CommaSepList from './CommaSepList';
 import styles from './WorkInList.module.scss';
@@ -23,16 +24,7 @@ const WorkHeader = ({
           <CommaSepList list={authors} itemComponent={WorkAuthor} />
         </span>
         {writingDisplayDate && <span>, {writingDisplayDate}</span>}
-        {writingPlace.length > 0 && (
-          <Fragment>
-            <span> - {getFirstItemTitle(writingPlace)}</span>
-            {writingPlace[0].country.length > 0 && (
-              <span>
-                , {getFirstItemTitle(getFirstItemProp('country')(writingPlace))}
-              </span>
-            )}
-          </Fragment>
-        )}
+        {writingPlace.length > 0 && <Place place={writingPlace[0]} />}
         {mainLanguage && mainLanguage.length > 0 && (
           <span>
             {' '}

@@ -1,5 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
-import { getTitle, getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import { getTitle, getFirstItemTitle } from 'lib/utils';
+import Place from './Place';
 import WorkHeader from './WorkHeader';
 import WorkSection from './WorkSection';
 import WorkInfo from './WorkInfo';
@@ -92,23 +93,7 @@ function WorkInList({
               <span>{getFirstItemTitle(preservedIn)}</span>
               <span> - </span>
               {preservedIn[0].place.length > 0 && (
-                <Fragment>
-                  <span>
-                    {getFirstItemTitle(getFirstItemProp('place')(preservedIn))}
-                  </span>
-                  {preservedIn[0].place[0].country.length > 0 && (
-                    <Fragment>
-                      <span>, </span>
-                      <span>
-                        {getFirstItemTitle(
-                          getFirstItemProp('country')(
-                            getFirstItemProp('place')(preservedIn),
-                          ),
-                        )}
-                      </span>
-                    </Fragment>
-                  )}
-                </Fragment>
+                <Place place={preservedIn[0].place[0]} />
               )}
             </Fragment>
           )}
