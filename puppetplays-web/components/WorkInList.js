@@ -1,23 +1,12 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
-import { getTitle, getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import { getTitle, getFirstItemTitle } from 'lib/utils';
 import WorkHeader from './WorkHeader';
 import Keywords from './Keywords';
 import WorkInfo from './WorkInfo';
 import CommaSepList from './CommaSepList';
 import styles from './workInList.module.scss';
-
-function Info({ label, info, infoExist = true }) {
-  if (!info || !infoExist) {
-    return null;
-  }
-  return (
-    <div className={styles.info}>
-      <span>{label}</span> {info}
-    </div>
-  );
-}
 
 function WorkInList({
   id,
