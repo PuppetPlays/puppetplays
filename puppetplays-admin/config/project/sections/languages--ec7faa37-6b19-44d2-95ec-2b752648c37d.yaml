@@ -20,9 +20,19 @@ siteSettings:
     hasUrls: true
     template: null
     uriFormat: 'langues/{slug}'
+  4cda444a-a132-4409-8e1e-5205e6a53896:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
   59986aab-e6c1-4cdf-a062-8db833d2b327:
     enabledByDefault: true
     hasUrls: true
     template: null
     uriFormat: 'languages/{slug}'
+  bf194204-844c-4373-ad71-db3f6243b824:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
 type: channel

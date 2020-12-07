@@ -27,6 +27,8 @@ class m201203_083744_seedDatabase extends Migration {
 
     private $_frenchSite;
     private $_englishSite;
+    private $_italianSite;
+    private $_germanSite;
 
     private $_audiencesSection;
     private $_audiencesEntryType;
@@ -69,17 +71,25 @@ class m201203_083744_seedDatabase extends Migration {
 
             echo "!!!!!!!!!!!!!!! seed database succeeded !!!!!!!!!!!!!!!!";
         }
-        throw new Exception("blablabla");
+        //throw new Exception("blablabla");
     }
 
     private function computeSites() {
         $sites = Craft::$app->sites->getAllSites();
         foreach ($sites as &$site) {
-            if ($site->handle === 'fr') {
-                $this->_frenchSite = $site;
-            }
-            else if ($site->handle === 'en') {
-                $this->_englishSite = $site;
+            switch ($site->handle) {
+                case 'fr':
+                    $this->_frenchSite = $site;
+                    break;
+                case 'en':
+                    $this->_englishSite = $site;
+                    break;
+                case 'it':
+                    $this->_italianSite = $site;
+                    break;
+                case 'de':
+                    $this->_germanSite = $site;
+                    break;
             }
         }
     }
@@ -105,15 +115,17 @@ class m201203_083744_seedDatabase extends Migration {
     }
 
     private function seedAudiences() {
-        $this->seedAudience('enfants', 'children');
-        $this->seedAudience('plus de 6 ans', 'over 6 years');
-        $this->seedAudience('adultes', 'adults');
-        $this->seedAudience('tout public', 'for all');
+        $this->seedAudience('enfants', 'children', 'bambini', 'kinder');
+        $this->seedAudience('plus de 6 ans', 'over 6 years', 'oltre 6 anni', 'über 6 Jahre');
+        $this->seedAudience('adultes', 'adults', 'adulti', 'erwachsene');
+        $this->seedAudience('tout public', 'for all', 'per tutti', 'für alle');
     }
 
-    private function seedAudience($frenchTitle, $englishTitle) {
+    private function seedAudience($frenchTitle, $englishTitle, $italianTitle, $germanTitle) {
         $this->createEntry($this->_frenchSite, $frenchTitle, $this->_audiencesSection, $this->_audiencesEntryType);
         $this->translateEntryTitle($this->_savedEntry, $this->_englishSite, $englishTitle, $this->_audiencesSection, $this->_audiencesEntryType);
+        $this->translateEntryTitle($this->_savedEntry, $this->_italianSite, $italianTitle, $this->_audiencesSection, $this->_audiencesEntryType);
+        $this->translateEntryTitle($this->_savedEntry, $this->_germanSite, $germanTitle, $this->_audiencesSection, $this->_audiencesEntryType);
     }
 
     private function seedCharacters() {
