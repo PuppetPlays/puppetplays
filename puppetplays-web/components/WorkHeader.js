@@ -1,10 +1,9 @@
-import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import { getFirstItemTitle } from 'lib/utils';
 import Place from './Place';
 import WorkAuthor from './WorkAuthor';
 import CommaSepList from './CommaSepList';
-import styles from './WorkInList.module.scss';
+import styles from './workInList.module.scss';
 
 const WorkHeader = ({
   title,
