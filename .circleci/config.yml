@@ -82,9 +82,9 @@ jobs:
           name: Deploy to staging server
           command: |
             mkdir -p ~/.docker
-            echo "$DOCKER_STAGING_TLS_CA" > ~/.docker/ca.pem
-            echo "$DOCKER_STAGING_TLS_CERT" > ~/.docker/cert.pem
-            echo "$DOCKER_STAGING_TLS_KEY" > ~/.docker/key.pem
+            echo -e "$DOCKER_STAGING_TLS_CA" > ~/.docker/ca.pem
+            echo -e "$DOCKER_STAGING_TLS_CERT" > ~/.docker/cert.pem
+            echo -e "$DOCKER_STAGING_TLS_KEY" > ~/.docker/key.pem
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
