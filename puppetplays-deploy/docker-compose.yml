@@ -22,7 +22,6 @@ services:
       - DB_PASSWORD=$POSTGRES_PASSWORD
       - DB_USER=$POSTGRES_DB
       - DB_DATABASE=$POSTGRES_DB
-      - DB_DATABASE=$POSTGRES_DB
       - DB_SERVER=postgres
       - DB_PORT=5432
       - DB_SCHEMA=public
