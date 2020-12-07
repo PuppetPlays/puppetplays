@@ -78,8 +78,6 @@ jobs:
       DOCKER_TLS_VERIFY: 1
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
       - run: 
           name: Deploy to staging server
           command: |
