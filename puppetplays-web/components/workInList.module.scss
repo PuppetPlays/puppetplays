@@ -37,6 +37,10 @@
 .extra {
   flex: 0 0 160px;
   margin-left: 28px;
+
+  .container--page & {
+    flex: 0 0 230px;
+  }
 }
 
 .info {
