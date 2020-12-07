@@ -63,8 +63,8 @@ jobs:
             docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
             docker push << pipeline.parameters.admin-image-release >>
   deploy_staging:
-    docker:
-      - image: cimg/base:2020.01
+    machine:
+      image: ubuntu-2004:202010-01
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
       POSTGRES_USER: puppetplays
