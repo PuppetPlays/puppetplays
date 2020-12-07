@@ -9,7 +9,7 @@ settings:
   charLimit: null
   code: ''
   columnType: null
-  initialRows: '4'
+  initialRows: '2'
   multiline: '1'
   placeholder: ''
   uiMode: normal
