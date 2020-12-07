@@ -2,25 +2,20 @@ import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { getTitle, getFirstItemProp, getFirstItemTitle } from 'lib/utils';
+import WorkHeader from './WorkHeader';
 import Keywords from './Keywords';
+import WorkInfo from './WorkInfo';
 import CommaSepList from './CommaSepList';
-import styles from './worksInList.module.scss';
+import styles from './workInList.module.scss';
 
-function Author({ firstName, lastName, nickname }) {
-  const { t } = useTranslation();
-
+function Info({ label, info, infoExist = true }) {
+  if (!info || !infoExist) {
+    return null;
+  }
   return (
-    <Fragment>
-      <span>
-        {firstName} {lastName}
-      </span>
-      {nickname && (
-        <span>
-          {' '}
-          ({t('common:alias')} {nickname})
-        </span>
-      )}
-    </Fragment>
+    <div className={styles.info}>
+      <span>{label}</span> {info}
+    </div>
   );
 }
 
@@ -56,21 +51,26 @@ function WorkInList({
     <article
       className={`${styles.container} ${isExpanded ? 'is-expanded' : ''}`}
     >
+      <div className={styles.media}>
+        <p>
+          <CommaSepList list={formats} listTransform={getTitle} />
+        </p>
+        <p>{t('common:pageCount', { count: pageCount })}</p>
+      </div>
       <div className={styles.body}>
-        <header>
-          <h1>
+        <WorkHeader
+          title={
             <Link href={`/oeuvres/${id}/${slug}`}>
               <a>{title}</a>
             </Link>
-          </h1>
-          <h2>
-            <CommaSepList list={authors} itemComponent={Author} />,{' '}
-            {writingDisplayDate} - {getFirstItemTitle(writingPlace)},{' '}
-            {getFirstItemTitle(getFirstItemProp('country')(writingPlace))} -{' '}
-            {t('common:language')} {getFirstItemTitle(mainLanguage)}
-          </h2>
-          {translatedTitle && <h3>{translatedTitle}</h3>}
-        </header>
+          }
+          authors={authors}
+          writingDisplayDate={writingDisplayDate}
+          writingPlace={writingPlace}
+          translatedTitle={translatedTitle}
+          mainLanguage={mainLanguage}
+          t={t}
+        />
 
         <section>
           <Keywords keywords={keywords} />
@@ -78,51 +78,53 @@ function WorkInList({
 
         {isExpanded && (
           <section>
-            <div className={styles.info}>
-              <span>{t('common:abstract')}</span> {abstract}
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:otherTitles')}</span>{' '}
-              <CommaSepList list={hypotexts} listTransform={getTitle} />
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:firstPerformance')}</span> {firstPerformance}
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:firstPublication')}</span> {firstPublication}
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:modernEditions')}</span> {modernEditions}
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:translations')}</span> {translations}
-            </div>
+            <WorkInfo label={t('common:abstract')} info={abstract} />
+            <WorkInfo
+              label={t('common:otherTitles')}
+              info={<CommaSepList list={hypotexts} listTransform={getTitle} />}
+              infoExist={hypotexts.length > 0}
+            />
+            <WorkInfo
+              label={t('common:firstPerformance')}
+              info={firstPerformance}
+            />
+            <WorkInfo
+              label={t('common:firstPublication')}
+              info={firstPublication}
+            />
+            <WorkInfo
+              label={t('common:modernEditions')}
+              info={modernEditions}
+            />
+            <WorkInfo label={t('common:translations')} info={translations} />
           </section>
         )}
       </div>
       <section className={styles.extra}>
-        <div className={styles.info}>
-          <span>{t('common:register')}</span> {getFirstItemTitle(register)}
-        </div>
-        <div className={styles.info}>
-          <span>{t('common:handlingTechniques')}</span>{' '}
-          <CommaSepList list={handlingTechniques} listTransform={getTitle} />
-        </div>
-        <div className={styles.info}>
-          <span>{t('common:audience')}</span> {getFirstItemTitle(audience)}
-        </div>
+        <WorkInfo
+          label={t('common:register')}
+          info={getFirstItemTitle(register)}
+        />
+        <WorkInfo
+          label={t('common:handlingTechniques')}
+          info={
+            <CommaSepList list={handlingTechniques} listTransform={getTitle} />
+          }
+          infoExist={handlingTechniques.length > 0}
+        />
+        <WorkInfo
+          label={t('common:audience')}
+          info={getFirstItemTitle(audience)}
+        />
         {isExpanded && (
           <Fragment>
-            <div className={styles.info}>
-              <span>{t('common:characters')}</span>{' '}
-              <CommaSepList list={characters} listTransform={getTitle} />
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:actsCount')}</span> {actsCount}
-            </div>
-            <div className={styles.info}>
-              <span>{t('common:license')}</span> {license}
-            </div>
+            <WorkInfo
+              label={t('common:characters')}
+              info={<CommaSepList list={characters} listTransform={getTitle} />}
+              infoExist={characters.length > 0}
+            />
+            <WorkInfo label={t('common:actsCount')} info={actsCount} />
+            <WorkInfo label={t('common:license')} info={license} />
           </Fragment>
         )}
       </section>

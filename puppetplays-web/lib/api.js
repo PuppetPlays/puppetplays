@@ -19,7 +19,7 @@ export async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
   return json.data;
 }
 
-export const WORKS_PAGE_SIZE = 1;
+export const WORKS_PAGE_SIZE = 10;
 
 export const getAllWorksQuery = `
 query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
@@ -137,7 +137,15 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       preservedIn {
         title,
         ... on conservationInstitutions_conservationInstitutions_Entry {
-          typeOf
+          typeOf,
+          place {
+            title,
+            ... on places_places_Entry {
+              country {
+                title
+              }
+            }
+          }
         }
       },
       register {

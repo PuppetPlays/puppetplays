@@ -1,0 +1,79 @@
+.container {
+  position: relative;
+  display: flex;
+  border-top: 1px solid grey;
+  padding: 20px;
+}
+
+.container--page {
+  border: 0;
+}
+
+.media {
+  flex: 0 0 200px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.body {
+  flex: 1 1 auto;
+
+  section + section {
+    margin-top: 24px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 24px;
+}
+
+.extra {
+  flex: 0 0 160px;
+  margin-left: 28px;
+}
+
+.info {
+  span {
+    color: grey;
+  }
+
+  & + & {
+    margin-top: 12px;
+  }
+}
+
+.expandButton {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  background-color: transparent;
+  border: 0;
+
+  .container:global(.is-expanded) {
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+.section {
+  border-top: 1px solid grey;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: grey;
+  padding: 3px 6px;
+  display: inline-block;
+  color: white;
+  margin: 0 0 12px;
+}

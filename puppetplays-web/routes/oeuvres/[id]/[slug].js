@@ -1,8 +1,29 @@
+import { Fragment } from 'react';
+import Head from 'next/head';
 import { getWorkById } from 'lib/api';
-import WorkInList from 'components/WorkInList';
+import WorkInPage from 'components/WorkInPage';
+import WorkPageHeader from 'components/WorkPageHeader';
+import styles from 'styles/Work.module.css';
 
 const Work = ({ initialData }) => {
-  return <WorkInList {...initialData.entry} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>{initialData.title} | Puppetplays</title>
+      </Head>
+
+      <div className={styles.workHeader}>
+        <WorkPageHeader
+          title={initialData.title}
+          authors={initialData.authors}
+          writingPlace={initialData.writingPlace}
+        />
+      </div>
+      <div className={styles.work}>
+        <WorkInPage {...initialData} />
+      </div>
+    </Fragment>
+  );
 };
 
 export default Work;
@@ -11,6 +32,6 @@ export async function getServerSideProps({ locale, params }) {
   const apiUrl = `${process.env.API_URL}/api`;
   const data = await getWorkById(apiUrl, params.id, locale);
   return {
-    props: { initialData: data },
+    props: { initialData: data.entry },
   };
 }
