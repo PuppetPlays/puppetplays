@@ -47,6 +47,10 @@ return [
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
+
+        'aliases' => [
+            '@web' => App::env('ROOT_SITE_URL'),
+        ],
     ],
 
     // Production environment settings
@@ -56,5 +60,9 @@ return [
 
         // Don’t allow updates on Production
         'allowUpdates' => false,
+
+        'aliases' => [
+            '@web' => App::env('ROOT_SITE_URL'),
+        ],
     ],
 ];
