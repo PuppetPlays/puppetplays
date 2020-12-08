@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=development next-translate && node server.js",
     "build": "next-translate && next build",
-    "start": "next start -p 7000"
+    "start": "next start"
   },
   "dependencies": {
     "express": "^4.17.1",

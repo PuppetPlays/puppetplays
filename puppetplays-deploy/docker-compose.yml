@@ -40,7 +40,7 @@ services:
     container_name: puppetplays-web
     image: intactiledesign/puppetplays-web:${PUPPETPLAYS_VERSION}
     ports:
-      - "7000:7000"
+      - "7000:3000"
     links:
       - "puppetplays-admin"
     restart: always
