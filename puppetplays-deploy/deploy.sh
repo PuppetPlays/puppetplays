@@ -58,6 +58,7 @@ main() {
   pullImages
   stopExistingContainers
   startContainer "postgres"
+  startContainer "console"
   startContainer "puppetplays-web"
 
   info "$PROJECT deployed"

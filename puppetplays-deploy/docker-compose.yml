@@ -30,17 +30,23 @@ services:
       - ENVIRONMENT
     ports:
       - "11000:8080"
-    links:
+    depends_on:
       - "postgres"
     volumes:
       - ${PUPPETPLAYS_HOST_DIR}/logs:/app/storage/logs
     restart: always
+
+  console:
+    image: craftcms/cli:7.4-dev
+    command: ["./craft", "migrate/up"]
+    depends_on:
+      - "puppetplays-admin"
 
   puppetplays-web:
     container_name: puppetplays-web
     image: intactiledesign/puppetplays-web:${PUPPETPLAYS_VERSION}
     ports:
       - "7000:3000"
-    links:
+    depends_on:
       - "puppetplays-admin"
     restart: always
