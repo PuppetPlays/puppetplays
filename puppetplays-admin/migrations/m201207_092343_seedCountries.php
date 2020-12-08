@@ -20,8 +20,8 @@ class m201207_092343_seedCountries extends Migration implements Countries {
 
     // Constructors ..........................................................................................
     function __construct() {
-        $this->_migrationService = new MigrationService();
         parent::__construct();
+        $this->_migrationService = new MigrationService();
     }
 
     // Methods ...............................................................................................
@@ -38,14 +38,13 @@ class m201207_092343_seedCountries extends Migration implements Countries {
                                     Countries::COUNTRIES_GE[$i]);
         }
     }
-    
+
     // Abstract methods implementations ......................................................................
     /**
      * @inheritdoc
      */
     public function safeUp() {
         $this -> seedCountries();
-        echo 'seed countries migration succeeded\n';
         //throw new Exception('the migration will not be applied');
     }
 
