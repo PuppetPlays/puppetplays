@@ -26,6 +26,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
     const CHARACTERS_COUNT = 100;
     const PLACES_COUNT = 100;
     const PERSONS_COUNT = 100;
+    const WORKS_COUNT = 100;
     
     // Instance fields .......................................................................................
     private $_audiencesEntryIds = [];
@@ -33,9 +34,16 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
 
     private $_faker;
     private $_frenchFaker;
+    private $_italianFaker;
+    private $_germanFaker;
 
     private $_migrationService;
     private $_countryIds;
+    private $_placeIds;
+    private $_languageIds;
+    private $_personIds;
+    private $_audienceIds;
+    private $_characterIds;
 
     // Constructors ..........................................................................................
     function __construct() {
@@ -46,6 +54,8 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
             $this -> _countryIds = $this ->_migrationService -> getCountyIds();
             $this -> _faker = Factory::create();
             $this -> _frenchFaker = Factory::create('fr_FR');
+            $this -> _italianFaker = Factory::create('it_IT');
+            $this -> _germanFaker = Factory::create('de_DE');
         }
     }
 
@@ -59,12 +69,23 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
     public function safeUp() {
         if ($this -> _env === 'dev') {
             $this -> seedAudiences();
+            $this -> _audienceIds = $this ->_migrationService -> getAudienceIds();
+
             $this -> seedCharacters();
+            $this -> _characterIds = $this ->_migrationService -> getCharacterIds();
+
             $this -> seedPlaces();
+            $this -> _placeIds = $this ->_migrationService -> getPlaceIds();
+
             $this -> seedLanguages();
+            $this -> _languageIds = $this ->_migrationService -> getLanguageIds();
+
             $this -> seedPersons();
+            $this -> _personIds = $this ->_migrationService -> getPersonIds();
+
+            $this -> seedWorks();
         }
-        //throw new Exception('the migration will not be applied');
+        throw new Exception('the migration will not be applied');
     }
 
     private function seedAudiences() {
@@ -78,7 +99,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
         $section = $this ->_migrationService -> audiencesSection();
         $entryType = $this ->_migrationService -> audiencesEntryType();
         $this ->_migrationService 
-              -> seedEntryTitle($section,
+              -> seedEntry($section,
                                 $entryType,
                                 $frenchTitle,
                                 $englishTitle,
@@ -119,8 +140,8 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
         $faker = $this -> _frenchFaker;
         $section = $this ->_migrationService -> personsSection();
         $entryType = $this ->_migrationService -> personsEntryType();
-        $placeIds = $this ->_migrationService -> getPlaceIds();
-        $languageIds = $this ->_migrationService -> getLanguageIds();
+        $placeIds = $this ->_placeIds;
+        $languageIds = $this ->_languageIds;
         for($i = 0 ; $i < self::PERSONS_COUNT ; $i++) {
             $birthDate =  $faker -> dateTimeBetween('-500 years', '-20 years', null);
             $deathDate =  min(date_modify(clone $birthDate, '+'.$faker -> numberBetween(20, 100).' year'), new \DateTime('NOW'));
@@ -145,12 +166,127 @@ class m201208_083744_seedDatabase extends Migration implements Languages {
         }
     }
 
+    private function seedWorks() {
+        $faker = $this -> _frenchFaker;
+        $englishFaker = $this -> _faker;
+        $italianFaker = $this -> _italianFaker;
+        $germanFaker = $this -> _germanFaker;
+        $section = $this ->_migrationService -> worksSection();
+        $entryType = $this ->_migrationService -> worksEntryType();
+
+        for($i = 0 ; $i < self::WORKS_COUNT ; $i++) {
+            $writingMinDate =  $faker -> dateTimeBetween('-500 years', '-20 years', null);
+            $writingMaxDate =  min(date_modify(clone $writingMinDate, '+'.$faker -> numberBetween(1, 15).' year'), new \DateTime('NOW'));
+            $firstPerformanceMinDate = min(date_modify(clone $writingMaxDate, '+'.$faker -> numberBetween(1, 36).' month'), new \DateTime('NOW'));
+            $firstPerformanceMaxDate = min(date_modify(clone $firstPerformanceMinDate, '+'.$faker -> numberBetween(1, 12).' month'), new \DateTime('NOW'));
+            $publicationMinDate = min(date_modify(clone $firstPerformanceMaxDate, '+'.$faker -> numberBetween(1, 36).' month'), new \DateTime('NOW'));
+            $publicationMaxDate = min(date_modify(clone $publicationMinDate, '+'.$faker -> numberBetween(1, 12).' month'), new \DateTime('NOW'));
+            
+            $this ->_migrationService 
+                  -> seedEntryWithNotTranslatableTitle(
+                      $section,
+                      $entryType,
+                      $faker -> sentence(10, true),
+                      [
+                          'translatedTitle' => $faker -> sentence(10, true),
+                          'writingMinDate' => $writingMinDate,
+                          'writingMaxDate' => $writingMaxDate,
+                          'writingDisplayDate' => date_format($writingMinDate, 'd-m-Y'),
+                          'writingPlace' => $this -> onePlace(),
+                          'authors' => $this -> onePerson(),
+                          'directors' => $this -> onePerson(),
+                          'transcriptors' => $this -> onePerson(),
+                          'compilators' => $this -> onePerson(),
+                          'abstract' => $this -> realText($faker, 300, 500),
+                          'note' => $this -> realText($faker, 100, 200),
+                          'firstPerformance' => $faker -> sentence(10, true),
+                          'firstPerformanceMinDate'=> $firstPerformanceMinDate,
+                          'firstPerformanceMaxDate'=> $firstPerformanceMaxDate,
+                          'firstPublication' => $faker -> sentence(10, true),
+                          'publicationMinDate'=> $publicationMinDate,
+                          'publicationMaxDate'=> $publicationMaxDate,
+                          'modernEditions' => $faker -> sentence(20, true),
+                          'translations' => $faker -> sentence(20, true),
+                          'mainLanguage' => $this -> oneLanguage(),
+                          'audience' => $this -> oneAudience(),
+                          'license' => $faker -> sentence(10, true), // rename to 'licence'
+                          'genre' => $faker -> sentence(10, true),
+                          'characters' => $this -> oneCharacter(),
+                          'actsCount' => $faker -> numberBetween(3, 10),
+                          'pageCount' => $faker -> numberBetween(50, 500)
+                          //'keywords' => 'toto'
+                      ],
+                      [
+                          'translatedTitle' => $faker -> sentence(10, true),
+                          'abstract' => $this -> realText($englishFaker, 300, 500),
+                          'note' => $this -> realText($englishFaker, 100, 200),
+                          'firstPerformance' => $faker -> sentence(10, true),
+                          'firstPublication' => $faker -> sentence(10, true),
+                          'modernEditions' => $faker -> sentence(20, true),
+                          'translations' => $faker -> sentence(20, true),
+                          'license' => $faker -> sentence(10, true),
+                          'genre' => $faker -> sentence(10, true)
+                      ],
+                      [
+                          'translatedTitle' => $faker -> sentence(10, true),
+                          'abstract' => $this -> realText($italianFaker, 300, 500),
+                          'note' => $this -> realText($italianFaker, 100, 200),
+                          'firstPerformance' => $faker -> sentence(10, true),
+                          'firstPublication' => $faker -> sentence(10, true),
+                          'modernEditions' => $faker -> sentence(20, true),
+                          'translations' => $faker -> sentence(20, true),
+                          'license' => $faker -> sentence(10, true),
+                          'genre' => $faker -> sentence(10, true)
+                      ],
+                      [
+                          'translatedTitle' => $faker -> sentence(10, true),
+                          'abstract' => $this -> realText($germanFaker, 300, 500),
+                          'note' => $this -> realText($germanFaker, 100, 200),
+                          'firstPerformance' => $faker -> sentence(10, true),
+                          'firstPublication' => $faker -> sentence(10, true),
+                          'modernEditions' => $faker -> sentence(20, true),
+                          'translations' => $faker -> sentence(20, true),
+                          'license' => $faker -> sentence(10, true),
+                          'genre' => $faker -> sentence(10, true)
+                      ]
+                    );
+        }
+    }
+
+    private function realText($faker, $minSize, $maxSize) {
+        return $faker -> realText($faker -> numberBetween($minSize, $maxSize));
+    }
+
+    private function onePlace() {
+        return $this -> oneEntry($this -> _placeIds);
+    }
+
+    private function onePerson() {
+        return $this -> oneEntry($this -> _personIds);
+    }
+
+    private function oneLanguage() {
+        return $this -> oneEntry($this -> _languageIds);
+    }
+
+    private function oneAudience() {
+        return $this -> oneEntry($this -> _audienceIds);
+    }
+
+    private function oneCharacter() {
+        return $this -> oneEntry($this -> _characterIds);
+    }
+
+    private function oneEntry($elementIds) {
+        return array($this -> _faker -> randomElement($elementIds));
+    }
+
     private function seedLanguages() {
         $section = $this ->_migrationService -> languagesSection();
         $entryType = $this ->_migrationService -> languagesEntryType();
         for($i = 0; $i < count(Languages::LANGUAGES_FR); $i++) {
             $this ->_migrationService 
-                  -> seedEntryTitle($section,
+                  -> seedEntry($section,
                                     $entryType,
                                     Languages::LANGUAGES_FR[$i],
                                     Languages::LANGUAGES_EN[$i],

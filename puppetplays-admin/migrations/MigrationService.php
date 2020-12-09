@@ -21,6 +21,7 @@ class MigrationService {
     const PLACES = 'places';
     const LANGUAGES = 'languages';
     const PERSONS = "persons";
+    const WORKS = "works";
 
     // Instance fields .......................................................................................
     private $_savedEntry;
@@ -36,6 +37,7 @@ class MigrationService {
     private $_placesSection;
     private $_languagesSection;
     private $_personsSection;
+    private $_worksSection;
 
     private $_countriesEntryType;
     private $_audiencesEntryType;
@@ -43,6 +45,7 @@ class MigrationService {
     private $_placesEntryType;
     private $_languagesEntryType;
     private $_personsEntryType;
+    private $_worksEntryType;
 
     // Getters / Setters .....................................................................................
     public function frenchSite() {
@@ -90,6 +93,10 @@ class MigrationService {
         return $this -> _personsSection;
     }
 
+    public function worksSection() {
+        return $this -> _worksSection;
+    }
+
         // Entry types ......................................................................................
     public function countriesEntryType() {
         return $this -> _countriesEntryType;
@@ -115,14 +122,10 @@ class MigrationService {
         return $this -> _personsEntryType;
     }
 
-    // Methods ...............................................................................................
-    function __construct() {
-        $this -> computeSites();
-        $this -> computeEntryTypes();
-        $this -> computeSections();
-        $this -> createEventListener();
+    public function worksEntryType() {
+        return $this -> _worksEntryType;
     }
-
+        // Entry ids ..........................................................................................
     public function getCountyIds() {
         return $this -> getSectionEntryIds(self::COUNTRIES);
     }
@@ -131,10 +134,30 @@ class MigrationService {
         return $this -> getSectionEntryIds(self::PLACES);
     }
 
+    public function getPersonIds() {
+        return $this -> getSectionEntryIds(self::PERSONS);
+    }
+
     public function getLanguageIds() {
         return $this -> getSectionEntryIds(self::LANGUAGES);
     }
 
+    public function getAudienceIds() {
+        return $this -> getSectionEntryIds(self::AUDIENCES);
+    }
+
+    public function getCharacterIds() {
+        return $this -> getSectionEntryIds(self::CHARACTERS);
+    }
+
+    // Constructor ...........................................................................................
+    function __construct() {
+        $this -> computeSites();
+        $this -> computeEntryTypes();
+        $this -> computeSections();
+        $this -> createEventListener();
+    }
+    // Methods ...............................................................................................
     public function getSectionEntryIds($sectionName) {
         $entries = Entry::find()->section($sectionName)->type([$sectionName])->all();
         return array_map(function($e) { return $e -> id; }, $entries);
@@ -182,17 +205,25 @@ class MigrationService {
                 case self::PERSONS:
                     $this->_personsEntryType = $entryType;
                     break;
+                case self::WORKS:
+                    $this->_worksEntryType = $entryType;
+                    break;
             }
         }
     }
 
     private function computeSections() {
-        $this->_countriesSection = Craft::$app->sections->getSectionByHandle(self::COUNTRIES);
-        $this->_audiencesSection = Craft::$app->sections->getSectionByHandle(self::AUDIENCES);
-        $this->_charactersSection = Craft::$app->sections->getSectionByHandle(self::CHARACTERS);
-        $this->_placesSection = Craft::$app->sections->getSectionByHandle(self::PLACES);
-        $this->_languagesSection = Craft::$app->sections->getSectionByHandle(self::LANGUAGES);
-        $this->_personsSection = Craft::$app->sections->getSectionByHandle(self::PERSONS);
+        $this -> _countriesSection = $this -> getSection(self::COUNTRIES);
+        $this -> _audiencesSection = $this -> getSection(self::AUDIENCES);
+        $this -> _charactersSection = $this -> getSection(self::CHARACTERS);
+        $this -> _placesSection = $this -> getSection(self::PLACES);
+        $this -> _languagesSection = $this -> getSection(self::LANGUAGES);
+        $this -> _personsSection = $this -> getSection(self::PERSONS);
+        $this -> _worksSection = $this -> getSection(self::WORKS);
+    }
+
+    private function getSection($sectionName) {
+        return Craft::$app -> sections -> getSectionByHandle($sectionName);
     }
     
     private function createEventListener() {
@@ -207,11 +238,28 @@ class MigrationService {
         );
     }
 
-    public function seedEntryTitle($section, $entryType, $frenchTitle, $englishTitle, $italianTitle, $germanTitle) {
-        $this->createFrenchEntry($frenchTitle, $section, $entryType);
-        $this->translateEntryTitle($this->_savedEntry, $this->_englishSite, $englishTitle, $section, $entryType);
-        $this->translateEntryTitle($this->_savedEntry, $this->_italianSite, $italianTitle, $section, $entryType);
-        $this->translateEntryTitle($this->_savedEntry, $this->_germanSite, $germanTitle, $section, $entryType);
+    public function seedEntryWithNotTranslatableTitle($section, $entryType, $frenchTitle, $frenchFields = null, $englishFields = null, $italianFields = null, $germanFields = null) {
+        $this->seedEntry($section, $entryType, $frenchTitle, $frenchTitle, $frenchTitle, $frenchTitle, $frenchFields, $englishFields, $italianFields, $germanFields);
+    }
+
+    public function seedEntry($section, $entryType, $frenchTitle, $englishTitle, $italianTitle, $germanTitle, $frenchFields = null, $englishFields = null, $italianFields = null, $germanFields = null) {
+        $this->createFrenchEntry($frenchTitle, $section, $entryType, $frenchFields);
+        if ($frenchFields !== null && $englishFields !== null && $italianFields !== null && $germanFields !== null) {
+            $englishFields = $this -> overrideFields($frenchFields, $englishFields);
+            $italianFields = $this -> overrideFields($frenchFields, $italianFields);
+            $germanFields = $this -> overrideFields($frenchFields, $germanFields);
+        }
+        $this->translateEntry($this->_savedEntry, $this->_englishSite, $englishTitle, $section, $entryType, $englishFields);
+        $this->translateEntry($this->_savedEntry, $this->_italianSite, $italianTitle, $section, $entryType, $italianFields);
+        $this->translateEntry($this->_savedEntry, $this->_germanSite, $germanTitle, $section, $entryType, $germanFields);
+    }
+
+    private function overrideFields($fields, $withFields) {
+        $overriden = $fields; // copy
+        foreach ($withFields as $fieldName => $fieldValue) {
+            $overriden[$fieldName] = $fieldValue;
+        }
+        return $overriden;
     }
 
     public function createFrenchEntry($title, $section, $entryType, $fields = null) {
@@ -229,14 +277,14 @@ class MigrationService {
             $entry -> setFieldValues($fields);
         }
         $success = Craft::$app->elements->saveElement($entry);
-        //echo 'fields: '; print_r($fields); echo "\n";
         //echo "\n"."create entry: ".$entry->id." | ".$entry."\n";
+        //echo 'fields: '; print_r($fields); echo "\n";
         if (!$success) {
             Craft::error('Couldn’t save the entry "'.$entry->title.'"', __METHOD__);
         }
     }
 
-    public function translateEntryTitle($e, $site, $title, $section, $entryType) {
+    public function translateEntry($e, $site, $title, $section, $entryType, $fields = null) {
         $entry = new Entry();
         $entry->id = $e->id;
         $entry->uid = $e->uid;
@@ -245,8 +293,12 @@ class MigrationService {
         $entry->siteId = $site->id;
         $entry->title = $title;
         $entry->authorId = 1;
+        if ($fields !== null) {
+            $entry -> setFieldValues($fields);
+        }
         $success = Craft::$app->elements->saveElement($entry);
         //echo "-> translate entry: ".$entry->id." | ".$entry."\n";
+        //echo '-> fields: '; print_r($fields); echo "\n";
         if (!$success) {
             Craft::error('Couldn’t save the entry title "'.$entry->title.'"', __METHOD__);
         }
