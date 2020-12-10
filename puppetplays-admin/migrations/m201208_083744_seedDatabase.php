@@ -22,19 +22,23 @@ require_once('dev/DramaturgicTechniques.php');
 require_once('dev/Formats.php');
 
 /**
- * Seed database migration for dev mode:
+ * Seed database migration for dev mode
+ * 
+ *  !!!!! be carrefull: delete all previous entries excepted countries !!!!!
+ * 
+ * Commands:
  *    $ ddev ssh
  *    $ php craft migrate/up
  */
 class m201208_083744_seedDatabase extends Migration implements Languages, Keywords, Registers, HandlingTechniques, DramaturgicTechniques, Formats {
     
     // Constants .............................................................................................
-    const CHARACTERS_COUNT = 10;
-    const PLACES_COUNT = 10;
-    const PERSONS_COUNT = 10;
-    const WORKS_COUNT = 10;
-    const LINKED_WORKS_COUNT = 10;
-    const CONSERVATION_INSTITUTIONS_COUNT = 3;
+    const CHARACTERS_COUNT = 100;
+    const PLACES_COUNT = 100;
+    const PERSONS_COUNT = 100;
+    const WORKS_COUNT = 100;
+    const LINKED_WORKS_COUNT = 100;
+    const CONSERVATION_INSTITUTIONS_COUNT = 30;
     
     // Instance fields .......................................................................................
     private $_audiencesEntryIds = [];
@@ -83,49 +87,89 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
      */
     public function safeUp() {
         if ($this -> _env === 'dev') {
-            //$this -> seedAudiences();
+            $this -> clearEntriesButCountries();
+            $this -> clearTags();
+
+            $this -> seedAudiences();
             $this -> _audienceIds = $this ->_migrationService -> getAudienceIds();
 
-            //$this -> seedCharacters();
+            $this -> seedCharacters();
             $this -> _characterIds = $this ->_migrationService -> getCharacterIds();
 
-            //$this -> seedPlaces();
+            $this -> seedPlaces();
             $this -> _placeIds = $this ->_migrationService -> getPlaceIds();
 
-            //$this -> seedLanguages();
+            $this -> seedLanguages();
             $this -> _languageIds = $this ->_migrationService -> getLanguageIds();
 
-            //$this -> seedPersons();
+            $this -> seedPersons();
             $this -> _personIds = $this ->_migrationService -> getPersonIds();
 
-            //$this -> seedLinkedWorks();
+            $this -> seedLinkedWorks();
             $this -> _linkedWorkIds = $this ->_migrationService -> getLinkedWorkIds();
 
-            //$this -> seedConservationInstitutions();
+            $this -> seedConservationInstitutions();
             $this -> _conservationInstitutionIds = $this ->_migrationService -> getConservationInstitutionIds();
             
-            //$this -> seedRegisters();
+            $this -> seedRegisters();
             $this -> _registerIds = $this ->_migrationService -> getRegisterIds();
             
-            //$this -> seedHandlingTechniques();
+            $this -> seedHandlingTechniques();
             $this -> _handlingTechniqueIds = $this ->_migrationService -> getHandlingTechniqueIds();
             
-            //$this -> seedDramaturgicTechniques();
+            $this -> seedDramaturgicTechniques();
             $this -> _dramaturgicTechniqueIds = $this ->_migrationService -> getDramaturgicTechniqueIds();
             
-            //$this -> seedFormats();
+            $this -> seedFormats();
             $this -> _formatIds = $this ->_migrationService -> getFormatIds();
-            //echo '----------'; print_r($this -> _formatIds);
 
-            //$this -> seedKeyWorks();
+            $this -> seedKeywords();
             $this -> _keywordIds = $this ->_migrationService -> getKeywordIds();
 
             $this -> seedWorks();
+            
         }
         //throw new Exception('the migration will not be applied');
     }
 
+    private function clearEntriesButCountries() {
+        $countriesSectionId = $this ->_migrationService -> countriesSection() -> id;
+        $entries = array_filter(Entry::find()->all(), 
+                                function($entry) use ($countriesSectionId) { 
+                                    return $entry -> sectionId != $countriesSectionId;
+                                });
+        $entryIds = array_map(function($e) { return $e -> id; }, $entries);
+        foreach ($entryIds as &$entryId) {
+            $success = Craft::$app->elements->deleteElementById($entryId);
+            if (!$success) {
+                Craft::error('Couldn’t delete the entry "'.$tag->title.'"', __METHOD__);
+            }
+        }
+    }
+
+    private function clearTags() {
+        $countriesSectionId = $this ->_migrationService -> countriesSection() -> id;
+        $tags = Tag::find()->all();
+        $tagIds = array_map(function($e) { return $e -> id; }, $tags);
+        foreach ($tagIds as &$tagId) {
+            $success = Craft::$app->elements->deleteElementById($tagId);
+            if (!$success) {
+                Craft::error('Couldn’t delete the tag "'.$tag->title.'"', __METHOD__);
+            }
+        }
+    }
+
+    private function allEntryIdsButCountries() {
+        $countriesSectionId = $this ->_migrationService -> countriesSection() -> id;
+        $entries = array_filter(Entry::find()->all(), 
+                                function($entry) use ($countriesSectionId) { 
+                                    return $entry -> sectionId != $countriesSectionId;
+                                });
+        return array_map(function($e) { return $e -> id; }, $entries);
+    }
+
     private function seedAudiences() {
+        $this -> printSeed('Audiences');
         $this -> seedAudience('enfants', 'children', 'bambini', 'kinder');
         $this -> seedAudience('plus de 6 ans', 'over 6 years', 'oltre 6 anni', 'über 6 Jahre');
         $this -> seedAudience('adultes', 'adults', 'adulti', 'erwachsene');
@@ -145,6 +189,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedCharacters() {
+        $this -> printSeed('Characters');
         $section = $this ->_migrationService -> charactersSection();
         $entryType = $this ->_migrationService -> charactersEntryType();
         for($i = 0 ; $i < self::CHARACTERS_COUNT ; $i++) {
@@ -154,6 +199,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedPlaces() {
+        $this -> printSeed('Places');
         $faker = $this -> _frenchFaker;
         $countryIds = $this ->_countryIds;
         $section = $this ->_migrationService -> placesSection();
@@ -174,11 +220,10 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedPersons() {
+        $this -> printSeed('Persons');
         $faker = $this -> _frenchFaker;
         $section = $this ->_migrationService -> personsSection();
         $entryType = $this ->_migrationService -> personsEntryType();
-        $placeIds = $this ->_placeIds;
-        $languageIds = $this ->_languageIds;
         for($i = 0 ; $i < self::PERSONS_COUNT ; $i++) {
             $birthDate =  $faker -> dateTimeBetween('-500 years', '-20 years', null);
             $deathDate =  min(date_modify(clone $birthDate, '+'.$faker -> numberBetween(20, 100).' year'), new \DateTime('NOW'));
@@ -195,15 +240,16 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'birthDate' => $birthDate,
                           'deathDate' => $deathDate,
                           'thesaurusDefinition' => $faker -> words(10, true),
-                          'languages' => array($faker -> randomElement($languageIds)),
-                          'birthPlace' => array($faker -> randomElement($placeIds)),
-                          'place' => array($faker -> randomElement($placeIds))
+                          'languages' => $this -> oneLanguage(),
+                          'birthPlace' => $this -> onePlace(),
+                          'places' => $this -> onePlace()
                       ]
                     );
         }
     }
 
     private function seedLinkedWorks() {
+        $this -> printSeed('LinkedWorks');
         $faker = $this -> _faker;
         $section = $this ->_migrationService -> linkedWorksSection();
         $entryType = $this ->_migrationService -> linkedWorksEntryType();
@@ -225,6 +271,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedConservationInstitutions() {
+        $this -> printSeed('ConservationInstitutions');
         $faker = $this -> _frenchFaker;
         $section = $this ->_migrationService -> conservationInstitutionsSection();
         $entryType = $this ->_migrationService -> conservationInstitutionsEntryType();
@@ -243,6 +290,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedRegisters() {
+        $this -> printSeed('Registers');
         $section = $this ->_migrationService -> registersSection();
         $entryType = $this ->_migrationService -> registersEntryType();
         for($i = 0; $i < count(Registers::REGISTERS_FR); $i++) {
@@ -258,6 +306,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
 
 
     private function seedHandlingTechniques() {
+        $this -> printSeed('HandlingTechniques');
         $faker = $this -> _faker;
         $section = $this ->_migrationService -> handlingTechniquesSection();
         $entryType = $this ->_migrationService -> handlingTechniquesEntryType();
@@ -278,6 +327,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedDramaturgicTechniques() {
+        $this -> printSeed('DramaturgicTechniques');
         $section = $this ->_migrationService -> dramaturgicTechniquesSection();
         $entryType = $this ->_migrationService -> dramaturgicTechniquesEntryType();
         for($i = 0; $i < count(DramaturgicTechniques::DRAMATURGIC_TECHNIQUES_FR); $i++) {
@@ -293,6 +343,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
 
 
     private function seedFormats() {
+        $this -> printSeed('Formats');
         $section = $this ->_migrationService -> formatsSection();
         $entryType = $this ->_migrationService -> formatsEntryType();
         for($i = 0; $i < count(Formats::FORMATS_FR); $i++) {
@@ -306,18 +357,19 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
         }
     }
 
-    private function seedKeyWorks() {
-        for($i = 0; $i < count(KeyWords::KEYWORDS_FR); $i++) {
+    private function seedKeywords() {
+        $this -> printSeedTags('Keywords');
+        for($i = 0; $i < count(Keywords::KEYWORDS_FR); $i++) {
             $this ->_migrationService 
-                  -> seedKeyword(KeyWords::KEYWORDS_FR[$i],
-                                KeyWords::KEYWORDS_EN[$i],
-                                KeyWords::KEYWORDS_IT[$i],
-                                KeyWords::KEYWORDS_GE[$i]);
+                  -> seedKeyword(Keywords::KEYWORDS_FR[$i],
+                                Keywords::KEYWORDS_EN[$i],
+                                Keywords::KEYWORDS_IT[$i],
+                                Keywords::KEYWORDS_GE[$i]);
         }
-        print_r($this ->_migrationService -> getKeywordIds());
     }
 
     private function seedWorks() {
+        $this -> printSeed('Works');
         $faker = $this -> _frenchFaker;
         $englishFaker = $this -> _faker;
         $italianFaker = $this -> _italianFaker;
@@ -485,6 +537,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
     }
 
     private function seedLanguages() {
+        $this -> printSeed('Languages');
         $section = $this ->_migrationService -> languagesSection();
         $entryType = $this ->_migrationService -> languagesEntryType();
         for($i = 0; $i < count(Languages::LANGUAGES_FR); $i++) {
@@ -496,6 +549,14 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                                     Languages::LANGUAGES_IT[$i],
                                     Languages::LANGUAGES_GE[$i]);
         }
+    }
+
+    private function printSeed($section) {
+        echo ">>>> start seeding entries for section: ".$section."\n";
+    }
+
+    private function printSeedTags($tagGroup) {
+        echo ">>>> start seeding tags for group: ".$tagGroup."\n";
     }
 
     /**

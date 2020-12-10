@@ -470,11 +470,11 @@ class MigrationService {
 
     private function createFrenchKeyword($title) {
         $tag = new Tag();
-        $tag->siteId = $this->_frenchSite->id;
+        $tag -> siteId  = $this->_frenchSite->id;
         $tag -> groupId = $this->_keywordsTagGroup -> id;
         $tag -> title = $title;
         $success = Craft::$app->elements->saveElement($tag);
-        //echo "\n"."create tag: ".$tag->id." | ".$tag."\n";
+        //echo "\n".">>>> create tag: ".$tag->id." | ".$tag." success? ".$success."\n";
         if (!$success) {
             Craft::error('Couldn’t save the tag "'.$tag->title.'"', __METHOD__);
         }
