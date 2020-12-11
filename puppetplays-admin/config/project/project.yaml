@@ -1,4 +1,4 @@
-dateModified: 1607703052
+dateModified: 1607703741
 email:
   fromEmail: paillot.t@intactile.com
   fromName: puppetplays
@@ -15,9 +15,3 @@ system:
   retryDuration: null
   schemaVersion: 3.5.13
   timeZone: Europe/Paris
-users:
-  allowPublicRegistration: false
-  defaultGroup: null
-  photoSubpath: null
-  photoVolumeUid: null
-  requireEmailVerification: true
