@@ -1,7 +1,7 @@
-baseUrl: 'http://$PRIMARY_SITE_URL'
+baseUrl: null
 enabled: true
 handle: fr
-hasUrls: true
+hasUrls: false
 language: fr
 name: 'Puppetplays FR'
 primary: true
