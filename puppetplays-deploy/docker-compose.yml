@@ -38,7 +38,9 @@ services:
 
   console:
     image: craftcms/cli:7.4-dev
-    command: ["./craft", "migrate/up"]
+    command: >
+      sh -c "./craft project-config/apply &&
+             ./craft migrate/up"
     depends_on:
       - "puppetplays-admin"
 
