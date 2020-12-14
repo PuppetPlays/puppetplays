@@ -1,18 +1,14 @@
-contentColumnType: text
+contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: translations
 instructions: ''
 name: Traductions
 searchable: false
 settings:
-  byteLimit: null
-  charLimit: null
-  code: ''
-  columnType: null
-  initialRows: '2'
-  multiline: '1'
-  placeholder: ''
-  uiMode: normal
+  contentTable: '{{%matrixcontent_translations}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\PlainText
+type: craft\fields\Matrix

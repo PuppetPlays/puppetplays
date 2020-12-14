@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: hypotexts
+handle: firstPerformancePlace
 instructions: ''
-name: Hypotextes
+name: 'Lieux de la première représentation'
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou des hypotexte(s)'
+  selectionLabel: 'Sélectionner le lieux de la 1ère représentation'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:e2d5c38e-3607-4630-bddf-0875190aa133'
+    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

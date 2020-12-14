@@ -1,8 +1,8 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: genre
+fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c
+handle: translatedName
 instructions: ''
-name: 'Genre (défini par l’auteur)'
+name: 'Nom traduit'
 searchable: false
 settings:
   byteLimit: null
@@ -14,5 +14,5 @@ settings:
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\PlainText

@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: genre
+handle: referenceDate
 instructions: ''
-name: 'Genre (défini par l’auteur)'
+name: 'Date de référence'
 searchable: false
 settings:
   byteLimit: null
@@ -14,5 +14,5 @@ settings:
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\PlainText

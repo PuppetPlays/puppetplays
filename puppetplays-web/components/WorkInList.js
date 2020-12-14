@@ -4,26 +4,34 @@ import useTranslation from 'next-translate/useTranslation';
 import { getTitle, getFirstItemTitle } from 'lib/utils';
 import WorkHeader from './WorkHeader';
 import Keywords from './Keywords';
+import WorkSection from './WorkSection';
 import WorkInfo from './WorkInfo';
 import CommaSepList from './CommaSepList';
 import styles from './workInList.module.scss';
+import Place from './Place';
 
 function WorkInList({
   id,
   slug,
   title,
+  subtitle,
   translatedTitle,
+  dramaturgicTechniques,
   keywords,
   authors,
-  writingDisplayDate,
+  referenceDate,
   writingPlace,
   mainLanguage,
+  notice,
+  mainTheme,
   abstract,
-  hypotexts,
-  firstPerformance,
+  otherTitles,
+  firstPerformancePlace,
+  firstPerformanceDate,
+  firstPerformanceExtraInfo,
   firstPublication,
   modernEditions,
-  translations,
+  onlineEdition,
   register,
   handlingTechniques,
   audience,
@@ -44,7 +52,7 @@ function WorkInList({
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
-        <p>{t('common:pageCount', { count: pageCount })}</p>
+        {pageCount && <p>{t('common:pageCount', { count: pageCount })}</p>}
       </div>
       <div className={styles.body}>
         <WorkHeader
@@ -53,8 +61,9 @@ function WorkInList({
               <a>{title}</a>
             </Link>
           }
+          subtitle={subtitle}
           authors={authors}
-          writingDisplayDate={writingDisplayDate}
+          referenceDate={referenceDate}
           writingPlace={writingPlace}
           translatedTitle={translatedTitle}
           mainLanguage={mainLanguage}
@@ -62,31 +71,69 @@ function WorkInList({
         />
 
         <section>
+          <Keywords keywords={dramaturgicTechniques} />
           <Keywords keywords={keywords} />
         </section>
 
         {isExpanded && (
-          <section>
-            <WorkInfo label={t('common:abstract')} info={abstract} />
-            <WorkInfo
-              label={t('common:otherTitles')}
-              info={<CommaSepList list={hypotexts} listTransform={getTitle} />}
-              infoExist={hypotexts.length > 0}
-            />
-            <WorkInfo
-              label={t('common:firstPerformance')}
-              info={firstPerformance}
-            />
-            <WorkInfo
-              label={t('common:firstPublication')}
-              info={firstPublication}
-            />
-            <WorkInfo
-              label={t('common:modernEditions')}
-              info={modernEditions}
-            />
-            <WorkInfo label={t('common:translations')} info={translations} />
-          </section>
+          <Fragment>
+            <section>
+              <WorkInfo label={t('common:notice')} info={notice} />
+              <WorkInfo
+                label={
+                  <Fragment>
+                    {t('common:abstract')} {mainTheme}
+                  </Fragment>
+                }
+                info={<div>{abstract}</div>}
+              />
+            </section>
+            <WorkSection title={t('common:otherTitles')} show={otherTitles}>
+              {otherTitles}
+            </WorkSection>
+
+            <WorkSection
+              title={t('common:firstPerformance')}
+              show={
+                firstPerformancePlace.length > 0 ||
+                firstPerformanceDate ||
+                firstPerformanceExtraInfo
+              }
+            >
+              {firstPerformancePlace.length > 0 && (
+                <Place {...firstPerformancePlace[0]} />
+              )}
+              {firstPerformanceDate && <span>, {firstPerformanceDate}</span>}
+              {firstPerformanceExtraInfo && (
+                <span> - {firstPerformanceExtraInfo}</span>
+              )}
+            </WorkSection>
+
+            <WorkSection
+              title={t('common:publications')}
+              show={firstPublication || modernEditions || onlineEdition}
+            >
+              <WorkInfo
+                label={t('common:firstPublication')}
+                info={firstPublication}
+              />
+              <WorkInfo
+                label={t('common:modernEditions')}
+                info={modernEditions}
+              />
+              {onlineEdition && (
+                <div className={styles.onlineEdition}>
+                  <a
+                    href={onlineEdition}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('common:onlineEdition')}
+                  </a>
+                </div>
+              )}
+            </WorkSection>
+          </Fragment>
         )}
       </div>
       <section className={styles.extra}>

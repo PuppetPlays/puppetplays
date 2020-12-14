@@ -1,0 +1,71 @@
+field: a91b45bb-9cf2-4282-8145-7f8a006d801b
+fieldLayouts:
+  aaf137d1-4374-42bf-8154-dca46bd1703f:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 980b265a-4482-43da-940c-1d595933f6db
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 80e9ab34-aa2b-44e3-9798-dadda7e7a772
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 75
+        name: Content
+        sortOrder: 1
+fields:
+  80e9ab34-aa2b-44e3-9798-dadda7e7a772:
+    contentColumnType: text
+    fieldGroup: null
+    handle: translationTitle
+    instructions: ''
+    name: Titre
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  980b265a-4482-43da-940c-1d595933f6db:
+    contentColumnType: string
+    fieldGroup: null
+    handle: translationLanguage
+    instructions: ''
+    name: Langue
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Sélectionner une langue'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: translation
+name: Traduction
+sortOrder: 1

@@ -1,8 +1,8 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: note
+fieldGroup: f6c0a973-aaab-4aee-bbdc-c5f7fe02069a
+handle: idrefId
 instructions: ''
-name: Note
+name: 'Identifiant IDREF'
 searchable: false
 settings:
   byteLimit: null
@@ -10,9 +10,9 @@ settings:
   code: ''
   columnType: null
   initialRows: '4'
-  multiline: '1'
+  multiline: ''
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: site
+translationMethod: none
 type: craft\fields\PlainText

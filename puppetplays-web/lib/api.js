@@ -21,7 +21,20 @@ export async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
 
 export const WORKS_PAGE_SIZE = 10;
 
+export const placeInfoFragment = `
+fragment placeInfo on EntryInterface {
+  id,
+  title,
+  ... on places_places_Entry {
+    country {
+      title
+    }
+  }
+}
+`;
+
 export const getAllWorksQuery = `
+${placeInfoFragment}
 query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
   entries(section: "works", site: $locale, offset: $offset, limit: $limit) {
     id,
@@ -29,36 +42,42 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
     title,
     ... on works_works_Entry {
       translatedTitle,
+      subtitle,
+      dramaturgicTechniques {
+        title
+      },
       keywords {
         title
       },
       authors {
+        id,
+        title,
+        typeHandle,
         ... on persons_persons_Entry { 
          	firstName,
           lastName,
           nickname
         }
       },
-      writingDisplayDate,
+      referenceDate,
       writingPlace {
-        title,
-        ... on places_places_Entry {
-          country {
-            title
-          }
-        }
+        ...placeInfo
       },
       mainLanguage {
         title 
       },
+      notice,
+      mainTheme,
       abstract,
-      hypotexts {
-        title
+      otherTitles,
+      firstPerformanceDate,
+      firstPerformancePlace {
+        ...placeInfo
       },
-      firstPerformance,
+      firstPerformanceExtraInfo,
       firstPublication,
       modernEditions,
-      translations,
+      onlineEdition,
       register {
         title
       },
@@ -95,56 +114,94 @@ export async function getAllWorks(apiUrl, locale, offset = 0) {
 }
 
 export const getWorkByIdQuery = `
+${placeInfoFragment}
 query getWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
-    slug,
     title,
     ... on works_works_Entry {
+      doi,
+      viafId,
+      arkId,
+      slug,
       translatedTitle,
+      subtitle,
       genre,
-      note,
       keywords {
         title
       },
       authors {
+        id,
+        title,
+        typeHandle,
+        ... on persons_persons_Entry { 
+         	firstName,
+          lastName,
+          nickname,
+          birthDate,
+          deathDate,
+          places {
+            ...placeInfo
+          },
+        },
+        ... on persons_companies_Entry {
+          places {
+            ...placeInfo
+          },
+        }
+      },
+      referenceDate,
+      writingDisplayDate,
+      writingPlace {
+        ...placeInfo
+      },
+      mainLanguage {
+        title 
+      },
+      notice,
+      mainTheme,
+      abstract,
+      hypotexts {
+        title
+      },
+      otherTitles,
+      firstPerformanceDate,
+      firstPerformancePlace {
+        ...placeInfo
+      },
+      firstPerformanceExtraInfo,
+      firstPublication,
+      transcriptors {
+        id,
         ... on persons_persons_Entry { 
          	firstName,
           lastName,
           nickname
         }
       },
-      writingDisplayDate,
-      writingPlace {
-        title,
-        ... on places_places_Entry {
-          country {
+      compilators {
+        id,
+        ... on persons_persons_Entry { 
+         	firstName,
+          lastName,
+          nickname
+        }
+      },
+      modernEditions,
+      onlineEdition,
+      translations {
+        ... on translations_translation_BlockType {
+          translationTitle,
+          translationLanguage {
             title
           }
         }
       },
-      mainLanguage {
-        title 
-      },
-      abstract,
-      hypotexts {
-        title
-      },
-      firstPerformance,
-      firstPublication,
-      modernEditions,
-      translations,
       preservedIn {
         title,
         ... on conservationInstitutions_conservationInstitutions_Entry {
-          typeOf,
           place {
-            title,
-            ... on places_places_Entry {
-              country {
-                title
-              }
-            }
+            ...placeInfo
           }
         }
       },

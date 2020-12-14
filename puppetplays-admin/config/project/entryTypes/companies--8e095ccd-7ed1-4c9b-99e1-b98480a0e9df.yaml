@@ -1,5 +1,5 @@
 fieldLayouts:
-  dde1177f-2838-4270-a988-0bf638a22da1:
+  0c280a90-eb4c-47bc-8e59-fff6cc6079fa:
     tabs:
       -
         elements:
@@ -27,16 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: a457d850-4cd2-457c-9827-969f730ec77c
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
-          -
-            fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8
+            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
             instructions: null
             label: null
             required: false
@@ -46,11 +37,11 @@ fieldLayouts:
             width: 100
         name: Contenu
         sortOrder: 1
-handle: characters
+handle: companies
 hasTitleField: true
-name: Personnages
-section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5
-sortOrder: 1
+name: Compagnies
+section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
+sortOrder: 2
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: none

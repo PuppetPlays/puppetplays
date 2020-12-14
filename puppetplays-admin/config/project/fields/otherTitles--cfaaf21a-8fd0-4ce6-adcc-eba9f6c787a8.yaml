@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: firstPerformance
+handle: otherTitles
 instructions: ''
-name: 'Première représentation'
+name: 'Autres titres'
 searchable: false
 settings:
   byteLimit: null
@@ -14,5 +14,5 @@ settings:
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: site
+translationMethod: none
 type: craft\fields\PlainText

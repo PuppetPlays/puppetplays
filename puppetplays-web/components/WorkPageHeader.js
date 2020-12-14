@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-import { getFirstItemProp, getFirstItemTitle } from 'lib/utils';
 import WorkAuthor from './WorkAuthor';
+import WorkCompany from './WorkCompany';
 import CommaSepList from './CommaSepList';
 import styles from './workPageHeader.module.scss';
+import Place from './Place';
 
 const WorkPageHeader = ({ title, authors, writingPlace }) => {
   const router = useRouter();
@@ -38,11 +39,16 @@ const WorkPageHeader = ({ title, authors, writingPlace }) => {
       <div>
         <span>{title}</span>
         <span> - </span>
-        <span>
-          <CommaSepList list={authors} itemComponent={WorkAuthor} /> -{' '}
-          {getFirstItemTitle(writingPlace)},{' '}
-          {getFirstItemTitle(getFirstItemProp('country')(writingPlace))}
-        </span>
+        <CommaSepList
+          list={authors}
+          itemComponents={{ persons: WorkAuthor, companies: WorkCompany }}
+        />
+        {writingPlace.length > 0 && (
+          <span>
+            {' '}
+            - <Place {...writingPlace[0]} />
+          </span>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
 
-const Place = ({ place }) => {
+const Place = ({ title, country }) => {
   return (
     <Fragment>
-      <span> - {place.title}</span>
-      {place.country.length > 0 && place.country[0].title !== place.title && (
-        <span>, {place.country[0].title}</span>
+      <span>{title}</span>
+      {country.length > 0 && country[0].title !== title && (
+        <span>, {country[0].title}</span>
       )}
     </Fragment>
   );

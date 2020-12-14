@@ -1,15 +1,18 @@
-contentColumnType: datetime
+contentColumnType: text
 fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
 handle: birthDate
 instructions: ''
 name: 'Date de naissance'
 searchable: false
 settings:
-  max: null
-  min: null
-  minuteIncrement: '30'
-  showDate: true
-  showTime: false
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\Date
+type: craft\fields\PlainText

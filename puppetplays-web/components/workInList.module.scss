@@ -15,6 +15,17 @@
   margin-right: 20px;
 }
 
+.authorsCards {
+  text-align: left;
+  border-top: 1px solid grey;
+  margin-top: 48px;
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+  }
+}
+
 .body {
   flex: 1 1 auto;
 
@@ -25,10 +36,16 @@
 
 .title {
   font-size: 24px;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+
+.authors {
   font-size: 20px;
   font-weight: 400;
   margin: 0 0 24px;
@@ -44,7 +61,7 @@
 }
 
 .info {
-  span {
+  span:first-child {
     color: grey;
   }
 
@@ -80,4 +97,27 @@
   display: inline-block;
   color: white;
   margin: 0 0 12px;
+}
+
+.onlineEdition {
+  margin: 12px 0;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.mainTheme {
+  font-size: 18px;
+  color: black;
+  display: inline-block;
+  margin: 0 0 8px;
+}
+
+.translations {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 }

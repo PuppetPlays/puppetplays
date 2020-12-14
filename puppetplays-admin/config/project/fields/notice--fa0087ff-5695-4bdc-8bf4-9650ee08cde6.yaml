@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: genre
+handle: notice
 instructions: ''
-name: 'Genre (défini par l’auteur)'
+name: Notice
 searchable: false
 settings:
   byteLimit: null
@@ -10,9 +10,9 @@ settings:
   code: ''
   columnType: null
   initialRows: '4'
-  multiline: ''
+  multiline: '1'
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\fields\PlainText

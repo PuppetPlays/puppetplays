@@ -1,8 +1,8 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: genre
+fieldGroup: f6c0a973-aaab-4aee-bbdc-c5f7fe02069a
+handle: isniId
 instructions: ''
-name: 'Genre (défini par l’auteur)'
+name: 'Identifiant ISNI'
 searchable: false
 settings:
   byteLimit: null
