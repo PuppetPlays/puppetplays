@@ -33,6 +33,9 @@ return [
         // Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
         'devMode' => true,
 
+        // Disable graphQL query caching
+        'enableGraphQlCaching' => false,
+
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
     ],
@@ -40,7 +43,7 @@ return [
     // Staging environment settings
     'staging' => [
         // Set this to `false` to prevent administrative changes from being made on Staging
-        'allowAdminChanges' => true,
+        'allowAdminChanges' => false,
 
         // Don’t allow updates on Staging
         'allowUpdates' => false,
