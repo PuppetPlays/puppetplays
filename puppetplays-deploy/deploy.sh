@@ -17,7 +17,7 @@ log() {
   message=$1; shift
   color=$1; shift
   nc='\033[0m\n'
-  printf "%s[DEPLOY] $message$nc" "$color";
+  echo -e "$color(DEPLOY) $message$nc";
 }
 
 info() {
@@ -58,7 +58,7 @@ main() {
   pullImages
   stopExistingContainers
   startContainer "postgres"
-  startContainer "console"
+  startContainer "puppetplays-admin"
   startContainer "puppetplays-web"
 
   info "$PROJECT deployed"
