@@ -30,12 +30,12 @@ class m201207_092343_seedCountries extends Migration implements Countries {
         $entryType = $this ->_migrationService -> countriesEntryType();
         for($i = 0; $i < count(Countries::COUNTRIES_FR); $i++) {
             $this ->_migrationService 
-                  -> seedEntryTitle($section,
-                                    $entryType,
-                                    Countries::COUNTRIES_FR[$i],
-                                    Countries::COUNTRIES_EN[$i],
-                                    Countries::COUNTRIES_IT[$i],
-                                    Countries::COUNTRIES_GE[$i]);
+                  -> seedEntry($section,
+                                $entryType,
+                                Countries::COUNTRIES_FR[$i],
+                                Countries::COUNTRIES_EN[$i],
+                                Countries::COUNTRIES_IT[$i],
+                                Countries::COUNTRIES_GE[$i]);
         }
     }
 

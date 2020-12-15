@@ -225,8 +225,8 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
         $section = $this ->_migrationService -> personsSection();
         $entryType = $this ->_migrationService -> personsEntryType();
         for($i = 0 ; $i < self::PERSONS_COUNT ; $i++) {
-            $birthDate =  $faker -> dateTimeBetween('-500 years', '-20 years', null);
-            $deathDate =  min(date_modify(clone $birthDate, '+'.$faker -> numberBetween(20, 100).' year'), new \DateTime('NOW'));
+            $birthDate =  $faker -> year(1920);
+            $deathDate =  $birthDate + mt_rand(35, 95);
             $this ->_migrationService 
                   -> createFrenchEntry(
                       null,
@@ -282,7 +282,6 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                       $section,
                       $entryType,
                       [
-                          'typeOf' => $faker -> sentence(4, true),
                           'places' => $this -> onePlace()
                       ]
                     );
@@ -391,34 +390,35 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                       $entryType,
                       $faker -> sentence(10, true),
                       [
+                          'subtitle' => $faker -> sentence(8, true),
                           'translatedTitle' => $faker -> sentence(10, true),
                           'writingMinDate' => $writingMinDate,
                           'writingMaxDate' => $writingMaxDate,
                           'writingDisplayDate' => date_format($writingMinDate, 'd-m-Y'),
+                          'referenceDate' => date_format($writingMinDate, 'd-m-Y'),
                           'writingPlace' => $this -> onePlace(),
                           'authors' => $this -> onePerson(),
-                          'directors' => $this -> onePerson(),
                           'transcriptors' => $this -> onePerson(),
                           'compilators' => $this -> onePerson(),
                           'abstract' => $this -> realText($faker, 300, 500),
-                          'note' => $this -> realText($faker, 100, 200),
-                          'firstPerformance' => $faker -> sentence(10, true),
+                          'notice' => $this -> realText($faker, 100, 200),
+                          'firstPerformancePlace' => $this -> onePlace(),
+                          'firstPerformanceDate' => date_format($writingMinDate, 'd-m-Y'),
                           'firstPerformanceMinDate'=> $firstPerformanceMinDate,
                           'firstPerformanceMaxDate'=> $firstPerformanceMaxDate,
                           'firstPublication' => $faker -> sentence(10, true),
                           'publicationMinDate'=> $publicationMinDate,
                           'publicationMaxDate'=> $publicationMaxDate,
                           'modernEditions' => $faker -> sentence(20, true),
-                          'translations' => $faker -> sentence(20, true),
                           'mainLanguage' => $this -> oneLanguage(),
                           'audience' => $this -> oneAudience(),
-                          'license' => $faker -> sentence(10, true), // rename to 'licence'
-                          'genre' => $faker -> sentence(10, true),
+                          'license' => $faker -> word,
+                          'genre' => $faker -> word,
                           'characters' => $this -> characters(1, 10),
                           'actsCount' => $faker -> numberBetween(3, 10),
                           'pageCount' => $faker -> numberBetween(50, 500),
                           'keywords' => $this -> keywords(1, 8),
-                          'intertexts' => $this -> oneLinkedWork(),
+                          'hypotexts' => $this -> oneLinkedWork(),
                           'preservedIn' => $this -> oneConservationInstitution(),
                           'register' => $this -> oneRegister(),
                           'handlingTechniques' => $this -> oneHandlingTechnique(),
@@ -428,35 +428,26 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                       [
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($englishFaker, 300, 500),
-                          'note' => $this -> realText($englishFaker, 100, 200),
-                          'firstPerformance' => $faker -> sentence(10, true),
+                          'notice' => $this -> realText($englishFaker, 100, 200),
                           'firstPublication' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'translations' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
-                          'genre' => $faker -> sentence(10, true)
                       ],
                       [
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($italianFaker, 300, 500),
-                          'note' => $this -> realText($italianFaker, 100, 200),
-                          'firstPerformance' => $faker -> sentence(10, true),
+                          'notice' => $this -> realText($italianFaker, 100, 200),
                           'firstPublication' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'translations' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
-                          'genre' => $faker -> sentence(10, true)
                       ],
                       [
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($germanFaker, 300, 500),
-                          'note' => $this -> realText($germanFaker, 100, 200),
-                          'firstPerformance' => $faker -> sentence(10, true),
+                          'notice' => $this -> realText($germanFaker, 100, 200),
                           'firstPublication' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'translations' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
-                          'genre' => $faker -> sentence(10, true)
                       ]
                     );
         }
