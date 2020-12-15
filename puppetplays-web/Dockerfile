@@ -23,6 +23,7 @@ FROM node:lts-alpine AS runner
 ARG X_TAG
 WORKDIR /opt/app
 ENV NODE_ENV=production
+COPY --from=builder /opt/app/.env.production ./
 COPY --from=builder /opt/app/next.config.js ./
 COPY --from=builder /opt/app/i18n.json ./
 COPY --from=builder /opt/app/public ./public
