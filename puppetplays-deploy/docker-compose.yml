@@ -37,6 +37,7 @@ services:
     restart: always
 
   console:
+    container_name: console
     image: craftcms/cli:7.4-dev
     command: >
       sh -c "./craft project-config/apply &&
