@@ -28,9 +28,10 @@ const Work = ({ initialData }) => {
 
 export default Work;
 
-export async function getServerSideProps({ locale, params }) {
+export async function getServerSideProps({ locale, params, query }) {
+  const token = query && query.token;
   const apiUrl = `${process.env.API_URL}/api`;
-  const data = await getWorkById(apiUrl, params.id, locale);
+  const data = await getWorkById(apiUrl, params.id, locale, token);
   return {
     props: { initialData: data.entry },
   };

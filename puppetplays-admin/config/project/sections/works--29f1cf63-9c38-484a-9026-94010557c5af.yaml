@@ -6,10 +6,43 @@ previewTargets:
     __assoc__:
       -
         - label
-        - 'Page entrée primaire'
+        - 'Page FR'
       -
         - urlFormat
-        - '{url}'
+        - '{alias(''@livePreviewUrl'')}/oeuvres/{sourceId}/slug'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page EN'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/en/oeuvres/{sourceId}/slug'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page IT'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/it/oeuvres/{sourceId}/slug'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page DE'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/de/oeuvres/{sourceId}/slug'
       -
         - refresh
         - '1'

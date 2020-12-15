@@ -38,6 +38,10 @@ return [
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
+
+        'aliases' => [
+            '@livePreviewUrl' => App::env('LIVE_PREVIEW_URL'),
+        ]
     ],
 
     // Staging environment settings
@@ -53,6 +57,7 @@ return [
 
         'aliases' => [
             '@web' => App::env('ROOT_SITE_URL'),
+            '@livePreviewUrl' => App::env('ROOT_SITE_URL'),
         ],
     ],
 
@@ -66,6 +71,7 @@ return [
 
         'aliases' => [
             '@web' => App::env('ROOT_SITE_URL'),
+            '@livePreviewUrl' => App::env('ROOT_SITE_URL'),
         ],
     ],
 ];

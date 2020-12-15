@@ -1,8 +1,14 @@
-export async function fetchAPI(query, { variables, apiUrl = '/api' } = {}) {
+export async function fetchAPI(
+  query,
+  { variables, apiUrl = '/api' } = {},
+  token,
+) {
+  const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
   const res = await fetch(apiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      ...craftTokenHeader,
     },
     body: JSON.stringify({
       query,
@@ -230,10 +236,14 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
   }
 }`;
 
-export async function getWorkById(apiUrl, id, locale) {
-  const data = await fetchAPI(getWorkByIdQuery, {
-    apiUrl,
-    variables: { locale, id },
-  });
+export async function getWorkById(apiUrl, id, locale, token) {
+  const data = await fetchAPI(
+    getWorkByIdQuery,
+    {
+      apiUrl,
+      variables: { locale, id },
+    },
+    token,
+  );
   return data;
 }
