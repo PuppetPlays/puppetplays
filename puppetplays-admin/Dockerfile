@@ -2,7 +2,7 @@
 FROM composer:1 as vendor
 COPY composer.json composer.json
 COPY composer.lock composer.lock
-RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
+RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist --no-scripts
 
 FROM craftcms/nginx:7.4
 
