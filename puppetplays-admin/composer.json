@@ -17,12 +17,27 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "7.0"
+      "php": "7.2.5"
     }
   },
   "scripts": {
+    "craft-update": [
+      "@pre-craft-update",
+      "@post-craft-update"
+    ],
+    "pre-craft-update": [
+    ],
+    "post-craft-update": [
+      "@php craft install/check && php craft clear-caches/all || return 0",
+      "@php craft install/check && php craft migrate/all || return 0",
+      "@php craft install/check && php craft project-config/apply || return 0"
+    ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
+    ],
+    "pre-update-cmd": "@pre-craft-update",
+    "pre-install-cmd": "@pre-craft-update",
+    "post-update-cmd": "@post-craft-update",
+    "post-install-cmd": "@post-craft-update"
   }
 }
