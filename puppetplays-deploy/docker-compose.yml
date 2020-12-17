@@ -37,22 +37,21 @@ services:
       - ${PUPPETPLAYS_HOST_DIR}/cli:/app/cli
     restart: always
 
-  console:
-    container_name: console
-    image: craftcms/cli:7.4-dev
-    command: >
-      sh -c "./craft project-config/apply &&
-             ./craft migrate/up"
-    depends_on:
-      - "puppetplays-admin"
-    volumes:
-      - ${PUPPETPLAYS_HOST_DIR}/cli:/app
-
   puppetplays-web:
-    container_name: puppetplays-web
+    container_name: puppetplays-admin
     image: intactiledesign/puppetplays-web:${PUPPETPLAYS_VERSION}
     ports:
       - "7000:3000"
     depends_on:
       - "puppetplays-admin"
     restart: always
+
+  console:
+    container_name: console
+    image: craftcms/cli:7.4-dev
+    command: >
+      sh -c "wait-for-services.sh && ./craft project-config/apply && ./craft migrate/up"
+    depends_on:
+      - "puppetplays-admin"
+    volumes:
+      - ${PUPPETPLAYS_HOST_DIR}/cli:/app

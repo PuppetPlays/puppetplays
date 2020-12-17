@@ -45,10 +45,9 @@ stopExistingContainers() {
   docker-compose -p "$PROJECT" stop
 }
 
-startContainer() {
-  container=$1
-  info "start container: $container"
-  docker-compose -p "$PROJECT" up -d "$container"
+startContainers() {
+  info "start containers"
+  docker-compose -p "$PROJECT" up
 }
 
 # -----------------------------------------------------------------------------
@@ -57,9 +56,7 @@ startContainer() {
 main() {
   pullImages
   stopExistingContainers
-  startContainer "postgres"
-  startContainer "puppetplays-admin"
-  startContainer "puppetplays-web"
+  startContainers
 
   info "$PROJECT deployed"
   exit 0;
