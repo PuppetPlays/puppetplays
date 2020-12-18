@@ -57,7 +57,7 @@ return [
 
         'aliases' => [
             '@web' => App::env('ROOT_SITE_URL'),
-            '@livePreviewUrl' => App::env('ROOT_SITE_URL'),
+            '@livePreviewUrl' => '@web',
         ],
     ],
 
@@ -71,7 +71,7 @@ return [
 
         'aliases' => [
             '@web' => App::env('ROOT_SITE_URL'),
-            '@livePreviewUrl' => App::env('ROOT_SITE_URL'),
+            '@livePreviewUrl' => '@web',
         ],
     ],
 ];
