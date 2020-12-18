@@ -1,7 +1,11 @@
-dateModified: 1608049324
+dateModified: 1608307777
 email:
-  fromEmail: paillot.t@intactile.com
-  fromName: puppetplays
+  fromEmail: no-reply@puppetplays.fr
+  fromName: Puppetplays
+  replyToEmail: null
+  template: ''
+  transportSettings:
+    command: ''
   transportType: craft\mail\transportadapters\Sendmail
 plugins:
   element-api:

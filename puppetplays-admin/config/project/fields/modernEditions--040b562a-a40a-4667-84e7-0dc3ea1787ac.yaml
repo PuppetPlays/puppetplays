@@ -14,5 +14,5 @@ settings:
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: site
+translationMethod: none
 type: craft\fields\PlainText

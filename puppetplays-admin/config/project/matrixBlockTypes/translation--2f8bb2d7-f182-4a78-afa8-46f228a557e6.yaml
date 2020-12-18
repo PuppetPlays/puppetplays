@@ -28,9 +28,9 @@ fields:
   80e9ab34-aa2b-44e3-9798-dadda7e7a772:
     contentColumnType: text
     fieldGroup: null
-    handle: translationTitle
+    handle: bibliographicRecord
     instructions: ''
-    name: Titre
+    name: 'Références bibliographiques'
     searchable: true
     settings:
       byteLimit: null

@@ -162,9 +162,9 @@ function WorkInPage({
               <div className={styles.translations}>
                 <ul>
                   {translations.map(
-                    ({ translationTitle, translationLanguage }) => (
+                    ({ bibliographicRecord, translationLanguage }) => (
                       <li key={translationLanguage}>
-                        {translationTitle} ({translationLanguage[0].title})
+                        {bibliographicRecord} ({translationLanguage[0].title})
                       </li>
                     ),
                   )}

@@ -1,8 +1,8 @@
 contentColumnType: text
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
-handle: thesaurusDefinition
+handle: bibliographicRecord
 instructions: ''
-name: 'Définition du thésaurus'
+name: 'Notice bibliographique'
 searchable: false
 settings:
   byteLimit: null
