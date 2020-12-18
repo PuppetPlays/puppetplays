@@ -40,7 +40,7 @@ return [
         'disallowRobots' => true,
 
         'aliases' => [
-            '@livePreviewUrl' => App::env('LIVE_PREVIEW_URL'),
+            '@livePreviewUrl' => getenv('LIVE_PREVIEW_URL'),
         ]
     ],
 
@@ -56,8 +56,9 @@ return [
         'disallowRobots' => true,
 
         'aliases' => [
-            '@web' => App::env('ROOT_SITE_URL'),
-            '@livePreviewUrl' => '@web',
+            '@web' => getenv('ROOT_SITE_URL'),
+            // @livePreviewUrl is hard-coded because it doesn't work when using an env var
+            '@livePreviewUrl' => 'https://puppetplays.intactile.info',
         ],
     ],
 
@@ -70,8 +71,8 @@ return [
         'allowUpdates' => false,
 
         'aliases' => [
-            '@web' => App::env('ROOT_SITE_URL'),
-            '@livePreviewUrl' => '@web',
+            '@web' => getenv('ROOT_SITE_URL'),
+            '@livePreviewUrl' => 'https://puppetplays.fr',
         ],
     ],
 ];
