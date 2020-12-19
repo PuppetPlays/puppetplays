@@ -53,7 +53,7 @@ interface Countries {
         'Espagne',
         'Suède',
         'Suisse',
-        'Dinde',
+        'Turquie',
         'Ukraine',
         'Royaume-Uni',
         'Cité du Vatican'
