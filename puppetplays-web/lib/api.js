@@ -197,7 +197,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       onlineEdition,
       translations {
         ... on translations_translation_BlockType {
-          translationTitle,
+          bibliographicRecord,
           translationLanguage {
             title
           }
