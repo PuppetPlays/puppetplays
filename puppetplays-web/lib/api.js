@@ -81,10 +81,10 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         ...placeInfo
       },
       firstPerformanceExtraInfo,
-      firstPublication,
+      edition,
       modernEditions,
       onlineEdition,
-      register {
+      registers {
         title
       },
       handlingTechniques {
@@ -176,7 +176,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         ...placeInfo
       },
       firstPerformanceExtraInfo,
-      firstPublication,
+      edition,
       transcriptors {
         id,
         ... on persons_persons_Entry { 
@@ -211,7 +211,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           }
         }
       },
-      register {
+      registers {
         title
       },
       handlingTechniques {

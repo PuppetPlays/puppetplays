@@ -8,7 +8,7 @@ settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectioner des personnages'
+  selectionLabel: 'Sélectionner des personnages'
   showSiteMenu: true
   source: null
   sources:

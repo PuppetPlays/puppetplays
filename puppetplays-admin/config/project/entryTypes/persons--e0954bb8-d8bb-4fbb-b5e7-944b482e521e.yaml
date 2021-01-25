@@ -54,6 +54,15 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            fieldUid: 66501227-1575-4af8-9ad7-8ddf21716146
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
             fieldUid: a5261331-a813-4df9-ab61-a125b7713179
             instructions: null
             label: null
@@ -78,15 +87,6 @@ fieldLayouts:
             instructions: ''
             label: 'Lieux de rattachement'
             required: ''
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 50
-          -
-            fieldUid: 384411b1-1288-4870-a9f9-44140c75e906
-            instructions: null
-            label: null
-            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null

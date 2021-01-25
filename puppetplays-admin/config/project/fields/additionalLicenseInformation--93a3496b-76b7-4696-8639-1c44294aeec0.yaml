@@ -1,8 +1,8 @@
 contentColumnType: text
-fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
-handle: bibliographicRecord
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: additionalLicenseInformation
 instructions: ''
-name: 'Notice bibliographique'
+name: 'Informations complémentaires sur la licence'
 searchable: false
 settings:
   byteLimit: null

@@ -2,13 +2,13 @@ contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: handlingTechniques
 instructions: ''
-name: 'Techniques de manipulation'
+name: 'Techniques de jeu'
 searchable: false
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner une ou des technique(s) de manipulation'
+  selectionLabel: 'Sélectionner une ou plusieurs technique(s) de jeu'
   showSiteMenu: true
   source: null
   sources:

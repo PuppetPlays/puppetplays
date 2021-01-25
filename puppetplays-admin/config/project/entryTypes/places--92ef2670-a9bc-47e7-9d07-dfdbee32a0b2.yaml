@@ -10,8 +10,8 @@ fieldLayouts:
             class: null
             disabled: false
             id: null
-            instructions: null
-            label: null
+            instructions: ''
+            label: Nom
             max: null
             min: null
             name: null

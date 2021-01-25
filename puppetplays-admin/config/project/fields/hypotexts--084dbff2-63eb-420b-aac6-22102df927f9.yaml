@@ -6,10 +6,11 @@ name: Hypotextes
 searchable: false
 settings:
   allowSelfRelations: false
+  inputTemplate: site-module/_components/fields/HypotextEntries_input
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou des hypotexte(s)'
-  showSiteMenu: true
+  selectionLabel: ''
+  showSiteMenu: false
   source: null
   sources:
     - 'section:e2d5c38e-3607-4630-bddf-0875190aa133'
@@ -18,4 +19,4 @@ settings:
   viewMode: null
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\Entries
+type: modules\sitemodule\fields\HypotextEntries

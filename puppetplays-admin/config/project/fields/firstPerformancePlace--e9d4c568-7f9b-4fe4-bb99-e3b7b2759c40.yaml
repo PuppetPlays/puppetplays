@@ -2,13 +2,13 @@ contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: firstPerformancePlace
 instructions: ''
-name: 'Lieux de la première représentation'
+name: 'Lieu de la première représentation'
 searchable: false
 settings:
   allowSelfRelations: false
   limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner le lieux de la 1ère représentation'
+  selectionLabel: 'Sélectionner le lieu de la 1ère représentation'
   showSiteMenu: true
   source: null
   sources:

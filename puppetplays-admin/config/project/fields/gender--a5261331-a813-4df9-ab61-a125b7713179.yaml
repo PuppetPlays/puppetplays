@@ -5,17 +5,16 @@ instructions: ''
 name: Genre
 searchable: false
 settings:
-  multi: true
   optgroups: true
   options:
     -
       __assoc__:
         -
           - label
-          - Femme
+          - ''
         -
           - value
-          - female
+          - ''
         -
           - default
           - ''
@@ -34,24 +33,13 @@ settings:
       __assoc__:
         -
           - label
-          - Autre
+          - Femme
         -
           - value
-          - other
-        -
-          - default
-          - ''
-    -
-      __assoc__:
-        -
-          - label
-          - ''
-        -
-          - value
-          - ''
+          - female
         -
           - default
           - ''
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\MultiSelect
+type: craft\fields\Dropdown

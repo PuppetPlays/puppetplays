@@ -2,13 +2,13 @@ contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
 handle: place
 instructions: ''
-name: Lieux
+name: Lieu
 searchable: false
 settings:
   allowSelfRelations: false
   limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un lieux'
+  selectionLabel: 'Sélectionner un lieu'
   showSiteMenu: true
   source: null
   sources:

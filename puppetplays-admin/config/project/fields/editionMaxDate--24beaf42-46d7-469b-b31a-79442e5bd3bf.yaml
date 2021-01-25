@@ -1,15 +1,15 @@
 contentColumnType: datetime
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: publicationMinDate
+handle: editionMaxDate
 instructions: ''
-name: 'Date de publication minimum'
+name: 'Date d''édition (max)'
 searchable: false
 settings:
   max: null
   min: null
-  minuteIncrement: '30'
+  minuteIncrement: 30
   showDate: true
   showTime: false
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\Date
+type: modules\sitemodule\fields\SimpleDate

@@ -1,8 +1,8 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: modernEditions
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: biographicalNote
 instructions: ''
-name: 'Éditions modernes'
+name: 'Notice biographique'
 searchable: false
 settings:
   availableTransforms: '*'
@@ -23,5 +23,5 @@ settings:
   showUnpermittedVolumes: false
   uiMode: normal
 translationKeyFormat: null
-translationMethod: none
+translationMethod: site
 type: craft\redactor\Field

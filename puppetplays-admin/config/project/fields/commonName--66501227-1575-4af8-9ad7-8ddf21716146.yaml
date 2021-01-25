@@ -1,9 +1,9 @@
 contentColumnType: text
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: license
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: commonName
 instructions: ''
-name: Licence
-searchable: false
+name: 'Nom usuel'
+searchable: true
 settings:
   byteLimit: null
   charLimit: null
@@ -14,5 +14,5 @@ settings:
   placeholder: ''
   uiMode: normal
 translationKeyFormat: null
-translationMethod: site
+translationMethod: language
 type: craft\fields\PlainText

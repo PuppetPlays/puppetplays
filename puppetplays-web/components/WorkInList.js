@@ -29,10 +29,10 @@ function WorkInList({
   firstPerformancePlace,
   firstPerformanceDate,
   firstPerformanceExtraInfo,
-  firstPublication,
+  edition,
   modernEditions,
   onlineEdition,
-  register,
+  registers,
   handlingTechniques,
   audience,
   characters,
@@ -111,12 +111,9 @@ function WorkInList({
 
             <WorkSection
               title={t('common:publications')}
-              show={firstPublication || modernEditions || onlineEdition}
+              show={edition || modernEditions || onlineEdition}
             >
-              <WorkInfo
-                label={t('common:firstPublication')}
-                info={firstPublication}
-              />
+              <WorkInfo label={t('common:edition')} info={edition} />
               <WorkInfo
                 label={t('common:modernEditions')}
                 info={modernEditions}
@@ -138,8 +135,8 @@ function WorkInList({
       </div>
       <section className={styles.extra}>
         <WorkInfo
-          label={t('common:register')}
-          info={getFirstItemTitle(register)}
+          label={t('common:registers')}
+          info={<CommaSepList list={registers} listTransform={getTitle} />}
         />
         <WorkInfo
           label={t('common:handlingTechniques')}

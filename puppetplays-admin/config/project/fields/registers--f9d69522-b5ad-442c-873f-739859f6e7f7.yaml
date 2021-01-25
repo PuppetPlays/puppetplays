@@ -1,18 +1,18 @@
 contentColumnType: string
-fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c
-handle: linkedTo
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: registers
 instructions: ''
-name: 'Est lié à'
-searchable: false
+name: Registres
+searchable: true
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs personnage(s) lié(s)'
+  selectionLabel: 'Sélectionner un ou plusieurs registre(s)'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5'
+    - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

@@ -34,13 +34,13 @@ function WorkInPage({
   firstPerformancePlace,
   firstPerformanceDate,
   firstPerformanceExtraInfo,
-  firstPublication,
+  edition,
   modernEditions,
   onlineEdition,
   translations,
   transcriptors,
   compilators,
-  register,
+  registers,
   handlingTechniques,
   dramaturgicTechniques,
   audience,
@@ -130,12 +130,9 @@ function WorkInPage({
 
         <WorkSection
           title={t('common:publicationsAndTranslations')}
-          show={firstPublication || modernEditions || onlineEdition}
+          show={edition || modernEditions || onlineEdition}
         >
-          <WorkInfo
-            label={t('common:firstPublication')}
-            info={firstPublication}
-          />
+          <WorkInfo label={t('common:edition')} info={edition} />
           <WorkInfo
             label={t('common:transcriptors')}
             info={
@@ -194,8 +191,8 @@ function WorkInPage({
             info={getFirstItemTitle(mainLanguage)}
           />
           <WorkInfo
-            label={t('common:register')}
-            info={getFirstItemTitle(register)}
+            label={t('common:registers')}
+            info={<CommaSepList list={registers} listTransform={getTitle} />}
           />
           <WorkInfo
             label={t('common:handlingTechniques')}

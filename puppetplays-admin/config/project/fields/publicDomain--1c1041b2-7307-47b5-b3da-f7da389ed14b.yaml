@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: publicDomain
+instructions: ''
+name: 'Domaine public'
+searchable: false
+settings:
+  default: false
+  offLabel: Non
+  onLabel: Oui
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

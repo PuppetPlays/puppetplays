@@ -236,12 +236,11 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'firstName' => $faker -> firstName,
                           'lastName' => $faker -> lastName,
                           'nickname' => $faker -> firstName." ". $faker -> firstName,
-                          'gender' => array($faker -> randomElement(array('female', 'male', 'other'))),
+                          'gender' => array($faker -> randomElement(array('female', 'male'))),
                           'birthDate' => $birthDate,
                           'deathDate' => $deathDate,
-                          'thesaurusDefinition' => $faker -> words(10, true),
+                          'biographicalNote' => $faker -> words(10, true),
                           'languages' => $this -> oneLanguage(),
-                          'birthPlace' => $this -> onePlace(),
                           'places' => $this -> onePlace()
                       ]
                     );
@@ -381,8 +380,8 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
             $writingMaxDate =  min(date_modify(clone $writingMinDate, '+'.$faker -> numberBetween(1, 15).' year'), new \DateTime('NOW'));
             $firstPerformanceMinDate = min(date_modify(clone $writingMaxDate, '+'.$faker -> numberBetween(1, 36).' month'), new \DateTime('NOW'));
             $firstPerformanceMaxDate = min(date_modify(clone $firstPerformanceMinDate, '+'.$faker -> numberBetween(1, 12).' month'), new \DateTime('NOW'));
-            $publicationMinDate = min(date_modify(clone $firstPerformanceMaxDate, '+'.$faker -> numberBetween(1, 36).' month'), new \DateTime('NOW'));
-            $publicationMaxDate = min(date_modify(clone $publicationMinDate, '+'.$faker -> numberBetween(1, 12).' month'), new \DateTime('NOW'));
+            $editionMinDate = min(date_modify(clone $firstPerformanceMaxDate, '+'.$faker -> numberBetween(1, 36).' month'), new \DateTime('NOW'));
+            $editionMaxDate = min(date_modify(clone $editionMinDate, '+'.$faker -> numberBetween(1, 12).' month'), new \DateTime('NOW'));
             
             $this ->_migrationService 
                   -> seedEntryWithNotTranslatableTitle(
@@ -406,9 +405,9 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'firstPerformanceDate' => date_format($writingMinDate, 'd-m-Y'),
                           'firstPerformanceMinDate'=> $firstPerformanceMinDate,
                           'firstPerformanceMaxDate'=> $firstPerformanceMaxDate,
-                          'firstPublication' => $faker -> sentence(10, true),
-                          'publicationMinDate'=> $publicationMinDate,
-                          'publicationMaxDate'=> $publicationMaxDate,
+                          'edition' => $faker -> sentence(10, true),
+                          'editionMinDate'=> $editionMinDate,
+                          'editionMaxDate'=> $editionMaxDate,
                           'modernEditions' => $faker -> sentence(20, true),
                           'mainLanguage' => $this -> oneLanguage(),
                           'audience' => $this -> oneAudience(),
@@ -420,7 +419,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'keywords' => $this -> keywords(1, 8),
                           'hypotexts' => $this -> oneLinkedWork(),
                           'preservedIn' => $this -> oneConservationInstitution(),
-                          'register' => $this -> oneRegister(),
+                          'registers' => $this -> oneRegister(),
                           'handlingTechniques' => $this -> oneHandlingTechnique(),
                           'dramaturgicTechniques' => $this -> oneDramaturgicTechnique(),
                           'formats' => $this -> oneFormat(),
@@ -429,7 +428,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($englishFaker, 300, 500),
                           'notice' => $this -> realText($englishFaker, 100, 200),
-                          'firstPublication' => $faker -> sentence(10, true),
+                          'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
                       ],
@@ -437,7 +436,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($italianFaker, 300, 500),
                           'notice' => $this -> realText($italianFaker, 100, 200),
-                          'firstPublication' => $faker -> sentence(10, true),
+                          'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
                       ],
@@ -445,7 +444,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'translatedTitle' => $faker -> sentence(10, true),
                           'abstract' => $this -> realText($germanFaker, 300, 500),
                           'notice' => $this -> realText($germanFaker, 100, 200),
-                          'firstPublication' => $faker -> sentence(10, true),
+                          'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
                           'license' => $faker -> sentence(10, true),
                       ]

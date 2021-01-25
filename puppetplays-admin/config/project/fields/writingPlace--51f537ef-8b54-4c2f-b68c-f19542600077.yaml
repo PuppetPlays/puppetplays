@@ -2,13 +2,13 @@ contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: writingPlace
 instructions: ''
-name: 'Lieux d''écriture'
+name: 'Lieu d''écriture'
 searchable: true
 settings:
   allowSelfRelations: false
   limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un lieux'
+  selectionLabel: 'Sélectionner un lieu'
   showSiteMenu: true
   source: null
   sources:

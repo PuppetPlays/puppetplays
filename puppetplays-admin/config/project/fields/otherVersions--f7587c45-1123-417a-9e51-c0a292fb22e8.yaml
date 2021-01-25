@@ -1,18 +1,18 @@
 contentColumnType: string
-fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
-handle: birthPlace
+fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c
+handle: otherVersions
 instructions: ''
-name: 'Lieux de naissance'
+name: 'Autre(s) version(s) du même nom'
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: '1'
+  limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner le lieux de naissance'
+  selectionLabel: 'Sélectionner un ou plusieurs personnage(s) du même nom'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
+    - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
