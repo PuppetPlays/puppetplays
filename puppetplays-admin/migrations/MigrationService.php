@@ -404,9 +404,9 @@ class MigrationService {
             $italianFields = $this -> overrideFields($frenchFields, $italianFields);
             $germanFields = $this -> overrideFields($frenchFields, $germanFields);
         }
-        $this->translateEntry($this->_savedEntry, $this->_englishSite, $englishTitle, $section, $entryType, $englishFields);
-        $this->translateEntry($this->_savedEntry, $this->_italianSite, $italianTitle, $section, $entryType, $italianFields);
-        $this->translateEntry($this->_savedEntry, $this->_germanSite, $germanTitle, $section, $entryType, $germanFields);
+        // $this->translateEntry($this->_savedEntry, $this->_englishSite, $englishTitle, $section, $entryType, $englishFields);
+        // $this->translateEntry($this->_savedEntry, $this->_italianSite, $italianTitle, $section, $entryType, $italianFields);
+        // $this->translateEntry($this->_savedEntry, $this->_germanSite, $germanTitle, $section, $entryType, $germanFields);
     }
 
     private function overrideFields($fields, $withFields) {

@@ -33,12 +33,12 @@ require_once('dev/Formats.php');
 class m201208_083744_seedDatabase extends Migration implements Languages, Keywords, Registers, HandlingTechniques, DramaturgicTechniques, Formats {
     
     // Constants .............................................................................................
-    const CHARACTERS_COUNT = 100;
-    const PLACES_COUNT = 100;
-    const PERSONS_COUNT = 100;
-    const WORKS_COUNT = 100;
-    const LINKED_WORKS_COUNT = 100;
-    const CONSERVATION_INSTITUTIONS_COUNT = 30;
+    const CHARACTERS_COUNT = 10;
+    const PLACES_COUNT = 10;
+    const PERSONS_COUNT = 10;
+    const WORKS_COUNT = 30;
+    const LINKED_WORKS_COUNT = 10;
+    const CONSERVATION_INSTITUTIONS_COUNT = 5;
     
     // Instance fields .......................................................................................
     private $_audiencesEntryIds = [];
@@ -411,7 +411,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'modernEditions' => $faker -> sentence(20, true),
                           'mainLanguage' => $this -> oneLanguage(),
                           'audience' => $this -> oneAudience(),
-                          'license' => $faker -> word,
+                          'additionalLicenseInformation' => $faker -> word,
                           'genre' => $faker -> word,
                           'characters' => $this -> characters(1, 10),
                           'actsCount' => $faker -> numberBetween(3, 10),
@@ -430,7 +430,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'notice' => $this -> realText($englishFaker, 100, 200),
                           'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'license' => $faker -> sentence(10, true),
+                          'additionalLicenseInformation' => $faker -> sentence(10, true),
                       ],
                       [
                           'translatedTitle' => $faker -> sentence(10, true),
@@ -438,7 +438,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'notice' => $this -> realText($italianFaker, 100, 200),
                           'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'license' => $faker -> sentence(10, true),
+                          'additionalLicenseInformation' => $faker -> sentence(10, true),
                       ],
                       [
                           'translatedTitle' => $faker -> sentence(10, true),
@@ -446,7 +446,7 @@ class m201208_083744_seedDatabase extends Migration implements Languages, Keywor
                           'notice' => $this -> realText($germanFaker, 100, 200),
                           'edition' => $faker -> sentence(10, true),
                           'modernEditions' => $faker -> sentence(20, true),
-                          'license' => $faker -> sentence(10, true),
+                          'additionalLicenseInformation' => $faker -> sentence(10, true),
                       ]
                     );
         }
