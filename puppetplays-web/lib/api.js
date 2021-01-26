@@ -101,7 +101,8 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
       formats {
         title
       },
-      license
+      publicDomain,
+      additionalLicenseInformation
     }
   }
   entryCount(section: "works")
@@ -231,7 +232,8 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       formats {
         title
       },
-      license
+      publicDomain,
+      additionalLicenseInformation
     }
   }
 }`;
