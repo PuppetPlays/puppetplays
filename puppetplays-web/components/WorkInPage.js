@@ -60,17 +60,16 @@ function WorkInPage({
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
         <p>{t('common:pageCount', { count: pageCount })}</p>
-        <div className={styles.authorsCards}>
-          <h3>{t('common:theAuthors')}</h3>
-          {authors &&
-            authors.map(({ typeHandle, ...rest }) => {
-              if (typeHandle === 'persons') {
-                return <AuthorCard key={rest.id} {...rest} />;
-              } else if (typeHandle === 'companies') {
-                return <CompanyCard key={rest.id} {...rest} />;
-              }
-            })}
-        </div>
+
+        <WorkSection title={t('common:theAuthors')} show={authors}>
+          {authors.map(({ typeHandle, ...rest }) => {
+            if (typeHandle === 'persons') {
+              return <AuthorCard key={rest.id} {...rest} />;
+            } else if (typeHandle === 'companies') {
+              return <CompanyCard key={rest.id} {...rest} />;
+            }
+          })}
+        </WorkSection>
       </div>
       <div className={styles.body}>
         <WorkHeader
@@ -90,15 +89,16 @@ function WorkInPage({
             infoExist={characters.length > 0}
           />
           <WorkInfo label={t('common:actsCount')} info={actsCount} />
-          <WorkInfo label={t('common:notice')} info={notice} />
+          <WorkInfo label={t('common:notice')} info={notice} fill />
           <WorkInfo
-            label={
+            label={t('common:abstract')}
+            info={
               <Fragment>
-                {t('common:abstract')}{' '}
-                <h3 className={styles.mainTheme}>{mainTheme}</h3>
+                {mainTheme && <h3 className={styles.mainTheme}>{mainTheme}</h3>}
+                <div>{abstract}</div>
               </Fragment>
             }
-            info={<div>{abstract}</div>}
+            fill
           />
           <WorkInfo
             label={t('common:hypotexts')}
@@ -216,7 +216,7 @@ function WorkInPage({
         </WorkSection>
 
         <WorkSection title={t('common:dramaturgicTechniques')}>
-          <Keywords keywords={dramaturgicTechniques} />
+          <Keywords keywords={dramaturgicTechniques} fill />
         </WorkSection>
 
         <WorkSection title={t('common:ids')}>

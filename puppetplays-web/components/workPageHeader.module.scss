@@ -3,9 +3,28 @@
   align-items: center;
   padding: 8px;
   width: 100%;
+  font-size: 14px;
+  height: 66px;
 }
 
 .backButton {
-  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-gray);
   background-color: transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  stroke: var(--purple);
+  margin-right: 15px;
+
+  svg {
+    display: block;
+  }
+}
+
+.title {
+  font-weight: 700;
 }

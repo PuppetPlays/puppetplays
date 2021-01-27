@@ -1,14 +1,14 @@
 import CommaSepList from './CommaSepList';
-import Place from './Place';
+import useTranslation from 'next-translate/useTranslation';
 import styles from './authorCard.module.scss';
 
-function CompanyCard({ title, places }) {
+function CompanyCard({ title }) {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.container}>
       <div>{title}</div>
-      {places && places.length > 0 && (
-        <CommaSepList list={places} itemComponent={Place} separator=" - " />
-      )}
+      <div className={styles.type}>{t('common:company')}</div>
     </section>
   );
 }

@@ -1,8 +1,20 @@
 .container {
-  padding: 18px 18px 18px 12px;
-  border: 1px solid grey;
+  text-align: center;
+  padding: 18px 32px 18px 32px;
+  background-color: var(--dark-purple);
+  color: white;
+  border-radius: 7px;
 
   & + & {
     margin-top: 12px;
   }
+}
+
+.title {
+  font-size: 18px;
+  font-family: 'PT Serif', serif;
+}
+
+.type {
+  text-transform: uppercase;
 }

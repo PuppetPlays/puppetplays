@@ -3,7 +3,7 @@ import 'styles/globals.css';
 
 function CustomApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout translations={pageProps._ns.common}>
       <Component {...pageProps} />
     </Layout>
   );

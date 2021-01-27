@@ -5,6 +5,7 @@ import WorkAuthor from './WorkAuthor';
 import WorkCompany from './WorkCompany';
 import CommaSepList from './CommaSepList';
 import styles from './workInList.module.scss';
+import { Fragment } from 'react';
 
 const WorkHeader = ({
   title,
@@ -27,18 +28,27 @@ const WorkHeader = ({
             itemComponents={{ persons: WorkAuthor, companies: WorkCompany }}
           />
         </span>
-        {referenceDate && <span>, {referenceDate}</span>}
+        {referenceDate && (
+          <Fragment>
+            <span className="pipe-separator">|</span>
+            <span className={styles.date}>{referenceDate}</span>
+          </Fragment>
+        )}
         {writingPlace.length > 0 && (
-          <span>
-            {' '}
-            - <Place {...writingPlace[0]} />
-          </span>
+          <Fragment>
+            <span className="pipe-separator">|</span>
+            <span className={styles.place}>
+              <Place {...writingPlace[0]} />
+            </span>
+          </Fragment>
         )}
         {mainLanguage && mainLanguage.length > 0 && (
-          <span>
-            {' '}
-            - {t('common:language')} {getFirstItemTitle(mainLanguage)}
-          </span>
+          <Fragment>
+            <span className="pipe-separator">|</span>
+            <span className={styles.language}>
+              {getFirstItemTitle(mainLanguage)}
+            </span>
+          </Fragment>
         )}
       </h3>
     </header>

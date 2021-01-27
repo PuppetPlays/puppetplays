@@ -1,31 +1,25 @@
-import CommaSepList from './CommaSepList';
-import Place from './Place';
+import useTranslation from 'next-translate/useTranslation';
 import WorkAuthor from './WorkAuthor';
 import styles from './authorCard.module.scss';
 
-function AuthorCard({
-  firstName,
-  lastName,
-  nickname,
-  birthDate,
-  deathDate,
-  places,
-}) {
+function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.container}>
-      <WorkAuthor
-        firstName={firstName}
-        lastName={lastName}
-        nickname={nickname}
-      />
+      <div className={styles.title}>
+        <WorkAuthor
+          firstName={firstName}
+          lastName={lastName}
+          nickname={nickname}
+        />
+      </div>
       {(birthDate || deathDate) && (
         <div>
           {birthDate} - {deathDate}
         </div>
       )}
-      {places && places.length > 0 && (
-        <CommaSepList list={places} itemComponent={Place} separator=" - " />
-      )}
+      <div className={styles.type}>{t('common:author')}</div>
     </section>
   );
 }

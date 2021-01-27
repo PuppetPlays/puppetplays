@@ -55,7 +55,9 @@ export default function Home({ initialData }) {
       </Head>
 
       <div className={styles.worksHeader}>
-        <div>{t('common:results', { count: data.entryCount })}</div>
+        <div className={styles.worksHeaderPageCount}>
+          {t('common:results', { count: data.entryCount })}
+        </div>
         <Pagination
           forcePage={currentPage}
           pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}

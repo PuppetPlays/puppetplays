@@ -71,7 +71,7 @@ function WorkInList({
         />
 
         <section>
-          <Keywords keywords={dramaturgicTechniques} />
+          <Keywords keywords={dramaturgicTechniques} fill />
           <Keywords keywords={keywords} />
         </section>
 
@@ -167,19 +167,13 @@ function WorkInList({
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <svg
-          width="13"
-          height="8"
-          viewBox="0 0 13 8"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M12 7L6.5 1L1 7"
-            stroke="#1F86FF"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M3 6L8 11L13 6" strokeWidth="2" strokeLinecap="square" />
         </svg>
       </button>
     </article>

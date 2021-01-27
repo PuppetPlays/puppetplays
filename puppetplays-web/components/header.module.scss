@@ -2,14 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid grey;
-  padding: 16px;
+  padding: 14px 20px;
   height: 100%;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
   flex: 0 0 auto;
   font-size: 18px;
+  margin: 0;
 }
 
 .spacer {

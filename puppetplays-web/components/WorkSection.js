@@ -6,7 +6,9 @@ function WorkSection({ title, children, show = true }) {
   }
   return (
     <section className={styles.section}>
-      <h1 className={styles.sectionTitle}>{title}</h1>
+      <h1 className={styles.sectionTitle}>
+        <span>{title}</span>
+      </h1>
       <div>{children}</div>
     </section>
   );

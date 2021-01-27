@@ -4,15 +4,20 @@
   align-content: center;
   flex: 0 0 auto;
   width: 100%;
-  max-width: 900px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding : 6px 0;
+  padding : 22px 0;
+}
+
+.worksHeaderPageCount {
+  font-size: 14px;
+  color: var(--light-gray);
 }
 
 .works {
   flex: 1 1 auto;
   width: 100%;
-  max-width: 900px;
+  max-width: 1160px;
   margin: 0 auto;
   overflow: auto;
 }
