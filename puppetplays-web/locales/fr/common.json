@@ -32,6 +32,7 @@
   "pageCount_0": "Nombre de page inconnue",
   "pageCount_plural": "{{count}} pages",
   "license": "Licence",
+  "publicDomain": "Domaine public",
   "ids": "Identifiants",
   "theAuthors": "Les auteurs",
   "author": "Auteur",

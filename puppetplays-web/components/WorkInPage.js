@@ -48,7 +48,8 @@ function WorkInPage({
   actsCount,
   pageCount,
   formats,
-  license,
+  publicDomain,
+  additionalLicenseInformation,
   preservedIn,
 }) {
   const { t } = useTranslation();
@@ -208,7 +209,14 @@ function WorkInPage({
             label={t('common:audience')}
             info={getFirstItemTitle(audience)}
           />
-          <WorkInfo label={t('common:license')} info={license} />
+          <WorkInfo
+            label={t('common:license')}
+            info={
+              publicDomain
+                ? t('common:publicDomain')
+                : additionalLicenseInformation
+            }
+          />
         </section>
 
         <WorkSection title={t('common:keywords')}>

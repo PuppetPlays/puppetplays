@@ -39,7 +39,8 @@ function WorkInList({
   actsCount,
   pageCount,
   formats,
-  license,
+  publicDomain,
+  additionalLicenseInformation,
 }) {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -157,7 +158,14 @@ function WorkInList({
               infoExist={characters.length > 0}
             />
             <WorkInfo label={t('common:actsCount')} info={actsCount} />
-            <WorkInfo label={t('common:license')} info={license} />
+            <WorkInfo
+              label={t('common:license')}
+              info={
+                publicDomain
+                  ? t('common:publicDomain')
+                  : additionalLicenseInformation
+              }
+            />
           </Fragment>
         )}
       </section>
