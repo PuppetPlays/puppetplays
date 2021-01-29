@@ -22,7 +22,7 @@
                 <input type="hidden" name="fields[hypotexts][]" value="{{ element.id }}">
                 <a class="delete icon" title="{{ "Remove"|t('app') }}"></a>
                 <div class="label">
-                        <span class="title">{{ element.title }}, {% for author in element.authors.all() %}{{ author.lastName }}, {% endfor %}{{ element.date|date }}</span>
+                        <span class="title">{{ element.title }}, {% for author in element.authors.all() %}{{ author.lastName }}, {% endfor %}{{ element.date }}</span>
                 </div>
             </div>
         {% endfor %}
