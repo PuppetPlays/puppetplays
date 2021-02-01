@@ -13,6 +13,7 @@ namespace modules\sitemodule;
 use modules\sitemodule\assetbundles\sitemodule\SiteModuleAsset;
 use modules\sitemodule\fields\HypotextEntries as HypotextEntriesField;
 use modules\sitemodule\fields\SimpleDate as SimpleDateField;
+use modules\sitemodule\widgets\Supervisor as SupervisorWidget;
 
 use Craft;
 use craft\events\RegisterTemplateRootsEvent;
@@ -20,6 +21,7 @@ use craft\events\TemplateEvent;
 use craft\i18n\PhpMessageSource;
 use craft\web\View;
 use craft\services\Fields;
+use craft\services\Dashboard;
 use craft\events\RegisterComponentTypesEvent;
 
 use yii\base\Event;
@@ -132,6 +134,15 @@ class SiteModule extends Module
             function (RegisterComponentTypesEvent $event) {
                 $event->types[] = HypotextEntriesField::class;
                 $event->types[] = SimpleDateField::class;
+            }
+        );
+
+        // Register our widgets
+        Event::on(
+            Dashboard::class,
+            Dashboard::EVENT_REGISTER_WIDGET_TYPES,
+            function (RegisterComponentTypesEvent $event) {
+                $event->types[] = SupervisorWidget::class;
             }
         );
 

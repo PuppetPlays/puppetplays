@@ -1,0 +1,22 @@
+contentColumnType: string
+fieldGroup: f0767615-2b56-4d09-87d2-7485cedf5fc1
+handle: supervisor
+instructions: 'Choisissez le superviseur qui supervisera votre travail'
+name: Superviseur
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: '1'
+  localizeRelations: false
+  selectionLabel: 'Sélectionner votre superviseur'
+  showSiteMenu: true
+  source: null
+  sources:
+    - admins
+    - 'group:a5c71adc-184b-49c4-8e1a-d251540bf2b1'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Users

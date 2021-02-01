@@ -1,0 +1,13 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+
+{% if (supervisedEntries) %}
+  <div class="supervisor-container">
+    <ul>
+      {% for entry in supervisedEntries %}
+        <li><a href="{{ entry.cpEditUrl }}">{{ entry.title }}</a></li>
+      {% endfor %}
+    <ul>
+  </div>
+{% else %}
+  <p>Nothing to supervise</p>
+{% endif %}

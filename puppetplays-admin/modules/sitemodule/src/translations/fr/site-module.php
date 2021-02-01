@@ -24,4 +24,5 @@ return [
     'Site module loaded' => 'Site module loaded',
     'Hypotext entries' => 'Entrées Hypotextes',
     'Select one or several hypotext(s)' => 'Sélectionner un ou plusieurs hypotexte(s)',
+    'SupervisorWidget' => 'Superviseur',
 ];
