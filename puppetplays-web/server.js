@@ -24,7 +24,7 @@ app
       server.use(
         '/api',
         createProxyMiddleware({
-          target: process.env.API_URL,
+          target: process.env.NEXT_PUBLIC_API_URL,
           changeOrigin: true,
           secure: false,
         }),

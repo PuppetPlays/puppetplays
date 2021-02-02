@@ -1,9 +1,6 @@
-export async function fetchAPI(
-  query,
-  { variables, apiUrl = '/graphql' } = {},
-  token,
-) {
+export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
   const res = await fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -109,12 +106,11 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
 }
 `;
 
-export async function getAllWorks(apiUrl, locale, offset = 0) {
+export async function getAllWorks(locale, offset = 0) {
   // otherTitles: It seems that it should have a language associated with each other titles
   // publication: What is it?
   // otherPublication: What is it?,
   const data = await fetchAPI(getAllWorksQuery, {
-    apiUrl,
     variables: { locale, offset, limit: WORKS_PAGE_SIZE },
   });
   return data;
@@ -238,11 +234,10 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
   }
 }`;
 
-export async function getWorkById(apiUrl, id, locale, token) {
+export async function getWorkById(id, locale, token) {
   const data = await fetchAPI(
     getWorkByIdQuery,
     {
-      apiUrl,
       variables: { locale, id },
     },
     token,

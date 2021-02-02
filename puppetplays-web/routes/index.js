@@ -74,8 +74,7 @@ export default function Home({ initialData }) {
 }
 
 export async function getServerSideProps({ locale }) {
-  const apiUrl = `${process.env.API_URL}/graphql`;
-  const data = await getAllWorks(apiUrl, locale);
+  const data = await getAllWorks(locale);
   return {
     props: { initialData: data },
   };
