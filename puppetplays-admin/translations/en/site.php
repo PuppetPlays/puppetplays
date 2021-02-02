@@ -56,6 +56,7 @@ return array(
   'Œuvres liées' => 'Linked works',
   'Pays' => 'Country',
   'Personnages' => 'Characters',
+  'Personnages originaux' => 'Originals characters',
   'Personnes' => 'Persons',
   'Première représentation (infos complémentaires)	' => 'First performance (additional information)	',
   'Prénom' => 'First name',
