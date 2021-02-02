@@ -1,13 +1,19 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 
-{% if (supervisedEntries) %}
-  <div class="supervisor-container">
-    <ul>
-      {% for entry in supervisedEntries %}
-        <li><a href="{{ entry.cpEditUrl }}">{{ entry.title }}</a></li>
-      {% endfor %}
-    <ul>
-  </div>
+{% if supervisedEntries|length %}
+  <table class="fullwidth">
+    {% for entry in supervisedEntries %}
+      <tr>
+        <td>
+          <a href="{{ entry.getCpEditUrl() }}">{{ entry.title }}</a>
+          <span class="light">
+            {{ entry.dateCreated|timestamp('short') }}
+            {%- if CraftEdition == CraftPro and entry.getAuthor() %}, {{ entry.getAuthor().username }} [{{ entry.getAuthor().email }}]{% endif -%}
+          </span>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
 {% else %}
-  <p>Nothing to supervise</p>
+    <p>{{ "No entries exist yet."|t('app') }}</p>
 {% endif %}
