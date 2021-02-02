@@ -1,18 +1,18 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: characters
+fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
+handle: character
 instructions: ''
-name: Personnages
-searchable: true
+name: Personnage
+searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner des personnages'
-  showSiteMenu: true
+  selectionLabel: 'Sélectionner un personnage'
+  showSiteMenu: false
   source: null
   sources:
-    - 'section:53b06a2d-abbf-4ee4-b770-ca48f26e094e'
+    - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

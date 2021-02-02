@@ -1,5 +1,5 @@
 fieldLayouts:
-  dde1177f-2838-4270-a988-0bf638a22da1:
+  c5d08ce4-576e-43c7-9e90-1f9464179233:
     tabs:
       -
         elements:
@@ -11,7 +11,7 @@ fieldLayouts:
             disabled: false
             id: null
             instructions: ''
-            label: Nom
+            label: 'Nom d''origine'
             max: null
             min: null
             name: null
@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8
+            fieldUid: 65cde714-d150-4ea5-9f9a-da868a716343
             instructions: null
             label: null
             required: false
@@ -35,13 +35,13 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
-        name: Contenu
+        name: Content
         sortOrder: 1
-handle: characters
+handle: originalsCharacters
 hasTitleField: true
-name: Personnages
-section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5
+name: 'Personnages originaux'
+section: 53b06a2d-abbf-4ee4-b770-ca48f26e094e
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null
-titleTranslationMethod: site
+titleTranslationMethod: none
