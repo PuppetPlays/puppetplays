@@ -24,8 +24,16 @@ return [
         // Control panel trigger word
         'cpTrigger' => 'admin',
 
+        // This is the url of the subdomain used to access the control panel
+        'baseCpUrl' => getEnv('CP_URL'),
+
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => App::env('SECURITY_KEY'),
+
+        'aliases' => [
+            '@web' => getenv('CP_URL'),
+            '@livePreviewUrl' => getenv('SITE_URL'),
+        ]
     ],
 
     // Dev environment settings
@@ -38,10 +46,6 @@ return [
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
-
-        'aliases' => [
-            '@livePreviewUrl' => getenv('LIVE_PREVIEW_URL'),
-        ]
     ],
 
     // Staging environment settings
@@ -55,11 +59,8 @@ return [
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
 
-        'aliases' => [
-            '@web' => getenv('ROOT_SITE_URL'),
-            // @livePreviewUrl is hard-coded because it doesn't work when using an env var
-            '@livePreviewUrl' => 'https://puppetplays.intactile.info',
-        ],
+        // We will use a subdomain like cms.* so cpTrigger can be null
+        'cpTrigger' => null,
     ],
 
     // Production environment settings
@@ -70,9 +71,7 @@ return [
         // Don’t allow updates on Production
         'allowUpdates' => false,
 
-        'aliases' => [
-            '@web' => getenv('ROOT_SITE_URL'),
-            '@livePreviewUrl' => 'https://puppetplays.fr',
-        ],
+        // We will use a subdomain like cms.* so cpTrigger can be null
+        'cpTrigger' => null,
     ],
 ];

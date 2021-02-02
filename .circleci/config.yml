@@ -73,7 +73,8 @@ jobs:
       PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
       SECURITY_KEY: $SECURITY_KEY_STAGING
       ENVIRONMENT: staging
-      ROOT_SITE_URL: https://puppetplays.intactile.info
+      SITE_URL: https://puppetplays.intactile.info
+      CP_URL: https://admin.puppetplays.intactile.info
       DOCKER_HOST: tcp://104.236.6.205:2376
       DOCKER_TLS_VERIFY: 1
     steps:

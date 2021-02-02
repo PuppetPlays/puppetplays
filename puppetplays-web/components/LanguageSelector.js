@@ -13,7 +13,7 @@ function LanguageSelector({ translations }) {
           {locales.map((l) => (
             <li key={l} className={l === locale ? 'is-current' : ''}>
               <Link href="/" locale={l}>
-                <a>{translations[l]}</a>
+                <a>{translations && translations[l]}</a>
               </Link>
             </li>
           ))}

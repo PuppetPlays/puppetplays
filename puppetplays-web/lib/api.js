@@ -1,6 +1,6 @@
 export async function fetchAPI(
   query,
-  { variables, apiUrl = '/api' } = {},
+  { variables, apiUrl = '/graphql' } = {},
   token,
 ) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
