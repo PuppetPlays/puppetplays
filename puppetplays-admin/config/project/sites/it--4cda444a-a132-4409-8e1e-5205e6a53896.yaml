@@ -1,7 +1,7 @@
-baseUrl: null
+baseUrl: '@siteUrl/it'
 enabled: true
 handle: it
-hasUrls: false
+hasUrls: true
 language: it
 name: 'Puppetplays IT'
 primary: false
