@@ -8,7 +8,7 @@ settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner une ou des technique(s) dramaturgique(s)'
+  selectionLabel: 'Sélectionner une ou plusieurs technique(s) dramaturgique(s)'
   showSiteMenu: true
   source: null
   sources:

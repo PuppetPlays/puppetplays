@@ -8,7 +8,7 @@ settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou des auteur(s)'
+  selectionLabel: 'Sélectionner un ou plusieurs auteur(s)'
   showSiteMenu: true
   source: null
   sources:

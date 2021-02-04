@@ -2,7 +2,7 @@ contentColumnType: datetime
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: writingMinDate
 instructions: ''
-name: 'Date d''écriture (min)'
+name: 'Date d’écriture (min)'
 searchable: false
 settings:
   max: null

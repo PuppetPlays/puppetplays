@@ -2,7 +2,7 @@ contentColumnType: datetime
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: writingMaxDate
 instructions: ''
-name: 'Date d''écriture (max)'
+name: 'Date d’écriture (max)'
 searchable: false
 settings:
   max: null

@@ -11,7 +11,7 @@ fieldLayouts:
             disabled: false
             id: null
             instructions: ''
-            label: 'Nom d''origine'
+            label: 'Nom d’origine'
             max: null
             min: null
             name: null

@@ -8,7 +8,7 @@ settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs lieux'
+  selectionLabel: 'Sélectionner un ou plusieurs lieu(x)'
   showSiteMenu: true
   source: null
   sources:

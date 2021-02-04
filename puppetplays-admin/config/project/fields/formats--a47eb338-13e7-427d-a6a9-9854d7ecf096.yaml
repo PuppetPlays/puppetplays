@@ -8,7 +8,7 @@ settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs formats'
+  selectionLabel: 'Sélectionner un ou plusieurs format(s)'
   showSiteMenu: true
   source: null
   sources:

@@ -2,7 +2,7 @@ contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: writingDisplayDate
 instructions: ''
-name: 'Date d''écriture (pour l''affichage)'
+name: 'Date d’écriture (pour l’affichage)'
 searchable: false
 settings:
   byteLimit: null
