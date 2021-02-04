@@ -28,6 +28,8 @@ services:
       - SECURITY_KEY
       - APP_ID=puppetplays
       - ENVIRONMENT
+      - SITE_URL
+      - CP_URL
     ports:
       - "11000:8080"
     depends_on:
