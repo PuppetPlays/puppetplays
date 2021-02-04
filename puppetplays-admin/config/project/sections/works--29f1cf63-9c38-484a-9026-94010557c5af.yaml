@@ -9,7 +9,7 @@ previewTargets:
         - 'Page FR'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/oeuvres/{sourceId}/slug'
+        - '{alias(''@livePreviewUrl'')}/oeuvres/{sourceId}/{slug}'
       -
         - refresh
         - '1'
@@ -20,7 +20,7 @@ previewTargets:
         - 'Page EN'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/en/oeuvres/{sourceId}/slug'
+        - '{alias(''@livePreviewUrl'')}/en/oeuvres/{sourceId}/{slug}'
       -
         - refresh
         - '1'
@@ -31,7 +31,7 @@ previewTargets:
         - 'Page IT'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/it/oeuvres/{sourceId}/slug'
+        - '{alias(''@livePreviewUrl'')}/it/oeuvres/{sourceId}/{slug}'
       -
         - refresh
         - '1'
@@ -42,7 +42,7 @@ previewTargets:
         - 'Page DE'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/de/oeuvres/{sourceId}/slug'
+        - '{alias(''@livePreviewUrl'')}/de/oeuvres/{sourceId}/{slug}'
       -
         - refresh
         - '1'
@@ -52,20 +52,20 @@ siteSettings:
     enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'oeuvres/{slug}'
+    uriFormat: 'oeuvres/{sourceId}/{slug}'
   4cda444a-a132-4409-8e1e-5205e6a53896:
     enabledByDefault: false
-    hasUrls: false
+    hasUrls: true
     template: null
-    uriFormat: null
+    uriFormat: 'oeuvres/{sourceId}/{slug}'
   59986aab-e6c1-4cdf-a062-8db833d2b327:
     enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'works/{slug}'
+    uriFormat: 'oeuvres/{sourceId}/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824:
     enabledByDefault: false
-    hasUrls: false
+    hasUrls: true
     template: null
-    uriFormat: null
+    uriFormat: 'oeuvres/{sourceId}/{slug}'
 type: channel

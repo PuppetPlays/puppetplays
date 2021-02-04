@@ -33,6 +33,7 @@ return [
         'aliases' => [
             '@web' => getenv('CP_URL'),
             '@livePreviewUrl' => getenv('SITE_URL'),
+            '@siteUrl' => getenv('SITE_URL'),
         ]
     ],
 

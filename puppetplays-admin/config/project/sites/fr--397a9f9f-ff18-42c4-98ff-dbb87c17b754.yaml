@@ -1,4 +1,4 @@
-baseUrl: null
+baseUrl: '@siteUrl'
 enabled: true
 handle: fr
 hasUrls: true
