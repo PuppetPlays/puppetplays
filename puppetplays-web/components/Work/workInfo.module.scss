@@ -23,4 +23,8 @@
 .content {
   color: var(--color-text);
   font-size: 15px;
+
+  a {
+    text-decoration: underline;
+  }
 }

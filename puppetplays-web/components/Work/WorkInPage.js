@@ -90,13 +90,17 @@ function WorkInPage({
             infoExist={characters.length > 0}
           />
           <WorkInfo label={t('common:actsCount')} info={actsCount} />
-          <WorkInfo label={t('common:notice')} info={notice} fill />
+          <WorkInfo
+            label={t('common:notice')}
+            info={<div dangerouslySetInnerHTML={{ __html: notice }} />}
+            fill
+          />
           <WorkInfo
             label={t('common:abstract')}
             info={
               <Fragment>
                 {mainTheme && <h3 className={styles.mainTheme}>{mainTheme}</h3>}
-                <div>{abstract}</div>
+                <div dangerouslySetInnerHTML={{ __html: abstract }} />
               </Fragment>
             }
             fill
@@ -133,7 +137,10 @@ function WorkInPage({
           title={t('common:publicationsAndTranslations')}
           show={edition || modernEditions || onlineEdition}
         >
-          <WorkInfo label={t('common:edition')} info={edition} />
+          <WorkInfo
+            label={t('common:edition')}
+            info={<div dangerouslySetInnerHTML={{ __html: edition }} />}
+          />
           <WorkInfo
             label={t('common:transcriptors')}
             info={
@@ -146,7 +153,10 @@ function WorkInPage({
               <CommaSepList list={compilators} itemComponent={WorkAuthor} />
             }
           />
-          <WorkInfo label={t('common:modernEditions')} info={modernEditions} />
+          <WorkInfo
+            label={t('common:modernEditions')}
+            info={<div dangerouslySetInnerHTML={{ __html: modernEditions }} />}
+          />
           {onlineEdition && (
             <div className={styles.onlineEdition}>
               <a href={onlineEdition} target="_blank" rel="noopener noreferrer">

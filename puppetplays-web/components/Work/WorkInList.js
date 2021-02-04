@@ -79,14 +79,17 @@ function WorkInList({
         {isExpanded && (
           <Fragment>
             <section>
-              <WorkInfo label={t('common:notice')} info={notice} />
+              <WorkInfo
+                label={t('common:notice')}
+                info={<div dangerouslySetInnerHTML={{ __html: notice }} />}
+              />
               <WorkInfo
                 label={
                   <Fragment>
                     {t('common:abstract')} {mainTheme}
                   </Fragment>
                 }
-                info={<div>{abstract}</div>}
+                info={<div dangerouslySetInnerHTML={{ __html: abstract }} />}
               />
             </section>
             <WorkSection title={t('common:otherTitles')} show={otherTitles}>
@@ -114,10 +117,15 @@ function WorkInList({
               title={t('common:publications')}
               show={edition || modernEditions || onlineEdition}
             >
-              <WorkInfo label={t('common:edition')} info={edition} />
+              <WorkInfo
+                label={t('common:edition')}
+                info={<div dangerouslySetInnerHTML={{ __html: edition }} />}
+              />
               <WorkInfo
                 label={t('common:modernEditions')}
-                info={modernEditions}
+                info={
+                  <div dangerouslySetInnerHTML={{ __html: modernEditions }} />
+                }
               />
               {onlineEdition && (
                 <div className={styles.onlineEdition}>

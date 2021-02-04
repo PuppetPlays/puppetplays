@@ -1,4 +1,4 @@
 {
-  "buttons": ["italic"],
+  "buttons": ["italic", "link"],
   "air": true
 }
