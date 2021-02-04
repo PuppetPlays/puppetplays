@@ -13,10 +13,23 @@
   font-size: 15px;
   line-height: 1.1;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    color: var(--color-brand-light);
+    border-color: currentColor;
+  }
 
   .container[data-fill='true'] & {
-    color: var(--purple);
+    color: var(--color-brand);
     background-color: rgba(2, 4, 55, 0.05);
     border-color: transparent;
+
+    &:hover {
+      color: white;
+      background-color: var(--color-brand-light);
+      border-color: transparent;
+    }
   }
 }

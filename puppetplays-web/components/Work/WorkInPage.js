@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { getTitle, getFirstItemTitle } from 'lib/utils';
-import Place from './Place';
+import Place from '../Place';
 import WorkHeader from './WorkHeader';
 import WorkSection from './WorkSection';
 import WorkAuthor from './WorkAuthor';
 import WorkInfo from './WorkInfo';
-import Keywords from './Keywords';
-import CommaSepList from './CommaSepList';
-import AuthorCard from './AuthorCard';
-import CompanyCard from './CompanyCard';
+import Keywords from '../Keywords';
+import CommaSepList from '../CommaSepList';
+import AuthorCard from '../AuthorCard';
+import CompanyCard from '../CompanyCard';
 import styles from './workInList.module.scss';
 
 function WorkInPage({
@@ -55,7 +55,7 @@ function WorkInPage({
   const { t } = useTranslation();
 
   return (
-    <article className={`${styles.container} ${styles['container--page']}`}>
+    <article className={`${styles.container} work-page-container`}>
       <div className={styles.media}>
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />

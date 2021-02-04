@@ -1,0 +1,38 @@
+.title {
+  font-size: 24px;
+  font-family: 'PT Serif', sans-serif;
+  margin: 0 0 18px;
+  color: var(--color-brand);
+
+  &:hover {
+    color: var(--color-brand-light);
+  }
+
+  :global(.work-page-container) & {
+    font-size: 35px;
+    color: var(--color-text);
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+
+.authors {
+  font-size: 18px;
+  margin: 0 0 24px;
+  color: var(--color-brand);
+}
+
+.date {
+  color: var(--color-text);
+}
+
+.place,
+.language {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text);
+}

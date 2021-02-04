@@ -1,0 +1,26 @@
+.container {
+  &[data-fill='true'] {
+    background-color: var(--color-bg-light);
+    border-radius: 8px;
+    padding: 15px;
+  }
+
+  & + & {
+    margin-top: 14px;
+  }
+
+  :global(.work-page-container) & + & {
+    margin-top: 40px;
+  }
+}
+
+.label {
+  color: var(--color-text-light);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.content {
+  color: var(--color-text);
+  font-size: 15px;
+}

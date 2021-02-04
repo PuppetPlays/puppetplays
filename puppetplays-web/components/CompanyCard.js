@@ -1,4 +1,3 @@
-import CommaSepList from './CommaSepList';
 import useTranslation from 'next-translate/useTranslation';
 import styles from './authorCard.module.scss';
 

@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import WorkAuthor from './WorkAuthor';
+import WorkAuthor from './Work/WorkAuthor';
 import styles from './authorCard.module.scss';
 
 function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {

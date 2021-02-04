@@ -1,11 +1,11 @@
+import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { getFirstItemTitle } from 'lib/utils';
-import Place from './Place';
+import Place from '../Place';
 import WorkAuthor from './WorkAuthor';
 import WorkCompany from './WorkCompany';
-import CommaSepList from './CommaSepList';
-import styles from './workInList.module.scss';
-import { Fragment } from 'react';
+import CommaSepList from '../CommaSepList';
+import styles from './workHeader.module.scss';
 
 const WorkHeader = ({
   title,

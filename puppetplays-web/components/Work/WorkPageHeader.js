@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 import { Fragment, useCallback } from 'react';
 import WorkAuthor from './WorkAuthor';
 import WorkCompany from './WorkCompany';
-import CommaSepList from './CommaSepList';
+import CommaSepList from '../CommaSepList';
+import Place from '../Place';
 import styles from './workPageHeader.module.scss';
-import Place from './Place';
 
 const WorkPageHeader = ({ title, authors, writingPlace }) => {
   const router = useRouter();

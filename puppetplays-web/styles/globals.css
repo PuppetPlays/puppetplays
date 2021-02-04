@@ -48,6 +48,16 @@
        url('/fonts/pt-serif-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
+:root {
+  --color-brand-light: #644aff;
+  --color-brand: #3228a7;
+
+  --color-bg-light: #f3f4f8;
+
+  --color-text-light: #b3b3bb;
+  --color-text: #020437;
+}
+
 html,
 body {
   height: 100%;
@@ -56,6 +66,7 @@ body {
   font-family: 'Fira Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  color: var(--color-text);
 }
 
 body > div {
@@ -71,16 +82,9 @@ a {
   box-sizing: border-box;
 }
 
-:root {
-  --purple-gray: #f3f4f8;
-  --light-gray: #b3b3bb;
-  --dark-purple: #020437;
-  --purple: #3228a7;
-}
-
 .pipe-separator,
 .dash-separator {
-  color: var(--light-gray);
+  color: var(--color-text-light);
   margin: 0 10px;
   font-style: 16px;
   font-weight: 400;

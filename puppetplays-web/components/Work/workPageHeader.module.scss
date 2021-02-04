@@ -14,11 +14,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--color-text-light);
   background-color: transparent;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  stroke: var(--purple);
+  stroke: var(--color-brand);
   margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    border-color: var(--color-brand-light);
+
+    svg {
+      stroke: var(--color-brand-light);
+    }
+  }
 
   svg {
     display: block;

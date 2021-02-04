@@ -1,12 +1,12 @@
-import styles from './workInList.module.scss';
+import styles from './workSection.module.scss';
 
 function WorkSection({ title, children, show = true }) {
   if (!show) {
     return null;
   }
   return (
-    <section className={styles.section}>
-      <h1 className={styles.sectionTitle}>
+    <section className={styles.container}>
+      <h1 className={styles.title}>
         <span>{title}</span>
       </h1>
       <div>{children}</div>

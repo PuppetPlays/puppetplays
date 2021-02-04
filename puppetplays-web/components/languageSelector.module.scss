@@ -32,7 +32,7 @@
   li {
     display: inline-block;
     margin-left: 4px;
-    color: var(--light-gray);
+    color: var(--color-text-light);
     font-weight: 700;
 
     & + li {
@@ -41,7 +41,7 @@
 
     &:hover,
     &:global(.is-current) {
-      color: var(--dark-purple);
+      color: var(--color-text);
     }
   }
 }

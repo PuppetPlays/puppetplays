@@ -9,7 +9,7 @@ import {
   getAllWorks,
   WORKS_PAGE_SIZE,
 } from 'lib/api';
-import WorkInList from 'components/WorkInList';
+import WorkInList from 'components/Work/WorkInList';
 import Pagination from 'components/Pagination';
 import styles from 'styles/Home.module.css';
 

@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { getWorkById } from 'lib/api';
-import WorkInPage from 'components/WorkInPage';
-import WorkPageHeader from 'components/WorkPageHeader';
+import WorkInPage from 'components/Work/WorkInPage';
+import WorkPageHeader from 'components/Work/WorkPageHeader';
 import styles from 'styles/Work.module.css';
 
 const Work = ({ initialData }) => {

@@ -3,12 +3,12 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { getTitle, getFirstItemTitle } from 'lib/utils';
 import WorkHeader from './WorkHeader';
-import Keywords from './Keywords';
 import WorkSection from './WorkSection';
 import WorkInfo from './WorkInfo';
-import CommaSepList from './CommaSepList';
+import Keywords from '../Keywords';
+import CommaSepList from '../CommaSepList';
+import Place from '../Place';
 import styles from './workInList.module.scss';
-import Place from './Place';
 
 function WorkInList({
   id,

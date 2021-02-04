@@ -1,0 +1,24 @@
+.container {
+  padding: 0;
+  margin: 12px 0 0;
+
+  .container--page & {
+    margin-top: 40px;
+  }
+}
+
+.title {
+  border-top: 1px solid var(--color-text-light);
+  font-size: 11px;
+  line-height: 1.2;
+  color: white;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+
+  span {
+    display: inline-block;
+    background-color: var(--color-text-light);
+    border-radius: 0 0 3px 3px;
+    padding: 4px 9px;
+  }
+}
