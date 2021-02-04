@@ -40,6 +40,8 @@ services:
   puppetplays-web:
     container_name: puppetplays-web
     image: intactiledesign/puppetplays-web:${PUPPETPLAYS_VERSION}
+    environment:
+      - NEXT_PUBLIC_API_URL
     ports:
       - "7000:3000"
     depends_on:
