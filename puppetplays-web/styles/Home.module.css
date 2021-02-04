@@ -11,7 +11,7 @@
 
 .worksHeaderPageCount {
   font-size: 14px;
-  color: var(--color-text-light);
+  color: var(--color-text-inactive);
 }
 
 .works {

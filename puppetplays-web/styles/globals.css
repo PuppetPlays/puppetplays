@@ -49,13 +49,28 @@
 }
 
 :root {
-  --color-brand-light: #644aff;
+  /* Colors scale */
+  --color-scale-7: #1a1b45;
+  --color-scale-6: #595b78;
+  --color-scale-5: #808097;
+  --color-scale-4: #b3b3c1;
+  --color-scale-3: #d9d9e0;
+  --color-scale-2: #f0f0f3;
+  --color-scale-1: #f7f7f9;
+
+  /* Colors to use in the app */
   --color-brand: #3228a7;
+  --color-brand-light: #644aff;
 
-  --color-bg-light: #f3f4f8;
+  --color-bg-depth-1: var(--color-scale-1);
+  --color-bg-depth-2: var(--color-scale-2);
+  --color-bg-depth-3: var(--color-scale-4);
+  
+  --color-text: var(--color-scale-7);
+  --color-text-subtle: var(--color-scale-6);
+  --color-text-inactive: var(--color-scale-5);
 
-  --color-text-light: #b3b3bb;
-  --color-text: #020437;
+  --color-border: var(--color-scale-3);
 }
 
 html,
@@ -84,7 +99,7 @@ a {
 
 .pipe-separator,
 .dash-separator {
-  color: var(--color-text-light);
+  color: var(--color-bg-depth-2);
   margin: 0 10px;
   font-style: 16px;
   font-weight: 400;

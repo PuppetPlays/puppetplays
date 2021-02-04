@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   padding: 22px 75px 26px 35px;
-  border-bottom: 1px solid rgba(79, 85, 115, 0.2);
+  border-bottom: 1px solid var(--color-border);
 
   &:global(.is-expanded) {
     padding-bottom: 52px;
@@ -52,7 +52,7 @@
   right: 22px;
   bottom: -19px;
   background-color: white;
-  border: 1px solid rgba(79, 85, 115, 0.2);
+  border: 1px solid var(--color-border);
   border-top: 0;
   stroke: var(--color-brand);
   border-radius: 0 0 6px 6px;
