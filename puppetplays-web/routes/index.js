@@ -65,9 +65,8 @@ export default function Home({ initialData }) {
         />
       </div>
       <div className={styles.works}>
-        {data.entries.map((work) => (
-          <WorkInList key={work.id} {...work} />
-        ))}
+        {data.entries &&
+          data.entries.map((work) => <WorkInList key={work.id} {...work} />)}
       </div>
     </Fragment>
   );
