@@ -84,12 +84,15 @@ function WorkInList({
                 info={<div dangerouslySetInnerHTML={{ __html: notice }} />}
               />
               <WorkInfo
-                label={
+                label={t('common:abstract')}
+                info={
                   <Fragment>
-                    {t('common:abstract')} {mainTheme}
+                    {mainTheme && (
+                      <h3 className={styles.mainTheme}>{mainTheme}</h3>
+                    )}
+                    <div dangerouslySetInnerHTML={{ __html: abstract }} />
                   </Fragment>
                 }
-                info={<div dangerouslySetInnerHTML={{ __html: abstract }} />}
               />
             </section>
             <WorkSection title={t('common:otherTitles')} show={otherTitles}>
