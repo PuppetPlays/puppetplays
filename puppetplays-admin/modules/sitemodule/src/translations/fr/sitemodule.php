@@ -11,7 +11,7 @@
 /**
  * Site en Translation
  *
- * Returns an array with the string to be translated (as passed to `Craft::t('site-module', '...')`) as
+ * Returns an array with the string to be translated (as passed to `Craft::t('sitemodule', '...')`) as
  * the key, and the translation as the value.
  *
  * http://www.yiiframework.com/doc-2.0/guide-tutorial-i18n.html
@@ -22,7 +22,7 @@
  */
 return [
     'Site module loaded' => 'Site module loaded',
-    'Hypotext entries' => 'Hypotext entries',
-    'Select one or several hypotext(s)' => 'Select one or several hypotext(s)',
-    'SupervisorWidget' => 'Supervisor',
+    'Hypotext entries' => 'Entrées Hypotextes',
+    'Select one or several hypotext(s)' => 'Sélectionner un ou plusieurs hypotexte(s)',
+    'SupervisorWidget' => 'Superviseur',
 ];

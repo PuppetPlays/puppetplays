@@ -43,7 +43,7 @@ class HypotextEntries extends BaseRelationField
     // Public Properties
     // =========================================================================
 
-    public $inputTemplate = 'site-module/_components/fields/HypotextEntries_input';
+    public $inputTemplate = 'sitemodule/_components/fields/HypotextEntries_input';
 
     // Static Methods
     // =========================================================================
@@ -61,7 +61,7 @@ class HypotextEntries extends BaseRelationField
      */
     public static function displayName(): string
     {
-        return Craft::t('site-module', 'Hypotext entries');
+        return Craft::t('sitemodule', 'Hypotext entries');
     }
 
     /**
@@ -69,7 +69,7 @@ class HypotextEntries extends BaseRelationField
      */
     public static function defaultSelectionLabel(): string
     {
-        return Craft::t('site-module', 'Select one or several hypotext(s)');
+        return Craft::t('sitemodule', 'Select one or several hypotext(s)');
     }
 
     /**

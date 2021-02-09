@@ -22,9 +22,9 @@ use craft\helpers\App;
 return [
     'id' => App::env('APP_ID') ?: 'CraftCMS',
     'modules' => [
-        'site-module' => [
+        'sitemodule' => [
             'class' => \modules\sitemodule\SiteModule::class,
         ],
     ],
-    'bootstrap' => ['site-module'],
+    'bootstrap' => ['sitemodule'],
 ];

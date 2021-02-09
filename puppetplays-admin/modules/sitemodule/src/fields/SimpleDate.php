@@ -41,7 +41,7 @@ class SimpleDate extends Date
      */
     public static function displayName(): string
     {
-        return Craft::t('site-module', 'Simple date');
+        return Craft::t('sitemodule', 'Simple date');
     }
 
     /**
@@ -66,7 +66,7 @@ class SimpleDate extends Date
         $input = '';
 
         if ($this->showDate) {
-            $input .= Craft::$app->getView()->renderTemplate('site-module/_components/fields/SimpleDate_input', $variables);
+            $input .= Craft::$app->getView()->renderTemplate('sitemodule/_components/fields/SimpleDate_input', $variables);
         }
 
         return $input;

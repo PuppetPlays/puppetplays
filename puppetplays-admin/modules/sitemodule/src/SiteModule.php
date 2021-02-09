@@ -22,6 +22,8 @@ use craft\i18n\PhpMessageSource;
 use craft\web\View;
 use craft\services\Fields;
 use craft\services\Dashboard;
+use craft\web\UrlManager;
+use craft\events\RegisterUrlRulesEvent;
 use craft\events\RegisterComponentTypesEvent;
 
 use yii\base\Event;
@@ -127,6 +129,15 @@ class SiteModule extends Module
             );
         }
 
+        // Register our site routes
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                $event->rules['auth/user'] = 'sitemodule/auth';
+            }
+        );
+
         // Register our fields
         Event::on(
             Fields::class,
@@ -166,7 +177,7 @@ class SiteModule extends Module
  */
         Craft::info(
             Craft::t(
-                'site-module',
+                'sitemodule',
                 '{name} module loaded',
                 ['name' => 'Site']
             ),

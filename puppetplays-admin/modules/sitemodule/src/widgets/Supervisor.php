@@ -45,7 +45,7 @@ class Supervisor extends Widget
      */
     public static function displayName(): string
     {
-        return Craft::t('site-module', 'SupervisorWidget');
+        return Craft::t('sitemodule', 'SupervisorWidget');
     }
 
     /**
@@ -77,7 +77,7 @@ class Supervisor extends Widget
         Craft::$app->getView()->registerAssetBundle(SupervisorWidgetAsset::class);
 
         return Craft::$app->getView()->renderTemplate(
-            'site-module/_components/widgets/Supervisor_body',
+            'sitemodule/_components/widgets/Supervisor_body',
             [
                 'supervisedEntries' => $supervisedEntries
             ]
