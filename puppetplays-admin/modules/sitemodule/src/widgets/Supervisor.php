@@ -69,10 +69,13 @@ class Supervisor extends Widget
         $supervisedUsersIds = \craft\elements\User::find()
             ->supervisor($currentUserId)
             ->ids();
-        $supervisedEntries = \craft\elements\Entry::find()
-            ->anyStatus()
-            ->authorId($supervisedUsersIds)
-            ->all();
+
+        
+        $supervisedEntries = count($supervisedUsersIds) > 0 ? 
+            \craft\elements\Entry::find()
+                ->anyStatus()
+                ->authorId($supervisedUsersIds)
+                ->all() : [];
 
         Craft::$app->getView()->registerAssetBundle(SupervisorWidgetAsset::class);
 

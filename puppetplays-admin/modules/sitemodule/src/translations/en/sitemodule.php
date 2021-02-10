@@ -25,4 +25,5 @@ return [
     'Hypotext entries' => 'Hypotext entries',
     'Select one or several hypotext(s)' => 'Select one or several hypotext(s)',
     'SupervisorWidget' => 'Supervisor',
+    'No entries to supervised' => 'No entries to supervised',
 ];
