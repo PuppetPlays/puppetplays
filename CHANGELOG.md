@@ -1,7 +1,21 @@
 
 # Changelog de la plateforme Puppetplays
 
-## Puppetplays 0.1.0-beta
+## Puppetplays 0.1.0-RC3
+
+Déployé le 10 février 2021
+
+### Nouveautés
+
+- Le site web "public" n'est maintenant accessible qu'aux utilisateurs connecté sur l'admin
+
+### Corrections
+
+- Le widget Supervisor n'affiche maintenant aucune entrée lorsque l'utilisateur n'a aucun contributeur associé
+
+----
+
+## Puppetplays 0.1.0-RC2
 
 Déployé le 5 février 2021
 
@@ -43,6 +57,6 @@ Déployé le 5 février 2021
 
 ---
 
-## Puppetplays 0.1.0-alpha
+## Puppetplays 0.1.0-RC1
 
 Déployé le 18 décembre 2020
