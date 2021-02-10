@@ -39,6 +39,10 @@ class AuthController extends Controller
    */
   public function actionIndex()
   {
+    Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');
+    Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Craft-Token');
+    Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Credentials', true);
+    
     $user = Craft::$app->user;
 
     if ($user) {

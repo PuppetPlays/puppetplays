@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const next = require('next');
 
 const port = parseInt(process.env.PORT, 10) || 7000;
@@ -17,18 +18,21 @@ app
   .prepare()
   .then(() => {
     server = express();
+    server.use(cookieParser());
 
-    // Set up the proxy.
-    if (dev) {
-      const { createProxyMiddleware } = require('http-proxy-middleware');
-      server.use(
-        '/api',
-        createProxyMiddleware({
-          target: process.env.NEXT_PUBLIC_API_URL,
-          changeOrigin: true,
-          secure: false,
-        }),
-      );
+    if (!dev) {
+      // Redirect to the work in progress page
+      // if the user is not logged in the Craft panel
+      server.use('*', (req, res, next) => {
+        if (
+          req.cookies.CraftSessionId &&
+          Object.keys(req.cookies).some((key) => key.endsWith('_identity'))
+        ) {
+          next();
+        } else {
+          res.send('Work in progress');
+        }
+      });
     }
 
     // Default catch-all handler to allow Next.js to handle all other routes

@@ -47,6 +47,8 @@ return [
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true,
+
+        'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
     ],
 
     // Staging environment settings

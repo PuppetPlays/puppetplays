@@ -77,6 +77,7 @@ jobs:
       ENVIRONMENT: staging
       SITE_URL: https://puppetplays.intactile.info
       CP_URL: https://admin.puppetplays.intactile.info
+      COOKIE_DOMAIN: .puppetplays.intactile.info
       NEXT_PUBLIC_API_URL: https://api.puppetplays.intactile.info
       DOCKER_HOST: tcp://104.236.6.205:2376
       DOCKER_TLS_VERIFY: 1
