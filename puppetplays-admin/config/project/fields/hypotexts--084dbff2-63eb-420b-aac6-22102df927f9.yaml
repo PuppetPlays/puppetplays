@@ -6,7 +6,7 @@ name: Hypotextes
 searchable: false
 settings:
   allowSelfRelations: false
-  inputTemplate: site-module/_components/fields/HypotextEntries_input
+  inputTemplate: sitemodule/_components/fields/HypotextEntries_input
   limit: ''
   localizeRelations: false
   selectionLabel: ''

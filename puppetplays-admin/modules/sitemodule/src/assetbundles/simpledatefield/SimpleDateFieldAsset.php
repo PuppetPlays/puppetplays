@@ -32,7 +32,7 @@ use craft\web\assets\cp\CpAsset;
  * @package   SiteModule
  * @since     1.0.0
  */
-class simpledateFieldAsset extends AssetBundle
+class SimpledateFieldAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
