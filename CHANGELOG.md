@@ -3,7 +3,7 @@
 
 ## Puppetplays 0.1.0-RC3
 
-Déployé le 10 février 2021
+Déployé le 15 février 2021
 
 ### Nouveautés
 
@@ -12,6 +12,7 @@ Déployé le 10 février 2021
 ### Corrections
 
 - Le widget Supervisor n'affiche maintenant aucune entrée lorsque l'utilisateur n'a aucun contributeur associé
+- Rennomage des labels liés aux “personnages” et aux “personnages originaux”
 
 ----
 
