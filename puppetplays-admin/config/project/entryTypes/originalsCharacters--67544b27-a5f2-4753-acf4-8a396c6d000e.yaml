@@ -11,7 +11,7 @@ fieldLayouts:
             disabled: false
             id: null
             instructions: ''
-            label: 'Nom d’origine'
+            label: 'Nom du personnage dans le texte'
             max: null
             min: null
             name: null

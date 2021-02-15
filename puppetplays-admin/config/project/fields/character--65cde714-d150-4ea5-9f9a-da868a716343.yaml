@@ -2,13 +2,13 @@ contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
 handle: character
 instructions: ''
-name: Personnage
+name: 'Nom du personnage pour l’indexation'
 searchable: false
 settings:
   allowSelfRelations: false
   limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un personnage'
+  selectionLabel: 'Sélectionner un personnage pour l’indexation'
   showSiteMenu: false
   source: null
   sources:

@@ -1,6 +1,6 @@
 enableVersioning: false
 handle: characters
-name: Personnages
+name: 'Nom du personnage pour l’indexation'
 previewTargets:
   -
     __assoc__:

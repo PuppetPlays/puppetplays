@@ -1,6 +1,6 @@
 enableVersioning: false
 handle: originalsCharacters
-name: 'Personnages originaux'
+name: 'Nom du personnage dans le texte'
 previewTargets:
   -
     __assoc__:
