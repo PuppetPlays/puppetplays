@@ -30,6 +30,7 @@ services:
       - ENVIRONMENT
       - SITE_URL
       - CP_URL
+      - COOKIE_DOMAIN
     ports:
       - "11000:8080"
     depends_on:
