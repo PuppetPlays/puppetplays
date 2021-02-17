@@ -34,7 +34,9 @@ return [
             '@web' => getenv('CP_URL'),
             '@livePreviewUrl' => getenv('SITE_URL'),
             '@siteUrl' => getenv('SITE_URL'),
-        ]
+        ],
+
+        'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
     ],
 
     // Dev environment settings
@@ -46,9 +48,7 @@ return [
         'enableGraphQlCaching' => false,
 
         // Prevent crawlers from indexing pages and following links
-        'disallowRobots' => true,
-
-        'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
+        'disallowRobots' => true
     ],
 
     // Staging environment settings
