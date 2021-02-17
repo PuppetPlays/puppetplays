@@ -3,6 +3,7 @@ import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
   getAllWorksQuery,
@@ -72,7 +73,9 @@ export default function Home({ initialData }) {
   );
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps({ locale, req, res }) {
+  useCraftAuthMiddleware(req, res);
+
   const data = await getAllWorks(locale);
   return {
     props: { initialData: data },

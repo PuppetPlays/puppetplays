@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
+import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { getWorkById } from 'lib/api';
 import WorkInPage from 'components/Work/WorkInPage';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
@@ -28,7 +29,9 @@ const Work = ({ initialData }) => {
 
 export default Work;
 
-export async function getServerSideProps({ locale, params, query }) {
+export async function getServerSideProps({ locale, req, res, params, query }) {
+  useCraftAuthMiddleware(req, res);
+
   const token = query && query.token;
   const data = await getWorkById(params.id, locale, token);
   return {

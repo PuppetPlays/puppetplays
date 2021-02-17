@@ -20,21 +20,6 @@ app
     server = express();
     server.use(cookieParser());
 
-    if (!dev) {
-      // Redirect to the work in progress page
-      // if the user is not logged in the Craft panel
-      server.use('*', (req, res, next) => {
-        if (
-          req.cookies.CraftSessionId &&
-          Object.keys(req.cookies).some((key) => key.endsWith('_identity'))
-        ) {
-          next();
-        } else {
-          res.send('Work in progress');
-        }
-      });
-    }
-
     // Default catch-all handler to allow Next.js to handle all other routes
     server.all('*', (req, res) => handle(req, res));
 
