@@ -12,6 +12,10 @@
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/jest-setup.js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "./"
     ]
   },
   "dependencies": {

@@ -59,7 +59,8 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         ... on persons_persons_Entry { 
          	firstName,
           lastName,
-          nickname
+          nickname,
+          commonName
         }
       },
       referenceDate,
@@ -141,6 +142,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
          	firstName,
           lastName,
           nickname,
+          commonName,
           birthDate,
           deathDate,
           places {
