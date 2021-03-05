@@ -1,6 +1,23 @@
 
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.1.0-RC4
+
+Déployé le 5 mars 2021
+
+### Améliorations
+
+- Normalisation de l’affichage d'un auteur sur le site (gestion du nom usuel et du surnom)
+- Affichage de la date et des auteurs d'un hypotexte après son titre sur le site
+- Au survol d’une œuvre dans la liste des œuvres du site le fond de celle-ci passe maintenant en gris clair
+
+### Corrections
+
+- Replacement des 2 couleurs principales sur le site par 2 nouvelles (tirant plus sur le bleu que le violet)
+- Replacement de “Techniques de manipulation” par “Techniques de jeu” sur le site
+
+---
+
 ## Puppetplays 0.1.0-RC3
 
 Déployé le 15 février 2021
