@@ -6,7 +6,13 @@
     "dev": "next-translate && NODE_ENV=development node server.js",
     "proxy-ssl": "npx local-ssl-proxy --source 7001 --target 7000",
     "build": "next-translate && next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --watch"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ]
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
@@ -19,7 +25,11 @@
     "swr": "^0.3.9"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
     "http-proxy-middleware": "^1.0.6",
+    "jest": "^26.6.3",
     "sass": "^1.29.0"
   }
 }
