@@ -11,6 +11,7 @@ import CommaSepList from '../CommaSepList';
 import AuthorCard from '../AuthorCard';
 import CompanyCard from '../CompanyCard';
 import styles from './workInList.module.scss';
+import Hypotext from 'components/Work/Hypotext';
 
 function WorkInPage({
   doi,
@@ -107,7 +108,12 @@ function WorkInPage({
           />
           <WorkInfo
             label={t('common:hypotexts')}
-            info={<CommaSepList list={hypotexts} listTransform={getTitle} />}
+            info={
+              <Fragment>
+                {hypotexts &&
+                  hypotexts.map((hypotext) => <Hypotext {...hypotext} />)}
+              </Fragment>
+            }
           />
           <WorkInfo label={t('common:writingDate')} info={writingDisplayDate} />
         </section>

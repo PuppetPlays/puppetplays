@@ -165,7 +165,21 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       mainTheme,
       abstract,
       hypotexts {
-        title
+        title,
+        ... on linkedWorks_linkedWorks_Entry {
+          date,
+          authors {
+            id,
+            title,
+            typeHandle,
+            ... on persons_persons_Entry { 
+              firstName,
+              lastName,
+              nickname,
+              commonName
+            }
+          }
+        }
       },
       otherTitles,
       firstPerformanceDate,
