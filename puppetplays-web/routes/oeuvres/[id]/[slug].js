@@ -2,11 +2,11 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { getWorkById } from 'lib/api';
-import WorkInPage from 'components/Work/WorkInPage';
+import Work from 'components/Work/Work';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import styles from 'styles/Work.module.css';
 
-const Work = ({ initialData }) => {
+const WorkPage = ({ initialData }) => {
   return (
     <Fragment>
       <Head>
@@ -21,13 +21,13 @@ const Work = ({ initialData }) => {
         />
       </div>
       <div className={styles.work}>
-        <WorkInPage {...initialData} />
+        <Work {...initialData} />
       </div>
     </Fragment>
   );
 };
 
-export default Work;
+export default WorkPage;
 
 export async function getServerSideProps({ locale, req, res, params, query }) {
   useCraftAuthMiddleware(req, res);

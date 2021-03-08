@@ -1,11 +1,48 @@
 import { render } from '@testing-library/react';
 import CommaSepList from './CommaSepList';
-import WorkAuthor from './Work/WorkAuthor';
+import Author from './Author';
+
+test('renders a list with on string', () => {
+  const list = ['keyword'];
+  const { container } = render(<CommaSepList list={list} />);
+  expect(container).toHaveTextContent('keyword');
+});
+
+test('renders a list of strings', () => {
+  const list = ['keyword', 'tag', 'thing'];
+  const { container } = render(<CommaSepList list={list} />);
+  expect(container).toHaveTextContent('keyword, tag, thing');
+});
+
+test('renders a list of strings with a custom separator', () => {
+  const list = ['keyword', 'tag', 'thing'];
+  const { container } = render(<CommaSepList list={list} separator=" / " />);
+  expect(container).toHaveTextContent('keyword / tag / thing');
+});
+
+test('renders a list of strings given a list of objects and a tranform function', () => {
+  const list = [{ title: 'keyword' }, { title: 'tag' }, { title: 'thing' }];
+  const { container } = render(
+    <CommaSepList list={list} listTransform={({ title }) => title} />,
+  );
+  expect(container).toHaveTextContent('keyword, tag, thing');
+});
+
+test('renders a list of Components', () => {
+  const authors = [
+    { firstName: 'Homére' },
+    { firstName: 'Raymond', lastName: 'Poisson' },
+  ];
+  const { container } = render(
+    <CommaSepList list={authors} itemComponent={Author} />,
+  );
+  expect(container).toHaveTextContent('Homére');
+});
 
 test('renders a list of one author', () => {
-  const author = { firstName: 'Homére', typeHandle: 'persons' };
+  const authors = [{ firstName: 'Homére', typeHandle: 'persons' }];
   const { container } = render(
-    <CommaSepList list={[author]} itemComponents={{ persons: WorkAuthor }} />,
+    <CommaSepList list={authors} itemComponents={{ persons: Author }} />,
   );
   expect(container).toHaveTextContent('Homére');
 });

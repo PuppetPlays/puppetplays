@@ -1,4 +1,4 @@
-import styles from './workSection.module.scss';
+import styles from './section.module.scss';
 
 function WorkSection({ title, children, show = true }) {
   if (!show) {

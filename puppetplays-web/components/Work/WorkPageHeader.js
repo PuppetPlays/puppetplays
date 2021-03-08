@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { Fragment, useCallback } from 'react';
-import WorkAuthor from './WorkAuthor';
-import WorkCompany from './WorkCompany';
-import CommaSepList from '../CommaSepList';
-import Place from '../Place';
+import Author from 'components/Author';
+import Company from 'components/Company';
+import CommaSepList from 'components/CommaSepList';
+import Place from 'components/Place';
 import styles from './workPageHeader.module.scss';
 
 const WorkPageHeader = ({ title, authors, writingPlace }) => {
@@ -35,18 +35,18 @@ const WorkPageHeader = ({ title, authors, writingPlace }) => {
           />
         </svg>
       </button>
-      <div>
+      <div data-testid="work-page-header-content">
         <span className={styles.title}>{title}</span>
-        {authors.length > 0 && (
+        {authors && authors.length > 0 && (
           <Fragment>
             <span className="dash-separator">-</span>
             <CommaSepList
               list={authors}
-              itemComponents={{ persons: WorkAuthor, companies: WorkCompany }}
+              itemComponents={{ persons: Author, companies: Company }}
             />
           </Fragment>
         )}
-        {writingPlace.length > 0 && (
+        {writingPlace && writingPlace.length > 0 && (
           <Fragment>
             <span className="dash-separator">-</span>
             <Place {...writingPlace[0]} />

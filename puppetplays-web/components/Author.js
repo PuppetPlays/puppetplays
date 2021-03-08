@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-function WorkAuthor({ commonName, firstName, lastName, nickname }) {
+function Author({ commonName, firstName, lastName, nickname }) {
   const { t } = useTranslation();
 
   return (
@@ -21,4 +21,4 @@ function WorkAuthor({ commonName, firstName, lastName, nickname }) {
   );
 }
 
-export default WorkAuthor;
+export default Author;

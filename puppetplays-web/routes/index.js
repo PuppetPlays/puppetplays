@@ -10,7 +10,7 @@ import {
   getAllWorks,
   WORKS_PAGE_SIZE,
 } from 'lib/api';
-import WorkInList from 'components/Work/WorkInList';
+import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
 import styles from 'styles/Home.module.css';
 
@@ -67,7 +67,7 @@ export default function Home({ initialData }) {
       </div>
       <div className={styles.works}>
         {data.entries &&
-          data.entries.map((work) => <WorkInList key={work.id} {...work} />)}
+          data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
       </div>
     </Fragment>
   );

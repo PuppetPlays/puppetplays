@@ -1,6 +1,6 @@
-import WorkAuthor from './WorkAuthor';
-import WorkCompany from './WorkCompany';
-import CommaSepList from '../CommaSepList';
+import Author from 'components/Author';
+import Company from 'components/Company';
+import CommaSepList from 'components/CommaSepList';
 import { Fragment } from 'react';
 
 function Hypotext({ title, date, authors }) {
@@ -11,7 +11,7 @@ function Hypotext({ title, date, authors }) {
       {authors && authors.length > 0 && (
         <CommaSepList
           list={authors}
-          itemComponents={{ persons: WorkAuthor, companies: WorkCompany }}
+          itemComponents={{ persons: Author, companies: Company }}
         />
       )}
       {date && ', '}

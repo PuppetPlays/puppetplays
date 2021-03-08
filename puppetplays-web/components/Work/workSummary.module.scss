@@ -9,13 +9,13 @@
     background-color: var(--color-bg-depth-1);
   }
 
+  &:global(.work-page-container):hover {
+    background-color: transparent;
+  }
+
   &:global(.is-expanded) {
     padding-bottom: 52px;
   }
-}
-
-.container--page {
-  border: 0;
 }
 
 .media {
@@ -84,13 +84,6 @@
   a {
     text-decoration: underline;
   }
-}
-
-.mainTheme {
-  font-size: 18px;
-  color: var(--color-text);
-  display: inline-block;
-  margin: 0 0 8px;
 }
 
 .translations {

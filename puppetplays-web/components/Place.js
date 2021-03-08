@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
+import { hasAtLeastOneItem } from 'lib/utils';
 
 const Place = ({ title, country }) => {
   return (
     <Fragment>
       <span>{title}</span>
-      {country.length > 0 && country[0].title !== title && (
+      {hasAtLeastOneItem(country) && country[0].title !== title && (
         <span>, {country[0].title}</span>
       )}
     </Fragment>

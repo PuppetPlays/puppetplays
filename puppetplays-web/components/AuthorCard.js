@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import WorkAuthor from './Work/WorkAuthor';
+import Author from 'components/Author';
 import styles from './authorCard.module.scss';
 
 function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
@@ -8,11 +8,7 @@ function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
   return (
     <section className={styles.container}>
       <div className={styles.title}>
-        <WorkAuthor
-          firstName={firstName}
-          lastName={lastName}
-          nickname={nickname}
-        />
+        <Author firstName={firstName} lastName={lastName} nickname={nickname} />
       </div>
       {(birthDate || deathDate) && (
         <div>

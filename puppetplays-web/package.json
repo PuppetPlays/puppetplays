@@ -16,13 +16,18 @@
     "moduleDirectories": [
       "node_modules",
       "./"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "next": "10.0.1",
     "next-translate": "^0.20.2",
+    "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-paginate": "^6.5.0",
