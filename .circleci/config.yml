@@ -93,6 +93,35 @@ jobs:
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
+  deploy_production:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD_PRODUCTION
+      POSTGRES_USER: puppetplays
+      POSTGRES_DB: puppetplays
+      PUPPETPLAYS_VERSION: << pipeline.git.revision >>
+      PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
+      SECURITY_KEY: $SECURITY_KEY_PRODUCTION
+      ENVIRONMENT: production
+      SITE_URL: https://puppetplays.eu
+      CP_URL: https://admin.puppetplays.eu
+      COOKIE_DOMAIN: .puppetplays.eu
+      NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
+      DOCKER_HOST: tcp://134.158.38.161:2376
+      DOCKER_TLS_VERIFY: 1
+    steps:
+      - checkout
+      - run: 
+          name: Deploy to production server
+          command: |
+            mkdir -p ~/.docker
+            echo -e "$DOCKER_PRODUCTION_TLS_CA" > ~/.docker/ca.pem
+            echo -e "$DOCKER_PRODUCTION_TLS_CERT" > ~/.docker/cert.pem
+            echo -e "$DOCKER_PRODUCTION_TLS_KEY" > ~/.docker/key.pem
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            cd ./puppetplays-deploy
+            ./deploy.sh
 
 orbs:
   node: circleci/node@4.1.0
@@ -112,6 +141,9 @@ workflows:
             - docker_web
             - docker_admin
       - deploy_staging:
+          requires:
+            - hold
+      - deploy_production:
           requires:
             - hold
   
