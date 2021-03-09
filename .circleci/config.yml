@@ -134,7 +134,13 @@ workflows:
           requires:
               - build_web
       - docker_admin
-      - hold:
+      - hold_staging_deploy:
+          type: approval
+          requires:
+            - build_web
+            - docker_web
+            - docker_admin
+      - hold_production_deploy:
           type: approval
           requires:
             - build_web
@@ -142,8 +148,8 @@ workflows:
             - docker_admin
       - deploy_staging:
           requires:
-            - hold
+            - hold_staging_deploy
       - deploy_production:
           requires:
-            - hold
+            - hold_production_deploy
   
