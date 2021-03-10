@@ -1,6 +1,16 @@
 
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.1.0
+
+Déployé le 10 mars 2021
+
+### Nouveauté
+
+- La plateforme est disponible sur le serveur HumaNum de production sur le domaine définitif puppetplays.eu 
+
+---
+
 ## Puppetplays 0.1.0-RC4
 
 Déployé le 5 mars 2021
