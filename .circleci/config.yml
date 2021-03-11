@@ -108,18 +108,15 @@ jobs:
       CP_URL: https://admin.puppetplays.eu
       COOKIE_DOMAIN: .puppetplays.eu
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
-      DOCKER_HOST: tcp://134.158.38.161:2376
-      DOCKER_TLS_VERIFY: 1
+      DOCKER_HOST: ssh://tpaillot:puppetplays.eu
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
       - run: 
           name: Deploy to production server
           command: |
-            mkdir -p ~/.docker
-            echo -e "$DOCKER_PRODUCTION_TLS_CA" > ~/.docker/ca.pem
-            echo -e "$DOCKER_PRODUCTION_TLS_CERT" > ~/.docker/cert.pem
-            echo -e "$DOCKER_PRODUCTION_TLS_KEY" > ~/.docker/key.pem
-            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
 
