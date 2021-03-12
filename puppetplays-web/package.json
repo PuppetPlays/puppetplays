@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next-translate && NODE_ENV=development node server.js",
     "proxy-ssl": "npx local-ssl-proxy --source 7001 --target 7000",
-    "build": "next-translate && next build",
     "start": "next start",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:ci": "jest --ci --coverage",
+    "build": "next-translate && next build",
+    "deploy": "npm run test:ci && npm run build"
   },
   "jest": {
     "setupFilesAfterEnv": [
