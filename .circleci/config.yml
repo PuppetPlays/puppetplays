@@ -123,7 +123,6 @@ jobs:
             echo -e "$DOCKER_PRODUCTION_TLS_CERT" > ~/.docker/cert.pem
             echo -e "$DOCKER_PRODUCTION_TLS_KEY" > ~/.docker/key.pem
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
-            docker info
             cd ./puppetplays-deploy
             ./deploy.sh
 
