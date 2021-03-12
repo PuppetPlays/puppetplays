@@ -109,6 +109,7 @@ jobs:
       COOKIE_DOMAIN: .puppetplays.eu
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
       DOCKER_HOST: ssh://tpaillot@134.158.38.161
+      COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
       - add_ssh_keys:
