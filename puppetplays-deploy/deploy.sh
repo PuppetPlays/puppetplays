@@ -59,8 +59,6 @@ main() {
   stopExistingContainers
   startContainer "postgres"
   startContainer "puppetplays-web"
-  startContainer "console"
-
 
   info "$PROJECT deployed"
   exit 0;
