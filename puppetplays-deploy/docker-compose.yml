@@ -37,7 +37,6 @@ services:
       - "postgres"
     volumes:
       - ${PUPPETPLAYS_HOST_DIR}/logs:/app/storage/logs
-      - ${PUPPETPLAYS_HOST_DIR}/cli/craft:/app/craft
     restart: always
 
   puppetplays-web:
@@ -50,13 +49,3 @@ services:
     depends_on:
       - "puppetplays-admin"
     restart: always
-
-  console:
-    container_name: console
-    image: craftcms/cli:7.4-dev
-    command: >
-      sh -c "wait-for-services.sh && ./craft project-config/apply && ./craft migrate/up"
-    depends_on:
-      - "puppetplays-admin"
-    volumes:
-      - ${PUPPETPLAYS_HOST_DIR}/cli:/app
