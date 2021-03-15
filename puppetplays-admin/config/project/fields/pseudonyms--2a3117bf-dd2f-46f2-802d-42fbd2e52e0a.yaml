@@ -1,18 +1,18 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: writingPlace
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+handle: pseudonyms
 instructions: ''
-name: 'Lieu d’écriture'
-searchable: true
+name: Pseudonyme(s)
+searchable: false
 settings:
   allowSelfRelations: false
-  limit: '1'
+  limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un lieu'
+  selectionLabel: 'Sélectionner un ou plusieurs pseudonyme(s)'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

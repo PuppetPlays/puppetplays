@@ -18,28 +18,28 @@ function WorkSummary({
   title,
   subtitle,
   translatedTitle,
-  dramaturgicTechniques,
+  dramaticDevices,
   keywords,
   authors,
-  referenceDate,
-  writingPlace,
+  mostRelevantDate,
+  compositionPlace,
   mainLanguage,
-  notice,
+  note,
   mainTheme,
   abstract,
   otherTitles,
   firstPerformancePlace,
   firstPerformanceDate,
-  firstPerformanceExtraInfo,
-  edition,
-  modernEditions,
+  firstPerformanceComplementaryInformation,
+  publication,
+  modernEdition,
   onlineEdition,
-  registers,
-  handlingTechniques,
+  literaryTones,
+  animationTechniques,
   audience,
   characters,
   actsCount,
-  pageCount,
+  pagesCount,
   formats,
   publicDomain,
   additionalLicenseInformation,
@@ -55,7 +55,7 @@ function WorkSummary({
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
-        {pageCount && <p>{t('common:pageCount', { count: pageCount })}</p>}
+        {pagesCount && <p>{t('common:pagesCount', { count: pagesCount })}</p>}
       </div>
       <div className={styles.body}>
         <WorkHeader
@@ -66,22 +66,22 @@ function WorkSummary({
           }
           subtitle={subtitle}
           authors={authors}
-          referenceDate={referenceDate}
-          writingPlace={writingPlace}
+          mostRelevantDate={mostRelevantDate}
+          compositionPlace={compositionPlace}
           translatedTitle={translatedTitle}
           mainLanguage={mainLanguage}
         />
 
         <section>
-          <Keywords keywords={dramaturgicTechniques} fill />
+          <Keywords keywords={dramaticDevices} fill />
           <Keywords keywords={keywords} />
         </section>
 
         {isExpanded && (
           <Fragment>
             <section>
-              <Info label={t('common:notice')} show={notice}>
-                <div dangerouslySetInnerHTML={{ __html: notice }} />
+              <Info label={t('common:note')} show={note}>
+                <div dangerouslySetInnerHTML={{ __html: note }} />
               </Info>
               <Abstract mainTheme={mainTheme} abstract={abstract} />
             </section>
@@ -92,18 +92,18 @@ function WorkSummary({
             <FirstPerformance
               place={firstPerformancePlace}
               date={firstPerformanceDate}
-              extraInfo={firstPerformanceExtraInfo}
+              extraInfo={firstPerformanceComplementaryInformation}
             />
 
             <Section
               title={t('common:publications')}
-              show={edition || modernEditions || onlineEdition}
+              show={publication || modernEdition || onlineEdition}
             >
-              <Info label={t('common:edition')} show={edition}>
-                <div dangerouslySetInnerHTML={{ __html: edition }} />
+              <Info label={t('common:publication')} show={publication}>
+                <div dangerouslySetInnerHTML={{ __html: publication }} />
               </Info>
-              <Info label={t('common:modernEditions')} show={modernEditions}>
-                <div dangerouslySetInnerHTML={{ __html: modernEditions }} />
+              <Info label={t('common:modernEdition')} show={modernEdition}>
+                <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
               </Info>
               {onlineEdition && (
                 <div className={styles.onlineEdition}>
@@ -121,14 +121,17 @@ function WorkSummary({
         )}
       </div>
       <section className={styles.extra}>
-        <Info label={t('common:registers')} show={hasAtLeastOneItem(registers)}>
-          <CommaSepList list={registers} listTransform={getTitle} />
+        <Info
+          label={t('common:literaryTones')}
+          show={hasAtLeastOneItem(literaryTones)}
+        >
+          <CommaSepList list={literaryTones} listTransform={getTitle} />
         </Info>
         <Info
-          label={t('common:handlingTechniques')}
-          show={hasAtLeastOneItem(handlingTechniques)}
+          label={t('common:animationTechniques')}
+          show={hasAtLeastOneItem(animationTechniques)}
         >
-          <CommaSepList list={handlingTechniques} listTransform={getTitle} />
+          <CommaSepList list={animationTechniques} listTransform={getTitle} />
         </Info>
         <Info label={t('common:audience')} show={hasAtLeastOneItem(audience)}>
           {getFirstItemTitle(audience)}
@@ -177,28 +180,28 @@ function WorkSummary({
 WorkSummary.defaultProps = {
   subtitle: null,
   translatedTitle: null,
-  dramaturgicTechniques: [],
+  dramaticDevices: [],
   keywords: [],
   authors: [],
-  referenceDate: null,
-  writingPlace: [],
+  mostRelevantDate: null,
+  compositionPlace: [],
   mainLanguage: [],
-  notice: null,
+  note: null,
   mainTheme: null,
   abstract: null,
   otherTitles: null,
   firstPerformancePlace: [],
   firstPerformanceDate: null,
-  firstPerformanceExtraInfo: null,
-  edition: null,
-  modernEditions: null,
+  firstPerformanceComplementaryInformation: null,
+  publication: null,
+  modernEdition: null,
   onlineEdition: null,
-  registers: [],
-  handlingTechniques: [],
+  literaryTones: [],
+  animationTechniques: [],
   audience: [],
   characters: [],
   actsCount: null,
-  pageCount: null,
+  pagesCount: null,
   formats: [],
   publicDomain: false,
   additionalLicenseInformation: null,
@@ -210,28 +213,28 @@ WorkSummary.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   translatedTitle: PropTypes.string,
-  dramaturgicTechniques: PropTypes.array,
+  dramaticDevices: PropTypes.array,
   keywords: PropTypes.array,
   authors: PropTypes.array,
-  referenceDate: PropTypes.string,
-  writingPlace: PropTypes.array,
+  mostRelevantDate: PropTypes.string,
+  compositionPlace: PropTypes.array,
   mainLanguage: PropTypes.array,
-  notice: PropTypes.string,
+  note: PropTypes.string,
   mainTheme: PropTypes.string,
   abstract: PropTypes.string,
   otherTitles: PropTypes.string,
   firstPerformancePlace: PropTypes.array,
   firstPerformanceDate: PropTypes.string,
-  firstPerformanceExtraInfo: PropTypes.string,
-  edition: PropTypes.string,
-  modernEditions: PropTypes.string,
+  firstPerformanceComplementaryInformation: PropTypes.string,
+  publication: PropTypes.string,
+  modernEdition: PropTypes.string,
   onlineEdition: PropTypes.string,
-  registers: PropTypes.array,
-  handlingTechniques: PropTypes.array,
+  literaryTones: PropTypes.array,
+  animationTechniques: PropTypes.array,
   audience: PropTypes.array,
   characters: PropTypes.array,
   actsCount: PropTypes.number,
-  pageCount: PropTypes.number,
+  pagesCount: PropTypes.number,
   formats: PropTypes.array,
   publicDomain: PropTypes.bool,
   additionalLicenseInformation: PropTypes.string,

@@ -5,7 +5,7 @@ import styles from './pagination.module.scss';
 function Pagination({
   initialPage = 0,
   forcePage = 0,
-  pageCount,
+  pagesCount,
   onPageChange,
 }) {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ function Pagination({
       previousLabel={t('common:previous')}
       nextLabel={t('common:next')}
       breakLabel="..."
-      pageCount={pageCount}
+      pagesCount={pagesCount}
       pageRangeDisplayed={5}
       marginPagesDisplayed={2}
       onPageChange={onPageChange}

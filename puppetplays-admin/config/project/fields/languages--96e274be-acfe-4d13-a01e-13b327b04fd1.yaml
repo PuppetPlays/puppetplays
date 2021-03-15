@@ -2,7 +2,7 @@ contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
 handle: languages
 instructions: ''
-name: Langues
+name: Langue(s)
 searchable: false
 settings:
   allowSelfRelations: false

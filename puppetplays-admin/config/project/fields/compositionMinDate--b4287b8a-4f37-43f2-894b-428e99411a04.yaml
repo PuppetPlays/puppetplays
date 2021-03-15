@@ -1,8 +1,8 @@
 contentColumnType: datetime
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: editionMinDate
+handle: compositionMinDate
 instructions: ''
-name: 'Date d’édition (min)'
+name: 'Date d’écriture (min)'
 searchable: false
 settings:
   max: null

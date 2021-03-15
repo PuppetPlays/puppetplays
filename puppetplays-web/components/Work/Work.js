@@ -26,35 +26,35 @@ function Work({
   genre,
   keywords,
   authors,
-  referenceDate,
-  writingDisplayDate,
-  writingPlace,
+  mostRelevantDate,
+  compositionDisplayDate,
+  compositionPlace,
   mainLanguage,
-  notice,
+  note,
   mainTheme,
   abstract,
   hypotexts,
   otherTitles,
   firstPerformancePlace,
   firstPerformanceDate,
-  firstPerformanceExtraInfo,
-  edition,
-  modernEditions,
+  firstPerformanceComplementaryInformation,
+  publication,
+  modernEdition,
   onlineEdition,
   translations,
-  transcriptors,
-  compilators,
-  registers,
-  handlingTechniques,
-  dramaturgicTechniques,
+  transcribers,
+  editors,
+  literaryTones,
+  animationTechniques,
+  dramaticDevices,
   audience,
   characters,
   actsCount,
-  pageCount,
+  pagesCount,
   formats,
   publicDomain,
   additionalLicenseInformation,
-  preservedIn,
+  conservationPlace,
 }) {
   const { t } = useTranslation();
 
@@ -64,7 +64,7 @@ function Work({
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
-        {pageCount && <p>{t('common:pageCount', { count: pageCount })}</p>}
+        {pagesCount && <p>{t('common:pagesCount', { count: pagesCount })}</p>}
 
         <Section title={t('common:theAuthors')} show={authors}>
           {authors.map(({ typeHandle, ...rest }) => {
@@ -81,8 +81,8 @@ function Work({
           title={title}
           subtitle={subtitle}
           authors={authors}
-          referenceDate={referenceDate}
-          writingPlace={writingPlace}
+          mostRelevantDate={mostRelevantDate}
+          compositionPlace={compositionPlace}
           translatedTitle={translatedTitle}
         />
 
@@ -99,13 +99,16 @@ function Work({
           <Info label={t('common:actsCount')} show={actsCount}>
             {actsCount}
           </Info>
-          <Info label={t('common:notice')} fill show={notice}>
-            <div dangerouslySetInnerHTML={{ __html: notice }} />
+          <Info label={t('common:note')} fill show={note}>
+            <div dangerouslySetInnerHTML={{ __html: note }} />
           </Info>
           <Abstract mainTheme={mainTheme} abstract={abstract} />
           <Hypotexts hypotexts={hypotexts} />
-          <Info label={t('common:writingDate')} show={writingDisplayDate}>
-            {writingDisplayDate}
+          <Info
+            label={t('common:compositionDate')}
+            show={compositionDisplayDate}
+          >
+            {compositionDisplayDate}
           </Info>
         </section>
 
@@ -116,30 +119,27 @@ function Work({
         <FirstPerformance
           place={firstPerformancePlace}
           date={firstPerformanceDate}
-          extraInfo={firstPerformanceExtraInfo}
+          extraInfo={firstPerformanceComplementaryInformation}
         />
 
         <Section
           title={t('common:publicationsAndTranslations')}
-          show={edition || modernEditions || onlineEdition}
+          show={publication || modernEdition || onlineEdition}
         >
-          <Info label={t('common:edition')} show={edition}>
-            <div dangerouslySetInnerHTML={{ __html: edition }} />
+          <Info label={t('common:publication')} show={publication}>
+            <div dangerouslySetInnerHTML={{ __html: publication }} />
           </Info>
           <Info
-            label={t('common:transcriptors')}
-            show={hasAtLeastOneItem(transcriptors)}
+            label={t('common:transcribers')}
+            show={hasAtLeastOneItem(transcribers)}
           >
-            <CommaSepList list={transcriptors} itemComponent={Author} />
+            <CommaSepList list={transcribers} itemComponent={Author} />
           </Info>
-          <Info
-            label={t('common:compilators')}
-            show={hasAtLeastOneItem(compilators)}
-          >
-            <CommaSepList list={compilators} itemComponent={Author} />
+          <Info label={t('common:editors')} show={hasAtLeastOneItem(editors)}>
+            <CommaSepList list={editors} itemComponent={Author} />
           </Info>
-          <Info label={t('common:modernEditions')} show={modernEditions}>
-            <div dangerouslySetInnerHTML={{ __html: modernEditions }} />
+          <Info label={t('common:modernEdition')} show={modernEdition}>
+            <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
           </Info>
           {onlineEdition && (
             <div className={styles.onlineEdition}>
@@ -166,13 +166,13 @@ function Work({
           </Info>
         </Section>
 
-        <Section title={t('common:preservedPlace')}>
-          {hasAtLeastOneItem(preservedIn) && (
+        <Section title={t('common:conservationPlace')}>
+          {hasAtLeastOneItem(conservationPlace) && (
             <Fragment>
-              <span>{getFirstItemTitle(preservedIn)}</span>
+              <span>{getFirstItemTitle(conservationPlace)}</span>
               <span> - </span>
-              {preservedIn[0].place.length > 0 && (
-                <Place {...preservedIn[0].place[0]} />
+              {conservationPlace[0].place.length > 0 && (
+                <Place {...conservationPlace[0].place[0]} />
               )}
             </Fragment>
           )}
@@ -188,16 +188,16 @@ function Work({
             {getFirstItemTitle(mainLanguage)}
           </Info>
           <Info
-            label={t('common:registers')}
-            show={hasAtLeastOneItem(registers)}
+            label={t('common:literaryTones')}
+            show={hasAtLeastOneItem(literaryTones)}
           >
-            <CommaSepList list={registers} listTransform={getTitle} />
+            <CommaSepList list={literaryTones} listTransform={getTitle} />
           </Info>
           <Info
-            label={t('common:handlingTechniques')}
-            show={hasAtLeastOneItem(handlingTechniques)}
+            label={t('common:animationTechniques')}
+            show={hasAtLeastOneItem(animationTechniques)}
           >
-            <CommaSepList list={handlingTechniques} listTransform={getTitle} />
+            <CommaSepList list={animationTechniques} listTransform={getTitle} />
           </Info>
           <Info label={t('common:audience')} show={hasAtLeastOneItem(audience)}>
             {getFirstItemTitle(audience)}
@@ -220,10 +220,10 @@ function Work({
         </Section>
 
         <Section
-          title={t('common:dramaturgicTechniques')}
-          show={hasAtLeastOneItem(dramaturgicTechniques)}
+          title={t('common:dramaticDevices')}
+          show={hasAtLeastOneItem(dramaticDevices)}
         >
-          <Keywords keywords={dramaturgicTechniques} fill />
+          <Keywords keywords={dramaticDevices} fill />
         </Section>
 
         <Section title={t('common:ids')} show={doi || viafId || arkId}>
@@ -251,34 +251,35 @@ Work.defaultProps = {
   genre: null,
   keywords: [],
   authors: [],
-  referenceDate: null,
-  writingPlace: [],
+  mostRelevantDate: null,
+  compositionDisplayDate: null,
+  compositionPlace: [],
   mainLanguage: [],
-  notice: null,
+  note: null,
   mainTheme: null,
   abstract: null,
   hypotexts: [],
   otherTitles: null,
   firstPerformancePlace: [],
   firstPerformanceDate: null,
-  firstPerformanceExtraInfo: null,
-  edition: null,
-  modernEditions: null,
+  firstPerformanceComplementaryInformation: null,
+  publication: null,
+  modernEdition: null,
   onlineEdition: null,
   translations: [],
-  transcriptors: [],
-  compilators: [],
-  registers: [],
-  handlingTechniques: [],
-  dramaturgicTechniques: [],
+  transcribers: [],
+  editors: [],
+  literaryTones: [],
+  animationTechniques: [],
+  dramaticDevices: [],
   audience: [],
   characters: [],
   actsCount: null,
-  pageCount: null,
+  pagesCount: null,
   formats: [],
   publicDomain: false,
   additionalLicenseInformation: null,
-  preservedIn: [],
+  conservationPlace: [],
 };
 
 Work.propTypes = {
@@ -291,34 +292,35 @@ Work.propTypes = {
   genre: PropTypes.string,
   keywords: PropTypes.array,
   authors: PropTypes.array,
-  referenceDate: PropTypes.string,
-  writingPlace: PropTypes.array,
+  mostRelevantDate: PropTypes.string,
+  compositionDisplayDate: PropTypes.string,
+  compositionPlace: PropTypes.array,
   mainLanguage: PropTypes.array,
-  notice: PropTypes.string,
+  note: PropTypes.string,
   mainTheme: PropTypes.string,
   abstract: PropTypes.string,
   hypotexts: PropTypes.array,
   otherTitles: PropTypes.string,
   firstPerformancePlace: PropTypes.array,
   firstPerformanceDate: PropTypes.string,
-  firstPerformanceExtraInfo: PropTypes.string,
-  edition: PropTypes.string,
-  modernEditions: PropTypes.string,
+  firstPerformanceComplementaryInformation: PropTypes.string,
+  publication: PropTypes.string,
+  modernEdition: PropTypes.string,
   onlineEdition: PropTypes.string,
   translations: PropTypes.array,
-  transcriptors: PropTypes.array,
-  compilators: PropTypes.array,
-  registers: PropTypes.array,
-  handlingTechniques: PropTypes.array,
-  dramaturgicTechniques: PropTypes.array,
+  transcribers: PropTypes.array,
+  editors: PropTypes.array,
+  literaryTones: PropTypes.array,
+  animationTechniques: PropTypes.array,
+  dramaticDevices: PropTypes.array,
   audience: PropTypes.array,
   characters: PropTypes.array,
   actsCount: PropTypes.number,
-  pageCount: PropTypes.number,
+  pagesCount: PropTypes.number,
   formats: PropTypes.array,
   publicDomain: PropTypes.bool,
   additionalLicenseInformation: PropTypes.string,
-  preservedIn: PropTypes.array,
+  conservationPlace: PropTypes.array,
 };
 
 export default Work;

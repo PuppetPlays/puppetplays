@@ -1,6 +1,6 @@
 enableVersioning: false
-handle: linkedWorks
-name: 'Œuvres liées'
+handle: dramaticDevices
+name: 'Procédés dramatiques'
 previewTargets:
   -
     __assoc__:
@@ -19,20 +19,20 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'oeuvres-liees/{slug}'
+    uriFormat: 'techniques-dramaturgiques/{slug}'
   4cda444a-a132-4409-8e1e-5205e6a53896:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'oeuvres-liees/{slug}'
+    uriFormat: 'techniques-dramaturgiques/{slug}'
   59986aab-e6c1-4cdf-a062-8db833d2b327:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'linked-works/{slug}'
+    uriFormat: 'dramaturgic-techniques/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'oeuvres-liees/{slug}'
+    uriFormat: 'techniques-dramaturgiques/{slug}'
 type: channel

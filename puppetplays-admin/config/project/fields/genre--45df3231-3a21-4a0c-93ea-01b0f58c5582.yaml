@@ -2,7 +2,7 @@ contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: genre
 instructions: ''
-name: 'Genre (défini par l’auteur)'
+name: 'Genre (indiqué par l’auteur)'
 searchable: false
 settings:
   byteLimit: null

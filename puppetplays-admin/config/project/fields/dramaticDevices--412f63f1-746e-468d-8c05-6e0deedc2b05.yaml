@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: registers
+handle: dramaticDevices
 instructions: ''
-name: Registres
-searchable: true
+name: 'Procédé(s) dramatique(s)'
+searchable: false
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs registre(s)'
+  selectionLabel: 'Sélectionner un ou plusieurs procédé(s) dramatique(s)'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c'
+    - 'section:ccd48638-f531-4032-a057-8af4f24cd187'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: dramaturgicTechniques
+handle: literaryTones
 instructions: ''
-name: 'Techniques dramaturgiques'
-searchable: false
+name: 'Registre(s) littéraire(s)'
+searchable: true
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner une ou plusieurs technique(s) dramaturgique(s)'
+  selectionLabel: 'Sélectionner un ou plusieurs registre(s)'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:ccd48638-f531-4032-a057-8af4f24cd187'
+    - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

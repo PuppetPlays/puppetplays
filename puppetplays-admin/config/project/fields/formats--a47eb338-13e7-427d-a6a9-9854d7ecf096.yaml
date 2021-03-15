@@ -2,7 +2,7 @@ contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: formats
 instructions: ''
-name: Formats
+name: Format(s)
 searchable: false
 settings:
   allowSelfRelations: false

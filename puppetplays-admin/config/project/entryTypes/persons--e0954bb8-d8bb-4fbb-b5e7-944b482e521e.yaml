@@ -85,7 +85,7 @@ fieldLayouts:
           -
             fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
             instructions: ''
-            label: 'Lieux de rattachement'
+            label: 'Lieu d''activité principal'
             required: ''
             tip: null
             type: craft\fieldlayoutelements\CustomField

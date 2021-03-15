@@ -1,6 +1,6 @@
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: referenceDate
+handle: mostRelevantDate
 instructions: ''
 name: 'Date de référence'
 searchable: false

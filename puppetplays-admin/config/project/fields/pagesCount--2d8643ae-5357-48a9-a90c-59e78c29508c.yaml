@@ -1,6 +1,6 @@
 contentColumnType: integer(10)
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: pageCount
+handle: pagesCount
 instructions: ''
 name: 'Nombre de pages'
 searchable: false

@@ -1,8 +1,8 @@
 contentColumnType: datetime
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: editionMaxDate
+handle: compositionMaxDate
 instructions: ''
-name: 'Date d’édition (max)'
+name: 'Date d’écriture (max)'
 searchable: false
 settings:
   max: null

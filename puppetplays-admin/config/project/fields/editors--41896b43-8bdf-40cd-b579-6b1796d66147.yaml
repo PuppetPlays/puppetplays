@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: preservedIn
+handle: editors
 instructions: ''
-name: 'Conservé à'
+name: Compilateur(s)
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: '1'
+  limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner une institution de conservation'
+  selectionLabel: 'Sélectionner un ou plusieurs compilateur(s)'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:492cc09a-052e-40d6-a33b-7ca74a831805'
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

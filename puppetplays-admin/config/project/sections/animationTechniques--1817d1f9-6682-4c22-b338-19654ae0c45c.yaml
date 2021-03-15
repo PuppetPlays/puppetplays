@@ -1,6 +1,6 @@
 enableVersioning: false
-handle: registers
-name: Registres
+handle: animationTechniques
+name: 'Techniques d’animation'
 previewTargets:
   -
     __assoc__:
@@ -19,7 +19,7 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'registres/{slug}'
+    uriFormat: 'techniques-d-animation/{slug}'
   4cda444a-a132-4409-8e1e-5205e6a53896:
     enabledByDefault: true
     hasUrls: false
@@ -29,7 +29,7 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'registers/{slug}'
+    uriFormat: 'animation-techniques/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824:
     enabledByDefault: true
     hasUrls: false

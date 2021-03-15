@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: compilators
+handle: compositionPlace
 instructions: ''
-name: Compilateurs
-searchable: false
+name: 'Lieu d’écriture'
+searchable: true
 settings:
   allowSelfRelations: false
-  limit: ''
+  limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs compilateur(s)'
+  selectionLabel: 'Sélectionner un lieu'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
+    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

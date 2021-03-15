@@ -2,7 +2,7 @@ contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: otherTitles
 instructions: ''
-name: 'Autres titres'
+name: 'Autre(s) titre(s)'
 searchable: false
 settings:
   byteLimit: null

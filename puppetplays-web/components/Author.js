@@ -1,22 +1,22 @@
 import { Fragment } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 
-function Author({ commonName, firstName, lastName, nickname }) {
+function Author({ usualName, firstName, lastName, nickname }) {
   const { t } = useTranslation();
 
   return (
     <Fragment>
-      {commonName && commonName}
-      {commonName && ' ('}
+      {usualName && usualName}
+      {usualName && ' ('}
       {firstName && firstName}
       {lastName && ' '}
       {lastName && lastName}
-      {!commonName && nickname && ' ('}
-      {nickname && commonName && (firstName || lastName) && ', '}
+      {!usualName && nickname && ' ('}
+      {nickname && usualName && (firstName || lastName) && ', '}
       {nickname && t('common:alias')}
       {nickname && ' '}
       {nickname && nickname}
-      {(commonName || nickname) && ')'}
+      {(usualName || nickname) && ')'}
     </Fragment>
   );
 }

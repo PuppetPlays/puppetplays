@@ -46,9 +46,9 @@ fieldLayouts:
             width: 50
         name: Contenu
         sortOrder: 1
-handle: linkedWorks
+handle: relatedWorks
 hasTitleField: true
-name: 'Œuvres liées'
+name: 'Œuvres corrélées'
 section: e2d5c38e-3607-4630-bddf-0875190aa133
 sortOrder: 1
 titleFormat: null

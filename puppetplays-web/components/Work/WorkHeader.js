@@ -10,8 +10,8 @@ const WorkHeader = ({
   title,
   subtitle,
   authors,
-  referenceDate,
-  writingPlace,
+  mostRelevantDate,
+  compositionPlace,
   mainLanguage,
 }) => {
   return (
@@ -27,17 +27,17 @@ const WorkHeader = ({
             />
           </span>
         )}
-        {referenceDate && (
+        {mostRelevantDate && (
           <Fragment>
             <span className="pipe-separator">|</span>
-            <span className={styles.date}>{referenceDate}</span>
+            <span className={styles.date}>{mostRelevantDate}</span>
           </Fragment>
         )}
-        {writingPlace && writingPlace.length > 0 && (
+        {compositionPlace && compositionPlace.length > 0 && (
           <Fragment>
             <span className="pipe-separator">|</span>
             <span className={styles.place}>
-              <Place {...writingPlace[0]} />
+              <Place {...compositionPlace[0]} />
             </span>
           </Fragment>
         )}

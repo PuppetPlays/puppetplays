@@ -21,8 +21,8 @@ test('renders the work header', () => {
       title="My work"
       subtitle="Is this a work?"
       authors={authors}
-      referenceDate="1926"
-      writingPlace={place}
+      mostRelevantDate="1926"
+      compositionPlace={place}
       mainLanguage={mainLanguage}
     />,
   );
@@ -52,7 +52,7 @@ test('renders the work header without a date', () => {
       title="My work"
       subtitle="Is this a work?"
       authors={authors}
-      writingPlace={place}
+      compositionPlace={place}
       mainLanguage={mainLanguage}
     />,
   );
@@ -70,7 +70,7 @@ test('renders the work header without a place', () => {
       title="My work"
       subtitle="Is this a work?"
       authors={authors}
-      referenceDate="1926"
+      mostRelevantDate="1926"
       mainLanguage={mainLanguage}
     />,
   );
@@ -86,8 +86,8 @@ test('renders the work header without a language', () => {
       title="My work"
       subtitle="Is this a work?"
       authors={authors}
-      referenceDate="1926"
-      writingPlace={place}
+      mostRelevantDate="1926"
+      compositionPlace={place}
     />,
   );
 
@@ -104,7 +104,7 @@ test('renders the work header without a language and a date', () => {
       title="My work"
       subtitle="Is this a work?"
       authors={authors}
-      writingPlace={place}
+      compositionPlace={place}
     />,
   );
 

@@ -6,7 +6,7 @@ import CommaSepList from 'components/CommaSepList';
 import Place from 'components/Place';
 import styles from './workPageHeader.module.scss';
 
-const WorkPageHeader = ({ title, authors, writingPlace }) => {
+const WorkPageHeader = ({ title, authors, compositionPlace }) => {
   const router = useRouter();
   const handleGoBack = useCallback(() => {
     router.back();
@@ -46,10 +46,10 @@ const WorkPageHeader = ({ title, authors, writingPlace }) => {
             />
           </Fragment>
         )}
-        {writingPlace && writingPlace.length > 0 && (
+        {compositionPlace && compositionPlace.length > 0 && (
           <Fragment>
             <span className="dash-separator">-</span>
-            <Place {...writingPlace[0]} />
+            <Place {...compositionPlace[0]} />
           </Fragment>
         )}
       </div>

@@ -1,14 +1,14 @@
 contentColumnType: string
-fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
-handle: aliases
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+handle: transcribers
 instructions: ''
-name: Alias
+name: Transcripteur(s)
 searchable: false
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs alias'
+  selectionLabel: 'Sélectionner un ou plusieurs transcripteur(s)'
   showSiteMenu: true
   source: null
   sources:

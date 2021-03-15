@@ -46,7 +46,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
     ... on works_works_Entry {
       translatedTitle,
       subtitle,
-      dramaturgicTechniques {
+      dramaticDevices {
         title
       },
       keywords {
@@ -60,17 +60,17 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
          	firstName,
           lastName,
           nickname,
-          commonName
+          usualName
         }
       },
-      referenceDate,
-      writingPlace {
+      mostRelevantDate,
+      compositionPlace {
         ...placeInfo
       },
       mainLanguage {
         title 
       },
-      notice,
+      note,
       mainTheme,
       abstract,
       otherTitles,
@@ -78,14 +78,14 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
       firstPerformancePlace {
         ...placeInfo
       },
-      firstPerformanceExtraInfo,
-      edition,
-      modernEditions,
+      firstPerformanceComplementaryInformation,
+      publication,
+      modernEdition,
       onlineEdition,
-      registers {
+      literaryTones {
         title
       },
-      handlingTechniques {
+      animationTechniques {
         title
       },
       audience {
@@ -95,7 +95,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         title
       },
       actsCount,
-      pageCount,
+      pagesCount,
       formats {
         title
       },
@@ -142,7 +142,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
          	firstName,
           lastName,
           nickname,
-          commonName,
+          usualName,
           birthDate,
           deathDate,
           places {
@@ -155,20 +155,20 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           },
         }
       },
-      referenceDate,
-      writingDisplayDate,
-      writingPlace {
+      mostRelevantDate,
+      compositionDisplayDate,
+      compositionPlace {
         ...placeInfo
       },
       mainLanguage {
         title 
       },
-      notice,
+      note,
       mainTheme,
       abstract,
       hypotexts {
         title,
-        ... on linkedWorks_linkedWorks_Entry {
+        ... on relatedWorks_relatedWorks_Entry {
           date,
           authors {
             id,
@@ -178,7 +178,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
               firstName,
               lastName,
               nickname,
-              commonName
+              usualName
             }
           }
         }
@@ -188,25 +188,27 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       firstPerformancePlace {
         ...placeInfo
       },
-      firstPerformanceExtraInfo,
-      edition,
-      transcriptors {
+      firstPerformanceComplementaryInformation,
+      publication,
+      transcribers {
         id,
         ... on persons_persons_Entry { 
          	firstName,
           lastName,
-          nickname
+          nickname,
+          usualName
         }
       },
-      compilators {
+      editors {
         id,
         ... on persons_persons_Entry { 
          	firstName,
           lastName,
-          nickname
+          nickname,
+          usualName
         }
       },
-      modernEditions,
+      modernEdition,
       onlineEdition,
       translations {
         ... on translations_translation_BlockType {
@@ -216,7 +218,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           }
         }
       },
-      preservedIn {
+      conservationPlace {
         title,
         ... on conservationInstitutions_conservationInstitutions_Entry {
           place {
@@ -224,10 +226,10 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           }
         }
       },
-      registers {
+      literaryTones {
         title
       },
-      handlingTechniques {
+      animationTechniques {
         title
       },
       audience {
@@ -236,11 +238,11 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       characters {
         title
       },
-      dramaturgicTechniques {
+      dramaticDevices {
         title
       },
       actsCount,
-      pageCount,
+      pagesCount,
       formats {
         title
       },

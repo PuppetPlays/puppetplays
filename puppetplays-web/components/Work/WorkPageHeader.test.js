@@ -15,7 +15,11 @@ const place = [
 
 test('renders the work page header', () => {
   render(
-    <WorkPageHeader title="My work" authors={authors} writingPlace={place} />,
+    <WorkPageHeader
+      title="My work"
+      authors={authors}
+      compositionPlace={place}
+    />,
   );
 
   const backButton = screen.getByRole('button');

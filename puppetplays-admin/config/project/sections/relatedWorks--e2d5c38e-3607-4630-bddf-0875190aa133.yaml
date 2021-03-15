@@ -1,6 +1,6 @@
 enableVersioning: false
-handle: dramaturgicTechniques
-name: 'Techniques dramaturgiques'
+handle: relatedWorks
+name: 'Œuvres corrélées'
 previewTargets:
   -
     __assoc__:
@@ -19,20 +19,20 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'oeuvres-correlees/{slug}'
   4cda444a-a132-4409-8e1e-5205e6a53896:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'oeuvres-correlees/{slug}'
   59986aab-e6c1-4cdf-a062-8db833d2b327:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'dramaturgic-techniques/{slug}'
+    uriFormat: 'related-works/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'oeuvres-correlees/{slug}'
 type: channel

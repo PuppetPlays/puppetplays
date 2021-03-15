@@ -1,18 +1,18 @@
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
-handle: transcriptors
+handle: conservationPlace
 instructions: ''
-name: Transcripteurs
+name: 'Lieu de conservation'
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  limit: '1'
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs transcripteur(s)'
+  selectionLabel: 'Sélectionner une institution de conservation'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
+    - 'section:492cc09a-052e-40d6-a33b-7ca74a831805'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
