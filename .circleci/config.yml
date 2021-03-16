@@ -66,7 +66,7 @@ jobs:
             docker push << pipeline.parameters.admin-image-release >>
   deploy_staging:
     machine:
-      image: ubuntu-2004:202010-01
+      image: ubuntu-2004:202101-01
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
       POSTGRES_USER: puppetplays
@@ -79,10 +79,13 @@ jobs:
       CP_URL: https://admin.staging.puppetplays.intactile.info
       COOKIE_DOMAIN: .staging.puppetplays.intactile.info
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
-      DOCKER_HOST: tcp://104.236.6.205:2376
-      DOCKER_TLS_VERIFY: 1
+      DOCKER_HOST: ssh://root@104.236.6.205
+      COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
       - run: 
           name: Deploy to staging server
           command: |
