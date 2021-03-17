@@ -83,9 +83,9 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
+            fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f
             instructions: ''
-            label: 'Lieu d''activité principal'
+            label: 'Lieu d’activité principal'
             required: ''
             tip: null
             type: craft\fieldlayoutelements\CustomField

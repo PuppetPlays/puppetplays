@@ -2,7 +2,7 @@ contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: directors
 instructions: ''
-name: 'Metteur(s) en scène'
+name: 'Metteur en scène'
 searchable: false
 settings:
   allowSelfRelations: false

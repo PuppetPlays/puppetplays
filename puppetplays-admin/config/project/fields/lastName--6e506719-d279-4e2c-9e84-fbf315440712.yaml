@@ -2,7 +2,7 @@ contentColumnType: text
 fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
 handle: lastName
 instructions: ''
-name: Nom
+name: 'Nom de famille'
 searchable: true
 settings:
   byteLimit: null
