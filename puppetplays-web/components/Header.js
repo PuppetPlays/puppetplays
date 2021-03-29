@@ -2,7 +2,7 @@ import Link from 'next/link';
 import LanguageSelector from './LanguageSelector';
 import styles from './header.module.scss';
 
-function Header({ translations }) {
+function Header() {
   return (
     <div className={styles.container}>
       <h1 className={styles.logo}>
@@ -12,7 +12,7 @@ function Header({ translations }) {
       </h1>
       <div className={styles.spacer} />
       <div className={styles.languageSelector}>
-        <LanguageSelector translations={translations} />
+        <LanguageSelector />
       </div>
     </div>
   );

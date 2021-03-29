@@ -1,47 +1,24 @@
 .container {
-  position: relative;
-
-  &:hover .menu {
-    display: block;
-  }
-}
-
-.icon {
-  display: block;
-  width: 24px;
-  height: 24px;
-  background: transparent url('/icon-lang.svg') left top no-repeat;
-}
-
-.menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  padding-top: 8px;
-}
-
-.menuContent {
-  padding: 14px 18px;
-  background-color: white;
-  box-shadow: 0 5px 10px rgba(30, 29, 35, 0.5);
-  border-radius: 7px;
-  margin: 0;
+  margin: 0 16px 0 0;
+  font-size: 14px;
   list-style-type: none;
 
   li {
+    text-transform: uppercase;
     display: inline-block;
-    margin-left: 4px;
     color: var(--color-text-inactive);
-    font-weight: 700;
 
     & + li {
-      margin-top: 7px;
+      margin-left: 14px;
     }
 
     &:hover,
     &:global(.is-current) {
       color: var(--color-text);
+    }
+
+    &:global(.is-current) {
+      font-weight: 700;
     }
   }
 }
