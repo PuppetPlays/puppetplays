@@ -124,7 +124,14 @@ function Work({
 
         <Section
           title={t('common:publicationsAndTranslations')}
-          show={publication || modernEdition || onlineEdition}
+          show={
+            publication ||
+            hasAtLeastOneItem(transcribers) ||
+            hasAtLeastOneItem(editors) ||
+            modernEdition ||
+            onlineEdition ||
+            hasAtLeastOneItem(translations)
+          }
         >
           <Info label={t('common:publication')} show={publication}>
             <div dangerouslySetInnerHTML={{ __html: publication }} />
