@@ -164,7 +164,12 @@ function Work({
                 {translations.map(
                   ({ bibliographicRecord, translationLanguage }) => (
                     <li key={translationLanguage}>
-                      {bibliographicRecord} ({translationLanguage[0].title})
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: bibliographicRecord,
+                        }}
+                      />{' '}
+                      ({translationLanguage[0].title})
                     </li>
                   ),
                 )}
