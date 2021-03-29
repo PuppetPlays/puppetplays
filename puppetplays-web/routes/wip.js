@@ -32,24 +32,27 @@ export default function Wip() {
             <button type="submit">{t('subscribe')}</button>
           </form>
 
-          <div className={styles.bottomBar}>
-            <ul className={styles.partners}>
-              {Object.keys(PARTNERS).map((partner) => (
+          <div className={styles.followProjectNews}>
+            <a
+              href={t('followProjectNewsUrl')}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {t('followProjectNewsLabel')}
+            </a>
+          </div>
+
+          <div className={styles.partnersBar}>
+            <h3 className={styles.partnersBarTitle}>{t('partners')}</h3>
+            <ul className={styles.partnersBarLogos}>
+              {Object.entries(PARTNERS).map(([partner, url]) => (
                 <li>
-                  <img width="75" height="75" src={`/logo-${partner}.png`} />
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <img height="40" src={`/logo-${partner}.png`} />
+                  </a>
                 </li>
               ))}
             </ul>
-            <div className={styles.scrollIndicator}>
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M3 6L8 11L13 6" />
-              </svg>
-            </div>
-            <div className={styles.imageCaption}>{t('imageCaption')}</div>
           </div>
         </header>
         <article className={styles.content}>
@@ -62,7 +65,7 @@ export default function Wip() {
                 <a
                   href="https://puppetplays.www.univ-montp3.fr"
                   target="_blank"
-                  rel="nofollow noreferrer"
+                  rel="noopener noreferrer"
                   className={styles.buttonLink}
                 >
                   {t('common:knowMore')}
@@ -70,7 +73,7 @@ export default function Wip() {
                 <a
                   href="https://puppetplays.www.univ-montp3.fr/fr/l%C3%A9quipe"
                   target="_blank"
-                  rel="nofollow noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {t('theTeam')}
                 </a>
@@ -110,17 +113,6 @@ export default function Wip() {
             </div>
           </div>
         </article>
-        <footer className={styles.footer}>
-          <ul className={styles.partners}>
-            {Object.entries(PARTNERS).map(([key, url]) => (
-              <li>
-                <a href={url} target="_blank" rel="nofollow noreferrer">
-                  <img height="65" src={`/logo-${key}-color.png`} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </footer>
       </div>
     </Fragment>
   );

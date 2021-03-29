@@ -12,7 +12,7 @@
   background-size: cover;
   color: white;
   position: relative;
-  padding: 30px 36px 16px;
+  padding: 30px 36px 42px;
   margin: 0 auto;
   text-align: center;
 
@@ -57,8 +57,10 @@
 .subscribeForm {
   max-width: 480px;
   border-radius: 9px;
+  box-shadow: 0 4px 19px rgba(0, 0, 0, 0.25);
   transition: box-shadow 0.25s ease-in-out;
   text-align: center;
+  margin-bottom: 30px;
 
   @media (min-width: 460px) {
     display: flex;
@@ -112,50 +114,64 @@
   }
 }
 
-.bottomBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 60px;
-  padding: 0 18px;
+.followProjectNews {
+  font-weight: 700;
+  margin-bottom: 80px;
 
-  @media (min-width: 560px) {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 36px;
+  a {
+    text-decoration: underline;
   }
 }
 
-.imageCaption {
-  font-size: 18px;
-}
-
-.scrollIndicator {
-  flex: 0 0 auto;
-  width: 50px;
-  height: 50px;
-  display: flex;
+.partnersBar {
+  display: inline-flex;
+  flex-direction: column;
+  width: auto;
   justify-content: center;
   align-items: center;
-  margin: 16px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 25px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: white;
 
-  svg {
-    width: 16px;
-    height: 16px;
-    stroke: white;
-    stroke-width: 2px;
+  @media (min-width: 566px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
-.partners {
+.partnersBarTitle {
+  color: var(--color-text-inactive);
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 400;
+
+  @media (min-width: 566px) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 30px 0 0;
+  }
+}
+
+.partnersBarLogos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
 
   li {
-    display: inline-block;
+    display: block;
+    margin-bottom: 8px;
+
+    @media (min-width: 452px) {
+      margin-bottom: 0;
+    }
+  }
+
+  li + li {
+    margin-left: 16px;
   }
 
   img {
@@ -282,18 +298,4 @@
   text-align: right;
   font-size: 12px;
   color: var(--color-text-inactive);
-}
-
-.footer {
-  background-color: var(--color-bg-depth-1);
-  padding: 80px 0;
-  text-align: center;
-
-  .partners {
-    mix-blend-mode: multiply;
-
-    li {
-      margin: 0 25px;
-    }
-  }
 }
