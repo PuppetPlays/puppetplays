@@ -26,4 +26,6 @@ return [
     'Select one or several hypotext(s)' => 'Sélectionner un ou plusieurs hypotexte(s)',
     'SupervisorWidget' => 'Superviseur',
     'No entries to supervised' => 'Aucune entrée à superviser',
+    'Subscription confirmed' => 'Inscription confirmée',
+    'Subscription confirmed content' => 'Inscription confirmée contenu du mail',
 ];

@@ -135,6 +135,7 @@ class SiteModule extends Module
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
             function (RegisterUrlRulesEvent $event) {
                 $event->rules['auth/user'] = 'sitemodule/auth';
+                $event->rules['newsletter/subscribe'] = 'sitemodule/newsletter/subscribe';
             }
         );
 
