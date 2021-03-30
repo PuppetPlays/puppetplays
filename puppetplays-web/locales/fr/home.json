@@ -5,6 +5,8 @@
   "subscribeMessage": "Abonnez-vous à notre newsletter mensuelle et soyez informé(e) de l'ouverture de la plateforme",
   "emailPlaceholder": "Votre adresse email",
   "subscribe": "s’inscrire",
+  "subscriptionSuccessful": "Merci de vous être inscrit à notre newsletter",
+  "subscriptionError": "Nous avons rencontré un problème lors de votre inscription à notre newsletter",
   "followProjectNewsLabel": "Suivez l’actualité du projet",
   "followProjectNewsUrl": "https://puppetplays.www.univ-montp3.fr/fr",
   "partners": "Partenaires",

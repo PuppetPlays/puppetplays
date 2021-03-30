@@ -2,6 +2,7 @@
 }
 
 .header {
+  position: relative;
   background: var(--color-brand);
   background: linear-gradient(
       90deg,
@@ -19,6 +20,12 @@
   > * {
     margin: 0 auto;
   }
+}
+
+.LanguageSelector {
+  position: absolute;
+  top: 18px;
+  right: 36px;
 }
 
 .title {
@@ -104,6 +111,7 @@
     width: 100%;
 
     @media (min-width: 460px) {
+      width: auto;
       font-size: 18px;
       border-radius: 0 7px 7px 0;
     }
@@ -112,6 +120,21 @@
       background-color: var(--color-brand-light);
     }
   }
+}
+
+.formMessage,
+.formMessageError {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: var(--color-brand-light);
+  color: white;
+  padding: 10px 16px;
+  margin: 0 0 24px;
+  max-width: 360px;
+}
+
+.formMessageError {
+  background-color: #db331c;
 }
 
 .followProjectNews {

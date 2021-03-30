@@ -22,3 +22,14 @@
     }
   }
 }
+
+.container--inverse {
+  li {
+    color: var(--color-scale-3);
+
+    &:hover,
+    &:global(.is-current) {
+      color: var(--color-scale-1);
+    }
+  }
+}

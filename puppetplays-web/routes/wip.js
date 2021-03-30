@@ -1,7 +1,9 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import styles from 'styles/Wip.module.scss';
+import LanguageSelector from 'components/LanguageSelector';
 
 const PARTNERS = {
   ue: 'https://europa.eu/european-union',
@@ -12,7 +14,50 @@ const PARTNERS = {
 };
 
 export default function Wip() {
+  const { locale } = useRouter();
   const { t } = useTranslation('home');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+  const [isSubmitError, setIsSubmitError] = useState(false);
+
+  const handleFormSubmissionError = (response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response.json();
+  };
+  console.log(locale);
+  const hideMessage = (cb) => setTimeout(() => cb(false), 6000);
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    const target = evt.target;
+    setIsSubmitting(true);
+
+    fetch(target.action, {
+      method: target.method,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: target.querySelector('[name="email"]').value,
+        locale,
+      }),
+    })
+      .then(handleFormSubmissionError)
+      .then(() => {
+        setIsSubmitting(false);
+        setIsSubmitSuccessful(true);
+        target.reset();
+        hideMessage(setIsSubmitSuccessful);
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        setIsSubmitError(true);
+        hideMessage(setIsSubmitError);
+      });
+  };
 
   return (
     <Fragment>
@@ -22,15 +67,41 @@ export default function Wip() {
 
       <div className={styles.container}>
         <header className={styles.header}>
-          <img src="/logo-stamp-white.png" width="177" height="188" />
+          <img
+            src="/logo-stamp-white.png"
+            width="177"
+            height="188"
+            alt="Puppetplays - A Research Program Founded by the European Union"
+          />
           <h1 className={styles.title}>{t('title')}</h1>
           <h2 className={styles.subtitle}>{t('subtitle')}</h2>
           <div className={styles.releaseDate}>{t('releaseDate')}</div>
           <div className={styles.subscribeLabel}>{t('subscribeMessage')}</div>
-          <form className={styles.subscribeForm}>
-            <input name="email" placeholder={t('emailPlaceholder')} />
-            <button type="submit">{t('subscribe')}</button>
+          <div className={styles.LanguageSelector}>
+            <LanguageSelector inverse />
+          </div>
+          <form
+            className={styles.subscribeForm}
+            onSubmit={handleFormSubmit}
+            action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
+            method="POST"
+          >
+            <input name="email" required placeholder={t('emailPlaceholder')} />
+            <button type="submit" disabled={isSubmitting}>
+              {t('subscribe')}
+            </button>
           </form>
+
+          {isSubmitSuccessful && (
+            <div className={styles.formMessage}>
+              {t('subscriptionSuccessful')}
+            </div>
+          )}
+          {isSubmitError && (
+            <div className={styles.formMessageError}>
+              {t('subscriptionError')}
+            </div>
+          )}
 
           <div className={styles.followProjectNews}>
             <a
@@ -46,7 +117,7 @@ export default function Wip() {
             <h3 className={styles.partnersBarTitle}>{t('partners')}</h3>
             <ul className={styles.partnersBarLogos}>
               {Object.entries(PARTNERS).map(([partner, url]) => (
-                <li>
+                <li key={partner}>
                   <a href={url} target="_blank" rel="noopener noreferrer">
                     <img height="40" src={`/logo-${partner}.png`} />
                   </a>
