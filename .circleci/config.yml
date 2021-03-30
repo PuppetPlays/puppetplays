@@ -78,6 +78,9 @@ jobs:
       SITE_URL: https://staging.puppetplays.intactile.info
       CP_URL: https://admin.staging.puppetplays.intactile.info
       COOKIE_DOMAIN: .staging.puppetplays.intactile.info
+      EMAIL_HOSTNAME: 0.0.0.0
+      EMAIL_PORT: 1025
+      EMAIL_SENDER: no-reply@intactile.info
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
       DOCKER_HOST: ssh://root@104.236.6.205
       COMPOSE_PARAMIKO_SSH: 1
@@ -110,6 +113,9 @@ jobs:
       SITE_URL: https://puppetplays.eu
       CP_URL: https://admin.puppetplays.eu
       COOKIE_DOMAIN: .puppetplays.eu
+      EMAIL_HOSTNAME: relay.huma-num.fr
+      EMAIL_PORT: 25
+      EMAIL_SENDER: no-reply@puppetplays.eu
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
       DOCKER_HOST: ssh://tpaillot@134.158.38.161
       COMPOSE_PARAMIKO_SSH: 1

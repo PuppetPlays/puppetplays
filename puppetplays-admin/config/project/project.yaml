@@ -1,12 +1,18 @@
-dateModified: 1617046873
+dateModified: 1617048131
 email:
-  fromEmail: no-reply@puppetplays.fr
+  fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
   replyToEmail: null
   template: ''
   transportSettings:
-    command: ''
-  transportType: craft\mail\transportadapters\Sendmail
+    encryptionMethod: ''
+    host: $EMAIL_HOSTNAME
+    password: ''
+    port: $EMAIL_PORT
+    timeout: '10'
+    useAuthentication: ''
+    username: ''
+  transportType: craft\mail\transportadapters\Smtp
 plugins:
   element-api:
     edition: standard
