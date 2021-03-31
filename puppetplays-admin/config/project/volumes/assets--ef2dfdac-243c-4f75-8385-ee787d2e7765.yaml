@@ -1,5 +1,5 @@
 fieldLayouts:
-  dde1177f-2838-4270-a988-0bf638a22da1:
+  43ae3ef8-0740-49e6-8725-287f67c27567:
     tabs:
       -
         elements:
@@ -10,8 +10,8 @@ fieldLayouts:
             class: null
             disabled: false
             id: null
-            instructions: ''
-            label: 'Nom du personnage pour l’indexation'
+            instructions: null
+            label: null
             max: null
             min: null
             name: null
@@ -23,11 +23,11 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\EntryTitleField
+            type: craft\fieldlayoutelements\TitleField
             warning: null
             width: 100
           -
-            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f
+            fieldUid: bce57552-4cce-4dbb-aa89-398015020fda
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6
+            fieldUid: a2007d0c-252f-4367-8e53-da567f836922
             instructions: null
             label: null
             required: false
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8
+            fieldUid: f6e8e9a4-1227-4191-96bb-cabd19b3e192
             instructions: null
             label: null
             required: false
@@ -53,13 +53,13 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
-        name: Contenu
+        name: Content
         sortOrder: 1
-handle: characters
-hasTitleField: true
-name: Personnages
-section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5
+handle: assets
+hasUrls: true
+name: Assets
+settings:
+  path: '@assetBasePath'
 sortOrder: 1
-titleFormat: null
-titleTranslationKeyFormat: null
-titleTranslationMethod: site
+type: craft\volumes\Local
+url: '@assetBaseUrl'

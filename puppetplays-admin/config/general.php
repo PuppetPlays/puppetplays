@@ -32,8 +32,11 @@ return [
 
         'aliases' => [
             '@web' => getenv('CP_URL'),
+            '@webroot' => dirname(__DIR__) . '/web',
             '@livePreviewUrl' => getenv('SITE_URL'),
             '@siteUrl' => getenv('SITE_URL'),
+            '@assetBaseUrl' => '@web/assets',
+            '@assetBasePath' => '@webroot/assets',
         ],
 
         'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
