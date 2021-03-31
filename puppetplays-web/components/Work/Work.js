@@ -259,7 +259,7 @@ function Work({
 }
 
 Work.defaultProps = {
-  mainImage: null,
+  mainImage: [],
   doi: null,
   viafId: null,
   arkId: null,
@@ -302,7 +302,7 @@ Work.defaultProps = {
 
 Work.propTypes = {
   title: PropTypes.string.isRequired,
-  mainImage: PropTypes.object,
+  mainImage: PropTypes.array,
   doi: PropTypes.string,
   viafId: PropTypes.string,
   arkId: PropTypes.string,

@@ -183,7 +183,7 @@ function WorkSummary({
 
 WorkSummary.defaultProps = {
   subtitle: null,
-  mainImage: null,
+  mainImage: [],
   translatedTitle: null,
   dramaticDevices: [],
   keywords: [],
@@ -218,7 +218,7 @@ WorkSummary.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  mainImage: PropTypes.object,
+  mainImage: PropTypes.array,
   translatedTitle: PropTypes.string,
   dramaticDevices: PropTypes.array,
   keywords: PropTypes.array,
