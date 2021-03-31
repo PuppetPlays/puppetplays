@@ -14,6 +14,7 @@ import WorkHeader from './WorkHeader';
 import Abstract from './Abstract';
 import Hypotexts from './Hypotexts';
 import FirstPerformance from './FirstPerformance';
+import CoverImage from './CoverImage';
 import styles from './workSummary.module.scss';
 
 function Work({
@@ -23,10 +24,12 @@ function Work({
   title,
   subtitle,
   translatedTitle,
+  mainImage,
   genre,
   keywords,
   authors,
   mostRelevantDate,
+  compositionMinDate,
   compositionDisplayDate,
   compositionPlace,
   mainLanguage,
@@ -61,6 +64,7 @@ function Work({
   return (
     <article className={`${styles.container} work-page-container`}>
       <div className={styles.media}>
+        <CoverImage image={mainImage} year={compositionMinDate} height={340} />
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
@@ -255,6 +259,7 @@ function Work({
 }
 
 Work.defaultProps = {
+  mainImage: null,
   doi: null,
   viafId: null,
   arkId: null,
@@ -264,6 +269,7 @@ Work.defaultProps = {
   keywords: [],
   authors: [],
   mostRelevantDate: null,
+  compositionMinDate: null,
   compositionDisplayDate: null,
   compositionPlace: [],
   mainLanguage: [],
@@ -296,6 +302,7 @@ Work.defaultProps = {
 
 Work.propTypes = {
   title: PropTypes.string.isRequired,
+  mainImage: PropTypes.object,
   doi: PropTypes.string,
   viafId: PropTypes.string,
   arkId: PropTypes.string,
@@ -305,6 +312,7 @@ Work.propTypes = {
   keywords: PropTypes.array,
   authors: PropTypes.array,
   mostRelevantDate: PropTypes.string,
+  compositionMinDate: PropTypes.number,
   compositionDisplayDate: PropTypes.string,
   compositionPlace: PropTypes.array,
   mainLanguage: PropTypes.array,

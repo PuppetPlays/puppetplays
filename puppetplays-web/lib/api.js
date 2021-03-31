@@ -36,8 +36,20 @@ fragment placeInfo on EntryInterface {
 }
 `;
 
+export const assetFragment = `
+fragment assetFragment on AssetInterface {
+  url,
+  ... on assets_Asset {
+    alt,
+    caption,
+    copyright
+  }
+}
+`;
+
 export const getAllWorksQuery = `
 ${placeInfoFragment}
+${assetFragment}
 query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
   entries(section: "works", site: $locale, offset: $offset, limit: $limit) {
     id,
@@ -46,6 +58,9 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
     ... on works_works_Entry {
       translatedTitle,
       subtitle,
+      mainImage {
+        ...assetFragment
+      },
       dramaticDevices {
         title
       },
@@ -64,6 +79,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         }
       },
       mostRelevantDate,
+      compositionMinDate,
       compositionPlace {
         ...placeInfo
       },
@@ -119,6 +135,7 @@ export async function getAllWorks(locale, offset = 0) {
 
 export const getWorkByIdQuery = `
 ${placeInfoFragment}
+${assetFragment}
 query getWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
@@ -131,6 +148,9 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       translatedTitle,
       subtitle,
       genre,
+      mainImage {
+        ...assetFragment
+      },
       keywords {
         title
       },
@@ -157,6 +177,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       },
       mostRelevantDate,
       compositionDisplayDate,
+      compositionMinDate,
       compositionPlace {
         ...placeInfo
       },

@@ -10,6 +10,7 @@ import Info from 'components/Info';
 import Abstract from './Abstract';
 import WorkHeader from './WorkHeader';
 import FirstPerformance from './FirstPerformance';
+import CoverImage from './CoverImage';
 import styles from './workSummary.module.scss';
 
 function WorkSummary({
@@ -19,9 +20,11 @@ function WorkSummary({
   subtitle,
   translatedTitle,
   dramaticDevices,
+  mainImage,
   keywords,
   authors,
   mostRelevantDate,
+  compositionMinDate,
   compositionPlace,
   mainLanguage,
   note,
@@ -52,6 +55,7 @@ function WorkSummary({
       className={`${styles.container} ${isExpanded ? 'is-expanded' : ''}`}
     >
       <div className={styles.media}>
+        <CoverImage image={mainImage} year={compositionMinDate} height={150} />
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
@@ -179,11 +183,13 @@ function WorkSummary({
 
 WorkSummary.defaultProps = {
   subtitle: null,
+  mainImage: null,
   translatedTitle: null,
   dramaticDevices: [],
   keywords: [],
   authors: [],
   mostRelevantDate: null,
+  compositionMinDate: null,
   compositionPlace: [],
   mainLanguage: [],
   note: null,
@@ -212,11 +218,13 @@ WorkSummary.propTypes = {
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  mainImage: PropTypes.object,
   translatedTitle: PropTypes.string,
   dramaticDevices: PropTypes.array,
   keywords: PropTypes.array,
   authors: PropTypes.array,
   mostRelevantDate: PropTypes.string,
+  compositionMinDate: PropTypes.number,
   compositionPlace: PropTypes.array,
   mainLanguage: PropTypes.array,
   note: PropTypes.string,
