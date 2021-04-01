@@ -27,9 +27,9 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f
+            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
             instructions: ''
-            label: 'Lieu d’activité principal'
+            label: 'Principaux lieux d’activité'
             required: ''
             tip: null
             type: craft\fieldlayoutelements\CustomField

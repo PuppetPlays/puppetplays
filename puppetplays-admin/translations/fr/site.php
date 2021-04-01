@@ -67,6 +67,7 @@ return array(
   'Œuvres corrélées' => 'Œuvres corrélées',
   'Oui' => 'Oui',
   'Pays' => 'Pays',
+  'Principaux lieux d’activité' => 'Principaux lieux d’activité',
   'Nom du personnage pour l’indexation' => 'Nom du personnage pour l’indexation',
   'Nom du personnage dans le texte' => 'Nom du personnage dans le texte',
   'Personnages' => 'Personnages',

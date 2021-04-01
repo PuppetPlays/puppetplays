@@ -67,6 +67,7 @@ return array(
   'Œuvres corrélées' => 'Verknüpfte Werke',
   'Oui' => 'Ja',
   'Pays' => 'Land',
+  'Principaux lieux d’activité' => 'Main places of activity',
   'Nom du personnage pour l’indexation' => 'Name der Person (für das Personenverzeichnis)',
   'Nom du personnage dans le texte' => 'Name der Person im Textlaut',
   'Personnages' => 'Personen',

@@ -169,12 +169,12 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           usualName,
           birthDate,
           deathDate,
-          place {
+          places {
             ...placeInfo
           },
         },
         ... on persons_companies_Entry {
-          place {
+          places {
             ...placeInfo
           },
         }

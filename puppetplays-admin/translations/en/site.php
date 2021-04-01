@@ -67,6 +67,7 @@ return array(
   'Œuvres corrélées' => 'Related works',
   'Oui' => 'Yes',
   'Pays' => 'Country',
+  'Principaux lieux d’activité' => 'Main places of activity',
   'Nom du personnage pour l’indexation' => 'Name of the character for indexing',
   'Nom du personnage dans le texte' => 'Name of the character in the play',
   'Personnages' => 'Characters',
