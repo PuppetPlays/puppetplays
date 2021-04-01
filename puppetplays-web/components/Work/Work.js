@@ -194,9 +194,11 @@ function Work({
           {hasAtLeastOneItem(conservationPlace) && (
             <Fragment>
               <span>{getFirstItemTitle(conservationPlace)}</span>
-              <span> - </span>
               {conservationPlace[0].place.length > 0 && (
-                <Place {...conservationPlace[0].place[0]} />
+                <Fragment>
+                  <span> - </span>
+                  <Place {...conservationPlace[0].place[0]} />
+                </Fragment>
               )}
             </Fragment>
           )}
