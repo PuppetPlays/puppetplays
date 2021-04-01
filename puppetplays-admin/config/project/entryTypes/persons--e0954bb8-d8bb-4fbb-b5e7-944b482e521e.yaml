@@ -189,6 +189,6 @@ hasTitleField: false
 name: Personnes
 section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
 sortOrder: 1
-titleFormat: '{firstName} {lastName}'
+titleFormat: '{% include ''_formats/persons-title'' %}'
 titleTranslationKeyFormat: null
 titleTranslationMethod: none
