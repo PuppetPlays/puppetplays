@@ -1,14 +1,14 @@
-import { Fragment } from 'react';
 import Head from 'next/head';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { getWorkById } from 'lib/api';
+import Layout from 'components/Layout';
 import Work from 'components/Work/Work';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import styles from 'styles/Work.module.css';
 
 const WorkPage = ({ initialData }) => {
   return (
-    <Fragment>
+    <Layout>
       <Head>
         <title>{initialData.title} | Puppetplays</title>
       </Head>
@@ -23,7 +23,7 @@ const WorkPage = ({ initialData }) => {
       <div className={styles.work}>
         <Work {...initialData} />
       </div>
-    </Fragment>
+    </Layout>
   );
 };
 

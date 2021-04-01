@@ -23,6 +23,8 @@ function Pagination({
       forcePage={forcePage}
       containerClassName={styles.container}
       activeClassName="is-current"
+      previousClassName={pageCount === 1 && 'is-hidden'}
+      nextClassName={pageCount === 1 && 'is-hidden'}
       disableInitialCallback
     />
   );

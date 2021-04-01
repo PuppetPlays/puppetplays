@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -9,7 +9,9 @@ import {
   getAllWorksQuery,
   getAllWorks,
   WORKS_PAGE_SIZE,
+  buildSearchQuery,
 } from 'lib/api';
+import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
 import styles from 'styles/Home.module.css';
@@ -17,15 +19,28 @@ import styles from 'styles/Home.module.css';
 export default function Home({ initialData }) {
   const { t } = useTranslation();
   const router = useRouter();
+  const [searchTerms, setSearchTerms] = useState(router.query.search);
   const [currentPage, setCurrentPage] = useState(0);
   const { data } = useSWR(
-    [getAllWorksQuery, router.locale, currentPage * WORKS_PAGE_SIZE],
-    (query, locale, offset) =>
-      fetchAPI(query, {
-        variables: { locale, offset, limit: WORKS_PAGE_SIZE },
-      }),
+    [
+      getAllWorksQuery,
+      router.locale,
+      currentPage * WORKS_PAGE_SIZE,
+      searchTerms,
+    ],
+    (query, locale, offset, searchTerms) => {
+      return fetchAPI(query, {
+        variables: {
+          locale,
+          offset,
+          limit: WORKS_PAGE_SIZE,
+          search: buildSearchQuery(searchTerms),
+        },
+      });
+    },
     {
       initialData,
+      revalidateOnFocus: false,
     },
   );
 
@@ -37,19 +52,31 @@ export default function Home({ initialData }) {
   );
 
   useEffect(() => {
-    if (router.query && router.query.page) {
-      setCurrentPage(router.query.page - 1);
-    } else {
-      setCurrentPage(0);
+    if (router.query) {
+      if (router.query.search) {
+        setSearchTerms(router.query.search);
+      } else {
+        setSearchTerms('');
+      }
+      if (router.query.page) {
+        setCurrentPage(router.query.page - 1);
+      } else {
+        setCurrentPage(0);
+      }
     }
-  }, [router.query, setCurrentPage]);
+  }, [router.query, setSearchTerms, setCurrentPage]);
 
   useEffect(() => {
-    mutate([getAllWorksQuery, router.locale, currentPage * WORKS_PAGE_SIZE]);
-  }, [router.locale, currentPage]);
+    mutate([
+      getAllWorksQuery,
+      router.locale,
+      currentPage * WORKS_PAGE_SIZE,
+      searchTerms,
+    ]);
+  }, [router.locale, currentPage, searchTerms]);
 
   return (
-    <Fragment>
+    <Layout>
       <Head>
         <title>Puppetplays</title>
         <link rel="icon" href="/favicon.ico" />
@@ -69,14 +96,18 @@ export default function Home({ initialData }) {
         {data.entries &&
           data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
       </div>
-    </Fragment>
+    </Layout>
   );
 }
 
-export async function getServerSideProps({ locale, req, res }) {
+export async function getServerSideProps({ locale, req, res, query }) {
   useCraftAuthMiddleware(req, res);
 
-  const data = await getAllWorks(locale);
+  const data = await getAllWorks(
+    locale,
+    query.page * WORKS_PAGE_SIZE,
+    buildSearchQuery(query.search),
+  );
   return {
     props: { initialData: data },
   };

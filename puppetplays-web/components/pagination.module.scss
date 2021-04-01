@@ -10,6 +10,10 @@
     &:global(.is-current) {
       font-weight: 700;
     }
+
+    &:global(.is-hidden) {
+      display: none;
+    }
   }
 
   a:hover {

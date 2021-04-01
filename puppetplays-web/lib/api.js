@@ -50,8 +50,8 @@ fragment assetFragment on AssetInterface {
 export const getAllWorksQuery = `
 ${placeInfoFragment}
 ${assetFragment}
-query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
-  entries(section: "works", site: $locale, offset: $offset, limit: $limit) {
+query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String) {
+  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score") {
     id,
     slug,
     title,
@@ -122,16 +122,17 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
       additionalLicenseInformation
     }
   }
-  entryCount(section: "works")
+  entryCount(section: "works", site: $locale, search: $search)
 }
 `;
 
-export async function getAllWorks(locale, offset = 0) {
-  // otherTitles: It seems that it should have a language associated with each other titles
-  // publication: What is it?
-  // otherPublication: What is it?,
+export const buildSearchQuery = (search) => {
+  return search ? search.split(' ').join(' OR ') : '';
+};
+
+export async function getAllWorks(locale, offset = 0, search = '') {
   const data = await fetchAPI(getAllWorksQuery, {
-    variables: { locale, offset, limit: WORKS_PAGE_SIZE },
+    variables: { locale, offset, limit: WORKS_PAGE_SIZE, search },
   });
   return data;
 }

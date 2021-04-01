@@ -1,17 +1,15 @@
-import Header from './Header';
-import { useRouter } from 'next/router';
+import Header from 'components/Header';
+import SearchBar from 'components/SearchBar';
 import styles from './layout.module.scss';
 
 function Layout({ children }) {
-  const { pathname } = useRouter();
-
   return (
     <div className={styles.container}>
-      {pathname !== '/wip' && (
-        <div className={styles.header}>
-          <Header />
-        </div>
-      )}
+      <div className={styles.header}>
+        <Header>
+          <SearchBar />
+        </Header>
+      </div>
       <main className={styles.content}>{children}</main>
     </div>
   );

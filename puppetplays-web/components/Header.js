@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import LanguageSelector from './LanguageSelector';
+import LanguageSelector from 'components/LanguageSelector';
 import styles from './header.module.scss';
 
-function Header() {
+function Header({ children }) {
   return (
     <div className={styles.container}>
       <h1 className={styles.logo}>
@@ -10,7 +10,7 @@ function Header() {
           <img src="/logo.png" alt="Puppetplays" width="72" />
         </Link>
       </h1>
-      <div className={styles.spacer} />
+      {children}
       <div className={styles.languageSelector}>
         <LanguageSelector />
       </div>
