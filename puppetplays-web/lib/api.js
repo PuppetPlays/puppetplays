@@ -108,7 +108,10 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int) {
         title
       },
       characters {
-        title
+        title,
+        ...on originalsCharacters_originalsCharacters_Entry {
+          textName
+        }
       },
       actsCount,
       pagesCount,
@@ -257,7 +260,10 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         title
       },
       characters {
-        title
+        title,
+        ...on originalsCharacters_originalsCharacters_Entry {
+          textName
+        }
       },
       dramaticDevices {
         title

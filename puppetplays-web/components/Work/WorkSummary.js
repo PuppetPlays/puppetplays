@@ -2,7 +2,12 @@ import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
-import { getTitle, getFirstItemTitle, hasAtLeastOneItem } from 'lib/utils';
+import {
+  getTitle,
+  getFirstItemTitle,
+  hasAtLeastOneItem,
+  getProperty,
+} from 'lib/utils';
 import Keywords from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
 import Section from 'components/Section';
@@ -146,7 +151,10 @@ function WorkSummary({
               label={t('common:characters')}
               show={hasAtLeastOneItem(characters)}
             >
-              <CommaSepList list={characters} listTransform={getTitle} />
+              <CommaSepList
+                list={characters}
+                listTransform={getProperty('textName')}
+              />
             </Info>
             <Info label={t('common:actsCount')} show={actsCount}>
               {actsCount}

@@ -1,5 +1,6 @@
 export const identity = (i) => i;
 
+export const getProperty = (property) => (i) => i[property];
 export const getTitle = (i) => i.title;
 
 export const getFirstItemProp = (prop) => (list) =>

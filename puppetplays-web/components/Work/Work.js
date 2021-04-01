@@ -1,7 +1,12 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
-import { getTitle, getFirstItemTitle, hasAtLeastOneItem } from 'lib/utils';
+import {
+  getTitle,
+  getFirstItemTitle,
+  hasAtLeastOneItem,
+  getProperty,
+} from 'lib/utils';
 import Place from 'components/Place';
 import Section from 'components/Section';
 import Author from 'components/Author';
@@ -98,7 +103,10 @@ function Work({
             label={t('common:characters')}
             show={hasAtLeastOneItem(characters)}
           >
-            <CommaSepList list={characters} listTransform={getTitle} />
+            <CommaSepList
+              list={characters}
+              listTransform={getProperty('textName')}
+            />
           </Info>
           <Info label={t('common:actsCount')} show={actsCount}>
             {actsCount}
