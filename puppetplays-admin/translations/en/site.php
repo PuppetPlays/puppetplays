@@ -1,6 +1,7 @@
 <?php
 
 return array(
+  'alias' => 'aka',
   'Pseudonyme' => 'Pseudonym',
   'Auteurs' => 'Authors',
   'Auteur' => 'Author',

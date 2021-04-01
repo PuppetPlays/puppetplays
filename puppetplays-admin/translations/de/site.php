@@ -1,6 +1,7 @@
 <?php
 
 return array(
+  'alias' => 'gen.',
   'Pseudonyme' => 'Pseudonym',
   'Auteurs' => 'Autor*innen',
   'Auteur' => 'Autor*in',

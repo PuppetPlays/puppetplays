@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c
+handle: textName
+instructions: ''
+name: 'Nom du personnage dans le texte'
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
