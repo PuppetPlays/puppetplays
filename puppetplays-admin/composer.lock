@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84aae850d98bb423d4658c68199ba25d",
+    "content-hash": "c83743d398b2105351b774566cc50602",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -4771,6 +4771,92 @@
                 }
             ],
             "time": "2020-10-27T19:25:29+00:00"
+        },
+        {
+            "name": "verbb/base",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verbb/verbb-base.git",
+                "reference": "006cc4979e2b7669234a90bb7347129fe0185eb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verbb/verbb-base/zipball/006cc4979e2b7669234a90bb7347129fe0185eb8",
+                "reference": "006cc4979e2b7669234a90bb7347129fe0185eb8",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0"
+            },
+            "type": "yii-module",
+            "autoload": {
+                "psr-4": {
+                    "verbb\\base\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Verbb",
+                    "homepage": "https://verbb.io"
+                }
+            ],
+            "description": "Common utilities and building-blocks for Verbb plugins for Craft CMS.",
+            "time": "2021-03-17T20:54:49+00:00"
+        },
+        {
+            "name": "verbb/workflow",
+            "version": "1.5.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verbb/workflow.git",
+                "reference": "50b6bd44db7c57154a529e57fdcdf80e99754343"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verbb/workflow/zipball/50b6bd44db7c57154a529e57fdcdf80e99754343",
+                "reference": "50b6bd44db7c57154a529e57fdcdf80e99754343",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.4.0",
+                "verbb/base": "^1.0.2"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Workflow",
+                "handle": "workflow",
+                "changelogUrl": "https://raw.githubusercontent.com/verbb/workflow/craft-3/CHANGELOG.md",
+                "class": "verbb\\workflow\\Workflow"
+            },
+            "autoload": {
+                "psr-4": {
+                    "verbb\\workflow\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Verbb",
+                    "homepage": "https://verbb.io"
+                }
+            ],
+            "description": "A Craft CMS plugin to create a workflow for publishing entries.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "workflow"
+            ],
+            "time": "2021-01-23T23:25:27+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -1,4 +1,4 @@
-dateModified: 1617289753
+dateModified: 1617693775
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -26,6 +26,24 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  workflow:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.5
+    settings:
+      editorNotesRequired: ''
+      editorNotifications: '1'
+      editorNotificationsOptions: ''
+      editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2
+      enabledSections: '*'
+      lockDraftSubmissions: '1'
+      publisherNotesRequired: ''
+      publisherNotifications: '1'
+      publisherUserGroup: a5c71adc-184b-49c4-8e1a-d251540bf2b1
+      reviewerApprovalNotifications: ''
+      reviewerNotifications: '1'
+      reviewerUserGroups: ''
+      selectedPublishers: '*'
 system:
   edition: pro
   live: true

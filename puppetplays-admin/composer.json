@@ -4,6 +4,7 @@
     "craftcms/element-api": "^2.6",
     "craftcms/redactor": "^2.8",
     "mmikkel/reasons": "^2.2",
+    "verbb/workflow": "^1.5",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
