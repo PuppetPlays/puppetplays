@@ -4,6 +4,7 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import styles from 'styles/Wip.module.scss';
 import LanguageSelector from 'components/LanguageSelector';
+import { getApiUrl } from 'lib/utils';
 
 const PARTNERS = {
   ue: ['https://europa.eu/european-union', 'European union'],
@@ -126,7 +127,7 @@ export default function Wip() {
                 <form
                   className={styles.subscribeForm}
                   onSubmit={handleFormSubmit}
-                  action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
+                  action={getApiUrl('newsletter/subscribe')}
                   method="POST"
                 >
                   <h2 className={styles.subscribeTitle}>
