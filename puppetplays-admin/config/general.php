@@ -35,8 +35,8 @@ return [
             '@webroot' => dirname(__DIR__) . '/web',
             '@livePreviewUrl' => getenv('SITE_URL'),
             '@siteUrl' => getenv('SITE_URL'),
-            '@assetBaseUrl' => '@web/assets',
-            '@assetBasePath' => '@webroot/assets',
+            '@assetBaseUrl' => '@web/static',
+            '@assetBasePath' => '@webroot/static',
         ],
 
         'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
