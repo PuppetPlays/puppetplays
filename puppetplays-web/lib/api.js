@@ -39,9 +39,9 @@ fragment placeInfo on EntryInterface {
 export const assetFragment = `
 fragment assetFragment on AssetInterface {
   url,
-  ... on assets_Asset {
+  ... on images_Asset {
     alt,
-    caption,
+    description,
     copyright
   }
 }
