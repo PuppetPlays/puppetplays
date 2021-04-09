@@ -13,6 +13,12 @@ parameters:
   web-image-release:
     type: string
     default: "intactiledesign/puppetplays-web:latest"
+  admin-image-staging:
+    type: string
+    default: "intactiledesign/puppetplays-admin:<< pipeline.git.revision >>-staging"
+  admin-image-release-staging:
+    type: string
+    default: "intactiledesign/puppetplays-admin:latest-staging"
   admin-image:
     type: string
     default: "intactiledesign/puppetplays-admin:<< pipeline.git.revision >>"
@@ -85,7 +91,7 @@ jobs:
             docker pull << pipeline.parameters.web-image >>
             docker tag << pipeline.parameters.web-image >> << pipeline.parameters.web-image-release >>
             docker push << pipeline.parameters.web-image-release >>
-  docker_admin:
+  docker_admin_staging:
     docker:
       - image: cimg/base:2020.01
     steps:
@@ -93,7 +99,24 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - run:
-          name: Publish admin image to docker hub
+          name: Publish admin staging image to docker hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            docker pull << pipeline.parameters.admin-image-staging >> || true
+            docker build --pull -t << pipeline.parameters.admin-image-staging >> --cache-from << pipeline.parameters.admin-image-staging >> puppetplays-admin
+            docker push << pipeline.parameters.admin-image-staging >>
+            docker pull << pipeline.parameters.admin-image-staging >>
+            docker tag << pipeline.parameters.admin-image-staging >> << pipeline.parameters.admin-image-release-staging >>
+            docker push << pipeline.parameters.admin-image-release-staging >>
+  docker_admin_production:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          name: Publish admin production image to docker hub
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             docker pull << pipeline.parameters.admin-image >> || true
@@ -109,7 +132,7 @@ jobs:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
       POSTGRES_USER: puppetplays
       POSTGRES_DB: puppetplays
-      PUPPETPLAYS_VERSION: << pipeline.git.revision >>
+      PUPPETPLAYS_VERSION: << pipeline.git.revision >>-staging
       PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
       SECURITY_KEY: $SECURITY_KEY_STAGING
       ENVIRONMENT: staging
@@ -188,7 +211,7 @@ workflows:
       - docker_web_staging:
           requires:
             - build_web_staging
-      - docker_admin:
+      - docker_admin_staging:
           requires:
             - build_web_staging
       - hold_staging_deploy:
@@ -209,7 +232,7 @@ workflows:
       - docker_web_production:
           requires:
             - build_web_production
-      - docker_admin:
+      - docker_admin_production:
           requires:
             - build_web_production
       - hold_production_deploy:
