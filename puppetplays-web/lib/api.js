@@ -1,8 +1,7 @@
-import { getApiUrl } from 'lib/utils';
-
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
-  const res = await fetch(getApiUrl('graphql'), {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
+  const res = await fetch(apiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

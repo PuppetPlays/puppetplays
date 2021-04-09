@@ -1,6 +1,12 @@
 version: 2.1
 
 parameters:
+  web-image-staging:
+    type: string
+    default: "intactiledesign/puppetplays-web:<< pipeline.git.revision >>-staging"
+  web-image-release-staging:
+    type: string
+    default: "intactiledesign/puppetplays-web:latest-staging"
   web-image:
     type: string
     default: "intactiledesign/puppetplays-web:<< pipeline.git.revision >>"
@@ -15,11 +21,13 @@ parameters:
     default: "intactiledesign/puppetplays-admin:latest"
 
 jobs:
-  build_web:
+  build_web_staging:
     executor:
       name: node/default
       tag: '14.15'
     working_directory: ~/project/puppetplays-web
+    environment:
+      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
     steps:
       - checkout:
           path: ~/project
@@ -28,7 +36,22 @@ jobs:
       - run:
           name: Run test suites and build code
           command: yarn run deploy
-  docker_web:
+  build_web_production:
+    executor:
+      name: node/default
+      tag: '14.15'
+    working_directory: ~/project/puppetplays-web
+    environment:
+      NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
+    steps:
+      - checkout:
+          path: ~/project
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Run test suites and build code
+          command: yarn run deploy
+  docker_web_staging:
     docker:
       - image: cimg/base:2020.01
     steps:
@@ -36,7 +59,24 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - run: 
-          name: Publish web image to docker hub
+          name: Publish web staging image to docker hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
+            docker pull << pipeline.parameters.web-image-staging >> || true
+            docker build --pull -t << pipeline.parameters.web-image-staging >> --cache-from << pipeline.parameters.web-image-staging >> puppetplays-web
+            docker push << pipeline.parameters.web-image-staging >>
+            docker pull << pipeline.parameters.web-image-staging >>
+            docker tag << pipeline.parameters.web-image-staging >> << pipeline.parameters.web-image-release-staging >>
+            docker push << pipeline.parameters.web-image-release-staging >>
+  docker_web_production:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - run: 
+          name: Publish web production image to docker hub
           command: |
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USER --password-stdin
             docker pull << pipeline.parameters.web-image >> || true
@@ -137,28 +177,45 @@ orbs:
   node: circleci/node@4.1.0
 
 workflows:
-  build:
+  build_and_deploy_on_staging:
     jobs:
-      - build_web
-      - docker_web:
+      - build_web_staging
+          filters:
+            branches:
+              only:
+                - develop
+                - release
+      - docker_web_staging:
           requires:
-              - build_web
+              - build_web_staging
       - docker_admin
+          requires:
+            - build_web_staging
       - hold_staging_deploy:
           type: approval
           requires:
-            - build_web
-            - docker_web
-            - docker_admin
-      - hold_production_deploy:
-          type: approval
-          requires:
-            - build_web
-            - docker_web
+            - build_web_staging
+            - docker_web_staging
             - docker_admin
       - deploy_staging:
           requires:
             - hold_staging_deploy
+  build_and_deploy_on_production:
+    jobs:
+      - build_web_production
+          filters:
+            branches:
+              only: master
+      - docker_web_production:
+          requires:
+              - build_web_production
+      - docker_admin
+      - hold_production_deploy:
+          type: approval
+          requires:
+            - build_web_production
+            - docker_web_production
+            - docker_admin
       - deploy_production:
           requires:
             - hold_production_deploy
