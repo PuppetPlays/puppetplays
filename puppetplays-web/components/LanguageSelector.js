@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './languageSelector.module.scss';
 
 function LanguageSelector({ inverse = false }) {
-  const { locale, locales, pathname, defaultLocale } = useRouter();
+  const { locale, locales } = useRouter();
 
   return (
     <ul
@@ -13,7 +13,7 @@ function LanguageSelector({ inverse = false }) {
     >
       {locales.map((l) => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
-          <Link href={`${l === defaultLocale ? '' : l}${pathname}`} locale={l}>
+          <Link href="/" locale={l}>
             <a>{l}</a>
           </Link>
         </li>
