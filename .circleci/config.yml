@@ -219,7 +219,7 @@ workflows:
           requires:
             - build_web_staging
             - docker_web_staging
-            - docker_admin
+            - docker_admin_staging
       - deploy_staging:
           requires:
             - hold_staging_deploy
@@ -240,7 +240,7 @@ workflows:
           requires:
             - build_web_production
             - docker_web_production
-            - docker_admin
+            - docker_admin_production
       - deploy_production:
           requires:
             - hold_production_deploy
