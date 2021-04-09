@@ -18,13 +18,18 @@
   }
 }
 
+.container--full {
+  padding: 22px 20px 26px 20px;
+}
+
 .media {
   flex: 0 0 200px;
   margin-right: 20px;
   font-size: 14px;
   color: var(--color-text);
 
-  :global(.work-page-container) & {
+  .container--full & {
+    flex: 0 0 260px;
     margin-right: 40px;
   }
 
@@ -43,10 +48,10 @@
 
 .extra {
   flex: 0 0 185px;
-  margin-left: 48px;
+  margin-left: 40px;
 
-  :global(.work-page-container) & {
-    flex: 0 0 230px;
+  .container--full & {
+    flex: 0 0 260px;
   }
 }
 

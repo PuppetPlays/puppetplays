@@ -67,7 +67,9 @@ function Work({
   const { t } = useTranslation();
 
   return (
-    <article className={`${styles.container} work-page-container`}>
+    <article
+      className={`${styles.container} ${styles['container--full']} work-page-container`}
+    >
       <div className={styles.media}>
         <CoverImage image={mainImage} year={compositionMinDate} height={340} />
         <p>
