@@ -39,7 +39,7 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Run test suites and build code
-          command: NEXT_PUBLIC_API_URL= https://api.staging.puppetplays.intactile.info yarn run deploy
+          command: NEXT_PUBLIC_API_URL=https://api.staging.puppetplays.intactile.info yarn run deploy
           environment:
             NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
   build_web_production:
@@ -54,7 +54,7 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Run test suites and build code
-          command: NEXT_PUBLIC_API_URL= https://api.puppetplays.eu yarn run deploy
+          command: NEXT_PUBLIC_API_URL=https://api.puppetplays.eu yarn run deploy
           environment:
             NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
   docker_web_staging:
