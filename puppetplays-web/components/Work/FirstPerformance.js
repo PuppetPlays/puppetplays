@@ -5,15 +5,18 @@ import Place from 'components/Place';
 
 function FirstPerformance({ place, date, extraInfo }) {
   const { t } = useTranslation();
+  const hasOnePlace = hasAtLeastOneItem(place);
 
   return (
     <Section
       title={t('common:firstPerformance')}
-      show={hasAtLeastOneItem(place) || date || extraInfo}
+      show={!!(hasOnePlace || date || extraInfo)}
     >
-      {hasAtLeastOneItem(place) && <Place {...place[0]} />}
-      {date && <span>, {date}</span>}
-      {extraInfo && <span> - {extraInfo}</span>}
+      {hasOnePlace && <Place {...place[0]} />}
+      {hasOnePlace && ', '}
+      {date && date}
+      {date && extraInfo && ' - '}
+      {extraInfo && extraInfo}
     </Section>
   );
 }
