@@ -37,7 +37,7 @@ services:
       - "postgres"
     volumes:
       - ${PUPPETPLAYS_HOST_DIR}/logs:/app/storage/logs
-      - ${PUPPETPLAYS_HOST_DIR}/assets:/app/web/assets
+      - ${PUPPETPLAYS_HOST_DIR}/static:/app/web/static
     restart: always
 
   puppetplays-web:
