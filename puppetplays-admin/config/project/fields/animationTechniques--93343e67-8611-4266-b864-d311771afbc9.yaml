@@ -3,7 +3,7 @@ fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
 handle: animationTechniques
 instructions: ''
 name: 'Technique d’animation'
-searchable: false
+searchable: true
 settings:
   allowSelfRelations: false
   limit: ''
