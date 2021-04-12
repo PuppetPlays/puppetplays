@@ -27,7 +27,7 @@ export default function Wip() {
     }
     return response.json();
   };
-  console.log(locale);
+
   const hideMessage = (cb) => setTimeout(() => cb(false), 6000);
 
   const handleFormSubmit = (evt) => {
@@ -75,113 +75,115 @@ export default function Wip() {
 
         <main>
           <div className={styles.header}>
-            <div className={styles.headerMain}>
-              <div>
-                <img
-                  src="/logo-stamp-white.png"
-                  width="205"
-                  alt="Puppetplays - A Research Program Founded by the European Union"
-                />
-              </div>
-              <div className={styles.releaseDate}>{t('releaseDate')}</div>
-              <h1 className={styles.title}>{t('title')}</h1>
-              <p className={styles.subtitle}>{t('subtitle')}</p>
-            </div>
-            <aside className={styles.sidebar}>
-              <div className={styles.sidebarTop}>
-                <a
-                  href={t('projectNewsUrl')}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {t('projectNewsLabel')}
-                </a>
-                <a
-                  className={styles.buttonLink}
-                  href={t('ourSiteUrl')}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {t('ourSiteLabel')}
-                </a>
-                <a
-                  aria-label={t('facebookLinkLabel')}
-                  className={styles['buttonLink--iconOnly']}
-                  href="https://www.facebook.com/ERCPuppetPlays"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <svg
-                    aria-hidden
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12.0372 10.0496H14.1082L14.1132 10.0496C14.6922 10.0488 14.71 10.0488 14.7757 9.49674C14.8634 8.75169 14.9048 8.18401 14.9993 7.43896C15.0423 7.09807 14.9183 6.98418 14.5715 6.98893C13.8828 6.99921 13.1149 6.97311 12.4271 7C12.082 7.01345 11.9782 6.90034 11.995 6.59663C12.0204 6.14976 12.0068 5.5184 12.033 5.07153C12.0651 4.52184 12.3571 4.22603 12.952 4.18332C13.4744 4.14602 14.0009 4.15072 14.5251 4.15539L14.5529 4.15564C14.8626 4.15801 15.0094 4.07734 14.9993 3.74911C14.9757 2.98507 14.9774 2.21946 14.9993 1.45543C15.0094 1.10031 14.8567 0.990368 14.5031 1.00065C13.4921 1.03071 12.4803 1.03782 11.4684 1.06788C9.60765 1.12245 8.21522 2.30805 8.03462 4.04175C7.95361 4.8129 7.95971 5.64653 7.969 6.42242C7.97322 6.78862 7.89136 6.9563 7.46097 6.90963C7.11413 6.87167 6.75884 6.90963 6.40694 6.89856C6.13267 6.88986 5.99427 6.96658 6.00018 7.25606C6.01453 8.08653 6.01095 8.864 6.00083 9.69447C5.99829 9.93412 6.108 10.0338 6.34767 10.0346C6.69957 10.0361 7.05148 10.0441 7.40254 10.0346C7.95192 10.0195 7.95192 10.0148 7.95192 10.5439C7.95192 13.1935 7.95698 15.8439 7.94432 18.4935C7.94264 18.8715 8.07175 19.0076 8.47851 18.9997C9.47684 18.9799 10.4752 18.9941 11.4735 18.9926C12.0178 18.9918 12.0448 18.9657 12.0448 18.4524C12.044 16.3169 12.0406 14.1806 12.0389 12.0451C12.0364 11.4029 12.0372 10.7583 12.0372 10.0496Z" />
-                  </svg>
-                </a>
-              </div>
-              <div className={styles.sidebarMain}>
-                <form
-                  className={styles.subscribeForm}
-                  onSubmit={handleFormSubmit}
-                  action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
-                  method="POST"
-                >
-                  <h2 className={styles.subscribeTitle}>
-                    {t('subscribeTitle')}
-                  </h2>
-                  <label className={styles.subscribeLabel} htmlFor="email">
-                    {t('subscribeLabel')}
-                  </label>
-                  <div className={styles.subscribeFormGroup}>
-                    <input
-                      name="email"
-                      id="email"
-                      required
-                      placeholder={t('emailPlaceholder')}
-                    />
-                    <button type="submit" disabled={isSubmitting}>
-                      {t('subscribe')}
-                    </button>
-                  </div>
-                  {isSubmitSuccessful && (
-                    <div className={styles.formMessage}>
-                      {t('subscriptionSuccessful')}
-                    </div>
-                  )}
-                  {isSubmitError && (
-                    <div className={styles.formMessageError}>
-                      {t('subscriptionError')}
-                    </div>
-                  )}
-                </form>
-                <div className={styles.partnersBar}>
-                  <ul className={styles.partnersBarLogos}>
-                    {Object.entries(PARTNERS).map(([partner, [url, alt]]) => (
-                      <li key={partner}>
-                        <a href={url} target="_blank" rel="noopener noreferrer">
-                          <img
-                            height="60"
-                            src={`/logo-${partner}.png`}
-                            alt={alt}
-                          />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+            <div className={styles.headerInner}>
+              <div className={styles.headerMain}>
+                <div>
+                  <img
+                    src="/logo-stamp-white.png"
+                    width="205"
+                    alt="Puppetplays - A Research Program Founded by the European Union"
+                  />
                 </div>
+                <div className={styles.releaseDate}>{t('releaseDate')}</div>
+                <h1 className={styles.title}>{t('title')}</h1>
+                <p className={styles.subtitle}>{t('subtitle')}</p>
               </div>
-            </aside>
+              <section className={styles.sidebar}>
+                <div className={styles.sidebarTop}>
+                  <h2>{t('projectNews')}</h2>
+                  <a
+                    className={styles.buttonLink}
+                    href={t('ourSiteUrl')}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {t('ourSiteLabel')}
+                  </a>
+                  <a
+                    aria-label={t('facebookLinkLabel')}
+                    className={styles['buttonLink--iconOnly']}
+                    href="https://www.facebook.com/ERCPuppetPlays"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <svg
+                      aria-hidden
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12.0372 10.0496H14.1082L14.1132 10.0496C14.6922 10.0488 14.71 10.0488 14.7757 9.49674C14.8634 8.75169 14.9048 8.18401 14.9993 7.43896C15.0423 7.09807 14.9183 6.98418 14.5715 6.98893C13.8828 6.99921 13.1149 6.97311 12.4271 7C12.082 7.01345 11.9782 6.90034 11.995 6.59663C12.0204 6.14976 12.0068 5.5184 12.033 5.07153C12.0651 4.52184 12.3571 4.22603 12.952 4.18332C13.4744 4.14602 14.0009 4.15072 14.5251 4.15539L14.5529 4.15564C14.8626 4.15801 15.0094 4.07734 14.9993 3.74911C14.9757 2.98507 14.9774 2.21946 14.9993 1.45543C15.0094 1.10031 14.8567 0.990368 14.5031 1.00065C13.4921 1.03071 12.4803 1.03782 11.4684 1.06788C9.60765 1.12245 8.21522 2.30805 8.03462 4.04175C7.95361 4.8129 7.95971 5.64653 7.969 6.42242C7.97322 6.78862 7.89136 6.9563 7.46097 6.90963C7.11413 6.87167 6.75884 6.90963 6.40694 6.89856C6.13267 6.88986 5.99427 6.96658 6.00018 7.25606C6.01453 8.08653 6.01095 8.864 6.00083 9.69447C5.99829 9.93412 6.108 10.0338 6.34767 10.0346C6.69957 10.0361 7.05148 10.0441 7.40254 10.0346C7.95192 10.0195 7.95192 10.0148 7.95192 10.5439C7.95192 13.1935 7.95698 15.8439 7.94432 18.4935C7.94264 18.8715 8.07175 19.0076 8.47851 18.9997C9.47684 18.9799 10.4752 18.9941 11.4735 18.9926C12.0178 18.9918 12.0448 18.9657 12.0448 18.4524C12.044 16.3169 12.0406 14.1806 12.0389 12.0451C12.0364 11.4029 12.0372 10.7583 12.0372 10.0496Z" />
+                    </svg>
+                  </a>
+                </div>
+                <div className={styles.sidebarMain}>
+                  <form
+                    className={styles.subscribeForm}
+                    onSubmit={handleFormSubmit}
+                    action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
+                    method="POST"
+                  >
+                    <h2 className={styles.subscribeTitle}>
+                      {t('subscribeTitle')}
+                    </h2>
+                    <label className={styles.subscribeLabel} htmlFor="email">
+                      {t('subscribeLabel')}
+                    </label>
+                    <div className={styles.subscribeFormGroup}>
+                      <input
+                        name="email"
+                        id="email"
+                        required
+                        placeholder={t('emailPlaceholder')}
+                      />
+                      <button type="submit" disabled={isSubmitting}>
+                        {t('subscribe')}
+                      </button>
+                    </div>
+                    {isSubmitSuccessful && (
+                      <div className={styles.formMessage}>
+                        {t('subscriptionSuccessful')}
+                      </div>
+                    )}
+                    {isSubmitError && (
+                      <div className={styles.formMessageError}>
+                        {t('subscriptionError')}
+                      </div>
+                    )}
+                  </form>
+                  <div className={styles.partnersBar}>
+                    <ul className={styles.partnersBarLogos}>
+                      {Object.entries(PARTNERS).map(([partner, [url, alt]]) => (
+                        <li key={partner}>
+                          <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              height="60"
+                              src={`/logo-${partner}.png`}
+                              alt={alt}
+                            />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
           <div className={styles.content}>
             <div className={styles.contentInner}>
-              <div className={styles.intro}>
+              <section className={styles.intro}>
                 <div className={styles.introContent}>
                   <h2 className={styles.introSubtitle}>{t('introSubtitle')}</h2>
                   <h3 className={styles.introTitle}>{t('introTitle')}</h3>
-                  <p>{t('introText')}</p>
+                  <p>{t('introText1')}</p>
+                  <p>{t('introText2')}</p>
+                  <p>{t('introText3')}</p>
                   <div className={styles.introContentLinks}>
                     <a
                       href="https://puppetplays.www.univ-montp3.fr"
@@ -220,19 +222,23 @@ export default function Wip() {
                     {t('introImageCaption')}
                   </p>
                 </div>
-              </div>
-              <div className={styles.financedBy}>
-                <img src="/logo-ue.png" height="60" alt="Union européenne" />
-                <img
-                  src="/logo-erc.png"
-                  height="60"
-                  alt="European Research Council"
-                />
-                <p>{t('projectFinancedBy')}</p>
-              </div>
+              </section>
             </div>
           </div>
         </main>
+        <footer className={styles.footer}>
+          <div className={styles.footerInner}>
+            <div className={styles.footerContent}>
+              <img src="/logo-ue.png" height="60" alt="Union européenne" />
+              <img
+                src="/logo-erc.png"
+                height="60"
+                alt="European Research Council"
+              />
+              <p>{t('projectFinancedBy')}</p>
+            </div>
+          </div>
+        </footer>
       </div>
     </Fragment>
   );
