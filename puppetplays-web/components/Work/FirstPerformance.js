@@ -13,7 +13,7 @@ function FirstPerformance({ place, date, extraInfo }) {
       show={!!(hasOnePlace || date || extraInfo)}
     >
       {hasOnePlace && <Place {...place[0]} />}
-      {hasOnePlace && ', '}
+      {hasOnePlace && (date || extraInfo) && ', '}
       {date && date}
       {date && extraInfo && ' - '}
       {extraInfo && extraInfo}
