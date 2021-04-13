@@ -5,14 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import styles from 'styles/Wip.module.scss';
 import LanguageSelector from 'components/LanguageSelector';
 
-const PARTNERS = {
-  ue: ['https://europa.eu/european-union', 'European union'],
-  erc: ['https://erc.europa.eu', 'European Research Council'],
-  upvm: ['https://www.univ-montp3.fr', 'Université Paul Valéry Montpellier 3'],
-  humanum: ['https://www.huma-num.fr', 'Huma-Num'],
-  rir: ['https://rirra21.www.univ-montp3.fr', 'RiRRa21'],
-  intactile: ['https://intactile.com', 'Intactile DESIGN'],
-};
+const PARTNERS = ['ue', 'erc', 'upvm', 'humanum', 'rir', 'intactile'];
 
 export default function Wip() {
   const { locale } = useRouter();
@@ -154,17 +147,17 @@ export default function Wip() {
                   </form>
                   <div className={styles.partnersBar}>
                     <ul className={styles.partnersBarLogos}>
-                      {Object.entries(PARTNERS).map(([partner, [url, alt]]) => (
+                      {PARTNERS.map((partner) => (
                         <li key={partner}>
                           <a
-                            href={url}
+                            href={t(`${partner}.url`)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             <img
                               height="60"
                               src={`/logo-${partner}.png`}
-                              alt={alt}
+                              alt={t(`${partner}.alt`)}
                             />
                           </a>
                         </li>
@@ -186,7 +179,7 @@ export default function Wip() {
                   <p>{t('introText3')}</p>
                   <div className={styles.introContentLinks}>
                     <a
-                      href="https://puppetplays.www.univ-montp3.fr"
+                      href={t('ourSiteUrl')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.buttonLink}
@@ -194,7 +187,7 @@ export default function Wip() {
                       {t('common:knowMore')}
                     </a>
                     <a
-                      href="https://puppetplays.www.univ-montp3.fr/fr/l%C3%A9quipe"
+                      href={t('theTeamUrl')}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -229,12 +222,8 @@ export default function Wip() {
         <footer className={styles.footer}>
           <div className={styles.footerInner}>
             <div className={styles.footerContent}>
-              <img src="/logo-ue.png" height="60" alt="Union européenne" />
-              <img
-                src="/logo-erc.png"
-                height="60"
-                alt="European Research Council"
-              />
+              <img src="/logo-ue.png" height="60" alt={t('ue.alt')} />
+              <img src="/logo-erc.png" height="60" alt={t('erc.alt')} />
               <p>{t('projectFinancedBy')}</p>
             </div>
           </div>

@@ -19,5 +19,30 @@
   "introText3": "A first version of the PuppetPlays digital platform will be available in 2022. The full version will be published in 2024.",
   "introImageCaption": "Image: Christophe Loiseau and Matt Jackson",
   "theTeam": "The team",
-  "projectFinancedBy": "This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement ERC 835193"
+  "theTeamUrl": "https://puppetplays.www.univ-montp3.fr/en/team",
+  "projectFinancedBy": "This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement ERC 835193",
+  "ue": {
+    "url": "https://europa.eu/european-union/index_en",
+    "alt": "European Union"
+  },
+  "erc": {
+    "url": "https://erc.europa.eu",
+    "alt": "European Research Council"
+  },
+  "upvm": {
+    "url": "https://www.univ-montp3.fr/en",
+    "alt": "Paul-Valéry Montpellier 3 University"
+  },
+  "humanum": {
+    "url": "https://www.huma-num.fr",
+    "alt": "Huma-Num"
+  },
+  "rir": {
+    "url": "https://rirra21.www.univ-montp3.fr/en",
+    "alt": "RiRRa21"
+  },
+  "intactile": {
+    "url": "https://intactile.com/en",
+    "alt": "Intactile DESIGN"
+  }
 }
