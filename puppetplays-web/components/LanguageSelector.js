@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './languageSelector.module.scss';
 
-function LanguageSelector({ inverse = false }) {
+function LanguageSelector({ inverse = false, path = '/' }) {
   const { locale, locales } = useRouter();
 
   return (
@@ -13,7 +13,7 @@ function LanguageSelector({ inverse = false }) {
     >
       {locales.map((l) => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
-          <Link href="/" locale={l}>
+          <Link href={path} locale={l}>
             <a>{l}</a>
           </Link>
         </li>

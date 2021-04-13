@@ -101,7 +101,7 @@ export default function Home({ initialData }) {
 }
 
 export async function getServerSideProps({ locale, req, res, query }) {
-  useCraftAuthMiddleware(req, res);
+  useCraftAuthMiddleware(req, res, locale);
 
   const data = await getAllWorks(
     locale,

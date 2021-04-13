@@ -1,12 +1,13 @@
-const craftAuthMiddleware = (req, res) => {
+const craftAuthMiddleware = (req, res, locale) => {
   if (
     process.env.NODE_ENV !== 'development' &&
     (!req.cookies.CraftSessionId ||
       Object.keys(req.cookies).every((key) => !key.endsWith('_identity')))
   ) {
+    const redirectUrl = locale === 'fr' ? '/wip' : `/${locale}/wip`;
+    res.setHeader('Location', redirectUrl);
     res.statusCode = 302;
-    res.setHeader('Location', '/wip');
-    res.end();
+    return res.end();
   }
 };
 

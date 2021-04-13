@@ -30,7 +30,7 @@ const WorkPage = ({ initialData }) => {
 export default WorkPage;
 
 export async function getServerSideProps({ locale, req, res, params, query }) {
-  useCraftAuthMiddleware(req, res);
+  useCraftAuthMiddleware(req, res, locale);
 
   const token = query && query.token;
   const data = await getWorkById(params.id, locale, token);

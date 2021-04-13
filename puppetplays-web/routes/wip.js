@@ -69,7 +69,7 @@ export default function Wip() {
       <div className={styles.container}>
         <header>
           <div className={styles.LanguageSelector}>
-            <LanguageSelector inverse />
+            <LanguageSelector inverse path="/wip" />
           </div>
         </header>
 
