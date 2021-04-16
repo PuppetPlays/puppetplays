@@ -1,6 +1,13 @@
 
 # Changelog de la plateforme Puppetplays
 
+
+## Puppetplays 0.2.0
+
+Déployé le 16 avril 2021
+
+---
+
 ## Puppetplays 0.1.0
 
 Déployé le 10 mars 2021
