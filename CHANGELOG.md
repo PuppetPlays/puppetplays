@@ -2,9 +2,48 @@
 # Changelog de la plateforme Puppetplays
 
 
+## Puppetplays 0.2.1
+
+Déployé le 16 avril 2021
+
+### Améliorations
+
+- Dans la liste des personnages de l’admin ”Craft”, le “titre” d’un personnage est maintenant formaté en prenant en compte le nom dans le texte et le pour l’indexation
+
+---
+
 ## Puppetplays 0.2.0
 
 Déployé le 16 avril 2021
+
+### Nouveauté
+
+- Une barre de recherche a été ajouté sur le site et permet de rechercher des œuvres
+- Les visiteurs non connectés à l”admin sont maintenant redirigés vers une page temporaire présentant le projet et permettant de s'inscrire à la newsletter
+- Configuration du système d'envoie de mails depuis l’admin “Craft”
+- Gestion des images depuis l’admin “Craft”
+- Les personnes, les personnages et les œuvres peuvent maintenant avoir une image principale
+- L’image principale d’une œuvre est affichée dans la liste des œuvres et sur la page d’une œuvre, une illustration de substitution s'affiche lorsqu'une œuvre n’a pas d’image principale
+- Ajout d'un script de sauvegarde de la base de donnée sur le serveur huma-num
+- Ajout d'un plugin – “Workflow” – permettant de gérer le processus de validation entre chercheur et contributeur
+
+### Améliorations
+
+- Nouveau design pour le menu de sélection de la langue sur le site
+- Les champs de type “date” sont maintenant des champs de type “nombre” qui permettent de renseigner une année
+- Dans la liste des personnes de l’admin ”Craft”, le “titre” d’une personne est maintenant formaté comme sur le site en prenant en compte le nom usuel et le surnom
+- Au changement de langue, l'utilisateur est maintenant renvoyé vers la page d’accueil
+- Le contenu central sur la page d'une œuvre est maintenant plus large
+
+### Corrections
+
+- La référence bibliographique d’une traduction est maintenant affichée au format html et plus en texte brute
+- Quand il n’y avait ni publication, ni édition moderne, ni édition en ligne sur une œuvre, les traductions
+ne s’affichaient pas, ce n'est plus le cas
+- Correction de style sur les auteurs et la date d'une œuvre
+- La pagination de la liste des œuvres affiche maintenant le bon nombre de pages
+- Lorsque que seulement le lieu d’une première représentation était renseigné, une virgule s'affichait à la fin, ce n'est plus le cas
+- Le bouton permettant d’afficher plus d’information sur une œuvre dans la liste des œuvres est maintenant positionné correctement sur tous les navigateurs
 
 ---
 
