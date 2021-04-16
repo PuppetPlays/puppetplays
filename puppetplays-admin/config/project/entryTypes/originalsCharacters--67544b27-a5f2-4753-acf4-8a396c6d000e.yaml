@@ -47,10 +47,10 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 handle: originalsCharacters
-hasTitleField: true
+hasTitleField: false
 name: 'Personnages originaux'
 section: 53b06a2d-abbf-4ee4-b770-ca48f26e094e
 sortOrder: 1
-titleFormat: null
+titleFormat: '{% include ''_formats/characters-title'' %}'
 titleTranslationKeyFormat: null
 titleTranslationMethod: none
