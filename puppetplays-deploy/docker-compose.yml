@@ -32,6 +32,9 @@ services:
       - SITE_URL
       - CP_URL
       - COOKIE_DOMAIN
+      - EMAIL_HOSTNAME
+      - EMAIL_PORT
+      - EMAIL_SENDER
     ports:
       - "11000:8080"
     depends_on:
