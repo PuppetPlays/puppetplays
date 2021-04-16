@@ -1,4 +1,4 @@
-dateModified: 1618585585
+dateModified: 1618586736
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -29,6 +29,7 @@ plugins:
   workflow:
     edition: standard
     enabled: true
+    licenseKey: $PLUGIN_WORKFLOW_KEY
     schemaVersion: 2.1.5
     settings:
       editorNotesRequired: ''
