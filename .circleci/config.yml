@@ -141,7 +141,7 @@ jobs:
       PUPPETPLAYS_VERSION: << pipeline.git.revision >>-staging
       PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
       SECURITY_KEY: $SECURITY_KEY_STAGING
-      PLUGIN_WORKFLOW_KEY: $PLUGIN_WORKFLOW_KEY
+      PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
       ENVIRONMENT: staging
       SITE_URL: https://staging.puppetplays.intactile.info
       CP_URL: https://admin.staging.puppetplays.intactile.info
@@ -177,7 +177,7 @@ jobs:
       PUPPETPLAYS_VERSION: << pipeline.git.revision >>
       PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
       SECURITY_KEY: $SECURITY_KEY_PRODUCTION
-      PLUGIN_WORKFLOW_KEY: $PLUGIN_WORKFLOW_KEY
+      PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
       ENVIRONMENT: production
       SITE_URL: https://puppetplays.eu
       CP_URL: https://admin.puppetplays.eu
