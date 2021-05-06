@@ -23,6 +23,9 @@ use craft\gql\interfaces\elements\Entry as EntryInterface;
 use craft\gql\resolvers\elements\Entry as EntryResolver;
 use craft\helpers\Db;
 use craft\helpers\Gql;
+use craft\helpers\Gql as GqlHelper;
+use craft\models\GqlSchema;
+use craft\services\Gql as GqlService;
 use GraphQL\Type\Definition\Type;
 
 /**
@@ -43,7 +46,8 @@ class HypotextEntries extends BaseRelationField
     // Public Properties
     // =========================================================================
 
-    public $inputTemplate = 'sitemodule/_components/fields/HypotextEntries_input';
+    // public $inputTemplate = 'sitemodule/_components/fields/HypotextEntries_input';
+    public $inputTemplate = '_includes/forms/elementSelect';
 
     // Static Methods
     // =========================================================================
@@ -78,6 +82,14 @@ class HypotextEntries extends BaseRelationField
     public static function valueType(): string
     {
         return EntryQuery::class;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function includeInGqlSchema(GqlSchema $schema): bool
+    {
+        return Gql::canQueryEntries($schema);
     }
 
     /**

@@ -6,8 +6,8 @@ name: Hypotexte(s)
 searchable: false
 settings:
   allowSelfRelations: false
-  inputTemplate: sitemodule/_components/fields/HypotextEntries_input
-  limit: ''
+  inputTemplate: _includes/forms/elementSelect
+  limit: '100'
   localizeRelations: false
   selectionLabel: ''
   showSiteMenu: false

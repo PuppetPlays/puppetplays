@@ -158,6 +158,25 @@ class SiteModule extends Module
             }
         );
 
+        Craft::$app->view->hook('cp.elements.element', function(array &$context) {
+            if (array_key_exists('name', $context)) {
+                if ($context['name'] == 'hypotexts' && array_key_exists('element', $context)) {
+                    if (!empty($context['element'])) {
+                        $html = '<div style="clear: both; padding-left: 22px; font-size: 14px; line-height: 1"><span>';
+                        $html .= '</span><span>';
+                        foreach ($context['element']->authors->all() as $element) {
+                            $html .= $element->getUiLabel();
+                        }
+                        $html .= ', ';
+                        $html .= $context['element']->date;
+                        $html .= '</span></div>';
+                        
+                        return $html;
+                    }
+                }
+            }
+        });
+
 /**
  * Logging in Craft involves using one of the following methods:
  *
