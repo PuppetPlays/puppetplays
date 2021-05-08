@@ -44,5 +44,14 @@
   "results_0": "Nessun risultato",
   "results_plural": "{{count}} risultati",
   "previous": "Precedente",
-  "next": "Prossimo"
+  "next": "Prossimo",
+  "filters": "Filters",
+  "eraseAll": "Erase all",
+  "compositionPlace": "Place",
+  "compositionPlacePlaceholder": "Country, city…",
+  "mainLanguage": "Language",
+  "mainLanguagePlaceholder": "French, German…",
+  "period": "Period",
+  "composeAfter": "composed after",
+  "composeBefore": "composed before"
 }

@@ -1,0 +1,54 @@
+.container {
+}
+
+.thumb {
+  position: relative;
+  cursor: grab;
+  height: 14px;
+  width: 14px;
+  border-radius: 7px;
+  background-color: #9591c7;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+
+  &:focus {
+    outline: 3px solid white;
+  }
+}
+
+.valuesContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.separator {
+  margin: 0 8px;
+}
+
+.value {
+  flex: 1 1 auto;
+  font-size: 16px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+
+  &:last-child {
+    text-align: right;
+  }
+}
+
+.valueLabel {
+  font-size: 13px;
+  opacity: 0.4;
+}
+
+.track {
+  top: 4px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.12);
+
+  &:nth-child(2) {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}

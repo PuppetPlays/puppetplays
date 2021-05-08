@@ -12,9 +12,22 @@
 
 .content {
   display: flex;
+  justify-content: stretch;
+  height: calc(100% - 90px);
+  flex: 1 1 auto;
+}
+
+.aside {
+  position: relative;
+  flex: 0 0 290px;
+}
+
+.main {
+  display: flex;
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
   flex: 1 1 auto;
-  height: calc(100% - 90px);
+  height: 100%;
+  padding: 0 20px;
 }

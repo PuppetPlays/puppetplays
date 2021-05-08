@@ -1,3 +1,10 @@
+import {
+  queryParamsToGraphqlVariables,
+  queryParamsToState,
+  stateToGraphqlEntriesParams,
+  stateToGraphqlQueryArgument,
+} from 'lib/worksFilters';
+
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
@@ -22,8 +29,6 @@ export async function fetchAPI(query, { variables } = {}, token) {
   return json.data;
 }
 
-export const WORKS_PAGE_SIZE = 10;
-
 export const placeInfoFragment = `
 fragment placeInfo on EntryInterface {
   id,
@@ -47,11 +52,51 @@ fragment assetFragment on AssetInterface {
 }
 `;
 
-export const getAllWorksQuery = `
+export const getPeriodBoundsQuery = `
+query GetPeriodBounds {
+  min: entries(section: "works", compositionMinDate: ["not", "null"], limit: 1, orderBy: "compositionMinDate asc") {
+    ... on works_works_Entry {
+      value: compositionMinDate
+    }
+  }
+  max: entries(section: "works", compositionMaxDate: ["not", "null"], limit: 1, orderBy: "compositionMaxDate desc") {
+    ... on works_works_Entry {
+      value: compositionMaxDate
+    }
+  }
+}
+`;
+
+export const getAllLanguagesQuery = `
+query GetAllLanguages($locale: [String]) {
+  entries(section: "languages", site: $locale) {
+    id,
+    title,
+  }
+}
+`;
+
+export const getAllPlacesQuery = `
+${placeInfoFragment}
+query GetAllPlaces($locale: [String]) {
+  entries(section: "places", site: $locale) {
+    ...placeInfo
+  }
+}
+`;
+
+export const WORKS_PAGE_SIZE = 10;
+
+export const getAllWorksQuery = (filters) => {
+  return `
 ${placeInfoFragment}
 ${assetFragment}
-query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String) {
-  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score") {
+query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String${stateToGraphqlQueryArgument(
+    filters,
+  )}) {
+  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score"${stateToGraphqlEntriesParams(
+    filters,
+  )}) {
     id,
     slug,
     title,
@@ -122,18 +167,35 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String)
       additionalLicenseInformation
     }
   }
-  entryCount(section: "works", site: $locale, search: $search)
+  entryCount(section: "works", site: $locale, search: $search${stateToGraphqlEntriesParams(
+    filters,
+  )})
 }
 `;
+};
 
 export const buildSearchQuery = (search) => {
   return search ? search.split(' ').join(' OR ') : '';
 };
 
-export async function getAllWorks(locale, offset = 0, search = '') {
-  const data = await fetchAPI(getAllWorksQuery, {
-    variables: { locale, offset, limit: WORKS_PAGE_SIZE, search },
-  });
+export async function getAllWorks(
+  locale,
+  offset = 0,
+  search = '',
+  queryParams = {},
+) {
+  const data = await fetchAPI(
+    getAllWorksQuery(queryParamsToState(queryParams)),
+    {
+      variables: {
+        locale,
+        offset,
+        limit: WORKS_PAGE_SIZE,
+        search,
+        ...queryParamsToGraphqlVariables(queryParams),
+      },
+    },
+  );
   return data;
 }
 

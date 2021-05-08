@@ -1,16 +1,17 @@
 import Header from 'components/Header';
-import SearchBar from 'components/SearchBar';
 import styles from './layout.module.scss';
 
-function Layout({ children }) {
+function Layout({ aside, header, children }) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Header>
-          <SearchBar />
-        </Header>
+        {!header && <Header />}
+        {header && <Header>{header}</Header>}
       </div>
-      <main className={styles.content}>{children}</main>
+      <div className={styles.content}>
+        {aside && <aside className={styles.aside}>{aside}</aside>}
+        <main className={styles.main}>{children}</main>
+      </div>
     </div>
   );
 }
