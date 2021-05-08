@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Section from 'components/Section';
@@ -20,5 +21,17 @@ function FirstPerformance({ place, date, extraInfo }) {
     </Section>
   );
 }
+
+FirstPerformance.defaultProps = {
+  place: null,
+  date: null,
+  extraInfo: null,
+};
+
+FirstPerformance.propTypes = {
+  place: PropTypes.arrayOf(PropTypes.object),
+  date: PropTypes.string,
+  extraInfo: PropTypes.string,
+};
 
 export default FirstPerformance;

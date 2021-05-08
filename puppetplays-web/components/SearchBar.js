@@ -7,6 +7,7 @@ import styles from './searchBar.module.scss';
 const SearchBar = ({ value, onChange, onAfterChange }) => {
   const { t } = useTranslation();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceOnChange = useCallback(
     debounce(onAfterChange, 500, {
       leading: false,
@@ -15,10 +16,13 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
     [onAfterChange],
   );
 
-  const handleChange = useCallback((evt) => {
-    debounceOnChange(evt.target.value);
-    onChange(evt.target.value);
-  });
+  const handleChange = useCallback(
+    (evt) => {
+      debounceOnChange(evt.target.value);
+      onChange(evt.target.value);
+    },
+    [onChange, debounceOnChange],
+  );
 
   return (
     <div className={styles.container}>

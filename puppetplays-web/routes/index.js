@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
@@ -23,7 +24,7 @@ import Filters from 'components/Filters';
 import SearchBar from 'components/SearchBar';
 import styles from 'styles/Home.module.css';
 
-export default function Home({ initialData, languages, places, periodBounds }) {
+function Home({ initialData, languages, places, periodBounds }) {
   const { t } = useTranslation();
   const router = useRouter();
   const [filters, setFilters] = useState(queryParamsToState(router.query));
@@ -86,7 +87,7 @@ export default function Home({ initialData, languages, places, periodBounds }) {
         ...filters,
       });
     },
-    [router, searchTerms, filters, updateRoute],
+    [updateRoute, searchTerms, filters],
   );
 
   const handleChangeFilters = useCallback(
@@ -112,7 +113,7 @@ export default function Home({ initialData, languages, places, periodBounds }) {
         ...newFilters,
       });
     },
-    [router, searchTerms, filters, updateRoute],
+    [updateRoute, searchTerms, filters],
   );
 
   const handleChangeSearchQuery = useCallback(
@@ -131,7 +132,7 @@ export default function Home({ initialData, languages, places, periodBounds }) {
         ...filters,
       });
     },
-    [router, filters, updateRoute],
+    [updateRoute, filters],
   );
 
   const handleClearAllFilters = useCallback(() => {
@@ -141,7 +142,7 @@ export default function Home({ initialData, languages, places, periodBounds }) {
       search: searchTerms,
       page: 1,
     });
-  }, [updateRoute, setFilters, setCurrentPage]);
+  }, [updateRoute, searchTerms]);
 
   return (
     <Layout
@@ -196,7 +197,17 @@ export default function Home({ initialData, languages, places, periodBounds }) {
   );
 }
 
+Home.propTypes = {
+  initialData: PropTypes.object.isRequired,
+  languages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  places: PropTypes.arrayOf(PropTypes.object).isRequired,
+  periodBounds: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+export default Home;
+
 export async function getServerSideProps({ locale, req, res, query }) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
   const languages = await fetchAPI(getAllLanguagesQuery, {

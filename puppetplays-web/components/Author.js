@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 
 function Author({ usualName, firstName, lastName, nickname }) {
@@ -20,5 +21,18 @@ function Author({ usualName, firstName, lastName, nickname }) {
     </Fragment>
   );
 }
+
+Author.defaultProps = {
+  usualName: null,
+  firstName: null,
+  nickname: null,
+};
+
+Author.propTypes = {
+  usualName: PropTypes.string,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string.isRequired,
+  nickname: PropTypes.string,
+};
 
 export default Author;

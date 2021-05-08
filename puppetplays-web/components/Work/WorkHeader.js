@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { getFirstItemTitle } from 'lib/utils';
 import Place from 'components/Place';
 import Author from 'components/Author';
@@ -52,6 +53,23 @@ const WorkHeader = ({
       </h3>
     </header>
   );
+};
+
+WorkHeader.defaultProps = {
+  subtitle: null,
+  authors: null,
+  mostRelevantDate: null,
+  compositionPlace: null,
+  mainLanguage: null,
+};
+
+WorkHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  authors: PropTypes.arrayOf(PropTypes.object),
+  mostRelevantDate: PropTypes.string,
+  compositionPlace: PropTypes.arrayOf(PropTypes.object),
+  mainLanguage: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default WorkHeader;

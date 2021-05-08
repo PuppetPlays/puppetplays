@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
 import { Fragment, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import Author from 'components/Author';
 import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
@@ -10,7 +11,7 @@ const WorkPageHeader = ({ title, authors, compositionPlace }) => {
   const router = useRouter();
   const handleGoBack = useCallback(() => {
     router.back();
-  });
+  }, [router]);
 
   return (
     <div className={styles.container}>
@@ -55,6 +56,17 @@ const WorkPageHeader = ({ title, authors, compositionPlace }) => {
       </div>
     </div>
   );
+};
+
+WorkPageHeader.defaultProps = {
+  authors: null,
+  compositionPlace: null,
+};
+
+WorkPageHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object),
+  compositionPlace: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default WorkPageHeader;

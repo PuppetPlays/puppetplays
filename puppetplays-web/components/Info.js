@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import styles from './info.module.scss';
 
-function WorkInfo({ label, children, fill = false, show = true }) {
+function Info({ label, children, fill, show }) {
   if (!show) {
     return null;
   }
@@ -12,4 +13,16 @@ function WorkInfo({ label, children, fill = false, show = true }) {
   );
 }
 
-export default WorkInfo;
+Info.defaultProps = {
+  fill: false,
+  show: true,
+};
+
+Info.propTypes = {
+  label: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  fill: PropTypes.bool,
+  show: PropTypes.bool,
+};
+
+export default Info;

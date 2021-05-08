@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Header from 'components/Header';
 import styles from './layout.module.scss';
 
@@ -15,5 +16,16 @@ function Layout({ aside, header, children }) {
     </div>
   );
 }
+
+Layout.defaultProps = {
+  aside: null,
+  header: null,
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  aside: PropTypes.node,
+  header: PropTypes.node,
+};
 
 export default Layout;

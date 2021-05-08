@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import LanguageSelector from 'components/LanguageSelector';
 import styles from './header.module.scss';
@@ -17,5 +18,13 @@ function Header({ children }) {
     </div>
   );
 }
+
+Header.defaultProps = {
+  children: null,
+};
+
+Header.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Header;

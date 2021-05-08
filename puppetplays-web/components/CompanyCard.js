@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import styles from './authorCard.module.scss';
 
@@ -11,5 +12,9 @@ function CompanyCard({ title }) {
     </section>
   );
 }
+
+CompanyCard.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default CompanyCard;

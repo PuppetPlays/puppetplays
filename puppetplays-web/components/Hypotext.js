@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Author from 'components/Author';
 import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
@@ -19,5 +20,16 @@ function Hypotext({ title, date, authors }) {
     </Fragment>
   );
 }
+
+Hypotext.defaultProps = {
+  date: null,
+  authors: null,
+};
+
+Hypotext.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string,
+  authors: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Hypotext;

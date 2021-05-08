@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import styles from './section.module.scss';
 
-function WorkSection({ title, children, show = true }) {
+function Section({ title, children, show }) {
   if (!show) {
     return null;
   }
@@ -14,4 +15,14 @@ function WorkSection({ title, children, show = true }) {
   );
 }
 
-export default WorkSection;
+Section.defaultProps = {
+  show: true,
+};
+
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  show: PropTypes.bool,
+};
+
+export default Section;

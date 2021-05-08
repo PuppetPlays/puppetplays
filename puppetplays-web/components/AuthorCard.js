@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import Author from 'components/Author';
 import styles from './authorCard.module.scss';
@@ -19,5 +20,20 @@ function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
     </section>
   );
 }
+
+AuthorCard.defaultProps = {
+  firstName: null,
+  nickname: null,
+  birthDate: null,
+  deathDate: null,
+};
+
+AuthorCard.propTypes = {
+  firstName: PropTypes.string,
+  lastName: PropTypes.string.isRequired,
+  nickname: PropTypes.string,
+  birthDate: PropTypes.string,
+  deathDate: PropTypes.string,
+};
 
 export default AuthorCard;

@@ -1,13 +1,9 @@
+import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import useTranslation from 'next-translate/useTranslation';
 import styles from './pagination.module.scss';
 
-function Pagination({
-  initialPage = 0,
-  forcePage = 0,
-  pageCount,
-  onPageChange,
-}) {
+function Pagination({ initialPage, forcePage, pageCount, onPageChange }) {
   const { t } = useTranslation();
 
   return (
@@ -29,5 +25,17 @@ function Pagination({
     />
   );
 }
+
+Pagination.defaultProps = {
+  initialPage: 0,
+  forcePage: 0,
+};
+
+Pagination.propTypes = {
+  initialPage: PropTypes.number,
+  forcePage: PropTypes.number,
+  pageCount: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+};
 
 export default Pagination;

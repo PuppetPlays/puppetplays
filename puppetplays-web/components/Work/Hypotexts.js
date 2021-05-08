@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Info from 'components/Info';
@@ -15,5 +15,13 @@ function Hypotexts({ hypotexts }) {
     </Info>
   );
 }
+
+Hypotexts.defaultProps = {
+  hypotexts: null,
+};
+
+Hypotexts.propTypes = {
+  hypotexts: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Hypotexts;
