@@ -49,8 +49,10 @@
   "eraseAll": "Tout effacer",
   "compositionPlace": "Lieu",
   "compositionPlacePlaceholder": "Pays, ville…",
+  "places": "Lieu",
   "mainLanguage": "Langue",
   "mainLanguagePlaceholder": "Français, Allemand…",
+  "languages": "Langue",
   "period": "Période",
   "composeAfter": "écrit après",
   "composeBefore": "écrit avant"

@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import FilterSelect from 'components/FilterSelect';
-import FilterRange from 'components/FilterRange';
 import styles from './filters.module.scss';
 
-function Filters({
+function AuthorsFilters({
   languageOptions,
   placeOptions,
-  periodMinMax,
   selectedLanguages,
   selectedPlaces,
-  selectedPeriodMin,
-  selectedPeriodMax,
   onChange,
   onClearAll,
 }) {
@@ -27,51 +23,38 @@ function Filters({
       </header>
       <div>
         <FilterSelect
-          name="mainLanguage"
+          name="languages"
           placeholder={t('common:mainLanguagePlaceholder')}
           options={languageOptions}
           onChange={onChange}
           value={selectedLanguages}
         />
         <FilterSelect
-          name="compositionPlace"
+          name="places"
           placeholder={t('common:compositionPlacePlaceholder')}
           options={placeOptions}
           onChange={onChange}
           value={selectedPlaces}
-        />
-        <FilterRange
-          name="period"
-          bounds={periodMinMax}
-          valueMin={selectedPeriodMin}
-          valueMax={selectedPeriodMax}
-          onAfterChange={onChange}
         />
       </div>
     </div>
   );
 }
 
-Filters.defaultProps = {
+AuthorsFilters.defaultProps = {
   languageOptions: [],
   placeOptions: [],
-  periodMinMax: null,
   selectedLanguages: [],
   selectedPlaces: [],
-  selectedPeriodMin: null,
-  selectedPeriodMax: null,
 };
 
-Filters.propTypes = {
+AuthorsFilters.propTypes = {
   languageOptions: PropTypes.arrayOf(PropTypes.object),
   placeOptions: PropTypes.arrayOf(PropTypes.object),
-  periodMinMax: PropTypes.arrayOf(PropTypes.number),
   selectedLanguages: PropTypes.arrayOf(PropTypes.object),
   selectedPlaces: PropTypes.arrayOf(PropTypes.object),
-  selectedPeriodMin: PropTypes.number,
-  selectedPeriodMax: PropTypes.number,
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,
 };
 
-export default Filters;
+export default AuthorsFilters;

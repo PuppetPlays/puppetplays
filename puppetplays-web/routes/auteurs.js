@@ -1,19 +1,29 @@
-import { Fragment } from 'react';
+import { Fragment, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
-import { fetchAPI, getAllAuthorsQuery } from 'lib/api';
+import {
+  fetchAPI,
+  getAllAuthorsQuery,
+  getAllLanguagesQuery,
+  getAllPlacesQuery,
+} from 'lib/api';
+import {
+  queryParamsToState,
+  stateToGraphqlVariables,
+} from 'lib/authorsFilters';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
 import Company from 'components/Company';
+import Filters from 'components/AuthorsFilters';
 import styles from 'styles/Authors.module.scss';
 
 const isOfType = (type) => ({ typeHandle }) => typeHandle === type;
@@ -27,18 +37,19 @@ const getFirstLetter = cond([
   [stubTrue, constant('?')],
 ]);
 
-function Authors({ initialData }) {
-  const { t } = useTranslation();
+function Authors({ initialData, languages, places }) {
+  const router = useRouter();
+  const [filters, setFilters] = useState(queryParamsToState(router.query));
   const [currentLetter, handleScroll] = useLetterPaginationSelector(
     Object.keys(initialData.entries)[0],
   );
-  const router = useRouter();
   const { data } = useSWR(
-    [getAllAuthorsQuery, router.locale],
-    async (query, locale) => {
+    [getAllAuthorsQuery(filters), router.locale, filters],
+    async (query, locale, filtersState) => {
       const data = await fetchAPI(query, {
         variables: {
           locale,
+          ...stateToGraphqlVariables(filtersState),
         },
       });
       return {
@@ -51,8 +62,59 @@ function Authors({ initialData }) {
     },
   );
 
+  useEffect(() => {
+    mutate([getAllAuthorsQuery(filters), router.locale, filters]);
+  }, [router.locale, filters]);
+
+  const updateRoute = useCallback(
+    (values) => {
+      const queryParams = queryString.stringify(values, {
+        arrayFormat: 'comma',
+        skipNull: true,
+      });
+      router.push(`/auteurs?${queryParams}`, undefined, {
+        shallow: true,
+      });
+    },
+    [router],
+  );
+
+  const handleChangeFilters = useCallback(
+    (value, { name }) => {
+      const newFilters = {
+        ...filters,
+        [name]: value.length > 0 ? value.map((v) => v.id) : null,
+      };
+      setFilters(newFilters);
+      updateRoute({ ...newFilters });
+    },
+    [updateRoute, filters],
+  );
+
+  const handleClearAllFilters = useCallback(() => {
+    setFilters({});
+    updateRoute();
+  }, [updateRoute]);
+
   return (
-    <Layout>
+    <Layout
+      aside={
+        <Filters
+          languageOptions={languages}
+          placeOptions={places}
+          selectedLanguages={
+            filters.languages &&
+            languages.filter(({ id }) => filters.languages.includes(id))
+          }
+          selectedPlaces={
+            filters.places &&
+            places.filter(({ id }) => filters.places.includes(id))
+          }
+          onChange={handleChangeFilters}
+          onClearAll={handleClearAllFilters}
+        />
+      }
+    >
       <Head>
         <title>Puppetplays | Auteurs</title>
         <link rel="icon" href="/favicon.ico" />
@@ -106,21 +168,32 @@ function Authors({ initialData }) {
 
 Authors.propTypes = {
   initialData: PropTypes.object.isRequired,
+  languages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  places: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Authors;
 
-export async function getServerSideProps({ locale, req, res }) {
+export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const data = await fetchAPI(getAllAuthorsQuery, {
+  const languages = await fetchAPI(getAllLanguagesQuery, {
+    variables: { locale },
+  });
+  const places = await fetchAPI(getAllPlacesQuery, {
+    variables: { locale },
+  });
+  const filtersState = queryParamsToState(query);
+  const data = await fetchAPI(getAllAuthorsQuery(filtersState), {
     variables: { locale },
   });
 
   return {
     props: {
       initialData: { entries: groupBy(data.entries, getFirstLetter) },
+      languages: languages.entries,
+      places: places.entries,
     },
   };
 }

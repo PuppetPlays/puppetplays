@@ -20,7 +20,7 @@ import { queryParamsToState, stateToGraphqlVariables } from 'lib/worksFilters';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
-import Filters from 'components/Filters';
+import Filters from 'components/WorksFilters';
 import SearchBar from 'components/SearchBar';
 import styles from 'styles/Home.module.css';
 

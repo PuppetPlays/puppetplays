@@ -4,6 +4,10 @@ import {
   stateToGraphqlEntriesParams,
   stateToGraphqlQueryArgument,
 } from 'lib/worksFilters';
+import {
+  stateToGraphqlEntriesParams as authorsStateToGraphqlEntriesParams,
+  stateToGraphqlQueryArgument as authorsStateToGraphqlQueryArgument,
+} from 'lib/authorsFilters';
 
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
@@ -353,9 +357,13 @@ export async function getWorkById(id, locale, token) {
   return data;
 }
 
-export const getAllAuthorsQuery = `
-query GetAllAuthors($locale: [String]) {
-entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, orderBy: "title") {
+export const getAllAuthorsQuery = (filters) => `
+query GetAllAuthors($locale: [String]${authorsStateToGraphqlQueryArgument(
+  filters,
+)}) {
+entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, orderBy: "title"${authorsStateToGraphqlEntriesParams(
+  filters,
+)}) {
   id,
   title,
   typeHandle,
@@ -368,6 +376,8 @@ entries(section: "persons", site: $locale, relatedToEntries: {section: "works"},
     deathDate,
   },
 }
-entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works"})
+entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works"}${authorsStateToGraphqlEntriesParams(
+  filters,
+)})
 }
 `;
