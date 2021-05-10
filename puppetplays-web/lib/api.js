@@ -352,3 +352,22 @@ export async function getWorkById(id, locale, token) {
   );
   return data;
 }
+
+export const getAllAuthorsQuery = `
+query GetAllAuthors($locale: [String]) {
+entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, orderBy: "title") {
+  id,
+  title,
+  typeHandle,
+  ... on persons_persons_Entry { 
+    firstName,
+    lastName,
+    nickname,
+    usualName,
+    birthDate,
+    deathDate,
+  },
+}
+entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works"})
+}
+`;

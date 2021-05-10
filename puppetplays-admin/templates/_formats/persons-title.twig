@@ -1,8 +1,11 @@
 {% if object.usualName is not empty %}{{object.usualName}}{% endif %}
 {% if object.usualName is not empty %}{{' ('}}{% endif %}
-{% if object.firstName is not empty %}{{object.firstName}}{% endif %}
-{% if object.lastName is not empty %}{{' '}}{% endif %}
-{% if object.lastName is not empty %}{{object.lastName}}{% endif %}
+{% if object.usualName is empty and object.lastName is not empty %}{{object.lastName}}{% endif %}
+{% if object.usualName is empty and object.firstName is not empty %}{{' '}}{% endif %}
+{% if object.usualName is empty and object.firstName is not empty %}{{object.firstName}}{% endif %}
+{% if object.usualName is not empty and object.firstName is not empty %}{{object.firstName}}{% endif %}
+{% if object.usualName is not empty and object.lastName is not empty %}{{' '}}{% endif %}
+{% if object.usualName is not empty and object.lastName is not empty %}{{object.lastName}}{% endif %}
 {% if object.usualName is empty and object.nickname is not empty %}{{' ('}}{% endif %}
 {% if object.nickname is not empty and object.usualName is not empty and (object.firstName is not empty or object.lastName is not empty) %}{{', '}}{% endif %}
 {% if object.nickname is not empty %}{{'alias'|t}}{% endif %}

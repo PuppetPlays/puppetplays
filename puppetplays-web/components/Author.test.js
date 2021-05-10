@@ -50,3 +50,22 @@ test('renders an author with only a first name', () => {
   const { container } = render(<Author firstName="Raymond" />);
   expect(container).toHaveTextContent('Raymond');
 });
+
+test('renders an author with the lastName first', () => {
+  const { container } = render(
+    <Author firstName="Raymond" lastName="Poisson" lastNameFirst />,
+  );
+  expect(container).toHaveTextContent('Poisson Raymond');
+});
+
+test('renders an author with a common name and with the lastName first', () => {
+  const { container } = render(
+    <Author
+      usualName="Fishy"
+      firstName="Raymond"
+      lastName="Poisson"
+      lastNameFirst
+    />,
+  );
+  expect(container).toHaveTextContent('Fishy (Raymond Poisson)');
+});
