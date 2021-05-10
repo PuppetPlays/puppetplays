@@ -17,11 +17,12 @@ function Section({ title, children, show }) {
 
 Section.defaultProps = {
   show: true,
+  children: null,
 };
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   show: PropTypes.bool,
 };
 

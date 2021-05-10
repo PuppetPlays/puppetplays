@@ -16,11 +16,12 @@ function Info({ label, children, fill, show }) {
 Info.defaultProps = {
   fill: false,
   show: true,
+  children: null,
 };
 
 Info.propTypes = {
   label: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   fill: PropTypes.bool,
   show: PropTypes.bool,
 };

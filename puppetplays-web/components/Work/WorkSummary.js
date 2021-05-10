@@ -89,12 +89,12 @@ function WorkSummary({
         {isExpanded && (
           <Fragment>
             <section>
-              <Info label={t('common:note')} show={note}>
+              <Info label={t('common:note')} show={!!note}>
                 <div dangerouslySetInnerHTML={{ __html: note }} />
               </Info>
               <Abstract mainTheme={mainTheme} abstract={abstract} />
             </section>
-            <Section title={t('common:otherTitles')} show={otherTitles}>
+            <Section title={t('common:otherTitles')} show={!!otherTitles}>
               {otherTitles}
             </Section>
 
@@ -106,12 +106,12 @@ function WorkSummary({
 
             <Section
               title={t('common:publications')}
-              show={publication || modernEdition || onlineEdition}
+              show={!!publication || !!modernEdition || !!onlineEdition}
             >
-              <Info label={t('common:publication')} show={publication}>
+              <Info label={t('common:publication')} show={!!publication}>
                 <div dangerouslySetInnerHTML={{ __html: publication }} />
               </Info>
-              <Info label={t('common:modernEdition')} show={modernEdition}>
+              <Info label={t('common:modernEdition')} show={!!modernEdition}>
                 <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
               </Info>
               {onlineEdition && (
@@ -156,12 +156,12 @@ function WorkSummary({
                 listTransform={getProperty('textName')}
               />
             </Info>
-            <Info label={t('common:actsCount')} show={actsCount}>
+            <Info label={t('common:actsCount')} show={!!actsCount}>
               {actsCount}
             </Info>
             <Info
               label={t('common:license')}
-              show={publicDomain || additionalLicenseInformation}
+              show={publicDomain || !!additionalLicenseInformation}
             >
               {publicDomain
                 ? t('common:publicDomain')

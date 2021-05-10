@@ -77,7 +77,10 @@ function Work({
         </p>
         {pagesCount && <p>{t('common:pagesCount', { count: pagesCount })}</p>}
 
-        <Section title={t('common:theAuthors')} show={authors}>
+        <Section
+          title={t('common:theAuthors')}
+          show={hasAtLeastOneItem(authors)}
+        >
           {authors.map(({ typeHandle, ...rest }) => {
             if (typeHandle === 'persons') {
               return <AuthorCard key={rest.id} {...rest} />;
@@ -98,7 +101,7 @@ function Work({
         />
 
         <section>
-          <Info label={t('common:genre')} show={genre}>
+          <Info label={t('common:genre')} show={!!genre}>
             {genre}
           </Info>
           <Info
@@ -110,23 +113,23 @@ function Work({
               listTransform={getProperty('textName')}
             />
           </Info>
-          <Info label={t('common:actsCount')} show={actsCount}>
+          <Info label={t('common:actsCount')} show={!!actsCount}>
             {actsCount}
           </Info>
-          <Info label={t('common:note')} fill show={note}>
+          <Info label={t('common:note')} fill show={!!note}>
             <div dangerouslySetInnerHTML={{ __html: note }} />
           </Info>
           <Abstract mainTheme={mainTheme} abstract={abstract} />
           <Hypotexts hypotexts={hypotexts} />
           <Info
             label={t('common:compositionDate')}
-            show={compositionDisplayDate}
+            show={!!compositionDisplayDate}
           >
             {compositionDisplayDate}
           </Info>
         </section>
 
-        <Section title={t('common:otherTitles')} show={otherTitles}>
+        <Section title={t('common:otherTitles')} show={!!otherTitles}>
           {otherTitles}
         </Section>
 
@@ -139,15 +142,15 @@ function Work({
         <Section
           title={t('common:publicationsAndTranslations')}
           show={
-            publication ||
+            !!publication ||
             hasAtLeastOneItem(transcribers) ||
             hasAtLeastOneItem(editors) ||
-            modernEdition ||
-            onlineEdition ||
+            !!modernEdition ||
+            !!onlineEdition ||
             hasAtLeastOneItem(translations)
           }
         >
-          <Info label={t('common:publication')} show={publication}>
+          <Info label={t('common:publication')} show={!!publication}>
             <div dangerouslySetInnerHTML={{ __html: publication }} />
           </Info>
           <Info
@@ -159,7 +162,7 @@ function Work({
           <Info label={t('common:editors')} show={hasAtLeastOneItem(editors)}>
             <CommaSepList list={editors} itemComponent={Author} />
           </Info>
-          <Info label={t('common:modernEdition')} show={modernEdition}>
+          <Info label={t('common:modernEdition')} show={!!modernEdition}>
             <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
           </Info>
           {onlineEdition && (
@@ -192,7 +195,10 @@ function Work({
           </Info>
         </Section>
 
-        <Section title={t('common:conservationPlace')}>
+        <Section
+          title={t('common:conservationPlace')}
+          show={hasAtLeastOneItem(conservationPlace)}
+        >
           {hasAtLeastOneItem(conservationPlace) && (
             <Fragment>
               <span>{getFirstItemTitle(conservationPlace)}</span>
@@ -232,7 +238,7 @@ function Work({
           </Info>
           <Info
             label={t('common:license')}
-            show={publicDomain || additionalLicenseInformation}
+            show={publicDomain || !!additionalLicenseInformation}
           >
             {publicDomain
               ? t('common:publicDomain')
@@ -254,14 +260,14 @@ function Work({
           <Keywords keywords={dramaticDevices} fill />
         </Section>
 
-        <Section title={t('common:ids')} show={doi || viafId || arkId}>
-          <Info label="DOI" show={doi}>
+        <Section title={t('common:ids')} show={!!doi || !!viafId || !!arkId}>
+          <Info label="DOI" show={!!doi}>
             {doi}
           </Info>
-          <Info label="VIAF" show={viafId}>
+          <Info label="VIAF" show={!!viafId}>
             {viafId}
           </Info>
-          <Info label="ARK" show={arkId}>
+          <Info label="ARK" show={!!arkId}>
             {arkId}
           </Info>
         </Section>

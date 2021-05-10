@@ -64,7 +64,7 @@ WorkHeader.defaultProps = {
 };
 
 WorkHeader.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
   authors: PropTypes.arrayOf(PropTypes.object),
   mostRelevantDate: PropTypes.string,
