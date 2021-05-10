@@ -10,7 +10,9 @@ function Hypotexts({ hypotexts }) {
   return (
     <Info label={t('common:hypotexts')} show={hasAtLeastOneItem(hypotexts)}>
       {hypotexts.map((hypotext) => (
-        <Hypotext key={hypotext.title} {...hypotext} />
+        <div key={hypotext.title}>
+          <Hypotext {...hypotext} />
+        </div>
       ))}
     </Info>
   );

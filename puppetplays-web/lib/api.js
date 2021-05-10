@@ -259,8 +259,23 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       abstract,
       hypotexts {
         title,
+        typeHandle
         ... on relatedWorks_relatedWorks_Entry {
           date,
+          authors {
+            id,
+            title,
+            typeHandle,
+            ... on persons_persons_Entry { 
+              firstName,
+              lastName,
+              nickname,
+              usualName
+            }
+          }
+        },
+        ... on works_works_Entry {
+          date: mostRelevantDate,
           authors {
             id,
             title,

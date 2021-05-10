@@ -83,7 +83,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 084dbff2-63eb-420b-aac6-22102df927f9
+            fieldUid: 084dbff2-63eb-420b-aac6-22102df927f9 # Hypotexte(s)
             instructions: null
             label: null
             required: false

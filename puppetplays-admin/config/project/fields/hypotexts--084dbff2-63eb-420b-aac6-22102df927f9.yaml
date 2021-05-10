@@ -13,6 +13,7 @@ settings:
   showSiteMenu: false
   source: null
   sources:
+    - 'section:29f1cf63-9c38-484a-9026-94010557c5af'
     - 'section:e2d5c38e-3607-4630-bddf-0875190aa133'
   targetSiteId: null
   validateRelatedElements: false
