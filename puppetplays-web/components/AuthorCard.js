@@ -3,13 +3,25 @@ import useTranslation from 'next-translate/useTranslation';
 import Author from 'components/Author';
 import styles from './authorCard.module.scss';
 
-function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
+function AuthorCard({
+  usualName,
+  firstName,
+  lastName,
+  nickname,
+  birthDate,
+  deathDate,
+}) {
   const { t } = useTranslation();
 
   return (
     <section className={styles.container}>
       <div className={styles.title}>
-        <Author firstName={firstName} lastName={lastName} nickname={nickname} />
+        <Author
+          usualName={usualName}
+          firstName={firstName}
+          lastName={lastName}
+          nickname={nickname}
+        />
       </div>
       {(birthDate || deathDate) && (
         <div>
@@ -22,15 +34,18 @@ function AuthorCard({ firstName, lastName, nickname, birthDate, deathDate }) {
 }
 
 AuthorCard.defaultProps = {
+  usualName: null,
   firstName: null,
+  lastName: null,
   nickname: null,
   birthDate: null,
   deathDate: null,
 };
 
 AuthorCard.propTypes = {
+  usualName: PropTypes.string,
   firstName: PropTypes.string,
-  lastName: PropTypes.string.isRequired,
+  lastName: PropTypes.string,
   nickname: PropTypes.string,
   birthDate: PropTypes.string,
   deathDate: PropTypes.string,

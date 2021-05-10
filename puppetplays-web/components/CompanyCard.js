@@ -7,7 +7,7 @@ function CompanyCard({ title }) {
 
   return (
     <section className={styles.container}>
-      <div>{title}</div>
+      <div className={styles.title}>{title}</div>
       <div className={styles.type}>{t('common:company')}</div>
     </section>
   );
