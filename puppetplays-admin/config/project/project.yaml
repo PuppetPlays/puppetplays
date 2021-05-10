@@ -1,4 +1,4 @@
-dateModified: 1620476692
+dateModified: 1620635633
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -50,5 +50,5 @@ system:
   live: true
   name: puppetplays
   retryDuration: null
-  schemaVersion: 3.5.13
+  schemaVersion: 3.6.8
   timeZone: Europe/Paris

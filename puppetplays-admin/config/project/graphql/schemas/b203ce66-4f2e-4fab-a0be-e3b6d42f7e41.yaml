@@ -30,5 +30,8 @@ scope:
   - 'entrytypes.09da97ae-fc6f-4555-ade3-73e42fd9bf6a:read'
   - 'sections.e2d5c38e-3607-4630-bddf-0875190aa133:read'
   - 'entrytypes.e4e23bc0-a6bd-4075-943f-4607a5fac9be:read'
-  - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read'
+  - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read' # Images
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read'
+  - 'elements.drafts:read'
+  - 'elements.revisions:read'
+  - 'elements.inactive:read'

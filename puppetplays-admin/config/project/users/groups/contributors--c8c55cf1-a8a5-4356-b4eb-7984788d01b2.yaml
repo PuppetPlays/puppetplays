@@ -77,10 +77,10 @@ permissions:
   - 'editpeerentries:e2d5c38e-3607-4630-bddf-0875190aa133'
   - 'editpeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133'
   - 'editentries:e2d5c38e-3607-4630-bddf-0875190aa133'
-  - 'saveassetinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'replacefilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'editimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'editpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'editpeerimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'viewpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
-  - 'viewvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765'
+  - 'saveassetinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'replacefilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editpeerimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
