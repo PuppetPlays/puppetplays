@@ -8,7 +8,9 @@ function Header({ children }) {
     <div className={styles.container}>
       <h1 className={styles.logo}>
         <Link href="/">
-          <img src="/logo.png" alt="Puppetplays" width="72" />
+          <a>
+            <img src="/logo.png" alt="Puppetplays" width="72" />
+          </a>
         </Link>
       </h1>
       {children}
