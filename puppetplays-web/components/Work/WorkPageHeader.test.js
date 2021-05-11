@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import WorkPageHeader from './WorkPageHeader';
 
 const authors = [
-  { firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
-  { firstName: 'Claude', lastName: 'Garbut', typeHandle: 'persons' },
+  { id: '1', firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
+  { id: '2', firstName: 'Claude', lastName: 'Garbut', typeHandle: 'persons' },
 ];
 
 const place = [

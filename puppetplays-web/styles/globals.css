@@ -92,6 +92,8 @@
 
   --color-border: var(--color-scale-3);
 
+  --color-modal-overlay: rgba(0, 0, 0, 0.6);
+
   --ff-sans: 'Fira Sans', 'Helvetica Neue', sans-serif;
   --ff-serif: 'PT Serif', serif;
 }
@@ -107,7 +109,7 @@ body {
   color: var(--color-text);
 }
 
-body > div {
+body > #__next {
   height: 100%;
 }
 

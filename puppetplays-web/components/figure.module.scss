@@ -1,0 +1,23 @@
+.container {
+  margin-bottom: 100px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  img {
+    display: block;
+  }
+
+  img + figcaption {
+    margin-top: 15px;
+  }
+
+  figcaption {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-subtle);
+
+    span {
+      font-weight: 400;
+    }
+  }
+}

@@ -30,8 +30,8 @@ test('renders a list of strings given a list of objects and a tranform function'
 
 test('renders a list of Components', () => {
   const authors = [
-    { firstName: 'Homére' },
-    { firstName: 'Raymond', lastName: 'Poisson' },
+    { id: '1', firstName: 'Homére' },
+    { id: '2', firstName: 'Raymond', lastName: 'Poisson' },
   ];
   const { container } = render(
     <CommaSepList list={authors} itemComponent={Author} />,
@@ -40,7 +40,7 @@ test('renders a list of Components', () => {
 });
 
 test('renders a list of one author', () => {
-  const authors = [{ firstName: 'Homére', typeHandle: 'persons' }];
+  const authors = [{ id: '1', firstName: 'Homére', typeHandle: 'persons' }];
   const { container } = render(
     <CommaSepList list={authors} itemComponents={{ persons: Author }} />,
   );

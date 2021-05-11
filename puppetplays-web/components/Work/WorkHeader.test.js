@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
+import { ModalProvider } from 'components/modalContext';
 import WorkHeader from './WorkHeader';
 
+const renderWithinModalProvider = (component) =>
+  render(<ModalProvider>{component}</ModalProvider>);
+
 const authors = [
-  { firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
-  { firstName: 'Claude', lastName: 'Garbut', typeHandle: 'persons' },
+  { id: '1', firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
+  { id: '2', firstName: 'Claude', lastName: 'Garbut', typeHandle: 'persons' },
 ];
 
 const place = [
@@ -16,7 +20,7 @@ const place = [
 const mainLanguage = [{ title: 'French' }];
 
 test('renders the work header', () => {
-  render(
+  renderWithinModalProvider(
     <WorkHeader
       title="My work"
       subtitle="Is this a work?"
@@ -34,12 +38,12 @@ test('renders the work header', () => {
   expect(h1).toHaveTextContent('My work');
   expect(h2).toHaveTextContent('Is this a work?');
   expect(h3).toHaveTextContent(
-    'Raymond Poisson, Claude Garbut|1926|Paris, France|French',
+    'Raymond Poissoncommon:openNote, Claude Garbutcommon:openNote|1926|Paris, France|French',
   );
 });
 
 test('renders the work header without a subtitle', () => {
-  render(<WorkHeader title="My work" />);
+  renderWithinModalProvider(<WorkHeader title="My work" />);
 
   const h2 = screen.queryByRole('heading', { level: 2 });
 
@@ -47,7 +51,7 @@ test('renders the work header without a subtitle', () => {
 });
 
 test('renders the work header without a date', () => {
-  render(
+  renderWithinModalProvider(
     <WorkHeader
       title="My work"
       subtitle="Is this a work?"
@@ -60,12 +64,12 @@ test('renders the work header without a date', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poisson, Claude Garbut|Paris, France|French',
+    'Raymond Poissoncommon:openNote, Claude Garbutcommon:openNote|Paris, France|French',
   );
 });
 
 test('renders the work header without a place', () => {
-  render(
+  renderWithinModalProvider(
     <WorkHeader
       title="My work"
       subtitle="Is this a work?"
@@ -77,11 +81,13 @@ test('renders the work header without a place', () => {
 
   const h3 = screen.getByRole('heading', { level: 3 });
 
-  expect(h3).toHaveTextContent('Raymond Poisson, Claude Garbut|1926|French');
+  expect(h3).toHaveTextContent(
+    'Raymond Poissoncommon:openNote, Claude Garbutcommon:openNote|1926|French',
+  );
 });
 
 test('renders the work header without a language', () => {
-  render(
+  renderWithinModalProvider(
     <WorkHeader
       title="My work"
       subtitle="Is this a work?"
@@ -94,12 +100,12 @@ test('renders the work header without a language', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poisson, Claude Garbut|1926|Paris, France',
+    'Raymond Poissoncommon:openNote, Claude Garbutcommon:openNote|1926|Paris, France',
   );
 });
 
 test('renders the work header without a language and a date', () => {
-  render(
+  renderWithinModalProvider(
     <WorkHeader
       title="My work"
       subtitle="Is this a work?"
@@ -110,5 +116,7 @@ test('renders the work header without a language and a date', () => {
 
   const h3 = screen.getByRole('heading', { level: 3 });
 
-  expect(h3).toHaveTextContent('Raymond Poisson, Claude Garbut|Paris, France');
+  expect(h3).toHaveTextContent(
+    'Raymond Poissoncommon:openNote, Claude Garbutcommon:openNote|Paris, France',
+  );
 });

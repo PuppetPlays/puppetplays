@@ -25,6 +25,7 @@ const WorkHeader = ({
             <CommaSepList
               list={authors}
               itemComponents={{ persons: Author, companies: Company }}
+              showMenu
             />
           </span>
         )}

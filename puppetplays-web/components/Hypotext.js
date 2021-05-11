@@ -15,7 +15,7 @@ function Hypotext({ title, date, authors }) {
           itemComponents={{ persons: Author, companies: Company }}
         />
       )}
-      {date && ', '}
+      {date && ' – '}
       {date && date}
     </Fragment>
   );

@@ -4,6 +4,7 @@ import Author from 'components/Author';
 import styles from './authorCard.module.scss';
 
 function AuthorCard({
+  id,
   usualName,
   firstName,
   lastName,
@@ -17,6 +18,7 @@ function AuthorCard({
     <section className={styles.container}>
       <div className={styles.title}>
         <Author
+          id={id}
           usualName={usualName}
           firstName={firstName}
           lastName={lastName}
@@ -43,6 +45,7 @@ AuthorCard.defaultProps = {
 };
 
 AuthorCard.propTypes = {
+  id: PropTypes.string.isRequired,
   usualName: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,

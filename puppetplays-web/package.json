@@ -26,6 +26,7 @@
     }
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
@@ -34,7 +35,9 @@
     "prop-types": "^15.7.2",
     "query-string": "^7.0.0",
     "react": "17.0.1",
+    "react-accessible-dropdown-menu-hook": "^2.2.2",
     "react-dom": "17.0.1",
+    "react-modal": "^3.13.1",
     "react-paginate": "^6.5.0",
     "react-select": "^4.3.0",
     "react-slider": "^1.1.4",

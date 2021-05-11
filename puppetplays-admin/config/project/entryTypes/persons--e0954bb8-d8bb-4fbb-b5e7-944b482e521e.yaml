@@ -182,15 +182,6 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
-          -
-            fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f
-            instructions: ''
-            label: 'Lieu d’activité principal'
-            required: ''
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 50
         name: Identifiants
         sortOrder: 3
 handle: persons

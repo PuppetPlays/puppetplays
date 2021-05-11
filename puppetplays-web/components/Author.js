@@ -1,8 +1,17 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import AuthorDropdownMenu from 'components/AuthorDropdownMenu';
 
-function Author({ usualName, firstName, lastName, nickname, lastNameFirst }) {
+function Author({
+  id,
+  usualName,
+  firstName,
+  lastName,
+  nickname,
+  lastNameFirst,
+  showMenu,
+}) {
   const { t } = useTranslation();
 
   return (
@@ -20,6 +29,7 @@ function Author({ usualName, firstName, lastName, nickname, lastNameFirst }) {
       {nickname && ' '}
       {nickname && nickname}
       {(usualName || nickname) && ')'}
+      {showMenu && <AuthorDropdownMenu id={id} />}
     </Fragment>
   );
 }
@@ -30,14 +40,17 @@ Author.defaultProps = {
   nickname: null,
   lastName: null,
   lastNameFirst: false,
+  showMenu: false,
 };
 
 Author.propTypes = {
+  id: PropTypes.string.isRequired,
   usualName: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   nickname: PropTypes.string,
   lastNameFirst: PropTypes.bool,
+  showMenu: PropTypes.bool,
 };
 
 export default Author;

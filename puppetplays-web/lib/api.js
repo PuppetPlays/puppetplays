@@ -396,3 +396,41 @@ entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works
 )})
 }
 `;
+
+export const getAuthorByIdQuery = `
+${assetFragment}
+query getAuthorById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "persons", site: $locale, id: $id) {
+    id,
+    title,
+    ... on persons_persons_Entry {
+      firstName,
+      lastName,
+      nickname,
+      usualName,
+      birthDate,
+      deathDate,
+      biographicalNote,
+      mainImage {
+        ...assetFragment
+      },
+      idrefId,
+      viafId,
+      arkId,
+      isniId
+    }
+  }
+}
+`;
+
+export const getWorksOfAuthorQuery = `
+query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
+  entries(section: "works", site: $locale, relatedTo: $id) {
+    id,
+    title,
+    ... on works_works_Entry {
+      date: mostRelevantDate
+    }
+  }
+}
+`;

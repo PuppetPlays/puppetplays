@@ -55,5 +55,8 @@
   "languages": "Langue",
   "period": "Période",
   "composeAfter": "écrit après",
-  "composeBefore": "écrit avant"
+  "composeBefore": "écrit avant",
+  "imageCopyright": "Crédits : ",
+  "works": "Œuvres",
+  "openNote": "Ouvrir la notice"
 }

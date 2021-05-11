@@ -8,13 +8,13 @@ test('renders an hypotext with only a title', () => {
 
 test('renders an hypotext with a title and a date', () => {
   const { container } = render(<Hypotext title="Liliade" date="-3000" />);
-  expect(container).toHaveTextContent('Liliade, -3000');
+  expect(container).toHaveTextContent('Liliade – -3000');
 });
 
 test('renders an hypotext with a title, a date and an author', () => {
-  const author = { firstName: 'Homére', typeHandle: 'persons' };
+  const author = { id: '1', firstName: 'Homére', typeHandle: 'persons' };
   const { container } = render(
     <Hypotext title="Liliade" date="-3000" authors={[author]} />,
   );
-  expect(container).toHaveTextContent('Liliade, Homére, -3000');
+  expect(container).toHaveTextContent('Liliade, Homére – -3000');
 });

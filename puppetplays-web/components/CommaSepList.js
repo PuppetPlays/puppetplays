@@ -7,6 +7,7 @@ function CommaSepList({
   itemComponent,
   itemComponents,
   separator = ', ',
+  ...additionalProps
 }) {
   if (!itemComponent && !itemComponents) {
     return list.map(listTransform).join(separator);
@@ -17,7 +18,7 @@ function CommaSepList({
       : itemComponent;
     return (
       <Fragment key={index}>
-        <Component {...item} />
+        <Component {...item} {...additionalProps} />
         {index < list.length - 1 && separator}
       </Fragment>
     );
