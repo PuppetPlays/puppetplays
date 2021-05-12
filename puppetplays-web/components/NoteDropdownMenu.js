@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import DropdownMenu, { DropdownMenuItem } from 'components/DropdownMenu';
 import { modalTypes, useModal } from 'components/modalContext';
 
-function AuthorDropdownMenu({ id }) {
+function NoteDropdownMenu({ id, modalType }) {
   const { t } = useTranslation();
 
   const [, dispatch] = useModal();
@@ -12,9 +12,9 @@ function AuthorDropdownMenu({ id }) {
   const handleClick = useCallback(() => {
     dispatch({
       type: 'open',
-      payload: { type: modalTypes.author, meta: { id } },
+      payload: { type: modalType, meta: { id } },
     });
-  }, [dispatch, id]);
+  }, [dispatch, id, modalType]);
 
   return (
     <DropdownMenu itemsCount={1}>
@@ -35,8 +35,9 @@ function AuthorDropdownMenu({ id }) {
   );
 }
 
-AuthorDropdownMenu.propTypes = {
+NoteDropdownMenu.propTypes = {
   id: PropTypes.string.isRequired,
+  modalType: PropTypes.oneOf(Object.values(modalTypes)).isRequired,
 };
 
-export default AuthorDropdownMenu;
+export default NoteDropdownMenu;

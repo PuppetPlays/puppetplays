@@ -4,6 +4,7 @@ import { getWorkById } from 'lib/api';
 import Layout from 'components/Layout';
 import PropTypes from 'prop-types';
 import Work from 'components/Work/Work';
+import ContentLayout from 'components/ContentLayout';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import styles from 'styles/Work.module.css';
 
@@ -21,9 +22,9 @@ const WorkPage = ({ initialData }) => {
           writingPlace={initialData.writingPlace}
         />
       </div>
-      <div className={styles.work}>
+      <ContentLayout style={{ maxWidth: 1200 }}>
         <Work {...initialData} />
-      </div>
+      </ContentLayout>
     </Layout>
   );
 };

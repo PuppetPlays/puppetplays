@@ -380,6 +380,7 @@ entries(section: "persons", site: $locale, relatedToEntries: {section: "works"},
   filters,
 )}) {
   id,
+  slug,
   title,
   typeHandle,
   ... on persons_persons_Entry { 
@@ -402,6 +403,7 @@ ${assetFragment}
 query getAuthorById($locale: [String], $id: [QueryArgument]) {
   entry(section: "persons", site: $locale, id: $id) {
     id,
+    slug,
     title,
     ... on persons_persons_Entry {
       firstName,
@@ -425,6 +427,51 @@ query getAuthorById($locale: [String], $id: [QueryArgument]) {
 
 export const getWorksOfAuthorQuery = `
 query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
+  entries(section: "works", site: $locale, relatedTo: $id) {
+    id,
+    title,
+    ... on works_works_Entry {
+      date: mostRelevantDate
+    }
+  }
+}
+`;
+
+export const getAllAnimationsTechniquesQuery = `
+${assetFragment}
+query getAllAnimationsTechniques($locale: [String]) {
+  entries(section: "animationTechniques", site: $locale) {
+    id,
+    slug,
+    title,
+    ... on animationTechniques_animationTechniques_Entry {
+      mainImage {
+        ...assetFragment
+      },
+    }
+  }
+}
+`;
+
+export const getAnimationTechniqueByIdQuery = `
+${assetFragment}
+query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "animationTechniques", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on animationTechniques_animationTechniques_Entry {
+      description,
+      mainImage {
+        ...assetFragment
+      }
+    }
+  }
+}
+`;
+
+export const getWorksOfAnimationTechniqueQuery = `
+query getWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
   entries(section: "works", site: $locale, relatedTo: $id) {
     id,
     title,

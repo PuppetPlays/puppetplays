@@ -2,9 +2,11 @@
   margin-bottom: 100px;
   max-width: 500px;
   margin: 0 auto;
+  text-align: left;
 
   img {
     display: block;
+    max-width: 100%;
   }
 
   img + figcaption {

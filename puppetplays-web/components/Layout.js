@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import Header from 'components/Header';
+import AuthorModal from 'components/Author/AuthorModal';
+import AnimationTechniqueModal from 'components/AnimationTechnique/AnimationTechniqueModal';
 import styles from './layout.module.scss';
-import AuthorModal from 'components/AuthorModal';
 
 function Layout({ aside, header, children }) {
   return (
@@ -15,6 +16,7 @@ function Layout({ aside, header, children }) {
         <main className={styles.main}>{children}</main>
       </div>
       <AuthorModal />
+      <AnimationTechniqueModal />
     </div>
   );
 }

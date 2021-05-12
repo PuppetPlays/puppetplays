@@ -53,5 +53,8 @@
   "mainLanguagePlaceholder": "French, German…",
   "period": "Period",
   "composeAfter": "composed after",
-  "composeBefore": "composed before"
+  "composeBefore": "composed before",
+  "imageCopyright": "Copyright: ",
+  "works": "Works",
+  "openNote": "Read the note"
 }

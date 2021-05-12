@@ -4,6 +4,7 @@ import ReactModal from 'react-modal';
 import useTranslation from 'next-translate/useTranslation';
 import { useModal } from 'components/modalContext';
 import styles from './modal.module.scss';
+import { PageSubtitle, PageTitle } from 'components/Primitives';
 
 function Modal({ isOpen, title, subtitle, children }) {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ function Modal({ isOpen, title, subtitle, children }) {
       overlayClassName={styles.overlay}
     >
       <header className={styles.header}>
-        {subtitle && <div className={styles.subtitle}>{subtitle}</div>}
+        {subtitle && <PageSubtitle>{subtitle}</PageSubtitle>}
         <button
           type="button"
           className={styles.closeButton}
@@ -43,9 +44,7 @@ function Modal({ isOpen, title, subtitle, children }) {
         </button>
       </header>
       <div className={styles.content}>
-        <h1 id="heading" className={styles.title}>
-          {title}
-        </h1>
+        <PageTitle id="heading">{title}</PageTitle>
         <div className={styles.body} id="description">
           {children}
         </div>
@@ -57,11 +56,12 @@ function Modal({ isOpen, title, subtitle, children }) {
 Modal.defaultProps = {
   title: '',
   subtitle: null,
+  children: null,
 };
 
 Modal.propTypes = {
   title: PropTypes.node,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   subtitle: PropTypes.node,
   isOpen: PropTypes.bool.isRequired,
 };

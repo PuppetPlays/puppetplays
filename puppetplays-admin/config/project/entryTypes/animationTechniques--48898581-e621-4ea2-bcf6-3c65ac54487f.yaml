@@ -46,7 +46,7 @@ fieldLayouts:
             width: 100
         name: Contenu
         sortOrder: 1
-handle: handlingTechniques
+handle: animationTechniques
 hasTitleField: true
 name: 'Techniques de manipulation'
 section: 1817d1f9-6682-4c22-b338-19654ae0c45c

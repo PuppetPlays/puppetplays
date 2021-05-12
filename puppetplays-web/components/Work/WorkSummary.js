@@ -12,6 +12,7 @@ import Keywords from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
 import Section from 'components/Section';
 import Info from 'components/Info';
+import AnimationTechnique from 'components/AnimationTechnique';
 import Abstract from './Abstract';
 import WorkHeader from './WorkHeader';
 import FirstPerformance from './FirstPerformance';
@@ -140,7 +141,11 @@ function WorkSummary({
           label={t('common:animationTechniques')}
           show={hasAtLeastOneItem(animationTechniques)}
         >
-          <CommaSepList list={animationTechniques} listTransform={getTitle} />
+          <CommaSepList
+            list={animationTechniques}
+            itemComponent={AnimationTechnique}
+            listTransform={getTitle}
+          />
         </Info>
         <Info label={t('common:audience')} show={hasAtLeastOneItem(audience)}>
           {getFirstItemTitle(audience)}

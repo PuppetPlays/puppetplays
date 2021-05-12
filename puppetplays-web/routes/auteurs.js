@@ -1,5 +1,6 @@
-import { Fragment, useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import queryString from 'query-string';
 import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
@@ -135,14 +136,22 @@ function Authors({ initialData, languages, places }) {
                   ({ typeHandle, birthDate, deathDate, ...author }) => (
                     <li key={author.id} className={styles.authorsListItem}>
                       {typeHandle === 'persons' && (
-                        <Fragment>
-                          <Author {...author} lastNameFirst />{' '}
-                          <span>
-                            {birthDate} - {deathDate}
-                          </span>
-                        </Fragment>
+                        <Link href={`/auteurs/${author.id}/${author.slug}`}>
+                          <a>
+                            <Author {...author} lastNameFirst />{' '}
+                            <span>
+                              {birthDate} - {deathDate}
+                            </span>
+                          </a>
+                        </Link>
                       )}
-                      {typeHandle === 'companies' && <Company {...author} />}
+                      {typeHandle === 'companies' && (
+                        <Link href={`/auteurs/${author.id}/${author.slug}`}>
+                          <a>
+                            <Company {...author} />
+                          </a>
+                        </Link>
+                      )}
                     </li>
                   ),
                 )}

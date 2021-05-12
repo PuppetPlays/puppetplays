@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
-import AuthorDropdownMenu from 'components/AuthorDropdownMenu';
+import NoteDropdownMenu from 'components/NoteDropdownMenu';
+import { modalTypes } from 'components/modalContext';
 
 function Author({
   id,
@@ -29,7 +30,7 @@ function Author({
       {nickname && ' '}
       {nickname && nickname}
       {(usualName || nickname) && ')'}
-      {showMenu && <AuthorDropdownMenu id={id} />}
+      {showMenu && <NoteDropdownMenu id={id} modalType={modalTypes.author} />}
     </Fragment>
   );
 }
