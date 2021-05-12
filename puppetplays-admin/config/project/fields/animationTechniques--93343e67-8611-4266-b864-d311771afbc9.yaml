@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:1817d1f9-6682-4c22-b338-19654ae0c45c'
+    - 'section:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

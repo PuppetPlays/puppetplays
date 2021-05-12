@@ -24,7 +24,7 @@ scope:
   - 'entrytypes.fa8f9cfe-9074-40b9-b300-5a58cd4ff61c:read'
   - 'sections.8e72b0db-f5f6-4385-9228-33dd62285d5c:read'
   - 'entrytypes.19568c88-e81b-48e1-bab2-ba7f106a823f:read'
-  - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read'
+  - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read' # Techniques d’animation
   - 'entrytypes.48898581-e621-4ea2-bcf6-3c65ac54487f:read' # Techniques de manipulation
   - 'sections.29f1cf63-9c38-484a-9026-94010557c5af:read'
   - 'entrytypes.09da97ae-fc6f-4555-ade3-73e42fd9bf6a:read'

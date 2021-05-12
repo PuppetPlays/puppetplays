@@ -118,16 +118,16 @@ permissions:
   - 'deletepeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c'
   - 'editpeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c'
   - 'editentries:8e72b0db-f5f6-4385-9228-33dd62285d5c'
-  - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'publishentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'deleteentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'publishpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'deletepeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'editpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'publishpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'deletepeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'editpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c'
-  - 'editentries:1817d1f9-6682-4c22-b338-19654ae0c45c'
+  - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'publishentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'deleteentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'publishpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'deletepeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'editpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'publishpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'deletepeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'editpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'editentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'createentries:29f1cf63-9c38-484a-9026-94010557c5af'
   - 'publishentries:29f1cf63-9c38-484a-9026-94010557c5af'
   - 'deleteentries:29f1cf63-9c38-484a-9026-94010557c5af'

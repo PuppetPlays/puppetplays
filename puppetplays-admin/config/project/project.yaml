@@ -1,4 +1,4 @@
-dateModified: 1620765024
+dateModified: 1620827604
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -26,6 +26,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  tag-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   workflow:
     edition: standard
     enabled: true
