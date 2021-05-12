@@ -1,20 +1,16 @@
 import get from 'lodash/get';
-import isNil from 'lodash/isNil';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
-import { modalTypes, useModal } from 'components/modalContext';
+import {
+  isModalOfTypeOpen,
+  modalTypes,
+  useModal,
+} from 'components/modalContext';
 import AuthorNote from 'components/Author/AuthorNote';
 import Modal from 'components/Modal';
 import Author from 'components/Author';
-
-const getAuthorId = (state) => {
-  if (get(state, 'type', null) === modalTypes.author) {
-    return get(state, 'meta.id', null);
-  }
-  return null;
-};
 
 function AuthorModal() {
   const { t } = useTranslation();
@@ -22,8 +18,8 @@ function AuthorModal() {
   const [modalState] = useModal();
 
   const { data } = useSWR(
-    !isNil(modalState)
-      ? [getAuthorByIdQuery, router.locale, getAuthorId(modalState)]
+    isModalOfTypeOpen(modalState, modalTypes.author)
+      ? [getAuthorByIdQuery, router.locale, get(modalState, 'meta.id', null)]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -35,8 +31,8 @@ function AuthorModal() {
     },
   );
   const { data: works } = useSWR(
-    !isNil(modalState)
-      ? [getWorksOfAuthorQuery, router.locale, getAuthorId(modalState)]
+    isModalOfTypeOpen(modalState, modalTypes.author)
+      ? [getWorksOfAuthorQuery, router.locale, get(modalState, 'meta.id', null)]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -50,7 +46,7 @@ function AuthorModal() {
 
   return (
     <Modal
-      isOpen={get(modalState, 'type', null) === modalTypes.author}
+      isOpen={isModalOfTypeOpen(modalState, modalTypes.author)}
       title={data && <Author {...get(data, 'entry', {})} />}
       subtitle={t('common:author')}
     >

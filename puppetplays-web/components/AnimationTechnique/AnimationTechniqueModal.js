@@ -1,5 +1,4 @@
 import get from 'lodash/get';
-import isNil from 'lodash/isNil';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
@@ -8,16 +7,13 @@ import {
   getAnimationTechniqueByIdQuery,
   getWorksOfAnimationTechniqueQuery,
 } from 'lib/api';
-import { modalTypes, useModal } from 'components/modalContext';
+import {
+  isModalOfTypeOpen,
+  modalTypes,
+  useModal,
+} from 'components/modalContext';
 import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
 import Modal from 'components/Modal';
-
-const getAnimationTechniqueId = (state) => {
-  if (get(state, 'type', null) === modalTypes.author) {
-    return get(state, 'meta.id', null);
-  }
-  return null;
-};
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
@@ -25,11 +21,11 @@ function AnimationTechniqueModal() {
   const [modalState] = useModal();
 
   const { data } = useSWR(
-    !isNil(modalState)
+    isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
       ? [
           getAnimationTechniqueByIdQuery,
           router.locale,
-          getAnimationTechniqueId(modalState),
+          get(modalState, 'meta.id', null),
         ]
       : null,
     (query, locale, id) => {
@@ -42,11 +38,11 @@ function AnimationTechniqueModal() {
     },
   );
   const { data: works } = useSWR(
-    !isNil(modalState)
+    isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
       ? [
           getWorksOfAnimationTechniqueQuery,
           router.locale,
-          getAnimationTechniqueId(modalState),
+          get(modalState, 'meta.id', null),
         ]
       : null,
     (query, locale, id) => {
@@ -61,7 +57,7 @@ function AnimationTechniqueModal() {
 
   return (
     <Modal
-      isOpen={get(modalState, 'type', null) === modalTypes.animationTechnique}
+      isOpen={isModalOfTypeOpen(modalState, modalTypes.animationTechnique)}
       title={data && get(data, 'entry.title', '')}
       subtitle={t('common:animationTechnique')}
     >

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 const ModalContext = React.createContext();
 
@@ -26,6 +27,9 @@ function modalReducer(_, { type, payload }) {
     }
   }
 }
+
+export const isModalOfTypeOpen = (state, type) =>
+  get(state, 'type', null) === type;
 
 export function ModalProvider({ children }) {
   const reducer = React.useReducer(modalReducer, null);
