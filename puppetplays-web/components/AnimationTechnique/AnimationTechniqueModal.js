@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import isNil from 'lodash/isNil';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
@@ -10,7 +11,13 @@ import {
 import { modalTypes, useModal } from 'components/modalContext';
 import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
 import Modal from 'components/Modal';
-import Author from 'components/Author';
+
+const getAnimationTechniqueId = (state) => {
+  if (get(state, 'type', null) === modalTypes.author) {
+    return get(state, 'meta.id', null);
+  }
+  return null;
+};
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
@@ -18,8 +25,12 @@ function AnimationTechniqueModal() {
   const [modalState] = useModal();
 
   const { data } = useSWR(
-    get(modalState, 'meta.id', null)
-      ? [getAnimationTechniqueByIdQuery, router.locale, modalState.meta.id]
+    !isNil(modalState)
+      ? [
+          getAnimationTechniqueByIdQuery,
+          router.locale,
+          getAnimationTechniqueId(modalState),
+        ]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -31,8 +42,12 @@ function AnimationTechniqueModal() {
     },
   );
   const { data: works } = useSWR(
-    get(modalState, 'meta.id', null)
-      ? [getWorksOfAnimationTechniqueQuery, router.locale, modalState.meta.id]
+    !isNil(modalState)
+      ? [
+          getWorksOfAnimationTechniqueQuery,
+          router.locale,
+          getAnimationTechniqueId(modalState),
+        ]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {

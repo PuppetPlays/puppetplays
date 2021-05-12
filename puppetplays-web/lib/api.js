@@ -151,6 +151,8 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
         title
       },
       animationTechniques {
+        id,
+        slug,
         title
       },
       audience {
@@ -336,6 +338,8 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         title
       },
       animationTechniques {
+        id,
+        slug,
         title
       },
       audience {
@@ -440,7 +444,7 @@ query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
 export const getAllAnimationsTechniquesQuery = `
 ${assetFragment}
 query getAllAnimationsTechniques($locale: [String]) {
-  entries(section: "animationTechniques", site: $locale) {
+  entries(section: "animationTechniques", site: $locale, orderBy: "title") {
     id,
     slug,
     title,

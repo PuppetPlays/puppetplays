@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import isNil from 'lodash/isNil';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
@@ -8,14 +9,21 @@ import AuthorNote from 'components/Author/AuthorNote';
 import Modal from 'components/Modal';
 import Author from 'components/Author';
 
+const getAuthorId = (state) => {
+  if (get(state, 'type', null) === modalTypes.author) {
+    return get(state, 'meta.id', null);
+  }
+  return null;
+};
+
 function AuthorModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState] = useModal();
 
   const { data } = useSWR(
-    get(modalState, 'meta.id', null)
-      ? [getAuthorByIdQuery, router.locale, modalState.meta.id]
+    !isNil(modalState)
+      ? [getAuthorByIdQuery, router.locale, getAuthorId(modalState)]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -27,8 +35,8 @@ function AuthorModal() {
     },
   );
   const { data: works } = useSWR(
-    get(modalState, 'meta.id', null)
-      ? [getWorksOfAuthorQuery, router.locale, modalState.meta.id]
+    !isNil(modalState)
+      ? [getWorksOfAuthorQuery, router.locale, getAuthorId(modalState)]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
