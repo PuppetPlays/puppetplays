@@ -36,8 +36,7 @@
     color: var(--color-brand);
 
     &:hover {
-      color: var(--color-brand-dark);
-      text-decoration: underline;
+      color: var(--color-brand-light);
     }
   }
 }
