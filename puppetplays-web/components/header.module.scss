@@ -14,6 +14,34 @@
   margin: 0;
 }
 
+.nav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    & + li {
+      margin-left: 16px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-brand);
+
+    &:hover {
+      color: var(--color-brand-dark);
+      text-decoration: underline;
+    }
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
 }
