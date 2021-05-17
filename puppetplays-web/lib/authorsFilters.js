@@ -42,10 +42,13 @@ const queryParamsToStateMapper = {
 };
 
 export function queryParamsToState(queryParams) {
-  return mapValues(omitBy(queryParams, isNil), (filter, key) => {
-    const mapper = queryParamsToStateMapper[key] || identity;
-    return mapper(filter);
-  });
+  return mapValues(
+    pick(omitBy(queryParams, isNil), Object.keys(queryParamsToStateMapper)),
+    (filter, key) => {
+      const mapper = queryParamsToStateMapper[key] || identity;
+      return mapper(filter);
+    },
+  );
 }
 
 export function queryParamsToGraphqlVariables(queryParams) {

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -17,6 +16,7 @@ import {
   buildSearchQuery,
 } from 'lib/api';
 import { queryParamsToState, stateToGraphqlVariables } from 'lib/worksFilters';
+import { stringifyQuery } from 'lib/utils';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
@@ -27,9 +27,13 @@ import styles from 'styles/Home.module.css';
 function Home({ initialData, languages, places, periodBounds }) {
   const { t } = useTranslation();
   const router = useRouter();
-  const [filters, setFilters] = useState(queryParamsToState(router.query));
+  const [filters, setFilters] = useState(() => {
+    return queryParamsToState(router.query);
+  });
   const [searchTerms, setSearchTerms] = useState(router.query.search);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(
+    router.query.page ? parseInt(router.query.page, 10) - 1 : 0,
+  );
   const { data } = useSWR(
     [
       getAllWorksQuery(filters),
@@ -65,29 +69,22 @@ function Home({ initialData, languages, places, periodBounds }) {
     ]);
   }, [router.locale, currentPage, searchTerms, filters]);
 
-  const updateRoute = useCallback(
-    (values) => {
-      const queryParams = queryString.stringify(values, {
-        arrayFormat: 'comma',
-        skipNull: true,
-      });
-      router.push(`/?${queryParams}`, undefined, {
-        shallow: true,
-      });
-    },
-    [router],
-  );
-
   const handlePageChange = useCallback(
     (page) => {
       setCurrentPage(page.selected);
-      updateRoute({
-        search: searchTerms,
-        page: page.selected + 1,
-        ...filters,
-      });
+      router.push(
+        `/?${stringifyQuery({
+          search: searchTerms,
+          page: page.selected + 1,
+          ...filters,
+        })}`,
+        undefined,
+        {
+          shallow: true,
+        },
+      );
     },
-    [updateRoute, searchTerms, filters],
+    [router, filters, searchTerms],
   );
 
   const handleChangeFilters = useCallback(
@@ -107,13 +104,19 @@ function Home({ initialData, languages, places, periodBounds }) {
       }
       setFilters(newFilters);
       setCurrentPage(0);
-      updateRoute({
-        search: searchTerms,
-        page: 1,
-        ...newFilters,
-      });
+      router.push(
+        `/?${stringifyQuery({
+          search: searchTerms,
+          page: 1,
+          ...newFilters,
+        })}`,
+        undefined,
+        {
+          shallow: true,
+        },
+      );
     },
-    [updateRoute, searchTerms, filters],
+    [router, filters, searchTerms],
   );
 
   const handleChangeSearchQuery = useCallback(
@@ -126,23 +129,35 @@ function Home({ initialData, languages, places, periodBounds }) {
   const handleAfterChangeSearchQuery = useCallback(
     (search) => {
       setCurrentPage(0);
-      updateRoute({
-        search,
-        page: 1,
-        ...filters,
-      });
+      router.push(
+        `/?${stringifyQuery({
+          search,
+          page: 1,
+          ...filters,
+        })}`,
+        undefined,
+        {
+          shallow: true,
+        },
+      );
     },
-    [updateRoute, filters],
+    [router, filters],
   );
 
   const handleClearAllFilters = useCallback(() => {
     setCurrentPage(0);
     setFilters({});
-    updateRoute({
-      search: searchTerms,
-      page: 1,
-    });
-  }, [updateRoute, searchTerms]);
+    router.push(
+      `/?${stringifyQuery({
+        search: searchTerms,
+        page: 1,
+      })}`,
+      undefined,
+      {
+        shallow: true,
+      },
+    );
+  }, [router, searchTerms]);
 
   return (
     <Layout

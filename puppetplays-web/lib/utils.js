@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 export const identity = (i) => i;
 
 export const getProperty = (property) => (i) => i[property];
@@ -9,3 +11,10 @@ export const getFirstItemProp = (prop) => (list) =>
 export const getFirstItemTitle = getFirstItemProp('title');
 
 export const hasAtLeastOneItem = (arr) => arr && arr.length > 0;
+
+export const stringifyQuery = (value) => {
+  return queryString.stringify(value, {
+    arrayFormat: 'comma',
+    skipNull: true,
+  });
+};

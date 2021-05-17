@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import queryString from 'query-string';
 import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
@@ -20,6 +19,7 @@ import {
   queryParamsToState,
   stateToGraphqlVariables,
 } from 'lib/authorsFilters';
+import { stringifyQuery } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
@@ -40,7 +40,9 @@ const getFirstLetter = cond([
 
 function Authors({ initialData, languages, places }) {
   const router = useRouter();
-  const [filters, setFilters] = useState(queryParamsToState(router.query));
+  const [filters, setFilters] = useState(() => {
+    return queryParamsToState(router.query);
+  });
   const [currentLetter, handleScroll] = useLetterPaginationSelector(
     Object.keys(initialData.entries)[0],
   );
@@ -67,19 +69,6 @@ function Authors({ initialData, languages, places }) {
     mutate([getAllAuthorsQuery(filters), router.locale, filters]);
   }, [router.locale, filters]);
 
-  const updateRoute = useCallback(
-    (values) => {
-      const queryParams = queryString.stringify(values, {
-        arrayFormat: 'comma',
-        skipNull: true,
-      });
-      router.push(`/auteurs?${queryParams}`, undefined, {
-        shallow: true,
-      });
-    },
-    [router],
-  );
-
   const handleChangeFilters = useCallback(
     (value, { name }) => {
       const newFilters = {
@@ -87,15 +76,19 @@ function Authors({ initialData, languages, places }) {
         [name]: value.length > 0 ? value.map((v) => v.id) : null,
       };
       setFilters(newFilters);
-      updateRoute({ ...newFilters });
+      router.push(`/auteurs?${stringifyQuery({ ...newFilters })}`, undefined, {
+        shallow: true,
+      });
     },
-    [updateRoute, filters],
+    [router, filters],
   );
 
   const handleClearAllFilters = useCallback(() => {
     setFilters({});
-    updateRoute();
-  }, [updateRoute]);
+    router.push(`/auteurs`, undefined, {
+      shallow: true,
+    });
+  }, [router]);
 
   return (
     <Layout
