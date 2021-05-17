@@ -433,6 +433,7 @@ export const getWorksOfAuthorQuery = `
 query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
   entries(section: "works", site: $locale, relatedTo: $id) {
     id,
+    slug,
     title,
     ... on works_works_Entry {
       date: mostRelevantDate

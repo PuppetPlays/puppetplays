@@ -1,0 +1,17 @@
+.title {
+  a {
+    color: var(--color-brand);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.authors {
+  color: var(--color-text-inactive);
+}
+
+.date {
+  color: var(--color-text-inactive);
+}

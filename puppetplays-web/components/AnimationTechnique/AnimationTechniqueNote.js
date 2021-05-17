@@ -27,11 +27,13 @@ function AnimationTechniqueNote({ description, mainImage, works }) {
       {hasAtLeastOneItem(works) && (
         <div className={styles.works}>
           <PageIntertitle>{t('common:works')}</PageIntertitle>
-          {works.map((entry) => (
-            <div key={entry.id}>
-              <Hypotext {...entry} />
-            </div>
-          ))}
+          <ul>
+            {works.map((entry) => (
+              <li key={entry.id}>
+                <Hypotext {...entry} />
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </Fragment>

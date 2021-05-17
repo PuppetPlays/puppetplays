@@ -13,4 +13,18 @@
 .works {
   margin: 100px 0;
   text-align: center;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+
+    & + li {
+      margin-top: 10px;
+    }
+  }
 }
