@@ -36,20 +36,24 @@ function AuthorsFilters({
         </button>
       </header>
       <div className={styles.content}>
-        <FilterSelect
-          name="languages"
-          placeholder={t('common:mainLanguagePlaceholder')}
-          options={languageOptions}
-          onChange={onChange}
-          value={selectedLanguages}
-        />
-        <FilterSelect
-          name="places"
-          placeholder={t('common:compositionPlacePlaceholder')}
-          options={placeOptions}
-          onChange={onChange}
-          value={selectedPlaces}
-        />
+        <div style={{ position: 'relative', zIndex: 100 }}>
+          <FilterSelect
+            name="languages"
+            placeholder={t('common:mainLanguagePlaceholder')}
+            options={languageOptions}
+            onChange={onChange}
+            value={selectedLanguages}
+          />
+        </div>
+        <div style={{ position: 'relative', zIndex: 90 }}>
+          <FilterSelect
+            name="places"
+            placeholder={t('common:compositionPlacePlaceholder')}
+            options={placeOptions}
+            onChange={onChange}
+            value={selectedPlaces}
+          />
+        </div>
       </div>
     </div>
   );

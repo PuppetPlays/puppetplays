@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import Select from 'react-select';
-import FilterLabel from 'components/FilterLabel';
 import get from 'lodash/fp/get';
+import FilterLabel from 'components/FilterLabel';
 import { styles, components, getTheme } from './filterSelectStyles';
 
 function FilterSelect({ name, placeholder, value, options, onChange }) {

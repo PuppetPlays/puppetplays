@@ -74,27 +74,33 @@ function WorksFilters({
       </header>
       {isOpen && (
         <div className={styles.content}>
-          <FilterSelect
-            name="mainLanguage"
-            placeholder={t('common:mainLanguagePlaceholder')}
-            options={languageOptions}
-            onChange={onChange}
-            value={selectedLanguages}
-          />
-          <FilterSelect
-            name="compositionPlace"
-            placeholder={t('common:compositionPlacePlaceholder')}
-            options={placeOptions}
-            onChange={onChange}
-            value={selectedPlaces}
-          />
-          <FilterRange
-            name="period"
-            bounds={periodMinMax}
-            valueMin={selectedPeriodMin}
-            valueMax={selectedPeriodMax}
-            onAfterChange={onChange}
-          />
+          <div style={{ position: 'relative', zIndex: 100 }}>
+            <FilterSelect
+              name="mainLanguage"
+              placeholder={t('common:mainLanguagePlaceholder')}
+              options={languageOptions}
+              onChange={onChange}
+              value={selectedLanguages}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 90 }}>
+            <FilterSelect
+              name="compositionPlace"
+              placeholder={t('common:compositionPlacePlaceholder')}
+              options={placeOptions}
+              onChange={onChange}
+              value={selectedPlaces}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 80 }}>
+            <FilterRange
+              name="period"
+              bounds={periodMinMax}
+              valueMin={selectedPeriodMin}
+              valueMax={selectedPeriodMax}
+              onAfterChange={onChange}
+            />
+          </div>
         </div>
       )}
     </div>
