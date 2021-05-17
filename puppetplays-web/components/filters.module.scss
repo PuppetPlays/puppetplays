@@ -10,12 +10,14 @@
 }
 
 .header {
-  padding: 18px 8px 12px 12px;
+  padding: 18px 8px 12px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 36px;
 
   .container.isOpen & {
+    padding-right: 12px;
     flex-direction: row;
     justify-content: space-between;
     width: 290px;
@@ -83,12 +85,34 @@
 }
 
 .icon {
+  position: relative;
   width: 20px;
   height: 20px;
-  fill: rgba(255, 255, 255, 0.6);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(255, 255, 255, 0.6);
+  }
 
   .title + & {
     margin-left: 8px;
+  }
+
+  .iconCount {
+    position: absolute;
+    top: 2px;
+    right: -6px;
+    transform: translate(50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #ffecbd;
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
   }
 }
 
