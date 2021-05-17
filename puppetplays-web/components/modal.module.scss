@@ -11,6 +11,10 @@
   transform: translateX(-50%);
   max-height: calc(100vh - 30px);
   border-radius: 7px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .overlay {
