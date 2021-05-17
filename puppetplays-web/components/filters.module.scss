@@ -1,28 +1,78 @@
 .container {
   height: 100%;
-  padding: 18px 22px 28px 12px;
   background-color: var(--color-brand);
   color: white;
+  width: 100%;
+
+  &.isOpen {
+    width: 290px;
+  }
 }
 
 .header {
+  padding: 18px 8px 12px 12px;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  flex-direction: column;
+  align-items: center;
 
-  button {
-    padding: 3px 10px;
-    font-size: 13px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: white;
-    border: 0;
-    cursor: pointer;
+  .container.isOpen & {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 290px;
+  }
+}
 
-    &:hover {
-      background-color: white;
-      color: var(--color-brand);
-    }
+.content {
+  padding: 0 22px 28px 12px;
+}
+
+.eraseButton {
+  display: block;
+  padding: 3px 10px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: var(--color-brand);
+  }
+}
+
+.closeButton {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+
+  .container.isOpen & {
+    transform: rotate(0deg);
+  }
+
+  .eraseButton + & {
+    margin-left: 10px;
+  }
+
+  .icon + & {
+    margin-top: 4px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2.5px;
+  }
+
+  &:hover svg {
+    stroke: rgba(255, 255, 255, 0.75);
   }
 }
 
@@ -30,4 +80,18 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: rgba(255, 255, 255, 0.6);
+
+  .title + & {
+    margin-left: 8px;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
