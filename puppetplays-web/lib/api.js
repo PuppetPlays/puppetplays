@@ -58,12 +58,12 @@ fragment assetFragment on AssetInterface {
 
 export const getPeriodBoundsQuery = `
 query GetPeriodBounds {
-  min: entries(section: "works", compositionMinDate: ["not", "null"], limit: 1, orderBy: "compositionMinDate asc") {
+  min: entries(section: "works", compositionMinDate: ["not", null], limit: 1, orderBy: "compositionMinDate asc") {
     ... on works_works_Entry {
       value: compositionMinDate
     }
   }
-  max: entries(section: "works", compositionMaxDate: ["not", "null"], limit: 1, orderBy: "compositionMaxDate desc") {
+  max: entries(section: "works", compositionMaxDate: ["not", null], limit: 1, orderBy: "compositionMaxDate desc") {
     ... on works_works_Entry {
       value: compositionMaxDate
     }
