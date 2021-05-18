@@ -68,6 +68,16 @@ Pour développer l'interface admin localement, il est conseillé d'installer l'o
 
 Il est nécessaire de configurer plusieurs variables d'environnement pour que Craft puisse fonctionner correctement. Pour cela, il faut copier le fichier `.env.example` qui se trouve dans le dossier `puppetplays-admin` et le renommer en `.env`. Les variables par défaut devrait permettre de lancer l'application. Le cas échéant il conviendra d'éditer les variables pour les adpater à votre environnement.
 
+### Installation
+
+Une fois le fichier `.env` configuré, les commandes suivantes permettent d'installer toutes les dépendances et d'installer Craft :
+
+```
+$ ddev composer install
+$ ddev ssh
+$ ./craft install
+```
+
 ### Démarrage
 
 Une fois `ddev` installé et les variables d'environnement configurées, la commande suivante permet de lancer les différents composants (base de donné, serveur web…) :
