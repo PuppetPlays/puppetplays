@@ -73,7 +73,7 @@ query GetPeriodBounds {
 
 export const getAllLanguagesQuery = `
 query GetAllLanguages($locale: [String]) {
-  entries(section: "languages", site: $locale) {
+  entries(section: "languages", site: $locale, orderBy: "title") {
     id,
     title,
   }
@@ -83,7 +83,7 @@ query GetAllLanguages($locale: [String]) {
 export const getAllPlacesQuery = `
 ${placeInfoFragment}
 query GetAllPlaces($locale: [String]) {
-  entries(section: "places", site: $locale) {
+  entries(section: "places", site: $locale, orderBy: "title") {
     ...placeInfo
   }
 }
