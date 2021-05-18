@@ -31,7 +31,7 @@ fieldLayouts:
 handle: registers
 hasTitleField: true
 name: Registres
-section: 8e72b0db-f5f6-4385-9228-33dd62285d5c
+section: 8e72b0db-f5f6-4385-9228-33dd62285d5c # Registres littéraires
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

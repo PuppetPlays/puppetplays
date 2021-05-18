@@ -31,7 +31,7 @@ fieldLayouts:
 handle: audiences
 hasTitleField: true
 name: Publics
-section: 9cac54fd-67ff-4311-a127-785048ff9146
+section: 9cac54fd-67ff-4311-a127-785048ff9146 # Publics
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

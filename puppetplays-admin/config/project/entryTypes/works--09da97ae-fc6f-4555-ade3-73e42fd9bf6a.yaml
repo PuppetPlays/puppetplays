@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 461b2661-d7d4-4998-8e56-f8ed7dacfb2f
+            fieldUid: 461b2661-d7d4-4998-8e56-f8ed7dacfb2f # Titre traduit
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: 42a8e3c5-6dcf-483a-93e3-a0f462764cfc
+            fieldUid: 42a8e3c5-6dcf-483a-93e3-a0f462764cfc # Sous-titre
             instructions: null
             label: null
             required: false
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd
+            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd # Auteur
             instructions: null
             label: null
             required: false
@@ -56,7 +56,7 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6
+            fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6 # Notice
             instructions: null
             label: null
             required: false
@@ -65,7 +65,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 3fea7d7b-8c14-4919-8016-7d214ca2314b
+            fieldUid: 3fea7d7b-8c14-4919-8016-7d214ca2314b # Thème principal
             instructions: null
             label: null
             required: false
@@ -74,7 +74,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 26b83bbf-b7b9-48cd-979e-d69b22bceaf1
+            fieldUid: 26b83bbf-b7b9-48cd-979e-d69b22bceaf1 # Résumé
             instructions: null
             label: null
             required: false
@@ -92,7 +92,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: cfaaf21a-8fd0-4ce6-adcc-eba9f6c787a8
+            fieldUid: cfaaf21a-8fd0-4ce6-adcc-eba9f6c787a8 # Autre(s) titre(s)
             instructions: null
             label: null
             required: false
@@ -104,7 +104,7 @@ fieldLayouts:
             heading: 'Date & lieu d’écriture'
             type: craft\fieldlayoutelements\Heading
           -
-            fieldUid: 5c594932-2c3a-4678-9988-3ee891a6df21
+            fieldUid: 5c594932-2c3a-4678-9988-3ee891a6df21 # Date de référence
             instructions: null
             label: null
             required: false
@@ -113,7 +113,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: 51f537ef-8b54-4c2f-b68c-f19542600077
+            fieldUid: 51f537ef-8b54-4c2f-b68c-f19542600077 # Lieu d’écriture
             instructions: null
             label: null
             required: false
@@ -122,7 +122,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: a63454cc-f4ca-4c63-a17f-8772cff10def
+            fieldUid: a63454cc-f4ca-4c63-a17f-8772cff10def # Date d’écriture (pour l’affichage)
             instructions: null
             label: null
             required: false
@@ -131,7 +131,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: b4287b8a-4f37-43f2-894b-428e99411a04
+            fieldUid: b4287b8a-4f37-43f2-894b-428e99411a04 # Date d’écriture (min)
             instructions: null
             label: null
             required: false
@@ -140,7 +140,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: cfc8c93d-134d-4d7f-84dd-31c7c229e699
+            fieldUid: cfc8c93d-134d-4d7f-84dd-31c7c229e699 # Date d’écriture (max)
             instructions: null
             label: null
             required: false
@@ -152,7 +152,7 @@ fieldLayouts:
             heading: Représentations
             type: craft\fieldlayoutelements\Heading
           -
-            fieldUid: e9d4c568-7f9b-4fe4-bb99-e3b7b2759c40
+            fieldUid: e9d4c568-7f9b-4fe4-bb99-e3b7b2759c40 # Lieu de la première représentation
             instructions: null
             label: null
             required: false
@@ -161,7 +161,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c117b558-d303-4933-b64d-1856bbe54d59
+            fieldUid: c117b558-d303-4933-b64d-1856bbe54d59 # Date de la première représentation
             instructions: null
             label: null
             required: false
@@ -170,7 +170,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: b242aefb-6f05-426e-9110-18ac25105c2e
+            fieldUid: b242aefb-6f05-426e-9110-18ac25105c2e # Première représentation (informations complémentaires)
             instructions: null
             label: null
             required: false
@@ -179,7 +179,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 3b937625-42ca-4656-9a7b-c999af708c26
+            fieldUid: 3b937625-42ca-4656-9a7b-c999af708c26 # Date de la 1ère représentation (min)
             instructions: null
             label: null
             required: false
@@ -188,7 +188,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 72f7b794-21cc-4ef3-869b-e425785555fb
+            fieldUid: 72f7b794-21cc-4ef3-869b-e425785555fb # Date de la 1ère représentation (max)
             instructions: null
             label: null
             required: false
@@ -200,7 +200,7 @@ fieldLayouts:
             heading: 'Publications & traductions'
             type: craft\fieldlayoutelements\Heading
           -
-            fieldUid: 3023cfcd-a11d-4ed7-b779-4b40493ac931
+            fieldUid: 3023cfcd-a11d-4ed7-b779-4b40493ac931 # Édition
             instructions: null
             label: null
             required: false
@@ -209,7 +209,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 28340a2e-58f9-44f0-92dd-eb54581b97a0
+            fieldUid: 28340a2e-58f9-44f0-92dd-eb54581b97a0 # Date d’édition (min)
             instructions: null
             label: null
             required: false
@@ -218,7 +218,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 24beaf42-46d7-469b-b31a-79442e5bd3bf
+            fieldUid: 24beaf42-46d7-469b-b31a-79442e5bd3bf # Date d’édition (max)
             instructions: null
             label: null
             required: false
@@ -227,7 +227,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: cf856488-e716-4834-a558-395405d8eeee
+            fieldUid: cf856488-e716-4834-a558-395405d8eeee # Transcripteur
             instructions: null
             label: null
             required: false
@@ -236,7 +236,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 41896b43-8bdf-40cd-b579-6b1796d66147
+            fieldUid: 41896b43-8bdf-40cd-b579-6b1796d66147 # Compilateur
             instructions: null
             label: null
             required: false
@@ -245,7 +245,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 040b562a-a40a-4667-84e7-0dc3ea1787ac
+            fieldUid: 040b562a-a40a-4667-84e7-0dc3ea1787ac # Édition moderne
             instructions: null
             label: null
             required: false
@@ -254,7 +254,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 09401318-0a4b-4b56-a6c4-c57d3b151579
+            fieldUid: 09401318-0a4b-4b56-a6c4-c57d3b151579 # Édition en ligne
             instructions: null
             label: null
             required: false
@@ -263,7 +263,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: a91b45bb-9cf2-4282-8145-7f8a006d801b
+            fieldUid: a91b45bb-9cf2-4282-8145-7f8a006d801b # Traductions
             instructions: null
             label: null
             required: false
@@ -274,7 +274,7 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: b37dab53-e816-48fb-aa32-daece0392d17
+            fieldUid: b37dab53-e816-48fb-aa32-daece0392d17 # Lieu de conservation
             instructions: null
             label: null
             required: false
@@ -287,7 +287,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 0f4c66c2-2100-45f0-88f3-0f6f4d473f63
+            fieldUid: 0f4c66c2-2100-45f0-88f3-0f6f4d473f63 # Langue principale
             instructions: null
             label: null
             required: false
@@ -296,7 +296,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1b752928-627a-4f0d-a6a9-41a22636ab41
+            fieldUid: 1b752928-627a-4f0d-a6a9-41a22636ab41 # Public
             instructions: null
             label: null
             required: false
@@ -305,7 +305,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1c1041b2-7307-47b5-b3da-f7da389ed14b
+            fieldUid: 1c1041b2-7307-47b5-b3da-f7da389ed14b # Domaine public
             instructions: null
             label: null
             required: false
@@ -314,7 +314,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 93a3496b-76b7-4696-8639-1c44294aeec0
+            fieldUid: 93a3496b-76b7-4696-8639-1c44294aeec0 # Informations complémentaires sur la licence
             instructions: ''
             label: ''
             required: ''
@@ -323,7 +323,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: 45df3231-3a21-4a0c-93ea-01b0f58c5582
+            fieldUid: 45df3231-3a21-4a0c-93ea-01b0f58c5582 # Genre (indiqué par l’auteur)
             instructions: null
             label: null
             required: false
@@ -332,7 +332,7 @@ fieldLayouts:
             warning: null
             width: 75
           -
-            fieldUid: f9d69522-b5ad-442c-873f-739859f6e7f7
+            fieldUid: f9d69522-b5ad-442c-873f-739859f6e7f7 # Registre(s) littéraire(s)
             instructions: null
             label: null
             required: false
@@ -341,7 +341,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f1aeb04a-7fb6-4c3c-87a1-59320850b52e
+            fieldUid: f1aeb04a-7fb6-4c3c-87a1-59320850b52e # Personnages
             instructions: null
             label: null
             required: false
@@ -350,7 +350,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 93343e67-8611-4266-b864-d311771afbc9
+            fieldUid: 93343e67-8611-4266-b864-d311771afbc9 # Technique d’animation
             instructions: null
             label: null
             required: false
@@ -359,18 +359,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 412f63f1-746e-468d-8c05-6e0deedc2b05
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
-          -
-            type: craft\fieldlayoutelements\HorizontalRule
-          -
-            fieldUid: e170dd2d-c858-4261-834a-9c2fee02cbd5
+            fieldUid: 412f63f1-746e-468d-8c05-6e0deedc2b05 # Procédés dramatiques
             instructions: null
             label: null
             required: false
@@ -381,7 +370,18 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: 0efb8d7c-638f-4652-b952-44092a5657f1
+            fieldUid: e170dd2d-c858-4261-834a-9c2fee02cbd5 # Mots-clés
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            type: craft\fieldlayoutelements\HorizontalRule
+          -
+            fieldUid: 0efb8d7c-638f-4652-b952-44092a5657f1 # Nombre d’actes / de parties
             instructions: null
             label: null
             required: false
@@ -390,7 +390,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 2d8643ae-5357-48a9-a90c-59e78c29508c
+            fieldUid: 2d8643ae-5357-48a9-a90c-59e78c29508c # Nombre de pages
             instructions: null
             label: null
             required: false
@@ -401,7 +401,7 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: a47eb338-13e7-427d-a6a9-9854d7ecf096
+            fieldUid: a47eb338-13e7-427d-a6a9-9854d7ecf096 # Format
             instructions: null
             label: null
             required: false
@@ -414,7 +414,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
@@ -427,7 +427,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 3802b7c5-d17c-4241-873e-872425f9ea93
+            fieldUid: 3802b7c5-d17c-4241-873e-872425f9ea93 # DOI
             instructions: null
             label: null
             required: false
@@ -436,7 +436,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379
+            fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379 # Identifiant ARK
             instructions: null
             label: null
             required: false
@@ -445,7 +445,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7
+            fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7 # Identifiant VIAF
             instructions: null
             label: null
             required: false
@@ -458,7 +458,7 @@ fieldLayouts:
 handle: works
 hasTitleField: true
 name: Œuvres
-section: 29f1cf63-9c38-484a-9026-94010557c5af
+section: 29f1cf63-9c38-484a-9026-94010557c5af # Œuvres
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

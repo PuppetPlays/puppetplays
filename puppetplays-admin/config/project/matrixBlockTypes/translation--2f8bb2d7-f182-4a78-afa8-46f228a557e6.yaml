@@ -1,11 +1,11 @@
-field: a91b45bb-9cf2-4282-8145-7f8a006d801b
+field: a91b45bb-9cf2-4282-8145-7f8a006d801b # Traductions
 fieldLayouts:
   aaf137d1-4374-42bf-8154-dca46bd1703f:
     tabs:
       -
         elements:
           -
-            fieldUid: 980b265a-4482-43da-940c-1d595933f6db
+            fieldUid: 980b265a-4482-43da-940c-1d595933f6db # Langue
             instructions: null
             label: null
             required: true
@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 80e9ab34-aa2b-44e3-9798-dadda7e7a772
+            fieldUid: 80e9ab34-aa2b-44e3-9798-dadda7e7a772 # Références bibliographiques
             instructions: null
             label: null
             required: true
@@ -25,7 +25,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  80e9ab34-aa2b-44e3-9798-dadda7e7a772:
+  80e9ab34-aa2b-44e3-9798-dadda7e7a772: # Références bibliographiques
     contentColumnType: text
     fieldGroup: null
     handle: bibliographicRecord
@@ -53,7 +53,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  980b265a-4482-43da-940c-1d595933f6db:
+  980b265a-4482-43da-940c-1d595933f6db: # Langue
     contentColumnType: string
     fieldGroup: null
     handle: translationLanguage
@@ -68,7 +68,7 @@ fields:
       showSiteMenu: true
       source: null
       sources:
-        - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d'
+        - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
       targetSiteId: null
       validateRelatedElements: false
       viewMode: null

@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 157ddd75-0868-4e2b-ba35-028ae3c8ae42
+            fieldUid: 157ddd75-0868-4e2b-ba35-028ae3c8ae42 # Pays
             instructions: ''
             label: ''
             required: '1'
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 69ee7666-95f0-4e8f-bf8b-09d970d7b777
+            fieldUid: 69ee7666-95f0-4e8f-bf8b-09d970d7b777 # Latitude
             instructions: null
             label: null
             required: false
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 07a590cd-d68b-4af3-96b5-4b6f46cebe31
+            fieldUid: 07a590cd-d68b-4af3-96b5-4b6f46cebe31 # Longitude
             instructions: null
             label: null
             required: false
@@ -58,7 +58,7 @@ fieldLayouts:
 handle: places
 hasTitleField: true
 name: Lieux
-section: 6591dcc5-c98b-41db-91e2-1b3dcd8eb31b
+section: 6591dcc5-c98b-41db-91e2-1b3dcd8eb31b # Lieux
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

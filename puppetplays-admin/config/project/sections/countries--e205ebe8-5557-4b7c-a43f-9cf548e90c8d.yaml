@@ -15,22 +15,22 @@ previewTargets:
         - '1'
 propagationMethod: all
 siteSettings:
-  4cda444a-a132-4409-8e1e-5205e6a53896:
+  4cda444a-a132-4409-8e1e-5205e6a53896: # Puppetplays IT
     enabledByDefault: true
     hasUrls: false
     template: null
     uriFormat: null
-  397a9f9f-ff18-42c4-98ff-dbb87c17b754:
+  397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR
     enabledByDefault: true
     hasUrls: true
     template: null
     uriFormat: 'pays/{slug}'
-  59986aab-e6c1-4cdf-a062-8db833d2b327:
+  59986aab-e6c1-4cdf-a062-8db833d2b327: # Puppetplays EN
     enabledByDefault: true
     hasUrls: true
     template: null
     uriFormat: 'countries/{slug}'
-  bf194204-844c-4373-ad71-db3f6243b824:
+  bf194204-844c-4373-ad71-db3f6243b824: # Puppetplays DE
     enabledByDefault: true
     hasUrls: false
     template: null

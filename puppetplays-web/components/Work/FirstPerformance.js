@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Section from 'components/Section';
 import Place from 'components/Place';
+import styles from './firstPerformance.module.scss';
 
 function FirstPerformance({ place, date, extraInfo }) {
   const { t } = useTranslation();
@@ -17,7 +18,12 @@ function FirstPerformance({ place, date, extraInfo }) {
       {hasOnePlace && (date || extraInfo) && ', '}
       {date && date}
       {date && extraInfo && ' - '}
-      {extraInfo && extraInfo}
+      {extraInfo && (
+        <div
+          className={styles.extraInfo}
+          dangerouslySetInnerHTML={{ __html: extraInfo }}
+        />
+      )}
     </Section>
   );
 }

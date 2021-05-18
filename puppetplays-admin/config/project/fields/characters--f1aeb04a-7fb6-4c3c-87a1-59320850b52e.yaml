@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: characters
 instructions: ''
 name: Personnages
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:53b06a2d-abbf-4ee4-b770-ca48f26e094e'
+    - 'section:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

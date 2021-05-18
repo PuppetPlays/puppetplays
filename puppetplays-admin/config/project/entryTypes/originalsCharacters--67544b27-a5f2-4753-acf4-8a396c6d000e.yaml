@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 209da50a-0d77-41a6-9d9c-8946eb198e71
+            fieldUid: 209da50a-0d77-41a6-9d9c-8946eb198e71 # Nom du personnage dans le texte
             instructions: ''
             label: ''
             required: ''
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 65cde714-d150-4ea5-9f9a-da868a716343
+            fieldUid: 65cde714-d150-4ea5-9f9a-da868a716343 # Nom du personnage pour l’indexation
             instructions: null
             label: null
             required: false
@@ -49,7 +49,7 @@ fieldLayouts:
 handle: originalsCharacters
 hasTitleField: false
 name: 'Personnages originaux'
-section: 53b06a2d-abbf-4ee4-b770-ca48f26e094e
+section: 53b06a2d-abbf-4ee4-b770-ca48f26e094e # Nom du personnage dans le texte
 sortOrder: 1
 titleFormat: '{% include ''_formats/characters-title'' %}'
 titleTranslationKeyFormat: null

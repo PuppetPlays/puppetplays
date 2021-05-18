@@ -31,7 +31,7 @@ fieldLayouts:
 handle: languages
 hasTitleField: true
 name: Langues
-section: ec7faa37-6b19-44d2-95ec-2b752648c37d
+section: ec7faa37-6b19-44d2-95ec-2b752648c37d # Langues
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

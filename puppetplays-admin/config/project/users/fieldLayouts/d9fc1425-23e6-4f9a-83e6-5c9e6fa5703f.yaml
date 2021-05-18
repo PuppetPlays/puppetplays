@@ -2,7 +2,7 @@ tabs:
   -
     elements:
       -
-        fieldUid: ea500c41-2beb-4ed4-a12c-afca214004c7
+        fieldUid: ea500c41-2beb-4ed4-a12c-afca214004c7 # Superviseur
         instructions: null
         label: null
         required: false

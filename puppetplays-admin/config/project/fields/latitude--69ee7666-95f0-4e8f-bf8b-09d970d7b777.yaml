@@ -1,5 +1,5 @@
 contentColumnType: 'decimal(9,7)'
-fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716
+fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716 # Places
 handle: latitude
 instructions: ''
 name: Latitude

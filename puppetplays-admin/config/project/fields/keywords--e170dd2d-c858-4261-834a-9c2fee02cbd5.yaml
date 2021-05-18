@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: keywords
 instructions: ''
 name: Mots-clés
@@ -12,7 +12,7 @@ settings:
   localizeRelations: false
   selectionLabel: 'Sélectionner des mots-clés'
   showSiteMenu: true
-  source: 'taggroup:18acc84f-5d36-4e13-8a6b-deff0a3d529b'
+  source: 'taggroup:18acc84f-5d36-4e13-8a6b-deff0a3d529b' # Mots-clé des œuvres
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false

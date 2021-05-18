@@ -5,5 +5,5 @@ hasUrls: true
 language: de
 name: 'Puppetplays DE'
 primary: false
-siteGroup: a95459b0-9778-477e-ac36-580e1a77e951
+siteGroup: a95459b0-9778-477e-ac36-580e1a77e951 # puppetplays
 sortOrder: 3

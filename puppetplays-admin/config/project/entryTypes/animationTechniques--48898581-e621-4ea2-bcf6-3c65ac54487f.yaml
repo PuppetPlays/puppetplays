@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c
+            fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false

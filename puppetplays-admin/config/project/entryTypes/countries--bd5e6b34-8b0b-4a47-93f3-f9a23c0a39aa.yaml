@@ -31,7 +31,7 @@ fieldLayouts:
 handle: countries
 hasTitleField: true
 name: Pays
-section: e205ebe8-5557-4b7c-a43f-9cf548e90c8d
+section: e205ebe8-5557-4b7c-a43f-9cf548e90c8d # Pays
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6
+            fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6 # Notice
             instructions: null
             label: null
             required: false
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8
+            fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8 # Autre(s) version(s) du même nom
             instructions: null
             label: null
             required: false
@@ -58,7 +58,7 @@ fieldLayouts:
 handle: characters
 hasTitleField: true
 name: Personnages
-section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5
+section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5 # Nom du personnage pour l’indexation
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

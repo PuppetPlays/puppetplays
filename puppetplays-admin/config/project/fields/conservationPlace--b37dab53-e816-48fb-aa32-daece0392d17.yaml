@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: conservationPlace
 instructions: ''
 name: 'Lieu de conservation'
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:492cc09a-052e-40d6-a33b-7ca74a831805'
+    - 'section:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

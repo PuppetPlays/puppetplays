@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
+            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314 # Lieux
             instructions: ''
             label: 'Principaux lieux d’activité'
             required: ''
@@ -40,7 +40,7 @@ fieldLayouts:
 handle: companies
 hasTitleField: true
 name: Compagnies
-section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
+section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf # Personnes
 sortOrder: 2
 titleFormat: null
 titleTranslationKeyFormat: null

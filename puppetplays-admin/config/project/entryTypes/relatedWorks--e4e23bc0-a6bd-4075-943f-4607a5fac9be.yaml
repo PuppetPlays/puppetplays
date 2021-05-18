@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd
+            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd # Auteur
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 269fbeb7-8282-427c-b9ff-7d338ab1b8ef
+            fieldUid: 269fbeb7-8282-427c-b9ff-7d338ab1b8ef # Date
             instructions: null
             label: null
             required: false
@@ -49,7 +49,7 @@ fieldLayouts:
 handle: relatedWorks
 hasTitleField: true
 name: 'Œuvres corrélées'
-section: e2d5c38e-3607-4630-bddf-0875190aa133
+section: e2d5c38e-3607-4630-bddf-0875190aa133 # Œuvres corrélées
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

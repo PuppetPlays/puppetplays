@@ -31,7 +31,7 @@ fieldLayouts:
 handle: dramaturgicTechniques
 hasTitleField: true
 name: 'Techniques dramaturgiques'
-section: ccd48638-f531-4032-a057-8af4f24cd187
+section: ccd48638-f531-4032-a057-8af4f24cd187 # Procédés dramatiques
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

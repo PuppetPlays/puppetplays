@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb
+fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: languages
 instructions: ''
 name: Langue(s)
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d'
+    - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

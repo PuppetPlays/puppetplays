@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: compositionPlace
 instructions: ''
 name: 'Lieu d’écriture'
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b'
+    - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

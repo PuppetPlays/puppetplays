@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f
+            fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f # Lieu
             instructions: null
             label: null
             required: false
@@ -40,7 +40,7 @@ fieldLayouts:
 handle: conservationInstitutions
 hasTitleField: true
 name: 'Institutions de conservation'
-section: 492cc09a-052e-40d6-a33b-7ca74a831805
+section: 492cc09a-052e-40d6-a33b-7ca74a831805 # Institutions de conservation
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750
+fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750 # Persons
 handle: pseudonyms
 instructions: ''
 name: Pseudonyme
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf'
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

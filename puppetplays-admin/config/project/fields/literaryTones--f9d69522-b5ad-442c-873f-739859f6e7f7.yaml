@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: literaryTones
 instructions: ''
 name: 'Registre(s) littéraire(s)'
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c'
+    - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

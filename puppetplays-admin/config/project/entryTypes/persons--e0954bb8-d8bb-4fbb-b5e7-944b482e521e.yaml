@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 23c8664d-0988-47dc-96c4-e3887b436569
+            fieldUid: 23c8664d-0988-47dc-96c4-e3887b436569 # Prénom
             instructions: ''
             label: ''
             required: ''
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 6e506719-d279-4e2c-9e84-fbf315440712
+            fieldUid: 6e506719-d279-4e2c-9e84-fbf315440712 # Nom de famille
             instructions: ''
             label: ''
             required: '1'
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: c2a06b9d-03a3-471c-8452-f62e2d17e60f
+            fieldUid: c2a06b9d-03a3-471c-8452-f62e2d17e60f # Surnom
             instructions: null
             label: null
             required: false
@@ -54,7 +54,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 66501227-1575-4af8-9ad7-8ddf21716146
+            fieldUid: 66501227-1575-4af8-9ad7-8ddf21716146 # Nom usuel
             instructions: null
             label: null
             required: false
@@ -63,7 +63,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: a5261331-a813-4df9-ab61-a125b7713179
+            fieldUid: a5261331-a813-4df9-ab61-a125b7713179 # Genre
             instructions: null
             label: null
             required: false
@@ -72,7 +72,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1
+            fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1 # Langue(s)
             instructions: null
             label: null
             required: false
@@ -83,7 +83,7 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314
+            fieldUid: 3eec2c18-4dce-4184-a668-02f225266314 # Lieux
             instructions: ''
             label: 'Principaux lieux d’activité'
             required: ''
@@ -92,7 +92,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: c18b0f9d-717f-4ce0-a996-f482d7432dba
+            fieldUid: c18b0f9d-717f-4ce0-a996-f482d7432dba # Date de naissance
             instructions: null
             label: null
             required: false
@@ -101,7 +101,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: a36b8a5f-17c5-46c5-8d97-43a29656c564
+            fieldUid: a36b8a5f-17c5-46c5-8d97-43a29656c564 # Date de mort
             instructions: null
             label: null
             required: false
@@ -112,7 +112,7 @@ fieldLayouts:
           -
             type: craft\fieldlayoutelements\HorizontalRule
           -
-            fieldUid: 9e670e52-0ab0-4dc1-a6e1-adc8efea5c13
+            fieldUid: 9e670e52-0ab0-4dc1-a6e1-adc8efea5c13 # Notice biographique
             instructions: null
             label: null
             required: false
@@ -121,7 +121,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 2a3117bf-dd2f-46f2-802d-42fbd2e52e0a
+            fieldUid: 2a3117bf-dd2f-46f2-802d-42fbd2e52e0a # Pseudonyme
             instructions: null
             label: null
             required: false
@@ -134,7 +134,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
@@ -147,7 +147,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379
+            fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379 # Identifiant ARK
             instructions: null
             label: null
             required: false
@@ -156,7 +156,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7
+            fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7 # Identifiant VIAF
             instructions: null
             label: null
             required: false
@@ -165,7 +165,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: f03405c5-53d6-4a5b-820a-1a1880a63524
+            fieldUid: f03405c5-53d6-4a5b-820a-1a1880a63524 # Identifiant IDREF
             instructions: null
             label: null
             required: false
@@ -174,7 +174,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 240995cf-5c01-4d81-8338-b19a74e20d1a
+            fieldUid: 240995cf-5c01-4d81-8338-b19a74e20d1a # Identifiant ISNI
             instructions: null
             label: null
             required: false
@@ -187,7 +187,7 @@ fieldLayouts:
 handle: persons
 hasTitleField: false
 name: Personnes
-section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf
+section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf # Personnes
 sortOrder: 1
 titleFormat: '{% include ''_formats/persons-title'' %}'
 titleTranslationKeyFormat: null

@@ -1,4 +1,4 @@
-dateModified: 1620827604
+dateModified: 1621363959
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -39,12 +39,12 @@ plugins:
       editorNotesRequired: ''
       editorNotifications: '1'
       editorNotificationsOptions: ''
-      editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2
+      editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
       enabledSections: '*'
       lockDraftSubmissions: '1'
       publisherNotesRequired: ''
       publisherNotifications: '1'
-      publisherUserGroup: a5c71adc-184b-49c4-8e1a-d251540bf2b1
+      publisherUserGroup: a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
       reviewerApprovalNotifications: ''
       reviewerNotifications: '1'
       reviewerUserGroups: ''

@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: dramaticDevices
 instructions: ''
 name: 'Procédés dramatiques'
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:ccd48638-f531-4032-a057-8af4f24cd187'
+    - 'section:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

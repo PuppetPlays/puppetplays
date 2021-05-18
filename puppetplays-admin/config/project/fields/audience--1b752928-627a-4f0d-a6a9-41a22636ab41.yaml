@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: audience
 instructions: ''
 name: Public
@@ -12,7 +12,7 @@ settings:
   showSiteMenu: true
   source: null
   sources:
-    - 'section:9cac54fd-67ff-4311-a127-785048ff9146'
+    - 'section:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
