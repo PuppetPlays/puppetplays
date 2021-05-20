@@ -2,6 +2,7 @@ description: ''
 handle: researchers
 name: Chercheurs
 permissions:
+  - accessplugin-tag-manager
   - accessplugin-workflow
   - accesscp
   - 'editsite:397a9f9f-ff18-42c4-98ff-dbb87c17b754' # Puppetplays FR
