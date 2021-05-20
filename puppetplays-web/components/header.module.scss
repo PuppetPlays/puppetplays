@@ -1,6 +1,7 @@
 .container {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 14px 20px;
   height: 100%;
@@ -15,6 +16,9 @@
 }
 
 .nav {
+  font-size: 15px;
+  margin: 0 18px;
+
   ul {
     list-style-type: none;
     margin: 0;
@@ -41,10 +45,20 @@
   }
 }
 
-.spacer {
+.content {
   flex: 1 1 auto;
+
+  @media (min-width: 1240px) {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    width: 100%;
+    max-width: 530px;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.language-selector {
+.languageSelector {
   flex: 0 0 auto;
+  margin-left: auto;
 }

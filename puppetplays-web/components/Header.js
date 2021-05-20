@@ -30,7 +30,7 @@ function Header({ children }) {
           </li>
         </ul>
       </nav>
-      {children}
+      <div className={styles.content}>{children}</div>
       <div className={styles.languageSelector}>
         <LanguageSelector />
       </div>
