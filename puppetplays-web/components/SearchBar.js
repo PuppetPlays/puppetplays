@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import useTranslation from 'next-translate/useTranslation';
+import SearchIcon from './icon-search.svg';
 import styles from './searchBar.module.scss';
 
 const SearchBar = ({ value, onChange, onAfterChange }) => {
@@ -27,11 +28,15 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
   return (
     <div className={styles.container}>
       <input
+        name="search"
         placeholder={t('common:searchPlaceholder')}
         type="text"
         value={value}
         onChange={handleChange}
       />
+      <button type="button" className={styles.submitButton}>
+        <SearchIcon />
+      </button>
     </div>
   );
 };

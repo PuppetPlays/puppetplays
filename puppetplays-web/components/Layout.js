@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Header from 'components/Header';
 import AuthorModal from 'components/Author/AuthorModal';
 import AnimationTechniqueModal from 'components/AnimationTechnique/AnimationTechniqueModal';
+import SearchBarStateful from 'components/SearchBarStateful';
 import styles from './layout.module.scss';
 
 function Layout({ aside, header, children }) {
@@ -23,7 +24,7 @@ function Layout({ aside, header, children }) {
 
 Layout.defaultProps = {
   aside: null,
-  header: null,
+  header: <SearchBarStateful />,
 };
 
 Layout.propTypes = {
