@@ -31,7 +31,7 @@ Pour communiquer avec le cms Craft, une variable d'environnement référençant 
 Le serveur de développement peut maintenant être lancé avec la commande suivante (à noter que l'admin Craft doit être lancé pour que le site web puisse faire les requêtes nécessaires à l'affichage de certaines données) :
 
 ```
-$ yarn start
+$ yarn run dev
 ```
 
 ### Test
