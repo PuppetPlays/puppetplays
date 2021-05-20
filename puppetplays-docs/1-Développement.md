@@ -23,8 +23,8 @@ $ yarn install
 
 ### Configuration
 
-Pour communiquer avec le cms Craft, une variable d'environnement référençant l'url de l'API craft doit être renseignée. Pour cela ajouter un fichier
-`.env.local` à la racine du dossier `puppetplays-web` et renseigner la variable `NEXT_PUBLIC_API_URL` (voir la documentation de l'admin pour trouver cette url).
+Pour communiquer avec le cms Craft, une variable d'environnement référençant l'url de l'API craft doit être renseignée. Pour cela ajouter un fichier `.env.local` à la racine du dossier `puppetplays-web` et remplir le fichier avec le contenu suivant : `NEXT_PUBLIC_API_URL=http://puppetplays.ddev.site:7080`. Cela définie la variable d'environnement `NEXT_PUBLIC_API_URL`, la valeur `http://puppetplays.ddev.site:7080` est la valeur à utiliser si l'admin est lancé avec l'outil `ddev` (voir la documentation de l'admin).
+
 
 ### Démarrage
 
@@ -66,7 +66,7 @@ Pour développer l'interface admin localement, il est conseillé d'installer l'o
 
 ### Configuration
 
-Il est nécessaire de configurer plusieurs variables d'environnement pour que Craft puisse fonctionner correctement. Pour cela, il faut copier le fichier `.env.example` qui se trouve dans le dossier `puppetplays-admin` et le renommer en `.env`. Les variables par défaut devrait permettre de lancer l'application. Le cas échéant il conviendra d'éditer les variables pour les adpater à votre environnement.
+Il est nécessaire de configurer plusieurs variables d'environnement pour que Craft puisse fonctionner correctement. Pour cela, il faut copier le fichier `.env.example` qui se trouve dans le dossier `puppetplays-admin` et le renommer en `.env`. Les variables par défaut devrait permettre de lancer l'application. Le cas échéant il conviendra d'éditer les variables pour les adpater à votre environnement. La commande `ddev describe` permet de lister les informations relatives à la base Mysql lancé par “ddev”.
 
 ### Installation
 
@@ -74,9 +74,9 @@ Une fois le fichier `.env` configuré, les commandes suivantes permettent d'inst
 
 ```
 $ ddev composer install
-$ ddev ssh
-$ ./craft install
 ```
+
+Lancer un navigateur sur l'url [https://puppetplays.ddev.site:7443/admin](https://puppetplays.ddev.site:7443/admin), Craft va lancer la procédure d'installation, créer votre utilisateur “admin” et valider la suite de la procédure. Craft est maintenant prêt à être utilisé.
 
 ### Démarrage
 

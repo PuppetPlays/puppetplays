@@ -9,9 +9,9 @@ La plateforme utilise “Docker” pour faire tourner les différentes briques l
 - L'image `puppetplays-admin`, qui lance le cms “[Craft](https://craftcms.com)” et se connecte à la base donnée “Postgresql” pour stocker les données du projet.
 - L'image `puppetplays-web` qui lance un serveur `node` faisant tourner le site web
 
-Un serveur “Nginx” installé sur le machine hôte permet de transmettre les requêtes arrivant sur la mahcine vers le bon “container” de la manière suivante :
+Un serveur “Nginx” installé sur le machine hôte permet de transmettre les requêtes arrivant sur la machine vers le bon “container” de la manière suivante :
 - Les requêtes arrivant sur `puppetplays.eu` sont transmises au “container” `puppetplays-web`
-- Les requêtes arrivant sur `amdin.puppetplays.eu` ou `api.puppetplays.eu` sont transmises au “container” `puppetplays-admin`
+- Les requêtes arrivant sur `admin.puppetplays.eu` ou `api.puppetplays.eu` sont transmises au “container” `puppetplays-admin`
 
 Les pages du site web sont générées à la demande sur le serveur. Les données à afficher sont récupérées grâce à l'API `graphql` fournie par “Craft”.
 
@@ -105,7 +105,7 @@ $ cd /var/lib
 $ mkdir puppetplays
 ```
 
-À l'intérieur du dossier `puppetlays`, plusieurs dossiers vont être créés, le dossier `database/postgresql` contiendra les données de la base de donnée postgresql, le dossier `logs` contiendra les différents fichiers de “log” de la plateforme et le dossier `static` contiendra les images, vidéos, ressources statiques téléversées depuis “Craft”.
+À l'intérieur du dossier `puppetplays`, plusieurs dossiers vont être créés, le dossier `database/postgresql` contiendra les données de la base de donnée postgresql, le dossier `logs` contiendra les différents fichiers de “log” de la plateforme et le dossier `static` contiendra les images, vidéos, ressources statiques téléversées depuis “Craft”.
 
 ## 3 Sauvegarde
 
