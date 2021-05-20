@@ -43,20 +43,19 @@ function AnimationTechniques({ initialData }) {
         <div className={styles.grid}>
           {data &&
             data.entries.map((entry) => (
-              <div key={entry.id} className={styles.gridItem}>
-                {hasAtLeastOneItem(entry.mainImage) && (
-                  <div className={styles.itemImage}>
-                    <img src={entry.mainImage[0].url} alt="" />
-                  </div>
-                )}
-                <Link
-                  href={`/techniques-d-animation/${entry.id}/${entry.slug}`}
-                >
-                  <a>
-                    <div className={styles.itemTitle}>{entry.title}</div>
-                  </a>
-                </Link>
-              </div>
+              <Link
+                href={`/techniques-d-animation/${entry.id}/${entry.slug}`}
+                key={entry.id}
+              >
+                <a className={styles.gridItem}>
+                  {hasAtLeastOneItem(entry.mainImage) && (
+                    <div className={styles.itemImage}>
+                      <img src={entry.mainImage[0].url} alt="" />
+                    </div>
+                  )}
+                  <div className={styles.itemTitle}>{entry.title}</div>
+                </a>
+              </Link>
             ))}
         </div>
       </ContentLayout>

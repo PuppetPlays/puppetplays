@@ -6,12 +6,16 @@
 }
 
 .gridItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   position: relative;
   text-align: center;
   height: 362px;
-  padding: 274px 16px 16px;
+  padding-top: 232px;
   border-radius: 7px;
   color: white;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
 
   &::after {
     content: '';
@@ -28,15 +32,28 @@
       rgba(16, 15, 48, 0.5) 25%,
       rgba(16, 15, 48, 0.85) 100%
     );
+
+    .gridItem:hover & {
+      background: transparent;
+    }
   }
 }
 
 .itemTitle {
   position: relative;
+  flex: 1 1 auto;
   z-index: 3;
+  padding: 42px 16px 16px;
+  border-radius: 0 0 6px 6px;
   font-size: 18px;
   font-family: var(--ff-serif);
   font-weight: 700;
+  transition: background-color 0.15s ease-in-out;
+
+  .gridItem:hover & {
+    background-color: white;
+    color: var(--color-text);
+  }
 }
 
 .itemImage {
