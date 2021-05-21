@@ -53,6 +53,9 @@ function AnimationTechniques({ initialData }) {
                       <img src={entry.mainImage[0].url} alt="" />
                     </div>
                   )}
+                  <div className={styles.openButton}>
+                    {t('common:readNote')}
+                  </div>
                   <div className={styles.itemTitle}>{entry.title}</div>
                 </a>
               </Link>

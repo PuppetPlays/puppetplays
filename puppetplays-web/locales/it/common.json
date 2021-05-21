@@ -58,5 +58,6 @@
   "composeBefore": "composed before",
   "imageCopyright": "Copyright: ",
   "works": "Works",
-  "openNote": "Read the note"
+  "openNote": "Read the note",
+  "readNote": "Read the note"
 }

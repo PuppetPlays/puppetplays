@@ -60,5 +60,6 @@
   "composeBefore": "écrit avant",
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",
-  "openNote": "Consulter la notice"
+  "openNote": "Consulter la notice",
+  "readNote": "Lire la notice"
 }

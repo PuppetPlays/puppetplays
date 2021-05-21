@@ -12,10 +12,14 @@
   position: relative;
   text-align: center;
   height: 362px;
-  padding-top: 232px;
+  padding-top: 180px;
   border-radius: 7px;
   color: white;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+
+  &:hover::after {
+    content: none;
+  }
 
   &::after {
     content: '';
@@ -32,10 +36,28 @@
       rgba(16, 15, 48, 0.5) 25%,
       rgba(16, 15, 48, 0.85) 100%
     );
+  }
+}
 
-    .gridItem:hover & {
-      background: transparent;
-    }
+.openButton {
+  opacity: 0;
+  position: relative;
+  z-index: 4;
+  display: inline-block;
+  align-self: center;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 15px;
+  border-radius: 16px;
+  border: 0;
+  color: white;
+  background-color: rgba(26, 27, 69, 0.43);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  transition: opacity 0.2s ease-in-out;
+
+  .gridItem:hover & {
+    opacity: 1;
   }
 }
 
