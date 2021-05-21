@@ -36,6 +36,7 @@ $ update-rc.d nginx defaults
 ```
 
 Les fichiers de configuration du serveur Nginx sont disponibles dans le dossier `puppetplays-deploy/nginx`, copier le fichier `web`, le fichier `admin` et le dossier `conf` dans le dossier de configuration d’Nginx (/etc/nginx).
+Le fichier `web` permet de rediriger les requêtes arrivant sur le domaine racine (puppetplays.eu) vers le container `puppetplays-web`. Le fichier `admin` permet de rediriger les requêtes arrivant sur le sous-domaine admin (admin.puppetplays.eu) et le sous-domaine api (api.puppetplays.eu) vers le container `puppetplays-admin`.
 
 ```
 $ cd [path to puppetplays repository]/puppetplays-deploy/nginx
