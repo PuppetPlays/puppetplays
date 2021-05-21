@@ -16,7 +16,7 @@ import {
   buildSearchQuery,
 } from 'lib/api';
 import { queryParamsToState, stateToGraphqlVariables } from 'lib/worksFilters';
-import { stringifyQuery } from 'lib/utils';
+import { hasAtLeastOneItem, stringifyQuery } from 'lib/utils';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
@@ -240,12 +240,18 @@ export async function getServerSideProps({ locale, req, res, query }) {
     buildSearchQuery(query.search),
     query,
   );
+  const getSafelyPeriodBound = (bound) =>
+    hasAtLeastOneItem(bound) ? bound[0].value : null;
+
   return {
     props: {
       initialData: data,
       languages: languages.entries,
       places: places.entries,
-      periodBounds: [periodBounds.min[0].value, periodBounds.max[0].value],
+      periodBounds: [
+        getSafelyPeriodBound(periodBounds.min),
+        getSafelyPeriodBound(periodBounds.max),
+      ],
     },
   };
 }
