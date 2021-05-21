@@ -49,13 +49,22 @@
   padding: 8px 14px;
   border: 0;
   background-color: transparent;
-  color: var(--color-text-subtle);
+  color: var(--color-text-inactive);
   cursor: pointer;
   display: flex;
   align-items: center;
 
   &:hover {
-    color: var(--color-text);
+    color: var(--color-text-subtle);
+    background-color: var(--color-bg-depth-2);
+  }
+
+  &:first-child {
+    border-radius: 7px 7px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 7px 7px;
   }
 
   svg {
