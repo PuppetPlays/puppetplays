@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import ReactSlider from 'react-slider';
@@ -11,6 +11,7 @@ const renderThumb = (props) => {
 
 function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   const { t } = useTranslation();
+  const sliderRef = useRef(null);
   const [values, setValues] = useState([valueMin, valueMax]);
 
   const handeAfterChange = useCallback(
@@ -28,6 +29,12 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   );
 
   useEffect(() => {
+    if (sliderRef.current) {
+      sliderRef.current.resize();
+    }
+  }, [sliderRef]);
+
+  useEffect(() => {
     setValues([valueMin, valueMax]);
   }, [valueMin, valueMax]);
 
@@ -37,6 +44,7 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
       {bounds && (
         <Fragment>
           <ReactSlider
+            ref={sliderRef}
             className={styles.container}
             thumbClassName={styles.thumb}
             trackClassName={styles.track}
