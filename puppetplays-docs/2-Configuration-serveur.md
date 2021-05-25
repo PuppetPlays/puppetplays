@@ -120,4 +120,10 @@ En plus de la base de donnée, l'ensemble du dossier `var/lib/puppetplays` est s
 
 ## 4 Restauration d'une backup
 
-@TODO: Comment restaurer le backup pqsql
+La restauration de la base de donnée postgresql à partir d'un backup s'effectue grâce aux commandes suivantes :
+
+```
+$ tar zxvf /var/lib/puppetplays/database/postgres-backups/daily/puppetplays_backup_$(date +"%m_%d_%Y").tar.gz
+$ docker cp /var/lib/puppetplays/database/postgres-backups/daily/puppetplays_backup_$(date +"%m_%d_%Y").dump postgres:/var/lib/postgresql/data
+$ docker exec postgres pg_restore -U puppetplays -c -d puppetplays /var/lib/postgresql/data/puppetplays_backup_$(date +"%m_%d_%Y").dump
+```
