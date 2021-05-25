@@ -1,6 +1,36 @@
 
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.3.0
+
+Déployé le 25 mai 2021
+
+### Nouveautés
+
+- La liste des œuvres est maintenant filtrable par langues, par lieux et par période
+- Une nouvelle page “auteurs” a été créée, elle regroupe l’ensemble des auteurs enregistrés sur la plateforme
+- Des nouvelles pages dédiées à chaque auteur ont été créées
+- La liste des auteurs est maintenant filtrable par langues et par lieux
+- La notice d’un auteur peut être affiché directement depuis la liste des œuvres ou la page d’une œuvre depuis un menu situé à droite de nom de l’auteur
+- Une nouvelle page “techniques d’animation” a été créée, elle regroupe l’ensemble des techniques d’animation enregistrés sur la plateforme
+- Des nouvelles pages dédiées à chaque technique d’animation ont été créées
+- La notice d’une technique d’animation peut être affiché directement depuis la liste des œuvres ou la page d’une œuvre depuis un menu situé à droite de nom de la technique d’animation
+- Dans l’admin, le plugin “Tags” a été ajouté et permet de mieux gérer les mots-clé
+
+### Amélioration
+
+- Dans l’admin, une technique d’animation peut maintenant avoir une image principale 
+- Dans l'admin, le champ “Première représentation (infos complémentaires)” permet d'utiliser l'italique
+- Le champs “Hypotextes” permet maintenant de lier des œuvres en plus des œuvres liées
+
+### Corrections
+
+- La “carte” d’un auteur dans la colonne de gauche sur la page d'une œuvre affiche maintenant le nom de l'auteur suivant le formatage standard
+- Dans l’admin l’auteur d’un hypotexte affiché sur la page d’une œuvre s’affiche maintenant suivant le formatage standard
+- Dans l’admin il n'était auparavant pas possible de sauver plusieurs hypotextes sur une œuvre, c'est n'est plus le cas
+- Après une recherche, un clique sur une autre page que la première ne supprime plus la recherche en cours de l’url
+
+---
 
 ## Puppetplays 0.2.1
 
