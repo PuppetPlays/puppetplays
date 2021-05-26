@@ -118,6 +118,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
       },
       authors {
         id,
+        slug,
         title,
         typeHandle,
         ... on persons_persons_Entry { 
@@ -228,6 +229,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       },
       authors {
         id,
+        slug,
         title,
         typeHandle,
         ... on persons_persons_Entry { 

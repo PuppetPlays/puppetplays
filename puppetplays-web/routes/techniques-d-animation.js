@@ -6,11 +6,10 @@ import { useRouter } from 'next/router';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { fetchAPI, getAllAnimationsTechniquesQuery } from 'lib/api';
 import Layout from 'components/Layout';
-import styles from 'styles/AnimationTechniques.module.scss';
-import { hasAtLeastOneItem } from 'lib/utils';
 import { PageTitle } from 'components/Primitives';
 import ContentLayout from 'components/ContentLayout';
-import Link from 'next/link';
+import Card from 'components/Card';
+import styles from 'styles/AnimationTechniques.module.scss';
 
 function AnimationTechniques({ initialData }) {
   const { t } = useTranslation();
@@ -43,22 +42,9 @@ function AnimationTechniques({ initialData }) {
         <div className={styles.grid}>
           {data &&
             data.entries.map((entry) => (
-              <Link
-                href={`/techniques-d-animation/${entry.id}/${entry.slug}`}
-                key={entry.id}
-              >
-                <a className={styles.gridItem}>
-                  {hasAtLeastOneItem(entry.mainImage) && (
-                    <div className={styles.itemImage}>
-                      <img src={entry.mainImage[0].url} alt="" />
-                    </div>
-                  )}
-                  <div className={styles.openButton}>
-                    {t('common:readNote')}
-                  </div>
-                  <div className={styles.itemTitle}>{entry.title}</div>
-                </a>
-              </Link>
+              <div key={entry.id} className={styles.gridItem}>
+                <Card buttonLabel={t('common:readNote')} {...entry} />
+              </div>
             ))}
         </div>
       </ContentLayout>
