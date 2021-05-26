@@ -21,6 +21,7 @@ import Abstract from './Abstract';
 import Hypotexts from './Hypotexts';
 import FirstPerformance from './FirstPerformance';
 import CoverImage from './CoverImage';
+import ArkId from './ArkId';
 import styles from './workSummary.module.scss';
 
 function Work({
@@ -273,7 +274,7 @@ function Work({
             {viafId}
           </Info>
           <Info label="ARK" show={!!arkId}>
-            {arkId}
+            <ArkId id={arkId} />
           </Info>
         </Section>
       </div>
