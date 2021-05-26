@@ -205,8 +205,10 @@ function Home({ initialData, languages, places, periodBounds }) {
       </div>
 
       <div className={styles.works}>
-        {data.entries &&
-          data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
+        <div className={styles.worksScroll}>
+          {data.entries &&
+            data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
+        </div>
       </div>
     </Layout>
   );
