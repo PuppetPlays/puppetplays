@@ -8,8 +8,10 @@ import styles from './filters.module.scss';
 function AuthorsFilters({
   languageOptions,
   placeOptions,
+  genderOptions,
   selectedLanguages,
   selectedPlaces,
+  selectedGenders,
   onChange,
   onClearAll,
 }) {
@@ -18,12 +20,13 @@ function AuthorsFilters({
   const filtersCount = [
     get(selectedLanguages, 'length', 0),
     get(selectedPlaces, 'length', 0),
+    get(selectedGenders, 'length', 0),
   ].filter(identity).length;
 
   return (
     <div className={`${styles.container} ${styles.isOpen}`}>
       <header className={styles.header}>
-        <h1 className={styles.title}>{t('common:filters')}</h1>
+        <h1 className={styles.title}>{t('common:filters.title')}</h1>
         <div className={styles.icon}>
           <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -42,14 +45,14 @@ function AuthorsFilters({
           type="button"
           onClick={onClearAll}
         >
-          {t('common:eraseAll')}
+          {t('common:filters.eraseAll')}
         </button>
       </header>
       <div className={styles.content}>
         <div style={{ position: 'relative', zIndex: 100 }}>
           <FilterSelect
             name="languages"
-            placeholder={t('common:mainLanguagePlaceholder')}
+            placeholder={t('common:filters.mainLanguagePlaceholder')}
             options={languageOptions}
             onChange={onChange}
             value={selectedLanguages}
@@ -58,10 +61,19 @@ function AuthorsFilters({
         <div style={{ position: 'relative', zIndex: 90 }}>
           <FilterSelect
             name="places"
-            placeholder={t('common:compositionPlacePlaceholder')}
+            placeholder={t('common:filters.compositionPlacePlaceholder')}
             options={placeOptions}
             onChange={onChange}
             value={selectedPlaces}
+          />
+        </div>
+        <div style={{ position: 'relative', zIndex: 80 }}>
+          <FilterSelect
+            name="gender"
+            placeholder={t('common:filters.genderPlaceholder')}
+            options={genderOptions}
+            onChange={onChange}
+            value={selectedGenders}
           />
         </div>
       </div>
@@ -72,15 +84,19 @@ function AuthorsFilters({
 AuthorsFilters.defaultProps = {
   languageOptions: [],
   placeOptions: [],
+  genderOptions: [],
   selectedLanguages: [],
   selectedPlaces: [],
+  selectedGenders: [],
 };
 
 AuthorsFilters.propTypes = {
   languageOptions: PropTypes.arrayOf(PropTypes.object),
   placeOptions: PropTypes.arrayOf(PropTypes.object),
+  genderOptions: PropTypes.arrayOf(PropTypes.object),
   selectedLanguages: PropTypes.arrayOf(PropTypes.object),
   selectedPlaces: PropTypes.arrayOf(PropTypes.object),
+  selectedGenders: PropTypes.arrayOf(PropTypes.object),
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,
 };

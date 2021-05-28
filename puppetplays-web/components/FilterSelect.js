@@ -10,7 +10,7 @@ function FilterSelect({ name, placeholder, value, options, onChange }) {
 
   return (
     <div>
-      <FilterLabel htmlFor={name}>{t(`common:${name}`)}</FilterLabel>
+      <FilterLabel htmlFor={name}>{t(`common:filters.${name}`)}</FilterLabel>
       <Select
         className="filter-select"
         classNamePrefix="select"

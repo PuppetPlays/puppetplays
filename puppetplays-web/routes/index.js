@@ -9,13 +9,23 @@ import {
   fetchAPI,
   getAllWorksQuery,
   getAllWorks,
-  getAllLanguagesQuery,
-  getAllPlacesQuery,
-  getPeriodBoundsQuery,
   WORKS_PAGE_SIZE,
   buildSearchQuery,
 } from 'lib/api';
-import { queryParamsToState, stateToGraphqlVariables } from 'lib/worksFilters';
+import {
+  getAllAnimationTechniquesQuery,
+  getAllAudiencesQuery,
+  getAllFormatsQuery,
+  getAllLanguagesQuery,
+  getAllPersonsQuery,
+  getAllLiteraryTonesQuery,
+  getAllPlacesQuery,
+  getPeriodBoundsQuery,
+} from 'lib/filtersApi';
+import {
+  worksQueryParamsToState as queryParamsToState,
+  worksStateToGraphqlVariables as stateToGraphqlVariables,
+} from 'lib/filters';
 import { hasAtLeastOneItem, stringifyQuery } from 'lib/utils';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
@@ -24,7 +34,17 @@ import Filters from 'components/WorksFilters';
 import SearchBar from 'components/SearchBar';
 import styles from 'styles/Home.module.css';
 
-function Home({ initialData, languages, places, periodBounds }) {
+function Home({
+  initialData,
+  languages,
+  places,
+  periodBounds,
+  authors,
+  literaryTones,
+  animationTechniques,
+  audiences,
+  formats,
+}) {
   const { t } = useTranslation();
   const router = useRouter();
   const [filters, setFilters] = useState(() => {
@@ -95,6 +115,11 @@ function Home({ initialData, languages, places, periodBounds }) {
           ...filters,
           compositionMinDate: value[0],
           compositionMaxDate: value[1],
+        };
+      } else if (name === 'publicDomain') {
+        newFilters = {
+          ...filters,
+          publicDomain: value,
         };
       } else {
         newFilters = {
@@ -173,6 +198,11 @@ function Home({ initialData, languages, places, periodBounds }) {
           languageOptions={languages}
           placeOptions={places}
           periodMinMax={periodBounds}
+          authorsOptions={authors}
+          literaryTonesOptions={literaryTones}
+          animationTechniquesOptions={animationTechniques}
+          audiencesOptions={audiences}
+          formatsOptions={formats}
           selectedLanguages={
             filters.mainLanguage &&
             languages.filter(({ id }) => filters.mainLanguage.includes(id))
@@ -183,6 +213,29 @@ function Home({ initialData, languages, places, periodBounds }) {
           }
           selectedPeriodMin={filters.compositionMinDate}
           selectedPeriodMax={filters.compositionMaxDate}
+          selectedAuthors={
+            filters.authors &&
+            authors.filter(({ id }) => filters.authors.includes(id))
+          }
+          selectedLiteraryTones={
+            filters.literaryTones &&
+            literaryTones.filter(({ id }) => filters.literaryTones.includes(id))
+          }
+          selectedAnimationTechniques={
+            filters.animationTechniques &&
+            animationTechniques.filter(({ id }) =>
+              filters.animationTechniques.includes(id),
+            )
+          }
+          selectedAudiences={
+            filters.audience &&
+            audiences.filter(({ id }) => filters.audience.includes(id))
+          }
+          selectedFormats={
+            filters.formats &&
+            formats.filter(({ id }) => filters.formats.includes(id))
+          }
+          publicDomain={!!filters.publicDomain}
           onChange={handleChangeFilters}
           onClearAll={handleClearAllFilters}
         />
@@ -219,6 +272,11 @@ Home.propTypes = {
   languages: PropTypes.arrayOf(PropTypes.object).isRequired,
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
   periodBounds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  literaryTones: PropTypes.arrayOf(PropTypes.object).isRequired,
+  animationTechniques: PropTypes.arrayOf(PropTypes.object).isRequired,
+  audiences: PropTypes.arrayOf(PropTypes.object).isRequired,
+  formats: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Home;
@@ -234,6 +292,21 @@ export async function getServerSideProps({ locale, req, res, query }) {
     variables: { locale },
   });
   const periodBounds = await fetchAPI(getPeriodBoundsQuery, {
+    variables: { locale },
+  });
+  const authors = await fetchAPI(getAllPersonsQuery, {
+    variables: { locale },
+  });
+  const literaryTones = await fetchAPI(getAllLiteraryTonesQuery, {
+    variables: { locale },
+  });
+  const animationTechniques = await fetchAPI(getAllAnimationTechniquesQuery, {
+    variables: { locale },
+  });
+  const audiences = await fetchAPI(getAllAudiencesQuery, {
+    variables: { locale },
+  });
+  const formats = await fetchAPI(getAllFormatsQuery, {
     variables: { locale },
   });
   const data = await getAllWorks(
@@ -254,6 +327,11 @@ export async function getServerSideProps({ locale, req, res, query }) {
         getSafelyPeriodBound(periodBounds.min),
         getSafelyPeriodBound(periodBounds.max),
       ],
+      authors: authors.entries,
+      literaryTones: literaryTones.entries,
+      animationTechniques: animationTechniques.entries,
+      audiences: audiences.entries,
+      formats: formats.entries,
     },
   };
 }

@@ -1,13 +1,11 @@
 import {
-  queryParamsToGraphqlVariables,
-  queryParamsToState,
-  stateToGraphqlEntriesParams,
-  stateToGraphqlQueryArgument,
-} from 'lib/worksFilters';
-import {
-  stateToGraphqlEntriesParams as authorsStateToGraphqlEntriesParams,
-  stateToGraphqlQueryArgument as authorsStateToGraphqlQueryArgument,
-} from 'lib/authorsFilters';
+  authorsStateToGraphqlEntriesParams,
+  authorsStateToGraphqlQueryArgument,
+  worksQueryParamsToGraphqlVariables,
+  worksQueryParamsToState,
+  worksStateToGraphqlEntriesParams,
+  worksStateToGraphqlQueryArgument,
+} from 'lib/filters';
 
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
@@ -95,10 +93,10 @@ export const getAllWorksQuery = (filters) => {
   return `
 ${placeInfoFragment}
 ${assetFragment}
-query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String${stateToGraphqlQueryArgument(
+query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String${worksStateToGraphqlQueryArgument(
     filters,
   )}) {
-  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score"${stateToGraphqlEntriesParams(
+  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score"${worksStateToGraphqlEntriesParams(
     filters,
   )}) {
     id,
@@ -174,7 +172,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
       additionalLicenseInformation
     }
   }
-  entryCount(section: "works", site: $locale, search: $search${stateToGraphqlEntriesParams(
+  entryCount(section: "works", site: $locale, search: $search${worksStateToGraphqlEntriesParams(
     filters,
   )})
 }
@@ -192,14 +190,14 @@ export async function getAllWorks(
   queryParams = {},
 ) {
   const data = await fetchAPI(
-    getAllWorksQuery(queryParamsToState(queryParams)),
+    getAllWorksQuery(worksQueryParamsToState(queryParams)),
     {
       variables: {
         locale,
         offset,
         limit: WORKS_PAGE_SIZE,
         search,
-        ...queryParamsToGraphqlVariables(queryParams),
+        ...worksQueryParamsToGraphqlVariables(queryParams),
       },
     },
   );

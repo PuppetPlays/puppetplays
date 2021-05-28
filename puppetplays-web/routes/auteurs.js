@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
@@ -16,9 +17,9 @@ import {
   getAllPlacesQuery,
 } from 'lib/api';
 import {
-  queryParamsToState,
-  stateToGraphqlVariables,
-} from 'lib/authorsFilters';
+  authorsQueryParamsToState as queryParamsToState,
+  authorsStateToGraphqlVariables as stateToGraphqlVariables,
+} from 'lib/filters';
 import { stringifyQuery } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
@@ -39,7 +40,12 @@ const getFirstLetter = cond([
 ]);
 
 function Authors({ initialData, languages, places }) {
+  const { t } = useTranslation();
   const router = useRouter();
+  const [genderOptions] = useState([
+    { id: 'female', title: t('common:filters.female') },
+    { id: 'male', title: t('common:filters.male') },
+  ]);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
   });
@@ -96,6 +102,7 @@ function Authors({ initialData, languages, places }) {
         <Filters
           languageOptions={languages}
           placeOptions={places}
+          genderOptions={genderOptions}
           selectedLanguages={
             filters.languages &&
             languages.filter(({ id }) => filters.languages.includes(id))
@@ -103,6 +110,10 @@ function Authors({ initialData, languages, places }) {
           selectedPlaces={
             filters.places &&
             places.filter(({ id }) => filters.places.includes(id))
+          }
+          selectedGenders={
+            filters.gender &&
+            genderOptions.filter(({ id }) => filters.gender.includes(id))
           }
           onChange={handleChangeFilters}
           onClearAll={handleClearAllFilters}

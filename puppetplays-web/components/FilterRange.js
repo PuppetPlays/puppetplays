@@ -39,8 +39,8 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   }, [valueMin, valueMax]);
 
   return (
-    <div>
-      <FilterLabel htmlFor={name}>{t(`common:${name}`)}</FilterLabel>
+    <div className={styles.wrapper}>
+      <FilterLabel htmlFor={name}>{t(`common:filters.${name}`)}</FilterLabel>
       {bounds && (
         <Fragment>
           <ReactSlider
@@ -52,11 +52,11 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
             min={bounds[0]}
             max={bounds[1]}
             ariaLabel={[
-              t('common:lowerBoundPeriod'),
-              t('common:upperBoundPeriod'),
+              t('common:filters.lowerBoundPeriod'),
+              t('common:filters.upperBoundPeriod'),
             ]}
             ariaValuetext={(state) =>
-              t('common:selectedPeriod', { count: state.valueNow })
+              t('common:filters.selectedPeriod', { count: state.valueNow })
             }
             renderThumb={renderThumb}
             pearling
@@ -67,14 +67,14 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
           <div className={styles.valuesContainer}>
             <div className={styles.value}>
               <div className={styles.valueLabel}>
-                {t('common:composeAfter')}
+                {t('common:filters.composeAfter')}
               </div>
               <div>{values[0] || '–'}</div>
             </div>
             <div className={styles.separator}>–</div>
             <div className={styles.value}>
               <div className={styles.valueLabel}>
-                {t('common:composeBefore')}
+                {t('common:filters.composeBefore')}
               </div>
               <div>{values[1] || '–'}</div>
             </div>

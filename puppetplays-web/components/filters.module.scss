@@ -1,4 +1,6 @@
 .container {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   background-color: var(--color-brand);
   color: white;
@@ -25,7 +27,13 @@
 }
 
 .content {
+  flex: 1 1 auto;
   padding: 0 22px 28px 12px;
+  overflow: auto;
+
+  > div:last-child {
+    margin-bottom: 240px;
+  }
 }
 
 .eraseButton {
