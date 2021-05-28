@@ -2,12 +2,12 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
-import Figure from 'components/Figure';
 import Hypotext from 'components/Hypotext';
 import { PageIntertitle } from 'components/Primitives';
+import Carousel from 'components/Carousel';
 import styles from 'components/Author/authorNote.module.scss';
 
-function AnimationTechniqueNote({ description, mainImage, works }) {
+function AnimationTechniqueNote({ description, images, works }) {
   const { t } = useTranslation();
 
   return (
@@ -21,7 +21,7 @@ function AnimationTechniqueNote({ description, mainImage, works }) {
             }}
           />
         )}
-        {hasAtLeastOneItem(mainImage) && <Figure {...mainImage[0]} />}
+        <Carousel images={images} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -42,13 +42,13 @@ function AnimationTechniqueNote({ description, mainImage, works }) {
 
 AnimationTechniqueNote.defaultProps = {
   description: null,
-  mainImage: null,
+  images: null,
   works: null,
 };
 
 AnimationTechniqueNote.propTypes = {
   description: PropTypes.string,
-  mainImage: PropTypes.arrayOf(PropTypes.object),
+  images: PropTypes.arrayOf(PropTypes.object),
   works: PropTypes.arrayOf(PropTypes.object),
 };
 

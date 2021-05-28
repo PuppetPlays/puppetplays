@@ -46,6 +46,8 @@ fragment placeInfo on EntryInterface {
 export const assetFragment = `
 fragment assetFragment on AssetInterface {
   url,
+  height,
+  width,
   ... on images_Asset {
     alt,
     description,
@@ -417,7 +419,7 @@ query getAuthorById($locale: [String], $id: [QueryArgument]) {
       birthDate,
       deathDate,
       biographicalNote,
-      mainImage {
+      images @transform(height: 436) {
         ...assetFragment
       },
       idrefId,
@@ -450,7 +452,7 @@ query getAllAnimationsTechniques($locale: [String]) {
     slug,
     title,
     ... on animationTechniques_animationTechniques_Entry {
-      mainImage {
+      mainImage @transform(height: 362, width: 259) {
         ...assetFragment
       },
     }
@@ -467,7 +469,7 @@ query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
     title,
     ... on animationTechniques_animationTechniques_Entry {
       description,
-      mainImage {
+      images @transform(height: 436) {
         ...assetFragment
       }
     }

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  max-width: 100vw;
+  overflow: auto;
+  padding-bottom: 24px;
+}
+
+.image {
+  margin: 0 auto;
+
+  & + & {
+    margin-left: 8px;
+  }
+
+  img {
+    display: block;
+    height: 436px;
+  }
+}
+
+.caption {
+  color: var(--color-text-inactive);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 15px 0 0;
+  padding: 0 40px 0 14px;
+}
+
+.copyright {
+  font-weight: 400;
+}

@@ -37,6 +37,28 @@ fieldLayouts:
             width: 100
         name: Contenu
         sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 07c0d544-d28a-449e-a643-936d89cb7a3a # Images
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Medias
+        sortOrder: 2
 handle: companies
 hasTitleField: true
 name: Compagnies

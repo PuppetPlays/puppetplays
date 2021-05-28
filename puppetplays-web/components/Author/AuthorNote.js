@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
-import Figure from 'components/Figure';
+import Carousel from 'components/Carousel';
 import Hypotext from 'components/Hypotext';
 import Section from 'components/Section';
 import Info from 'components/Info';
@@ -13,7 +13,7 @@ function AuthorNote({
   birthDate,
   deathDate,
   biographicalNote,
-  mainImage,
+  images,
   idrefId,
   viafId,
   arkId,
@@ -36,7 +36,7 @@ function AuthorNote({
             }}
           />
         )}
-        {hasAtLeastOneItem(mainImage) && <Figure {...mainImage[0]} />}
+        <Carousel images={images} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -77,7 +77,7 @@ AuthorNote.defaultProps = {
   birthDate: null,
   deathDate: null,
   biographicalNote: null,
-  mainImage: null,
+  images: null,
   idrefId: null,
   viafId: null,
   arkId: null,
@@ -89,7 +89,7 @@ AuthorNote.propTypes = {
   birthDate: PropTypes.string,
   deathDate: PropTypes.string,
   biographicalNote: PropTypes.string,
-  mainImage: PropTypes.arrayOf(PropTypes.object),
+  images: PropTypes.arrayOf(PropTypes.object),
   idrefId: PropTypes.string,
   viafId: PropTypes.string,
   arkId: PropTypes.string,
