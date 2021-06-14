@@ -13,15 +13,17 @@ function CoverImage({ image, year, height }) {
       {hasAtLeastOneItem(image) && (
         <Tooltip
           content={
-            <p className={styles.caption}>
-              {description}
-              {copyright && (
-                <span className={styles.captionCopyright}>
-                  {' '}
-                  – © {copyright}
-                </span>
-              )}
-            </p>
+            (description || copyright) && (
+              <p className={styles.caption}>
+                {description}
+                {copyright && (
+                  <span className={styles.captionCopyright}>
+                    {' '}
+                    – © {copyright}
+                  </span>
+                )}
+              </p>
+            )
           }
           placement="left"
         >

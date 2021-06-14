@@ -1,4 +1,4 @@
-export const getCoverDefinition = (props) => [
+export const getCoverDefinition = ({ t, ...props }) => [
   { text: t('home:fullTitle') },
   { text: t('common:work') },
   { text: props.title },

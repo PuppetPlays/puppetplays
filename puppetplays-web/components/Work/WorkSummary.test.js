@@ -1,6 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import WorkSummary from './WorkSummary';
 
+jest.mock('@tippyjs/react', () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
+
 test('renders with only the rquired props', () => {
   render(<WorkSummary id="1" title="My work" slug="my-work" />);
 
