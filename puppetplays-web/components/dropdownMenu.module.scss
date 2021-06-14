@@ -53,17 +53,18 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  width: 100%;
 
   &:hover {
     color: var(--color-text-subtle);
     background-color: var(--color-bg-depth-2);
   }
 
-  &:first-child {
+  .menu :global([role='menuitem']):first-child & {
     border-radius: 7px 7px 0 0;
   }
 
-  &:last-child {
+  .menu :global([role='menuitem']):last-child & {
     border-radius: 0 0 7px 7px;
   }
 
