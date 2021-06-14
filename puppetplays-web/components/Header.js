@@ -8,7 +8,7 @@ function Header({ children }) {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <h1 className={styles.logo}>
         <Link href="/">
           <a>
@@ -34,7 +34,7 @@ function Header({ children }) {
       <div className={styles.languageSelector}>
         <LanguageSelector />
       </div>
-    </div>
+    </header>
   );
 }
 

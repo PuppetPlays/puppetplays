@@ -1,4 +1,10 @@
-import { Fragment } from 'react';
+import {
+  Fragment,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -26,6 +32,7 @@ import Card from 'components/Card';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
 import Keywords, { Tag } from 'components/Keywords';
+import Header from 'components/Header';
 import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
@@ -34,13 +41,41 @@ const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
 export default function Home({ animationTechnique, authors, work, keywords }) {
   const { t } = useTranslation('home');
-  const EXPLORE_BY = {
+  const headerRef = useRef(null);
+  const topBarRef = useRef(null);
+  const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+  const [EXPLORE_BY] = useState({
     database: { to: '/repertoire' },
     authors: { to: '/auteurs' },
     pathways: {},
     publications: {},
     project: { href: t('ourSiteUrl') },
-  };
+  });
+
+  const handleScroll = useCallback(() => {
+    if (!headerRef || !topBarRef) {
+      return;
+    }
+
+    const header = headerRef.current;
+    const stickyHeader = topBarRef.current;
+    const headerHeight = header.offsetHeight;
+
+    console.log(window.pageYOffset, headerHeight);
+    if (window.pageYOffset > headerHeight) {
+      if (!isHeaderSticky) {
+        stickyHeader.classList.add(styles.sticky);
+        setIsHeaderSticky(true);
+      }
+    } else {
+      stickyHeader.classList.remove(styles.sticky);
+      setIsHeaderSticky(false);
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  }, [handleScroll]);
 
   return (
     <Fragment>
@@ -49,14 +84,22 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
       </Head>
 
       <div className={styles.container}>
-        <header>
-          <div className={styles.LanguageSelector}>
-            <LanguageSelector inverse path="/" />
-          </div>
-        </header>
+        <div className={styles.topBar} ref={topBarRef}>
+          {!isHeaderSticky ? (
+            <header>
+              <div className={styles.LanguageSelector}>
+                <LanguageSelector inverse path="/" />
+              </div>
+            </header>
+          ) : (
+            <Header>
+              <SearchBarStateful />
+            </Header>
+          )}
+        </div>
 
         <main>
-          <div className={styles.header}>
+          <div className={styles.header} ref={headerRef}>
             <div className={styles.headerInner}>
               <div className={styles.headerMain}>
                 <div>
@@ -111,6 +154,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
               </div>
             </div>
           </div>
+
           <div className={styles.content}>
             <div className={styles.contentInner}>
               <Section title={t('explore')}>

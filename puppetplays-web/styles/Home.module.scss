@@ -1,11 +1,18 @@
-.container {
-  > header {
-    position: absolute;
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 36px;
+  width: 100%;
+  z-index: 10;
+
+  &.sticky {
+    position: fixed;
+    z-index: 1000;
+    min-height: 70px;
     top: 0;
     left: 0;
-    height: 36px;
     width: 100%;
-    z-index: 10;
   }
 }
 
