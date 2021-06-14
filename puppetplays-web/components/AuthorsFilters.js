@@ -9,9 +9,11 @@ function AuthorsFilters({
   languageOptions,
   placeOptions,
   genderOptions,
+  typeOptions,
   selectedLanguages,
   selectedPlaces,
-  selectedGenders,
+  selectedGender,
+  selectedType,
   onChange,
   onClearAll,
 }) {
@@ -20,7 +22,8 @@ function AuthorsFilters({
   const filtersCount = [
     get(selectedLanguages, 'length', 0),
     get(selectedPlaces, 'length', 0),
-    get(selectedGenders, 'length', 0),
+    selectedGender,
+    selectedType,
   ].filter(identity).length;
 
   return (
@@ -73,7 +76,18 @@ function AuthorsFilters({
             placeholder={t('common:filters.genderPlaceholder')}
             options={genderOptions}
             onChange={onChange}
-            value={selectedGenders}
+            value={selectedGender}
+            isMulti={false}
+          />
+        </div>
+        <div style={{ position: 'relative', zIndex: 70 }}>
+          <FilterSelect
+            name="type"
+            placeholder={t('common:filters.typePlaceholder')}
+            options={typeOptions}
+            onChange={onChange}
+            value={selectedType}
+            isMulti={false}
           />
         </div>
       </div>
@@ -87,16 +101,19 @@ AuthorsFilters.defaultProps = {
   genderOptions: [],
   selectedLanguages: [],
   selectedPlaces: [],
-  selectedGenders: [],
+  selectedGender: null,
+  selectedType: null,
 };
 
 AuthorsFilters.propTypes = {
   languageOptions: PropTypes.arrayOf(PropTypes.object),
   placeOptions: PropTypes.arrayOf(PropTypes.object),
   genderOptions: PropTypes.arrayOf(PropTypes.object),
+  typeOptions: PropTypes.arrayOf(PropTypes.object),
   selectedLanguages: PropTypes.arrayOf(PropTypes.object),
   selectedPlaces: PropTypes.arrayOf(PropTypes.object),
-  selectedGenders: PropTypes.arrayOf(PropTypes.object),
+  selectedGender: PropTypes.object,
+  selectedType: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,
 };

@@ -2,10 +2,18 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import Select from 'react-select';
 import get from 'lodash/fp/get';
+import isNil from 'lodash/isNil';
 import FilterLabel from 'components/FilterLabel';
 import { styles, components, getTheme } from './filterSelectStyles';
 
-function FilterSelect({ name, placeholder, value, options, onChange }) {
+function FilterSelect({
+  name,
+  placeholder,
+  value,
+  options,
+  isMulti,
+  onChange,
+}) {
   const { t } = useTranslation();
 
   return (
@@ -22,11 +30,11 @@ function FilterSelect({ name, placeholder, value, options, onChange }) {
         placeholder={placeholder}
         getOptionLabel={get('title')}
         getOptionValue={get('id')}
-        value={value}
+        value={isMulti && isNil(value) ? [] : value}
         options={options}
         onChange={onChange}
-        isClearable={false}
-        isMulti
+        isClearable={!isMulti}
+        isMulti={isMulti}
       />
     </div>
   );
@@ -35,15 +43,20 @@ function FilterSelect({ name, placeholder, value, options, onChange }) {
 FilterSelect.defaultProps = {
   value: null,
   placeholder: '',
-  options: [],
+  options: null,
+  isMulti: true,
 };
 
 FilterSelect.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.arrayOf(PropTypes.object),
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.object),
+    PropTypes.object,
+  ]),
   options: PropTypes.arrayOf(PropTypes.object),
+  isMulti: PropTypes.bool,
 };
 
 export default FilterSelect;

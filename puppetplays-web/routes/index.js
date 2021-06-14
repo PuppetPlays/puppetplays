@@ -53,7 +53,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   });
 
   const handleScroll = useCallback(() => {
-    if (!headerRef || !topBarRef) {
+    if (!headerRef.current || !topBarRef.current) {
       return;
     }
 

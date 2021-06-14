@@ -6,6 +6,8 @@ import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
+import isNil from 'lodash/isNil';
+import isArray from 'lodash/isArray';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -27,6 +29,10 @@ import Author from 'components/Author';
 import Company from 'components/Company';
 import Filters from 'components/AuthorsFilters';
 import styles from 'styles/Authors.module.scss';
+import identity from 'lodash/identity';
+import negate from 'lodash/negate';
+import map from 'lodash/fp/map';
+import get from 'lodash/fp/get';
 
 const isOfType = (type) => ({ typeHandle }) => typeHandle === type;
 
@@ -45,6 +51,10 @@ function Authors({ initialData, languages, places }) {
   const [genderOptions] = useState([
     { id: 'female', title: t('common:filters.female') },
     { id: 'male', title: t('common:filters.male') },
+  ]);
+  const [typeOptions] = useState([
+    { id: 'persons', title: t('common:filters.author') },
+    { id: 'companies', title: t('common:filters.company') },
   ]);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
@@ -77,9 +87,16 @@ function Authors({ initialData, languages, places }) {
 
   const handleChangeFilters = useCallback(
     (value, { name }) => {
+      console.log(value, name);
+      const getNewFilterValue = cond([
+        [(v) => isArray(v) && v.length > 0, map(get('id'))],
+        [isArray, constant(null)],
+        [negate(isNil), get('id')],
+        [stubTrue, constant(null)],
+      ]);
       const newFilters = {
         ...filters,
-        [name]: value.length > 0 ? value.map((v) => v.id) : null,
+        [name]: getNewFilterValue(value),
       };
       setFilters(newFilters);
       router.push(`/auteurs?${stringifyQuery({ ...newFilters })}`, undefined, {
@@ -103,6 +120,7 @@ function Authors({ initialData, languages, places }) {
           languageOptions={languages}
           placeOptions={places}
           genderOptions={genderOptions}
+          typeOptions={typeOptions}
           selectedLanguages={
             filters.languages &&
             languages.filter(({ id }) => filters.languages.includes(id))
@@ -111,9 +129,12 @@ function Authors({ initialData, languages, places }) {
             filters.places &&
             places.filter(({ id }) => filters.places.includes(id))
           }
-          selectedGenders={
+          selectedGender={
             filters.gender &&
-            genderOptions.filter(({ id }) => filters.gender.includes(id))
+            genderOptions.find(({ id }) => filters.gender === id)
+          }
+          selectedType={
+            filters.type && typeOptions.find(({ id }) => filters.type === id)
           }
           onChange={handleChangeFilters}
           onClearAll={handleClearAllFilters}

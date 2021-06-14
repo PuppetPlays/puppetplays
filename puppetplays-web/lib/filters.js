@@ -6,7 +6,7 @@ import pick from 'lodash/pick';
 import split from 'lodash/fp/split';
 import parseInteger from 'lodash/fp/parseInt';
 
-const authorsAllowedFilters = ['languages', 'places', 'gender'];
+const authorsAllowedFilters = ['languages', 'places', 'gender', 'type'];
 
 const worksAllowedFilters = [
   'mainLanguage',
@@ -70,8 +70,13 @@ const queryParamsToState = (mappers) => (queryParams) => {
   return mapValues(
     pick(omitBy(queryParams, isNil), Object.keys(mappers)),
     (filter, key) => {
-      const mapper = mappers[key] || identity;
-      return mapper(filter);
+      const mapper = mappers[key];
+      if (!mapper) {
+        throw new Error(
+          `A mapper function is required for all filters, provide one for “${key}” filter`,
+        );
+      }
+      return mappers[key](filter);
     },
   );
 };
@@ -92,6 +97,9 @@ export const worksStateToGraphqlVariables = stateToGraphqlVariables(
 
 export const authorsStateToGraphqlQueryArgument = stateToGraphqlQueryArgument(
   authorsAllowedFilters,
+  {
+    type: '[String]',
+  },
 );
 export const worksStateToGraphqlQueryArgument = stateToGraphqlQueryArgument(
   worksAllowedFilters,
@@ -110,12 +118,15 @@ export const worksStateToGraphqlEntriesParams = stateToGraphqlEntriesParams(
   },
 );
 
+// There’s no default mapper function, so be sure to provide one for all filters
 export const authorsQueryParamsToState = queryParamsToState({
   languages: split(','),
   places: split(','),
-  gender: split(','),
+  gender: identity,
+  type: identity,
 });
 
+// There’s no default mapper function, so be sure to provide one for all filters
 export const worksQueryParamsToState = queryParamsToState({
   mainLanguage: split(','),
   compositionPlace: split(','),

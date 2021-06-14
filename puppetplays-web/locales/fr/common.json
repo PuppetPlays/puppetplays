@@ -76,7 +76,11 @@
     "gender": "Sexe",
     "genderPlaceholder": "Genre",
     "female": "Femme",
-    "male": "Homme"
+    "male": "Homme",
+    "company": "Compagnie",
+    "author": "Auteur",
+    "type": "Type",
+    "typePlaceholder": "Auteur ou compagnie"
   },
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",

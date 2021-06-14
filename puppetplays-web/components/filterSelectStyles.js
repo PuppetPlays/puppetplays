@@ -51,6 +51,11 @@ export const styles = {
     borderBottom: '1px solid var(--color-bg-depth-2)',
     fontSize: '15px',
   }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: 'white',
+    padding: '0 3px 0 6px',
+  }),
   multiValue: (provided) => ({
     ...provided,
     color: 'white',
