@@ -11,7 +11,7 @@ import Place from 'components/Place';
 import Section from 'components/Section';
 import Author from 'components/Author';
 import Info from 'components/Info';
-import Keywords from 'components/Keywords';
+import Keywords, { Tag } from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
 import AuthorCard from 'components/AuthorCard';
 import CompanyCard from 'components/CompanyCard';
@@ -257,7 +257,7 @@ function Work(props) {
           title={t('common:keywords')}
           show={hasAtLeastOneItem(keywords)}
         >
-          <Keywords keywords={keywords} />
+          <Keywords keywords={keywords} component={Tag} />
         </Section>
 
         <Section

@@ -8,7 +8,7 @@ import {
   hasAtLeastOneItem,
   getProperty,
 } from 'lib/utils';
-import Keywords from 'components/Keywords';
+import Keywords, { Tag } from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
 import Section from 'components/Section';
 import Info from 'components/Info';
@@ -84,7 +84,7 @@ function WorkSummary({
 
         <section>
           <Keywords keywords={dramaticDevices} fill />
-          <Keywords keywords={keywords} />
+          <Keywords keywords={keywords} component={Tag} />
         </section>
 
         {isExpanded && (

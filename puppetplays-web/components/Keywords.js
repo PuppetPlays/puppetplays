@@ -1,37 +1,34 @@
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './keywords.module.scss';
 
-export function Keyword({ id, children }) {
+export function Keyword({ children }) {
+  return <li className={styles.keyword}>{children}</li>;
+}
+
+Keyword.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export function Tag({ id, children }) {
   return (
-    <li className={styles.keyword}>
-      {id ? (
-        <Link href={`/repertoire?relatedToTags=${id}`}>
-          <a>{children}</a>
-        </Link>
-      ) : (
-        children
-      )}
+    <li className={styles.tag}>
+      <a href={`/repertoire?relatedToTags=${id}`}>{children}</a>
     </li>
   );
 }
 
-Keyword.defaultProps = {
-  id: null,
-};
-
-Keyword.propTypes = {
-  id: PropTypes.string,
+Tag.propTypes = {
+  id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-function Keywords({ keywords, fill }) {
+function Keywords({ keywords, component: Component, fill }) {
   return (
     <ul className={styles.container} data-fill={fill}>
-      {keywords.map((keyword) => (
-        <Keyword key={keyword.title} id={keyword.id}>
-          {keyword.title}
-        </Keyword>
+      {keywords.map(({ title, ...keyword }) => (
+        <Component key={title} {...keyword}>
+          {title}
+        </Component>
       ))}
     </ul>
   );
@@ -39,10 +36,12 @@ function Keywords({ keywords, fill }) {
 
 Keywords.defaultProps = {
   fill: false,
+  component: Keyword,
 };
 
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.object).isRequired,
+  component: PropTypes.func,
   fill: PropTypes.bool,
 };
 

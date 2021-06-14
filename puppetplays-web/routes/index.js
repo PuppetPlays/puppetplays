@@ -21,12 +21,12 @@ import { getRandom } from 'lib/utils';
 import LanguageSelector from 'components/LanguageSelector';
 import SearchBarStateful from 'components/SearchBarStateful';
 import EntryPointCard from 'components/Home/EntryPointCard';
-import styles from 'styles/Home.module.scss';
 import ButtonLink from 'components/ButtonLink';
 import Card from 'components/Card';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
-import Keywords from 'components/Keywords';
+import Keywords, { Tag } from 'components/Keywords';
+import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
 const PARTNERS = ['rir', 'upvm', 'intactile', 'humanum'];
@@ -156,7 +156,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
 
               <div className={styles.keywords}>
                 <Section title={t('exploreByKeywords')}>
-                  <Keywords keywords={keywords} />
+                  <Keywords keywords={keywords} component={Tag} />
                 </Section>
               </div>
 
@@ -189,7 +189,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 >
                   <div style={{ marginBottom: 20 }}>
                     <div dangerouslySetInnerHTML={{ __html: work.note }} />
-                    <Keywords keywords={work.keywords} />
+                    <Keywords keywords={work.keywords} component={Tag} />
                   </div>
                   <ButtonLink href={`/oeuvres/${work.id}/${work.slug}`}>
                     {t('common:readNote')}

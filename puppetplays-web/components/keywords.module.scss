@@ -6,7 +6,8 @@
   list-style-type: none;
 }
 
-.keyword {
+.keyword,
+.tag {
   padding: 6px 11px;
   border-radius: 15px;
   margin: 0 8px 8px 0;
@@ -16,6 +17,14 @@
   cursor: default;
   transition: all 0.15s ease-in-out;
 
+  .container[data-fill='true'] & {
+    color: var(--color-brand);
+    background-color: var(--color-bg-depth-2);
+    border-color: transparent;
+  }
+}
+
+.tag {
   &:hover {
     color: var(--color-brand-light);
     border-color: currentColor;
