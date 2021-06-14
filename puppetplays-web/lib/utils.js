@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import cookie from 'cookie';
 
 export const identity = (i) => i;
 
@@ -32,3 +33,7 @@ export const getRandom = (arr, n) => {
   }
   return result;
 };
+
+export function parseCookies(req) {
+  return cookie.parse(req ? req.headers.cookie || '' : document.cookie);
+}

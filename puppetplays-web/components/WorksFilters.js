@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import get from 'lodash/get';
@@ -31,12 +31,10 @@ function WorksFilters({
   publicDomain,
   onChange,
   onClearAll,
+  isOpen,
+  onToggle,
 }) {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(true);
-  const handleOpen = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
 
   const filtersCount = [
     get(selectedLanguages, 'length', 0),
@@ -81,11 +79,7 @@ function WorksFilters({
             </button>
           </Fragment>
         )}
-        <button
-          className={styles.closeButton}
-          type="button"
-          onClick={handleOpen}
-        >
+        <button className={styles.closeButton} type="button" onClick={onToggle}>
           <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10.5 3.5L5.5 8L10.5 12.5"
@@ -212,6 +206,7 @@ WorksFilters.defaultProps = {
   selectedFormats: [],
   selectedTags: [],
   publicDomain: false,
+  isOpen: true,
 };
 
 WorksFilters.propTypes = {
@@ -237,6 +232,8 @@ WorksFilters.propTypes = {
   publicDomain: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool,
 };
 
 export default WorksFilters;

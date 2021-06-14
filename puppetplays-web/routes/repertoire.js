@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import useSWR, { mutate } from 'swr';
+import get from 'lodash/get';
+import { useCookies } from 'react-cookie';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -27,7 +29,7 @@ import {
   worksQueryParamsToState as queryParamsToState,
   worksStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { hasAtLeastOneItem, stringifyQuery } from 'lib/utils';
+import { hasAtLeastOneItem, parseCookies, stringifyQuery } from 'lib/utils';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
@@ -46,7 +48,14 @@ function Home({
   audiences,
   formats,
   tags,
+  isFiltersBarOpened,
 }) {
+  const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
+  const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
+  const handleToggleFiltersBar = useCallback(() => {
+    setIsOpen(!isOpen);
+    setCookie('isWorksFiltersBarOpened', !isOpen);
+  }, [isOpen, setCookie]);
   const { t } = useTranslation();
   const router = useRouter();
   const [filters, setFilters] = useState(() => {
@@ -245,6 +254,8 @@ function Home({
           publicDomain={!!filters.publicDomain}
           onChange={handleChangeFilters}
           onClearAll={handleClearAllFilters}
+          isOpen={isOpen}
+          onToggle={handleToggleFiltersBar}
         />
       }
     >
@@ -285,6 +296,7 @@ Home.propTypes = {
   audiences: PropTypes.arrayOf(PropTypes.object).isRequired,
   formats: PropTypes.arrayOf(PropTypes.object).isRequired,
   tags: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isFiltersBarOpened: PropTypes.bool.isRequired,
 };
 
 export default Home;
@@ -292,6 +304,10 @@ export default Home;
 export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
+
+  const cookies = parseCookies(req);
+  const isFiltersBarOpened =
+    get(cookies, 'isWorksFiltersBarOpened', true) === 'false' ? false : true;
 
   const languages = await fetchAPI(getAllLanguagesQuery, {
     variables: { locale },
@@ -345,6 +361,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
       audiences: audiences.entries,
       formats: formats.entries,
       tags,
+      isFiltersBarOpened,
     },
   };
 }
