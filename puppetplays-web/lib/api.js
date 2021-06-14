@@ -114,6 +114,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
         title
       },
       keywords {
+        id,
         title
       },
       authors {
@@ -225,6 +226,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         ...assetFragment
       },
       keywords {
+        id,
         title
       },
       authors {
@@ -486,5 +488,23 @@ query getWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
       date: mostRelevantDate
     }
   }
+}
+`;
+
+export const getAllWorksKeywordsQuery = `
+query getAllWorksKeywords($locale: [String]) {
+  tags(site: $locale, relatedToEntries: { section: "works" }) {
+    id,
+    title
+   }
+}
+`;
+
+export const getWorksKeywordsByIdsQuery = `
+query getWorksKeywordsByIds($locale: [String], $id: [QueryArgument]) {
+  tags(site: $locale, id: $id) {
+    id,
+    title
+   }
 }
 `;

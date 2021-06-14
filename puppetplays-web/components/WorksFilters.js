@@ -17,6 +17,7 @@ function WorksFilters({
   animationTechniquesOptions,
   audiencesOptions,
   formatsOptions,
+  tagsOptions,
   selectedLanguages,
   selectedPlaces,
   selectedPeriodMin,
@@ -26,6 +27,7 @@ function WorksFilters({
   selectedAnimationTechniques,
   selectedAudiences,
   selectedFormats,
+  selectedTags,
   publicDomain,
   onChange,
   onClearAll,
@@ -45,6 +47,7 @@ function WorksFilters({
     get(selectedAnimationTechniques, 'length', 0),
     get(selectedAudiences, 'length', 0),
     get(selectedFormats, 'length', 0),
+    get(selectedTags, 'length', 0),
     publicDomain,
   ].filter(identity).length;
 
@@ -167,6 +170,15 @@ function WorksFilters({
             />
           </div>
           <div style={{ position: 'relative', zIndex: 20 }}>
+            <FilterSelect
+              name="relatedToTags"
+              placeholder={t('common:filters.relatedToTagsPlaceholder')}
+              options={tagsOptions}
+              onChange={onChange}
+              value={selectedTags}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 10 }}>
             <FilterCheckbox
               name="publicDomain"
               checked={publicDomain}
@@ -188,6 +200,7 @@ WorksFilters.defaultProps = {
   animationTechniquesOptions: [],
   audiencesOptions: [],
   formatsOptions: [],
+  tagsOptions: [],
   selectedLanguages: [],
   selectedPlaces: [],
   selectedPeriodMin: null,
@@ -197,6 +210,7 @@ WorksFilters.defaultProps = {
   selectedAnimationTechniques: [],
   selectedAudiences: [],
   selectedFormats: [],
+  selectedTags: [],
   publicDomain: false,
 };
 
@@ -209,6 +223,7 @@ WorksFilters.propTypes = {
   animationTechniquesOptions: PropTypes.arrayOf(PropTypes.object),
   audiencesOptions: PropTypes.arrayOf(PropTypes.object),
   formatsOptions: PropTypes.arrayOf(PropTypes.object),
+  tagsOptions: PropTypes.arrayOf(PropTypes.object),
   selectedLanguages: PropTypes.arrayOf(PropTypes.object),
   selectedPlaces: PropTypes.arrayOf(PropTypes.object),
   selectedPeriodMin: PropTypes.number,
@@ -218,6 +233,7 @@ WorksFilters.propTypes = {
   selectedAnimationTechniques: PropTypes.arrayOf(PropTypes.object),
   selectedAudiences: PropTypes.arrayOf(PropTypes.object),
   selectedFormats: PropTypes.arrayOf(PropTypes.object),
+  selectedTags: PropTypes.arrayOf(PropTypes.object),
   publicDomain: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,

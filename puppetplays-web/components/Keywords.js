@@ -1,11 +1,27 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './keywords.module.scss';
 
-export function Keyword({ children }) {
-  return <li className={styles.keyword}>{children}</li>;
+export function Keyword({ id, children }) {
+  return (
+    <li className={styles.keyword}>
+      {id ? (
+        <Link href={`/repertoire?relatedToTags=${id}`}>
+          <a>{children}</a>
+        </Link>
+      ) : (
+        children
+      )}
+    </li>
+  );
 }
 
+Keyword.defaultProps = {
+  id: null,
+};
+
 Keyword.propTypes = {
+  id: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
@@ -13,7 +29,9 @@ function Keywords({ keywords, fill }) {
   return (
     <ul className={styles.container} data-fill={fill}>
       {keywords.map((keyword) => (
-        <Keyword key={keyword.title}>{keyword.title}</Keyword>
+        <Keyword key={keyword.title} id={keyword.id}>
+          {keyword.title}
+        </Keyword>
       ))}
     </ul>
   );

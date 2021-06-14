@@ -69,6 +69,8 @@
     "audiencePlaceholder": "Adulte, Jeune public…",
     "formats": "Format",
     "formatsPlaceholder": "Audio, Dactilographié…",
+    "relatedToTags": "Mots-clé",
+    "relatedToTagsPlaceholder": "…",
     "publicDomain": "Domaine public",
     "gender": "Sexe",
     "genderPlaceholder": "Genre",
