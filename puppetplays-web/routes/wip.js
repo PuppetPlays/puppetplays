@@ -56,7 +56,7 @@ export default function Wip() {
   return (
     <Fragment>
       <Head>
-        <title>Puppetplays | {t('title')}</title>
+        <title>Puppetplays | {t('fullTitle')}</title>
       </Head>
 
       <div className={styles.container}>
@@ -78,8 +78,8 @@ export default function Wip() {
                   />
                 </div>
                 <div className={styles.releaseDate}>{t('releaseDate')}</div>
-                <h1 className={styles.title}>{t('title')}</h1>
-                <p className={styles.subtitle}>{t('subtitle')}</p>
+                <h1 className={styles.title}>{t('fullTitle')}</h1>
+                <p className={styles.subtitle}>{t('ercLabel')}</p>
               </div>
               <section className={styles.sidebar}>
                 <div className={styles.sidebarTop}>

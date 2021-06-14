@@ -406,6 +406,25 @@ entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works
 }
 `;
 
+export const getAuthorsByIdsQuery = `
+query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
+  entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, id: $id) {
+    id,
+    slug,
+    title,
+    typeHandle,
+    ... on persons_persons_Entry { 
+      firstName,
+      lastName,
+      nickname,
+      usualName,
+      birthDate,
+      deathDate,
+    },
+  }
+}
+`;
+
 export const getAuthorByIdQuery = `
 ${assetFragment}
 query getAuthorById($locale: [String], $id: [QueryArgument]) {
@@ -462,6 +481,24 @@ query getAllAnimationsTechniques($locale: [String]) {
 }
 `;
 
+export const getAnimationsTechniquesByIdsQuery = `
+${assetFragment}
+  query getAnimationTechniquesByIds($locale: [String], $id: [QueryArgument]) {
+    entries(section: "animationTechniques", site: $locale, id: $id) {
+      id,
+      slug,
+      title,
+      ... on animationTechniques_animationTechniques_Entry {
+        description,
+        images @transform(height: 436) {
+          ...assetFragment
+        }
+      }
+    }
+  }
+}
+`;
+
 export const getAnimationTechniqueByIdQuery = `
 ${assetFragment}
 query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
@@ -506,5 +543,20 @@ query getWorksKeywordsByIds($locale: [String], $id: [QueryArgument]) {
     id,
     title
    }
+}
+`;
+
+export const getHomeQuery = `
+query getHome($locale: [String]) {
+  entry(section: "home", site: $locale) {
+    id,
+    slug,
+    title,
+    ... on home_home_Entry {
+      works {
+        id
+      }
+    }
+  }
 }
 `;

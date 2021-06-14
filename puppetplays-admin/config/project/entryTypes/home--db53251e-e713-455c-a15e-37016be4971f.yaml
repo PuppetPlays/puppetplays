@@ -1,0 +1,47 @@
+fieldLayouts:
+  e6047685-5725-4228-927e-5365101f42af:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+          -
+            fieldUid: fbbb13b9-a645-436f-82a9-ad8e5767acda # Œuvres
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Contenu
+        sortOrder: 1
+handle: home
+hasTitleField: false
+name: Accueil
+section: bfac270e-899c-4fde-90e4-d4fbb11f05ea # Accueil
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

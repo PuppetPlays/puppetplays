@@ -43,7 +43,11 @@ function AnimationTechniques({ initialData }) {
           {data &&
             data.entries.map((entry) => (
               <div key={entry.id} className={styles.gridItem}>
-                <Card buttonLabel={t('common:readNote')} {...entry} />
+                <Card
+                  buttonLabel={t('common:readNote')}
+                  href={`/techniques-d-animation/${entry.id}/${entry.slug}`}
+                  {...entry}
+                />
               </div>
             ))}
         </div>

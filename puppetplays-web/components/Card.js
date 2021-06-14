@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { hasAtLeastOneItem } from 'lib/utils';
 import styles from './card.module.scss';
 
-function Card({ id, slug, title, subtitle, buttonLabel, mainImage }) {
+function Card({ href, title, subtitle, buttonLabel, mainImage }) {
   return (
-    <Link href={`/techniques-d-animation/${id}/${slug}`}>
+    <Link href={href}>
       <a className={styles.container}>
         {hasAtLeastOneItem(mainImage) && (
           <div className={styles.image}>
@@ -28,8 +28,7 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
   title: PropTypes.node.isRequired,
   buttonLabel: PropTypes.string.isRequired,
   subtitle: PropTypes.node,

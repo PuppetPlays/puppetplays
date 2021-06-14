@@ -9,8 +9,7 @@ function CompanyCard({ id, slug, title }) {
   return (
     <section className={styles.container}>
       <Card
-        id={id}
-        slug={slug}
+        href={`/auteurs/${id}/${slug}`}
         title={title}
         buttonLabel={t('common:readBiography')}
       />

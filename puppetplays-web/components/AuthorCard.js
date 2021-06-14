@@ -19,8 +19,7 @@ function AuthorCard({
   return (
     <section className={styles.container}>
       <Card
-        id={id}
-        slug={slug}
+        href={`/auteurs/${id}/${slug}`}
         title={
           <Author
             id={id}

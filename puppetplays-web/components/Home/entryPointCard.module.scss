@@ -1,0 +1,99 @@
+.container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  &.isComingSoon h2 {
+    opacity: 0.5;
+  }
+
+  &.isComingSoon p {
+    opacity: 0.3;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 6px;
+
+    a:hover {
+      color: var(--color-brand);
+    }
+
+    a:focus {
+      text-decoration: underline;
+      color: var(--color-brand-light);
+    }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.5;
+    margin: 0;
+  }
+}
+
+.media {
+  position: relative;
+  margin-bottom: 16px;
+  transition: background 0.15s ease-in-out;
+
+  .container:not(.isComingSoon) & {
+    cursor: pointer;
+  }
+
+  &:hover + h2 a {
+    color: var(--color-brand);
+  }
+
+  .container:focus-within &::after,
+  &:hover::after {
+    background: transparent;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    border-radius: 7px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 15, 48, 0.5),
+      rgba(16, 15, 48, 0.5) 25%,
+      rgba(16, 15, 48, 0.85) 100%
+    );
+  }
+
+  .isComingSoon & {
+    opacity: 0.5;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  img {
+    display: block;
+    border-radius: 7px;
+    max-width: 100%;
+  }
+}
+
+.comingSoonBadge {
+  position: absolute;
+  z-index: 100;
+  top: 8px;
+  left: 8px;
+  color: #808097;
+  background-color: rgba(240, 240, 243, 0.9);
+  padding: 2px 8px 1px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+}

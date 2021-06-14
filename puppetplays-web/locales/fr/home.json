@@ -1,8 +1,11 @@
 {
-  "title": "Répertoires pour les théâtres de marionnettes en Europe de l’Ouest de 1600 à nos jours",
-  "subtitle": "ERC - GA 835193",
+  "title": "Répertoires pour les théâtres de marionnettes",
+  "subtitle": "En Europe de l’Ouest de 1600 à nos jours",
+  "fullTitle": "Répertoires pour les théâtres de marionnettes en Europe de l’Ouest de 1600 à nos jours",
+  "ercLabel": "ERC - GA 835193",
   "releaseDate": "Ouverture prévue en 2022",
   "projectNews": "L’actualité du projet",
+  "projectNewsUrl": "https://puppetplays.www.univ-montp3.fr/fr/actualit%C3%A9s-0",
   "ourSiteLabel": "Notre site",
   "ourSiteUrl": "https://puppetplays.www.univ-montp3.fr/fr",
   "facebookLinkLabel": "Page Facebook Puppetplays",
@@ -14,6 +17,7 @@
   "subscriptionError": "Nous avons rencontré un problème lors de votre inscription à notre newsletter",
   "introTitle": "Mettre en lumière un répertoire fragmenté et presque invisible",
   "introSubtitle": "Le projet",
+  "aboutPuppetplays": "À propos de Puppetplays",
   "introText1": "PuppetPlays - Reappraising Western European Repertoires for Puppet and Marionette Theatres est un ambitieux projet de recherche financé par l'Union Européenne dans le cadre du programme Horizon 2020 (European Research Council, Grant Agreement 835193, 2019-2024). Lauréat de l'appel à projets “Advanced Grant” 2018, il est dirigé par Didier Plassard, professeur en études théâtrales, et porté par l'Université Paul-Valéry Montpellier 3.",
   "introText2": "L'objectif de PuppetPlays est de réunir, d'étudier et de rendre accessible à un large public, grâce à une plateforme numérique dédiée, une large sélection de pièces pour marionnettes écrites en Europe de l'Ouest, du 17e au 21e siècle. Cette plateforme rassemblera une base de données de 2000 références, une anthologie de 300 textes numérisés, des publications scientifiques (une monographie, deux thèses de doctorat, les actes de deux colloques internationaux, des articles), ainsi que des dossiers thématiques et des outils pédagogiques (dictionnaire des auteurs, glossaire).",
   "introText3": "Une première version de la plateforme numérique PuppetPlays sera accessible dans le courant de l'année 2022. Sa version complète sera publiée en 2024.",
@@ -44,5 +48,52 @@
   "intactile": {
     "url": "https://intactile.com",
     "alt": "Intactile DESIGN"
-  }
+  },
+  "explore": "Explorer",
+  "exploreBy": {
+    "database": {
+      "title": "La base de donnée",
+      "subtitle": "Le répertoire complet"
+    },
+    "authors": {
+      "title": "Les auteurs",
+      "subtitle": "Leurs biographie et bibliographie"
+    },
+    "pathways": {
+      "title": "Parcours découvertes",
+      "subtitle": "Nos articles et dossiers pédagogiques"
+    },
+    "publications": {
+      "title": "Publications scientifiques",
+      "subtitle": "Nos articles et colloques"
+    },
+    "project": {
+      "title": "Le projet",
+      "subtitle": "Information et activité de l’équipe PuppetPlays"
+    }
+  },
+  "accessToIntregralWorks": "Accéder à des œuvres intégrales",
+  "consultTheAnthology": "Consulter l’anthologie",
+  "seeAllAnimationTechniques": "Voir toutes les techniques d’animation",
+  "exploreByAuthors": "Explorer par auteurs",
+  "exploreByKeywords": "Parcourir les œuvres selon leurs mots-clé",
+  "browseAllAuthors": "Parcourir tous les auteurs",
+  "lightOnWork": "Œuvre en lumière",
+  "ourPublications": "Nos publications scientifiques",
+  "publications": {
+    "pulcinella": {
+      "title": "Pulcinella, Punch, Polichinelle…",
+      "subtitle": "Continuités et discontinuités dans le répertoire des marionnettes à gaine (17e-19e siècles)"
+    },
+    "drama": {
+      "title": "Dramaturgie de la figure : le répertoire d'auteur",
+      "subtitle": "Échanges consacrés à la production italienne contemporaine de textes pour le théâtre de marionnette."
+    },
+    "roberto": {
+      "title": "Le théâtre de Dom Roberto",
+      "subtitle": "Découvrez le théâtre de Dom Roberto…"
+    }
+  },
+  "pulcinellaPathwayTitle": "La figure de Pulcinella",
+  "pathway": "Parcours découverte"
 }

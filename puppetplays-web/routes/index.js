@@ -1,337 +1,368 @@
-import { useCallback, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
-  getAllWorksQuery,
-  getAllWorks,
-  WORKS_PAGE_SIZE,
-  buildSearchQuery,
+  getHomeQuery,
+  getAuthorsByIdsQuery,
+  getAllWorksKeywordsQuery,
+  getWorksKeywordsByIdsQuery,
+  getAnimationTechniqueByIdQuery,
+  getWorkByIdQuery,
 } from 'lib/api';
 import {
   getAllAnimationTechniquesQuery,
-  getAllAudiencesQuery,
-  getAllFormatsQuery,
-  getAllLanguagesQuery,
   getAllPersonsQuery,
-  getAllLiteraryTonesQuery,
-  getAllPlacesQuery,
-  getPeriodBoundsQuery,
 } from 'lib/filtersApi';
-import {
-  worksQueryParamsToState as queryParamsToState,
-  worksStateToGraphqlVariables as stateToGraphqlVariables,
-} from 'lib/filters';
-import { hasAtLeastOneItem, stringifyQuery } from 'lib/utils';
-import Layout from 'components/Layout';
-import WorkSummary from 'components/Work/WorkSummary';
-import Pagination from 'components/Pagination';
-import Filters from 'components/WorksFilters';
-import SearchBar from 'components/SearchBar';
-import styles from 'styles/Home.module.css';
+import { getRandom } from 'lib/utils';
+import LanguageSelector from 'components/LanguageSelector';
+import SearchBarStateful from 'components/SearchBarStateful';
+import EntryPointCard from 'components/Home/EntryPointCard';
+import styles from 'styles/Home.module.scss';
+import ButtonLink from 'components/ButtonLink';
+import Card from 'components/Card';
+import Section from 'components/Home/Section';
+import SplitLayout from 'components/Home/SplitLayout';
+import Keywords from 'components/Keywords';
 
-function Home({
-  initialData,
-  languages,
-  places,
-  periodBounds,
-  authors,
-  literaryTones,
-  animationTechniques,
-  audiences,
-  formats,
-}) {
-  const { t } = useTranslation();
-  const router = useRouter();
-  const [filters, setFilters] = useState(() => {
-    return queryParamsToState(router.query);
-  });
-  const [searchTerms, setSearchTerms] = useState(router.query.search);
-  const [currentPage, setCurrentPage] = useState(
-    router.query.page ? parseInt(router.query.page, 10) - 1 : 0,
-  );
-  const { data } = useSWR(
-    [
-      getAllWorksQuery(filters),
-      router.locale,
-      currentPage * WORKS_PAGE_SIZE,
-      searchTerms,
-      filters,
-    ],
-    (query, locale, offset, searchTerms, filtersState) => {
-      return fetchAPI(query, {
-        variables: {
-          locale,
-          offset,
-          limit: WORKS_PAGE_SIZE,
-          search: buildSearchQuery(searchTerms),
-          ...stateToGraphqlVariables(filtersState),
-        },
-      });
-    },
-    {
-      initialData,
-      revalidateOnFocus: false,
-    },
-  );
+const FINANCERS = ['ue', 'erc'];
+const PARTNERS = ['rir', 'upvm', 'intactile', 'humanum'];
+const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
-  useEffect(() => {
-    mutate([
-      getAllWorksQuery(filters),
-      router.locale,
-      currentPage * WORKS_PAGE_SIZE,
-      searchTerms,
-      filters,
-    ]);
-  }, [router.locale, currentPage, searchTerms, filters]);
-
-  const handlePageChange = useCallback(
-    (page) => {
-      setCurrentPage(page.selected);
-      router.push(
-        `/?${stringifyQuery({
-          search: searchTerms,
-          page: page.selected + 1,
-          ...filters,
-        })}`,
-        undefined,
-        {
-          shallow: true,
-        },
-      );
-    },
-    [router, filters, searchTerms],
-  );
-
-  const handleChangeFilters = useCallback(
-    (value, { name }) => {
-      let newFilters;
-      if (name === 'period') {
-        newFilters = {
-          ...filters,
-          compositionMinDate: value[0],
-          compositionMaxDate: value[1],
-        };
-      } else if (name === 'publicDomain') {
-        newFilters = {
-          ...filters,
-          publicDomain: value,
-        };
-      } else {
-        newFilters = {
-          ...filters,
-          [name]: value.length > 0 ? value.map((v) => v.id) : null,
-        };
-      }
-      setFilters(newFilters);
-      setCurrentPage(0);
-      router.push(
-        `/?${stringifyQuery({
-          search: searchTerms,
-          page: 1,
-          ...newFilters,
-        })}`,
-        undefined,
-        {
-          shallow: true,
-        },
-      );
-    },
-    [router, filters, searchTerms],
-  );
-
-  const handleChangeSearchQuery = useCallback(
-    (search) => {
-      setSearchTerms(search);
-    },
-    [setSearchTerms],
-  );
-
-  const handleAfterChangeSearchQuery = useCallback(
-    (search) => {
-      setCurrentPage(0);
-      router.push(
-        `/?${stringifyQuery({
-          search,
-          page: 1,
-          ...filters,
-        })}`,
-        undefined,
-        {
-          shallow: true,
-        },
-      );
-    },
-    [router, filters],
-  );
-
-  const handleClearAllFilters = useCallback(() => {
-    setCurrentPage(0);
-    setFilters({});
-    router.push(
-      `/?${stringifyQuery({
-        search: searchTerms,
-        page: 1,
-      })}`,
-      undefined,
-      {
-        shallow: true,
-      },
-    );
-  }, [router, searchTerms]);
+export default function Home({ animationTechnique, authors, work, keywords }) {
+  const { t } = useTranslation('home');
+  const EXPLORE_BY = {
+    database: { to: '/repertoire' },
+    authors: { to: '/auteurs' },
+    pathways: {},
+    publications: {},
+    project: { href: t('ourSiteUrl') },
+  };
 
   return (
-    <Layout
-      header={
-        <SearchBar
-          value={searchTerms}
-          onChange={handleChangeSearchQuery}
-          onAfterChange={handleAfterChangeSearchQuery}
-        />
-      }
-      aside={
-        <Filters
-          languageOptions={languages}
-          placeOptions={places}
-          periodMinMax={periodBounds}
-          authorsOptions={authors}
-          literaryTonesOptions={literaryTones}
-          animationTechniquesOptions={animationTechniques}
-          audiencesOptions={audiences}
-          formatsOptions={formats}
-          selectedLanguages={
-            filters.mainLanguage &&
-            languages.filter(({ id }) => filters.mainLanguage.includes(id))
-          }
-          selectedPlaces={
-            filters.compositionPlace &&
-            places.filter(({ id }) => filters.compositionPlace.includes(id))
-          }
-          selectedPeriodMin={filters.compositionMinDate}
-          selectedPeriodMax={filters.compositionMaxDate}
-          selectedAuthors={
-            filters.authors &&
-            authors.filter(({ id }) => filters.authors.includes(id))
-          }
-          selectedLiteraryTones={
-            filters.literaryTones &&
-            literaryTones.filter(({ id }) => filters.literaryTones.includes(id))
-          }
-          selectedAnimationTechniques={
-            filters.animationTechniques &&
-            animationTechniques.filter(({ id }) =>
-              filters.animationTechniques.includes(id),
-            )
-          }
-          selectedAudiences={
-            filters.audience &&
-            audiences.filter(({ id }) => filters.audience.includes(id))
-          }
-          selectedFormats={
-            filters.formats &&
-            formats.filter(({ id }) => filters.formats.includes(id))
-          }
-          publicDomain={!!filters.publicDomain}
-          onChange={handleChangeFilters}
-          onClearAll={handleClearAllFilters}
-        />
-      }
-    >
+    <Fragment>
       <Head>
-        <title>Puppetplays</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Puppetplays | {t('title')}</title>
       </Head>
 
-      <div className={styles.worksHeader}>
-        <div className={styles.worksHeaderPageCount}>
-          {t('common:results', { count: data.entryCount })}
-        </div>
-        <Pagination
-          forcePage={currentPage}
-          pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      <div className={styles.container}>
+        <header>
+          <div className={styles.LanguageSelector}>
+            <LanguageSelector inverse path="/" />
+          </div>
+        </header>
 
-      <div className={styles.works}>
-        <div className={styles.worksScroll}>
-          {data.entries &&
-            data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
-        </div>
+        <main>
+          <div className={styles.header}>
+            <div className={styles.headerInner}>
+              <div className={styles.headerMain}>
+                <div>
+                  <img
+                    src="/logo-stamp-white.png"
+                    width="205"
+                    alt="Puppetplays - A Research Program Founded by the European Union"
+                  />
+                </div>
+                <h1 className={styles.title}>{t('title')}</h1>
+                <h2 className={styles.subtitle}>{t('subtitle')}</h2>
+                <SearchBarStateful />
+              </div>
+
+              <div className={styles.partnersBar}>
+                <ul className={styles.logosBar}>
+                  {FINANCERS.map((partner) => (
+                    <li key={partner}>
+                      <a
+                        href={t(`${partner}.url`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          height="49"
+                          src={`/logo-${partner}.png`}
+                          alt={t(`${partner}.alt`)}
+                        />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div>{t('ercLabel')}</div>
+                <div className={styles.logosBarSpacer} />
+                <ul className={styles.logosBar}>
+                  {PARTNERS.map((partner) => (
+                    <li key={partner}>
+                      <a
+                        href={t(`${partner}.url`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          height="44"
+                          src={`/logo-${partner}.png`}
+                          alt={t(`${partner}.alt`)}
+                        />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.contentInner}>
+              <Section title={t('explore')}>
+                <ul className={styles.exploreSection}>
+                  {Object.entries(EXPLORE_BY).map(([key, props]) => (
+                    <EntryPointCard
+                      key={key}
+                      title={t(`exploreBy.${key}.title`)}
+                      description={t(`exploreBy.${key}.subtitle`)}
+                      thumbnailUrl={`/${key}-thumbnail.png`}
+                      {...props}
+                    />
+                  ))}
+                </ul>
+              </Section>
+
+              <Section title={t('accessToIntregralWorks')} isComingSoon>
+                <img src="/home-integral-works.png" alt="" />
+              </Section>
+
+              <Section>
+                <SplitLayout
+                  title={animationTechnique.title}
+                  subtitle={t('common:animationTechnique')}
+                  image={
+                    animationTechnique.mainImage &&
+                    animationTechnique.mainImage[0]
+                  }
+                >
+                  <p>{animationTechnique.excerpt}</p>
+                  <ButtonLink
+                    href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
+                  >
+                    {t('common:readNote')}
+                  </ButtonLink>
+                  <div className={styles.blockLink}>
+                    <Link href="/techniques-d-animation">
+                      <a>{t('seeAllAnimationTechniques')}</a>
+                    </Link>
+                  </div>
+                </SplitLayout>
+              </Section>
+
+              <div className={styles.keywords}>
+                <Section title={t('exploreByKeywords')}>
+                  <Keywords keywords={keywords} />
+                </Section>
+              </div>
+
+              <Section
+                title={t('exploreByAuthors')}
+                footer={
+                  <Link href="/auteurs">
+                    <a>{t('browseAllAuthors')}</a>
+                  </Link>
+                }
+              >
+                <div className={styles.authors}>
+                  {authors.map((entry) => (
+                    <Card
+                      key={entry.id}
+                      buttonLabel={t('common:openNote')}
+                      subtitle={`${entry.birthDate} - ${entry.deathDate}`}
+                      href={`/auteurs/${entry.id}/${entry.slug}`}
+                      {...entry}
+                    />
+                  ))}
+                </div>
+              </Section>
+
+              <Section>
+                <SplitLayout
+                  title={work.title}
+                  subtitle={t('lightOnWork')}
+                  image={work.mainImage && work.mainImage[0]}
+                >
+                  <div style={{ marginBottom: 20 }}>
+                    <div dangerouslySetInnerHTML={{ __html: work.note }} />
+                    <Keywords keywords={work.keywords} />
+                  </div>
+                  <ButtonLink href={`/oeuvres/${work.id}/${work.slug}`}>
+                    {t('common:readNote')}
+                  </ButtonLink>
+                </SplitLayout>
+              </Section>
+
+              <Section title={t('ourPublications')}>
+                <ul className={styles.publications}>
+                  {PUBLICATIONS.map((key, index) => (
+                    <EntryPointCard
+                      key={index}
+                      title={t(`publications.${key}.title`)}
+                      description={t(`publications.${key}.subtitle`)}
+                      thumbnailUrl={`/publications-${key}.png`}
+                    />
+                  ))}
+                </ul>
+              </Section>
+
+              <Section
+                title={t('pulcinellaPathwayTitle')}
+                subtitle={t('pathway')}
+                isComingSoon
+              >
+                <img
+                  src="/pathway-pulcinella.png"
+                  alt=""
+                  style={{ opacity: 0.5 }}
+                />
+              </Section>
+            </div>
+          </div>
+        </main>
+        <footer className={styles.footer}>
+          <section className={styles.footerPartners}>
+            <div className={styles.footerPartnersInner}>
+              <div className={styles.footerPartnersFinancers}>
+                <img src="/logo-ue.png" height="80" alt={t('ue.alt')} />
+                <img src="/logo-erc.png" height="80" alt={t('erc.alt')} />
+                <p>{t('projectFinancedBy')}</p>
+              </div>
+              <ul className={styles.footerPartnersPartners}>
+                {PARTNERS.map((partner) => (
+                  <li key={partner}>
+                    <a
+                      href={t(`${partner}.url`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        height="50"
+                        src={`/logo-${partner}.png`}
+                        alt={t(`${partner}.alt`)}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+          <section className={styles.intro}>
+            <div className={styles.footerInner}>
+              <div className={styles.introContent}>
+                <h2 className={styles.introSubtitle}>
+                  {t('aboutPuppetplays')}
+                </h2>
+                <h3 className={styles.introTitle}>{t('introTitle')}</h3>
+                <p>{t('introText1')}</p>
+                <p>{t('introText2')}</p>
+                <p>{t('introText3')}</p>
+                <div className={styles.introContentLinks}>
+                  <a
+                    href={t('ourSiteUrl')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.buttonLink}
+                  >
+                    {t('common:knowMore')}
+                  </a>
+                  <a
+                    href={t('theTeamUrl')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('theTeam')}
+                  </a>
+                  <a href={t('projectNewsUrl')}>{t('projectNews')}</a>
+                  <a href="mailto:contact@puppetplays.eu">
+                    {t('common:contactUs')}
+                  </a>
+                </div>
+              </div>
+              <div className={styles.introMedia}>
+                <img src="/home-intro-illustration.png" alt="" />
+                <p className={styles.introMediaCaption}>
+                  {t('introImageCaption')}
+                </p>
+              </div>
+            </div>
+          </section>
+        </footer>
       </div>
-    </Layout>
+    </Fragment>
   );
 }
 
-Home.propTypes = {
-  initialData: PropTypes.object.isRequired,
-  languages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  places: PropTypes.arrayOf(PropTypes.object).isRequired,
-  periodBounds: PropTypes.arrayOf(PropTypes.number).isRequired,
-  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
-  literaryTones: PropTypes.arrayOf(PropTypes.object).isRequired,
-  animationTechniques: PropTypes.arrayOf(PropTypes.object).isRequired,
-  audiences: PropTypes.arrayOf(PropTypes.object).isRequired,
-  formats: PropTypes.arrayOf(PropTypes.object).isRequired,
+Home.defaultProps = {
+  animationTechnique: null,
+  work: null,
+  keywords: [],
+  authors: [],
 };
 
-export default Home;
+Home.propTypes = {
+  animationTechnique: PropTypes.object,
+  work: PropTypes.object,
+  keywords: PropTypes.arrayOf(PropTypes.object),
+  authors: PropTypes.arrayOf(PropTypes.object),
+};
 
-export async function getServerSideProps({ locale, req, res, query }) {
+export async function getServerSideProps({ locale, req, res }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const languages = await fetchAPI(getAllLanguagesQuery, {
+  const { entry: homeEntry } = await fetchAPI(getHomeQuery, {
     variables: { locale },
   });
-  const places = await fetchAPI(getAllPlacesQuery, {
+  const randomWorkId = getRandom(homeEntry.works, 1).map((p) => p.id);
+  const { entry: homeWorkEntry } = await fetchAPI(getWorkByIdQuery, {
+    variables: { locale, id: randomWorkId[0] },
+  });
+
+  const { tags: keywords } = await fetchAPI(getAllWorksKeywordsQuery, {
     variables: { locale },
   });
-  const periodBounds = await fetchAPI(getPeriodBoundsQuery, {
-    variables: { locale },
+  const randomKeywordsIds = getRandom(keywords, 20).map((p) => p.id);
+  const { tags: homeKeywords } = await fetchAPI(getWorksKeywordsByIdsQuery, {
+    variables: { locale, id: randomKeywordsIds },
   });
-  const authors = await fetchAPI(getAllPersonsQuery, {
-    variables: { locale },
-  });
-  const literaryTones = await fetchAPI(getAllLiteraryTonesQuery, {
-    variables: { locale },
-  });
-  const animationTechniques = await fetchAPI(getAllAnimationTechniquesQuery, {
-    variables: { locale },
-  });
-  const audiences = await fetchAPI(getAllAudiencesQuery, {
-    variables: { locale },
-  });
-  const formats = await fetchAPI(getAllFormatsQuery, {
-    variables: { locale },
-  });
-  const data = await getAllWorks(
-    locale,
-    query.page * WORKS_PAGE_SIZE,
-    buildSearchQuery(query.search),
-    query,
+
+  const { entries: animationTechniquesEntries } = await fetchAPI(
+    getAllAnimationTechniquesQuery,
+    {
+      variables: { locale },
+    },
   );
-  const getSafelyPeriodBound = (bound) =>
-    hasAtLeastOneItem(bound) ? bound[0].value : null;
+  const randomAnimationTechninquesId = getRandom(
+    animationTechniquesEntries,
+    1,
+  ).map((p) => p.id);
+  const { entry: homeAnimationTechninqueEntry } = await fetchAPI(
+    getAnimationTechniqueByIdQuery,
+    {
+      variables: { locale, id: randomAnimationTechninquesId[0] },
+    },
+  );
+
+  const { entries: personEntries } = await fetchAPI(getAllPersonsQuery, {
+    variables: { locale },
+  });
+
+  const randomPersonIds = getRandom(personEntries, 4).map((p) => p.id);
+  const { entries: homePersonEntries } = await fetchAPI(getAuthorsByIdsQuery, {
+    variables: { locale, id: randomPersonIds },
+  });
 
   return {
     props: {
-      initialData: data,
-      languages: languages.entries,
-      places: places.entries,
-      periodBounds: [
-        getSafelyPeriodBound(periodBounds.min),
-        getSafelyPeriodBound(periodBounds.max),
-      ],
-      authors: authors.entries,
-      literaryTones: literaryTones.entries,
-      animationTechniques: animationTechniques.entries,
-      audiences: audiences.entries,
-      formats: formats.entries,
+      animationTechnique: homeAnimationTechninqueEntry,
+      work: homeWorkEntry,
+      keywords: homeKeywords,
+      authors: homePersonEntries,
     },
   };
 }

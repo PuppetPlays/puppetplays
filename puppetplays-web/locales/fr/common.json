@@ -37,6 +37,7 @@
   "pagesCount_plural": "{{count}} pages",
   "license": "Licence",
   "publicDomain": "Domaine public",
+  "downloadNotice": "Télécharger la présentation",
   "ids": "Identifiants",
   "theAuthors": "Les auteurs",
   "author": "Auteur",
@@ -81,5 +82,6 @@
   "works": "Œuvres",
   "openNote": "Consulter la notice",
   "readNote": "Lire la notice",
-  "readBiography": "Lire la biographie"
+  "readBiography": "Lire la biographie",
+  "comingSoon": "Prochainement"
 }

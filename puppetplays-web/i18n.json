@@ -6,6 +6,7 @@
   "localesPath": "locales",
   "pages": {
     "*": ["common"],
+    "/": ["home"],
     "/wip": ["home"]
   }
 }

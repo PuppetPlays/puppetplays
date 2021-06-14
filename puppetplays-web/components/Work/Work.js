@@ -24,48 +24,49 @@ import CoverImage from './CoverImage';
 import ArkId from './ArkId';
 import styles from './workSummary.module.scss';
 
-function Work({
-  doi,
-  viafId,
-  arkId,
-  title,
-  subtitle,
-  translatedTitle,
-  mainImage,
-  genre,
-  keywords,
-  authors,
-  mostRelevantDate,
-  compositionMinDate,
-  compositionDisplayDate,
-  compositionPlace,
-  mainLanguage,
-  note,
-  mainTheme,
-  abstract,
-  hypotexts,
-  otherTitles,
-  firstPerformancePlace,
-  firstPerformanceDate,
-  firstPerformanceComplementaryInformation,
-  publication,
-  modernEdition,
-  onlineEdition,
-  translations,
-  transcribers,
-  editors,
-  literaryTones,
-  animationTechniques,
-  dramaticDevices,
-  audience,
-  characters,
-  actsCount,
-  pagesCount,
-  formats,
-  publicDomain,
-  additionalLicenseInformation,
-  conservationPlace,
-}) {
+function Work(props) {
+  const {
+    doi,
+    viafId,
+    arkId,
+    title,
+    subtitle,
+    translatedTitle,
+    mainImage,
+    genre,
+    keywords,
+    authors,
+    mostRelevantDate,
+    compositionMinDate,
+    compositionDisplayDate,
+    compositionPlace,
+    mainLanguage,
+    note,
+    mainTheme,
+    abstract,
+    hypotexts,
+    otherTitles,
+    firstPerformancePlace,
+    firstPerformanceDate,
+    firstPerformanceComplementaryInformation,
+    publication,
+    modernEdition,
+    onlineEdition,
+    translations,
+    transcribers,
+    editors,
+    literaryTones,
+    animationTechniques,
+    dramaticDevices,
+    audience,
+    characters,
+    actsCount,
+    pagesCount,
+    formats,
+    publicDomain,
+    additionalLicenseInformation,
+    conservationPlace,
+  } = props;
   const { t } = useTranslation();
 
   return (
@@ -265,6 +266,10 @@ function Work({
         >
           <Keywords keywords={dramaticDevices} fill />
         </Section>
+
+        {/* <button type="button">
+          {t('common:downloadNotice')}
+        </button> */}
 
         <Section title={t('common:ids')} show={!!doi || !!viafId || !!arkId}>
           <Info label="DOI" show={!!doi}>

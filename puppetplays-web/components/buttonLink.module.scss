@@ -1,0 +1,12 @@
+.link {
+  background-color: var(--color-brand);
+  padding: 6px 20px;
+  border-radius: 20px;
+  color: white;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-brand-light);
+    color: white;
+  }
+}

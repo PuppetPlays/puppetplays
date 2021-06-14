@@ -23,7 +23,8 @@ Page = Object.assign(Page, { ...C })
 export const getServerSideProps = async ctx => {
     const _lang = ctx.locale || ctx.router?.locale || 'fr'
   const ns0 = await import(`../locales/${_lang}/common`).then(m => m.default)
-  const _ns = { 'common': ns0 }
+const ns1 = await import(`../locales/${_lang}/home`).then(m => m.default)
+  const _ns = { 'common': ns0, 'home': ns1 }
   
     let res = _rest.getServerSideProps(ctx)
     if(typeof res.then === 'function') res = await res
