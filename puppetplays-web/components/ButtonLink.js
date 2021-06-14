@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styles from './ButtonLink.module.scss';
+import styles from './buttonLink.module.scss';
 
 function ButtonLink({ children, href }) {
   return (
