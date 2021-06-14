@@ -1,14 +1,32 @@
 import PropTypes from 'prop-types';
 import { hasAtLeastOneItem } from 'lib/utils';
+import Tooltip from 'components/Tooltip';
 import styles from './coverImage.module.scss';
 
 function CoverImage({ image, year, height }) {
-  const { url, alt, copyright } = hasAtLeastOneItem(image) ? image[0] : {};
+  const { url, alt, description, copyright } = hasAtLeastOneItem(image)
+    ? image[0]
+    : {};
 
   return (
     <div className={styles.container}>
       {hasAtLeastOneItem(image) && (
-        <img src={url} alt={alt} title={copyright} height={height} />
+        <Tooltip
+          content={
+            <p className={styles.caption}>
+              {description}
+              {copyright && (
+                <span className={styles.captionCopyright}>
+                  {' '}
+                  – © {copyright}
+                </span>
+              )}
+            </p>
+          }
+          placement="left"
+        >
+          <img src={url} alt={alt} height={height} />
+        </Tooltip>
       )}
       {!hasAtLeastOneItem(image) && (!year || year <= 1824) && (
         <img src="/work-script-thumbnail.svg" alt="" height={height} />

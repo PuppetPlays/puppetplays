@@ -4,3 +4,16 @@
     margin: 0 auto;
   }
 }
+
+.caption {
+  margin: 0;
+  font-weight: 500;
+
+  & + & {
+    margin-top: 8px;
+  }
+}
+
+.captionCopyright {
+  font-weight: 400;
+}
