@@ -11,7 +11,7 @@ const SearchBarStateful = () => {
   const handleSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
-      router.push(`repertoire/?search=${evt.target.elements.search.value}`);
+      router.push(`/repertoire/?search=${evt.target.elements.search.value}`);
     },
     [router],
   );
