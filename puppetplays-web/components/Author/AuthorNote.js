@@ -8,6 +8,7 @@ import Section from 'components/Section';
 import Info from 'components/Info';
 import { PageIntertitle } from 'components/Primitives';
 import styles from './authorNote.module.scss';
+import ArkId from 'components/Work/ArkId';
 
 function AuthorNote({
   birthDate,
@@ -57,7 +58,7 @@ function AuthorNote({
         show={!!idrefId || !!viafId || !!arkId || !!isniId}
       >
         <Info label="ARK" show={!!arkId}>
-          {arkId}
+          <ArkId id={arkId} />
         </Info>
         <Info label="VIAF" show={!!viafId}>
           {viafId}
