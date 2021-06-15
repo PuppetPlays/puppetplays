@@ -87,7 +87,6 @@ function Authors({ initialData, languages, places }) {
 
   const handleChangeFilters = useCallback(
     (value, { name }) => {
-      console.log(value, name);
       const getNewFilterValue = cond([
         [(v) => isArray(v) && v.length > 0, map(get('id'))],
         [isArray, constant(null)],
@@ -183,6 +182,12 @@ function Authors({ initialData, languages, places }) {
               </ol>
             </div>
           ))}
+
+        {data.entries && Object.keys(data.entries).length === 0 && (
+          <p className={styles.noResult}>
+            {t('common:results', { count: Object.keys(data.entries).length })}
+          </p>
+        )}
       </div>
       <ol className={styles.lettersPagination}>
         {Object.keys(data.entries).map((key) => (
