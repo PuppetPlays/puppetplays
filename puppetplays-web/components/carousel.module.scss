@@ -8,7 +8,13 @@
 }
 
 .image {
-  margin: 0 auto;
+  &:first-child {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    margin-right: auto;
+  }
 
   & + & {
     margin-left: 8px;

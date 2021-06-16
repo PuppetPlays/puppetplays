@@ -14,6 +14,7 @@ function AuthorNote({
   birthDate,
   deathDate,
   biographicalNote,
+  mainImage,
   images,
   idrefId,
   viafId,
@@ -37,7 +38,7 @@ function AuthorNote({
             }}
           />
         )}
-        <Carousel images={images} />
+        <Carousel images={mainImage.concat(images)} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -78,7 +79,8 @@ AuthorNote.defaultProps = {
   birthDate: null,
   deathDate: null,
   biographicalNote: null,
-  images: null,
+  mainImage: [],
+  images: [],
   idrefId: null,
   viafId: null,
   arkId: null,
@@ -90,6 +92,7 @@ AuthorNote.propTypes = {
   birthDate: PropTypes.string,
   deathDate: PropTypes.string,
   biographicalNote: PropTypes.string,
+  mainImage: PropTypes.arrayOf(PropTypes.object),
   images: PropTypes.arrayOf(PropTypes.object),
   idrefId: PropTypes.string,
   viafId: PropTypes.string,

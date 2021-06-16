@@ -7,7 +7,7 @@ import { PageIntertitle } from 'components/Primitives';
 import Carousel from 'components/Carousel';
 import styles from 'components/Author/authorNote.module.scss';
 
-function AnimationTechniqueNote({ description, images, works }) {
+function AnimationTechniqueNote({ description, mainImage, images, works }) {
   const { t } = useTranslation();
 
   return (
@@ -21,7 +21,7 @@ function AnimationTechniqueNote({ description, images, works }) {
             }}
           />
         )}
-        <Carousel images={images} />
+        <Carousel images={mainImage.concat(images)} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -42,12 +42,14 @@ function AnimationTechniqueNote({ description, images, works }) {
 
 AnimationTechniqueNote.defaultProps = {
   description: null,
-  images: null,
+  mainImage: [],
+  images: [],
   works: null,
 };
 
 AnimationTechniqueNote.propTypes = {
   description: PropTypes.string,
+  mainImage: PropTypes.arrayOf(PropTypes.object),
   images: PropTypes.arrayOf(PropTypes.object),
   works: PropTypes.arrayOf(PropTypes.object),
 };

@@ -9,9 +9,9 @@ function Carousel({ images }) {
 
   return (
     <div className={styles.container}>
-      {images.map((image) => (
+      {images.map((image, index) => (
         <div
-          key={image.url}
+          key={`${image.id}-${index}`}
           className={styles.image}
           style={{ width: image.width }}
         >

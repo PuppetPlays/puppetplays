@@ -45,6 +45,7 @@ fragment placeInfo on EntryInterface {
 
 export const assetFragment = `
 fragment assetFragment on AssetInterface {
+  id,
   url,
   height,
   width,
@@ -440,6 +441,9 @@ query getAuthorById($locale: [String], $id: [QueryArgument]) {
       birthDate,
       deathDate,
       biographicalNote,
+      mainImage @transform(height: 436) {
+        ...assetFragment
+      },
       images @transform(height: 436) {
         ...assetFragment
       },
@@ -481,24 +485,6 @@ query getAllAnimationsTechniques($locale: [String]) {
 }
 `;
 
-export const getAnimationsTechniquesByIdsQuery = `
-${assetFragment}
-  query getAnimationTechniquesByIds($locale: [String], $id: [QueryArgument]) {
-    entries(section: "animationTechniques", site: $locale, id: $id) {
-      id,
-      slug,
-      title,
-      ... on animationTechniques_animationTechniques_Entry {
-        description,
-        images @transform(height: 436) {
-          ...assetFragment
-        }
-      }
-    }
-  }
-}
-`;
-
 export const getAnimationTechniqueByIdQuery = `
 ${assetFragment}
 query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
@@ -508,6 +494,9 @@ query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
     title,
     ... on animationTechniques_animationTechniques_Entry {
       description,
+      mainImage @transform(height: 436) {
+        ...assetFragment
+      },
       images @transform(height: 436) {
         ...assetFragment
       }
