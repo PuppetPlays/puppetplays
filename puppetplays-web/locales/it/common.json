@@ -37,6 +37,7 @@
   "pagesCount_plural": "{{count}} pagini",
   "license": "Licenza editoriale",
   "publicDomain": "Pubblico dominio",
+  "downloadNotice": "Download the notice",
   "ids": "Identificativi",
   "theAuthors": "Gli autori",
   "author": "Autore",
@@ -52,6 +53,7 @@
     "eraseAll": "Erase all",
     "compositionPlace": "Place",
     "compositionPlacePlaceholder": "Country, city…",
+    "places": "Place",
     "mainLanguage": "Language",
     "mainLanguagePlaceholder": "French, German…",
     "languages": "Language",
@@ -68,14 +70,23 @@
     "audiencePlaceholder": "Adult, Young public…",
     "formats": "Format",
     "formatsPlaceholder": "Audio, Touch typed…",
+    "relatedToTags": "Keywords",
+    "relatedToTagsPlaceholder": "…",
     "publicDomain": "Public domain",
     "gender": "Gender",
     "genderPlaceholder": "Gender",
     "female": "Female",
-    "male": "Male"
+    "male": "Male",
+    "company": "Company",
+    "author": "Author",
+    "type": "Type",
+    "typePlaceholder": "Author or company"
   },
+  "imageCopyright": "Copyright: ",
   "works": "Works",
   "openNote": "Read the note",
   "readNote": "Read the note",
-  "readBiography": "Read the biography"
+  "launchSearch": "Launch a search",
+  "readBiography": "Read the biography",
+  "comingSoon": "Coming soon"
 }
