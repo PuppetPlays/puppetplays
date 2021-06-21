@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
-import { hasAtLeastOneItem } from 'lib/utils';
+import { formatBirthDeathDates, hasAtLeastOneItem } from 'lib/utils';
 import Carousel from 'components/Carousel';
 import Hypotext from 'components/Hypotext';
 import Section from 'components/Section';
 import Info from 'components/Info';
 import { PageIntertitle } from 'components/Primitives';
-import styles from './authorNote.module.scss';
 import ArkId from 'components/Work/ArkId';
+import styles from './authorNote.module.scss';
 
 function AuthorNote({
   birthDate,
@@ -28,7 +28,7 @@ function AuthorNote({
     <Fragment>
       <div>
         <div className={styles.dates}>
-          {birthDate} – {deathDate}
+          {formatBirthDeathDates(birthDate, deathDate)}
         </div>
         {biographicalNote && (
           <div
