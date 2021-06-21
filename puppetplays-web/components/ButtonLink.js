@@ -1,14 +1,19 @@
+import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './buttonLink.module.scss';
 
-function ButtonLink({ children, href }) {
+const ButtonLink = React.forwardRef(({ children, href }, ref) => {
   return (
     <Link href={href}>
-      <a className={styles.link}>{children}</a>
+      <a ref={ref} className={styles.link}>
+        {children}
+      </a>
     </Link>
   );
-}
+});
+
+ButtonLink.displayName = 'ButtonLink';
 
 ButtonLink.propTypes = {
   children: PropTypes.node.isRequired,

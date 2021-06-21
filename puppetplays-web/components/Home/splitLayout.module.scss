@@ -30,6 +30,7 @@
   flex: 1 1 50%;
   overflow: hidden;
   border-radius: 0 0 7px 7px;
+  cursor: pointer;
 
   @media (min-width: 700px) {
     border-radius: 0 7px 7px 0;

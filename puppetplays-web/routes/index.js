@@ -43,6 +43,8 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const { t } = useTranslation('home');
   const headerRef = useRef(null);
   const topBarRef = useRef(null);
+  const workLinkRef = useRef(null);
+  const animationTechniqueLinkRef = useRef(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   const [EXPLORE_BY] = useState({
     database: { to: '/repertoire' },
@@ -61,7 +63,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
     const stickyHeader = topBarRef.current;
     const headerHeight = header.offsetHeight;
 
-    console.log(window.pageYOffset, headerHeight);
     if (window.pageYOffset > headerHeight) {
       if (!isHeaderSticky) {
         stickyHeader.classList.add(styles.sticky);
@@ -183,10 +184,12 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     animationTechnique.mainImage &&
                     animationTechnique.mainImage[0]
                   }
+                  linkRef={animationTechniqueLinkRef}
                 >
                   <p>{animationTechnique.excerpt}</p>
                   <ButtonLink
                     href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
+                    ref={animationTechniqueLinkRef}
                   >
                     {t('common:readNote')}
                   </ButtonLink>
@@ -233,12 +236,16 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   title={work.title}
                   subtitle={t('lightOnWork')}
                   image={work.mainImage && work.mainImage[0]}
+                  linkRef={workLinkRef}
                 >
                   <div style={{ marginBottom: 20 }}>
                     <div dangerouslySetInnerHTML={{ __html: work.note }} />
                     <Keywords keywords={work.keywords} component={Tag} />
                   </div>
-                  <ButtonLink href={`/oeuvres/${work.id}/${work.slug}`}>
+                  <ButtonLink
+                    href={`/oeuvres/${work.id}/${work.slug}`}
+                    ref={workLinkRef}
+                  >
                     {t('common:readNote')}
                   </ButtonLink>
                 </SplitLayout>
