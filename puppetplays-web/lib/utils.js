@@ -37,3 +37,13 @@ export const getRandom = (arr, n) => {
 export function parseCookies(req) {
   return cookie.parse(req ? req.headers.cookie || '' : document.cookie);
 }
+
+export const formatBirthDeathDates = (birthDate, deathDate) => {
+  if (!birthDate && !deathDate) {
+    return null;
+  }
+
+  const formater = (date) => (date ? date : '…');
+
+  return `${formater(birthDate)} – ${formater(deathDate)}`;
+};

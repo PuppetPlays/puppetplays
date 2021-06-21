@@ -23,7 +23,7 @@ import {
   getAllAnimationTechniquesQuery,
   getAllPersonsQuery,
 } from 'lib/filtersApi';
-import { getRandom } from 'lib/utils';
+import { formatBirthDeathDates, getRandom } from 'lib/utils';
 import LanguageSelector from 'components/LanguageSelector';
 import SearchBarStateful from 'components/SearchBarStateful';
 import EntryPointCard from 'components/Home/EntryPointCard';
@@ -217,7 +217,10 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <Card
                       key={entry.id}
                       buttonLabel={t('common:openNote')}
-                      subtitle={`${entry.birthDate} - ${entry.deathDate}`}
+                      subtitle={formatBirthDeathDates(
+                        entry.birthDate,
+                        entry.deathDate,
+                      )}
                       href={`/auteurs/${entry.id}/${entry.slug}`}
                       {...entry}
                     />
