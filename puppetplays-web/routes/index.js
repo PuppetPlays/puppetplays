@@ -321,7 +321,13 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   >
                     {t('theTeam')}
                   </a>
-                  <a href={t('projectNewsUrl')}>{t('projectNews')}</a>
+                  <a
+                    href={t('projectNewsUrl')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('projectNews')}
+                  </a>
                   <a href="mailto:contact@puppetplays.eu">
                     {t('common:contactUs')}
                   </a>
