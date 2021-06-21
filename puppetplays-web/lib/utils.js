@@ -43,7 +43,7 @@ export const formatBirthDeathDates = (birthDate, deathDate) => {
     return null;
   }
 
-  const formater = (date) => (date ? date : '…');
+  const formater = (date) => (date ? date : '?');
 
   return `${formater(birthDate)} – ${formater(deathDate)}`;
 };
