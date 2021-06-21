@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Author from 'components/Author';
 import Card from 'components/Card';
 import styles from './authorCard.module.scss';
+import { formatBirthDeathDates } from 'lib/utils';
 
 function AuthorCard({
   id,
@@ -29,13 +30,7 @@ function AuthorCard({
             nickname={nickname}
           />
         }
-        subtitle={
-          (birthDate || deathDate) && (
-            <div>
-              {birthDate} - {deathDate}
-            </div>
-          )
-        }
+        subtitle={<div>{formatBirthDeathDates(birthDate, deathDate)}</div>}
         buttonLabel={t('common:readBiography')}
       />
     </section>
