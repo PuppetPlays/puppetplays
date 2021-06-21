@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
+import clip from 'text-clipper';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
@@ -243,7 +244,14 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   linkRef={workLinkRef}
                 >
                   <div style={{ marginBottom: 20 }}>
-                    <div dangerouslySetInnerHTML={{ __html: work.note }} />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: clip(work.note, 250, {
+                          html: true,
+                          maxLines: 5,
+                        }),
+                      }}
+                    />
                     <Keywords keywords={work.keywords} component={Tag} />
                   </div>
                   <ButtonLink
