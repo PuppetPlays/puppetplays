@@ -1,6 +1,40 @@
 
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.4.1
+
+Déployé le 21 juin 2021
+
+### Nouveautés
+
+- Nouvelle page d'accueil
+- L'état fermé ou ouvert de la barre de filtres est maintenant sauvé sur le navigateur
+- Une recherche peut être lancé depuis le menu d'un auteur ou d'une technique d'animation sur ceux-ci
+- Les œuvres sont filtrables par mot-clé
+- Les mots-clé dans tous le site sont maintenant cliquables et renvoient vers une liste d'œuvres filtrée par mot-clé
+- 6 nouveaux filtres font leur apparation dans la barre de filtres des œuvres : “Auteur”, “Registre”, “Technique d’animation”, “Public”, “Format” et “Domaine public”
+- 2 nouveaux filtres font leur apparation dans la barre de filtres des auteurs : “Genre” et “Type”
+
+
+### Amélioration
+
+- Partout où l’on trouve une date de naissance et une date de mort d’un auteur, ces dates sont maintenant toujours formatées de la même manière (point d'interrogation si une date n'existe pas et rien si aucune des deux n'existe)
+- Dans la notice d’un auteur, l’identifiant ARK doit être cliquable si c'est une url
+- Dans la notice d’une œuvre, l’identifiant ARK doit être cliquable si c'est une url
+- Sur la page “auteurs”, lorsque les filtres ne donnent aucun résultat, le texte "aucun résultat" quand à la sélection de filtre on obtient aucun résultat
+- La légende et le copyright de l'image principale d'une œuvre s'affiche maintenant au survol de celle-ci
+- Plusieurs images peuvent maintenant être associées aux techniques d'animation et aux auteurs
+- L'encart Auteur dans une notice de texte a maintenant le même style que les encarts technique d'animation (sur la page "Techniques d'animation")
+
+### Corrections
+
+- Protection contre un crash arrivant lorsque la base de données ne contient aucune œuvre avec au moins date de composition minimum et une date de composition maximum
+- Correction d’un problème empéchant l’upload d’image de plus de 1 Mo sur l’admin
+- La barre de défilement du contenu principal doit maintenant être toujours à droite de l'écran
+- Le nom des auteurs sur une œuvre devrait maintenant être de la bonne couleur
+
+---
+
 ## Puppetplays 0.3.0
 
 Déployé le 25 mai 2021
