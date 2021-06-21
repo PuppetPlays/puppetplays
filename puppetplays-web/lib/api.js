@@ -493,6 +493,7 @@ query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
     slug,
     title,
     ... on animationTechniques_animationTechniques_Entry {
+      excerpt,
       description,
       mainImage @transform(height: 436) {
         ...assetFragment
