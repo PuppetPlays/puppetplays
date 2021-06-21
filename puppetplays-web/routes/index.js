@@ -186,7 +186,11 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   }
                   linkRef={animationTechniqueLinkRef}
                 >
-                  <p>{animationTechnique.excerpt}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: animationTechnique.excerpt,
+                    }}
+                  />
                   <ButtonLink
                     href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
                     ref={animationTechniqueLinkRef}
