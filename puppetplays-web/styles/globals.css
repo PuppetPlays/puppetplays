@@ -118,6 +118,14 @@ a {
   text-decoration: none;
 }
 
+p > a {
+  text-decoration: underline;
+}
+
+p > a:hover {
+  color: var(--color-brand-light);
+}
+
 * {
   box-sizing: border-box;
 }
