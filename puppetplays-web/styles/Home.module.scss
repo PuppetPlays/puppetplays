@@ -121,7 +121,8 @@
 }
 
 .contentInner,
-.footerInner {
+.footerInner,
+.footerTopBar {
   padding: 48px 18px;
   max-width: 1220px;
   margin: 0 auto;
@@ -129,6 +130,16 @@
   @media (min-width: 420px) {
     padding: 60px 36px;
   }
+}
+
+.footerTopBar {
+  padding-top: 0;
+  padding-bottom: 34px;
+  text-align: right;
+}
+
+.footerInner {
+  padding-top: 0;
 }
 
 .footerPartners {
@@ -207,7 +218,7 @@
 .intro {
   background-color: var(--color-brand);
   color: white;
-  padding: 48px 0;
+  padding: 25px 0 48px;
 
   .footerInner {
     display: flex;
