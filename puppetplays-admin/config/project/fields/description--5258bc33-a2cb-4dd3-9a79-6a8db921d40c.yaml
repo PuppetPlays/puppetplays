@@ -5,14 +5,23 @@ instructions: ''
 name: Description
 searchable: false
 settings:
-  byteLimit: null
-  charLimit: null
-  code: ''
+  availableTransforms: '*'
+  availableVolumes: ''
+  cleanupHtml: true
   columnType: text
-  initialRows: '4'
-  multiline: '1'
-  placeholder: ''
-  uiMode: normal
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: ''
+  purifyHtml: '1'
+  redactorConfig: Simple.json
+  removeEmptyTags: '1'
+  removeInlineStyles: '1'
+  removeNbsp: '1'
+  showHtmlButtonForNonAdmins: ''
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  uiMode: enlarged
 translationKeyFormat: null
-translationMethod: site
-type: craft\fields\PlainText
+translationMethod: none
+type: craft\redactor\Field
