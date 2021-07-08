@@ -29,7 +29,6 @@ import Author from 'components/Author';
 import Company from 'components/Company';
 import Filters from 'components/AuthorsFilters';
 import styles from 'styles/Authors.module.scss';
-import identity from 'lodash/identity';
 import negate from 'lodash/negate';
 import map from 'lodash/fp/map';
 import get from 'lodash/fp/get';

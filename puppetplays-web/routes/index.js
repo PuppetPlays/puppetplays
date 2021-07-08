@@ -73,7 +73,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
       stickyHeader.classList.remove(styles.sticky);
       setIsHeaderSticky(false);
     }
-  }, []);
+  }, [isHeaderSticky]);
 
   useLayoutEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
