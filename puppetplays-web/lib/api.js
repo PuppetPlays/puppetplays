@@ -35,10 +35,21 @@ export const placeInfoFragment = `
 fragment placeInfo on EntryInterface {
   id,
   title,
+  typeHandle,
   ... on places_places_Entry {
     country {
-      title
-    }
+      title,
+      ... on countries_countries_Entry {
+        latitude,
+        longitude
+      }
+    },
+    latitude,
+    longitude
+  }
+  ... on countries_countries_Entry {
+    latitude,
+    longitude
   }
 }
 `;
@@ -546,6 +557,38 @@ query getHome($locale: [String]) {
       works {
         id
       }
+    }
+  }
+}
+`;
+
+export const getWorksCardByIdsQuery = `
+${placeInfoFragment}
+query GetWorksCardByIds($locale: [String], $id: [QueryArgument]) {
+  entries(section: "works", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on works_works_Entry {
+      authors {
+        id,
+        slug,
+        title,
+        typeHandle,
+        ... on persons_persons_Entry { 
+         	firstName,
+          lastName,
+          nickname,
+          usualName
+        }
+      },
+      mostRelevantDate,
+      compositionPlace {
+        ...placeInfo
+      },
+      mainLanguage {
+        title 
+      },
     }
   }
 }
