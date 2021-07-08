@@ -13,6 +13,7 @@ settings:
   source: null
   sources:
     - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+    - 'section:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
