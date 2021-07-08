@@ -88,5 +88,7 @@
   "readNote": "Read the note",
   "launchSearch": "Launch a search",
   "readBiography": "Read the biography",
-  "comingSoon": "Coming soon"
+  "comingSoon": "Coming soon",
+  "showMap": "Show the map",
+  "showList": "Show the list"
 }

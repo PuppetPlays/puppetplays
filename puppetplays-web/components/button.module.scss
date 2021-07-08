@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-brand);
+  font-weight: 700;
+  padding: 6px 20px;
+  border-radius: 20px;
+  border: 0;
+  color: white;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-brand-light);
+  }
+}
+
+.icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}

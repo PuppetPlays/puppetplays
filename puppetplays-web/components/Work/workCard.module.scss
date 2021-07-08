@@ -1,0 +1,14 @@
+.container {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+
+  & + & {
+    margin-top: 6px;
+  }
+
+  &:last-child {
+    margin-bottom: 12px;
+  }
+}

@@ -12,6 +12,12 @@
     font-size: 35px;
     color: var(--color-text);
   }
+
+  .isCompact & {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
 }
 
 .subtitle {
@@ -25,6 +31,7 @@
   font-weight: 500;
   margin: 0 0 24px;
   color: var(--color-text);
+  word-wrap: break-word;
 }
 
 .date {
@@ -37,4 +44,14 @@
   font-size: 16px;
   font-weight: 400;
   color: var(--color-text);
+}
+
+.authors,
+.date,
+.place,
+.language {
+  .isCompact & {
+    font-size: 15px;
+    margin-bottom: 0;
+  }
 }

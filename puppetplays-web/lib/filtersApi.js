@@ -24,7 +24,7 @@ query GetAllLanguages($locale: [String]) {
 
 export const getAllPlacesQuery = `
 query GetAllPlaces($locale: [String]) {
-  entries(section: "places", site: $locale, orderBy: "title") {
+  entries(section: ["places", "countries"], site: $locale, orderBy: "title") {
     id,
     title,
     ... on places_places_Entry {

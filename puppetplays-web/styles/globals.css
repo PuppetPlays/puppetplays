@@ -137,3 +137,41 @@ p > a:hover {
   font-style: 16px;
   font-weight: 400;
 }
+
+.ol-map {
+  margin: 0;
+  height: calc(100vh - 84px);
+  width: 100%;
+}
+
+.ol-control {
+  position: absolute;
+  right: 20px;
+  top: 70px; 
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.ol-control button {
+  display: block;
+  font-weight: 700;
+  background-color: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--color-brand);
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.ol-control button:hover {
+  color: var(--color-brand-light);
+}
+
+.ol-full-screen {
+  top: .5em;
+  right: .5em;
+}

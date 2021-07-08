@@ -30,3 +30,15 @@
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.map {
+  position: relative;
+  height: 100%;
+}
+
+.map > button {
+  position: absolute;
+  z-index: 1000;
+  right: 20px;
+  top: 22px;
+}

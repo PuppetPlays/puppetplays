@@ -14,9 +14,10 @@ const WorkHeader = ({
   mostRelevantDate,
   compositionPlace,
   mainLanguage,
+  isCompact,
 }) => {
   return (
-    <header>
+    <header className={isCompact ? styles.isCompact : null}>
       <h1 className={styles.title}>{title}</h1>
       {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
       <h3 className={styles.authors}>
@@ -25,7 +26,7 @@ const WorkHeader = ({
             <CommaSepList
               list={authors}
               itemComponents={{ persons: Author, companies: Company }}
-              showMenu
+              showMenu={!isCompact}
             />
           </span>
         )}
@@ -62,6 +63,7 @@ WorkHeader.defaultProps = {
   mostRelevantDate: null,
   compositionPlace: null,
   mainLanguage: null,
+  isCompact: false,
 };
 
 WorkHeader.propTypes = {
@@ -71,6 +73,7 @@ WorkHeader.propTypes = {
   mostRelevantDate: PropTypes.string,
   compositionPlace: PropTypes.arrayOf(PropTypes.object),
   mainLanguage: PropTypes.arrayOf(PropTypes.object),
+  isCompact: PropTypes.bool,
 };
 
 export default WorkHeader;

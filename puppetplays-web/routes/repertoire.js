@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useSWR, { mutate } from 'swr';
 import get from 'lodash/get';
 import { useCookies } from 'react-cookie';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
@@ -35,7 +36,15 @@ import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
 import Filters from 'components/WorksFilters';
 import SearchBar from 'components/SearchBar';
+import Button from 'components/Button';
 import styles from 'styles/Repertoire.module.css';
+
+const MapView = dynamic(() => import('components/Map/MapView'), { ssr: false });
+
+const VIEWS = {
+  list: 'LIST',
+  map: 'MAP',
+};
 
 function Home({
   initialData,
@@ -51,6 +60,7 @@ function Home({
   isFiltersBarOpened,
 }) {
   const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
+  const [view, setView] = useState(VIEWS.list);
   const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
   const handleToggleFiltersBar = useCallback(() => {
     setIsOpen(!isOpen);
@@ -264,23 +274,50 @@ function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.worksHeader}>
-        <div className={styles.worksHeaderPageCount}>
-          {t('common:results', { count: data.entryCount })}
-        </div>
-        <Pagination
-          forcePage={currentPage}
-          pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      {view === VIEWS.list && (
+        <Fragment>
+          <div className={styles.worksHeader}>
+            <div className={styles.worksHeaderPageCount}>
+              {t('common:results', { count: data.entryCount })}
+            </div>
+            <Pagination
+              forcePage={currentPage}
+              pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
+              onPageChange={handlePageChange}
+            />
+            <Button
+              onClick={() => setView(VIEWS.map)}
+              icon={<img src="/icon-map.svg" alt="" />}
+            >
+              {t('common:showMap')}
+            </Button>
+          </div>
 
-      <div className={styles.works}>
-        <div className={styles.worksScroll}>
-          {data.entries &&
-            data.entries.map((work) => <WorkSummary key={work.id} {...work} />)}
+          <div className={styles.works}>
+            <div className={styles.worksScroll}>
+              {data.entries &&
+                data.entries.map((work) => (
+                  <WorkSummary key={work.id} {...work} />
+                ))}
+            </div>
+          </div>
+        </Fragment>
+      )}
+      {view === VIEWS.map && (
+        <div className={styles.map}>
+          <Button
+            onClick={() => setView(VIEWS.list)}
+            icon={<img src="/icon-list.svg" alt="" />}
+          >
+            {t('common:showList')}
+          </Button>
+          <MapView
+            locale={router.locale}
+            filters={filters}
+            searchTerms={searchTerms}
+          />
         </div>
-      </div>
+      )}
     </Layout>
   );
 }
