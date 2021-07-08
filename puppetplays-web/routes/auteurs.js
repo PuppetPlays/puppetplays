@@ -22,7 +22,7 @@ import {
   authorsQueryParamsToState as queryParamsToState,
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { stringifyQuery } from 'lib/utils';
+import { stringifyQuery, formatBirthDeathDates } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
@@ -163,7 +163,7 @@ function Authors({ initialData, languages, places }) {
                           <a>
                             <Author {...author} lastNameFirst />{' '}
                             <span>
-                              {birthDate} - {deathDate}
+                              {formatBirthDeathDates(birthDate, deathDate)}
                             </span>
                           </a>
                         </Link>
