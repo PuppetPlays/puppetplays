@@ -8,6 +8,15 @@
 .biographicalNote {
   margin-top: 30px;
   margin-bottom: 100px;
+
+  p > a {
+    text-decoration: none;
+    color: var(--color-brand);
+
+    &:hover {
+      color: var(--color-brand-light);
+    }
+  }
 }
 
 .works {
