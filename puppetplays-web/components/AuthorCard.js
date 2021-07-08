@@ -14,6 +14,7 @@ function AuthorCard({
   nickname,
   birthDate,
   deathDate,
+  mainImage,
 }) {
   const { t } = useTranslation();
 
@@ -32,6 +33,7 @@ function AuthorCard({
         }
         subtitle={<div>{formatBirthDeathDates(birthDate, deathDate)}</div>}
         buttonLabel={t('common:readBiography')}
+        mainImage={mainImage}
       />
     </section>
   );
@@ -44,6 +46,7 @@ AuthorCard.defaultProps = {
   nickname: null,
   birthDate: null,
   deathDate: null,
+  mainImage: null,
 };
 
 AuthorCard.propTypes = {
@@ -55,6 +58,7 @@ AuthorCard.propTypes = {
   nickname: PropTypes.string,
   birthDate: PropTypes.string,
   deathDate: PropTypes.string,
+  mainImage: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default AuthorCard;
