@@ -236,32 +236,34 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 </div>
               </Section>
 
-              <Section>
-                <SplitLayout
-                  title={work.title}
-                  subtitle={t('lightOnWork')}
-                  image={work.mainImage && work.mainImage[0]}
-                  linkRef={workLinkRef}
-                >
-                  <div style={{ marginBottom: 20 }}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: clip(work.note, 250, {
-                          html: true,
-                          maxLines: 5,
-                        }),
-                      }}
-                    />
-                    <Keywords keywords={work.keywords} component={Tag} />
-                  </div>
-                  <ButtonLink
-                    href={`/oeuvres/${work.id}/${work.slug}`}
-                    ref={workLinkRef}
+              {work && (
+                <Section>
+                  <SplitLayout
+                    title={work.title}
+                    subtitle={t('lightOnWork')}
+                    image={work.mainImage && work.mainImage[0]}
+                    linkRef={workLinkRef}
                   >
-                    {t('common:readNote')}
-                  </ButtonLink>
-                </SplitLayout>
-              </Section>
+                    <div style={{ marginBottom: 20 }}>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: clip(work.note, 250, {
+                            html: true,
+                            maxLines: 5,
+                          }),
+                        }}
+                      />
+                      <Keywords keywords={work.keywords} component={Tag} />
+                    </div>
+                    <ButtonLink
+                      href={`/oeuvres/${work.id}/${work.slug}`}
+                      ref={workLinkRef}
+                    >
+                      {t('common:readNote')}
+                    </ButtonLink>
+                  </SplitLayout>
+                </Section>
+              )}
 
               <Section title={t('ourPublications')}>
                 <ul className={styles.publications}>
