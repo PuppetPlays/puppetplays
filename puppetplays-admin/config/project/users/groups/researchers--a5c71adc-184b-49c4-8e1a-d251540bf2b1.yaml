@@ -5,10 +5,16 @@ permissions:
   - accessplugin-tag-manager
   - accessplugin-workflow
   - accesscp
+  - customizesources
   - 'editsite:397a9f9f-ff18-42c4-98ff-dbb87c17b754' # Puppetplays FR
   - 'editsite:59986aab-e6c1-4cdf-a062-8db833d2b327' # Puppetplays EN
   - 'editsite:bf194204-844c-4373-ad71-db3f6243b824' # Puppetplays DE
   - 'editsite:4cda444a-a132-4409-8e1e-5205e6a53896' # Puppetplays IT
+  - 'publishentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'publishpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'deletepeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'editpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'editentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
   - 'createentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'publishentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'deleteentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
