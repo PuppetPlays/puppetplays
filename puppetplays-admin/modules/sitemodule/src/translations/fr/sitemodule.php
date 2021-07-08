@@ -22,8 +22,8 @@
  */
 return [
     'Site module loaded' => 'Site module loaded',
-    'Hypotext entries' => 'Entrées Hypotextes',
-    'Select one or several hypotext(s)' => 'Sélectionner un ou plusieurs hypotexte(s)',
+    'Hypotext entries' => 'Entrées œuvre corrélée',
+    'Select one or several hypotext(s)' => 'Sélectionner une ou plusieurs œuvre(s) corrélée(s)',
     'SupervisorWidget' => 'Superviseur',
     'No entries to supervised' => 'Aucune entrée à superviser',
     'Subscription confirmed' => 'Inscription confirmée',

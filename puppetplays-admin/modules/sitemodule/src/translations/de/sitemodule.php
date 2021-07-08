@@ -22,8 +22,8 @@
  */
 return [
     'Site module loaded' => 'Site module loaded',
-    'Hypotext entries' => 'Hypotext entries',
-    'Select one or several hypotext(s)' => 'Select one or several hypotext(s)',
+    'Hypotext entries' => 'Correlated work entries',
+    'Select one or several hypotext(s)' => 'Select one or several correlated work(s)',
     'SupervisorWidget' => 'Supervisor',
     'No entries to supervised' => 'No entries to supervised',
     'Subscription confirmed' => 'Subscription confirmed',

@@ -34,7 +34,7 @@ return array(
   'Genre' => 'Genere',
   'Genre (indiqué par l’auteur)' => 'Genere (indicato dall’autore)',
   'Homme' => 'Uomo',
-  'Hypotexte(s)' => 'Ipotesto/i',
+  'Hypotexte(s)' => 'Correlated work(s)',
   'Identifiant ARK' => 'Identificativo ARK',
   'Identifiant IDREF' => 'Identificativo IDREF',
   'Identifiant ISNI' => 'Identificativo ISNI',
