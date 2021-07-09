@@ -15,15 +15,13 @@ import {
   fetchAPI,
   getHomeQuery,
   getAuthorsByIdsQuery,
+  getAllAuthorsIdsQuery,
   getAllWorksKeywordsQuery,
   getWorksKeywordsByIdsQuery,
   getAnimationTechniqueByIdQuery,
   getWorkByIdQuery,
 } from 'lib/api';
-import {
-  getAllAnimationTechniquesQuery,
-  getAllPersonsQuery,
-} from 'lib/filtersApi';
+import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { formatBirthDeathDates, getRandom } from 'lib/utils';
 import LanguageSelector from 'components/LanguageSelector';
 import SearchBarStateful from 'components/SearchBarStateful';
@@ -442,7 +440,7 @@ export async function getServerSideProps({ locale, req, res }) {
     },
   );
 
-  const { entries: personEntries } = await fetchAPI(getAllPersonsQuery, {
+  const { entries: personEntries } = await fetchAPI(getAllAuthorsIdsQuery, {
     variables: { locale },
   });
 

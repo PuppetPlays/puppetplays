@@ -460,9 +460,17 @@ entryCount(section: "persons", site: $locale, relatedToEntries: {section: "works
 }
 `;
 
+export const getAllAuthorsIdsQuery = `
+query GetAllAuthorsIds($locale: [String]) {
+  entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}) {
+    id
+  }
+}
+`;
+
 export const getAuthorsByIdsQuery = `
 query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
-  entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, id: $id) {
+  entries(section: "persons", site: $locale, id: $id) {
     id,
     slug,
     title,
