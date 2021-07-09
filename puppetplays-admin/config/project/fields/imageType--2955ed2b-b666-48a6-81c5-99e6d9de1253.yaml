@@ -1,0 +1,33 @@
+contentColumnType: string
+fieldGroup: b3feeaa7-8778-465a-9010-dc86232c1fbb # Assets
+handle: imageType
+instructions: ''
+name: 'Type d''image'
+searchable: false
+settings:
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Illustration
+        -
+          - value
+          - illustration
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Photographie de spectacle'
+        -
+          - value
+          - photo
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\RadioButtons

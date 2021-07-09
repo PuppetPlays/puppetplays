@@ -1,5 +1,5 @@
 fieldLayouts:
-  43ae3ef8-0740-49e6-8725-287f67c27567:
+  263642a7-146d-4193-9693-d21418e54c3a:
     tabs:
       -
         elements:
@@ -27,15 +27,6 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 2955ed2b-b666-48a6-81c5-99e6d9de1253 # Type d'image
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            warning: null
-            width: 100
-          -
             fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
             instructions: null
             label: null
@@ -54,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: bce57552-4cce-4dbb-aa89-398015020fda # Alt
+            fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1 # Langue(s)
             instructions: null
             label: null
             required: false
@@ -64,13 +55,13 @@ fieldLayouts:
             width: 100
         name: Content
         sortOrder: 1
-handle: images
+handle: sounds
 hasUrls: true
-name: Images
+name: Sounds
 settings:
-  path: '@assetBasePath/images'
-sortOrder: 0
+  path: '@assetBasePath/sounds'
+sortOrder: 2
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
 type: craft\volumes\Local
-url: '@assetBaseUrl/images'
+url: '@assetBaseUrl/sounds'
