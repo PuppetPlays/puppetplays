@@ -2,27 +2,6 @@
   display: inline-block;
   position: relative;
   margin: 0 4px;
-
-  > button {
-    cursor: pointer;
-    background-color: rgba(217, 217, 217, 0.4);
-    border-radius: 7px;
-    border: 0;
-    padding: 7px 6px;
-    fill: var(--color-text);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background-color: rgba(128, 128, 151, 0.3);
-    }
-
-    svg {
-      width: 8px;
-      height: 8px;
-    }
-  }
 }
 
 .menu {

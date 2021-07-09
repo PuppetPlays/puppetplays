@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import classNames from 'classnames/bind';
@@ -6,7 +6,17 @@ import styles from './dropdownMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function DropdownMenu({ itemsCount, children }) {
+// eslint-disable-next-line react/prop-types
+const DefaultWrapper = ({ children }) => {
+  return <Fragment>{children}</Fragment>;
+};
+
+function DropdownMenu({
+  itemsCount,
+  renderButton,
+  children,
+  childrenWrapperComponent: ChildrenWrapperComponent,
+}) {
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(itemsCount);
   const menuClassNames = cx({
     menu: true,
@@ -15,23 +25,27 @@ function DropdownMenu({ itemsCount, children }) {
 
   return (
     <div className={styles.container}>
-      <button {...buttonProps}>
-        <svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 6.5L0.5 1.5L7.5 1.5L4 6.5Z" />
-        </svg>
-      </button>
+      {renderButton(buttonProps)}
       <div className={menuClassNames} role="menu">
-        {React.Children.map(children, (child, index) => (
-          <div {...itemProps[index]}>{child}</div>
-        ))}
+        <ChildrenWrapperComponent>
+          {React.Children.map(children, (child, index) => (
+            <div {...itemProps[index]}>{child}</div>
+          ))}
+        </ChildrenWrapperComponent>
       </div>
     </div>
   );
 }
 
+DropdownMenu.defaultProps = {
+  childrenWrapperComponent: DefaultWrapper,
+};
+
 DropdownMenu.propTypes = {
   itemsCount: PropTypes.number.isRequired,
+  renderButton: PropTypes.func.isRequired,
   children: PropTypes.array.isRequired,
+  childrenWrapperComponent: PropTypes.func,
 };
 
 export default DropdownMenu;

@@ -6,6 +6,17 @@ import stubTrue from 'lodash/stubTrue';
 import useTranslation from 'next-translate/useTranslation';
 import DropdownMenu, { DropdownMenuItem } from 'components/DropdownMenu';
 import { modalTypes, useModal } from 'components/modalContext';
+import styles from './noteDropdownMenu.module.scss';
+
+const renderNoteDropdownMenuButton = (props) => {
+  return (
+    <button {...props} className={styles.button}>
+      <svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6.5L0.5 1.5L7.5 1.5L4 6.5Z" />
+      </svg>
+    </button>
+  );
+};
 
 function NoteDropdownMenu({ id, modalType }) {
   const { t } = useTranslation();
@@ -39,7 +50,7 @@ function NoteDropdownMenu({ id, modalType }) {
   }, [id, modalType]);
 
   return (
-    <DropdownMenu itemsCount={2}>
+    <DropdownMenu itemsCount={2} renderButton={renderNoteDropdownMenuButton}>
       {[
         <DropdownMenuItem
           key="search"
