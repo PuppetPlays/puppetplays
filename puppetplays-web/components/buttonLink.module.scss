@@ -1,4 +1,6 @@
 .link {
+  display: flex;
+  align-items: center;
   background-color: var(--color-brand);
   padding: 6px 20px;
   border-radius: 20px;
@@ -8,5 +10,25 @@
   &:hover {
     background-color: var(--color-brand-light);
     color: white;
+  }
+
+  &[data-inverse='true'] {
+    background-color: var(--color-bg-depth-1);
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-brand-light);
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+
+  svg {
+    fill: currentColor;
   }
 }

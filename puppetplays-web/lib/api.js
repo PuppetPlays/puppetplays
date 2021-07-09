@@ -384,6 +384,45 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
   }
 }`;
 
+export const getWorkMediasByIdQuery = `
+query getWorkById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "works", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on works_works_Entry {
+      medias @transform(width: 600) {
+        id,
+        url,
+        height,
+        width,
+        kind,
+        ... on images_Asset {
+          alt,
+          imageType,
+          description,
+          copyright
+        },
+        ... on videos_Asset {
+          description,
+          copyright,
+          languages {
+            title
+          }
+        },
+        ... on sounds_Asset {
+          description,
+          copyright,
+          languages {
+            title
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
 export async function getWorkById(id, locale, token) {
   const data = await fetchAPI(
     getWorkByIdQuery,

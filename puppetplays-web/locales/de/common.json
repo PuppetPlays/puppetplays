@@ -8,6 +8,8 @@
   "de": "Deutsch",
   "alias": "gen.",
   "language": "Sprache",
+  "languageWithColon": "Sprache:",
+  "languageWithColon_plural": "Sprachen:",
   "genre": "Gattung (laut Angabe des Urhebers)",
   "literaryTones": "Stilregister",
   "animationTechniques": "Animationstechnik",
@@ -90,5 +92,13 @@
   "readBiography": "Read the biography",
   "comingSoon": "Coming soon",
   "showMap": "Show the map",
-  "showList": "Show the list"
+  "showList": "Show the list",
+  "presentation": "Presentation",
+  "medias": "Medias",
+  "mediaKinds": {
+    "illustration": "Illustration",
+    "photo": "Performance photography",
+    "video": "Video record",
+    "sound": "Sound record"
+  }
 }

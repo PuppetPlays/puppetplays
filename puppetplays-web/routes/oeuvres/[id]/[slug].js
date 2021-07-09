@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Work from 'components/Work/Work';
 import ContentLayout from 'components/ContentLayout';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
-import styles from 'styles/Work.module.css';
+import styles from 'styles/Work.module.scss';
 
 const WorkPage = ({ initialData }) => {
   return (
@@ -17,6 +17,8 @@ const WorkPage = ({ initialData }) => {
 
       <div className={styles.workHeader}>
         <WorkPageHeader
+          id={initialData.id}
+          slug={initialData.slug}
           title={initialData.title}
           authors={initialData.authors}
           writingPlace={initialData.writingPlace}

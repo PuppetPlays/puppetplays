@@ -1,5 +1,18 @@
 import { render, screen } from '@testing-library/react';
+import { useRouter } from 'next/router';
 import WorkPageHeader from './WorkPageHeader';
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
+const push = jest.fn();
+useRouter.mockImplementation(() => ({
+  push,
+  pathname: '/',
+  route: '/',
+  asPath: '/',
+  query: '',
+}));
 
 const authors = [
   { id: '1', firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
@@ -16,6 +29,8 @@ const place = [
 test('renders the work page header', () => {
   render(
     <WorkPageHeader
+      id="100"
+      slug="my-work"
       title="My work"
       authors={authors}
       compositionPlace={place}
@@ -32,7 +47,14 @@ test('renders the work page header', () => {
 });
 
 test('renders the work page header without a writing place', () => {
-  render(<WorkPageHeader title="My work" authors={authors} />);
+  render(
+    <WorkPageHeader
+      id="101"
+      slug="my-work"
+      title="My work"
+      authors={authors}
+    />,
+  );
 
   const backButton = screen.getByRole('button');
   const content = screen.getByTestId('work-page-header-content');

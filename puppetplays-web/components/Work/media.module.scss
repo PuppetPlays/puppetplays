@@ -1,0 +1,26 @@
+.container {
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  & + & {
+    margin-top: 110px;
+  }
+}
+
+.infos {
+  margin: 40px 0 0;
+  padding: 0 50px;
+  color: var(--color-text-subtle);
+  font-size: 15px;
+}
+
+.languages {
+  font-weight: 700;
+}
+
+.copyright {
+  font-weight: 300;
+  color: var(--color-text-inactive);
+}

@@ -8,6 +8,8 @@
   "de": "Tedesco",
   "alias": "detto",
   "language": "Lingua",
+  "languageWithColon": "Lingua:",
+  "languageWithColon_plural": "Lingue:",
   "genre": "Genere (indicato dall'autore)",
   "literaryTones": "Stilregister",
   "animationTechniques": "Tecniche di animazione",
@@ -90,5 +92,13 @@
   "readBiography": "Read the biography",
   "comingSoon": "Coming soon",
   "showMap": "Show the map",
-  "showList": "Show the list"
+  "showList": "Show the list",
+  "presentation": "Presentation",
+  "medias": "Medias",
+  "mediaKinds": {
+    "illustration": "Illustration",
+    "photo": "Performance photography",
+    "video": "Video record",
+    "sound": "Sound record"
+  }
 }

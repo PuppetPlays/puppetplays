@@ -8,6 +8,8 @@
   "de": "Allemand",
   "alias": "dit",
   "language": "Langue",
+  "languageWithColon": "Langue :",
+  "languageWithColon_plural": "Langues :",
   "genre": "Genre (indiqué par l’auteur)",
   "literaryTones": "Registres littéraires",
   "animationTechniques": "Techniques d’animation",
@@ -90,5 +92,13 @@
   "readBiography": "Lire la biographie",
   "comingSoon": "Prochainement",
   "showMap": "Afficher la carte",
-  "showList": "Afficher la liste"
+  "showList": "Afficher la liste",
+  "presentation": "Présentation",
+  "medias": "Médias",
+  "mediaKinds": {
+    "illustration": "Illustration",
+    "photo": "Photographie de spectacle",
+    "video": "Enregistrement vidéo",
+    "sound": "Enregistrement sonore"
+  }
 }

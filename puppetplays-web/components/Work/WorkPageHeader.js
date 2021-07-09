@@ -1,14 +1,19 @@
 import { Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import Author from 'components/Author';
 import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
 import Place from 'components/Place';
+import ButtonLink from 'components/ButtonLink';
+import NoteIcon from './icons/icon-note.svg';
+import MediaIcon from './icons/icon-media.svg';
 import styles from './workPageHeader.module.scss';
 
-const WorkPageHeader = ({ title, authors, compositionPlace }) => {
+const WorkPageHeader = ({ id, slug, title, authors, compositionPlace }) => {
   const router = useRouter();
+  const { t } = useTranslation();
   const handleGoBack = useCallback(() => {
     router.back();
   }, [router]);
@@ -54,6 +59,22 @@ const WorkPageHeader = ({ title, authors, compositionPlace }) => {
           </Fragment>
         )}
       </div>
+      <div className={styles.nav}>
+        <ButtonLink
+          icon={<NoteIcon />}
+          href={`/oeuvres/${id}/${slug}`}
+          inverse={router.asPath !== `/oeuvres/${id}/${slug}`}
+        >
+          {t('common:presentation')}
+        </ButtonLink>
+        <ButtonLink
+          icon={<MediaIcon />}
+          href={`/oeuvres/${id}/${slug}/medias`}
+          inverse={router.asPath !== `/oeuvres/${id}/${slug}/medias`}
+        >
+          {t('common:medias')}
+        </ButtonLink>
+      </div>
     </div>
   );
 };
@@ -64,6 +85,8 @@ WorkPageHeader.defaultProps = {
 };
 
 WorkPageHeader.propTypes = {
+  id: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.object),
   compositionPlace: PropTypes.arrayOf(PropTypes.object),
