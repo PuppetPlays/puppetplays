@@ -140,7 +140,7 @@ function Home({
       } else if (name === 'publicDomain') {
         newFilters = {
           ...filters,
-          publicDomain: value,
+          publicDomain: value ? value : undefined,
         };
       } else {
         newFilters = {
