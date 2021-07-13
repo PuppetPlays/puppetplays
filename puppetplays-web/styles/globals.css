@@ -155,7 +155,9 @@ p > a:hover {
 
 .ol-control button {
   display: block;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--ff-sans);
   background-color: white;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   width: 30px;
