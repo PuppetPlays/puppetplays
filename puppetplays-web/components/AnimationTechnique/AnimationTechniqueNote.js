@@ -5,6 +5,7 @@ import { hasAtLeastOneItem } from 'lib/utils';
 import Hypotext from 'components/Hypotext';
 import { PageIntertitle } from 'components/Primitives';
 import Carousel from 'components/Carousel';
+import HtmlContent from 'components/HtmlContent';
 import styles from 'components/Author/authorNote.module.scss';
 
 function AnimationTechniqueNote({ description, mainImage, images, works }) {
@@ -14,12 +15,9 @@ function AnimationTechniqueNote({ description, mainImage, images, works }) {
     <Fragment>
       <div>
         {description && (
-          <div
-            className={styles.biographicalNote}
-            dangerouslySetInnerHTML={{
-              __html: description,
-            }}
-          />
+          <div className={styles.biographicalNote}>
+            <HtmlContent html={description} />
+          </div>
         )}
         <Carousel images={mainImage.concat(images)} />
       </div>

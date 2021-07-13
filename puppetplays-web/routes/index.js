@@ -33,6 +33,7 @@ import SplitLayout from 'components/Home/SplitLayout';
 import Keywords, { Tag } from 'components/Keywords';
 import Header from 'components/Header';
 import MainNav from 'components/MainNav';
+import HtmlContent from 'components/HtmlContent';
 import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
@@ -187,11 +188,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   }
                   linkRef={animationTechniqueLinkRef}
                 >
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: animationTechnique.excerpt,
-                    }}
-                  />
+                  <HtmlContent html={animationTechnique.excerpt} />
                   <ButtonLink
                     href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
                     ref={animationTechniqueLinkRef}

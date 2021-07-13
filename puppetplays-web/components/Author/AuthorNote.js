@@ -6,6 +6,7 @@ import Carousel from 'components/Carousel';
 import Hypotext from 'components/Hypotext';
 import Section from 'components/Section';
 import Info from 'components/Info';
+import HtmlContent from 'components/HtmlContent';
 import { PageIntertitle } from 'components/Primitives';
 import ArkId from 'components/Work/ArkId';
 import styles from './authorNote.module.scss';
@@ -31,12 +32,9 @@ function AuthorNote({
           {formatBirthDeathDates(birthDate, deathDate)}
         </div>
         {biographicalNote && (
-          <div
-            className={styles.biographicalNote}
-            dangerouslySetInnerHTML={{
-              __html: biographicalNote,
-            }}
-          />
+          <div className={styles.biographicalNote}>
+            <HtmlContent html={biographicalNote} />
+          </div>
         )}
         <Carousel images={mainImage.concat(images)} />
       </div>

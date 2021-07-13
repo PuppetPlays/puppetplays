@@ -1,0 +1,10 @@
+.container {
+  p > a {
+    text-decoration: none;
+    color: var(--color-brand);
+
+    &:hover {
+      color: var(--color-brand-light);
+    }
+  }
+}
