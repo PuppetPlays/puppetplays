@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { useTranslation } from 'next-translate';
 import LanguageSelector from 'components/LanguageSelector';
 import MainNav from 'components/MainNav';
+import Logo from './logo.svg';
 import styles from './header.module.scss';
 
 function Header({ children }) {
+  const { t } = useTranslation();
+
   return (
     <header className={styles.container}>
       <h1 className={styles.logo}>
         <Link href="/">
-          <a>
-            <img src="/logo.png" alt="Puppetplays" width="72" />
+          <a title={t('common:backToHome')}>
+            <Logo />
           </a>
         </Link>
       </h1>
