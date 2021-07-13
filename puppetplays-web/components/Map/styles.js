@@ -15,7 +15,7 @@ const getLabelStyle = (
     text: new Text({
       textAlign: 'center',
       textBaseline: 'top',
-      font: '500 13px "Fira Sans", "Helvetica Neue", sans-serif',
+      font: '500 15px "Fira Sans", "Helvetica Neue", sans-serif',
       text,
       fill: new Fill({ color: fill }),
       backgroundStroke: new Stroke({ color: '#d9d9e0', width: 1 }),
@@ -42,8 +42,8 @@ const isCountry = isType('countries');
 
 const getPlaceStyleProps = ({ ids, type }) => {
   const text = ids.length.toString();
-  const offsetY = isCountry(type) ? 0 : -40;
-  const anchor = isCountry(type) ? [0.5, 0.5] : [0.5, 1];
+  const offsetY = isCountry(type) ? 0 : -45;
+  const anchor = isCountry(type) ? [0.5, 0.5] : [0.5, 0.96];
   const getSrcSuffix = cond([
     [() => isCountry(type), constant('circle')],
     [() => ids.length === 1, constant('single')],
@@ -74,7 +74,7 @@ export const getPlaceStyle = (feature) => {
 
 export const getSelectedPlaceStyle = (feature) => {
   const properties = feature.getProperties();
-  const labelOffsetY = isCountry(properties.type) ? 32 : 6;
+  const labelOffsetY = isCountry(properties.type) ? 34 : 2;
 
   return [
     getBaseStyle(properties, '#fff', 'selected'),
@@ -84,7 +84,7 @@ export const getSelectedPlaceStyle = (feature) => {
 
 export const getHoveredPlaceStyle = (feature) => {
   const properties = feature.getProperties();
-  const labelOffsetY = isCountry(properties.type) ? 32 : 6;
+  const labelOffsetY = isCountry(properties.type) ? 34 : 2;
 
   return [
     getBaseStyle(properties, '#2d4df6', 'hovered'),
