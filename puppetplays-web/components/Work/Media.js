@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
-import { getTitle } from 'lib/utils';
+import { getTitle, hasAtLeastOneItem } from 'lib/utils';
 import CommaSepList from 'components/CommaSepList';
 import styles from './media.module.scss';
 
@@ -14,15 +14,16 @@ const Media = ({ kind, url, alt, description, copyright, languages }) => {
         <img src={url} alt={alt} />
       )}
       {kind === 'video' && <video controls src={url} />}
-      {kind === 'sound' && <audio controls src={url} />}
-      {(languages || description || copyright) && (
+      {kind === 'audio' && <audio controls src={url} />}
+      {(hasAtLeastOneItem(languages) || description || copyright) && (
         <div className={styles.infos}>
-          {(kind === 'video' || kind === 'sound') && languages && (
-            <div className={styles.languages}>
-              {t('common:languageWithColon', { count: languages.length })}{' '}
-              <CommaSepList list={languages} listTransform={getTitle} />
-            </div>
-          )}
+          {(kind === 'video' || kind === 'audio') &&
+            hasAtLeastOneItem(languages) && (
+              <div className={styles.languages}>
+                {t('common:languageWithColon', { count: languages.length })}{' '}
+                <CommaSepList list={languages} listTransform={getTitle} />
+              </div>
+            )}
           {description && (
             <div
               className={styles.description}
@@ -44,7 +45,7 @@ Media.defaultProps = {
 };
 
 Media.propTypes = {
-  kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'sound']).isRequired,
+  kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'audio']).isRequired,
   url: PropTypes.string.isRequired,
   alt: PropTypes.string,
   description: PropTypes.string,

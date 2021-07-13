@@ -5,7 +5,7 @@ import Media from './Media';
 import PhotoIcon from './icons/icon-photo.svg';
 import IllustrationIcon from './icons/icon-illustration.svg';
 import VideoIcon from './icons/icon-video.svg';
-import SoundIcon from './icons/icon-sound.svg';
+import AudioIcon from './icons/icon-sound.svg';
 import styles from './mediaSection.module.scss';
 
 const isOfKind = (kind) => (value) => kind === value;
@@ -14,7 +14,7 @@ export const getMediaKindIcon = cond([
   [isOfKind('photo'), constant(<PhotoIcon />)],
   [isOfKind('illustration'), constant(<IllustrationIcon />)],
   [isOfKind('video'), constant(<VideoIcon />)],
-  [isOfKind('sound'), constant(<SoundIcon />)],
+  [isOfKind('audio'), constant(<AudioIcon />)],
   [stubTrue, constant(null)],
 ]);
 
@@ -47,7 +47,7 @@ MediaSection.defaultProps = {
 };
 
 MediaSection.propTypes = {
-  kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'sound']).isRequired,
+  kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'audio']).isRequired,
   medias: PropTypes.arrayOf(PropTypes.object).isRequired,
   showTitle: PropTypes.bool,
 };
