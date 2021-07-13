@@ -379,7 +379,10 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         title
       },
       publicDomain,
-      additionalLicenseInformation
+      additionalLicenseInformation,
+      medias {
+        id
+      }
     }
   }
 }`;

@@ -11,7 +11,14 @@ import NoteIcon from './icons/icon-note.svg';
 import MediaIcon from './icons/icon-media.svg';
 import styles from './workPageHeader.module.scss';
 
-const WorkPageHeader = ({ id, slug, title, authors, compositionPlace }) => {
+const WorkPageHeader = ({
+  id,
+  slug,
+  title,
+  authors,
+  compositionPlace,
+  hasMedia,
+}) => {
   const router = useRouter();
   const { t } = useTranslation();
   const handleGoBack = useCallback(() => {
@@ -59,22 +66,24 @@ const WorkPageHeader = ({ id, slug, title, authors, compositionPlace }) => {
           </Fragment>
         )}
       </div>
-      <div className={styles.nav}>
-        <ButtonLink
-          icon={<NoteIcon />}
-          href={`/oeuvres/${id}/${slug}`}
-          inverse={router.asPath !== `/oeuvres/${id}/${slug}`}
-        >
-          {t('common:presentation')}
-        </ButtonLink>
-        <ButtonLink
-          icon={<MediaIcon />}
-          href={`/oeuvres/${id}/${slug}/medias`}
-          inverse={router.asPath !== `/oeuvres/${id}/${slug}/medias`}
-        >
-          {t('common:medias')}
-        </ButtonLink>
-      </div>
+      {hasMedia && (
+        <div className={styles.nav}>
+          <ButtonLink
+            icon={<NoteIcon />}
+            href={`/oeuvres/${id}/${slug}`}
+            inverse={router.asPath !== `/oeuvres/${id}/${slug}`}
+          >
+            {t('common:presentation')}
+          </ButtonLink>
+          <ButtonLink
+            icon={<MediaIcon />}
+            href={`/oeuvres/${id}/${slug}/medias`}
+            inverse={router.asPath !== `/oeuvres/${id}/${slug}/medias`}
+          >
+            {t('common:medias')}
+          </ButtonLink>
+        </div>
+      )}
     </div>
   );
 };
@@ -82,6 +91,7 @@ const WorkPageHeader = ({ id, slug, title, authors, compositionPlace }) => {
 WorkPageHeader.defaultProps = {
   authors: null,
   compositionPlace: null,
+  hasMedia: false,
 };
 
 WorkPageHeader.propTypes = {
@@ -90,6 +100,7 @@ WorkPageHeader.propTypes = {
   title: PropTypes.string.isRequired,
   authors: PropTypes.arrayOf(PropTypes.object),
   compositionPlace: PropTypes.arrayOf(PropTypes.object),
+  hasMedia: PropTypes.bool,
 };
 
 export default WorkPageHeader;

@@ -17,7 +17,7 @@ import { useState } from 'react';
 const WorkPage = ({ initialData }) => {
   const { t } = useTranslation();
   const [firstMediaSection] = useState(() => {
-    const keys = Object.keys(initialData.medias)[0];
+    const keys = Object.keys(initialData.medias);
     return keys.length > 0 ? keys[0] : null;
   });
   const [activeAnchor, handleScroll] = useActiveAnchor(
@@ -38,6 +38,7 @@ const WorkPage = ({ initialData }) => {
           title={initialData.title}
           authors={initialData.authors}
           writingPlace={initialData.writingPlace}
+          hasMedia
         />
       </div>
       <ContentLayout style={{ maxWidth: 600 }} onScroll={handleScroll}>

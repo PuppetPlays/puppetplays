@@ -7,6 +7,7 @@ import Work from 'components/Work/Work';
 import ContentLayout from 'components/ContentLayout';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import styles from 'styles/Work.module.scss';
+import { hasAtLeastOneItem } from 'lib/utils';
 
 const WorkPage = ({ initialData }) => {
   return (
@@ -22,6 +23,7 @@ const WorkPage = ({ initialData }) => {
           title={initialData.title}
           authors={initialData.authors}
           writingPlace={initialData.writingPlace}
+          hasMedia={hasAtLeastOneItem(initialData.medias)}
         />
       </div>
       <ContentLayout style={{ maxWidth: 1200 }}>
