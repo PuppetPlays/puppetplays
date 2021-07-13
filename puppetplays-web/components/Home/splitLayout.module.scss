@@ -31,18 +31,11 @@
   overflow: hidden;
   border-radius: 0 0 7px 7px;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
   @media (min-width: 700px) {
     border-radius: 0 7px 7px 0;
-  }
-
-  img {
-    display: block;
-    border-radius: 0 0 7px 7px;
-
-    @media (min-width: 700px) {
-      position: absolute;
-      border-radius: 0 7px 7px 0;
-    }
   }
 }
