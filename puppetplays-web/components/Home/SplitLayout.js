@@ -26,7 +26,16 @@ const SplitLayout = ({ title, subtitle, children, image, linkRef }) => {
         onClick={handleImageClick}
         role="presentation"
       >
-        {image && <img src={image.url} alt="" />}
+        {image && (
+          <img
+            src={image.url}
+            alt=""
+            style={{
+              width: image.width < image.height ? '100%' : 'auto',
+              height: image.height < image.width ? '100%' : 'auto',
+            }}
+          />
+        )}
       </div>
     </div>
   );
