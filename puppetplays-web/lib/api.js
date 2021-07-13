@@ -256,7 +256,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           places {
             ...placeInfo
           },
-          mainImage @transform(height: 362) {
+          mainImage @transform(height: 362, width: 260) {
             ...assetFragment
           },
         },
