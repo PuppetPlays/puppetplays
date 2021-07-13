@@ -21,13 +21,20 @@ function Carousel({ images }) {
             width={image.width}
             height={image.height}
           />
-          {image.description && (
-            <p className={styles.caption}>
-              {image.description}
-              {image.copyright && (
-                <span className={styles.copyright}> – {image.copyright}</span>
+          {(image.description || image.copyright) && (
+            <div className={styles.caption}>
+              {image.description && (
+                <div
+                  className={styles.captionDescription}
+                  dangerouslySetInnerHTML={{ __html: image.description }}
+                />
               )}
-            </p>
+              {image.copyright && (
+                <div className={styles.captionCopyright}>
+                  © {image.copyright}
+                </div>
+              )}
+            </div>
           )}
         </div>
       ))}
