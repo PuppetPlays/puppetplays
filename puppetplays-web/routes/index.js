@@ -32,6 +32,7 @@ import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
 import Keywords, { Tag } from 'components/Keywords';
 import Header from 'components/Header';
+import MainNav from 'components/MainNav';
 import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
@@ -90,6 +91,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
               <div className={styles.LanguageSelector}>
                 <LanguageSelector inverse path="/" />
               </div>
+              <MainNav inverse />
             </header>
           ) : (
             <Header>
