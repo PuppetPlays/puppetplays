@@ -14,7 +14,7 @@ import { PageTitle } from 'components/Primitives';
 import styles from 'styles/Work.module.scss';
 import { useState } from 'react';
 
-const WorkPage = ({ initialData }) => {
+function MediasPage({ initialData }) {
   const { t } = useTranslation();
   const [firstMediaSection] = useState(() => {
     const keys = Object.keys(initialData.medias);
@@ -66,13 +66,13 @@ const WorkPage = ({ initialData }) => {
       </ContentLayout>
     </Layout>
   );
-};
+}
 
-WorkPage.propTypes = {
+MediasPage.propTypes = {
   initialData: PropTypes.object.isRequired,
 };
 
-export default WorkPage;
+export default MediasPage;
 
 export async function getServerSideProps({ locale, req, res, params }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
