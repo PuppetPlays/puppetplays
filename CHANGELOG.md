@@ -1,5 +1,15 @@
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.5.1
+
+Déployé le 15 juillet 2021
+
+### Corrections
+
+- Les volumes “Videos” et “Sounds” doivent être accessibles à tous les utilisateurs
+
+---
+
 ## Puppetplays 0.5.0
 
 Déployé le 15 juillet 2021
