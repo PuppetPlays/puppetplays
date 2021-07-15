@@ -14,15 +14,14 @@ function CoverImage({ image, year, height }) {
         <Tooltip
           content={
             (description || copyright) && (
-              <p className={styles.caption}>
-                {description}
-                {copyright && (
-                  <span className={styles.captionCopyright}>
-                    {' '}
-                    – © {copyright}
-                  </span>
+              <div className={styles.caption}>
+                {description && (
+                  <div dangerouslySetInnerHTML={{ __html: description }} />
                 )}
-              </p>
+                {copyright && (
+                  <div className={styles.captionCopyright}>© {copyright}</div>
+                )}
+              </div>
             )
           }
           placement="left"
