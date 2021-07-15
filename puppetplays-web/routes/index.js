@@ -128,7 +128,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                       >
                         <img
                           height="49"
-                          src={`/logo-${partner}.svg`}
+                          src={`/logo-${partner}.png`}
                           alt={t(`${partner}.alt`)}
                         />
                       </a>
@@ -293,8 +293,8 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
           <section className={styles.footerPartners}>
             <div className={styles.footerPartnersInner}>
               <div className={styles.footerPartnersFinancers}>
-                <img src="/logo-ue.svg" height="80" alt={t('ue.alt')} />
-                <img src="/logo-erc.svg" height="80" alt={t('erc.alt')} />
+                <img src="/logo-ue.png" height="80" alt={t('ue.alt')} />
+                <img src="/logo-erc.png" height="80" alt={t('erc.alt')} />
                 <p>{t('projectFinancedBy')}</p>
               </div>
               <ul className={styles.footerPartnersPartners}>
