@@ -1,5 +1,33 @@
-
 # Changelog de la plateforme Puppetplays
+
+## Puppetplays 0.5.0
+
+Déployé le 15 juillet 2021
+
+### Nouveautés
+
+- Une nouvelle vue “carte” permet de visualiser les œuvres en plus de la vue en liste
+- Une nouvelle page “médias” regroupant les médias associés à une œuvre est accessible depuis la page d'une œuvre
+
+### Amélioration
+
+- Ajout d'un style particulier pour les sous-titre d'une œuvre (dans la liste et sur la page de l'œuvre)
+- Ajout d'une marge à la fin de la liste des œuvres
+- Le menu de navigation principal (répertoire, page des auteurs et page des techniques d'animation) est maintenant accessible depuis un bouton à droite du sélecteur de langue
+- Le champ "Hypotexte(s)" d'une oeuvre a été renommé en "Oeuvre(s) corrélée(s)" sur le site et dans l'admin
+- La page d'accueil peut maintenant être éditée par les utilisateurs du groupe “chercheurs” et plus seulement par les “admins”
+
+### Corrections
+
+- L'image principale d'un auteur lorsqu'elle s'affiche dans l'encart “auteur” d'une œuvre ne laisse plus de marge sur les côté et remplit tout l'espace disponible
+- Le style des hyperliens dans la description d'une technique d'animation est maintenant le bon
+- L'image principale d'un auteur s'affiche maintenant dans l'encart “auteur” de la page d'une œuvre
+- Le formatage de la date de naissance et de mort d'un auteur sur la page des auteurs est maintenant le même que sur le reste du site
+- Éviter un plantage lorsque l’œuvre sélectionnée sur la page d'accueil n'a pas de traduction
+- Lorsque le filtre “domaine public” est décoché après avoir était coché la liste des œuvres contient maintenant toute les œuvres et plus seulement celles qui n'était pas du domaine public
+- Sur la page d'accueil il n'y avait pas toujours 4 auteurs affichés, ce n'est plus le cas
+
+---
 
 ## Puppetplays 0.4.1
 
