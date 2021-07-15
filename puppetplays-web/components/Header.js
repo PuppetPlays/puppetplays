@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { useTranslation } from 'next-translate';
+import useTranslation from 'next-translate/useTranslation';
 import LanguageSelector from 'components/LanguageSelector';
 import MainNav from 'components/MainNav';
 import Logo from './logo.svg';

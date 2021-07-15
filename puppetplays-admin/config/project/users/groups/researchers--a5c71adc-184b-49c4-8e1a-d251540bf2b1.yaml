@@ -166,4 +166,26 @@ permissions:
   - 'editpeerimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
   - 'viewpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
   - 'viewvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'saveassetinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'createfoldersinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'deletefilesandfoldersinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'replacefilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editimagesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editpeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'replacepeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'deletepeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editpeerimagesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewpeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'saveassetinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'createfoldersinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'deletefilesandfoldersinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'replacefilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editimagesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editpeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'replacepeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'deletepeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editpeerimagesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewpeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
   - 'workflow:overview'
