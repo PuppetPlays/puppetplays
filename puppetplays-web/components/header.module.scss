@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  z-index: 3000;
+  z-index: var(--z-index-header);
   display: flex;
   justify-content: flex-start;
   align-items: center;

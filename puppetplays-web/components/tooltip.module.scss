@@ -1,5 +1,5 @@
 .container {
-  z-index: 1000;
+  z-index: var(--z-index-tooltip);
   border-radius: 8px;
   box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.3);
   color: var(--color-text);
