@@ -472,6 +472,7 @@ query GetAllAuthorsIds($locale: [String]) {
 `;
 
 export const getAuthorsByIdsQuery = `
+${assetFragment}
 query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
   entries(section: "persons", site: $locale, id: $id) {
     id,
@@ -485,6 +486,9 @@ query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
       usualName,
       birthDate,
       deathDate,
+      mainImage @transform(height: 362, width: 280) {
+        ...assetFragment
+      },
     },
   }
 }
