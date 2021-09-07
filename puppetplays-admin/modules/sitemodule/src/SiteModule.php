@@ -16,6 +16,10 @@ use modules\sitemodule\fields\SimpleDate as SimpleDateField;
 use modules\sitemodule\widgets\Supervisor as SupervisorWidget;
 
 use Craft;
+use craft\queue\jobs\ResaveElements;
+use craft\elements\Entry;
+use craft\helpers\ElementHelper;
+use craft\events\ModelEvent;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\events\TemplateEvent;
 use craft\i18n\PhpMessageSource;
@@ -155,6 +159,40 @@ class SiteModule extends Module
             Dashboard::EVENT_REGISTER_WIDGET_TYPES,
             function (RegisterComponentTypesEvent $event) {
                 $event->types[] = SupervisorWidget::class;
+            }
+        );
+
+        // After saving a character resave the related originalCharacter entries
+        Event::on(
+            Entry::class,
+            Entry::EVENT_AFTER_SAVE,
+            function(ModelEvent $event) {
+                // @var Entry $entry
+                $entry = $event->sender;
+                // @var EntryType $typeHandle
+                $typeHandle = $entry->type->handle;
+
+                if (!ElementHelper::isDraftOrRevision($entry) && $typeHandle === 'characters') {
+                    $relatedEntryQuery = \craft\elements\Entry::find()
+                        ->section('originalsCharacters')
+                        ->character($entry);
+                    $relatedEntries = $relatedEntryQuery->all();
+
+                    foreach ($relatedEntries as $originalCharacterEntry) {
+                        Craft::$app->getQueue()->push(new ResaveElements([
+                            'description' => Craft::t('sitemodule', 'Resaving “originalsCharacters” entries'),
+                            'elementType' => Entry::class,
+                            'updateSearchIndex' => true,
+                            'criteria' => [
+                                'siteId' => $entry->siteId,
+                                'sectionId' => $originalCharacterEntry->sectionId,
+                                'typeId' => $originalCharacterEntry->typeId,
+                                'id' => $originalCharacterEntry->id,
+                                'enabledForSite' => true
+                            ]
+                        ]));
+                    }
+                }
             }
         );
 
