@@ -32,13 +32,13 @@ const WorkHeader = ({
         )}
         {mostRelevantDate && (
           <Fragment>
-            <span className="pipe-separator">|</span>
+            <span className="pipe-separator"> | </span>
             <span className={styles.date}>{mostRelevantDate}</span>
           </Fragment>
         )}
         {compositionPlace && compositionPlace.length > 0 && (
           <Fragment>
-            <span className="pipe-separator">|</span>
+            <span className="pipe-separator"> | </span>
             <span className={styles.place}>
               <Place {...compositionPlace[0]} />
             </span>
@@ -46,7 +46,7 @@ const WorkHeader = ({
         )}
         {mainLanguage && mainLanguage.length > 0 && (
           <Fragment>
-            <span className="pipe-separator">|</span>
+            <span className="pipe-separator"> | </span>
             <span className={styles.language}>
               {getFirstItemTitle(mainLanguage)}
             </span>

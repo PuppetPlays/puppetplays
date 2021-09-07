@@ -52,7 +52,7 @@ const WorkPageHeader = ({
         <span className={styles.title}>{title}</span>
         {authors && authors.length > 0 && (
           <Fragment>
-            <span className="dash-separator">-</span>
+            <span className="dash-separator"> - </span>
             <CommaSepList
               list={authors}
               itemComponents={{ persons: Author, companies: Company }}
@@ -61,7 +61,7 @@ const WorkPageHeader = ({
         )}
         {compositionPlace && compositionPlace.length > 0 && (
           <Fragment>
-            <span className="dash-separator">-</span>
+            <span className="dash-separator"> - </span>
             <Place {...compositionPlace[0]} />
           </Fragment>
         )}
