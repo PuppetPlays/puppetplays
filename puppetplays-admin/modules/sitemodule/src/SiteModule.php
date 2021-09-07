@@ -164,9 +164,11 @@ class SiteModule extends Module
                     if (!empty($context['element'])) {
                         $html = '<div style="clear: both; padding-left: 22px; font-size: 14px; line-height: 1"><span>';
                         $html .= '</span><span>';
+                        $authors = [];
                         foreach ($context['element']->authors->all() as $element) {
-                            $html .= $element->getUiLabel();
+                            $authors[] = $element->getUiLabel();
                         }
+                        $html .= implode(', ', $authors);
                         $html .= ', ';
                         $html .= $context['element']->date;
                         $html .= '</span></div>';
