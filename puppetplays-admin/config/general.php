@@ -48,7 +48,7 @@ return [
         'devMode' => true,
 
         // Disable graphQL query caching
-        'enableGraphQlCaching' => false,
+        'enableGraphqlCaching' => false,
 
         // Prevent crawlers from indexing pages and following links
         'disallowRobots' => true
