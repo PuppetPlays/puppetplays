@@ -78,17 +78,16 @@ const MapView = ({ filters, searchTerms, locale }) => {
         };
       });
 
-      const createFeatureForSource = (source) => ({
-        coordinates,
-        name,
-        type,
-        ids,
-      }) => {
+      const createFeatureForSource = (source) => (
+        { coordinates, name, type, ids },
+        index,
+      ) => {
         const feature = new Feature({
           geometry: new Point(coordinates).transform('EPSG:4326', 'EPSG:3857'),
           name,
         });
         feature.setProperties({ ids, type, isSelectable: true });
+        feature.setId(index);
         source.addFeature(feature);
       };
 

@@ -60,7 +60,6 @@ const getBaseStyle = (properties, textColor, state) => {
       anchor,
       scale: 0.5,
       src: `/icon-feature-${srcSuffix}${state ? '-' + state : ''}.png`,
-      zIndex: 100,
     }),
     text: getNumberTextStyle(text, offsetY, textColor),
   });
@@ -68,26 +67,34 @@ const getBaseStyle = (properties, textColor, state) => {
 
 export const getPlaceStyle = (feature) => {
   const properties = feature.getProperties();
-
-  return getBaseStyle(properties);
+  const baseStyle = getBaseStyle(properties);
+  baseStyle.setZIndex(feature.getId());
+  return baseStyle;
 };
 
 export const getSelectedPlaceStyle = (feature) => {
   const properties = feature.getProperties();
   const labelOffsetY = isCountry(properties.type) ? 34 : 2;
+  const baseStyle = getBaseStyle(properties, '#fff', 'selected');
+  const labelStyle = getLabelStyle(
+    properties.name,
+    labelOffsetY,
+    '#fff',
+    '#2037b1',
+  );
+  baseStyle.setZIndex(30000);
+  labelStyle.setZIndex(30000);
 
-  return [
-    getBaseStyle(properties, '#fff', 'selected'),
-    getLabelStyle(properties.name, labelOffsetY, '#fff', '#2037b1'),
-  ];
+  return [baseStyle, labelStyle];
 };
 
 export const getHoveredPlaceStyle = (feature) => {
   const properties = feature.getProperties();
   const labelOffsetY = isCountry(properties.type) ? 34 : 2;
+  const baseStyle = getBaseStyle(properties, '#2d4df6', 'hovered');
+  const labelStyle = getLabelStyle(properties.name, labelOffsetY, '#2d4df6');
+  baseStyle.setZIndex(30001);
+  labelStyle.setZIndex(30001);
 
-  return [
-    getBaseStyle(properties, '#2d4df6', 'hovered'),
-    getLabelStyle(properties.name, labelOffsetY, '#2d4df6'),
-  ];
+  return [baseStyle, labelStyle];
 };
