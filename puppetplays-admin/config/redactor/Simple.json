@@ -1,4 +1,7 @@
 {
   "buttons": ["bold", "italic", "link"],
-  "air": true
+  "air": true,
+  "pastePlainText": true,
+  "pasteLinkTarget": "_blank",
+  "pasteImages": false
 }
