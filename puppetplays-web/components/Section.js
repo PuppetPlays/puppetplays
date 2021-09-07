@@ -10,7 +10,7 @@ function Section({ title, children, show }) {
       <h1 className={styles.title}>
         <span>{title}</span>
       </h1>
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
     </section>
   );
 }
