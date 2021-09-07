@@ -42,7 +42,7 @@ test('renders the work page header', () => {
 
   expect(backButton).toBeInTheDocument();
   expect(content).toHaveTextContent(
-    'My work-Raymond Poisson, Claude Garbut-Paris, France',
+    'My work - Raymond Poisson, Claude Garbut - Paris, France',
   );
 });
 
@@ -60,5 +60,5 @@ test('renders the work page header without a writing place', () => {
   const content = screen.getByTestId('work-page-header-content');
 
   expect(backButton).toBeInTheDocument();
-  expect(content).toHaveTextContent('My work-Raymond Poisson, Claude Garbut');
+  expect(content).toHaveTextContent('My work - Raymond Poisson, Claude Garbut');
 });

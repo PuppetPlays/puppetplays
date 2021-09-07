@@ -38,7 +38,7 @@ test('renders the work header', () => {
   expect(h1).toHaveTextContent('My work');
   expect(h2).toHaveTextContent('Is this a work?');
   expect(h3).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote|1926|Paris, France|French',
+    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France | French',
   );
 });
 
@@ -64,7 +64,7 @@ test('renders the work header without a date', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote|Paris, France|French',
+    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France | French',
   );
 });
 
@@ -82,7 +82,7 @@ test('renders the work header without a place', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote|1926|French',
+    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | French',
   );
 });
 
@@ -100,7 +100,7 @@ test('renders the work header without a language', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote|1926|Paris, France',
+    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France',
   );
 });
 
@@ -117,6 +117,6 @@ test('renders the work header without a language and a date', () => {
   const h3 = screen.getByRole('heading', { level: 3 });
 
   expect(h3).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote|Paris, France',
+    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France',
   );
 });
