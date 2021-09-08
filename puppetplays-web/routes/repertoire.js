@@ -31,6 +31,7 @@ import {
   worksStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
 import { hasAtLeastOneItem, parseCookies, stringifyQuery } from 'lib/utils';
+import { FiltersProvider } from 'components/FiltersContext';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
@@ -304,19 +305,21 @@ function Home({
         </Fragment>
       )}
       {view === VIEWS.map && (
-        <div className={styles.map}>
-          <Button
-            onClick={() => setView(VIEWS.list)}
-            icon={<img src="/icon-list.svg" alt="" />}
-          >
-            {t('common:showList')}
-          </Button>
-          <MapView
-            locale={router.locale}
-            filters={filters}
-            searchTerms={searchTerms}
-          />
-        </div>
+        <FiltersProvider isOpen={isOpen}>
+          <div className={styles.map}>
+            <Button
+              onClick={() => setView(VIEWS.list)}
+              icon={<img src="/icon-list.svg" alt="" />}
+            >
+              {t('common:showList')}
+            </Button>
+            <MapView
+              locale={router.locale}
+              filters={filters}
+              searchTerms={searchTerms}
+            />
+          </div>
+        </FiltersProvider>
       )}
     </Layout>
   );

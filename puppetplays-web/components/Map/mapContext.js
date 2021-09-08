@@ -5,12 +5,14 @@ import { pointerMove } from 'ol/events/condition';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import Zoom from 'ol/control/Zoom';
+import { useFilters } from 'components/FiltersContext';
 import { getSelectedPlaceStyle, getHoveredPlaceStyle } from './styles';
 
 const MapContext = React.createContext();
 
 export function MapProvider({ children, zoom, center, mapRef, onClick }) {
   const [map, setMap] = useState(null);
+  const isOpen = useFilters();
 
   useEffect(() => {
     const options = {
@@ -60,6 +62,12 @@ export function MapProvider({ children, zoom, center, mapRef, onClick }) {
       map.getView().setCenter(center);
     }
   }, [center, map]);
+
+  useEffect(() => {
+    if (map) {
+      map.updateSize();
+    }
+  }, [isOpen, map]);
 
   return <MapContext.Provider value={map}>{children}</MapContext.Provider>;
 }
