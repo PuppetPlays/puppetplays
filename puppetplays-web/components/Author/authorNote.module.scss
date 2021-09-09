@@ -8,11 +8,19 @@
 .biographicalNote {
   margin-top: 30px;
   margin-bottom: 100px;
+
+  :global(.modal) & {
+    padding: 0 190px;
+  }
 }
 
 .works {
   margin: 100px 0;
   text-align: center;
+
+  :global(.modal) & {
+    padding: 0 190px;
+  }
 
   ul {
     list-style-type: none;

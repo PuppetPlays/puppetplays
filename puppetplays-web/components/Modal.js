@@ -22,7 +22,7 @@ function Modal({ isOpen, title, subtitle, children }) {
         describedby: 'description',
       }}
       onRequestClose={handleClose}
-      className={styles.modal}
+      className={`${styles.modal} modal`}
       overlayClassName={styles.overlay}
     >
       <header className={styles.header}>
