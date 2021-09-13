@@ -36,3 +36,9 @@
     }
   }
 }
+
+.ids {
+  :global(.modal) & {
+    padding: 0 190px;
+  }
+}

@@ -52,23 +52,25 @@ function AuthorNote({
         </div>
       )}
 
-      <Section
-        title={t('common:ids')}
-        show={!!idrefId || !!viafId || !!arkId || !!isniId}
-      >
-        <Info label="ARK" show={!!arkId}>
-          <ArkId id={arkId} />
-        </Info>
-        <Info label="VIAF" show={!!viafId}>
-          {viafId}
-        </Info>
-        <Info label="IDREF" show={!!idrefId}>
-          {idrefId}
-        </Info>
-        <Info label="ISNI" show={!!isniId}>
-          {isniId}
-        </Info>
-      </Section>
+      <div className={styles.ids}>
+        <Section
+          title={t('common:ids')}
+          show={!!idrefId || !!viafId || !!arkId || !!isniId}
+        >
+          <Info label="ARK" show={!!arkId}>
+            <ArkId id={arkId} />
+          </Info>
+          <Info label="VIAF" show={!!viafId}>
+            {viafId}
+          </Info>
+          <Info label="IDREF" show={!!idrefId}>
+            {idrefId}
+          </Info>
+          <Info label="ISNI" show={!!isniId}>
+            {isniId}
+          </Info>
+        </Section>
+      </div>
     </Fragment>
   );
 }
