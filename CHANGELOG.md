@@ -1,5 +1,28 @@
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.6.0
+
+Déployé le 13 septembre 2021
+
+### Amélioration
+
+- Il est maintenant possible de voir l'aperçu (sur le site) d'une technique d'animation depuis l'admin
+
+### Corrections
+
+- La fenêtre modale d'une notice de technique de manipulation ou d'une notice d'un auteur lorsqu'il y avait plusieurs images ne s'affichait pas correctement, ce n'est plus le cas.
+- Sur la vue “carte”, lorsque l'on fermait le panneau des filtres, un rectangle blanc de la taille du panneau apparaîssait de l'autre côté de l'écran, la carte s'étend maintenant pour occuper tous l'espace disponible.
+- Il n'était plus possible de consulter la notice en ligne ou l'aperçu d'une notice de personne depuis l'admin, la prévisualisation fonctionne maintenant correctement.
+- Dans l'encart des notices sur la carte, la langue ou le lieu de l'œuvre pouvait se retrouver coupés au milieu si il n'y avait pas assez de place en largeur, les mots ne sont maintenant plus coupés mais vont à la ligne.
+- L'affichage de plusieurs auteurs pour une oeuvre corrélée n'avait pas été pris en compte, les noms sont maintenant séparés par des virgules.
+- Les images des personnes ne s'affichaient pas sur la page d'accueil, ce n'est plus le cas.
+- Dans les références bibliographiques d'une traduction, et dans les autres champs de type “texte riche” il était possible de coller un formatage html (h1, h2…), le texte collé est maintenant “nettoyé” pour ne contenir que du texte brute.
+- Lorsque l'on effectuait une modification sur un personnage pour l'indexation depuis l'admin, la modification n'apparaîssait pas dans les personnages dans le texte renseigné dans les œuvres (il faillait retirer puis remettre le personnage pour que le modification apparaisse). À chaque modification d'un personnage pour l'indexation, les personnages dans le texte le référençant sont maintenant automatiquement re-sauvés.
+- Sur la carte, les icônes et le nombre à l'intérieur de ceux-ci pouvaient se chevaucher entre les différents “points”, l'icône et le nombre sont maintenant groupés et il n'y a plus de chevauchement possible.
+- Le texte de la section “Première représentation” sur le site n'avait pas la même taille que le texte des autres sections, ce n'est plus le cas.
+
+---
+
 ## Puppetplays 0.5.1
 
 Déployé le 15 juillet 2021
