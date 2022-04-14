@@ -153,10 +153,7 @@ p > a:hover {
 .ol-control {
   position: absolute;
   right: 20px;
-  top: 70px; 
-  background-color: rgba(255,255,255,0.4);
-  border-radius: 4px;
-  padding: 2px;
+  top: 70px;
 }
 
 .ol-control button {
@@ -165,7 +162,7 @@ p > a:hover {
   font-weight: 500;
   font-family: var(--ff-sans);
   background-color: white;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 30px;
   height: 30px;
   border: 0;
