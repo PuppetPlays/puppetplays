@@ -3,7 +3,6 @@ import { cond, constant, stubTrue } from 'lodash';
 import useTranslation from 'next-translate/useTranslation';
 import Media from './Media';
 import PhotoIcon from './icons/icon-photo.svg';
-import IllustrationIcon from './icons/icon-illustration.svg';
 import VideoIcon from './icons/icon-video.svg';
 import AudioIcon from './icons/icon-sound.svg';
 import styles from './mediaSection.module.scss';
@@ -11,8 +10,7 @@ import styles from './mediaSection.module.scss';
 const isOfKind = (kind) => (value) => kind === value;
 
 export const getMediaKindIcon = cond([
-  [isOfKind('photo'), constant(<PhotoIcon />)],
-  [isOfKind('illustration'), constant(<IllustrationIcon />)],
+  [isOfKind('image'), constant(<PhotoIcon />)],
   [isOfKind('video'), constant(<VideoIcon />)],
   [isOfKind('audio'), constant(<AudioIcon />)],
   [stubTrue, constant(null)],

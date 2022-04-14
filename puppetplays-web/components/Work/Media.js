@@ -10,9 +10,7 @@ const Media = ({ kind, url, alt, description, copyright, languages }) => {
 
   return (
     <div className={styles.container}>
-      {(kind === 'photo' || kind === 'illustration') && (
-        <img src={url} alt={alt} />
-      )}
+      {kind === 'image' && <img src={url} alt={alt} />}
       {kind === 'video' && <video controls src={url} />}
       {kind === 'audio' && <audio controls src={url} />}
       {(hasAtLeastOneItem(languages) || description || copyright) && (

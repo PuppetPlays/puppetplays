@@ -81,12 +81,7 @@ export async function getServerSideProps({ locale, req, res, params }) {
   const { entry } = await fetchAPI(getWorkMediasByIdQuery, {
     variables: { locale, id: params.id },
   });
-  const mediasByKind = groupBy(entry.medias, (m) => {
-    if (m.kind === 'image') {
-      return m.imageType || 'photo';
-    }
-    return m.kind;
-  });
+  const mediasByKind = groupBy(entry.medias, (m) => m.kind);
   const entryWithGroupedMedias = { ...entry, medias: mediasByKind };
 
   return {

@@ -113,4 +113,6 @@ return array(
   'Contenu principal' => 'Kerninhalt',
   'Autres informations' => 'Weitere Informationen',
   'Identifiants' => 'Schlusskennung',
+  'Nom du fichier' => 'Filename',
+  'Légende' => 'Caption',
 );
