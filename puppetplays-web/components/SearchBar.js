@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import useTranslation from 'next-translate/useTranslation';
 import SearchIcon from './icon-search.svg';
+import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';
 
 const SearchBar = ({ value, onChange, onAfterChange }) => {
@@ -25,6 +26,12 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
     [onChange, debounceOnChange],
   );
 
+  const handleReset = useCallback(() => {
+    console.log('reset search');
+    debounceOnChange('');
+    onChange('');
+  }, [onChange, debounceOnChange]);
+
   return (
     <div className={styles.container}>
       <input
@@ -34,6 +41,15 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
         value={value}
         onChange={handleChange}
       />
+      {value && (
+        <button
+          type="button"
+          onClick={handleReset}
+          className={styles.resetButton}
+        >
+          <CrossIcon />
+        </button>
+      )}
       <button type="button" className={styles.submitButton}>
         <SearchIcon />
       </button>

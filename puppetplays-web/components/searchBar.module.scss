@@ -33,7 +33,8 @@
   }
 }
 
-.submitButton {
+.submitButton,
+.resetButton {
   flex: 0 0 auto;
   display: flex;
   justify-content: center;
@@ -52,5 +53,28 @@
   svg {
     width: 16px;
     height: 16px;
+  }
+}
+
+.resetButton {
+  margin-right: 4px;
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--color-brand);
+
+    svg {
+      fill: white;
+    }
+  }
+
+  &:active {
+    background-color: var(--color-brand-light);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-brand);
   }
 }
