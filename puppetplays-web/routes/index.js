@@ -35,6 +35,7 @@ import Header from 'components/Header';
 import MainNav from 'components/MainNav';
 import HtmlContent from 'components/HtmlContent';
 import BirthDeathDates from 'components/BirthDeathDates';
+import NewsletterForm from 'components/NewsletterForm';
 import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
@@ -349,6 +350,9 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <p>{t('introText1')}</p>
                 <p>{t('introText2')}</p>
                 <p>{t('introText3')}</p>
+
+                <NewsletterForm />
+
                 <div className={styles.introContentLinks}>
                   <a
                     href={t('ourSiteUrl')}

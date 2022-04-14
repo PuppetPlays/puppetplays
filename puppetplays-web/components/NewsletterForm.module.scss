@@ -1,0 +1,81 @@
+.subscribeForm {
+  color: white;
+  max-width: 600px;
+
+  input {
+    flex-grow: 2;
+    font-size: 15px;
+    border-radius: 7px 0 0 7px;
+    text-align: left;
+    max-width: 66%;
+    font-family: var(--ff-sans);
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid white;
+    border-right: none;
+    border-radius: 7px 0 0 7px;
+
+    &:focus,
+    &:placeholder-shown:invalid:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+    }
+
+    &:invalid {
+      box-shadow: 0 0 0 4px red;
+    }
+
+    &:placeholder-shown:invalid {
+      box-shadow: none;
+    }
+  }
+
+  .subscribeFormGroup {
+    display: flex;
+    margin-top: 6px;
+    transition: box-shadow 0.25s ease-in-out;
+
+    button {
+      flex: 1 1 auto;
+    }
+  }
+
+  button {
+    font-family: var(--ff-sans);
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    border-left: none;
+    padding: 12px;
+    font-size: 15px;
+    background: var(--color-brand);
+    color: white;
+    width: auto;
+    border-radius: 0 7px 7px 0;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-brand-light);
+    }
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+.formMessage,
+.formMessageError {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: var(--color-brand-light);
+  color: white;
+  padding: 10px 16px;
+  margin: 24px 0 0;
+  max-width: 360px;
+}
+
+.formMessageError {
+  background-color: #db331c;
+}

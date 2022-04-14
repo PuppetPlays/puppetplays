@@ -1,57 +1,14 @@
-import { Fragment, useState } from 'react';
-import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
-import styles from 'styles/Wip.module.scss';
 import LanguageSelector from 'components/LanguageSelector';
+import styles from 'styles/Wip.module.scss';
+import NewsletterForm from 'components/NewsletterForm';
 
 const PARTNERS = ['ue', 'erc', 'upvm', 'humanum', 'rir', 'intactile'];
 
 export default function Wip() {
-  const { locale } = useRouter();
   const { t } = useTranslation('home');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
-  const [isSubmitError, setIsSubmitError] = useState(false);
-
-  const handleFormSubmissionError = (response) => {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response.json();
-  };
-
-  const hideMessage = (cb) => setTimeout(() => cb(false), 6000);
-
-  const handleFormSubmit = (evt) => {
-    evt.preventDefault();
-    const target = evt.target;
-    setIsSubmitting(true);
-
-    fetch(target.action, {
-      method: target.method,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: target.querySelector('[name="email"]').value,
-        locale,
-      }),
-    })
-      .then(handleFormSubmissionError)
-      .then(() => {
-        setIsSubmitting(false);
-        setIsSubmitSuccessful(true);
-        target.reset();
-        hideMessage(setIsSubmitSuccessful);
-      })
-      .catch(() => {
-        setIsSubmitting(false);
-        setIsSubmitError(true);
-        hideMessage(setIsSubmitError);
-      });
-  };
 
   return (
     <Fragment>
@@ -111,40 +68,12 @@ export default function Wip() {
                   </a>
                 </div>
                 <div className={styles.sidebarMain}>
-                  <form
-                    className={styles.subscribeForm}
-                    onSubmit={handleFormSubmit}
-                    action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
-                    method="POST"
-                  >
+                  <div className={styles.sidebarMainForm}>
                     <h2 className={styles.subscribeTitle}>
                       {t('subscribeTitle')}
                     </h2>
-                    <label className={styles.subscribeLabel} htmlFor="email">
-                      {t('subscribeLabel')}
-                    </label>
-                    <div className={styles.subscribeFormGroup}>
-                      <input
-                        name="email"
-                        id="email"
-                        required
-                        placeholder={t('emailPlaceholder')}
-                      />
-                      <button type="submit" disabled={isSubmitting}>
-                        {t('subscribe')}
-                      </button>
-                    </div>
-                    {isSubmitSuccessful && (
-                      <div className={styles.formMessage}>
-                        {t('subscriptionSuccessful')}
-                      </div>
-                    )}
-                    {isSubmitError && (
-                      <div className={styles.formMessageError}>
-                        {t('subscriptionError')}
-                      </div>
-                    )}
-                  </form>
+                    <NewsletterForm />
+                  </div>
                   <div className={styles.partnersBar}>
                     <ul className={styles.partnersBarLogos}>
                       {PARTNERS.map((partner) => (
