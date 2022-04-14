@@ -87,7 +87,7 @@ function Work(props) {
         {pagesCount && <p>{t('common:pagesCount', { count: pagesCount })}</p>}
 
         <Section
-          title={t('common:theAuthors')}
+          title={t('common:author(s)')}
           show={hasAtLeastOneItem(authors)}
         >
           {authors.map(({ typeHandle, ...rest }) => {
