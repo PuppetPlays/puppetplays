@@ -1,7 +1,10 @@
 .container {
   img {
     display: block;
-    margin: 0 auto;
+    object-position: center center;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
   }
 }
 
