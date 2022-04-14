@@ -23,8 +23,15 @@ function AuthorNote({
   arkId,
   isniId,
   works,
+  onCloseModal,
 }) {
   const { t } = useTranslation();
+
+  const handleClickOnLink = () => {
+    if (onCloseModal) {
+      onCloseModal();
+    }
+  };
 
   return (
     <Fragment>
@@ -45,7 +52,8 @@ function AuthorNote({
           <PageIntertitle>{t('common:works')}</PageIntertitle>
           <ul>
             {works.map((entry) => (
-              <li key={entry.id}>
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+              <li key={entry.id} onClick={handleClickOnLink}>
                 <Hypotext {...entry} />
               </li>
             ))}
@@ -87,6 +95,7 @@ AuthorNote.defaultProps = {
   arkId: null,
   isniId: null,
   works: null,
+  onCloseModal: null,
 };
 
 AuthorNote.propTypes = {
@@ -100,6 +109,7 @@ AuthorNote.propTypes = {
   arkId: PropTypes.string,
   isniId: PropTypes.string,
   works: PropTypes.arrayOf(PropTypes.object),
+  onCloseModal: PropTypes.func,
 };
 
 export default AuthorNote;

@@ -8,8 +8,20 @@ import Carousel from 'components/Carousel';
 import HtmlContent from 'components/HtmlContent';
 import styles from 'components/Author/authorNote.module.scss';
 
-function AnimationTechniqueNote({ description, mainImage, images, works }) {
+function AnimationTechniqueNote({
+  description,
+  mainImage,
+  images,
+  works,
+  onCloseModal,
+}) {
   const { t } = useTranslation();
+
+  const handleClickOnLink = () => {
+    if (onCloseModal) {
+      onCloseModal();
+    }
+  };
 
   return (
     <Fragment>
@@ -27,7 +39,8 @@ function AnimationTechniqueNote({ description, mainImage, images, works }) {
           <PageIntertitle>{t('common:works')}</PageIntertitle>
           <ul>
             {works.map((entry) => (
-              <li key={entry.id}>
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+              <li key={entry.id} onClick={handleClickOnLink}>
                 <Hypotext {...entry} />
               </li>
             ))}
@@ -43,6 +56,7 @@ AnimationTechniqueNote.defaultProps = {
   mainImage: [],
   images: [],
   works: null,
+  onCloseModal: null,
 };
 
 AnimationTechniqueNote.propTypes = {
@@ -50,6 +64,7 @@ AnimationTechniqueNote.propTypes = {
   mainImage: PropTypes.arrayOf(PropTypes.object),
   images: PropTypes.arrayOf(PropTypes.object),
   works: PropTypes.arrayOf(PropTypes.object),
+  onCloseModal: PropTypes.func,
 };
 
 export default AnimationTechniqueNote;

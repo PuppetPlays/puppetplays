@@ -11,11 +11,12 @@ import {
 import AuthorNote from 'components/Author/AuthorNote';
 import Modal from 'components/Modal';
 import Author from 'components/Author';
+import { useCallback } from 'react';
 
 function AuthorModal() {
   const { t } = useTranslation();
   const router = useRouter();
-  const [modalState] = useModal();
+  const [modalState, dispatch] = useModal();
 
   const { data } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.author)
@@ -44,13 +45,23 @@ function AuthorModal() {
     },
   );
 
+  const handleCloseModal = useCallback(() => {
+    dispatch({ type: 'close' });
+  }, [dispatch]);
+
   return (
     <Modal
       isOpen={isModalOfTypeOpen(modalState, modalTypes.author)}
       title={data && <Author {...get(data, 'entry', {})} />}
       subtitle={t('common:author')}
     >
-      {data && works && <AuthorNote works={works.entries} {...data.entry} />}
+      {data && works && (
+        <AuthorNote
+          works={works.entries}
+          onCloseModal={handleCloseModal}
+          {...data.entry}
+        />
+      )}
     </Modal>
   );
 }

@@ -14,11 +14,12 @@ import {
 } from 'components/modalContext';
 import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
 import Modal from 'components/Modal';
+import { useCallback } from 'react';
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
-  const [modalState] = useModal();
+  const [modalState, dispatch] = useModal();
 
   const { data } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
@@ -55,6 +56,10 @@ function AnimationTechniqueModal() {
     },
   );
 
+  const handleCloseModal = useCallback(() => {
+    dispatch({ type: 'close' });
+  }, [dispatch]);
+
   return (
     <Modal
       isOpen={isModalOfTypeOpen(modalState, modalTypes.animationTechnique)}
@@ -62,7 +67,11 @@ function AnimationTechniqueModal() {
       subtitle={t('common:animationTechnique')}
     >
       {data && works && (
-        <AnimationTechniqueNote works={works.entries} {...data.entry} />
+        <AnimationTechniqueNote
+          works={works.entries}
+          onCloseModal={handleCloseModal}
+          {...data.entry}
+        />
       )}
     </Modal>
   );
