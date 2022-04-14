@@ -58,7 +58,7 @@ function Work(props) {
     editors,
     literaryTones,
     animationTechniques,
-    dramaticDevices,
+    theatricalTechniques,
     audience,
     characters,
     actsCount,
@@ -267,10 +267,10 @@ function Work(props) {
         </Section>
 
         <Section
-          title={t('common:dramaticDevices')}
-          show={hasAtLeastOneItem(dramaticDevices)}
+          title={t('common:theatricalTechniques')}
+          show={hasAtLeastOneItem(theatricalTechniques)}
         >
-          <Keywords keywords={dramaticDevices} fill />
+          <Keywords keywords={theatricalTechniques} fill />
         </Section>
 
         {/* <button type="button">
@@ -332,7 +332,7 @@ Work.defaultProps = {
   editors: [],
   literaryTones: [],
   animationTechniques: [],
-  dramaticDevices: [],
+  theatricalTechniques: [],
   audience: [],
   characters: [],
   actsCount: null,
@@ -379,7 +379,7 @@ Work.propTypes = {
   editors: PropTypes.array,
   literaryTones: PropTypes.array,
   animationTechniques: PropTypes.array,
-  dramaticDevices: PropTypes.array,
+  theatricalTechniques: PropTypes.array,
   audience: PropTypes.array,
   characters: PropTypes.array,
   actsCount: PropTypes.number,

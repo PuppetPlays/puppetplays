@@ -25,7 +25,7 @@ function WorkSummary({
   title,
   subtitle,
   translatedTitle,
-  dramaticDevices,
+  theatricalTechniques,
   mainImage,
   keywords,
   authors,
@@ -83,7 +83,7 @@ function WorkSummary({
         />
 
         <section>
-          <Keywords keywords={dramaticDevices} fill />
+          <Keywords keywords={theatricalTechniques} fill />
           <Keywords keywords={keywords} component={Tag} />
         </section>
 
@@ -198,7 +198,7 @@ WorkSummary.defaultProps = {
   subtitle: null,
   mainImage: [],
   translatedTitle: null,
-  dramaticDevices: [],
+  theatricalTechniques: [],
   keywords: [],
   authors: [],
   mostRelevantDate: null,
@@ -233,7 +233,7 @@ WorkSummary.propTypes = {
   subtitle: PropTypes.string,
   mainImage: PropTypes.array,
   translatedTitle: PropTypes.string,
-  dramaticDevices: PropTypes.array,
+  theatricalTechniques: PropTypes.array,
   keywords: PropTypes.array,
   authors: PropTypes.array,
   mostRelevantDate: PropTypes.string,

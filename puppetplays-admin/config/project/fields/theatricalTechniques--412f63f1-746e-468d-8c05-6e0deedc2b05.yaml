@@ -1,18 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
-handle: dramaticDevices
+handle: theatricalTechniques
 instructions: ''
-name: 'Procédés dramatiques'
+name: 'Procédés théâtraux'
 searchable: false
 settings:
   allowSelfRelations: false
   limit: ''
   localizeRelations: false
-  selectionLabel: 'Sélectionner un ou plusieurs procédé(s) dramatique(s)'
+  selectionLabel: 'Sélectionner un ou plusieurs procédés théâtraux'
   showSiteMenu: true
   source: null
   sources:
-    - 'section:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
+    - 'section:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

@@ -47,11 +47,11 @@ permissions:
   - 'editpeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'editpeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'editentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'createentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
-  - 'deleteentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
-  - 'editpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
-  - 'editpeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
-  - 'editentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés dramatiques
+  - 'createentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'deleteentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'editpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'editpeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'editentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'createentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'deleteentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'editpeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics

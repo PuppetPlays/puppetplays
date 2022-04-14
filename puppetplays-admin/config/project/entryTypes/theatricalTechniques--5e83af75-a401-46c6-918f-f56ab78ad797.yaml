@@ -28,10 +28,10 @@ fieldLayouts:
             width: 100
         name: Contenu
         sortOrder: 1
-handle: dramaturgicTechniques
+handle: theatricalTechniques
 hasTitleField: true
-name: 'Techniques dramaturgiques'
-section: ccd48638-f531-4032-a057-8af4f24cd187 # Procédés dramatiques
+name: 'Procédés théâtraux'
+section: ccd48638-f531-4032-a057-8af4f24cd187 # Procédés théâtraux
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

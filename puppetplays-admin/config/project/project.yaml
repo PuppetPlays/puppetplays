@@ -1,4 +1,4 @@
-dateModified: 1649925283
+dateModified: 1649926558
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -32,7 +32,7 @@ meta:
     4cda444a-a132-4409-8e1e-5205e6a53896: 'Puppetplays IT' # Puppetplays IT
     5c594932-2c3a-4678-9988-3ee891a6df21: 'Date de référence' # Date de référence
     5dc50f30-9aba-4974-92fb-08b263ce5716: Places # Places
-    5e83af75-a401-46c6-918f-f56ab78ad797: 'Techniques dramaturgiques' # Techniques dramaturgiques
+    5e83af75-a401-46c6-918f-f56ab78ad797: 'Procédés théâtraux' # Procédés théâtraux
     6e173e2f-1a52-45d7-bc3d-ccd4901e799b: Type # Type
     6e506719-d279-4e2c-9e84-fbf315440712: 'Nom de famille' # Nom de famille
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
@@ -71,7 +71,7 @@ meta:
     209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
     269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
     397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
-    412f63f1-746e-468d-8c05-6e0deedc2b05: 'Procédés dramatiques' # Procédés dramatiques
+    412f63f1-746e-468d-8c05-6e0deedc2b05: 'Procédés théâtraux' # Procédés théâtraux
     461b2661-d7d4-4998-8e56-f8ed7dacfb2f: 'Titre traduit' # Titre traduit
     492cc09a-052e-40d6-a33b-7ca74a831805: 'Institutions de conservation' # Institutions de conservation
     980b265a-4482-43da-940c-1d595933f6db: Langue # Langue
@@ -120,7 +120,7 @@ meta:
     c18b0f9d-717f-4ce0-a996-f482d7432dba: 'Date de naissance' # Date de naissance
     c39eea87-c2d5-4632-bcb0-f6e737f34e0f: Lieu # Lieu
     c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
-    ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés dramatiques' # Procédés dramatiques
+    ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
     cf856488-e716-4834-a558-395405d8eeee: Transcripteur # Transcripteur
     cfaaf21a-8fd0-4ce6-adcc-eba9f6c787a8: 'Autre(s) titre(s)' # Autre(s) titre(s)
     cfc8c93d-134d-4d7f-84dd-31c7c229e699: 'Date d’écriture (max)' # Date d’écriture (max)

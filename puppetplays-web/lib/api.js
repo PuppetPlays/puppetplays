@@ -122,7 +122,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
       mainImage {
         ...assetFragment
       },
-      dramaticDevices {
+      theatricalTechniques {
         title
       },
       keywords {
@@ -374,7 +374,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
           textName
         }
       },
-      dramaticDevices {
+      theatricalTechniques {
         title
       },
       actsCount,

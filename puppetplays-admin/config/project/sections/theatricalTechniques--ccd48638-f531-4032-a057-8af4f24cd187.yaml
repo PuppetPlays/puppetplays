@@ -1,6 +1,7 @@
+defaultPlacement: end
 enableVersioning: false
-handle: dramaticDevices
-name: 'Procédés dramatiques'
+handle: theatricalTechniques
+name: 'Procédés théâtraux'
 previewTargets:
   -
     __assoc__:
@@ -19,20 +20,20 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'theatrical-techniques/{slug}'
   397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'procedes-theatraux/{slug}'
   59986aab-e6c1-4cdf-a062-8db833d2b327: # Puppetplays EN
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'dramaturgic-techniques/{slug}'
+    uriFormat: 'theatrical-techniques/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824: # Puppetplays DE
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: 'techniques-dramaturgiques/{slug}'
+    uriFormat: 'theatrical-techniques/{slug}'
 type: channel
