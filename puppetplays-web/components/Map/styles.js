@@ -1,4 +1,3 @@
-import { cond, constant, stubTrue } from 'lodash';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import Fill from 'ol/style/Fill';
@@ -44,12 +43,8 @@ const getPlaceStyleProps = ({ ids, type }) => {
   const text = ids.length.toString();
   const offsetY = isCountry(type) ? 0 : -45;
   const anchor = isCountry(type) ? [0.5, 0.5] : [0.5, 0.96];
-  const getSrcSuffix = cond([
-    [() => isCountry(type), constant('circle')],
-    [() => ids.length === 1, constant('single')],
-    [stubTrue, constant('cluster')],
-  ]);
-  return { offsetY, anchor, srcSuffix: getSrcSuffix(), text };
+  const srcSuffix = isCountry(type) ? 'circle' : 'single';
+  return { offsetY, anchor, srcSuffix, text };
 };
 
 const getBaseStyle = (properties, textColor, state) => {
