@@ -38,4 +38,5 @@ scope:
   - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read' # Images
   - 'volumes.48645943-e026-4046-ae42-c8efbe3d0b1c:read' # Videos
   - 'volumes.37720b4b-f4c6-42b4-8400-af5f71b3e072:read' # Sounds
+  - 'usergroups.everyone:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres

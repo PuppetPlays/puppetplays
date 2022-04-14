@@ -1,4 +1,4 @@
-dateModified: 1631032587
+dateModified: 1649921974
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -171,7 +171,8 @@ plugins:
     settings:
       editorNotesRequired: ''
       editorNotifications: '1'
-      editorNotificationsOptions: ''
+      editorNotificationsOptions:
+        - replyToReviewer
       editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
       enabledSections: '*'
       lockDraftSubmissions: '1'
@@ -181,7 +182,7 @@ plugins:
       reviewerApprovalNotifications: ''
       reviewerNotifications: '1'
       reviewerUserGroups: ''
-      selectedPublishers: '*'
+      selectedPublishers: ''
 system:
   edition: pro
   live: true
