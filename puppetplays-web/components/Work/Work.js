@@ -26,6 +26,7 @@ import styles from './workSummary.module.scss';
 
 function Work(props) {
   const {
+    writtenBy,
     doi,
     viafId,
     arkId,
@@ -287,12 +288,20 @@ function Work(props) {
             <ArkId id={arkId} />
           </Info>
         </Section>
+
+        <Section
+          title={t('common:writtenBy')}
+          show={writtenBy.firstName || writtenBy.lastName}
+        >
+          {writtenBy.firstName} {writtenBy.lastName}
+        </Section>
       </div>
     </article>
   );
 }
 
 Work.defaultProps = {
+  writtenBy: {},
   mainImage: [],
   doi: null,
   viafId: null,
@@ -335,6 +344,10 @@ Work.defaultProps = {
 };
 
 Work.propTypes = {
+  writtenBy: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+  }),
   title: PropTypes.string.isRequired,
   mainImage: PropTypes.array,
   doi: PropTypes.string,
