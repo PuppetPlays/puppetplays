@@ -16,7 +16,7 @@ export function MapProvider({ children, zoom, center, mapRef, onClick }) {
 
   useEffect(() => {
     const options = {
-      view: new View({ zoom, maxZoom: 7, minZoom: 3, center }),
+      view: new View({ zoom, maxZoom: 12, minZoom: 3, center }),
       layers: [],
       controls: [new Zoom({ target: document.querySelector('.map-view') })],
       overlays: [],
