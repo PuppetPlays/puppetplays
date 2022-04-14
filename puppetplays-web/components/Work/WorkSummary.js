@@ -42,7 +42,7 @@ function WorkSummary({
   firstPerformanceComplementaryInformation,
   publication,
   modernEdition,
-  onlineEdition,
+  onlineCopy,
   literaryTones,
   animationTechniques,
   audience,
@@ -107,7 +107,7 @@ function WorkSummary({
 
             <Section
               title={t('common:publications')}
-              show={!!publication || !!modernEdition || !!onlineEdition}
+              show={!!publication || !!modernEdition || !!onlineCopy}
             >
               <Info label={t('common:publication')} show={!!publication}>
                 <div dangerouslySetInnerHTML={{ __html: publication }} />
@@ -115,14 +115,14 @@ function WorkSummary({
               <Info label={t('common:modernEdition')} show={!!modernEdition}>
                 <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
               </Info>
-              {onlineEdition && (
-                <div className={styles.onlineEdition}>
+              {onlineCopy && (
+                <div className={styles.onlineCopy}>
                   <a
-                    href={onlineEdition}
+                    href={onlineCopy}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {t('common:onlineEdition')}
+                    {t('common:onlineCopy')}
                   </a>
                 </div>
               )}
@@ -214,7 +214,7 @@ WorkSummary.defaultProps = {
   firstPerformanceComplementaryInformation: null,
   publication: null,
   modernEdition: null,
-  onlineEdition: null,
+  onlineCopy: null,
   literaryTones: [],
   animationTechniques: [],
   audience: [],
@@ -249,7 +249,7 @@ WorkSummary.propTypes = {
   firstPerformanceComplementaryInformation: PropTypes.string,
   publication: PropTypes.string,
   modernEdition: PropTypes.string,
-  onlineEdition: PropTypes.string,
+  onlineCopy: PropTypes.string,
   literaryTones: PropTypes.array,
   animationTechniques: PropTypes.array,
   audience: PropTypes.array,

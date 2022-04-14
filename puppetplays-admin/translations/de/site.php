@@ -26,7 +26,7 @@ return array(
   'Description' => 'Beschreibung',
   'Domaine public' => 'Gemeinfreiheit',
   'Édition' => 'Ausgabe',
-  'Édition en ligne' => 'Online-Ausgabe',
+  'Exemplaire en ligne' => 'Online-Ausgabe',
   'Édition moderne' => 'Neuere Aufgabe',
   'Femme' => 'Weiblich',
   'Format' => 'Dokumentformat',

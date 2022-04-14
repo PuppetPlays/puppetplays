@@ -1,12 +1,15 @@
+columnSuffix: null
 contentColumnType: string(255)
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
-handle: onlineEdition
+handle: onlineCopy
 instructions: ''
-name: 'Édition en ligne'
+name: 'Exemplaire en ligne'
 searchable: false
 settings:
   maxLength: '255'
-  placeholder: ''
+  placeholder: null
+  types:
+    - url
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Url

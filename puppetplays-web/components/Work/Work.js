@@ -52,7 +52,7 @@ function Work(props) {
     firstPerformanceComplementaryInformation,
     publication,
     modernEdition,
-    onlineEdition,
+    onlineCopy,
     translations,
     transcribers,
     editors,
@@ -155,7 +155,7 @@ function Work(props) {
             hasAtLeastOneItem(transcribers) ||
             hasAtLeastOneItem(editors) ||
             !!modernEdition ||
-            !!onlineEdition ||
+            !!onlineCopy ||
             hasAtLeastOneItem(translations)
           }
         >
@@ -174,10 +174,10 @@ function Work(props) {
           <Info label={t('common:modernEdition')} show={!!modernEdition}>
             <div dangerouslySetInnerHTML={{ __html: modernEdition }} />
           </Info>
-          {onlineEdition && (
-            <div className={styles.onlineEdition}>
-              <a href={onlineEdition} target="_blank" rel="noopener noreferrer">
-                {t('common:onlineEdition')}
+          {onlineCopy && (
+            <div className={styles.onlineCopy}>
+              <a href={onlineCopy} target="_blank" rel="noopener noreferrer">
+                {t('common:onlineCopy')}
               </a>
             </div>
           )}
@@ -326,7 +326,7 @@ Work.defaultProps = {
   firstPerformanceComplementaryInformation: null,
   publication: null,
   modernEdition: null,
-  onlineEdition: null,
+  onlineCopy: null,
   translations: [],
   transcribers: [],
   editors: [],
@@ -373,7 +373,7 @@ Work.propTypes = {
   firstPerformanceComplementaryInformation: PropTypes.string,
   publication: PropTypes.string,
   modernEdition: PropTypes.string,
-  onlineEdition: PropTypes.string,
+  onlineCopy: PropTypes.string,
   translations: PropTypes.array,
   transcribers: PropTypes.array,
   editors: PropTypes.array,

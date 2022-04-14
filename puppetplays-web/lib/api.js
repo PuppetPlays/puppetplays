@@ -160,7 +160,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
       firstPerformanceComplementaryInformation,
       publication,
       modernEdition,
-      onlineEdition,
+      onlineCopy,
       literaryTones {
         title
       },
@@ -340,7 +340,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         }
       },
       modernEdition,
-      onlineEdition,
+      onlineCopy,
       translations {
         ... on translations_translation_BlockType {
           bibliographicRecord,

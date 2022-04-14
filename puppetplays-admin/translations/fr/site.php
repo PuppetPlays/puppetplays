@@ -26,7 +26,7 @@ return array(
   'Description' => 'Description',
   'Domaine public' => 'Domaine public',
   'Édition' => 'Édition',
-  'Édition en ligne' => 'Édition en ligne',
+  'Exemplaire en ligne' => 'Exemplaire en ligne',
   'Édition moderne' => 'Édition moderne',
   'Femme' => 'Femme',
   'Format' => 'Format',

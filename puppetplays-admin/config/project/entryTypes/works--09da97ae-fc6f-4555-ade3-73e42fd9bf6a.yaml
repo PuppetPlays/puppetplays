@@ -254,7 +254,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 09401318-0a4b-4b56-a6c4-c57d3b151579 # Édition en ligne
+            fieldUid: 09401318-0a4b-4b56-a6c4-c57d3b151579 # Exemplaire en ligne
             instructions: null
             label: null
             required: false
