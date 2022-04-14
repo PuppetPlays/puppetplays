@@ -38,7 +38,7 @@ import Pagination from 'components/Pagination';
 import Filters from 'components/WorksFilters';
 import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
-import styles from 'styles/Repertoire.module.css';
+import styles from 'styles/Database.module.css';
 
 const MapView = dynamic(() => import('components/Map/MapView'), { ssr: false });
 
@@ -115,7 +115,7 @@ function Home({
     (page) => {
       setCurrentPage(page.selected);
       router.push(
-        `repertoire/?${stringifyQuery({
+        `base-de-donnes/?${stringifyQuery({
           search: searchTerms,
           page: page.selected + 1,
           ...filters,
@@ -152,7 +152,7 @@ function Home({
       setFilters(newFilters);
       setCurrentPage(0);
       router.push(
-        `repertoire/?${stringifyQuery({
+        `base-de-donnes/?${stringifyQuery({
           search: searchTerms,
           page: 1,
           ...newFilters,
@@ -177,7 +177,7 @@ function Home({
     (search) => {
       setCurrentPage(0);
       router.push(
-        `repertoire/?${stringifyQuery({
+        `base-de-donnes/?${stringifyQuery({
           search,
           page: 1,
           ...filters,
@@ -195,7 +195,7 @@ function Home({
     setCurrentPage(0);
     setFilters({});
     router.push(
-      `repertoire/?${stringifyQuery({
+      `base-de-donnes/?${stringifyQuery({
         search: searchTerms,
         page: 1,
       })}`,

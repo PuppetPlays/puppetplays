@@ -22,7 +22,7 @@ import {
   getWorkByIdQuery,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
-import { formatBirthDeathDates, getRandom } from 'lib/utils';
+import { getRandom } from 'lib/utils';
 import LanguageSelector from 'components/LanguageSelector';
 import SearchBarStateful from 'components/SearchBarStateful';
 import EntryPointCard from 'components/Home/EntryPointCard';
@@ -34,6 +34,7 @@ import Keywords, { Tag } from 'components/Keywords';
 import Header from 'components/Header';
 import MainNav from 'components/MainNav';
 import HtmlContent from 'components/HtmlContent';
+import BirthDeathDates from 'components/BirthDeathDates';
 import styles from 'styles/Home.module.scss';
 
 const FINANCERS = ['ue', 'erc'];
@@ -48,7 +49,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const animationTechniqueLinkRef = useRef(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   const [EXPLORE_BY] = useState({
-    database: { to: '/repertoire' },
+    database: { to: '/base-de-donnes' },
     authors: { to: '/auteurs' },
     pathways: {},
     publications: {},
@@ -222,10 +223,12 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <Card
                       key={entry.id}
                       buttonLabel={t('common:openNote')}
-                      subtitle={formatBirthDeathDates(
-                        entry.birthDate,
-                        entry.deathDate,
-                      )}
+                      subtitle={
+                        <BirthDeathDates
+                          birthDate={entry.birthDate}
+                          deathDate={entry.deathDate}
+                        />
+                      }
                       href={`/auteurs/${entry.id}/${entry.slug}`}
                       {...entry}
                     />

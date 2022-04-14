@@ -32,9 +32,9 @@ function MainNav({ inverse }) {
         childrenWrapperComponent={Wrapper}
       >
         {[
-          <li key="repertoire">
-            <Link href="/repertoire">
-              <a>{t('common:repertoire')}</a>
+          <li key="database">
+            <Link href="/base-de-donnes">
+              <a>{t('common:database')}</a>
             </Link>
           </li>,
           <li key="auteurs">
