@@ -86,7 +86,10 @@
     "company": "Company",
     "author": "Author",
     "type": "Type",
-    "typePlaceholder": "Author or company"
+    "typePlaceholder": "Author or company",
+    "lowerBoundPeriod": "Lower bound period",
+    "upperBoundPeriod": "Upper bound period",
+    "selectedPeriod": "Selected period"
   },
   "imageCopyright": "Copyright: ",
   "works": "Works",

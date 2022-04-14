@@ -86,7 +86,10 @@
     "company": "Compagnie",
     "author": "Auteur",
     "type": "Type",
-    "typePlaceholder": "Auteur ou compagnie"
+    "typePlaceholder": "Auteur ou compagnie",
+    "lowerBoundPeriod": "Borne minimum de la période",
+    "upperBoundPeriod": "Borne maximum de la période",
+    "selectedPeriod": "Période sélectionnée"
   },
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",
