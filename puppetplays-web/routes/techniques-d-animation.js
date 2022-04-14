@@ -33,7 +33,7 @@ function AnimationTechniques({ initialData }) {
   return (
     <Layout>
       <Head>
-        <title>Puppetplays | Auteurs</title>
+        <title>Puppetplays | Techniques d’animation</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
