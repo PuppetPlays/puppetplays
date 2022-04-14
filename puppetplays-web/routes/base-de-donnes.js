@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useSWR, { mutate } from 'swr';
 import get from 'lodash/get';
 import { useCookies } from 'react-cookie';
 import Head from 'next/head';
@@ -60,54 +59,36 @@ function Home({
   tags,
   isFiltersBarOpened,
 }) {
-  const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
-  const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
-  const handleToggleFiltersBar = useCallback(() => {
-    setIsOpen(!isOpen);
-    setCookie('isWorksFiltersBarOpened', !isOpen);
-  }, [isOpen, setCookie]);
   const { t } = useTranslation();
   const router = useRouter();
+  const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
+  const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
   });
+  const [data, setData] = useState(initialData);
   const [searchTerms, setSearchTerms] = useState(router.query.search);
   const [currentPage, setCurrentPage] = useState(
     router.query.page ? parseInt(router.query.page, 10) - 1 : 0,
   );
-  const { data } = useSWR(
-    [
-      getAllWorksQuery(filters),
-      router.locale,
-      currentPage * WORKS_PAGE_SIZE,
-      searchTerms,
-      filters,
-    ],
-    (query, locale, offset, searchTerms, filtersState) => {
-      return fetchAPI(query, {
-        variables: {
-          locale,
-          offset,
-          limit: WORKS_PAGE_SIZE,
-          search: buildSearchQuery(searchTerms),
-          ...stateToGraphqlVariables(filtersState),
-        },
-      });
-    },
-    {
-      initialData,
-      revalidateOnFocus: false,
-    },
-  );
+
+  const handleToggleFiltersBar = useCallback(() => {
+    setIsOpen(!isOpen);
+    setCookie('isWorksFiltersBarOpened', !isOpen);
+  }, [isOpen, setCookie]);
 
   useEffect(() => {
-    mutate([
-      getAllWorksQuery(filters),
-      router.locale,
-      currentPage * WORKS_PAGE_SIZE,
-      searchTerms,
-      filters,
-    ]);
+    fetchAPI(getAllWorksQuery(filters), {
+      variables: {
+        locale: router.locale,
+        offset: currentPage * WORKS_PAGE_SIZE,
+        limit: WORKS_PAGE_SIZE,
+        search: buildSearchQuery(searchTerms),
+        ...stateToGraphqlVariables(filters),
+      },
+    }).then((newData) => {
+      setData(newData);
+    });
   }, [router.locale, currentPage, searchTerms, filters]);
 
   const handlePageChange = useCallback(
@@ -132,11 +113,31 @@ function Home({
     (value, { name }) => {
       let newFilters;
       if (name === 'period') {
-        newFilters = {
-          ...filters,
-          compositionMinDate: value[0],
-          compositionMaxDate: value[1],
-        };
+        if (value[0] !== periodBounds[0] && value[1] !== periodBounds[1]) {
+          newFilters = {
+            ...filters,
+            compositionMinDate: value[0],
+            compositionMaxDate: value[1],
+          };
+        } else if (value[0] !== periodBounds[0]) {
+          newFilters = {
+            ...filters,
+            compositionMinDate: value[0],
+            compositionMaxDate: null,
+          };
+        } else if (value[1] !== periodBounds[1]) {
+          newFilters = {
+            ...filters,
+            compositionMinDate: null,
+            compositionMaxDate: value[1],
+          };
+        } else {
+          newFilters = {
+            ...filters,
+            compositionMinDate: null,
+            compositionMaxDate: null,
+          };
+        }
       } else if (name === 'publicDomain') {
         newFilters = {
           ...filters,

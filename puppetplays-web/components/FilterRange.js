@@ -12,7 +12,10 @@ const renderThumb = (props) => {
 function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   const { t } = useTranslation();
   const sliderRef = useRef(null);
-  const [values, setValues] = useState([valueMin, valueMax]);
+  const [values, setValues] = useState([
+    valueMin || bounds[0],
+    valueMax || bounds[1],
+  ]);
 
   const handeAfterChange = useCallback(
     (value) => {
@@ -35,8 +38,8 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   }, [sliderRef]);
 
   useEffect(() => {
-    setValues([valueMin, valueMax]);
-  }, [valueMin, valueMax]);
+    setValues([valueMin || bounds[0], valueMax || bounds[1]]);
+  }, [valueMin, valueMax, bounds]);
 
   return (
     <div className={styles.wrapper}>
@@ -69,14 +72,14 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
               <div className={styles.valueLabel}>
                 {t('common:filters.composeAfter')}
               </div>
-              <div>{values[0] || '–'}</div>
+              <div>{values[0]}</div>
             </div>
             <div className={styles.separator}>–</div>
             <div className={styles.value}>
               <div className={styles.valueLabel}>
                 {t('common:filters.composeBefore')}
               </div>
-              <div>{values[1] || '–'}</div>
+              <div>{values[1]}</div>
             </div>
           </div>
         </Fragment>
