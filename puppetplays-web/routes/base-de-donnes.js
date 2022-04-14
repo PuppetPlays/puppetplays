@@ -61,7 +61,6 @@ function Home({
   isFiltersBarOpened,
 }) {
   const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
-  const [view, setView] = useState(VIEWS.list);
   const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
   const handleToggleFiltersBar = useCallback(() => {
     setIsOpen(!isOpen);
@@ -206,6 +205,40 @@ function Home({
     );
   }, [router, searchTerms]);
 
+  const handleSetMapView = useCallback(() => {
+    setCurrentPage(0);
+    setFilters({ ...filters, view: VIEWS.map });
+    router.push(
+      `base-de-donnes/?${stringifyQuery({
+        ...filters,
+        view: VIEWS.map,
+        search: searchTerms,
+        page: 1,
+      })}`,
+      undefined,
+      {
+        shallow: true,
+      },
+    );
+  }, [router, filters, searchTerms]);
+
+  const handleSetListView = useCallback(() => {
+    setCurrentPage(0);
+    setFilters({ ...filters, view: VIEWS.list });
+    router.push(
+      `base-de-donnes/?${stringifyQuery({
+        ...filters,
+        view: VIEWS.list,
+        search: searchTerms,
+        page: 1,
+      })}`,
+      undefined,
+      {
+        shallow: true,
+      },
+    );
+  }, [router, filters, searchTerms]);
+
   return (
     <Layout
       header={
@@ -275,7 +308,7 @@ function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {view === VIEWS.list && (
+      {(filters.view === VIEWS.list || !filters.view) && (
         <Fragment>
           <div className={styles.worksHeader}>
             <div className={styles.worksHeaderPageCount}>
@@ -287,7 +320,7 @@ function Home({
               onPageChange={handlePageChange}
             />
             <Button
-              onClick={() => setView(VIEWS.map)}
+              onClick={handleSetMapView}
               icon={<img src="/icon-map.svg" alt="" />}
             >
               {t('common:showMap')}
@@ -304,11 +337,11 @@ function Home({
           </div>
         </Fragment>
       )}
-      {view === VIEWS.map && (
+      {filters.view === VIEWS.map && (
         <FiltersProvider isOpen={isOpen}>
           <div className={styles.map}>
             <Button
-              onClick={() => setView(VIEWS.list)}
+              onClick={handleSetListView}
               icon={<img src="/icon-list.svg" alt="" />}
             >
               {t('common:showList')}

@@ -37,6 +37,9 @@ function MainNav({ inverse }) {
               <a>{t('common:database')}</a>
             </Link>
           </li>,
+          <li key="map">
+            <a href="/base-de-donnes?view=MAP">{t('common:map')}</a>
+          </li>,
           <li key="auteurs">
             <Link href="/auteurs">
               <a>{t('common:authors')}</a>

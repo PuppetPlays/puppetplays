@@ -139,6 +139,7 @@ export const worksQueryParamsToState = queryParamsToState({
   formats: split(','),
   relatedToTags: split(','),
   publicDomain: (filter) => (filter === 'true' ? true : undefined),
+  view: identity,
 });
 
 export const authorsQueryParamsToGraphqlVariables = (queryParams) =>
