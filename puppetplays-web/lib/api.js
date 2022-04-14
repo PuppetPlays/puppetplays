@@ -530,7 +530,7 @@ query getAuthorById($locale: [String], $id: [QueryArgument]) {
 
 export const getWorksOfAuthorQuery = `
 query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
-  entries(section: "works", site: $locale, relatedTo: $id) {
+  entries(section: "works", site: $locale, relatedTo: $id, orderBy: "compositionMinDate") {
     id,
     slug,
     title,
@@ -580,7 +580,7 @@ query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
 
 export const getWorksOfAnimationTechniqueQuery = `
 query getWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
-  entries(section: "works", site: $locale, relatedTo: $id) {
+  entries(section: "works", site: $locale, relatedTo: $id, orderBy: "compositionMinDate") {
     id,
     title,
     ... on works_works_Entry {
