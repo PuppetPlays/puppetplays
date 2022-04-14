@@ -74,7 +74,12 @@ function Work(props) {
       className={`${styles.container} ${styles['container--full']} work-page-container`}
     >
       <div className={styles.media}>
-        <CoverImage image={mainImage} year={compositionMinDate} height={340} />
+        <CoverImage
+          image={mainImage}
+          year={compositionMinDate}
+          height={340}
+          hasPlaceholder={false}
+        />
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>
