@@ -6,6 +6,9 @@ import groupBy from 'lodash/groupBy';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
+import negate from 'lodash/negate';
+import map from 'lodash/fp/map';
+import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
 import isArray from 'lodash/isArray';
 import useSWR, { mutate } from 'swr';
@@ -22,16 +25,14 @@ import {
   authorsQueryParamsToState as queryParamsToState,
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { stringifyQuery, formatBirthDeathDates } from 'lib/utils';
+import { stringifyQuery } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
 import Company from 'components/Company';
+import BirthDeathDates from 'components/BirthDeathDates';
 import Filters from 'components/AuthorsFilters';
 import styles from 'styles/Authors.module.scss';
-import negate from 'lodash/negate';
-import map from 'lodash/fp/map';
-import get from 'lodash/fp/get';
 
 const isOfType = (type) => ({ typeHandle }) => typeHandle === type;
 
@@ -162,9 +163,10 @@ function Authors({ initialData, languages, places }) {
                         <Link href={`/auteurs/${author.id}/${author.slug}`}>
                           <a>
                             <Author {...author} lastNameFirst />{' '}
-                            <span>
-                              {formatBirthDeathDates(birthDate, deathDate)}
-                            </span>
+                            <BirthDeathDates
+                              birthDate={birthDate}
+                              deathDate={deathDate}
+                            />
                           </a>
                         </Link>
                       )}

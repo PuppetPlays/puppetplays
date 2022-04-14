@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import BirthDeathDates from 'components/BirthDeathDates';
 import Author from 'components/Author';
 import Card from 'components/Card';
 import styles from './authorCard.module.scss';
-import { formatBirthDeathDates } from 'lib/utils';
 
 function AuthorCard({
   id,
@@ -31,7 +31,11 @@ function AuthorCard({
             nickname={nickname}
           />
         }
-        subtitle={<div>{formatBirthDeathDates(birthDate, deathDate)}</div>}
+        subtitle={
+          <div>
+            <BirthDeathDates birthDate={birthDate} deathDate={deathDate} />
+          </div>
+        }
         buttonLabel={t('common:readBiography')}
         mainImage={mainImage}
       />
