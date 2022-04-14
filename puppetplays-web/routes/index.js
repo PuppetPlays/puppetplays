@@ -372,7 +372,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   >
                     {t('projectNews')}
                   </a>
-                  <a href="mailto:contact@puppetplays.eu">
+                  <a href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
                   </a>
                 </div>

@@ -193,7 +193,7 @@ export default function Wip() {
                     >
                       {t('theTeam')}
                     </a>
-                    <a href="mailto:contact@puppetplays.eu">
+                    <a href="mailto:puppetplays@univ-montp3.fr">
                       <span className={styles.linkIcon} aria-hidden>
                         <svg
                           width="20"
