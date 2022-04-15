@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Header from 'components/Header';
 import AuthorModal from 'components/Author/AuthorModal';
+import ImageModal from 'components/ImageModal';
 import AnimationTechniqueModal from 'components/AnimationTechnique/AnimationTechniqueModal';
 import SearchBarStateful from 'components/SearchBarStateful';
 import styles from './layout.module.scss';
@@ -16,6 +17,7 @@ function Layout({ aside, header, children }) {
         {aside && <aside className={styles.aside}>{aside}</aside>}
         <main className={styles.main}>{children}</main>
       </div>
+      <ImageModal />
       <AuthorModal />
       <AnimationTechniqueModal />
     </div>

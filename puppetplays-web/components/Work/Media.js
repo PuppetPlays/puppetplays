@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { getTitle, hasAtLeastOneItem } from 'lib/utils';
 import CommaSepList from 'components/CommaSepList';
+import ZoomableImage from 'components/ZoomableImage';
 import styles from './media.module.scss';
 
 /* eslint-disable jsx-a11y/media-has-caption */
@@ -10,7 +11,11 @@ const Media = ({ kind, url, alt, description, copyright, languages }) => {
 
   return (
     <div className={styles.container}>
-      {kind === 'image' && <img src={url} alt={alt} />}
+      {kind === 'image' && (
+        <ZoomableImage>
+          <img src={url} alt={alt} />
+        </ZoomableImage>
+      )}
       {kind === 'video' && <video controls src={url} />}
       {kind === 'audio' && <audio controls src={url} />}
       {(hasAtLeastOneItem(languages) || description || copyright) && (

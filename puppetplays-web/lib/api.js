@@ -416,7 +416,6 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         kind,
         ... on images_Asset {
           alt,
-          imageType,
           description,
           copyright
         },

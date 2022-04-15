@@ -4,16 +4,23 @@
   width: 100%;
   z-index: var(--z-index-modal);
   left: 50%;
-  overflow: hidden;
+  overflow: auto;
   display: inline-block;
   margin-top: 20px;
   background-color: white;
   transform: translateX(-50%);
-  max-height: calc(100vh - 30px);
   border-radius: 7px;
 
   &:focus {
     outline: none;
+  }
+
+  .has-modal-scroll & {
+    overflow: visible;
+  }
+
+  .has-body-scroll & {
+    max-height: calc(100vh - 30px);
   }
 }
 
@@ -25,6 +32,10 @@
   bottom: 0;
   left: 0;
   background-color: var(--color-modal-overlay);
+
+  &.has-modal-scroll {
+    overflow: auto;
+  }
 }
 
 .closeButton {
@@ -55,10 +66,15 @@
 
 .content {
   overflow: auto;
-  height: calc(100vh - 90px);
   width: 100%;
+
+  .has-body-scroll & {
+    height: calc(100vh - 90px);
+  }
 }
 
 .body {
-  padding: 0 0 44px;
+  .has-body-scroll & {
+    padding: 0 0 44px;
+  }
 }

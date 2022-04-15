@@ -1,6 +1,6 @@
 import { buildSearchQuery } from './api';
 
-describe.only('buildSearchQuery', () => {
+describe('buildSearchQuery', () => {
   const testCases = [
     ['mot1 mot2 mot3', 'mot1 OR mot2 OR mot3'],
     ['"mot1 mot2" mot3', '"mot1 mot2" OR mot3'],

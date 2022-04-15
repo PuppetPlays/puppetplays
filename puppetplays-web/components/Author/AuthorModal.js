@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import get from 'lodash/get';
 import useTranslation from 'next-translate/useTranslation';
 import useSWR from 'swr';
@@ -11,7 +12,6 @@ import {
 import AuthorNote from 'components/Author/AuthorNote';
 import Modal from 'components/Modal';
 import Author from 'components/Author';
-import { useCallback } from 'react';
 
 function AuthorModal() {
   const { t } = useTranslation();

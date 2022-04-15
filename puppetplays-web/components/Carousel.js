@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { hasAtLeastOneItem } from 'lib/utils';
+import ZoomableImage from 'components/ZoomableImage';
 import styles from './carousel.module.scss';
 
 function Carousel({ images }) {
@@ -50,12 +51,14 @@ function Carousel({ images }) {
             className={styles.image}
             style={{ width: image.width }}
           >
-            <img
-              src={image.url}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-            />
+            <ZoomableImage>
+              <img
+                src={image.url}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+              />
+            </ZoomableImage>
             {(image.description || image.copyright) && (
               <div className={styles.caption}>
                 {image.description && (
