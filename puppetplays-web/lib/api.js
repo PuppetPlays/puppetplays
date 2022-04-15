@@ -6,6 +6,7 @@ import {
   worksStateToGraphqlEntriesParams,
   worksStateToGraphqlQueryArgument,
 } from 'lib/filters';
+import { identity } from 'lib/utils';
 
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
@@ -195,7 +196,16 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 };
 
 export const buildSearchQuery = (search) => {
-  return search ? search.split(' ').join(' OR ') : '';
+  const splitRegex = /\s(?=(?:[^'"`]*(['"`])[^'"`]*\1)*[^'"`]*$)/g;
+  return search
+    ? search
+        .replace(/\s*\+/g, '+')
+        .replace(/\+\s*/g, '+')
+        .split(splitRegex)
+        .filter(identity)
+        .join(' OR ')
+        .replace(/\+/g, ' ')
+    : '';
 };
 
 export async function getAllWorks(

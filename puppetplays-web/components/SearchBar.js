@@ -27,7 +27,6 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
   );
 
   const handleReset = useCallback(() => {
-    console.log('reset search');
     debounceOnChange('');
     onChange('');
   }, [onChange, debounceOnChange]);
