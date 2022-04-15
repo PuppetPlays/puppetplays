@@ -16,6 +16,7 @@ import CommaSepList from 'components/CommaSepList';
 import AuthorCard from 'components/AuthorCard';
 import CompanyCard from 'components/CompanyCard';
 import AnimationTechnique from 'components/AnimationTechnique';
+import PermalinkIcon from './icons/icon-permalink.svg';
 import WorkHeader from './WorkHeader';
 import Abstract from './Abstract';
 import Hypotexts from './Hypotexts';
@@ -273,10 +274,6 @@ function Work(props) {
           <Keywords keywords={theatricalTechniques} fill />
         </Section>
 
-        {/* <button type="button">
-          {t('common:downloadNotice')}
-        </button> */}
-
         <Section title={t('common:ids')} show={!!doi || !!viafId || !!arkId}>
           <Info label="DOI" show={!!doi}>
             {doi}
@@ -287,6 +284,23 @@ function Work(props) {
           <Info label="ARK" show={!!arkId}>
             <ArkId id={arkId} />
           </Info>
+        </Section>
+
+        <Section title={t('common:permalink')} show>
+          <div className={styles.permalink}>
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+              }}
+              title={t('common:permalinkCopy')}
+            >
+              <PermalinkIcon />
+            </button>
+            <div className={styles.permalinkHref}>
+              {typeof window !== 'undefined' && window.location.href}
+            </div>
+          </div>
         </Section>
 
         <Section

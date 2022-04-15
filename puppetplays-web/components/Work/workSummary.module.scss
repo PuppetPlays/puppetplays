@@ -104,3 +104,38 @@
     display: inline-block;
   }
 }
+
+.permalink {
+  display: flex;
+  align-items: center;
+  max-width: 260px;
+
+  button {
+    flex: 1 1 auto;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    margin-right: 6px;
+    background-color: var(--color-brand);
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-brand-light);
+    }
+  }
+
+  svg {
+    fill: white;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.permalinkHref {
+  flex: 0 1 auto;
+  text-overflow: ellipsis;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}

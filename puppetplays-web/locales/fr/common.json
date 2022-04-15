@@ -108,5 +108,7 @@
     "photo": "Photographie de spectacle",
     "video": "Enregistrement vidéo",
     "audio": "Enregistrement sonore"
-  }
+  },
+  "permalink": "Permalien",
+  "permalinkCopy": "Copier le permalien"
 }

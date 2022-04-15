@@ -108,5 +108,7 @@
     "photo": "Performance photography",
     "video": "Video record",
     "audio": "Sound record"
-  }
+  },
+  "permalink": "Permalink",
+  "permalinkCopy": "Copy the permalink"
 }
