@@ -89,7 +89,7 @@ function Home({
     }).then((newData) => {
       setData(newData);
     });
-  }, [router.locale, currentPage, searchTerms, filters]);
+  }, [router.locale, router.query, currentPage, filters]);
 
   const handlePageChange = useCallback(
     (page) => {
