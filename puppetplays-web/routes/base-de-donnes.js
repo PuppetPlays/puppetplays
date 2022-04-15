@@ -36,6 +36,7 @@ import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
 import Filters from 'components/WorksFilters';
+import FilterSelect from 'components/FilterSelect';
 import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
 import styles from 'styles/Database.module.css';
@@ -73,6 +74,15 @@ function Home({
   const [currentPage, setCurrentPage] = useState(
     router.query.page ? parseInt(router.query.page, 10) - 1 : 0,
   );
+  const orderByOptions = [
+    { id: 'compositionMinDate', title: t('common:chronology') },
+    {
+      id: 'compositionMinDate DESC',
+      title: t('common:chronologyInverse'),
+    },
+    { id: 'score', title: t('common:score') },
+    { id: 'title', title: t('common:title') },
+  ];
 
   const handleToggleFiltersBar = useCallback(() => {
     setIsOpen(!isOpen);
@@ -144,6 +154,11 @@ function Home({
         newFilters = {
           ...filters,
           publicDomain: value ? value : undefined,
+        };
+      } else if (name === 'orderBy') {
+        newFilters = {
+          ...filters,
+          orderBy: value ? value.id : undefined,
         };
       } else {
         newFilters = {
@@ -329,12 +344,31 @@ function Home({
               pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
               onPageChange={handlePageChange}
             />
-            <Button
-              onClick={handleSetMapView}
-              icon={<img src="/icon-map.svg" alt="" />}
-            >
-              {t('common:showMap')}
-            </Button>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className={styles.sortMenu}>
+                <FilterSelect
+                  inverse={false}
+                  name="orderBy"
+                  value={
+                    orderByOptions.find((o) => o.id === filters.orderBy) || {
+                      id: 'chronology',
+                      title: t('common:chronology'),
+                    }
+                  }
+                  options={orderByOptions}
+                  isMulti={false}
+                  isClearable={false}
+                  isSearchable={false}
+                  onChange={handleChangeFilters}
+                />
+              </div>
+              <Button
+                onClick={handleSetMapView}
+                icon={<img src="/icon-map.svg" alt="" />}
+              >
+                {t('common:showMap')}
+              </Button>
+            </div>
           </div>
 
           <div className={styles.works}>

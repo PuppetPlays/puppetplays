@@ -12,7 +12,10 @@ function FilterSelect({
   value,
   options,
   isMulti,
+  isClearable,
+  isSearchable,
   onChange,
+  inverse,
 }) {
   const { t } = useTranslation();
 
@@ -33,8 +36,10 @@ function FilterSelect({
         value={isMulti && isNil(value) ? [] : value}
         options={options}
         onChange={onChange}
-        isClearable={!isMulti}
+        isClearable={!isMulti && isClearable}
+        isSearchable={isSearchable}
         isMulti={isMulti}
+        inverse={inverse}
       />
     </div>
   );
@@ -45,6 +50,9 @@ FilterSelect.defaultProps = {
   placeholder: '',
   options: null,
   isMulti: true,
+  isClearable: true,
+  isSearchable: true,
+  inverse: true,
 };
 
 FilterSelect.propTypes = {
@@ -57,6 +65,9 @@ FilterSelect.propTypes = {
   ]),
   options: PropTypes.arrayOf(PropTypes.object),
   isMulti: PropTypes.bool,
+  isClearable: PropTypes.bool,
+  isSearchable: PropTypes.bool,
+  inverse: PropTypes.bool,
 };
 
 export default FilterSelect;

@@ -104,16 +104,16 @@ query GetAllPlaces($locale: [String]) {
 
 export const WORKS_PAGE_SIZE = 10;
 
-export const getAllWorksQuery = (filters) => {
+export const getAllWorksQuery = ({ orderBy, ...filters }) => {
   return `
 ${placeInfoFragment}
 ${assetFragment}
 query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String${worksStateToGraphqlQueryArgument(
     filters,
   )}) {
-  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "score"${worksStateToGraphqlEntriesParams(
-    filters,
-  )}) {
+  entries(section: "works", site: $locale, offset: $offset, limit: $limit, search: $search, orderBy: "${
+    orderBy || 'compositionMinDate'
+  }"${worksStateToGraphqlEntriesParams(filters)}) {
     id,
     slug,
     title,

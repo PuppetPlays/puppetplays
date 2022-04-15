@@ -9,6 +9,7 @@ import parseInteger from 'lodash/fp/parseInt';
 const authorsAllowedFilters = ['languages', 'places', 'gender', 'type'];
 
 const worksAllowedFilters = [
+  'orderBy',
   'mainLanguage',
   'compositionPlace',
   'compositionMinDate',
@@ -142,6 +143,7 @@ export const worksQueryParamsToState = queryParamsToState({
   relatedToTags: split(','),
   publicDomain: (filter) => (filter === 'true' ? true : undefined),
   view: identity,
+  orderBy: identity,
 });
 
 export const authorsQueryParamsToGraphqlVariables = (queryParams) =>

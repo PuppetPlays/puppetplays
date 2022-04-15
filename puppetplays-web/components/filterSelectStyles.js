@@ -4,38 +4,50 @@ export const styles = {
     margin: '2px 0 8px',
     zIndex: 10,
   }),
-  control: (provided) => ({
+  control: (provided, state) => ({
     ...provided,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderColor: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.3)'
+      : 'rgba(0, 0, 0, 0.3)',
     backgroundColor: 'transparent',
-    color: 'white',
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     ':hover': {
-      borderColor: 'rgba(255, 255, 255, 0.5)',
+      borderColor: state.selectProps.inverse
+        ? 'rgba(255, 255, 255, 0.5)'
+        : 'rgba(0, 0, 0, 0.5)',
     },
     ':focus': {
-      borderColor: 'white',
+      borderColor: state.selectProps.inverse
+        ? 'white'
+        : 'var(--color-text-subtle)',
     },
   }),
-  placeholder: (provided) => ({
+  placeholder: (provided, state) => ({
     ...provided,
-    color: 'rgba(255, 255, 255, 0.3)',
+    color: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.3)'
+      : 'rgba(0, 0, 0, 0.3)',
   }),
-  input: (provided) => ({
+  input: (provided, state) => ({
     ...provided,
-    color: 'white',
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
   }),
-  dropdownIndicator: (provided) => ({
+  dropdownIndicator: (provided, state) => ({
     ...provided,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.8)'
+      : 'rgba(0, 0, 0, 0.8)',
     ':hover': {
-      color: 'white',
+      color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     },
   }),
-  clearIndicator: (provided) => ({
+  clearIndicator: (provided, state) => ({
     ...provided,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.8)'
+      : 'rgba(0, 0, 0, 0.8)',
     ':hover': {
-      color: 'white',
+      color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     },
   }),
   menu: (provided) => ({
@@ -51,29 +63,33 @@ export const styles = {
     borderBottom: '1px solid var(--color-bg-depth-2)',
     fontSize: '15px',
   }),
-  singleValue: (provided) => ({
+  singleValue: (provided, state) => ({
     ...provided,
-    color: 'white',
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     padding: '0 3px 0 6px',
   }),
-  multiValue: (provided) => ({
+  multiValue: (provided, state) => ({
     ...provided,
-    color: 'white',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
+    backgroundColor: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.2)'
+      : 'rgba(0, 0, 0, 0.2)',
     borderRadius: '12px',
     padding: '0 3px 0 6px',
   }),
-  multiValueLabel: (provided) => ({
+  multiValueLabel: (provided, state) => ({
     ...provided,
-    color: 'white',
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     fontSize: '14px',
   }),
-  multiValueRemove: (provided) => ({
+  multiValueRemove: (provided, state) => ({
     ...provided,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: state.selectProps.inverse
+      ? 'rgba(255, 255, 255, 0.8)'
+      : 'rgba(0, 0, 0, 0.8)',
     cursor: 'pointer',
     ':hover': {
-      color: 'white',
+      color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
       backgroundColor: 'transparent',
     },
   }),

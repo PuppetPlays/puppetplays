@@ -6,7 +6,7 @@
 .worksHeader {
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   flex: 0 0 auto;
   width: 100%;
   padding : 22px 20px;
@@ -43,4 +43,27 @@
   z-index: 1000;
   right: 20px;
   top: 22px;
+}
+
+.sortMenu {
+  flex: 1 1 auto;
+  min-width: 260px;
+  font-size: 14px;
+  color: var(--color-text-inactive);
+  margin-right: 24px;
+}
+
+.sortMenu > div {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sortMenu > div > label {
+  margin: 0;
+}
+
+.sortMenu > div > div {
+  flex: 1 1 auto;
+  margin: 0 0 0 8px;
 }
