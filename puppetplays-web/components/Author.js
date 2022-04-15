@@ -4,6 +4,27 @@ import useTranslation from 'next-translate/useTranslation';
 import NoteDropdownMenu from 'components/NoteDropdownMenu';
 import { modalTypes } from 'components/modalContext';
 
+export const formatAuthor = ({
+  usualName,
+  lastNameFirst,
+  lastName,
+  firstName,
+  nickname,
+  t,
+}) => {
+  return `${usualName ? usualName : ''}${usualName ? ' (' : ''}${
+    !usualName && lastNameFirst && lastName ? lastName : ''
+  }${!usualName && lastNameFirst && firstName ? ' ' : ''}${
+    firstName ? firstName : ''
+  }${(!lastNameFirst || usualName) && lastName ? ' ' : ''}${
+    (!lastNameFirst || usualName) && lastName ? lastName : ''
+  }${!usualName && nickname ? ' (' : ''}${
+    nickname && usualName && (firstName || lastName) ? ', ' : ''
+  }${nickname ? t('common:alias') : ''}${nickname ? ' ' : ''}${
+    nickname ? nickname : ''
+  }${usualName || nickname ? ')' : ''}`;
+};
+
 function Author({
   id,
   usualName,
@@ -17,19 +38,14 @@ function Author({
 
   return (
     <Fragment>
-      {usualName && usualName}
-      {usualName && ' ('}
-      {!usualName && lastNameFirst && lastName && lastName}
-      {!usualName && lastNameFirst && firstName && ' '}
-      {firstName && firstName}
-      {(!lastNameFirst || usualName) && lastName && ' '}
-      {(!lastNameFirst || usualName) && lastName && lastName}
-      {!usualName && nickname && ' ('}
-      {nickname && usualName && (firstName || lastName) && ', '}
-      {nickname && t('common:alias')}
-      {nickname && ' '}
-      {nickname && nickname}
-      {(usualName || nickname) && ')'}
+      {formatAuthor({
+        usualName,
+        firstName,
+        lastName,
+        nickname,
+        lastNameFirst,
+        t,
+      })}
       {showMenu && <NoteDropdownMenu id={id} modalType={modalTypes.author} />}
     </Fragment>
   );

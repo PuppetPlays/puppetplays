@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import {
   getTitle,
@@ -9,7 +11,7 @@ import {
 } from 'lib/utils';
 import Place from 'components/Place';
 import Section from 'components/Section';
-import Author from 'components/Author';
+import Author, { formatAuthor } from 'components/Author';
 import Info from 'components/Info';
 import Keywords, { Tag } from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
@@ -70,11 +72,118 @@ function Work(props) {
     conservationPlace,
   } = props;
   const { t } = useTranslation();
+  const { locale } = useRouter();
 
   return (
     <article
       className={`${styles.container} ${styles['container--full']} work-page-container`}
     >
+      <Head>
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+        <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+        <meta name="DC.title" lang={locale} content={title} />
+        {authors.map(({ typeHandle, ...rest }) => {
+          if (typeHandle === 'persons') {
+            const authors = formatAuthor({ ...rest, t });
+            return (
+              <>
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={authors}
+                />
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={authors}
+                />
+              </>
+            );
+          } else if (typeHandle === 'companies') {
+            return (
+              <>
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={rest.title}
+                />
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={rest.title}
+                />
+              </>
+            );
+          }
+        })}
+        <meta
+          name="DC.date"
+          scheme="DCTERMS.W3CDTF"
+          content={compositionDisplayDate}
+        />
+        <meta name="DC.identifier" scheme="DCTERMS.URI" content={doi} />
+        <meta
+          name="DCTERMS.abstract"
+          content={abstract.replace(/(<([^>]+)>)/g, '')}
+        />
+        <meta
+          name="DC.description"
+          lang={locale}
+          content={abstract.replace(/(<([^>]+)>)/g, '')}
+        />
+        <meta name="DC.format" scheme="DCTERMS.IMT" content="text/html" />
+        <meta name="DC.type" scheme="DCTERMS.DCMIType" content="Text" />
+        <meta
+          name="DC.subject"
+          lang="fr"
+          content={keywords.map(({ title }) => title).join(', ')}
+        />
+        <meta
+          name="DC.language"
+          scheme="DCTERMS.RFC4646"
+          content={
+            hasAtLeastOneItem(mainLanguage)
+              ? getFirstItemTitle(mainLanguage)
+              : ''
+          }
+        />
+        <meta
+          name="DC.publisher"
+          content="ERC project PuppetPlays AdG GA 835193"
+        />
+        <meta
+          name="DC.rights"
+          content={
+            publicDomain
+              ? t('common:publicDomain')
+              : additionalLicenseInformation
+          }
+        />
+        <meta
+          name="DC.contributor"
+          content={`${writtenBy.firstName} ${writtenBy.lastName}`}
+        />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="book" />
+        <meta property="og:url" content={doi} />
+        <meta
+          property="og:image"
+          content={hasAtLeastOneItem(mainImage) ? mainImage[0].url : ''}
+        />
+        <meta
+          property="og:description"
+          content={abstract.replace(/(<([^>]+)>)/g, '')}
+        />
+        <meta property="og:site_name" content="PuppetPlays.eu" />
+
+        <meta name="citation_title" content={title} />
+        <meta
+          name="citation_publication_date"
+          content={compositionDisplayDate}
+        />
+      </Head>
+
       <div className={styles.media}>
         <CoverImage
           image={mainImage}
