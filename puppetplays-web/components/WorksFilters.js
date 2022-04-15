@@ -15,6 +15,7 @@ function WorksFilters({
   authorsOptions,
   literaryTonesOptions,
   animationTechniquesOptions,
+  theatricalTechniquesOptions,
   audiencesOptions,
   formatsOptions,
   tagsOptions,
@@ -25,6 +26,7 @@ function WorksFilters({
   selectedAuthors,
   selectedLiteraryTones,
   selectedAnimationTechniques,
+  selectedTheatricalTechniques,
   selectedAudiences,
   selectedFormats,
   selectedTags,
@@ -43,6 +45,7 @@ function WorksFilters({
     get(selectedAuthors, 'length', 0),
     get(selectedLiteraryTones, 'length', 0),
     get(selectedAnimationTechniques, 'length', 0),
+    get(selectedTheatricalTechniques, 'length', 0),
     get(selectedAudiences, 'length', 0),
     get(selectedFormats, 'length', 0),
     get(selectedTags, 'length', 0),
@@ -145,6 +148,15 @@ function WorksFilters({
               value={selectedAnimationTechniques}
             />
           </div>
+          <div style={{ position: 'relative', zIndex: 45 }}>
+            <FilterSelect
+              name="theatricalTechniques"
+              placeholder={t('common:filters.theatricalTechniquesPlaceholder')}
+              options={theatricalTechniquesOptions}
+              onChange={onChange}
+              value={selectedTheatricalTechniques}
+            />
+          </div>
           <div style={{ position: 'relative', zIndex: 40 }}>
             <FilterSelect
               name="audience"
@@ -216,6 +228,7 @@ WorksFilters.propTypes = {
   authorsOptions: PropTypes.arrayOf(PropTypes.object),
   literaryTonesOptions: PropTypes.arrayOf(PropTypes.object),
   animationTechniquesOptions: PropTypes.arrayOf(PropTypes.object),
+  theatricalTechniquesOptions: PropTypes.arrayOf(PropTypes.object),
   audiencesOptions: PropTypes.arrayOf(PropTypes.object),
   formatsOptions: PropTypes.arrayOf(PropTypes.object),
   tagsOptions: PropTypes.arrayOf(PropTypes.object),
@@ -226,6 +239,7 @@ WorksFilters.propTypes = {
   selectedAuthors: PropTypes.arrayOf(PropTypes.object),
   selectedLiteraryTones: PropTypes.arrayOf(PropTypes.object),
   selectedAnimationTechniques: PropTypes.arrayOf(PropTypes.object),
+  selectedTheatricalTechniques: PropTypes.arrayOf(PropTypes.object),
   selectedAudiences: PropTypes.arrayOf(PropTypes.object),
   selectedFormats: PropTypes.arrayOf(PropTypes.object),
   selectedTags: PropTypes.arrayOf(PropTypes.object),

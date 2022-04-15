@@ -17,6 +17,7 @@ import {
 } from 'lib/api';
 import {
   getAllAnimationTechniquesQuery,
+  getAllTheatricalTechniquesQuery,
   getAllAudiencesQuery,
   getAllFormatsQuery,
   getAllLanguagesQuery,
@@ -54,6 +55,7 @@ function Home({
   authors,
   literaryTones,
   animationTechniques,
+  theatricalTechniques,
   audiences,
   formats,
   tags,
@@ -257,6 +259,7 @@ function Home({
           authorsOptions={authors}
           literaryTonesOptions={literaryTones}
           animationTechniquesOptions={animationTechniques}
+          theatricalTechniquesOptions={theatricalTechniques}
           audiencesOptions={audiences}
           formatsOptions={formats}
           tagsOptions={tags}
@@ -282,6 +285,12 @@ function Home({
             filters.animationTechniques &&
             animationTechniques.filter(({ id }) =>
               filters.animationTechniques.includes(id),
+            )
+          }
+          selectedTheatricalTechniques={
+            filters.theatricalTechniques &&
+            theatricalTechniques.filter(({ id }) =>
+              filters.theatricalTechniques.includes(id),
             )
           }
           selectedAudiences={
@@ -401,6 +410,9 @@ export async function getServerSideProps({ locale, req, res, query }) {
   const animationTechniques = await fetchAPI(getAllAnimationTechniquesQuery, {
     variables: { locale },
   });
+  const theatricalTechniques = await fetchAPI(getAllTheatricalTechniquesQuery, {
+    variables: { locale },
+  });
   const audiences = await fetchAPI(getAllAudiencesQuery, {
     variables: { locale },
   });
@@ -432,6 +444,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
       authors: authors.entries,
       literaryTones: literaryTones.entries,
       animationTechniques: animationTechniques.entries,
+      theatricalTechniques: theatricalTechniques.entries,
       audiences: audiences.entries,
       formats: formats.entries,
       tags,

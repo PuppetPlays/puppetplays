@@ -54,6 +54,15 @@ query GetAllAnimationTechniques($locale: [String]) {
 }
 `;
 
+export const getAllTheatricalTechniquesQuery = `
+query GetAllTheatricalTechniques($locale: [String]) {
+  entries(section: "theatricalTechniques", site: $locale, orderBy: "title") {
+    id,
+    title,
+  }
+}
+`;
+
 export const getAllLiteraryTonesQuery = `
 query GetAllLiteraryTones($locale: [String]) {
   entries(section: "literaryTones", site: $locale, orderBy: "title") {
