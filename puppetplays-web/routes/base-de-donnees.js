@@ -107,7 +107,7 @@ function Home({
     (page) => {
       setCurrentPage(page.selected);
       router.push(
-        `base-de-donnes/?${stringifyQuery({
+        `base-de-donnees/?${stringifyQuery({
           search: searchTerms,
           page: page.selected + 1,
           ...filters,
@@ -169,7 +169,7 @@ function Home({
       setFilters(newFilters);
       setCurrentPage(0);
       router.push(
-        `base-de-donnes/?${stringifyQuery({
+        `base-de-donnees/?${stringifyQuery({
           search: searchTerms,
           page: 1,
           ...newFilters,
@@ -194,7 +194,7 @@ function Home({
     (search) => {
       setCurrentPage(0);
       router.push(
-        `base-de-donnes/?${stringifyQuery({
+        `base-de-donnees/?${stringifyQuery({
           search,
           page: 1,
           ...filters,
@@ -212,7 +212,7 @@ function Home({
     setCurrentPage(0);
     setFilters({});
     router.push(
-      `base-de-donnes/?${stringifyQuery({
+      `base-de-donnees/?${stringifyQuery({
         search: searchTerms,
         page: 1,
       })}`,
@@ -227,7 +227,7 @@ function Home({
     setCurrentPage(0);
     setFilters({ ...filters, view: VIEWS.map });
     router.push(
-      `base-de-donnes/?${stringifyQuery({
+      `base-de-donnees/?${stringifyQuery({
         ...filters,
         view: VIEWS.map,
         search: searchTerms,
@@ -244,7 +244,7 @@ function Home({
     setCurrentPage(0);
     setFilters({ ...filters, view: VIEWS.list });
     router.push(
-      `base-de-donnes/?${stringifyQuery({
+      `base-de-donnees/?${stringifyQuery({
         ...filters,
         view: VIEWS.list,
         search: searchTerms,

@@ -33,12 +33,12 @@ function MainNav({ inverse }) {
       >
         {[
           <li key="database">
-            <Link href="/base-de-donnes">
+            <Link href="/base-de-donnees">
               <a>{t('common:database')}</a>
             </Link>
           </li>,
           <li key="map">
-            <a href="/base-de-donnes?view=MAP">{t('common:map')}</a>
+            <a href="/base-de-donnees?view=MAP">{t('common:map')}</a>
           </li>,
           <li key="auteurs">
             <Link href="/auteurs">

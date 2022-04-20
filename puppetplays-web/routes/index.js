@@ -50,7 +50,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const animationTechniqueLinkRef = useRef(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   const [EXPLORE_BY] = useState({
-    database: { to: '/base-de-donnes' },
+    database: { to: '/base-de-donnees' },
     authors: { to: '/auteurs' },
     pathways: {},
     publications: {},
