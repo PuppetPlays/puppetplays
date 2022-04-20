@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import groupBy from 'lodash/groupBy';
+import uniq from 'lodash/uniq';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
@@ -20,6 +21,7 @@ import {
   getAllAuthorsQuery,
   getAllLanguagesQuery,
   getAllPlacesQuery,
+  getAllWorksAuthorsIdsQuery,
 } from 'lib/api';
 import {
   authorsQueryParamsToState as queryParamsToState,
@@ -45,7 +47,7 @@ const getFirstLetter = cond([
   [stubTrue, constant('?')],
 ]);
 
-function Authors({ initialData, languages, places }) {
+function Authors({ initialData, languages, places, uniqueAuthorsIds }) {
   const { t } = useTranslation();
   const router = useRouter();
   const [genderOptions] = useState([
@@ -71,8 +73,11 @@ function Authors({ initialData, languages, places }) {
           ...stateToGraphqlVariables(filtersState),
         },
       });
+      const authors = data.entries.filter(({ id }) =>
+        uniqueAuthorsIds.includes(id),
+      );
       return {
-        entries: groupBy(data.entries, getFirstLetter),
+        entries: groupBy(authors, getFirstLetter),
       };
     },
     {
@@ -210,6 +215,7 @@ Authors.propTypes = {
   initialData: PropTypes.object.isRequired,
   languages: PropTypes.arrayOf(PropTypes.object).isRequired,
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
+  uniqueAuthorsIds: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Authors;
@@ -217,21 +223,27 @@ export default Authors;
 export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
-
-  const languages = await fetchAPI(getAllLanguagesQuery, {
-    variables: { locale },
-  });
-  const places = await fetchAPI(getAllPlacesQuery, {
-    variables: { locale },
-  });
+  const variables = { variables: { locale } };
+  const languages = await fetchAPI(getAllLanguagesQuery, variables);
+  const places = await fetchAPI(getAllPlacesQuery);
   const filtersState = queryParamsToState(query);
-  const data = await fetchAPI(getAllAuthorsQuery(filtersState), {
-    variables: { locale },
-  });
-
+  const authorsIds = await fetchAPI(getAllWorksAuthorsIdsQuery, variables);
+  const uniqueAuthorsIds = uniq(
+    authorsIds.entries.flatMap((entry) =>
+      entry.authors.map((author) => author.id),
+    ),
+  );
+  const personsRelatedToWorks = await fetchAPI(
+    getAllAuthorsQuery(filtersState),
+    variables,
+  );
+  const authors = personsRelatedToWorks.entries.filter(({ id }) =>
+    uniqueAuthorsIds.includes(id),
+  );
   return {
     props: {
-      initialData: { entries: groupBy(data.entries, getFirstLetter) },
+      initialData: { entries: groupBy(authors, getFirstLetter) },
+      uniqueAuthorsIds,
       languages: languages.entries,
       places: places.entries,
     },

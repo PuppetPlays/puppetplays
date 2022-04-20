@@ -450,6 +450,17 @@ export async function getWorkById(id, locale, token) {
   return data;
 }
 
+export const getAllWorksAuthorsIdsQuery = `
+query GetAllWorksAuthorsIds($locale: [String]) {
+  entries(section: "works", site: $locale) {
+    ... on works_works_Entry {
+      authors {
+        id
+      }
+    }
+  }
+}`;
+
 export const getAllAuthorsQuery = (filters) => `
 query GetAllAuthors($locale: [String]${authorsStateToGraphqlQueryArgument(
   filters,
