@@ -1,0 +1,73 @@
+field: 07cc50ee-05e5-483d-8911-22552f44be92 # Personnages du texte
+fieldLayouts:
+  6f0edc51-89f0-4fff-9495-83bf4ecd25de:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1 # Nom dans le texte
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: fd390cb8-325d-419c-a64a-95714d698f94 # Rôle(s)
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1: # Nom dans le texte
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: nameInText
+    instructions: ''
+    name: 'Nom dans le texte'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  fd390cb8-325d-419c-a64a-95714d698f94: # Rôle(s)
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: roles
+    instructions: ''
+    name: Rôle(s)
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      limit: ''
+      localizeRelations: false
+      selectionLabel: 'Sélectionner un ou plusieurs rôle(s)'
+      showSiteMenu: false
+      source: null
+      sources:
+        - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: character
+name: Personnage
+sortOrder: 1

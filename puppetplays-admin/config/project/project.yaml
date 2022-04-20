@@ -1,4 +1,4 @@
-dateModified: 1649933295
+dateModified: 1650441081
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -26,10 +26,12 @@ meta:
     2dd7c17a-3ef4-4aaf-a784-62648f6632fd: Auteur # Auteur
     2f8bb2d7-f182-4a78-afa8-46f228a557e6: Traduction # Traduction
     3b937625-42ca-4656-9a7b-c999af708c26: 'Date de la 1ère représentation (min)' # Date de la 1ère représentation (min)
+    03d78236-fed0-4e43-b21c-f2cd1a49e83c: Personnage # Personnage
     3df1d9d7-f431-4e77-8af6-67a22c501379: 'Identifiant ARK' # Identifiant ARK
     3eec2c18-4dce-4184-a668-02f225266314: Lieux # Lieux
     3fea7d7b-8c14-4919-8016-7d214ca2314b: 'Thème principal' # Thème principal
     4cda444a-a132-4409-8e1e-5205e6a53896: 'Puppetplays IT' # Puppetplays IT
+    4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1: 'Nom dans le texte' # Nom dans le texte
     5c594932-2c3a-4678-9988-3ee891a6df21: 'Date de référence' # Date de référence
     5dc50f30-9aba-4974-92fb-08b263ce5716: Places # Places
     5e83af75-a401-46c6-918f-f56ab78ad797: 'Procédés théâtraux' # Procédés théâtraux
@@ -37,6 +39,7 @@ meta:
     6e506719-d279-4e2c-9e84-fbf315440712: 'Nom de famille' # Nom de famille
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
     07c0d544-d28a-449e-a643-936d89cb7a3a: Images # Images
+    07cc50ee-05e5-483d-8911-22552f44be92: 'Personnages du texte' # Personnages du texte
     8c8213c1-75f5-4c1c-bc23-96b213711e06: Formats # Formats
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale
     8e095ccd-7ed1-4c9b-99e1-b98480a0e9df: Compagnies # Compagnies
@@ -59,6 +62,7 @@ meta:
     63ea829e-b0e4-4021-8ab5-1b0f095d3daf: Personnes # Personnes
     65cde714-d150-4ea5-9f9a-da868a716343: 'Nom du personnage pour l’indexation' # Nom du personnage pour l’indexation
     69ee7666-95f0-4e8f-bf8b-09d970d7b777: Latitude # Latitude
+    72de1311-0c34-4fe9-b04c-813fbc8a7923: 'Oeuvres corrélées à indexer' # Oeuvres corrélées à indexer
     72f7b794-21cc-4ef3-869b-e425785555fb: 'Date de la 1ère représentation (max)' # Date de la 1ère représentation (max)
     80e9ab34-aa2b-44e3-9798-dadda7e7a772: 'Références bibliographiques' # Références bibliographiques
     084dbff2-63eb-420b-aac6-22102df927f9: Hypotexte(s) # Hypotexte(s)
@@ -145,12 +149,17 @@ meta:
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
     fa8f9cfe-9074-40b9-b300-5a58cd4ff61c: Publics # Publics
     fbbb13b9-a645-436f-82a9-ad8e5767acda: Œuvres # Œuvres
+    fd390cb8-325d-419c-a64a-95714d698f94: Rôle(s) # Rôle(s)
     ffcbd130-d01a-46e8-be41-572fa13bf2fb: Commons # Commons
 plugins:
   element-api:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  preparse-field:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.5
   reasons:
     edition: standard
     enabled: true
