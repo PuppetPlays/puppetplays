@@ -12,7 +12,6 @@ namespace modules\sitemodule;
 
 use modules\sitemodule\assetbundles\sitemodule\SiteModuleAsset;
 use modules\sitemodule\fields\HypotextEntries as HypotextEntriesField;
-use modules\sitemodule\fields\SimpleDate as SimpleDateField;
 use modules\sitemodule\widgets\Supervisor as SupervisorWidget;
 
 use Craft;
@@ -149,7 +148,6 @@ class SiteModule extends Module
             Fields::EVENT_REGISTER_FIELD_TYPES,
             function (RegisterComponentTypesEvent $event) {
                 $event->types[] = HypotextEntriesField::class;
-                $event->types[] = SimpleDateField::class;
             }
         );
 
@@ -163,38 +161,38 @@ class SiteModule extends Module
         );
 
         // After saving a character resave the related originalCharacter entries
-        Event::on(
-            Entry::class,
-            Entry::EVENT_AFTER_SAVE,
-            function(ModelEvent $event) {
-                // @var Entry $entry
-                $entry = $event->sender;
-                // @var EntryType $typeHandle
-                $typeHandle = $entry->type->handle;
+        // Event::on(
+        //     Entry::class,
+        //     Entry::EVENT_AFTER_SAVE,
+        //     function(ModelEvent $event) {
+        //         // @var Entry $entry
+        //         $entry = $event->sender;
+        //         // @var EntryType $typeHandle
+        //         $typeHandle = $entry->type->handle;
 
-                if (!ElementHelper::isDraftOrRevision($entry) && $typeHandle === 'characters') {
-                    $relatedEntryQuery = \craft\elements\Entry::find()
-                        ->section('originalsCharacters')
-                        ->character($entry);
-                    $relatedEntries = $relatedEntryQuery->all();
+        //         if (!ElementHelper::isDraftOrRevision($entry) && $typeHandle === 'characters') {
+        //             $relatedEntryQuery = \craft\elements\Entry::find()
+        //                 ->section('originalsCharacters')
+        //                 ->character($entry);
+        //             $relatedEntries = $relatedEntryQuery->all();
 
-                    foreach ($relatedEntries as $originalCharacterEntry) {
-                        Craft::$app->getQueue()->push(new ResaveElements([
-                            'description' => Craft::t('sitemodule', 'Resaving “originalsCharacters” entries'),
-                            'elementType' => Entry::class,
-                            'updateSearchIndex' => true,
-                            'criteria' => [
-                                'siteId' => $entry->siteId,
-                                'sectionId' => $originalCharacterEntry->sectionId,
-                                'typeId' => $originalCharacterEntry->typeId,
-                                'id' => $originalCharacterEntry->id,
-                                'enabledForSite' => true
-                            ]
-                        ]));
-                    }
-                }
-            }
-        );
+        //             foreach ($relatedEntries as $originalCharacterEntry) {
+        //                 Craft::$app->getQueue()->push(new ResaveElements([
+        //                     'description' => Craft::t('sitemodule', 'Resaving “originalsCharacters” entries'),
+        //                     'elementType' => Entry::class,
+        //                     'updateSearchIndex' => true,
+        //                     'criteria' => [
+        //                         'siteId' => $entry->siteId,
+        //                         'sectionId' => $originalCharacterEntry->sectionId,
+        //                         'typeId' => $originalCharacterEntry->typeId,
+        //                         'id' => $originalCharacterEntry->id,
+        //                         'enabledForSite' => true
+        //                     ]
+        //                 ]));
+        //             }
+        //         }
+        //     }
+        // );
 
         Craft::$app->view->hook('cp.elements.element', function(array &$context) {
             if (array_key_exists('name', $context)) {
