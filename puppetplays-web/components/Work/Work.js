@@ -124,12 +124,12 @@ function Work(props) {
         <meta name="DC.identifier" scheme="DCTERMS.URI" content={doi} />
         <meta
           name="DCTERMS.abstract"
-          content={abstract.replace(/(<([^>]+)>)/g, '')}
+          content={abstract ? abstract.replace(/(<([^>]+)>)/g, '') : ''}
         />
         <meta
           name="DC.description"
           lang={locale}
-          content={abstract.replace(/(<([^>]+)>)/g, '')}
+          content={abstract ? abstract.replace(/(<([^>]+)>)/g, '') : ''}
         />
         <meta name="DC.format" scheme="DCTERMS.IMT" content="text/html" />
         <meta name="DC.type" scheme="DCTERMS.DCMIType" content="Text" />
@@ -173,7 +173,7 @@ function Work(props) {
         />
         <meta
           property="og:description"
-          content={abstract.replace(/(<([^>]+)>)/g, '')}
+          content={abstract ? abstract.replace(/(<([^>]+)>)/g, '') : ''}
         />
         <meta property="og:site_name" content="PuppetPlays.eu" />
 
