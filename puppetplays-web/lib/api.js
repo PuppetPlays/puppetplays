@@ -173,10 +173,12 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
       audience {
         title
       },
-      characters {
-        title,
-        ...on originalsCharacters_originalsCharacters_Entry {
-          textName
+      textCharacters {
+        ... on textCharacters_character_BlockType {
+          nameInText
+          roles {
+            title
+          }
         }
       },
       actsCount,
@@ -378,10 +380,12 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       audience {
         title
       },
-      characters {
-        title,
-        ...on originalsCharacters_originalsCharacters_Entry {
-          textName
+      textCharacters {
+        ... on textCharacters_character_BlockType {
+          nameInText
+          roles {
+            title
+          }
         }
       },
       theatricalTechniques {

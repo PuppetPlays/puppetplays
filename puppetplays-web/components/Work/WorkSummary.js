@@ -46,7 +46,7 @@ function WorkSummary({
   literaryTones,
   animationTechniques,
   audience,
-  characters,
+  textCharacters,
   actsCount,
   pagesCount,
   formats,
@@ -154,11 +154,11 @@ function WorkSummary({
           <Fragment>
             <Info
               label={t('common:characters')}
-              show={hasAtLeastOneItem(characters)}
+              show={hasAtLeastOneItem(textCharacters)}
             >
               <CommaSepList
-                list={characters}
-                listTransform={getProperty('textName')}
+                list={textCharacters}
+                listTransform={getProperty('nameInText')}
               />
             </Info>
             <Info label={t('common:actsCount')} show={!!actsCount}>
@@ -218,7 +218,7 @@ WorkSummary.defaultProps = {
   literaryTones: [],
   animationTechniques: [],
   audience: [],
-  characters: [],
+  textCharacters: [],
   actsCount: null,
   pagesCount: null,
   formats: [],
@@ -253,7 +253,7 @@ WorkSummary.propTypes = {
   literaryTones: PropTypes.array,
   animationTechniques: PropTypes.array,
   audience: PropTypes.array,
-  characters: PropTypes.array,
+  textCharacters: PropTypes.array,
   actsCount: PropTypes.number,
   pagesCount: PropTypes.number,
   formats: PropTypes.array,

@@ -63,7 +63,7 @@ function Work(props) {
     animationTechniques,
     theatricalTechniques,
     audience,
-    characters,
+    textCharacters,
     actsCount,
     pagesCount,
     formats,
@@ -225,11 +225,11 @@ function Work(props) {
           </Info>
           <Info
             label={t('common:characters')}
-            show={hasAtLeastOneItem(characters)}
+            show={hasAtLeastOneItem(textCharacters)}
           >
             <CommaSepList
-              list={characters}
-              listTransform={getProperty('textName')}
+              list={textCharacters}
+              listTransform={getProperty('nameInText')}
             />
           </Info>
           <Info label={t('common:actsCount')} show={!!actsCount}>
@@ -457,7 +457,7 @@ Work.defaultProps = {
   animationTechniques: [],
   theatricalTechniques: [],
   audience: [],
-  characters: [],
+  textCharacters: [],
   actsCount: null,
   pagesCount: null,
   formats: [],
@@ -504,7 +504,7 @@ Work.propTypes = {
   animationTechniques: PropTypes.array,
   theatricalTechniques: PropTypes.array,
   audience: PropTypes.array,
-  characters: PropTypes.array,
+  textCharacters: PropTypes.array,
   actsCount: PropTypes.number,
   pagesCount: PropTypes.number,
   formats: PropTypes.array,
