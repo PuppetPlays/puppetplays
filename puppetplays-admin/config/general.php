@@ -40,6 +40,7 @@ return [
         ],
 
         'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
+        'maxUploadFileSize' => '500M',
     ],
 
     // Dev environment settings
