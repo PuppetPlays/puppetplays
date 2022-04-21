@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbe391e6ca277f14d093f38e7fe1b7c4",
+    "content-hash": "80dcdac9ed3cc4eb1d94aceae6b8dab1",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
@@ -921,6 +921,57 @@
                 "php"
             ],
             "time": "2020-05-25T17:44:05+00:00"
+        },
+        {
+            "name": "doublesecretagency/craft-cpcss",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doublesecretagency/craft-cpcss.git",
+                "reference": "e056e16ed6ff762a15bd52fc3cd080411c548699"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doublesecretagency/craft-cpcss/zipball/e056e16ed6ff762a15bd52fc3cd080411c548699",
+                "reference": "e056e16ed6ff762a15bd52fc3cd080411c548699",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.1.5"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Control Panel CSS",
+                "handle": "cp-css",
+                "schemaVersion": "2.0.0",
+                "changelogUrl": "https://raw.githubusercontent.com/doublesecretagency/craft-cpcss/v2/CHANGELOG.md",
+                "class": "doublesecretagency\\cpcss\\CpCss"
+            },
+            "autoload": {
+                "psr-4": {
+                    "doublesecretagency\\cpcss\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Double Secret Agency",
+                    "homepage": "https://www.doublesecretagency.com/plugins"
+                }
+            ],
+            "description": "Add custom CSS to your Control Panel.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "cp-css",
+                "craft-plugin",
+                "craftcms",
+                "css"
+            ],
+            "time": "2021-09-22T06:14:06+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1841,6 +1892,62 @@
                 "shell"
             ],
             "time": "2021-03-17T06:54:33+00:00"
+        },
+        {
+            "name": "mmikkel/incognito-field",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mmikkel/IncognitoField-Craft3.git",
+                "reference": "1a5d820136f9ecd5d4e45b10a6ec10de578f1f04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mmikkel/IncognitoField-Craft3/zipball/1a5d820136f9ecd5d4e45b10a6ec10de578f1f04",
+                "reference": "1a5d820136f9ecd5d4e45b10a6ec10de578f1f04",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.7.0|^4.0.0-beta.3",
+                "php": "^7.2.5|^8.0.2"
+            },
+            "require-dev": {
+                "craftcms/rector": "dev-main"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Incognito Field",
+                "handle": "incognito-field",
+                "schemaVersion": "1.1.1",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/mmikkel/IncognitoField-Craft3/master/CHANGELOG.md",
+                "class": "mmikkel\\incognitofield\\IncognitoField"
+            },
+            "autoload": {
+                "psr-4": {
+                    "mmikkel\\incognitofield\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mats Mikkel Rummelhoff",
+                    "homepage": "http://vaersaagod.no"
+                }
+            ],
+            "description": "PlainText drop-in replacement that can be set to disabled, hidden or readonly.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "incognito field"
+            ],
+            "time": "2022-03-23T01:12:23+00:00"
         },
         {
             "name": "mmikkel/reasons",

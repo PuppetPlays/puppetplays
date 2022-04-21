@@ -1,4 +1,4 @@
-dateModified: 1650441081
+dateModified: 1650525616
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -152,10 +152,22 @@ meta:
     fd390cb8-325d-419c-a64a-95714d698f94: Rôle(s) # Rôle(s)
     ffcbd130-d01a-46e8-be41-572fa13bf2fb: Commons # Commons
 plugins:
+  cp-css:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+    settings:
+      additionalCss: "#fields-characters-field {\r\n    position: relative;\r\n    pointer-events: none;\r\n}\r\n\r\n#fields-characters-field::after {\r\n    position: absolute;\r\n    z-index: 1000;\r\n    content: '';\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: rgba(255, 255, 255, 0.75);\r\n}\r\n\r\n#fields-characters-field button,\r\n#fields-characters-field input {\r\n    pointer-events: none;\r\n}"
+      cacheBusting: true
+      cssFile: ''
   element-api:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  incognito-field:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.1
   preparse-field:
     edition: standard
     enabled: true
