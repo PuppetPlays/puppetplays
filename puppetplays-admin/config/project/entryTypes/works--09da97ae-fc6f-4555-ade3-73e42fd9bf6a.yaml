@@ -54,6 +54,15 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            fieldUid: 10525904-b14b-4372-aac3-f9a5146e8b27 # Nom du premier auteur (preparsed)
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
             type: craft\fieldlayoutelements\HorizontalRule
           -
             fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6 # Notice

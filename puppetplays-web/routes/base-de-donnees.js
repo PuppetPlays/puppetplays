@@ -82,6 +82,7 @@ function Home({
     },
     { id: 'score', title: t('common:score') },
     { id: 'title', title: t('common:title') },
+    { id: 'firstAuthorTitle', title: t('common:author') },
   ];
 
   const handleToggleFiltersBar = useCallback(() => {

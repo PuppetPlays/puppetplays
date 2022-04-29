@@ -1,4 +1,4 @@
-dateModified: 1650525616
+dateModified: 1651151786
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -94,6 +94,7 @@ meta:
     93343e67-8611-4266-b864-d311771afbc9: 'Technique d’animation' # Technique d’animation
     240995cf-5c01-4d81-8338-b19a74e20d1a: 'Identifiant ISNI' # Identifiant ISNI
     09401318-0a4b-4b56-a6c4-c57d3b151579: 'Exemplaire en ligne' # Exemplaire en ligne
+    10525904-b14b-4372-aac3-f9a5146e8b27: 'Nom du premier auteur (preparsed)' # Nom du premier auteur (preparsed)
     48645943-e026-4046-ae42-c8efbe3d0b1c: Videos # Videos
     48898581-e621-4ea2-bcf6-3c65ac54487f: 'Techniques d’animation' # Techniques d’animation
     66501227-1575-4af8-9ad7-8ddf21716146: 'Nom usuel' # Nom usuel

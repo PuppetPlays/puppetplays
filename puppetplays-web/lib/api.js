@@ -130,6 +130,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
         id,
         title
       },
+      firstAuthorTitle,
       authors {
         id,
         slug,

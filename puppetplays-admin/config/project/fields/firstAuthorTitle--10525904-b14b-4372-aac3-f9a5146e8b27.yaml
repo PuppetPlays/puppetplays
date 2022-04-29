@@ -1,0 +1,20 @@
+columnSuffix: xzafkwoh
+contentColumnType: text
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
+handle: firstAuthorTitle
+instructions: 'Ce champ est automatiquement renseigné à partir de la liste des auteurs. Il permet de trier les œuvres par auteur.'
+name: 'Nom du premier auteur (preparsed)'
+searchable: false
+settings:
+  allowSelect: false
+  columnType: text
+  decimals: '0'
+  displayType: hidden
+  fieldTwig: "{%- set author = element.authors.one() -%}\r\n{{- author.title ?? '' -}}"
+  parseBeforeSave: false
+  parseOnMove: false
+  showField: false
+  textareaRows: '5'
+translationKeyFormat: null
+translationMethod: site
+type: besteadfast\preparsefield\fields\PreparseFieldType
