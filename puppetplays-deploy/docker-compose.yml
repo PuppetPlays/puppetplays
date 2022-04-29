@@ -18,7 +18,7 @@ services:
     container_name: puppetplays-admin
     image: intactiledesign/puppetplays-admin:${PUPPETPLAYS_VERSION}
     environment:
-      - PHP_MEMORY_LIMIT=25M
+      - PHP_MEMORY_LIMIT=512M
       - PHP_POST_MAX_SIZE=25M
       - PHP_UPLOAD_MAX_FILESIZE=25M
       - DB_DRIVER=pgsql
