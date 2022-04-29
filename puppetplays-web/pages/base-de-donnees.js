@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useState, Fragment, useRef } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+  Fragment,
+  useRef,
+  Suspense,
+} from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { useCookies } from 'react-cookie';
@@ -35,13 +42,24 @@ import { FiltersProvider } from 'components/FiltersContext';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
-import Filters from 'components/WorksFilters';
 import FilterSelect from 'components/FilterSelect';
 import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
 import styles from 'styles/Database.module.css';
 
 const MapView = dynamic(() => import('components/Map/MapView'), { ssr: false });
+const Filters = dynamic(() => import('../components/WorksFilters'), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        height: '100%',
+        width: 290,
+        backgroundColor: 'var(--color-brand)',
+      }}
+    />
+  ),
+});
 
 const VIEWS = {
   list: 'LIST',
@@ -272,65 +290,69 @@ function Home({
         />
       }
       aside={
-        <Filters
-          languageOptions={languages}
-          placeOptions={places}
-          periodMinMax={periodBounds}
-          authorsOptions={authors}
-          literaryTonesOptions={literaryTones}
-          animationTechniquesOptions={animationTechniques}
-          theatricalTechniquesOptions={theatricalTechniques}
-          audiencesOptions={audiences}
-          formatsOptions={formats}
-          tagsOptions={tags}
-          selectedLanguages={
-            filters.mainLanguage &&
-            languages.filter(({ id }) => filters.mainLanguage.includes(id))
-          }
-          selectedPlaces={
-            filters.compositionPlace &&
-            places.filter(({ id }) => filters.compositionPlace.includes(id))
-          }
-          selectedPeriodMin={filters.compositionMinDate}
-          selectedPeriodMax={filters.compositionMaxDate}
-          selectedAuthors={
-            filters.authors &&
-            authors.filter(({ id }) => filters.authors.includes(id))
-          }
-          selectedLiteraryTones={
-            filters.literaryTones &&
-            literaryTones.filter(({ id }) => filters.literaryTones.includes(id))
-          }
-          selectedAnimationTechniques={
-            filters.animationTechniques &&
-            animationTechniques.filter(({ id }) =>
-              filters.animationTechniques.includes(id),
-            )
-          }
-          selectedTheatricalTechniques={
-            filters.theatricalTechniques &&
-            theatricalTechniques.filter(({ id }) =>
-              filters.theatricalTechniques.includes(id),
-            )
-          }
-          selectedAudiences={
-            filters.audience &&
-            audiences.filter(({ id }) => filters.audience.includes(id))
-          }
-          selectedFormats={
-            filters.formats &&
-            formats.filter(({ id }) => filters.formats.includes(id))
-          }
-          selectedTags={
-            filters.relatedToTags &&
-            tags.filter(({ id }) => filters.relatedToTags.includes(id))
-          }
-          publicDomain={!!filters.publicDomain}
-          onChange={handleChangeFilters}
-          onClearAll={handleClearAllFilters}
-          isOpen={isOpen}
-          onToggle={handleToggleFiltersBar}
-        />
+        <Suspense fallback={`loading`}>
+          <Filters
+            languageOptions={languages}
+            placeOptions={places}
+            periodMinMax={periodBounds}
+            authorsOptions={authors}
+            literaryTonesOptions={literaryTones}
+            animationTechniquesOptions={animationTechniques}
+            theatricalTechniquesOptions={theatricalTechniques}
+            audiencesOptions={audiences}
+            formatsOptions={formats}
+            tagsOptions={tags}
+            selectedLanguages={
+              filters.mainLanguage &&
+              languages.filter(({ id }) => filters.mainLanguage.includes(id))
+            }
+            selectedPlaces={
+              filters.compositionPlace &&
+              places.filter(({ id }) => filters.compositionPlace.includes(id))
+            }
+            selectedPeriodMin={filters.compositionMinDate}
+            selectedPeriodMax={filters.compositionMaxDate}
+            selectedAuthors={
+              filters.authors &&
+              authors.filter(({ id }) => filters.authors.includes(id))
+            }
+            selectedLiteraryTones={
+              filters.literaryTones &&
+              literaryTones.filter(({ id }) =>
+                filters.literaryTones.includes(id),
+              )
+            }
+            selectedAnimationTechniques={
+              filters.animationTechniques &&
+              animationTechniques.filter(({ id }) =>
+                filters.animationTechniques.includes(id),
+              )
+            }
+            selectedTheatricalTechniques={
+              filters.theatricalTechniques &&
+              theatricalTechniques.filter(({ id }) =>
+                filters.theatricalTechniques.includes(id),
+              )
+            }
+            selectedAudiences={
+              filters.audience &&
+              audiences.filter(({ id }) => filters.audience.includes(id))
+            }
+            selectedFormats={
+              filters.formats &&
+              formats.filter(({ id }) => filters.formats.includes(id))
+            }
+            selectedTags={
+              filters.relatedToTags &&
+              tags.filter(({ id }) => filters.relatedToTags.includes(id))
+            }
+            publicDomain={!!filters.publicDomain}
+            onChange={handleChangeFilters}
+            onClearAll={handleClearAllFilters}
+            isOpen={isOpen}
+            onToggle={handleToggleFiltersBar}
+          />
+        </Suspense>
       }
     >
       <Head>

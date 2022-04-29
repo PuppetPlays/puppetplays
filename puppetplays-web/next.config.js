@@ -1,15 +1,14 @@
-const { locales, defaultLocale } = require('./i18n.json');
-const withTranspile = require('next-transpile-modules')(['ol']);
+const nextTranslate = require('next-translate');
+const withTranspile = require('next-transpile-modules')(['ol', 'react-slider']);
 
-module.exports = withTranspile({
-  poweredByHeader: false,
-  i18n: {
-    locales,
-    defaultLocale,
-  },
-  eslint: {
-    // Warning: Dangerously allow production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-});
+module.exports = nextTranslate(
+  withTranspile({
+    poweredByHeader: false,
+    swcMinify: true,
+    eslint: {
+      // Warning: Dangerously allow production builds to successfully complete even if
+      // your project has ESLint errors.
+      ignoreDuringBuilds: true,
+    },
+  }),
+);
