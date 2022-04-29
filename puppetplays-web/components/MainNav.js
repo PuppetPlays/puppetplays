@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import DropdownMenu from 'components/DropdownMenu';
@@ -23,6 +24,8 @@ const Wrapper = ({ children }) => {
 
 function MainNav({ inverse }) {
   const { t } = useTranslation();
+  const { locale } = useRouter();
+  const urlLocalePrefix = locale === 'fr' ? '' : '/' + locale;
 
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
@@ -38,7 +41,9 @@ function MainNav({ inverse }) {
             </Link>
           </li>,
           <li key="map">
-            <a href="/base-de-donnees?view=MAP">{t('common:map')}</a>
+            <a href={`${urlLocalePrefix}/base-de-donnees?view=MAP`}>
+              {t('common:map')}
+            </a>
           </li>,
           <li key="auteurs">
             <Link href="/auteurs">
