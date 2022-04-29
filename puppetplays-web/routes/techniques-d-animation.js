@@ -33,7 +33,7 @@ function AnimationTechniques({ initialData }) {
   return (
     <Layout>
       <Head>
-        <title>Puppetplays | Techniques d’animation</title>
+        <title>{t('common:animationTechniques')} | Puppetplays</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -146,7 +146,7 @@ function Authors({ initialData, languages, places, uniqueAuthorsIds }) {
       }
     >
       <Head>
-        <title>Puppetplays | Auteurs</title>
+        <title>{t('common:authors')} | Puppetplays</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

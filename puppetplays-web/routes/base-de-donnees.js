@@ -329,7 +329,7 @@ function Home({
       }
     >
       <Head>
-        <title>Puppetplays</title>
+        <title>{t('common:database')} | Puppetplays</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
