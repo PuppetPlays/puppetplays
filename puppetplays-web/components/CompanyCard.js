@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
 import Card from 'components/Card';
 import styles from './authorCard.module.scss';
 
 function CompanyCard({ id, slug, title }) {
-  const { t } = useTranslation();
-
   return (
     <section className={styles.container}>
-      <Card
-        href={`/auteurs/${id}/${slug}`}
-        title={title}
-        buttonLabel={t('common:readBiography')}
-      />
+      <Card href={`/auteurs/${id}/${slug}`} title={title} />
     </section>
   );
 }

@@ -223,7 +223,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   {authors.map((entry) => (
                     <Card
                       key={entry.id}
-                      buttonLabel={t('common:openNote')}
+                      fixedHeight
                       subtitle={
                         <BirthDeathDates
                           birthDate={entry.birthDate}

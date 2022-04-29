@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
 import BirthDeathDates from 'components/BirthDeathDates';
 import Author from 'components/Author';
 import Card from 'components/Card';
@@ -16,8 +15,6 @@ function AuthorCard({
   deathDate,
   mainImage,
 }) {
-  const { t } = useTranslation();
-
   return (
     <section className={styles.container}>
       <Card
@@ -36,7 +33,6 @@ function AuthorCard({
             <BirthDeathDates birthDate={birthDate} deathDate={deathDate} />
           </div>
         }
-        buttonLabel={t('common:readBiography')}
         mainImage={mainImage}
       />
     </section>
