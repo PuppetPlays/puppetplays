@@ -35,10 +35,10 @@ function NoteDropdownMenu({ id, modalType }) {
     const isAnimationTechniqueMenu = () =>
       modalType === modalTypes.animationTechnique;
     const url = cond([
-      [isAuthorMenu, constant(`/repertoire?authors=${id}`)],
+      [isAuthorMenu, constant(`/base-de-donnees?authors=${id}`)],
       [
         isAnimationTechniqueMenu,
-        constant(`/repertoire?animationTechniques=${id}`),
+        constant(`/base-de-donnees?animationTechniques=${id}`),
       ],
       [stubTrue, constant(null)],
     ])();
