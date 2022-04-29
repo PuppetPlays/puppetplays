@@ -7,7 +7,7 @@ function ZoomableImage({ children }) {
 
   const openImage = useCallback(() => {
     dispatch({
-      type: 'open',
+      type: 'openAbove',
       payload: { type: modalTypes.image, meta: { content: children } },
     });
   }, [dispatch, children]);

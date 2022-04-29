@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
 import {
+  getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
@@ -17,10 +18,11 @@ function AuthorModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
+  const { id: authorId } = getMetaOfModalByType(modalState, modalTypes.author);
 
   const { data } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.author)
-      ? [getAuthorByIdQuery, router.locale, get(modalState, 'meta.id', null)]
+      ? [getAuthorByIdQuery, router.locale, authorId]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -33,7 +35,7 @@ function AuthorModal() {
   );
   const { data: works } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.author)
-      ? [getWorksOfAuthorQuery, router.locale, get(modalState, 'meta.id', null)]
+      ? [getWorksOfAuthorQuery, router.locale, authorId]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -46,11 +48,12 @@ function AuthorModal() {
   );
 
   const handleCloseModal = useCallback(() => {
-    dispatch({ type: 'close' });
+    dispatch({ type: 'close', payload: { type: modalTypes.author } });
   }, [dispatch]);
 
   return (
     <Modal
+      modalType={modalTypes.author}
       isOpen={isModalOfTypeOpen(modalState, modalTypes.author)}
       title={data && <Author {...get(data, 'entry', {})} />}
       subtitle={t('common:author')}

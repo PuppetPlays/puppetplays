@@ -17,9 +17,9 @@ function Layout({ aside, header, children }) {
         {aside && <aside className={styles.aside}>{aside}</aside>}
         <main className={styles.main}>{children}</main>
       </div>
-      <ImageModal />
       <AuthorModal />
       <AnimationTechniqueModal />
+      <ImageModal />
     </div>
   );
 }

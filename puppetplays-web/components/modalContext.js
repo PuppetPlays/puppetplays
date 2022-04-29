@@ -10,17 +10,31 @@ export const modalTypes = {
   image: 'IMAGE_MODAL',
 };
 
-function modalReducer(_, { type, payload }) {
+function modalReducer(state, { type, payload }) {
   switch (type) {
     case 'open': {
-      return {
-        type: payload.type,
-        meta: payload.meta,
-      };
+      return [
+        {
+          type: payload.type,
+          meta: payload.meta,
+        },
+      ];
+    }
+
+    case 'openAbove': {
+      return [
+        ...state,
+        {
+          type: payload.type,
+          meta: payload.meta,
+        },
+      ];
     }
 
     case 'close': {
-      return null;
+      return payload && payload.type
+        ? state.filter((modal) => modal.type !== payload.type)
+        : [];
     }
 
     default: {
@@ -30,10 +44,17 @@ function modalReducer(_, { type, payload }) {
 }
 
 export const isModalOfTypeOpen = (state, type) =>
-  get(state, 'type', null) === type;
+  !!state.find((modal) => modal.type === type);
+
+export const getMetaOfModalByType = (state, modalType) =>
+  get(
+    state.find((modal) => modal.type === modalType),
+    'meta',
+    {},
+  );
 
 export function ModalProvider({ children }) {
-  const reducer = React.useReducer(modalReducer, null);
+  const reducer = React.useReducer(modalReducer, []);
 
   return (
     <ModalContext.Provider value={reducer}>{children}</ModalContext.Provider>

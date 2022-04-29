@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import {
+  getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
@@ -9,15 +10,15 @@ import styles from './ImageModal.module.scss';
 
 function ImageModal() {
   const [modalState] = useModal();
+  const { content } = getMetaOfModalByType(modalState, modalTypes.image);
 
   return (
     <Modal
+      modalType={modalTypes.image}
       isOpen={isModalOfTypeOpen(modalState, modalTypes.image)}
       scrollElement="modal"
     >
-      <div className={styles.container}>
-        {get(modalState, 'meta.content', null)}
-      </div>
+      <div className={styles.container}>{content}</div>
     </Modal>
   );
 }

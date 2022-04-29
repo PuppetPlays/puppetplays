@@ -8,6 +8,7 @@ import {
   getWorksOfAnimationTechniqueQuery,
 } from 'lib/api';
 import {
+  getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
@@ -20,14 +21,14 @@ function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
+  const { id: animationTechniqueId } = getMetaOfModalByType(
+    modalState,
+    modalTypes.animationTechnique,
+  );
 
   const { data } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
-      ? [
-          getAnimationTechniqueByIdQuery,
-          router.locale,
-          get(modalState, 'meta.id', null),
-        ]
+      ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -40,11 +41,7 @@ function AnimationTechniqueModal() {
   );
   const { data: works } = useSWR(
     isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
-      ? [
-          getWorksOfAnimationTechniqueQuery,
-          router.locale,
-          get(modalState, 'meta.id', null),
-        ]
+      ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId]
       : null,
     (query, locale, id) => {
       return fetchAPI(query, {
@@ -57,11 +54,15 @@ function AnimationTechniqueModal() {
   );
 
   const handleCloseModal = useCallback(() => {
-    dispatch({ type: 'close' });
+    dispatch({
+      type: 'close',
+      payload: { type: modalTypes.animationTechnique },
+    });
   }, [dispatch]);
 
   return (
     <Modal
+      modalType={modalTypes.animationTechnique}
       isOpen={isModalOfTypeOpen(modalState, modalTypes.animationTechnique)}
       title={data && get(data, 'entry.title', '')}
       subtitle={t('common:animationTechnique')}

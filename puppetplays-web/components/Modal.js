@@ -2,17 +2,24 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import useTranslation from 'next-translate/useTranslation';
-import { useModal } from 'components/modalContext';
+import { modalTypes, useModal } from 'components/modalContext';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './modal.module.scss';
 
-function Modal({ isOpen, title, subtitle, scrollElement, children }) {
+function Modal({
+  modalType,
+  isOpen,
+  title,
+  subtitle,
+  scrollElement,
+  children,
+}) {
   const { t } = useTranslation();
   const [, dispatch] = useModal();
 
   const handleClose = useCallback(() => {
-    dispatch({ type: 'close' });
-  }, [dispatch]);
+    dispatch({ type: 'close', payload: { type: modalType } });
+  }, [dispatch, modalType]);
 
   return (
     <ReactModal
@@ -61,6 +68,7 @@ Modal.defaultProps = {
 };
 
 Modal.propTypes = {
+  modalType: PropTypes.oneOf(Object.values(modalTypes)).isRequired,
   title: PropTypes.node,
   children: PropTypes.node,
   subtitle: PropTypes.node,
