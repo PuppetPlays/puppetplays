@@ -6,6 +6,7 @@ export const styles = {
   }),
   control: (provided, state) => ({
     ...provided,
+    minHeight: 32,
     borderColor: state.selectProps.inverse
       ? 'rgba(255, 255, 255, 0.3)'
       : 'rgba(0, 0, 0, 0.3)',
@@ -34,6 +35,7 @@ export const styles = {
   }),
   dropdownIndicator: (provided, state) => ({
     ...provided,
+    padding: 5,
     color: state.selectProps.inverse
       ? 'rgba(255, 255, 255, 0.8)'
       : 'rgba(0, 0, 0, 0.8)',
