@@ -9,10 +9,23 @@ Keyword.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+export function TheatricalTechniqueTag({ id, children }) {
+  return (
+    <li className={styles.tag}>
+      <a href={`/base-de-donnees?theatricalTechniques=${id}`}>{children}</a>
+    </li>
+  );
+}
+
+TheatricalTechniqueTag.propTypes = {
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 export function Tag({ id, children }) {
   return (
     <li className={styles.tag}>
-      <a href={`/repertoire?relatedToTags=${id}`}>{children}</a>
+      <a href={`/base-de-donnees?relatedToTags=${id}`}>{children}</a>
     </li>
   );
 }

@@ -13,7 +13,7 @@ import Place from 'components/Place';
 import Section from 'components/Section';
 import Author, { formatAuthor } from 'components/Author';
 import Info from 'components/Info';
-import Keywords, { Tag } from 'components/Keywords';
+import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
 import AuthorCard from 'components/AuthorCard';
 import CompanyCard from 'components/CompanyCard';
@@ -379,7 +379,11 @@ function Work(props) {
           title={t('common:theatricalTechniques')}
           show={hasAtLeastOneItem(theatricalTechniques)}
         >
-          <Keywords keywords={theatricalTechniques} fill />
+          <Keywords
+            keywords={theatricalTechniques}
+            component={TheatricalTechniqueTag}
+            fill
+          />
         </Section>
 
         <Section title={t('common:ids')} show={!!doi || !!viafId || !!arkId}>
