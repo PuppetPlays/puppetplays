@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, Fragment } from 'react';
+import { useCallback, useEffect, useState, Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { useCookies } from 'react-cookie';
@@ -84,6 +84,7 @@ function Home({
     { id: 'title', title: t('common:title') },
     { id: 'firstAuthorTitle', title: t('common:author') },
   ];
+  const scrollElementRef = useRef();
 
   const handleToggleFiltersBar = useCallback(() => {
     setIsOpen(!isOpen);
@@ -101,8 +102,11 @@ function Home({
       },
     }).then((newData) => {
       setData(newData);
+      if (scrollElementRef.current) {
+        scrollElementRef.current.scrollTop = 0;
+      }
     });
-  }, [router.locale, router.query, currentPage, filters]);
+  }, [router.locale, router.query, scrollElementRef]);
 
   const handlePageChange = useCallback(
     (page) => {
@@ -372,7 +376,7 @@ function Home({
             </div>
           </div>
 
-          <div className={styles.works}>
+          <div className={styles.works} ref={scrollElementRef}>
             <div className={styles.worksScroll}>
               {data.entries &&
                 data.entries.map((work) => (
