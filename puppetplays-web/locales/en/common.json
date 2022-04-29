@@ -111,8 +111,7 @@
   "presentation": "Presentation",
   "medias": "Medias",
   "mediaKinds": {
-    "illustration": "Illustration",
-    "photo": "Performance photography",
+    "image": "Image",
     "video": "Video record",
     "audio": "Sound record"
   },
