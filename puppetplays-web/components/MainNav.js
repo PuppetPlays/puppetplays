@@ -5,10 +5,20 @@ import useTranslation from 'next-translate/useTranslation';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
 
-const renderNavButton = (props) => {
+const NavButton = (props) => {
+  const { t } = useTranslation();
+
   return (
-    <button {...props} className={styles.navButton}>
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <button
+      {...props}
+      className={styles.navButton}
+      aria-label={t('common:navMenu')}
+    >
+      <svg
+        focusable="false"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <line x1="8" y1="12.5" x2="32" y2="12.5" strokeWidth="3" />
         <line x1="8" y1="18.5" x2="32" y2="18.5" strokeWidth="3" />
         <line x1="8" y1="24.5" x2="32" y2="24.5" strokeWidth="3" />
@@ -31,7 +41,7 @@ function MainNav({ inverse }) {
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
         itemsCount={3}
-        renderButton={renderNavButton}
+        renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
         {[

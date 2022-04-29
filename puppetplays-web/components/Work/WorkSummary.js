@@ -183,8 +183,10 @@ function WorkSummary({
         type="button"
         className={styles.expandButton}
         onClick={() => setIsExpanded(!isExpanded)}
+        aria-label={t(`common:${isExpanded ? 'closeNote' : 'expandNote'}`)}
       >
         <svg
+          focusable="false"
           width="16"
           height="16"
           viewBox="0 0 16 16"

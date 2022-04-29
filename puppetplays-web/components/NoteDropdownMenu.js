@@ -8,10 +8,16 @@ import DropdownMenu, { DropdownMenuItem } from 'components/DropdownMenu';
 import { modalTypes, useModal } from 'components/modalContext';
 import styles from './noteDropdownMenu.module.scss';
 
-const renderNoteDropdownMenuButton = (props) => {
+const NoteDropdownMenuButton = (props) => {
+  const { t } = useTranslation();
+
   return (
-    <button {...props} className={styles.button}>
-      <svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+    <button {...props} className={styles.button} aria-label={t('common:menu')}>
+      <svg
+        focusable="false"
+        viewBox="0 0 8 8"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path d="M4 6.5L0.5 1.5L7.5 1.5L4 6.5Z" />
       </svg>
     </button>
@@ -50,7 +56,7 @@ function NoteDropdownMenu({ id, modalType }) {
   }, [id, modalType]);
 
   return (
-    <DropdownMenu itemsCount={2} renderButton={renderNoteDropdownMenuButton}>
+    <DropdownMenu itemsCount={2} renderButton={NoteDropdownMenuButton}>
       {[
         <DropdownMenuItem
           key="search"

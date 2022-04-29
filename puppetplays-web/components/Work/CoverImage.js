@@ -4,14 +4,9 @@ import Tooltip from 'components/Tooltip';
 import styles from './coverImage.module.scss';
 
 function CoverImage({ image, year, hasPlaceholder }) {
-  const {
-    url,
-    alt,
-    description,
-    copyright,
-    width: w,
-    height: h,
-  } = hasAtLeastOneItem(image) ? image[0] : {};
+  const { url, alt, description, copyright } = hasAtLeastOneItem(image)
+    ? image[0]
+    : {};
 
   return (
     <div className={styles.container}>
@@ -37,10 +32,15 @@ function CoverImage({ image, year, hasPlaceholder }) {
       {hasPlaceholder &&
         !hasAtLeastOneItem(image) &&
         (!year || year <= 1824) && (
-          <img src="/work-script-thumbnail.svg" alt="" />
+          <img
+            src="/work-script-thumbnail.svg"
+            alt=""
+            width="100"
+            height="134"
+          />
         )}
       {hasPlaceholder && !hasAtLeastOneItem(image) && year > 1824 && (
-        <img src="/work-thumbnail.svg" alt="" />
+        <img src="/work-thumbnail.svg" alt="" width="100" height="134" />
       )}
     </div>
   );

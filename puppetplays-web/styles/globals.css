@@ -1,6 +1,7 @@
 /* fira-sans-regular - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: normal;
   font-weight: 400;
   src: local(''),
@@ -11,6 +12,7 @@
 /* fira-sans-italic - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: italic;
   font-weight: 400;
   src: local(''),
@@ -21,6 +23,7 @@
 /* fira-sans-500 - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: normal;
   font-weight: 500;
   src: local(''),
@@ -31,6 +34,7 @@
 /* fira-sans-500-italic - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: italic;
   font-weight: 500;
   src: local(''),
@@ -41,6 +45,7 @@
 /* fira-sans-700 - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: normal;
   font-weight: 700;
   src: local(''),
@@ -51,6 +56,7 @@
 /* fira-sans-700italic - latin */
 @font-face {
   font-family: 'Fira Sans';
+  font-display: swap;
   font-style: italic;
   font-weight: 700;
   src: local(''),
@@ -61,6 +67,7 @@
 /* pt-serif-700 - latin */
 @font-face {
   font-family: 'PT Serif';
+  font-display: swap;
   font-style: normal;
   font-weight: 700;
   src: local(''),

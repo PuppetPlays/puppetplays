@@ -82,8 +82,17 @@ function WorksFilters({
             </button>
           </Fragment>
         )}
-        <button className={styles.closeButton} type="button" onClick={onToggle}>
-          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <button
+          className={styles.closeButton}
+          type="button"
+          onClick={onToggle}
+          aria-label={t(`common:filters.${isOpen ? 'close' : 'open'}`)}
+        >
+          <svg
+            focusable="false"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M10.5 3.5L5.5 8L10.5 12.5"
               strokeLinecap="round"

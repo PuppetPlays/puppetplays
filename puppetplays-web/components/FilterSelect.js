@@ -21,8 +21,14 @@ function FilterSelect({
 
   return (
     <div>
-      <FilterLabel htmlFor={name}>{t(`common:filters.${name}`)}</FilterLabel>
+      <FilterLabel
+        id={`aria-label-of-${name}`}
+        htmlFor={`select-input-of-${name}`}
+      >
+        {t(`common:filters.${name}`)}
+      </FilterLabel>
       <Select
+        aria-labelledby={`aria-label-of-${name}`}
         className="filter-select"
         classNamePrefix="select"
         theme={getTheme}

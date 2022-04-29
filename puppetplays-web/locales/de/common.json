@@ -1,4 +1,6 @@
 {
+  "navMenu": "Navigation menu",
+  "menu": "Menu",
   "backToHome": "Back to home ›",
   "database": "Datenbank",
   "map": "Karte",
@@ -10,6 +12,8 @@
   "it": "Italienisch",
   "de": "Deutsch",
   "close": "Schließen",
+  "closeNote": "Close the note",
+  "expandNote": "Open the note",
   "writtenBy": "Geschrieben von",
   "alias": "gen.",
   "language": "Sprache",
@@ -62,6 +66,8 @@
   "filters": {
     "title": "Filters",
     "eraseAll": "Erase all",
+    "close": "Close filters bar",
+    "open": "Open filters bar",
     "orderBy": "Sort by:",
     "compositionPlace": "Place",
     "compositionPlacePlaceholder": "Country, city…",

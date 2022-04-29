@@ -1,4 +1,6 @@
 {
+  "navMenu": "Menu de navigation",
+  "menu": "Menu",
   "backToHome": "Retour à l’accueil ›",
   "database": "Base de données",
   "map": "Carte",
@@ -10,6 +12,8 @@
   "it": "Italien",
   "de": "Allemand",
   "close": "Fermer",
+  "closeNote": "Refermer la notice",
+  "expandNote": "Entrouvrir la notice",
   "writtenBy": "Rédaction de la notice",
   "alias": "dit",
   "language": "Langue",
@@ -62,6 +66,8 @@
   "filters": {
     "title": "Filtres",
     "eraseAll": "Tout effacer",
+    "close": "Fermer la barre de filtres",
+    "open": "Ouvrir la barre de filtres",
     "orderBy": "Trier par :",
     "compositionPlace": "Lieu",
     "compositionPlacePlaceholder": "Pays, ville…",
