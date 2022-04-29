@@ -61,7 +61,7 @@ function WorkSummary({
       className={`${styles.container} ${isExpanded ? 'is-expanded' : ''}`}
     >
       <div className={styles.media}>
-        <CoverImage image={mainImage} year={compositionMinDate} height={150} />
+        <CoverImage image={mainImage} year={compositionMinDate} />
         <p>
           <CommaSepList list={formats} listTransform={getTitle} />
         </p>

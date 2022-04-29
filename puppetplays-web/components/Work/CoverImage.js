@@ -3,7 +3,7 @@ import { hasAtLeastOneItem } from 'lib/utils';
 import Tooltip from 'components/Tooltip';
 import styles from './coverImage.module.scss';
 
-function CoverImage({ image, year, height, hasPlaceholder }) {
+function CoverImage({ image, year, hasPlaceholder }) {
   const {
     url,
     alt,
@@ -14,10 +14,7 @@ function CoverImage({ image, year, height, hasPlaceholder }) {
   } = hasAtLeastOneItem(image) ? image[0] : {};
 
   return (
-    <div
-      className={styles.container}
-      style={{ height: hasAtLeastOneItem(image) ? height : null }}
-    >
+    <div className={styles.container}>
       {hasAtLeastOneItem(image) && (
         <Tooltip
           content={
@@ -34,11 +31,7 @@ function CoverImage({ image, year, height, hasPlaceholder }) {
           }
           placement="left"
         >
-          <img
-            src={url}
-            alt={alt}
-            style={{ objectFit: w > h ? 'cover' : 'contain' }}
-          />
+          <img src={url} alt={alt} />
         </Tooltip>
       )}
       {hasPlaceholder &&
@@ -56,14 +49,12 @@ function CoverImage({ image, year, height, hasPlaceholder }) {
 CoverImage.defaultProps = {
   image: null,
   year: null,
-  height: null,
   hasPlaceholder: true,
 };
 
 CoverImage.propTypes = {
   image: PropTypes.arrayOf(PropTypes.object),
   year: PropTypes.number,
-  height: PropTypes.number,
   hasPlaceholder: PropTypes.bool,
 };
 

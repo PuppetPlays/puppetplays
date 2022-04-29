@@ -120,10 +120,11 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
     ... on works_works_Entry {
       translatedTitle,
       subtitle,
-      mainImage @transform(height: 300, position: "center-center") {
+      mainImage @transform(width: 200, position: "center-center") {
         ...assetFragment
       },
       theatricalTechniques {
+        id,
         title
       },
       keywords {
@@ -251,7 +252,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
       translatedTitle,
       subtitle,
       genre,
-      mainImage @transform(height: 680, position: "center-center") {
+      mainImage @transform(width: 520, position: "center-center") {
         ...assetFragment
       },
       keywords {
@@ -390,6 +391,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
         }
       },
       theatricalTechniques {
+        id,
         title
       },
       actsCount,

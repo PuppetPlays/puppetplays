@@ -188,7 +188,6 @@ function Work(props) {
         <CoverImage
           image={mainImage}
           year={compositionMinDate}
-          height={340}
           hasPlaceholder={false}
         />
         <p>
