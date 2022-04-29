@@ -49,9 +49,9 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
           <CrossIcon />
         </button>
       )}
-      <button type="button" className={styles.submitButton}>
+      <div className={styles.submitButton}>
         <SearchIcon />
-      </button>
+      </div>
     </div>
   );
 };

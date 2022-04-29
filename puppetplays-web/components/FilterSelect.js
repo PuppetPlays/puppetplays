@@ -33,6 +33,7 @@ function FilterSelect({
         classNamePrefix="select"
         theme={getTheme}
         styles={styles}
+        instanceId={`select-id-${name}`}
         inputId={`select-input-of-${name}`}
         components={components}
         name={name}

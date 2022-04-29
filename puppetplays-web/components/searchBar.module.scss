@@ -44,15 +44,19 @@
   border-radius: 15px;
   background-color: var(--color-brand);
   border: 0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: var(--color-brand-light);
-  }
 
   svg {
     width: 16px;
     height: 16px;
+  }
+}
+
+button.submitButton,
+button.resetButton {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-brand-light);
   }
 }
 

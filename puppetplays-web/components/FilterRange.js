@@ -43,7 +43,9 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
 
   return (
     <div className={styles.wrapper}>
-      <FilterLabel htmlFor={name}>{t(`common:filters.${name}`)}</FilterLabel>
+      <FilterLabel id={`aria-label-of-${name}`} htmlFor={name}>
+        {t(`common:filters.${name}`)}
+      </FilterLabel>
       {bounds && (
         <Fragment>
           <ReactSlider

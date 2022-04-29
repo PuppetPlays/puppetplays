@@ -17,6 +17,7 @@ function FilterCheckbox({ name, checked, onChange }) {
   return (
     <div className={styles.container}>
       <input
+        aria-labelledby={`aria-label-of-${name}`}
         name={name}
         type="checkbox"
         onChange={handeChange}
@@ -24,7 +25,9 @@ function FilterCheckbox({ name, checked, onChange }) {
         checked={checked}
         className={styles.checkbox}
       />
-      <FilterLabel htmlFor={name}>{t(`common:filters.${name}`)}</FilterLabel>
+      <FilterLabel id={`aria-label-of-${name}`} htmlFor={name}>
+        {t(`common:filters.${name}`)}
+      </FilterLabel>
     </div>
   );
 }

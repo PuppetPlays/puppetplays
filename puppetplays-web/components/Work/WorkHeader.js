@@ -20,7 +20,7 @@ const WorkHeader = ({
     <header className={isCompact ? styles.isCompact : null}>
       <h1 className={styles.title}>{title}</h1>
       {subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
-      <h3 className={styles.authors}>
+      <div className={styles.authors}>
         {authors && authors.length > 0 && (
           <span>
             <CommaSepList
@@ -52,7 +52,7 @@ const WorkHeader = ({
             </span>
           </Fragment>
         )}
-      </h3>
+      </div>
     </header>
   );
 };
