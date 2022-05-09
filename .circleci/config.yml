@@ -30,7 +30,7 @@ jobs:
   build_web_staging:
     executor:
       name: node/default
-      tag: '14.15'
+      tag: '14.17'
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
@@ -45,7 +45,7 @@ jobs:
   build_web_production:
     executor:
       name: node/default
-      tag: '14.15'
+      tag: '14.17'
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
