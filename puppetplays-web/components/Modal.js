@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import useTranslation from 'next-translate/useTranslation';
@@ -14,12 +14,31 @@ function Modal({
   scrollElement,
   children,
 }) {
+  const modalContentRef = useRef(null);
   const { t } = useTranslation();
   const [, dispatch] = useModal();
 
   const handleClose = useCallback(() => {
     dispatch({ type: 'close', payload: { type: modalType } });
   }, [dispatch, modalType]);
+
+  const setModalContentRef = useCallback(
+    (node) => {
+      modalContentRef.current = node;
+    },
+    [modalContentRef],
+  );
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (modalContentRef.current && isOpen) {
+        modalContentRef.current.style.marginTop = `${Math.max(
+          0,
+          (window.innerHeight - modalContentRef.current.offsetHeight) / 2,
+        )}px`;
+      }
+    });
+  }, [modalContentRef, isOpen]);
 
   return (
     <ReactModal
@@ -33,6 +52,7 @@ function Modal({
       overlayClassName={`${styles.overlay} ${
         styles[`has-${scrollElement}-scroll`]
       }`}
+      contentRef={setModalContentRef}
     >
       <button
         type="button"
