@@ -62,6 +62,9 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
     },
     token,
   );
+  authorWorksData.entries = authorWorksData.entries
+    .filter(({ authors }) => authors.map(({ id }) => id).includes(params.id))
+    .map(({ authors, ...entry }) => entry);
 
   return {
     props: { authorData, authorWorksData },

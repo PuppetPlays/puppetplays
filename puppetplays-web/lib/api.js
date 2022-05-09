@@ -562,7 +562,10 @@ query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
     slug,
     title,
     ... on works_works_Entry {
-      date: mostRelevantDate
+      date: mostRelevantDate,
+      authors {
+        id
+      }
     }
   }
 }
