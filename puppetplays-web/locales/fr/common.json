@@ -117,9 +117,9 @@
   "presentation": "Présentation",
   "medias": "Médias",
   "mediaKinds": {
-    "image": "Image",
-    "video": "Enregistrement vidéo",
-    "audio": "Enregistrement sonore"
+    "image": "Image(s)",
+    "video": "Enregistrement(s) vidéo(s)",
+    "audio": "Enregistrement(s) sonore(s)"
   },
   "permalink": "Permalien",
   "permalinkCopy": "Copier le permalien"

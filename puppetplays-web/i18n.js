@@ -1,5 +1,5 @@
 module.exports = {
-  locales: ['fr', 'en', 'de', 'it'],
+  locales: ['fr', 'en'],
   defaultLocale: 'fr',
   pages: {
     '*': ['common'],
