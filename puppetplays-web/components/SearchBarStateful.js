@@ -1,12 +1,25 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import SearchIcon from './icon-search.svg';
+import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';
 
 const SearchBarStateful = () => {
+  const [searchValue, setSearchValue] = useState('');
   const { t } = useTranslation();
   const router = useRouter();
+
+  const handleReset = useCallback(() => {
+    setSearchValue('');
+  }, [setSearchValue]);
+
+  const handleSearchChange = useCallback(
+    (evt) => {
+      setSearchValue(evt.target.value);
+    },
+    [setSearchValue],
+  );
 
   const handleSubmit = useCallback(
     (evt) => {
@@ -24,8 +37,18 @@ const SearchBarStateful = () => {
         name="search"
         placeholder={t('common:searchPlaceholder')}
         type="text"
-        defaultValue=""
+        value={searchValue}
+        onChange={handleSearchChange}
       />
+      {searchValue && (
+        <button
+          type="button"
+          onClick={handleReset}
+          className={styles.resetButton}
+        >
+          <CrossIcon />
+        </button>
+      )}
       <button type="submit" className={styles.submitButton}>
         <SearchIcon />
       </button>
