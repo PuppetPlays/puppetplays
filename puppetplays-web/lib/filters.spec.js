@@ -9,15 +9,13 @@ import {
 const filtersState = {
   mainLanguage: ['1', '2'],
   compositionPlace: ['1', '2'],
-  compositionMinDate: 1821,
-  compositionMaxDate: 1920,
+  compositionMinDate: [1821, 1920],
 };
 
 const queryParams = {
   mainLanguage: '1,2',
   compositionPlace: '1,2',
-  compositionMinDate: '1821',
-  compositionMaxDate: '1920',
+  compositionMinDate: '1821,1920',
 };
 
 describe('worksStateToGraphqlVariables', () => {
@@ -111,8 +109,7 @@ describe('worksQueryParamsToState', () => {
 
     expect(state).toEqual({
       compositionPlace: ['1', '2'],
-      compositionMinDate: 1821,
-      compositionMaxDate: 1920,
+      compositionMinDate: [1821, 1920],
     });
   });
 

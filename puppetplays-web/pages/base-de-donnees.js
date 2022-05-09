@@ -151,26 +151,22 @@ function Home({
         if (value[0] !== periodBounds[0] && value[1] !== periodBounds[1]) {
           newFilters = {
             ...filters,
-            compositionMinDate: value[0],
-            compositionMaxDate: value[1],
+            compositionMinDate: [value[0], value[1]],
           };
         } else if (value[0] !== periodBounds[0]) {
           newFilters = {
             ...filters,
-            compositionMinDate: value[0],
-            compositionMaxDate: null,
+            compositionMinDate: [value[0], 0],
           };
         } else if (value[1] !== periodBounds[1]) {
           newFilters = {
             ...filters,
-            compositionMinDate: null,
-            compositionMaxDate: value[1],
+            compositionMinDate: [0, value[1]],
           };
         } else {
           newFilters = {
             ...filters,
             compositionMinDate: null,
-            compositionMaxDate: null,
           };
         }
       } else if (name === 'publicDomain') {
@@ -310,8 +306,8 @@ function Home({
               filters.compositionPlace &&
               places.filter(({ id }) => filters.compositionPlace.includes(id))
             }
-            selectedPeriodMin={filters.compositionMinDate}
-            selectedPeriodMax={filters.compositionMaxDate}
+            selectedPeriodMin={get(filters, 'compositionMinDate[0]', null)}
+            selectedPeriodMax={get(filters, 'compositionMinDate[1]', null)}
             selectedAuthors={
               filters.authors &&
               authors.filter(({ id }) => filters.authors.includes(id))

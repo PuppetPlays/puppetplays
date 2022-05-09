@@ -33,11 +33,11 @@ test('renders the work header', () => {
 
   const h1 = screen.getByRole('heading', { level: 1 });
   const h2 = screen.getByRole('heading', { level: 2 });
-  const h3 = screen.getByRole('heading', { level: 3 });
+  const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
   expect(h1).toHaveTextContent('My work');
   expect(h2).toHaveTextContent('Is this a work?');
-  expect(h3).toHaveTextContent(
+  expect(workHeaderAuthors).toHaveTextContent(
     'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France | French',
   );
 });
@@ -61,9 +61,9 @@ test('renders the work header without a date', () => {
     />,
   );
 
-  const h3 = screen.getByRole('heading', { level: 3 });
+  const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
-  expect(h3).toHaveTextContent(
+  expect(workHeaderAuthors).toHaveTextContent(
     'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France | French',
   );
 });
@@ -79,9 +79,9 @@ test('renders the work header without a place', () => {
     />,
   );
 
-  const h3 = screen.getByRole('heading', { level: 3 });
+  const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
-  expect(h3).toHaveTextContent(
+  expect(workHeaderAuthors).toHaveTextContent(
     'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | French',
   );
 });
@@ -97,9 +97,9 @@ test('renders the work header without a language', () => {
     />,
   );
 
-  const h3 = screen.getByRole('heading', { level: 3 });
+  const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
-  expect(h3).toHaveTextContent(
+  expect(workHeaderAuthors).toHaveTextContent(
     'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France',
   );
 });
@@ -114,9 +114,9 @@ test('renders the work header without a language and a date', () => {
     />,
   );
 
-  const h3 = screen.getByRole('heading', { level: 3 });
+  const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
-  expect(h3).toHaveTextContent(
+  expect(workHeaderAuthors).toHaveTextContent(
     'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France',
   );
 });

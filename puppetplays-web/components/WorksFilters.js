@@ -41,7 +41,7 @@ function WorksFilters({
   const filtersCount = [
     get(selectedLanguages, 'length', 0),
     get(selectedPlaces, 'length', 0),
-    selectedPeriodMin,
+    !!selectedPeriodMin || !!selectedPeriodMax,
     get(selectedAuthors, 'length', 0),
     get(selectedLiteraryTones, 'length', 0),
     get(selectedAnimationTechniques, 'length', 0),

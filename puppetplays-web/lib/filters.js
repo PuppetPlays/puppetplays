@@ -89,11 +89,15 @@ export const authorsStateToGraphqlVariables = stateToGraphqlVariables(
 export const worksStateToGraphqlVariables = stateToGraphqlVariables(
   worksAllowedFilters,
   {
-    compositionMinDate: (filter, filters) => [
-      'and',
-      `>= ${filter}`,
-      `<= ${filters.compositionMaxDate}`,
-    ],
+    compositionMinDate: (filter) => {
+      const [compositionMinDate, compositionMaxDate] = filter || [];
+      if (!compositionMaxDate || compositionMaxDate === 0) {
+        return `>= ${compositionMinDate}`;
+      } else if (!compositionMinDate || compositionMinDate === 0) {
+        return `<= ${compositionMaxDate}`;
+      }
+      return ['and', `>= ${compositionMinDate}`, `<= ${compositionMaxDate}`];
+    },
   },
 );
 
@@ -132,8 +136,7 @@ export const authorsQueryParamsToState = queryParamsToState({
 export const worksQueryParamsToState = queryParamsToState({
   mainLanguage: split(','),
   compositionPlace: split(','),
-  compositionMinDate: parseInteger(10),
-  compositionMaxDate: parseInteger(10),
+  compositionMinDate: (filter) => filter.split(',').map(parseInteger(10)),
   authors: split(','),
   literaryTones: split(','),
   animationTechniques: split(','),

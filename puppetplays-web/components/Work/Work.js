@@ -417,7 +417,7 @@ function Work(props) {
 
         <Section
           title={t('common:writtenBy')}
-          show={writtenBy.firstName || writtenBy.lastName}
+          show={!!writtenBy.firstName || !!writtenBy.lastName}
         >
           {writtenBy.firstName} {writtenBy.lastName}
         </Section>
