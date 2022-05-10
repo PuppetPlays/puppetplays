@@ -46,6 +46,11 @@ function AuthorModal() {
       });
     },
   );
+  const filteredWorks = isModalOfTypeOpen(modalState, modalTypes.author)
+    ? works.entries
+        .filter(({ authors }) => authors.map(({ id }) => id).includes(authorId))
+        .map(({ authors, ...entry }) => entry)
+    : null;
 
   const handleCloseModal = useCallback(() => {
     dispatch({ type: 'close', payload: { type: modalTypes.author } });
@@ -58,9 +63,9 @@ function AuthorModal() {
       title={data && <Author {...get(data, 'entry', {})} />}
       subtitle={t('common:author')}
     >
-      {data && works && (
+      {data && filteredWorks && (
         <AuthorNote
-          works={works.entries}
+          works={filteredWorks}
           onCloseModal={handleCloseModal}
           {...data.entry}
         />
