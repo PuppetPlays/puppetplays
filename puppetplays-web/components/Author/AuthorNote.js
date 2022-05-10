@@ -23,6 +23,7 @@ function AuthorNote({
   arkId,
   isniId,
   works,
+  bleedCarousel,
   onCloseModal,
 }) {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ function AuthorNote({
             <HtmlContent html={biographicalNote} />
           </div>
         )}
-        <Carousel images={mainImage.concat(images)} />
+        <Carousel images={mainImage.concat(images)} bleed={bleedCarousel} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -95,6 +96,7 @@ AuthorNote.defaultProps = {
   arkId: null,
   isniId: null,
   works: null,
+  bleedCarousel: false,
   onCloseModal: null,
 };
 
@@ -109,6 +111,7 @@ AuthorNote.propTypes = {
   arkId: PropTypes.string,
   isniId: PropTypes.string,
   works: PropTypes.arrayOf(PropTypes.object),
+  bleedCarousel: PropTypes.bool,
   onCloseModal: PropTypes.func,
 };
 

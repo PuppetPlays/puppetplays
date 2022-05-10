@@ -13,6 +13,7 @@ function AnimationTechniqueNote({
   mainImage,
   images,
   works,
+  bleedCarousel,
   onCloseModal,
 }) {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ function AnimationTechniqueNote({
             <HtmlContent html={description} />
           </div>
         )}
-        <Carousel images={mainImage.concat(images)} />
+        <Carousel images={mainImage.concat(images)} bleed={bleedCarousel} />
       </div>
 
       {hasAtLeastOneItem(works) && (
@@ -56,6 +57,7 @@ AnimationTechniqueNote.defaultProps = {
   mainImage: [],
   images: [],
   works: null,
+  bleedCarousel: false,
   onCloseModal: null,
 };
 
@@ -64,6 +66,7 @@ AnimationTechniqueNote.propTypes = {
   mainImage: PropTypes.arrayOf(PropTypes.object),
   images: PropTypes.arrayOf(PropTypes.object),
   works: PropTypes.arrayOf(PropTypes.object),
+  bleedCarousel: PropTypes.bool,
   onCloseModal: PropTypes.func,
 };
 

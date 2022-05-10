@@ -37,6 +37,7 @@ const AnimationTechniquesPage = ({
           <AnimationTechniqueNote
             {...animationTechniquesData.entry}
             works={animationTechniquesWorksData.entries}
+            bleedCarousel
           />
         )}
       </ContentLayout>

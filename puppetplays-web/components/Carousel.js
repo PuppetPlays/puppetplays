@@ -1,12 +1,14 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import { hasAtLeastOneItem } from 'lib/utils';
 import ZoomableImage from 'components/ZoomableImage';
 import styles from './carousel.module.scss';
 
-function Carousel({ images }) {
+function Carousel({ images, bleed }) {
   const innerRef = useRef(null);
   const [currentImage, setCurrentImage] = useState(0);
+  const cx = classNames.bind(styles);
 
   const reduceImagesWidth = (index) => {
     return images.slice(0, index).reduce((acc, image) => {
@@ -27,7 +29,7 @@ function Carousel({ images }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={cx({ container: true, isBleeding: bleed })}>
       <button
         type="button"
         className={styles.navButtonBackward}
@@ -83,10 +85,12 @@ function Carousel({ images }) {
 
 Carousel.defaultProps = {
   images: null,
+  bleed: false,
 };
 
 Carousel.propTypes = {
   images: PropTypes.arrayOf(PropTypes.object),
+  bleed: PropTypes.bool,
 };
 
 export default Carousel;

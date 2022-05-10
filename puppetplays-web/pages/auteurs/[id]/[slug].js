@@ -29,7 +29,11 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
         )}
 
         {authorData && authorWorksData && (
-          <AuthorNote {...authorData.entry} works={authorWorksData.entries} />
+          <AuthorNote
+            {...authorData.entry}
+            works={authorWorksData.entries}
+            bleedCarousel
+          />
         )}
       </ContentLayout>
     </Layout>
