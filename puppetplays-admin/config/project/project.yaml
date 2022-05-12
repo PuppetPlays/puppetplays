@@ -1,4 +1,4 @@
-dateModified: 1651151786
+dateModified: 1652350038
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -150,7 +150,7 @@ meta:
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
     fa8f9cfe-9074-40b9-b300-5a58cd4ff61c: Publics # Publics
     fbbb13b9-a645-436f-82a9-ad8e5767acda: Œuvres # Œuvres
-    fd390cb8-325d-419c-a64a-95714d698f94: Rôle(s) # Rôle(s)
+    fd390cb8-325d-419c-a64a-95714d698f94: 'Personnage(s) pour l’indexation' # Personnage(s) pour l’indexation
     ffcbd130-d01a-46e8-be41-572fa13bf2fb: Commons # Commons
 plugins:
   cp-css:

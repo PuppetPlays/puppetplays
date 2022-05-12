@@ -82,6 +82,8 @@ return array(
   'Registre(s) littéraire(s)' => 'Registro/i stilistico/i',
   'Représentations' => 'Rappresentazioni',
   'Résumé' => 'Riassunto',
+  'Personnage(s) pour l’indexation' => 'Personaggio per la catalogazione',
+  'Sélectionner un ou plusieurs personnage(s) pour l’indexation' => 'Selezionare un personaggio per la catalogazione',
   'Sélectionner un ou plusieurs auteur(s)' => 'Selezionare uno o più autori',
   'Sélectionner un ou plusieurs transcripteur(s)' => 'Selezionare uno o più trascrittori',
   'Sélectionner un ou plusieurs compilateur(s)' => 'Selezionare uno o più curatori editoriali',

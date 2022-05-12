@@ -82,6 +82,8 @@ return array(
   'Registre(s) littéraire(s)' => 'Stilregister',
   'Représentations' => 'Performances',
   'Résumé' => 'Zusammenfassung',
+  'Personnage(s) pour l’indexation' => 'Person für das Personenverzeichnis',
+  'Sélectionner un ou plusieurs personnage(s) pour l’indexation' => 'Person auswählen für das Gesamtkatalog',
   'Sélectionner un ou plusieurs auteur(s)' => 'Autor*innen auswählen',
   'Sélectionner un ou plusieurs transcripteur(s)' => 'Kopist*innen auswählen',
   'Sélectionner un ou plusieurs compilateur(s)' => 'Herausgeber*innen auswählen',

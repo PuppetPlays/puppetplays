@@ -82,6 +82,8 @@ return array(
   'Registre(s) littéraire(s)' => 'Literary tone(s)',
   'Représentations' => 'Performances',
   'Résumé' => 'Abstract',
+  'Personnage(s) pour l’indexation' => 'Character(s) for indexing',
+  'Sélectionner un ou plusieurs personnage(s) pour l’indexation' => 'Select one or more character(s) for indexing',
   'Sélectionner un ou plusieurs auteur(s)' => 'Select one or more author(s)',
   'Sélectionner un ou plusieurs transcripteur(s)' => 'Select one or more transcriber(s)',
   'Sélectionner un ou plusieurs compilateur(s)' => 'Select one or more editor(s)',

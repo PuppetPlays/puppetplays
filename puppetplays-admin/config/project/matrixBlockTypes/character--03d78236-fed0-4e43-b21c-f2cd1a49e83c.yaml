@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fd390cb8-325d-419c-a64a-95714d698f94 # Rôle(s)
+            fieldUid: fd390cb8-325d-419c-a64a-95714d698f94 # Personnage(s) pour l’indexation
             instructions: null
             label: null
             required: false
@@ -45,19 +45,19 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  fd390cb8-325d-419c-a64a-95714d698f94: # Rôle(s)
+  fd390cb8-325d-419c-a64a-95714d698f94: # Personnage(s) pour l’indexation
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
     handle: roles
     instructions: ''
-    name: Rôle(s)
+    name: 'Personnage(s) pour l’indexation'
     searchable: true
     settings:
       allowSelfRelations: false
       limit: ''
       localizeRelations: false
-      selectionLabel: 'Sélectionner un ou plusieurs rôle(s)'
+      selectionLabel: 'Sélectionner un ou plusieurs personnage(s) pour l’indexation'
       showSiteMenu: false
       source: null
       sources:

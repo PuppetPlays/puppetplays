@@ -82,6 +82,8 @@ return array(
   'Registre(s) littéraire(s)' => 'Registre(s) littéraire(s)',
   'Représentations' => 'Représentations',
   'Résumé' => 'Résumé',
+  'Personnage(s) pour l’indexation' => 'Personnage(s) pour l’indexation',
+  'Sélectionner un ou plusieurs personnage(s) pour l’indexation' => 'Sélectionner un ou plusieurs personnage(s) pour l’indexation',
   'Sélectionner un ou plusieurs auteur(s)' => 'Sélectionner un ou plusieurs auteur(s)',
   'Sélectionner un ou plusieurs transcripteur(s)' => 'Sélectionner un ou plusieurs transcripteur(s)',
   'Sélectionner un ou plusieurs compilateur(s)' => 'Sélectionner un ou plusieurs compilateur(s)',
