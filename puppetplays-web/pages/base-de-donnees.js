@@ -47,7 +47,9 @@ import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
 import styles from 'styles/Database.module.css';
 
-const MapView = dynamic(() => import('components/Map/MapView'), { ssr: false });
+const MapView = dynamic(() => import('../components/Map/MapView'), {
+  ssr: false,
+});
 const Filters = dynamic(() => import('../components/WorksFilters'), {
   ssr: false,
   loading: () => (
@@ -405,21 +407,23 @@ function Home({
         </Fragment>
       )}
       {filters.view === VIEWS.map && (
-        <FiltersProvider isOpen={isOpen}>
-          <div className={styles.map}>
-            <Button
-              onClick={handleSetListView}
-              icon={<img src="/icon-list.svg" alt="" />}
-            >
-              {t('common:showList')}
-            </Button>
-            <MapView
-              locale={router.locale}
-              filters={filters}
-              searchTerms={searchTerms}
-            />
-          </div>
-        </FiltersProvider>
+        <Suspense fallback={`loading`}>
+          <FiltersProvider isOpen={isOpen}>
+            <div className={styles.map}>
+              <Button
+                onClick={handleSetListView}
+                icon={<img src="/icon-list.svg" alt="" />}
+              >
+                {t('common:showList')}
+              </Button>
+              <MapView
+                locale={router.locale}
+                filters={filters}
+                searchTerms={searchTerms}
+              />
+            </div>
+          </FiltersProvider>
+        </Suspense>
       )}
     </Layout>
   );
