@@ -10,7 +10,14 @@ import { getSelectedPlaceStyle, getHoveredPlaceStyle } from './styles';
 
 const MapContext = React.createContext();
 
-export function MapProvider({ children, zoom, center, mapRef, onClick }) {
+export function MapProvider({
+  children,
+  zoom,
+  center,
+  mapRef,
+  onClick,
+  setSelectInteraction,
+}) {
   const [map, setMap] = useState(null);
   const isOpen = useFilters();
 
@@ -30,26 +37,27 @@ export function MapProvider({ children, zoom, center, mapRef, onClick }) {
       return !!isSelectable;
     };
 
-    const click = new Select({
+    const clickSelect = new Select({
       style: getSelectedPlaceStyle,
       filter: isFeatureSelecteable,
     });
+    setSelectInteraction(clickSelect);
     var hover = new Select({
       style: getHoveredPlaceStyle,
       condition: pointerMove,
       filter: isFeatureSelecteable,
     });
-    mapObject.addInteraction(click);
+    mapObject.addInteraction(clickSelect);
     mapObject.addInteraction(hover);
-    click.on('select', onClick);
+    clickSelect.on('select', onClick);
 
     setMap(mapObject);
 
     return function cleanup() {
       mapObject.setTarget(undefined);
-      mapObject.removeInteraction(click);
+      mapObject.removeInteraction(clickSelect);
     };
-  }, [mapRef, zoom, center, onClick]);
+  }, [mapRef, zoom, center, onClick, setSelectInteraction]);
 
   useEffect(() => {
     if (map) {
@@ -78,6 +86,7 @@ MapProvider.propTypes = {
   center: PropTypes.arrayOf(PropTypes.number).isRequired,
   mapRef: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
+  setSelectInteraction: PropTypes.func.isRequired,
 };
 
 export function useMap() {

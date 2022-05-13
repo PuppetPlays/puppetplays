@@ -5,7 +5,7 @@ import * as olProj from 'ol/proj';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
-import { hasAtLeastOneItem } from 'lib/utils';
+import { hasAtLeastOneItem, identity } from 'lib/utils';
 import {
   fetchAPI,
   getWorksCardByIdsQuery,
@@ -21,6 +21,7 @@ const clusteredByCountrySource = new VectorSource({ features: [] });
 const clusteredByPlaceSource = new VectorSource({ features: [] });
 
 const MapView = ({ filters, searchTerms, locale }) => {
+  const [selectInteraction, setSelectInteraction] = useState(null);
   const [selectedWorks, setSelectedWorks] = useState(null);
   const [center] = useState(olProj.fromLonLat([10, 50]));
   const [zoom] = useState(5);
@@ -96,6 +97,20 @@ const MapView = ({ filters, searchTerms, locale }) => {
     });
   }, [filters, locale, searchTerms]);
 
+  useEffect(() => {
+    setSelectedWorks(null);
+    if (selectInteraction) {
+      selectInteraction.getFeatures().clear();
+    }
+  }, [setSelectedWorks, filters, selectInteraction]);
+
+  const handleSetSelectInteraction = useCallback(
+    (select) => {
+      setSelectInteraction(select);
+    },
+    [setSelectInteraction],
+  );
+
   const handleClick = useCallback((evt) => {
     if (evt.selected.length > 0) {
       const { ids } = evt.selected[0].getProperties();
@@ -119,7 +134,12 @@ const MapView = ({ filters, searchTerms, locale }) => {
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       >
         <WorksList works={selectedWorks} />
-        <Map center={center} zoom={zoom} onClick={handleClick}>
+        <Map
+          center={center}
+          zoom={zoom}
+          onClick={handleClick}
+          setSelectInteraction={handleSetSelectInteraction}
+        >
           <Layers
             byCountrySource={clusteredByCountrySource}
             byPlaceSource={clusteredByPlaceSource}
