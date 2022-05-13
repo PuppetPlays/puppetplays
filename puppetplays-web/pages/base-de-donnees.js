@@ -231,10 +231,12 @@ function Home({
 
   const handleClearAllFilters = useCallback(() => {
     setCurrentPage(0);
-    setFilters({});
+    const resetFilters = filters.view ? { view: filters.view } : {};
+    setFilters(resetFilters);
     router.push(
       `base-de-donnees/?${stringifyQuery({
         search: searchTerms,
+        view: filters.view,
         page: 1,
       })}`,
       undefined,
