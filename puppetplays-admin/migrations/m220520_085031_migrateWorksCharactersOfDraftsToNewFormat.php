@@ -36,14 +36,23 @@ class m220520_085031_migrateWorksCharactersOfDraftsToNewFormat extends Migration
                 $textCharactersData = array();
 
                 foreach ($entry->characters as $originalCharacter) {
-                $number++;
-                $textCharactersData["new$number"] = array(
-                    'type' => 'character',
-                    'fields' => array(
-                        'nameInText' => $originalCharacter->textName,
-                        'roles' => $originalCharacter->character->ids()
-                    )
-                );
+                    $number++;
+                    if ($originalCharacter->character) {
+                        $textCharactersData["new$number"] = array(
+                            'type' => 'character',
+                            'fields' => array(
+                                'nameInText' => $originalCharacter->textName,
+                                'roles' => $originalCharacter->character->ids()
+                            )
+                        );
+                    } else {
+                        $textCharactersData["new$number"] = array(
+                            'type' => 'character',
+                            'fields' => array(
+                                'nameInText' => $originalCharacter->title
+                            )
+                        );
+                    }
                 }
 
                 $entry->setFieldValue('textCharacters', $textCharactersData);
