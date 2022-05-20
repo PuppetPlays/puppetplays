@@ -1,5 +1,15 @@
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.7.1
+
+Déployé le 20 mai 2022
+
+### Correction
+
+- Migrer les personnages des œuvres brouillons et non-publiées
+
+---
+
 ## Puppetplays 0.7.0
 
 Déployé le 19 mai 2022
