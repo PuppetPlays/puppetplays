@@ -38,9 +38,59 @@ import BirthDeathDates from 'components/BirthDeathDates';
 import NewsletterForm from 'components/NewsletterForm';
 import styles from 'styles/Home.module.scss';
 
-const FINANCERS = ['ue', 'erc'];
-const PARTNERS = ['rir', 'upvm', 'intactile', 'humanum'];
+const PARTNERS = ['rir', 'upvm'];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
+
+const HeaderImage = () => {
+  return (
+    <div className={styles.headerImage}>
+      <svg
+        width="100%"
+        viewBox="0 0 1280 398"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 398V0H1280V75L0 398Z" fill="white" />
+      </svg>
+    </div>
+  );
+};
+
+const PartnersBar = ({ t }) => {
+  return (
+    <div className={styles.partnersBar}>
+      <ul className={styles.logosBar}>
+        <li>
+          <a
+            href="https://erc.europa.eu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img height="86" src="/logo-erc-full.png" alt="ERC - GA 835193" />
+          </a>
+        </li>
+      </ul>
+      <div className={styles.logosBarSpacer} />
+      <ul className={styles.logosBar}>
+        {PARTNERS.map((partner) => (
+          <li key={partner}>
+            <a
+              href={t(`${partner}.url`)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                height="52"
+                src={`/logo-${partner}.svg`}
+                alt={t(`${partner}.alt`)}
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default function Home({ animationTechnique, authors, work, keywords }) {
   const { t } = useTranslation('home');
@@ -48,7 +98,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const topBarRef = useRef(null);
   const workLinkRef = useRef(null);
   const animationTechniqueLinkRef = useRef(null);
-  const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   const [EXPLORE_BY] = useState({
     database: { to: '/base-de-donnees' },
     authors: { to: '/auteurs' },
@@ -56,30 +105,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
     publications: {},
     project: { href: t('ourSiteUrl') },
   });
-
-  const handleScroll = useCallback(() => {
-    if (!headerRef.current || !topBarRef.current) {
-      return;
-    }
-
-    const header = headerRef.current;
-    const stickyHeader = topBarRef.current;
-    const headerHeight = header.offsetHeight;
-
-    if (window.pageYOffset > headerHeight) {
-      if (!isHeaderSticky) {
-        stickyHeader.classList.add(styles.sticky);
-        setIsHeaderSticky(true);
-      }
-    } else {
-      stickyHeader.classList.remove(styles.sticky);
-      setIsHeaderSticky(false);
-    }
-  }, [isHeaderSticky]);
-
-  useLayoutEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-  }, [handleScroll]);
 
   return (
     <Fragment>
@@ -89,93 +114,71 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
 
       <div className={styles.container}>
         <div className={styles.topBar} ref={topBarRef}>
-          {!isHeaderSticky ? (
-            <header>
-              <div className={styles.LanguageSelector}>
-                <LanguageSelector inverse path="/" />
-              </div>
-              <MainNav inverse />
-            </header>
-          ) : (
-            <Header>
-              <SearchBarStateful />
-            </Header>
-          )}
+          <header>
+            <div className={styles.LanguageSelector}>
+              <LanguageSelector path="/" />
+            </div>
+            <MainNav />
+          </header>
         </div>
 
         <main>
           <div className={styles.header} ref={headerRef}>
+            <HeaderImage />
             <div className={styles.headerInner}>
               <div className={styles.headerMain}>
-                <div>
-                  <img
-                    src="/logo-stamp-white.png"
-                    width="205"
-                    alt="Puppetplays - A Research Program Founded by the European Union"
-                  />
-                </div>
-                <h1 className={styles.title}>{t('title')}</h1>
-                <h2 className={styles.subtitle}>{t('subtitle')}</h2>
-                <SearchBarStateful />
-              </div>
+                <div className={styles.headerMainTop}>
+                  <div className={styles.headerLogo}>
+                    <img
+                      src="/logo-stamp.png"
+                      width="280"
+                      alt="Puppetplays - A Research Program Founded by the European Union"
+                    />
+                  </div>
+                  <div className={styles.headerTitles}>
+                    <h1 className={styles.title}>
+                      <svg
+                        width="100%"
+                        preserveAspectRatio="none"
+                        viewBox="0 0 574 110"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M540 -67L0 0L-5 149L580 104L540 -67Z"
+                          fill="#01055B"
+                        />
+                      </svg>
 
-              <div className={styles.partnersBar}>
-                <ul className={styles.logosBar}>
-                  {FINANCERS.map((partner) => (
-                    <li key={partner}>
-                      <a
-                        href={t(`${partner}.url`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          height="49"
-                          src={`/logo-${partner}.png`}
-                          alt={t(`${partner}.alt`)}
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <div>{t('ercLabel')}</div>
-                <div className={styles.logosBarSpacer} />
-                <ul className={styles.logosBar}>
-                  {PARTNERS.map((partner) => (
-                    <li key={partner}>
-                      <a
-                        href={t(`${partner}.url`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          height="44"
-                          src={`/logo-${partner}.svg`}
-                          alt={t(`${partner}.alt`)}
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                      <span>{t('title')}</span>
+                    </h1>
+                    <h2 className={styles.subtitle}>{t('subtitle')}</h2>
+                  </div>
+                </div>
+                <div className={styles.headerExploreSection}>
+                  <ul className={styles.exploreSection}>
+                    {Object.entries(EXPLORE_BY).map(([key, props]) => (
+                      <EntryPointCard
+                        key={key}
+                        title={t(`exploreBy.${key}.title`)}
+                        description={t(`exploreBy.${key}.subtitle`)}
+                        thumbnailUrl={`/${key}-thumbnail.png`}
+                        {...props}
+                      />
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
 
           <div className={styles.content}>
             <div className={styles.contentInner}>
-              <Section title={t('explore')}>
-                <ul className={styles.exploreSection}>
-                  {Object.entries(EXPLORE_BY).map(([key, props]) => (
-                    <EntryPointCard
-                      key={key}
-                      title={t(`exploreBy.${key}.title`)}
-                      description={t(`exploreBy.${key}.subtitle`)}
-                      thumbnailUrl={`/${key}-thumbnail.png`}
-                      {...props}
-                    />
-                  ))}
-                </ul>
-              </Section>
+              <PartnersBar t={t} />
+            </div>
+          </div>
 
+          <div className={styles.content}>
+            <div className={styles.contentInner}>
               <Section title={t('accessToIntregralWorks')} isComingSoon>
                 <img src="/home-integral-works.png" alt="" />
               </Section>
