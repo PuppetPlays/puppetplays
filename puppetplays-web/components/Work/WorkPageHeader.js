@@ -48,7 +48,7 @@ const WorkPageHeader = ({
           />
         </svg>
       </button>
-      <div data-testid="work-page-header-content">
+      <div className={styles.content} data-testid="work-page-header-content">
         <span className={styles.title}>{title}</span>
         {authors && authors.length > 0 && (
           <Fragment>

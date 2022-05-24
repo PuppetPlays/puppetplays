@@ -10,7 +10,13 @@
   margin-bottom: 100px;
 
   :global(.modal) & {
-    padding: 0 190px;
+    padding: 0 20vw;
+  }
+
+  @media (min-width: 980px) {
+    :global(.modal) & {
+      padding: 0 190px;
+    }
   }
 }
 
@@ -19,7 +25,13 @@
   text-align: center;
 
   :global(.modal) & {
-    padding: 0 190px;
+    padding: 0 8vw;
+  }
+
+  @media (min-width: 980px) {
+    :global(.modal) & {
+      padding: 0 190px;
+    }
   }
 
   ul {
@@ -39,6 +51,12 @@
 
 .ids {
   :global(.modal) & {
-    padding: 0 190px;
+    padding: 0 8vw;
+  }
+
+  @media (min-width: 980px) {
+    :global(.modal) & {
+      padding: 0 190px;
+    }
   }
 }

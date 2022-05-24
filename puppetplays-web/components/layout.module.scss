@@ -11,6 +11,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   justify-content: stretch;
   height: calc(100% - 95px);
@@ -19,6 +20,15 @@
 
 .aside {
   position: relative;
+
+  @media (max-width: 899px) {
+    position: absolute;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    z-index: 2000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 .main {
@@ -29,4 +39,10 @@
   align-items: stretch;
   flex: 1 1 auto;
   height: 100%;
+
+  .aside + & {
+    @media (max-width: 899px) {
+      padding-left: 36px;
+    }
+  }
 }

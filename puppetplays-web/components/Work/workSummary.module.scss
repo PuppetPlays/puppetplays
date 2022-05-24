@@ -1,8 +1,13 @@
 .container {
   position: relative;
   display: flex;
-  padding: 22px 75px 26px 35px;
+  padding: 22px 0 26px 0;
   border-bottom: 1px solid var(--color-border);
+  gap: 24px;
+
+  @media (min-width: 900px) {
+    padding: 22px 75px 26px 35px;
+  }
 
   &:hover,
   &:hover .expandButton {
@@ -18,20 +23,15 @@
   }
 }
 
-.container--full {
-  padding: 22px 20px 26px 20px;
-}
-
 .media {
+  display: none;
   overflow: hidden;
   flex: 0 0 100px;
-  margin-right: 20px;
   font-size: 14px;
   color: var(--color-text);
 
-  .container--full & {
-    flex: 0 0 260px;
-    margin-right: 40px;
+  @media (min-width: 540px) {
+    display: block;
   }
 
   p {
@@ -49,15 +49,16 @@
 
 .extra {
   flex: 0 0 185px;
-  margin-left: 40px;
+  display: none;
 
-  .container--full & {
-    flex: 0 0 260px;
+  @media (min-width: 900px) {
+    display: block;
   }
 }
 
 .expandButton {
   position: absolute;
+  display: none;
   z-index: 10;
   width: 40px;
   height: 22px;
@@ -69,6 +70,10 @@
   stroke: var(--color-brand);
   border-radius: 0 0 6px 6px;
   cursor: pointer;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
 
   &:hover svg {
     stroke: var(--color-brand-light);
@@ -139,4 +144,40 @@
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.container--full {
+  padding: 22px 20px 26px 20px;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 3);
+  grid-template-areas:
+    'body'
+    'media'
+    'extra';
+  gap: 36px;
+
+  @media (min-width: 540px) {
+    grid-template-columns: minmax(120px, 260px) minmax(260px, auto);
+    grid-template-rows: repeat(auto-fit, 2);
+    grid-template-areas:
+      'media body'
+      'media extra';
+  }
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(185px, 260px) minmax(360px, auto) 185px;
+    grid-template-areas: 'media body extra';
+  }
+
+  .media {
+    grid-area: media;
+  }
+
+  .body {
+    grid-area: body;
+  }
+
+  .extra {
+    grid-area: extra;
+  }
 }

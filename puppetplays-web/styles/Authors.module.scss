@@ -9,17 +9,36 @@
 .letterContainer {
   display: flex;
   align-items: flex-start;
-  padding: 50px 68px 44px;
+  padding: 50px 26px 44px;
   border-bottom: 1px solid var(--color-border);
+
+  @media (min-width: 540px) {
+    padding: 50px 34px 44px;
+  }
+
+  @media (min-width: 740px) {
+  }
 }
 
 .letter {
-  flex: 0 0 90px;
-  margin-right: 92px;
-  font-size: 70px;
+  flex: 0 1 40px;
+  margin-right: 32px;
+  font-size: 36px;
   font-weight: 700;
   font-family: var(--ff-serif);
   color: var(--color-border);
+
+  @media (min-width: 540px) {
+    flex: 0 1 60px;
+    margin-right: 42px;
+    font-size: 50px;
+  }
+
+  @media (min-width: 740px) {
+    flex: 0 0 90px;
+    font-size: 70px;
+    margin-right: 92px;
+  }
 }
 
 .authorsList {

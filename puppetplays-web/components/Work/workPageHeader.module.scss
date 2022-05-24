@@ -1,17 +1,28 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 8px 20px;
   width: 100%;
   font-size: 14px;
-  height: 66px;
+
+  @media (min-width: 740px) {
+    padding: 8px 20px;
+    min-height: 66px;
+  }
+}
+
+.content {
+  display: none;
+
+  @media (min-width: 740px) {
+    display: block;
+  }
 }
 
 .backButton {
   width: 44px;
   height: 44px;
   border-radius: 22px;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border: 1px solid var(--color-bg-depth-2);
@@ -21,6 +32,10 @@
   margin-right: 15px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+
+  @media (min-width: 740px) {
+    display: flex;
+  }
 
   &:hover {
     border-color: var(--color-brand-light);
@@ -40,10 +55,20 @@
 }
 
 .nav {
+  position: absolute;
+  z-index: 1000;
+  bottom: 12px;
+  right: 12px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (min-width: 740px) {
+    position: relative;
+    bottom: auto;
+    right: auto;
+  }
 
   a + a {
     margin-left: 10px;

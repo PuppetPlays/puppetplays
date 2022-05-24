@@ -25,7 +25,7 @@ const AnimationTechniquesPage = ({
         <title>{animationTechniquesData.entry.title} | Puppetplays</title>
       </Head>
       <ContentLayout
-        style={{ maxWidth: 678, padding: '62px 0', textAlign: 'center' }}
+        style={{ maxWidth: 678, padding: '62px 20px', textAlign: 'center' }}
       >
         <PageSubtitle>{t('common:animationTechniques')}</PageSubtitle>
         {animationTechniquesData && (

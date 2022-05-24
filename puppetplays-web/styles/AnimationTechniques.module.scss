@@ -1,6 +1,14 @@
 .grid {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin: 44px 0;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

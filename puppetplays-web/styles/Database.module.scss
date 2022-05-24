@@ -5,11 +5,29 @@
 
 .worksHeader {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   flex: 0 0 auto;
   width: 100%;
-  padding : 22px 20px;
+  padding: 22px 20px;
+}
+
+.worksHeaderRight {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  > button {
+    @media (max-width: 859px) {
+      position: absolute;
+      z-index: 1000;
+      right: 12px;
+      bottom: 12px;
+    }
+  }
 }
 
 .worksHeaderPageCount {
@@ -36,13 +54,19 @@
 .map {
   position: relative;
   height: 100%;
-}
 
-.map > button {
-  position: absolute;
-  z-index: 1000;
-  right: 20px;
-  top: 22px;
+  > button {
+    position: absolute;
+    z-index: 1000;
+    bottom: 12px;
+    right: 12px;
+
+    @media (min-width: 860px) {
+      bottom: auto;
+      right: 20px;
+      top: 22px;
+    }
+  }
 }
 
 .sortMenu {

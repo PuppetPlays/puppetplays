@@ -20,9 +20,14 @@
 }
 
 .mediaMenu {
+  display: none;
   position: fixed;
   left: 32px;
   top: 174px;
+
+  @media (min-width: 840px) {
+    display: block;
+  }
 }
 
 .mediasContent {

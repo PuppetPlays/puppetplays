@@ -37,7 +37,7 @@ function AnimationTechniques({ initialData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ContentLayout style={{ maxWidth: 1072, padding: '32px 0' }}>
+      <ContentLayout style={{ maxWidth: 1072, padding: '32px 20px' }}>
         <PageTitle smaller>{t('common:animationTechniques')}</PageTitle>
         <div className={styles.grid}>
           {data &&
