@@ -4,7 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Hypotext from 'components/Hypotext';
 import { PageIntertitle } from 'components/Primitives';
-import Carousel from 'components/Carousel';
+import Reel from 'components/Reel';
 import HtmlContent from 'components/HtmlContent';
 import styles from 'components/Author/authorNote.module.scss';
 
@@ -32,7 +32,7 @@ function AnimationTechniqueNote({
             <HtmlContent html={description} />
           </div>
         )}
-        <Carousel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
       </div>
 
       {hasAtLeastOneItem(works) && (

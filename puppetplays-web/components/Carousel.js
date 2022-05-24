@@ -54,12 +54,7 @@ function Carousel({ images, bleed }) {
             style={{ width: image.width }}
           >
             <ZoomableImage>
-              <img
-                src={image.url}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-              />
+              <img src={image.url} alt={image.alt} width={image.width} />
             </ZoomableImage>
             {(image.description || image.copyright) && (
               <div className={styles.caption}>

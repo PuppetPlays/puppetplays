@@ -1,7 +1,7 @@
 .modal {
   position: absolute;
   max-width: 1060px;
-  width: 100%;
+  width: calc(100% - 12px);
   z-index: var(--z-index-modal);
   left: 50%;
   overflow: auto;
@@ -67,6 +67,10 @@
 .content {
   overflow: auto;
   width: 100%;
+
+  .modal:not(.is-IMAGE_MODAL) & {
+    padding: 0 20px;
+  }
 
   .has-body-scroll & {
     height: calc(100vh - 90px);

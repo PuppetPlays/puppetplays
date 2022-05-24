@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { hasAtLeastOneItem } from 'lib/utils';
-import Carousel from 'components/Carousel';
+import Reel from 'components/Reel';
 import Hypotext from 'components/Hypotext';
 import Section from 'components/Section';
 import Info from 'components/Info';
@@ -45,7 +45,7 @@ function AuthorNote({
             <HtmlContent html={biographicalNote} />
           </div>
         )}
-        <Carousel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
       </div>
 
       {hasAtLeastOneItem(works) && (

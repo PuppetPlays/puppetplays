@@ -53,6 +53,8 @@
 }
 
 .image {
+  max-width: 100%;
+
   &:first-child {
     margin-left: auto;
   }
@@ -67,7 +69,6 @@
 
   img {
     display: block;
-    height: 436px;
   }
 }
 

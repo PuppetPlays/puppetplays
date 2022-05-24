@@ -37,7 +37,7 @@ function Modal({
           (window.innerHeight - modalContentRef.current.offsetHeight) / 2,
         )}px`;
       }
-    });
+    }, 100);
   }, [modalContentRef, isOpen]);
 
   return (
@@ -48,7 +48,7 @@ function Modal({
         describedby: 'description',
       }}
       onRequestClose={handleClose}
-      className={`${styles.modal} modal`}
+      className={`${styles.modal} modal ${styles[`is-${modalType}`]}`}
       overlayClassName={`${styles.overlay} ${
         styles[`has-${scrollElement}-scroll`]
       }`}
