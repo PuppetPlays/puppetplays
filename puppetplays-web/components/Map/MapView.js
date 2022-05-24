@@ -5,7 +5,7 @@ import * as olProj from 'ol/proj';
 import Point from 'ol/geom/Point';
 import VectorSource from 'ol/source/Vector';
 import Feature from 'ol/Feature';
-import { hasAtLeastOneItem, identity } from 'lib/utils';
+import { hasAtLeastOneItem } from 'lib/utils';
 import {
   fetchAPI,
   getWorksCardByIdsQuery,
@@ -66,11 +66,8 @@ const MapView = ({ filters, searchTerms, locale }) => {
           (entry) => entry.compositionPlace[0].title,
         ),
       ).map(([name, works]) => {
-        const {
-          longitude,
-          latitude,
-          typeHandle,
-        } = works[0].compositionPlace[0];
+        const { longitude, latitude, typeHandle } =
+          works[0].compositionPlace[0];
         return {
           name,
           coordinates: [longitude, latitude],
@@ -79,18 +76,20 @@ const MapView = ({ filters, searchTerms, locale }) => {
         };
       });
 
-      const createFeatureForSource = (source) => (
-        { coordinates, name, type, ids },
-        index,
-      ) => {
-        const feature = new Feature({
-          geometry: new Point(coordinates).transform('EPSG:4326', 'EPSG:3857'),
-          name,
-        });
-        feature.setProperties({ ids, type, isSelectable: true });
-        feature.setId(index);
-        source.addFeature(feature);
-      };
+      const createFeatureForSource =
+        (source) =>
+        ({ coordinates, name, type, ids }, index) => {
+          const feature = new Feature({
+            geometry: new Point(coordinates).transform(
+              'EPSG:4326',
+              'EPSG:3857',
+            ),
+            name,
+          });
+          feature.setProperties({ ids, type, isSelectable: true });
+          feature.setId(index);
+          source.addFeature(feature);
+        };
 
       places.forEach(createFeatureForSource(clusteredByPlaceSource));
       countries.forEach(createFeatureForSource(clusteredByCountrySource));
@@ -116,11 +115,11 @@ const MapView = ({ filters, searchTerms, locale }) => {
       const { ids } = evt.selected[0].getProperties();
 
       if (hasAtLeastOneItem(ids)) {
-        fetchAPI(getWorksCardByIdsQuery, { variables: { id: ids } }).then(
-          ({ entries }) => {
-            setSelectedWorks(entries);
-          },
-        );
+        fetchAPI(getWorksCardByIdsQuery, {
+          variables: { id: ids, locale },
+        }).then(({ entries }) => {
+          setSelectedWorks(entries);
+        });
       }
     } else if (evt.deselected.length > 0) {
       setSelectedWorks(null);
