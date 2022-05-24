@@ -5,7 +5,6 @@ import { pointerMove } from 'ol/events/condition';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import Zoom from 'ol/control/Zoom';
-import { useFilters } from 'components/FiltersContext';
 import { getSelectedPlaceStyle, getHoveredPlaceStyle } from './styles';
 
 const MapContext = React.createContext();
@@ -19,7 +18,6 @@ export function MapProvider({
   setSelectInteraction,
 }) {
   const [map, setMap] = useState(null);
-  const isOpen = useFilters();
 
   useEffect(() => {
     const options = {
@@ -72,10 +70,20 @@ export function MapProvider({
   }, [center, map]);
 
   useEffect(() => {
-    if (map) {
+    const resizeObserver = new ResizeObserver(() => {
       map.updateSize();
+    });
+
+    if (map) {
+      resizeObserver.observe(document.querySelector('.filters-bar'));
     }
-  }, [isOpen, map]);
+
+    return function cleanup() {
+      if (document.querySelector('.filters-bar')) {
+        resizeObserver.unobserve(document.querySelector('.filters-bar'));
+      }
+    };
+  }, [map]);
 
   return <MapContext.Provider value={map}>{children}</MapContext.Provider>;
 }

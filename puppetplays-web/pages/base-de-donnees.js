@@ -8,7 +8,6 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { useCookies } from 'react-cookie';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -38,14 +37,13 @@ import {
   worksStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
 import { hasAtLeastOneItem, parseCookies, stringifyQuery } from 'lib/utils';
-import { FiltersProvider } from 'components/FiltersContext';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
 import FilterSelect from 'components/FilterSelect';
 import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
-import styles from 'styles/Database.module.css';
+import styles from 'styles/Database.module.scss';
 
 const MapView = dynamic(() => import('../components/Map/MapView'), {
   ssr: false,
@@ -84,8 +82,6 @@ function Home({
 }) {
   const { t } = useTranslation();
   const router = useRouter();
-  const [, setCookie] = useCookies(['isWorksFiltersBarOpened']);
-  const [isOpen, setIsOpen] = useState(isFiltersBarOpened);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
   });
@@ -105,11 +101,6 @@ function Home({
     { id: 'firstAuthorTitle', title: t('common:author') },
   ];
   const scrollElementRef = useRef();
-
-  const handleToggleFiltersBar = useCallback(() => {
-    setIsOpen(!isOpen);
-    setCookie('isWorksFiltersBarOpened', !isOpen);
-  }, [isOpen, setCookie]);
 
   useEffect(() => {
     fetchAPI(getAllWorksQuery(filters), {
@@ -349,8 +340,7 @@ function Home({
             publicDomain={!!filters.publicDomain}
             onChange={handleChangeFilters}
             onClearAll={handleClearAllFilters}
-            isOpen={isOpen}
-            onToggle={handleToggleFiltersBar}
+            isInitiallyOpen={isFiltersBarOpened}
           />
         </Suspense>
       }
@@ -371,7 +361,7 @@ function Home({
               pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
               onPageChange={handlePageChange}
             />
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div className={styles.worksHeaderRight}>
               <div className={styles.sortMenu}>
                 <FilterSelect
                   inverse={false}
@@ -410,21 +400,19 @@ function Home({
       )}
       {filters.view === VIEWS.map && (
         <Suspense fallback={`loading`}>
-          <FiltersProvider isOpen={isOpen}>
-            <div className={styles.map}>
-              <Button
-                onClick={handleSetListView}
-                icon={<img src="/icon-list.svg" alt="" />}
-              >
-                {t('common:showList')}
-              </Button>
-              <MapView
-                locale={router.locale}
-                filters={filters}
-                searchTerms={searchTerms}
-              />
-            </div>
-          </FiltersProvider>
+          <div className={styles.map}>
+            <Button
+              onClick={handleSetListView}
+              icon={<img src="/icon-list.svg" alt="" />}
+            >
+              {t('common:showList')}
+            </Button>
+            <MapView
+              locale={router.locale}
+              filters={filters}
+              searchTerms={searchTerms}
+            />
+          </div>
         </Suspense>
       )}
     </Layout>

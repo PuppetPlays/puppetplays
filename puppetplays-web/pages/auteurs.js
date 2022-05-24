@@ -1,6 +1,7 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import groupBy from 'lodash/groupBy';
 import uniq from 'lodash/uniq';
@@ -27,16 +28,31 @@ import {
   authorsQueryParamsToState as queryParamsToState,
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { stringifyQuery } from 'lib/utils';
+import { stringifyQuery, parseCookies } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
 import Company from 'components/Company';
 import BirthDeathDates from 'components/BirthDeathDates';
-import Filters from 'components/AuthorsFilters';
 import styles from 'styles/Authors.module.scss';
 
-const isOfType = (type) => ({ typeHandle }) => typeHandle === type;
+const Filters = dynamic(() => import('../components/AuthorsFilters'), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        height: '100%',
+        width: 290,
+        backgroundColor: 'var(--color-brand)',
+      }}
+    />
+  ),
+});
+
+const isOfType =
+  (type) =>
+  ({ typeHandle }) =>
+    typeHandle === type;
 
 const getFirstLetter = cond([
   [
@@ -47,7 +63,13 @@ const getFirstLetter = cond([
   [stubTrue, constant('?')],
 ]);
 
-function Authors({ initialData, languages, places, uniqueAuthorsIds }) {
+function Authors({
+  initialData,
+  languages,
+  places,
+  uniqueAuthorsIds,
+  isFiltersBarOpened,
+}) {
   const { t } = useTranslation();
   const router = useRouter();
   const [genderOptions] = useState([
@@ -120,29 +142,32 @@ function Authors({ initialData, languages, places, uniqueAuthorsIds }) {
   return (
     <Layout
       aside={
-        <Filters
-          languageOptions={languages}
-          placeOptions={places}
-          genderOptions={genderOptions}
-          typeOptions={typeOptions}
-          selectedLanguages={
-            filters.languages &&
-            languages.filter(({ id }) => filters.languages.includes(id))
-          }
-          selectedPlaces={
-            filters.places &&
-            places.filter(({ id }) => filters.places.includes(id))
-          }
-          selectedGender={
-            filters.gender &&
-            genderOptions.find(({ id }) => filters.gender === id)
-          }
-          selectedType={
-            filters.type && typeOptions.find(({ id }) => filters.type === id)
-          }
-          onChange={handleChangeFilters}
-          onClearAll={handleClearAllFilters}
-        />
+        <Suspense fallback={`loading`}>
+          <Filters
+            languageOptions={languages}
+            placeOptions={places}
+            genderOptions={genderOptions}
+            typeOptions={typeOptions}
+            selectedLanguages={
+              filters.languages &&
+              languages.filter(({ id }) => filters.languages.includes(id))
+            }
+            selectedPlaces={
+              filters.places &&
+              places.filter(({ id }) => filters.places.includes(id))
+            }
+            selectedGender={
+              filters.gender &&
+              genderOptions.find(({ id }) => filters.gender === id)
+            }
+            selectedType={
+              filters.type && typeOptions.find(({ id }) => filters.type === id)
+            }
+            onChange={handleChangeFilters}
+            onClearAll={handleClearAllFilters}
+            isInitiallyOpen={isFiltersBarOpened}
+          />
+        </Suspense>
       }
     >
       <Head>
@@ -216,6 +241,7 @@ Authors.propTypes = {
   languages: PropTypes.arrayOf(PropTypes.object).isRequired,
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
   uniqueAuthorsIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFiltersBarOpened: PropTypes.bool.isRequired,
 };
 
 export default Authors;
@@ -223,6 +249,11 @@ export default Authors;
 export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
+
+  const cookies = parseCookies(req);
+  const isFiltersBarOpened =
+    get(cookies, 'isAuthorsFiltersBarOpened', true) === 'false' ? false : true;
+
   const variables = { variables: { locale } };
   const languages = await fetchAPI(getAllLanguagesQuery, variables);
   const places = await fetchAPI(getAllPlacesQuery);
@@ -246,6 +277,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
       uniqueAuthorsIds,
       languages: languages.entries,
       places: places.entries,
+      isFiltersBarOpened,
     },
   };
 }
