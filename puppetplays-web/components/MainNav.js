@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
+import useWindowSize from 'hooks/useWindowSize';
 
 const NavButton = (props) => {
   const { t } = useTranslation();
@@ -34,17 +35,36 @@ const Wrapper = ({ children }) => {
 
 function MainNav({ inverse }) {
   const { t } = useTranslation();
+  const { width } = useWindowSize();
   const { locale } = useRouter();
   const urlLocalePrefix = locale === 'fr' ? '' : '/' + locale;
+
+  const languageItems =
+    width < 480
+      ? [
+          <li key="lang-fr">
+            <Link href="/" locale="fr">
+              <a>Français</a>
+            </Link>
+          </li>,
+
+          <li key="lang-en" className={styles.englishListItem}>
+            <Link href="/" locale="en">
+              <a>English</a>
+            </Link>
+          </li>,
+        ]
+      : [];
 
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        itemsCount={3}
+        itemsCount={width < 480 ? 6 : 4}
         renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
         {[
+          ...languageItems,
           <li key="database">
             <Link href="/base-de-donnees">
               <a>{t('common:database')}</a>
