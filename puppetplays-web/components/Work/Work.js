@@ -11,7 +11,7 @@ import {
 } from 'lib/utils';
 import Place from 'components/Place';
 import Section from 'components/Section';
-import Author, { formatAuthor } from 'components/Author';
+import Author from 'components/Author';
 import Info from 'components/Info';
 import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
 import CommaSepList from 'components/CommaSepList';
@@ -84,18 +84,18 @@ function Work(props) {
         <meta name="DC.title" lang={locale} content={title} />
         {authors.map(({ typeHandle, ...rest }) => {
           if (typeHandle === 'persons') {
-            const authors = formatAuthor({ ...rest, t });
+            const author = `${rest.lastName} ${rest.firstName}`;
             return (
               <>
                 <meta
                   key={`${rest.id}-DC`}
                   name="DC.creator"
-                  content={authors}
+                  content={author}
                 />
                 <meta
                   key={`${rest.id}-Google`}
                   name="citation_author"
-                  content={authors}
+                  content={author}
                 />
               </>
             );
@@ -149,7 +149,7 @@ function Work(props) {
         />
         <meta
           name="DC.publisher"
-          content="ERC project PuppetPlays AdG GA 835193"
+          content={publication ? publication.replace(/(<([^>]+)>)/g, '') : ''}
         />
         <meta
           name="DC.rights"
@@ -158,10 +158,6 @@ function Work(props) {
               ? t('common:publicDomain')
               : additionalLicenseInformation
           }
-        />
-        <meta
-          name="DC.contributor"
-          content={`${writtenBy.firstName} ${writtenBy.lastName}`}
         />
 
         <meta property="og:title" content={title} />
