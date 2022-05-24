@@ -1,4 +1,4 @@
-dateModified: 1653046942
+dateModified: 1653335113
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -204,7 +204,7 @@ plugins:
       reviewerApprovalNotifications: ''
       reviewerNotifications: '1'
       reviewerUserGroups: ''
-      selectedPublishers: ''
+      selectedPublishers: '*'
 system:
   edition: pro
   live: true
