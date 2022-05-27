@@ -5,6 +5,7 @@ module.exports = {
     es6: true,
     browser: true,
     'jest/globals': true,
+    'cypress/globals': true,
   },
   parserOptions: {
     ecmaVersion: 9,
@@ -27,7 +28,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended', // Accessibility rules
     'plugin:prettier/recommended', // Prettier plugin
   ],
-  plugins: ['jest'],
+  plugins: ['jest', 'cypress'],
   settings: {
     react: {
       version: 'detect', // React version. "detect" automatically picks the version you have installed.

@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage",
+    "cypress:open": "cypress open",
     "lint": "eslint .",
     "build": "next build",
     "deploy": "npm run test:ci && npm run build"
@@ -54,8 +55,10 @@
     "@testing-library/react": "^13.2.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "cypress": "^9.7.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
@@ -64,6 +67,7 @@
     "http-proxy-middleware": "^2.0.6",
     "jest": "^27.0.0",
     "next-transpile-modules": "^9.0.0",
+    "nock": "^13.2.4",
     "prettier": "^2.6.2",
     "sass": "^1.51.0"
   }
