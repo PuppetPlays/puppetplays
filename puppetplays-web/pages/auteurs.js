@@ -8,11 +8,6 @@ import uniq from 'lodash/uniq';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
-import negate from 'lodash/negate';
-import map from 'lodash/fp/map';
-import get from 'lodash/fp/get';
-import isNil from 'lodash/isNil';
-import isArray from 'lodash/isArray';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -20,15 +15,14 @@ import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
   getAllAuthorsQuery,
-  getAllLanguagesQuery,
-  getAllPlacesQuery,
   getAllWorksAuthorsIdsQuery,
+  getFetchAPIClient,
 } from 'lib/api';
 import {
   authorsQueryParamsToState as queryParamsToState,
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { stringifyQuery, parseCookies } from 'lib/utils';
+import { stringifyQuery } from 'lib/utils';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
@@ -63,23 +57,9 @@ const getFirstLetter = cond([
   [stubTrue, constant('?')],
 ]);
 
-function Authors({
-  initialData,
-  languages,
-  places,
-  uniqueAuthorsIds,
-  isFiltersBarOpened,
-}) {
+function Authors({ initialData, uniqueAuthorsIds }) {
   const { t } = useTranslation();
   const router = useRouter();
-  const [genderOptions] = useState([
-    { id: 'female', title: t('common:filters.female') },
-    { id: 'male', title: t('common:filters.male') },
-  ]);
-  const [typeOptions] = useState([
-    { id: 'persons', title: t('common:filters.author') },
-    { id: 'companies', title: t('common:filters.company') },
-  ]);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
   });
@@ -114,15 +94,9 @@ function Authors({
 
   const handleChangeFilters = useCallback(
     (value, { name }) => {
-      const getNewFilterValue = cond([
-        [(v) => isArray(v) && v.length > 0, map(get('id'))],
-        [isArray, constant(null)],
-        [negate(isNil), get('id')],
-        [stubTrue, constant(null)],
-      ]);
       const newFilters = {
         ...filters,
-        [name]: getNewFilterValue(value),
+        [name]: value,
       };
       setFilters(newFilters);
       router.push(`/auteurs?${stringifyQuery({ ...newFilters })}`, undefined, {
@@ -144,35 +118,19 @@ function Authors({
       aside={
         <Suspense fallback={`loading`}>
           <Filters
-            languageOptions={languages}
-            placeOptions={places}
-            genderOptions={genderOptions}
-            typeOptions={typeOptions}
-            selectedLanguages={
-              filters.languages &&
-              languages.filter(({ id }) => filters.languages.includes(id))
-            }
-            selectedPlaces={
-              filters.places &&
-              places.filter(({ id }) => filters.places.includes(id))
-            }
-            selectedGender={
-              filters.gender &&
-              genderOptions.find(({ id }) => filters.gender === id)
-            }
-            selectedType={
-              filters.type && typeOptions.find(({ id }) => filters.type === id)
-            }
+            filters={filters}
             onChange={handleChangeFilters}
             onClearAll={handleClearAllFilters}
-            isInitiallyOpen={isFiltersBarOpened}
           />
         </Suspense>
       }
     >
       <Head>
         <title>{t('common:authors')} | Puppetplays</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={t('common:meta.authors.description')}
+        />
       </Head>
 
       <div className={styles.authors} onScroll={handleScroll}>
@@ -238,10 +196,7 @@ function Authors({
 
 Authors.propTypes = {
   initialData: PropTypes.object.isRequired,
-  languages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  places: PropTypes.arrayOf(PropTypes.object).isRequired,
   uniqueAuthorsIds: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isFiltersBarOpened: PropTypes.bool.isRequired,
 };
 
 export default Authors;
@@ -250,23 +205,18 @@ export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const cookies = parseCookies(req);
-  const isFiltersBarOpened =
-    get(cookies, 'isAuthorsFiltersBarOpened', true) === 'false' ? false : true;
-
-  const variables = { variables: { locale } };
-  const languages = await fetchAPI(getAllLanguagesQuery, variables);
-  const places = await fetchAPI(getAllPlacesQuery);
+  const apiClient = getFetchAPIClient({
+    variables: { locale },
+  });
   const filtersState = queryParamsToState(query);
-  const authorsIds = await fetchAPI(getAllWorksAuthorsIdsQuery, variables);
+  const authorsIds = await apiClient(getAllWorksAuthorsIdsQuery);
   const uniqueAuthorsIds = uniq(
     authorsIds.entries.flatMap((entry) =>
       entry.authors.map((author) => author.id),
     ),
   );
-  const personsRelatedToWorks = await fetchAPI(
+  const personsRelatedToWorks = await apiClient(
     getAllAuthorsQuery(filtersState),
-    variables,
   );
   const authors = personsRelatedToWorks.entries.filter(({ id }) =>
     uniqueAuthorsIds.includes(id),
@@ -275,9 +225,6 @@ export async function getServerSideProps({ locale, req, res, query }) {
     props: {
       initialData: { entries: groupBy(authors, getFirstLetter) },
       uniqueAuthorsIds,
-      languages: languages.entries,
-      places: places.entries,
-      isFiltersBarOpened,
     },
   };
 }

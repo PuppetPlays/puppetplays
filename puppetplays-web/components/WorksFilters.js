@@ -1,40 +1,118 @@
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import get from 'lodash/get';
-import { identity } from 'lib/utils';
+import { hasAtLeastOneItem, identity } from 'lib/utils';
+import { getAllWorksKeywordsQuery, getFetchAPIClient } from 'lib/api';
+import {
+  getAllAnimationTechniquesQuery,
+  getAllTheatricalTechniquesQuery,
+  getAllAudiencesQuery,
+  getAllFormatsQuery,
+  getAllLanguagesQuery,
+  getAllPersonsQuery,
+  getAllLiteraryTonesQuery,
+  getAllPlacesQuery,
+  getPeriodBoundsQuery,
+} from 'lib/filtersApi';
 import FilterSelect from 'components/FilterSelect';
 import FilterRange from 'components/FilterRange';
 import FilterCheckbox from 'components/FilterCheckbox';
 import FiltersBar from 'components/FiltersBar';
+import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-function WorksFilters({
-  languageOptions,
-  placeOptions,
-  periodMinMax,
-  authorsOptions,
-  literaryTonesOptions,
-  animationTechniquesOptions,
-  theatricalTechniquesOptions,
-  audiencesOptions,
-  formatsOptions,
-  tagsOptions,
-  selectedLanguages,
-  selectedPlaces,
-  selectedPeriodMin,
-  selectedPeriodMax,
-  selectedAuthors,
-  selectedLiteraryTones,
-  selectedAnimationTechniques,
-  selectedTheatricalTechniques,
-  selectedAudiences,
-  selectedFormats,
-  selectedTags,
-  publicDomain,
-  onChange,
-  onClearAll,
-  isInitiallyOpen,
-}) {
+function WorksFilters({ filters, onChange, onClearAll }) {
   const { t } = useTranslation();
+  const { locale } = useRouter();
+  const [filtersOptions, setFiltersOptions] = useState({});
+
+  const getSelectedValues = (options, key) => {
+    if (options && filters[key]) {
+      return options.filter(({ id }) => filters[key].includes(id));
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const apiClient = getFetchAPIClient({
+      variables: { locale },
+    });
+
+    Promise.all([
+      apiClient(getAllLanguagesQuery),
+      apiClient(getAllPlacesQuery),
+      apiClient(getPeriodBoundsQuery),
+      apiClient(getAllPersonsQuery),
+      apiClient(getAllLiteraryTonesQuery),
+      apiClient(getAllAnimationTechniquesQuery),
+      apiClient(getAllTheatricalTechniquesQuery),
+      apiClient(getAllAudiencesQuery),
+      apiClient(getAllFormatsQuery),
+      apiClient(getAllWorksKeywordsQuery),
+    ]).then((result) => {
+      const [
+        languages,
+        places,
+        periodBounds,
+        authors,
+        literaryTones,
+        animationTechniques,
+        theatricalTechniques,
+        audiences,
+        formats,
+        { tags },
+      ] = result;
+
+      const getSafelyPeriodBound = (bound) =>
+        hasAtLeastOneItem(bound) ? bound[0].value : null;
+
+      setFiltersOptions({
+        languages: languages.entries,
+        places: places.entries,
+        periodBounds: [
+          getSafelyPeriodBound(periodBounds.min),
+          getSafelyPeriodBound(periodBounds.max),
+        ],
+        authors: authors.entries,
+        literaryTones: literaryTones.entries,
+        animationTechniques: animationTechniques.entries,
+        theatricalTechniques: theatricalTechniques.entries,
+        audiences: audiences.entries,
+        formats: formats.entries,
+        tags,
+      });
+    });
+  }, [setFiltersOptions, locale]);
+
+  const selectedLanguages = getSelectedValues(
+    filtersOptions.languages,
+    'mainLanguage',
+  );
+  const selectedPlaces = getSelectedValues(
+    filtersOptions.places,
+    'compositionPlace',
+  );
+  const selectedPeriodMin = get(filters, 'compositionMinDate[0]', null);
+  const selectedPeriodMax = get(filters, 'compositionMinDate[1]', null);
+  const selectedAuthors = getSelectedValues(filtersOptions.authors, 'authors');
+  const selectedLiteraryTones = getSelectedValues(
+    filtersOptions.literaryTones,
+    'literaryTones',
+  );
+  const selectedAnimationTechniques = getSelectedValues(
+    filtersOptions.animationTechniques,
+    'animationTechniques',
+  );
+  const selectedTheatricalTechniques = getSelectedValues(
+    filtersOptions.theatricalTechniques,
+    'theatricalTechniques',
+  );
+  const selectedAudiences = getSelectedValues(
+    filtersOptions.audiences,
+    'audiences',
+  );
+  const selectedFormats = getSelectedValues(filtersOptions.formats, 'formats');
+  const selectedTags = getSelectedValues(filtersOptions.tags, 'relatedToTags');
 
   const filtersCount = [
     get(selectedLanguages, 'length', 0),
@@ -47,164 +125,153 @@ function WorksFilters({
     get(selectedAudiences, 'length', 0),
     get(selectedFormats, 'length', 0),
     get(selectedTags, 'length', 0),
-    publicDomain,
+    filters.publicDomain,
   ].filter(identity).length;
+
+  const handleChangeFilters = useCallback(
+    (value, { name }) => {
+      let normalizedValue;
+      if (name === 'period') {
+        if (
+          value[0] !== filtersOptions.periodBounds[0] &&
+          value[1] !== filtersOptions.periodBounds[1]
+        ) {
+          normalizedValue = [value[0], value[1]];
+        } else if (value[0] !== filtersOptions.periodBounds[0]) {
+          normalizedValue = [value[0], 0];
+        } else if (value[1] !== filtersOptions.periodBounds[1]) {
+          normalizedValue = [0, value[1]];
+        } else {
+          normalizedValue = null;
+        }
+      } else if (name === 'publicDomain') {
+        normalizedValue = value ? value : undefined;
+      } else {
+        normalizedValue = value.length > 0 ? value.map((v) => v.id) : null;
+      }
+      onChange(normalizedValue, { name });
+    },
+    [filtersOptions, onChange],
+  );
 
   return (
     <FiltersBar
-      isInitiallyOpen={isInitiallyOpen}
       cookieName="isWorksFiltersBarOpened"
       filtersCount={filtersCount}
       onClearAll={onClearAll}
     >
-      <div style={{ position: 'relative', zIndex: 100 }}>
-        <FilterSelect
-          name="mainLanguage"
-          placeholder={t('common:filters.mainLanguagePlaceholder')}
-          options={languageOptions}
-          onChange={onChange}
-          value={selectedLanguages}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 90 }}>
-        <FilterSelect
-          name="compositionPlace"
-          placeholder={t('common:filters.compositionPlacePlaceholder')}
-          options={placeOptions}
-          onChange={onChange}
-          value={selectedPlaces}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 80 }}>
-        <FilterRange
-          name="period"
-          bounds={periodMinMax}
-          valueMin={selectedPeriodMin}
-          valueMax={selectedPeriodMax}
-          onAfterChange={onChange}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 70 }}>
-        <FilterSelect
-          name="authors"
-          placeholder={t('common:filters.authorsPlaceholder')}
-          options={authorsOptions}
-          onChange={onChange}
-          value={selectedAuthors}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 60 }}>
-        <FilterSelect
-          name="literaryTones"
-          placeholder={t('common:filters.literaryTonesPlaceholder')}
-          options={literaryTonesOptions}
-          onChange={onChange}
-          value={selectedLiteraryTones}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 50 }}>
-        <FilterSelect
-          name="animationTechniques"
-          placeholder={t('common:filters.animationTechniquesPlaceholder')}
-          options={animationTechniquesOptions}
-          onChange={onChange}
-          value={selectedAnimationTechniques}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 45 }}>
-        <FilterSelect
-          name="theatricalTechniques"
-          placeholder={t('common:filters.theatricalTechniquesPlaceholder')}
-          options={theatricalTechniquesOptions}
-          onChange={onChange}
-          value={selectedTheatricalTechniques}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 40 }}>
-        <FilterSelect
-          name="audience"
-          placeholder={t('common:filters.audiencePlaceholder')}
-          options={audiencesOptions}
-          onChange={onChange}
-          value={selectedAudiences}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 30 }}>
-        <FilterSelect
-          name="formats"
-          placeholder={t('common:filters.formatsPlaceholder')}
-          options={formatsOptions}
-          onChange={onChange}
-          value={selectedFormats}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 20 }}>
-        <FilterSelect
-          name="relatedToTags"
-          placeholder={t('common:filters.relatedToTagsPlaceholder')}
-          options={tagsOptions}
-          onChange={onChange}
-          value={selectedTags}
-        />
-      </div>
-      <div style={{ position: 'relative', zIndex: 10 }}>
-        <FilterCheckbox
-          name="publicDomain"
-          checked={publicDomain}
-          onChange={onChange}
-        />
-      </div>
+      {Object.keys(filtersOptions).length > 0 && (
+        <>
+          <div style={{ position: 'relative', zIndex: 100 }}>
+            <FilterSelect
+              name="mainLanguage"
+              placeholder={t('common:filters.mainLanguagePlaceholder')}
+              options={filtersOptions.languages}
+              onChange={handleChangeFilters}
+              value={selectedLanguages}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 90 }}>
+            <FilterSelect
+              name="compositionPlace"
+              placeholder={t('common:filters.compositionPlacePlaceholder')}
+              options={filtersOptions.places}
+              onChange={handleChangeFilters}
+              value={selectedPlaces}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 80 }}>
+            <FilterRange
+              name="period"
+              bounds={filtersOptions.periodBounds}
+              valueMin={selectedPeriodMin}
+              valueMax={selectedPeriodMax}
+              onAfterChange={handleChangeFilters}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 70 }}>
+            <FilterSelect
+              name="authors"
+              placeholder={t('common:filters.authorsPlaceholder')}
+              options={filtersOptions.authors}
+              onChange={handleChangeFilters}
+              value={selectedAuthors}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 60 }}>
+            <FilterSelect
+              name="literaryTones"
+              placeholder={t('common:filters.literaryTonesPlaceholder')}
+              options={filtersOptions.literaryTones}
+              onChange={handleChangeFilters}
+              value={selectedLiteraryTones}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 50 }}>
+            <FilterSelect
+              name="animationTechniques"
+              placeholder={t('common:filters.animationTechniquesPlaceholder')}
+              options={filtersOptions.animationTechniques}
+              onChange={handleChangeFilters}
+              value={selectedAnimationTechniques}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 45 }}>
+            <FilterSelect
+              name="theatricalTechniques"
+              placeholder={t('common:filters.theatricalTechniquesPlaceholder')}
+              options={filtersOptions.theatricalTechniques}
+              onChange={handleChangeFilters}
+              value={selectedTheatricalTechniques}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 40 }}>
+            <FilterSelect
+              name="audience"
+              placeholder={t('common:filters.audiencePlaceholder')}
+              options={filtersOptions.audiences}
+              onChange={handleChangeFilters}
+              value={selectedAudiences}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 30 }}>
+            <FilterSelect
+              name="formats"
+              placeholder={t('common:filters.formatsPlaceholder')}
+              options={filtersOptions.formats}
+              onChange={handleChangeFilters}
+              value={selectedFormats}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 20 }}>
+            <FilterSelect
+              name="relatedToTags"
+              placeholder={t('common:filters.relatedToTagsPlaceholder')}
+              options={filtersOptions.tags}
+              onChange={handleChangeFilters}
+              value={selectedTags}
+            />
+          </div>
+          <div style={{ position: 'relative', zIndex: 10 }}>
+            <FilterCheckbox
+              name="publicDomain"
+              checked={!!filters.publicDomain}
+              onChange={handleChangeFilters}
+            />
+          </div>
+        </>
+      )}
     </FiltersBar>
   );
 }
 
 WorksFilters.defaultProps = {
-  languageOptions: [],
-  placeOptions: [],
-  periodMinMax: null,
-  authorsOptions: [],
-  literaryTonesOptions: [],
-  animationTechniquesOptions: [],
-  audiencesOptions: [],
-  formatsOptions: [],
-  tagsOptions: [],
-  selectedLanguages: [],
-  selectedPlaces: [],
-  selectedPeriodMin: null,
-  selectedPeriodMax: null,
-  selectedAuthors: [],
-  selectedLiteraryTones: [],
-  selectedAnimationTechniques: [],
-  selectedAudiences: [],
-  selectedFormats: [],
-  selectedTags: [],
-  publicDomain: false,
+  filters: {},
   isInitiallyOpen: true,
 };
 
 WorksFilters.propTypes = {
-  languageOptions: PropTypes.arrayOf(PropTypes.object),
-  placeOptions: PropTypes.arrayOf(PropTypes.object),
-  periodMinMax: PropTypes.arrayOf(PropTypes.number),
-  authorsOptions: PropTypes.arrayOf(PropTypes.object),
-  literaryTonesOptions: PropTypes.arrayOf(PropTypes.object),
-  animationTechniquesOptions: PropTypes.arrayOf(PropTypes.object),
-  theatricalTechniquesOptions: PropTypes.arrayOf(PropTypes.object),
-  audiencesOptions: PropTypes.arrayOf(PropTypes.object),
-  formatsOptions: PropTypes.arrayOf(PropTypes.object),
-  tagsOptions: PropTypes.arrayOf(PropTypes.object),
-  selectedLanguages: PropTypes.arrayOf(PropTypes.object),
-  selectedPlaces: PropTypes.arrayOf(PropTypes.object),
-  selectedPeriodMin: PropTypes.number,
-  selectedPeriodMax: PropTypes.number,
-  selectedAuthors: PropTypes.arrayOf(PropTypes.object),
-  selectedLiteraryTones: PropTypes.arrayOf(PropTypes.object),
-  selectedAnimationTechniques: PropTypes.arrayOf(PropTypes.object),
-  selectedTheatricalTechniques: PropTypes.arrayOf(PropTypes.object),
-  selectedAudiences: PropTypes.arrayOf(PropTypes.object),
-  selectedFormats: PropTypes.arrayOf(PropTypes.object),
-  selectedTags: PropTypes.arrayOf(PropTypes.object),
-  publicDomain: PropTypes.bool,
+  filters: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   onClearAll: PropTypes.func.isRequired,
   isInitiallyOpen: PropTypes.bool,

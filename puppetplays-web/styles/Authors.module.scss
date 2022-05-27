@@ -13,10 +13,13 @@
   border-bottom: 1px solid var(--color-border);
 
   @media (min-width: 540px) {
-    padding: 50px 34px 44px;
+    padding-left: 34px;
+    padding-right: 34px;
   }
 
   @media (min-width: 740px) {
+    padding-left: 68px;
+    padding-right: 68px;
   }
 }
 

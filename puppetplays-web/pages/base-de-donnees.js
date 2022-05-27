@@ -7,7 +7,6 @@ import {
   Suspense,
 } from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -19,24 +18,12 @@ import {
   getAllWorks,
   WORKS_PAGE_SIZE,
   buildSearchQuery,
-  getAllWorksKeywordsQuery,
 } from 'lib/api';
-import {
-  getAllAnimationTechniquesQuery,
-  getAllTheatricalTechniquesQuery,
-  getAllAudiencesQuery,
-  getAllFormatsQuery,
-  getAllLanguagesQuery,
-  getAllPersonsQuery,
-  getAllLiteraryTonesQuery,
-  getAllPlacesQuery,
-  getPeriodBoundsQuery,
-} from 'lib/filtersApi';
 import {
   worksQueryParamsToState as queryParamsToState,
   worksStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
-import { hasAtLeastOneItem, parseCookies, stringifyQuery } from 'lib/utils';
+import { stringifyQuery } from 'lib/utils';
 import Layout from 'components/Layout';
 import WorkSummary from 'components/Work/WorkSummary';
 import Pagination from 'components/Pagination';
@@ -66,20 +53,7 @@ const VIEWS = {
   map: 'MAP',
 };
 
-function Home({
-  initialData,
-  languages,
-  places,
-  periodBounds,
-  authors,
-  literaryTones,
-  animationTechniques,
-  theatricalTechniques,
-  audiences,
-  formats,
-  tags,
-  isFiltersBarOpened,
-}) {
+function Home({ initialData }) {
   const { t } = useTranslation();
   const router = useRouter();
   const [filters, setFilters] = useState(() => {
@@ -140,34 +114,7 @@ function Home({
   const handleChangeFilters = useCallback(
     (value, { name }) => {
       let newFilters;
-      if (name === 'period') {
-        if (value[0] !== periodBounds[0] && value[1] !== periodBounds[1]) {
-          newFilters = {
-            ...filters,
-            compositionMinDate: [value[0], value[1]],
-          };
-        } else if (value[0] !== periodBounds[0]) {
-          newFilters = {
-            ...filters,
-            compositionMinDate: [value[0], 0],
-          };
-        } else if (value[1] !== periodBounds[1]) {
-          newFilters = {
-            ...filters,
-            compositionMinDate: [0, value[1]],
-          };
-        } else {
-          newFilters = {
-            ...filters,
-            compositionMinDate: null,
-          };
-        }
-      } else if (name === 'publicDomain') {
-        newFilters = {
-          ...filters,
-          publicDomain: value ? value : undefined,
-        };
-      } else if (name === 'orderBy') {
+      if (name === 'orderBy') {
         newFilters = {
           ...filters,
           orderBy: value ? value.id : undefined,
@@ -175,7 +122,7 @@ function Home({
       } else {
         newFilters = {
           ...filters,
-          [name]: value.length > 0 ? value.map((v) => v.id) : null,
+          [name]: value,
         };
       }
       setFilters(newFilters);
@@ -283,71 +230,19 @@ function Home({
       aside={
         <Suspense fallback={`loading`}>
           <Filters
-            languageOptions={languages}
-            placeOptions={places}
-            periodMinMax={periodBounds}
-            authorsOptions={authors}
-            literaryTonesOptions={literaryTones}
-            animationTechniquesOptions={animationTechniques}
-            theatricalTechniquesOptions={theatricalTechniques}
-            audiencesOptions={audiences}
-            formatsOptions={formats}
-            tagsOptions={tags}
-            selectedLanguages={
-              filters.mainLanguage &&
-              languages.filter(({ id }) => filters.mainLanguage.includes(id))
-            }
-            selectedPlaces={
-              filters.compositionPlace &&
-              places.filter(({ id }) => filters.compositionPlace.includes(id))
-            }
-            selectedPeriodMin={get(filters, 'compositionMinDate[0]', null)}
-            selectedPeriodMax={get(filters, 'compositionMinDate[1]', null)}
-            selectedAuthors={
-              filters.authors &&
-              authors.filter(({ id }) => filters.authors.includes(id))
-            }
-            selectedLiteraryTones={
-              filters.literaryTones &&
-              literaryTones.filter(({ id }) =>
-                filters.literaryTones.includes(id),
-              )
-            }
-            selectedAnimationTechniques={
-              filters.animationTechniques &&
-              animationTechniques.filter(({ id }) =>
-                filters.animationTechniques.includes(id),
-              )
-            }
-            selectedTheatricalTechniques={
-              filters.theatricalTechniques &&
-              theatricalTechniques.filter(({ id }) =>
-                filters.theatricalTechniques.includes(id),
-              )
-            }
-            selectedAudiences={
-              filters.audience &&
-              audiences.filter(({ id }) => filters.audience.includes(id))
-            }
-            selectedFormats={
-              filters.formats &&
-              formats.filter(({ id }) => filters.formats.includes(id))
-            }
-            selectedTags={
-              filters.relatedToTags &&
-              tags.filter(({ id }) => filters.relatedToTags.includes(id))
-            }
-            publicDomain={!!filters.publicDomain}
+            filters={filters}
             onChange={handleChangeFilters}
             onClearAll={handleClearAllFilters}
-            isInitiallyOpen={isFiltersBarOpened}
           />
         </Suspense>
       }
     >
       <Head>
         <title>{t('common:database')} | Puppetplays</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={t('common:meta.database.description')}
+        />
       </Head>
 
       {(filters.view === VIEWS.list || !filters.view) && (
@@ -421,16 +316,6 @@ function Home({
 
 Home.propTypes = {
   initialData: PropTypes.object.isRequired,
-  languages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  places: PropTypes.arrayOf(PropTypes.object).isRequired,
-  periodBounds: PropTypes.arrayOf(PropTypes.number).isRequired,
-  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
-  literaryTones: PropTypes.arrayOf(PropTypes.object).isRequired,
-  animationTechniques: PropTypes.arrayOf(PropTypes.object).isRequired,
-  audiences: PropTypes.arrayOf(PropTypes.object).isRequired,
-  formats: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isFiltersBarOpened: PropTypes.bool.isRequired,
 };
 
 export default Home;
@@ -439,67 +324,18 @@ export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const cookies = parseCookies(req);
-  const isFiltersBarOpened =
-    get(cookies, 'isWorksFiltersBarOpened', true) === 'false' ? false : true;
-
-  const languages = await fetchAPI(getAllLanguagesQuery, {
-    variables: { locale },
-  });
-  const places = await fetchAPI(getAllPlacesQuery, {
-    variables: { locale },
-  });
-  const periodBounds = await fetchAPI(getPeriodBoundsQuery, {
-    variables: { locale },
-  });
-  const authors = await fetchAPI(getAllPersonsQuery, {
-    variables: { locale },
-  });
-  const literaryTones = await fetchAPI(getAllLiteraryTonesQuery, {
-    variables: { locale },
-  });
-  const animationTechniques = await fetchAPI(getAllAnimationTechniquesQuery, {
-    variables: { locale },
-  });
-  const theatricalTechniques = await fetchAPI(getAllTheatricalTechniquesQuery, {
-    variables: { locale },
-  });
-  const audiences = await fetchAPI(getAllAudiencesQuery, {
-    variables: { locale },
-  });
-  const formats = await fetchAPI(getAllFormatsQuery, {
-    variables: { locale },
-  });
-  const data = await getAllWorks(
-    locale,
-    query.page * WORKS_PAGE_SIZE,
-    buildSearchQuery(query.search),
-    query,
-  );
-  const getSafelyPeriodBound = (bound) =>
-    hasAtLeastOneItem(bound) ? bound[0].value : null;
-
-  const { tags } = await fetchAPI(getAllWorksKeywordsQuery, {
-    variables: { locale },
-  });
+  const [data] = await Promise.all([
+    getAllWorks(
+      locale,
+      query.page * WORKS_PAGE_SIZE,
+      buildSearchQuery(query.search),
+      query,
+    ),
+  ]);
 
   return {
     props: {
       initialData: data,
-      languages: languages.entries,
-      places: places.entries,
-      periodBounds: [
-        getSafelyPeriodBound(periodBounds.min),
-        getSafelyPeriodBound(periodBounds.max),
-      ],
-      authors: authors.entries,
-      literaryTones: literaryTones.entries,
-      animationTechniques: animationTechniques.entries,
-      theatricalTechniques: theatricalTechniques.entries,
-      audiences: audiences.entries,
-      formats: formats.entries,
-      tags,
-      isFiltersBarOpened,
     },
   };
 }

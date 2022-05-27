@@ -5,8 +5,12 @@ import {
   worksQueryParamsToState,
   worksStateToGraphqlEntriesParams,
   worksStateToGraphqlQueryArgument,
-} from 'lib/filters';
-import { identity } from 'lib/utils';
+} from './filters';
+import { identity } from './utils';
+
+export const getFetchAPIClient = ({ variables } = {}, token) => {
+  return (query) => fetchAPI(query, variables, token);
+};
 
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;

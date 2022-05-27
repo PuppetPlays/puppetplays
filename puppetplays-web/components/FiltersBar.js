@@ -1,24 +1,17 @@
-import { Fragment, useCallback, useState } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useCookies } from 'react-cookie';
 import useTranslation from 'next-translate/useTranslation';
 import styles from './filtersBar.module.scss';
 
-function FiltersBar({
-  isInitiallyOpen,
-  cookieName,
-  children,
-  filtersCount,
-  onClearAll,
-}) {
+function FiltersBar({ cookieName, children, filtersCount, onClearAll }) {
   const { t } = useTranslation();
-  const [, setCookie] = useCookies([cookieName]);
-  const [isOpen, setIsOpen] = useState(isInitiallyOpen);
+  const [cookies, setCookie] = useCookies();
+  const isOpen = cookies[cookieName] === 'false' ? false : true;
 
-  const handleToggleFiltersBar = useCallback(() => {
-    setIsOpen(!isOpen);
-    setCookie(cookieName, !isOpen);
-  }, [isOpen, setCookie, cookieName]);
+  const handleToggleFiltersBar = () => {
+    setCookie(cookieName, !isOpen, { path: '/' });
+  };
 
   return (
     <div
@@ -79,13 +72,11 @@ function FiltersBar({
 }
 
 FiltersBar.defaultProps = {
-  isInitiallyOpen: false,
   filtersCount: 0,
   onClearAll: null,
 };
 
 FiltersBar.propTypes = {
-  isInitiallyOpen: PropTypes.bool,
   cookieName: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   filtersCount: PropTypes.number,
