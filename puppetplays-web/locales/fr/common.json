@@ -1,19 +1,30 @@
 {
+  "meta": {
+    "database": {
+      "description": "Les œuvres de théâtre de marionnettes – Liste des pièces pour marionnettes en Europe de l’Ouest – Textes pour marionnettes - Projet ERC PuppetPlays"
+    },
+    "authors": {
+      "description": "Listes des auteurs de pièces pour marionnettes – Théâtre de marionnettes et écriture théâtrale en Europe de l'Ouest – Projet ERC PuppetPlays"
+    },
+    "animationTechniques": {
+      "description": "Définition des techniques d’animation pour marionnettes – Les techniques de manipulation des marionnettes et leurs répertoires – Projet ERC PuppetPlays"
+    }
+  },
   "navMenu": "Menu de navigation",
   "menu": "Menu",
-  "backToHome": "Retour à l’accueil ›",
+  "backToHome": "Retour à la page d’accueil ›",
   "database": "Base de données",
   "map": "Carte",
   "knowMore": "En savoir +",
-  "contactUs": "Nous contacter",
+  "contactUs": "Pour nous contacter",
   "searchPlaceholder": "Recherchez un titre, un auteur, une thématique",
   "fr": "Français",
   "en": "Anglais",
   "it": "Italien",
   "de": "Allemand",
   "close": "Fermer",
-  "closeNote": "Refermer la notice",
-  "expandNote": "Entrouvrir la notice",
+  "closeNote": "Refermer l'aperçu'",
+  "expandNote": "Ouvrir l'aperçu",
   "writtenBy": "Rédaction de la notice",
   "alias": "dit",
   "language": "Langue",
@@ -32,9 +43,9 @@
   "otherTitles": "Autres titres",
   "hypotexts": "Œuvres corrélées",
   "firstPerformance": "Première représentation",
-  "publications": "Publications",
+  "publications": "Éditions",
   "publication": "Édition",
-  "publicationsAndTranslations": "Publications et traductions",
+  "publicationsAndTranslations": "Éditions et traductions",
   "conservationPlace": "Lieu de conservation",
   "transcribers": "Transcripteurs",
   "editors": "Compilateurs",
@@ -91,7 +102,7 @@
     "formats": "Format",
     "formatsPlaceholder": "Audio, Dactilographié…",
     "relatedToTags": "Mots-clé",
-    "relatedToTagsPlaceholder": "…",
+    "relatedToTagsPlaceholder": "Mots-clés",
     "publicDomain": "Domaine public",
     "gender": "Sexe",
     "genderPlaceholder": "Genre",

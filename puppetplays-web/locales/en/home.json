@@ -2,24 +2,25 @@
   "title": "Puppet and marionette theatre repertoires",
   "subtitle": "In Western Europe from 1600 till now",
   "fullTitle": "Puppet and marionette theatre repertoires in Western Europe from 1600 till now",
+  "metaDescription": "ERC project PuppetPlays – Puppet and marionette theatre repertoires – Database on drama for puppet or marionette – Scientific papers – Resources - Puppetry",
   "ercLabel": "ERC - GA 835193",
-  "releaseDate": "Foreseen opening 2022",
+  "releaseDate": "Planned opening in 2022",
   "projectNews": "News",
   "projectNewsUrl": "https://puppetplays.www.univ-montp3.fr/en/actualit%C3%A9s-0",
   "ourSiteLabel": "Our website",
   "ourSiteUrl": "https://puppetplays.www.univ-montp3.fr/en",
-  "facebookLinkLabel": "Puppetplays Facebook page",
-  "subscribeTitle": "Be informed of the website opening.",
+  "facebookLinkLabel": "PuppetPlays Facebook page",
+  "subscribeTitle": "Get informed of the website opening.",
   "subscribeLabel": "Subscribe to our monthly newsletter",
   "emailPlaceholder": "Your e-mail",
   "subscribe": "subscribe",
   "subscriptionSuccessful": "Thanks for subscribing to our newsletter",
-  "subscriptionError": "We encountered an issue when subscribing you to our newsletter",
+  "subscriptionError": "An issue occurred when subscribing to our newsletter",
   "introTitle": "Bringing into the light a fragmented and almost invisible repertoire",
   "introSubtitle": "The project",
-  "aboutPuppetplays": "About Puppetplays",
-  "introText1": "PuppetPlays - Reappraising Western European Repertoires for Puppet and Marionette Theatres is an ambitious research project funded by the European Union under the Horizon 2020 programme (European Research Council, Grant Agreement 835193, 2019-2024). Recipient of the 2018 Advanced Grant call for projects, it is directed by Didier Plassard, professor in Drama and Performance studies, and hosted by the University Paul-Valéry Montpellier 3.",
-  "introText2": "The aim of PuppetPlays is to gather, study and make accessible to a wide audience, through a dedicated digital platform, a large selection of plays for puppets and marionettes written in Western Europe, from the 17th to the 21st century. This platform will bring together a database of 2000 references, an anthology of 300 digitized texts, scientific publications (a monograph, two PhD dissertations, the proceedings of two international conferences, articles), as well as thematic presentations and pedagogical tools (dictionary of authors, glossary).",
+  "aboutPuppetplays": "About PuppetPlays",
+  "introText1": "PuppetPlays - Reconsidérer les réperertoires pour les théâtres de marionnettes en Europe de l'Ouest (17e-21e siècles) est un ambitieux projet de recherche financé par l'Union Européenne dans le cadre du programme Horizon 2020 (Conseil Européen de la Recherche, GA 835193, 2019-2024). Lauréat de l'appel à projets “Advanced Grant” 2018, il est dirigé par Didier Plassard, professeur en études théâtrales, et porté par l'Université Paul-Valéry Montpellier 3.",
+  "introText2": "The aim of PuppetPlays is to gather, study and make accessible to a wide audience, through a dedicated digital platform, a large selection of plays for puppets and marionettes written in Western Europe, from the 17th to the 21st century. This platform will bring together a database of 2.000 references, an anthology of 300 digitized texts, scientific publications (a monograph, two PhD dissertations, the proceedings of two international conferences, articles), as well as thematic presentations and pedagogical tools (dictionary of authors, glossary).",
   "introText3": "A first version of the PuppetPlays digital platform will be available in 2022. The full version will be published in 2024.",
   "introImageCaption": "Image: Christophe Loiseau and Matt Jackson",
   "theTeam": "The team",
@@ -52,48 +53,43 @@
   "explore": "Explore",
   "exploreBy": {
     "database": {
-      "title": "La base de donnée",
-      "subtitle": "Le répertoire complet"
+      "title": "The database"
     },
-    "authors": {
-      "title": "Les auteurs",
-      "subtitle": "Leurs biographie et bibliographie"
+    "anthology": {
+      "title": "The anthology"
     },
     "pathways": {
-      "title": "Parcours découvertes",
-      "subtitle": "Nos articles et dossiers pédagogiques"
+      "title": "Discover and learn"
     },
     "publications": {
-      "title": "Publications scientifiques",
-      "subtitle": "Nos articles et colloques"
+      "title": "Scientific publications"
     },
     "project": {
-      "title": "Le projet",
-      "subtitle": "Information et activité de l’équipe PuppetPlays"
+      "title": "The project"
     }
   },
   "accessToIntregralWorks": "Access to integral works",
-  "consultTheAnthology": "Consult the anthology",
+  "consultTheAnthology": "View the anthology",
   "seeAllAnimationTechniques": "See all animation techniques",
   "exploreByAuthors": "Explore by authors",
-  "exploreByKeywords": "Browse the works according to their keywords",
+  "exploreByKeywords": "Browse the works according to their key-words",
   "browseAllAuthors": "Browse all authors",
-  "lightOnWork": "Ligth on a work",
+  "lightOnWork": "Highlights",
   "ourPublications": "Our scientific publications",
   "publications": {
     "pulcinella": {
       "title": "Pulcinella, Punch, Polichinelle…",
-      "subtitle": "Continuities and discontinuities in the repertoire of string puppets (17th-19th centuries)"
+      "subtitle": "Continuitiy and discontinuity in the repertoire of glove puppets (17th-19th centuries)"
     },
     "drama": {
       "title": "Dramaturgy of the figure: the author's repertoire",
-      "subtitle": "Exchanges dedicated to the contemporary Italian production of texts for the puppet theater."
+      "subtitle": "Round table discussion on contemporary playwriting for puppets and marionettes in Italy"
     },
     "roberto": {
-      "title": "Dom Roberto’s theater",
-      "subtitle": "Discover Dom Roberto’ theather"
+      "title": "Dom Roberto theatre",
+      "subtitle": "Christine Zurbach (University of Evora)"
     }
   },
   "pulcinellaPathwayTitle": "The figure of Pulcinella",
-  "pathway": "Discovery pathway"
+  "pathway": "Discover and learn"
 }

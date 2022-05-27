@@ -34,7 +34,10 @@ function AnimationTechniques({ initialData }) {
     <Layout>
       <Head>
         <title>{t('common:animationTechniques')} | Puppetplays</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={t('common:meta.animationTechniques.description')}
+        />
       </Head>
 
       <ContentLayout style={{ maxWidth: 1072, padding: '32px 20px' }}>

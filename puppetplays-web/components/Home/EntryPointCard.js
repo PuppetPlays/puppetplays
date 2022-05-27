@@ -44,7 +44,7 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
         )}
         {!href && !to && title}
       </h2>
-      <p>{description}</p>
+      {description && <p>{description}</p>}
     </li>
   );
 };
@@ -52,11 +52,12 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
 EntryPointCard.defaultProps = {
   to: null,
   href: null,
+  description: null,
 };
 
 EntryPointCard.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   thumbnailUrl: PropTypes.string.isRequired,
   to: PropTypes.string,
   href: PropTypes.string,

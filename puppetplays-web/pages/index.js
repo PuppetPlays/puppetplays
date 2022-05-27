@@ -1,11 +1,6 @@
-import {
-  Fragment,
-  useCallback,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { Fragment, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { get } from 'lodash/fp';
 import Head from 'next/head';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
@@ -20,18 +15,17 @@ import {
   getWorksKeywordsByIdsQuery,
   getAnimationTechniqueByIdQuery,
   getWorkByIdQuery,
+  getFetchAPIClient,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { getRandom } from 'lib/utils';
 import LanguageSelector from 'components/LanguageSelector';
-import SearchBarStateful from 'components/SearchBarStateful';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import ButtonLink from 'components/ButtonLink';
 import Card from 'components/Card';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
 import Keywords, { Tag } from 'components/Keywords';
-import Header from 'components/Header';
 import MainNav from 'components/MainNav';
 import HtmlContent from 'components/HtmlContent';
 import BirthDeathDates from 'components/BirthDeathDates';
@@ -100,7 +94,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const animationTechniqueLinkRef = useRef(null);
   const [EXPLORE_BY] = useState({
     database: { to: '/base-de-donnees' },
-    authors: { to: '/auteurs' },
+    anthology: {},
     pathways: {},
     publications: {},
     project: { href: t('ourSiteUrl') },
@@ -110,6 +104,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
     <Fragment>
       <Head>
         <title>Puppetplays | {t('title')}</title>
+        <meta name="description" content={t('metaDescription')} />
       </Head>
 
       <div className={styles.container}>
@@ -160,8 +155,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                       <EntryPointCard
                         key={key}
                         title={t(`exploreBy.${key}.title`)}
-                        description={t(`exploreBy.${key}.subtitle`)}
-                        thumbnailUrl={`/${key}-thumbnail.png`}
+                        thumbnailUrl={`/${key}-thumbnail.jpg`}
                         {...props}
                       />
                     ))}
@@ -180,7 +174,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
           <div className={styles.content}>
             <div className={styles.contentInner}>
               <Section title={t('accessToIntregralWorks')} isComingSoon>
-                <img src="/home-integral-works.png" alt="" />
+                <img src="/home-integral-works.jpg" alt="" />
               </Section>
 
               <Section>
@@ -416,47 +410,49 @@ export async function getServerSideProps({ locale, req, res }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const { entry: homeEntry } = await fetchAPI(getHomeQuery, {
+  const apiClient = getFetchAPIClient({
     variables: { locale },
   });
-  const randomWorkId = getRandom(homeEntry.works, 1).map((p) => p.id);
-  const { entry: homeWorkEntry } = await fetchAPI(getWorkByIdQuery, {
-    variables: { locale, id: randomWorkId[0] },
-  });
 
-  const { tags: keywords } = await fetchAPI(getAllWorksKeywordsQuery, {
-    variables: { locale },
-  });
-  const randomKeywordsIds = getRandom(keywords, 20).map((p) => p.id);
-  const { tags: homeKeywords } = await fetchAPI(getWorksKeywordsByIdsQuery, {
-    variables: { locale, id: randomKeywordsIds },
-  });
+  const [
+    { entry: homeEntry },
+    { tags: keywords },
+    { entries: animationTechniquesEntries },
+    { entries: personEntries },
+  ] = await Promise.all([
+    apiClient(getHomeQuery),
+    apiClient(getAllWorksKeywordsQuery),
+    apiClient(getAllAnimationTechniquesQuery),
+    apiClient(getAllAuthorsIdsQuery),
+  ]);
 
-  const { entries: animationTechniquesEntries } = await fetchAPI(
-    getAllAnimationTechniquesQuery,
-    {
-      variables: { locale },
-    },
-  );
+  const randomWorkId = getRandom(homeEntry.works, 1).map(get('id'));
+  const randomKeywordsIds = getRandom(keywords, 20).map(get('id'));
   const randomAnimationTechninquesId = getRandom(
     animationTechniquesEntries,
     1,
-  ).map((p) => p.id);
-  const { entry: homeAnimationTechninqueEntry } = await fetchAPI(
-    getAnimationTechniqueByIdQuery,
-    {
+  ).map(get('id'));
+  const randomPersonIds = getRandom(personEntries, 4).map(get('id'));
+
+  const [
+    { entry: homeWorkEntry },
+    { tags: homeKeywords },
+    { entry: homeAnimationTechninqueEntry },
+    { entries: homePersonEntries },
+  ] = await Promise.all([
+    fetchAPI(getWorkByIdQuery, {
+      variables: { locale, id: randomWorkId[0] },
+    }),
+    fetchAPI(getWorksKeywordsByIdsQuery, {
+      variables: { locale, id: randomKeywordsIds },
+    }),
+    fetchAPI(getAnimationTechniqueByIdQuery, {
       variables: { locale, id: randomAnimationTechninquesId[0] },
-    },
-  );
-
-  const { entries: personEntries } = await fetchAPI(getAllAuthorsIdsQuery, {
-    variables: { locale },
-  });
-
-  const randomPersonIds = getRandom(personEntries, 4).map((p) => p.id);
-  const { entries: homePersonEntries } = await fetchAPI(getAuthorsByIdsQuery, {
-    variables: { locale, id: randomPersonIds },
-  });
+    }),
+    fetchAPI(getAuthorsByIdsQuery, {
+      variables: { locale, id: randomPersonIds },
+    }),
+  ]);
 
   return {
     props: {

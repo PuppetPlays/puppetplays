@@ -4,8 +4,8 @@ import get from 'lodash/get';
 import useTranslation from 'next-translate/useTranslation';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
-  fetchAPI,
   getAnimationTechniqueByIdQuery,
+  getFetchAPIClient,
   getWorksOfAnimationTechniqueQuery,
 } from 'lib/api';
 import Layout from 'components/Layout';
@@ -57,20 +57,15 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
   useCraftAuthMiddleware(req, res, locale);
 
   const token = query && query.token;
-  const animationTechniquesData = await fetchAPI(
-    getAnimationTechniqueByIdQuery,
-    {
-      variables: { locale, id: params.id },
-    },
+  const apiClient = getFetchAPIClient({
+    variables: { locale, id: params.id },
     token,
-  );
-  const animationTechniquesWorksData = await fetchAPI(
-    getWorksOfAnimationTechniqueQuery,
-    {
-      variables: { locale, id: params.id },
-    },
-    token,
-  );
+  });
+  const [animationTechniquesData, animationTechniquesWorksData] =
+    await Promise.all([
+      apiClient(getAnimationTechniqueByIdQuery),
+      apiClient(getWorksOfAnimationTechniqueQuery),
+    ]);
 
   return {
     props: { animationTechniquesData, animationTechniquesWorksData },

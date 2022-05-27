@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import useTranslation from 'next-translate/useTranslation';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
-import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
+import {
+  getAuthorByIdQuery,
+  getFetchAPIClient,
+  getWorksOfAuthorQuery,
+} from 'lib/api';
 import Layout from 'components/Layout';
 import Author from 'components/Author';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
@@ -52,20 +56,15 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
   useCraftAuthMiddleware(req, res, locale);
 
   const token = query && query.token;
-  const authorData = await fetchAPI(
-    getAuthorByIdQuery,
-    {
-      variables: { locale, id: params.id },
-    },
+  const apiClient = getFetchAPIClient({
+    variables: { locale, id: params.id },
     token,
-  );
-  const authorWorksData = await fetchAPI(
-    getWorksOfAuthorQuery,
-    {
-      variables: { locale, id: params.id },
-    },
-    token,
-  );
+  });
+  const [authorData, authorWorksData] = await Promise.all([
+    apiClient(getAuthorByIdQuery),
+    apiClient(getWorksOfAuthorQuery),
+  ]);
+
   authorWorksData.entries = authorWorksData.entries
     .filter(({ authors }) => authors.map(({ id }) => id).includes(params.id))
     .map(({ authors, ...entry }) => entry);
