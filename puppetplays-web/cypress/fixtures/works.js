@@ -2,15 +2,14 @@ const works = {
   data: {
     entries: [
       {
-        id: '2493',
-        slug: 'dolores-molestias-ullam-vel-minima-quia-id-assumenda-ut-est',
-        title: 'Dolores molestias ullam vel minima quia id assumenda ut est.',
-        translatedTitle:
-          'Quia aut perferendis autem veniam impedit nisi animi consequuntur.',
-        subtitle: 'Ab voluptas qui rerum cum qui sit et sit beatae sit.',
+        id: '2000',
+        slug: 'une-oeuvre-du-repertoire',
+        title: 'Une œuvre du répertoire',
+        translatedTitle: '',
+        subtitle: 'Le sous-titre de l’œuvre',
         mainImage: [
           {
-            id: '2618',
+            id: '1000',
             url: 'https://puppetplays.ddev.site:7443/static/images/works/_200xAUTO_crop_center-center_none/le-regal-des-dames.png',
             height: 192,
             width: 200,
@@ -19,18 +18,17 @@ const works = {
             copyright: null,
           },
         ],
-        theatricalTechniques: [{ id: '2384', title: 'Le mime' }],
+        theatricalTechniques: [{ id: '1200', title: 'Le mime' }],
         keywords: [
-          { id: '2435', title: 'sector' },
-          { id: '2428', title: 'menu' },
-          { id: '2432', title: 'storage' },
-          { id: '2409', title: 'property' },
-          { id: '2414', title: 'equipment' },
+          { id: '1100', title: 'sector' },
+          { id: '1200', title: 'menu' },
+          { id: '1300', title: 'storage' },
+          { id: '1400', title: 'property' },
+          { id: '1500', title: 'equipment' },
         ],
-        firstAuthorTitle: null,
         authors: [
           {
-            id: '2344',
+            id: '3000',
             slug: 'françoise-dufour',
             title: 'Dufour Françoise (aka Robert Thierry)',
             typeHandle: 'persons',
@@ -39,22 +37,12 @@ const works = {
             nickname: 'Robert Thierry',
             usualName: null,
           },
-          {
-            id: '2341',
-            slug: 'marianne-collin',
-            title: 'Collin Marianne (aka Denise Suzanne)',
-            typeHandle: 'persons',
-            firstName: 'Marianne',
-            lastName: 'Collin',
-            nickname: 'Denise Suzanne',
-            usualName: null,
-          },
         ],
-        mostRelevantDate: '11-05-1758',
-        compositionMinDate: 1810,
+        mostRelevantDate: '1758',
+        compositionMinDate: 1758,
         compositionPlace: [
           {
-            id: '2310',
+            id: '4000',
             title: 'Vienna',
             typeHandle: 'places',
             country: [
@@ -85,7 +73,7 @@ const works = {
         literaryTones: [{ title: 'réaliste' }],
         animationTechniques: [
           {
-            id: '2372',
+            id: '5000',
             slug: 'marionnettes-à-fils',
             title: 'marionnettes à fils',
           },
@@ -101,8 +89,76 @@ const works = {
         publicDomain: false,
         additionalLicenseInformation: 'quam',
       },
+      {
+        id: '2100',
+        slug: 'une-autre-oeuvre-du-repertoire',
+        title: 'Une autre œuvre du répertoire',
+        translatedTitle: null,
+        subtitle: null,
+        mainImage: null,
+        theatricalTechniques: [{ id: '1200', title: 'Le mime' }],
+        keywords: [
+          { id: '2100', title: 'comique' },
+          { id: '3000', title: 'hilarant' },
+        ],
+        authors: [
+          {
+            id: '5000',
+            slug: 'bernard-jacquo',
+            title: 'Jacquo Bernard',
+            typeHandle: 'persons',
+            firstName: 'Bernard',
+            lastName: 'Jacquo',
+            nickname: null,
+            usualName: null,
+          },
+        ],
+        mostRelevantDate: '1867',
+        compositionMinDate: 1866,
+        compositionMaxDate: 1869,
+        compositionPlace: [
+          {
+            id: '4000',
+            title: 'Austria',
+            typeHandle: 'countries',
+            latitude: 47.522536000000002,
+            longitude: 14.077385,
+          },
+        ],
+        mainLanguage: [{ title: 'Français' }],
+        note: "<p>Le feu se mourait de son jupon; et il y avait pour correspondant un quincaillier en gros caractères: «Maître Hareng, huissier à Buchy», l'effraya si fort, qu'il piqua la peau; on entendit un.</p>",
+        mainTheme: null,
+        abstract:
+          "<p>Les premiers mois de son horrible état, c'est-à-dire la question d'<a href=\"http://localhost:7000/en/oeuvres/1125/une-œuvre-pas-comme-une-autre\">argent</a>. Elle ne mangea pas; elle avait cette incohérence de choses comprimées en lui, le fardeau de vos signatures! -- Je m'en vas la conduire jusqu'au bout. Malgré ses airs évaporés (c'était le cadeau de noces du père Bovary, qui était quelque chose de mûr s'étendait sur le banc de velours et sa mère pour qu'elle leur envoyât bien vite tout l'arriéré de Barneville... -- Comment?... Et, en achevant de l'habiller; et elles.</p>",
+        otherTitles: null,
+        firstPerformanceDate: '10-10-1867',
+        firstPerformancePlace: [],
+        firstPerformanceComplementaryInformation: null,
+        publication:
+          '<p>Voluptatibus laboriosam laborum voluptas quia necessitatibus error et magni omnis quia occaecati perferendis esse.</p>',
+        modernEdition:
+          '<p>Vel eos dicta dolorum non voluptate iste et ab recusandae et aut sapiente ut quibusdam aut necessitatibus.</p>',
+        onlineCopy: null,
+        literaryTones: [{ title: 'réaliste' }],
+        animationTechniques: [
+          {
+            id: '6000',
+            slug: 'marionnettes-à-gaine',
+            title: 'marionnettes à gaine',
+          },
+        ],
+        audience: [{ title: 'tout public' }],
+        textCharacters: [
+          { nameInText: 'Polichinella', roles: [{ title: 'Polichinelle' }] },
+        ],
+        actsCount: 12,
+        pagesCount: 410,
+        formats: [{ title: 'manuscrit' }],
+        publicDomain: true,
+        additionalLicenseInformation: null,
+      },
     ],
-    entryCount: 1,
+    entryCount: 2,
   },
 };
 

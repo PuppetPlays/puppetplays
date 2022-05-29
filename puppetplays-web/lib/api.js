@@ -73,39 +73,6 @@ fragment assetFragment on AssetInterface {
 }
 `;
 
-export const getPeriodBoundsQuery = `
-query GetPeriodBounds {
-  min: entries(section: "works", compositionMinDate: ["not", null], limit: 1, orderBy: "compositionMinDate asc") {
-    ... on works_works_Entry {
-      value: compositionMinDate
-    }
-  }
-  max: entries(section: "works", compositionMaxDate: ["not", null], limit: 1, orderBy: "compositionMaxDate desc") {
-    ... on works_works_Entry {
-      value: compositionMaxDate
-    }
-  }
-}
-`;
-
-export const getAllLanguagesQuery = `
-query GetAllLanguages($locale: [String]) {
-  entries(section: "languages", site: $locale, orderBy: "title") {
-    id,
-    title,
-  }
-}
-`;
-
-export const getAllPlacesQuery = `
-${placeInfoFragment}
-query GetAllPlaces($locale: [String]) {
-  entries(section: "places", site: $locale, orderBy: "title") {
-    ...placeInfo
-  }
-}
-`;
-
 export const WORKS_PAGE_SIZE = 10;
 
 export const getAllWorksQuery = ({ orderBy, ...filters }) => {
@@ -240,7 +207,7 @@ export async function getAllWorks(
 export const getWorkByIdQuery = `
 ${placeInfoFragment}
 ${assetFragment}
-query getWorkById($locale: [String], $id: [QueryArgument]) {
+query GetWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
     title,
@@ -413,7 +380,7 @@ query getWorkById($locale: [String], $id: [QueryArgument]) {
 }`;
 
 export const getWorkMediasByIdQuery = `
-query getWorkById($locale: [String], $id: [QueryArgument]) {
+query GetWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
     slug,
@@ -508,7 +475,7 @@ query GetAllAuthorsIds($locale: [String]) {
 
 export const getAuthorsByIdsQuery = `
 ${assetFragment}
-query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
+query GetAuthorsByIds($locale: [String], $id: [QueryArgument]) {
   entries(section: "persons", site: $locale, id: $id) {
     id,
     slug,
@@ -531,7 +498,7 @@ query getAuthorsByIds($locale: [String], $id: [QueryArgument]) {
 
 export const getAuthorByIdQuery = `
 ${assetFragment}
-query getAuthorById($locale: [String], $id: [QueryArgument]) {
+query GetAuthorById($locale: [String], $id: [QueryArgument]) {
   entry(section: "persons", site: $locale, id: $id) {
     id,
     slug,
@@ -560,7 +527,7 @@ query getAuthorById($locale: [String], $id: [QueryArgument]) {
 `;
 
 export const getWorksOfAuthorQuery = `
-query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
+query GetWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
   entries(section: "works", site: $locale, relatedTo: $id, orderBy: "compositionMinDate") {
     id,
     slug,
@@ -577,7 +544,7 @@ query getWorksOfAuthor($locale: [String], $id: [QueryArgument]) {
 
 export const getAllAnimationsTechniquesQuery = `
 ${assetFragment}
-query getAllAnimationsTechniques($locale: [String]) {
+query GetAllAnimationsTechniques($locale: [String]) {
   entries(section: "animationTechniques", site: $locale, orderBy: "title") {
     id,
     slug,
@@ -593,7 +560,7 @@ query getAllAnimationsTechniques($locale: [String]) {
 
 export const getAnimationTechniqueByIdQuery = `
 ${assetFragment}
-query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
+query GetAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
   entry(section: "animationTechniques", site: $locale, id: $id) {
     id,
     slug,
@@ -613,7 +580,7 @@ query getAnimationTechniqueById($locale: [String], $id: [QueryArgument]) {
 `;
 
 export const getWorksOfAnimationTechniqueQuery = `
-query getWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
+query GetWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
   entries(section: "works", site: $locale, relatedTo: $id, orderBy: "compositionMinDate") {
     id,
     title,
@@ -625,7 +592,7 @@ query getWorksOfAnimationTechnique($locale: [String], $id: [QueryArgument]) {
 `;
 
 export const getAllWorksKeywordsQuery = `
-query getAllWorksKeywords($locale: [String]) {
+query GetAllWorksKeywords($locale: [String]) {
   tags(site: $locale, relatedToEntries: { section: "works" }) {
     id,
     title
@@ -634,7 +601,7 @@ query getAllWorksKeywords($locale: [String]) {
 `;
 
 export const getWorksKeywordsByIdsQuery = `
-query getWorksKeywordsByIds($locale: [String], $id: [QueryArgument]) {
+query GetWorksKeywordsByIds($locale: [String], $id: [QueryArgument]) {
   tags(site: $locale, id: $id) {
     id,
     title
@@ -643,7 +610,7 @@ query getWorksKeywordsByIds($locale: [String], $id: [QueryArgument]) {
 `;
 
 export const getHomeQuery = `
-query getHome($locale: [String]) {
+query GetHome($locale: [String]) {
   entry(section: "home", site: $locale) {
     id,
     slug,
