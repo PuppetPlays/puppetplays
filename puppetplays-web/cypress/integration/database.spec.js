@@ -11,8 +11,9 @@ import audiences from '../fixtures/audiences';
 import formats from '../fixtures/formats';
 import keywords from '../fixtures/keywords';
 
-const isGraphQlQuery = (queryName) => (req) =>
-  req.body.query.includes(queryName);
+const isGraphQlQuery = (queryName) => (req) => {
+  return req.body.query.includes(queryName);
+};
 
 const aliasAndReply = (alias, body) => (req) => {
   req.alias = alias;
@@ -20,42 +21,36 @@ const aliasAndReply = (alias, body) => (req) => {
 };
 
 const graphQlRouteHandler = cond([
-  [isGraphQlQuery('query GetAllWorks'), aliasAndReply('getAllWorks', works)],
   [
-    isGraphQlQuery('query GetAllLanguages'),
+    isGraphQlQuery('GetAllWorksKeywords'),
+    aliasAndReply('getAllWorksKeywords', keywords),
+  ],
+  [isGraphQlQuery('GetAllWorks'), aliasAndReply('getAllWorks', works)],
+  [
+    isGraphQlQuery('GetAllLanguages'),
     aliasAndReply('getAllLanguages', languages),
   ],
-  [isGraphQlQuery('query GetAllPlaces'), aliasAndReply('getAllPlaces', places)],
+  [isGraphQlQuery('GetAllPlaces'), aliasAndReply('getAllPlaces', places)],
+  [isGraphQlQuery('GetAllPersons'), aliasAndReply('getAllPersons', persons)],
   [
-    isGraphQlQuery('query GetAllPersons'),
-    aliasAndReply('getAllPersons', persons),
-  ],
-  [
-    isGraphQlQuery('query GetAllAnimationTechniques'),
+    isGraphQlQuery('GetAllAnimationTechniques'),
     aliasAndReply('getAllAnimationTechniques', animationTechniques),
   ],
   [
-    isGraphQlQuery('query GetAllLiteraryTones'),
+    isGraphQlQuery('GetAllLiteraryTones'),
     aliasAndReply('getAllLiteraryTones', literaryTones),
   ],
   [
-    isGraphQlQuery('query GetAllTheatricalTechniques'),
+    isGraphQlQuery('GetAllTheatricalTechniques'),
     aliasAndReply('getAllTheatricalTechniques', theatricalTechniques),
   ],
   [
-    isGraphQlQuery('query GetAllAudiences'),
+    isGraphQlQuery('GetAllAudiences'),
     aliasAndReply('getAllAudiences', audiences),
   ],
+  [isGraphQlQuery('GetAllFormats'), aliasAndReply('getAllFormats', formats)],
   [
-    isGraphQlQuery('query GetAllFormats'),
-    aliasAndReply('getAllFormats', formats),
-  ],
-  [
-    isGraphQlQuery('query GetAllWorksKeywords'),
-    aliasAndReply('getAllWorksKeywords', keywords),
-  ],
-  [
-    isGraphQlQuery('query GetPeriodBounds'),
+    isGraphQlQuery('GetPeriodBounds'),
     aliasAndReply('getPeriodBounds', {
       data: { min: [{ value: 1720 }], max: [{ value: 1920 }] },
     }),
@@ -94,31 +89,57 @@ beforeEach(() => {
 it('should allow to filter the database by languages', () => {
   cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
 
-  cy.intercept(
-    'POST',
-    'http://puppetplays.ddev.site:7080/graphql',
-    graphQlRouteHandler,
+  cy.intercept('POST', 'http://puppetplays.ddev.site:7080/graphql', (req) =>
+    graphQlRouteHandler(req),
   );
 
   cy.visit('/base-de-donnees');
+  cy.wait([
+    '@getAllWorks',
+    '@getAllLanguages',
+    '@getAllPersons',
+    '@getAllAnimationTechniques',
+    '@getAllLiteraryTones',
+    '@getAllTheatricalTechniques',
+    '@getAllAudiences',
+    '@getAllFormats',
+    '@getAllWorksKeywords',
+    '@getPeriodBounds',
+  ]);
 
   // Filter the database by "french" language
   selectFilterOption('mainLanguage', 'Français');
   cy.url().should('include', '/base-de-donnees?mainLanguage=1000&page=1');
-  cy.wait('@getAllWorks');
+  cy.wait('@getAllWorks')
+    .its('request.body.variables')
+    .should((variables) => {
+      expect(variables.mainLanguage).to.eql(['1000']);
+    });
 
   // Filter the database by "french or german" language
   selectFilterOption('mainLanguage', 'Allemand');
   cy.url().should('include', '/base-de-donnees?mainLanguage=1000,1300&page=1');
-  cy.wait('@getAllWorks');
+  cy.wait('@getAllWorks')
+    .its('request.body.variables')
+    .should((variables) => {
+      expect(variables.mainLanguage).to.eql(['1000', '1300']);
+    });
 
   // Remove the “french” language filter (filter by “german” language)
   cy.get('[aria-label="Remove Français"]').click();
   cy.url().should('include', '/base-de-donnees?mainLanguage=1300&page=1');
-  cy.wait('@getAllWorks');
+  cy.wait('@getAllWorks')
+    .its('request.body.variables')
+    .should((variables) => {
+      expect(variables.mainLanguage).to.eql(['1300']);
+    });
 
   // Reset all filters
   cy.get('button').contains('Tout effacer').click();
   cy.url().should('include', '/base-de-donnees?page=1');
-  cy.wait('@getAllWorks');
+  cy.wait('@getAllWorks')
+    .its('request.body.variables')
+    .should((variables) => {
+      expect(variables.mainLanguage).to.be.undefined;
+    });
 });
