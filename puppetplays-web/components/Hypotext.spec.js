@@ -1,6 +1,14 @@
 import { render } from '@testing-library/react';
 import Hypotext from './Hypotext';
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      asPath: '/oeuvres/1000/mon-oeuvre',
+    };
+  },
+}));
+
 test('renders an hypotext with only a title', () => {
   const { container } = render(<Hypotext title="Liliade" />);
   expect(container).toHaveTextContent('Liliade');
