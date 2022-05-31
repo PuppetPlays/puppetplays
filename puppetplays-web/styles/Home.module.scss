@@ -4,7 +4,7 @@
   left: 0;
   height: 36px;
   width: 100%;
-  z-index: 10;
+  z-index: calc(var(--z-index-header) + 1);
 
   &.sticky {
     position: fixed;
