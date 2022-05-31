@@ -3,6 +3,10 @@ import cookie from 'cookie';
 
 export const identity = (i) => i;
 
+export const stopEventPropagation = (evt) => {
+  evt.stopPropagation();
+};
+
 export const getProperty = (property) => (i) => i[property];
 export const getTitle = (i) => i.title;
 

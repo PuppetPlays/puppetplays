@@ -1,24 +1,31 @@
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { stopEventPropagation } from 'lib/utils';
 import Author from 'components/Author';
 import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
-import { Fragment } from 'react';
-import Link from 'next/link';
 import styles from './hypotext.module.scss';
 
+/* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
 function Hypotext({ id, title, slug, date, authors }) {
+  const { asPath } = useRouter();
+
   return (
     <Fragment>
       <span className={styles.title}>
-        {id && (
+        {id && asPath !== `/oeuvres/${id}/${slug}` && (
           <Link href={`/oeuvres/${id}/${slug}`}>
             <a>{title}</a>
           </Link>
         )}
-        {!id && title}
+        <span onClick={stopEventPropagation}>
+          {(!id || asPath === `/oeuvres/${id}/${slug}`) && title}
+        </span>
       </span>
       {authors && authors.length > 0 && (
-        <span className={styles.authors}>
+        <span className={styles.authors} onClick={stopEventPropagation}>
           {', '}
 
           <CommaSepList
@@ -28,7 +35,7 @@ function Hypotext({ id, title, slug, date, authors }) {
         </span>
       )}
       {date && (
-        <span className={styles.date}>
+        <span className={styles.date} onClick={stopEventPropagation}>
           {' – '}
           {date}
         </span>
