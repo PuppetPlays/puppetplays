@@ -255,11 +255,13 @@ function Home({ initialData }) {
             <div className={styles.worksHeaderPageCount}>
               {t('common:results', { count: data.entryCount })}
             </div>
-            <Pagination
-              forcePage={currentPage}
-              pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
-              onPageChange={handlePageChange}
-            />
+            {Math.ceil(data.entryCount / WORKS_PAGE_SIZE) > 1 && (
+              <Pagination
+                forcePage={currentPage}
+                pageCount={Math.ceil(data.entryCount / WORKS_PAGE_SIZE)}
+                onPageChange={handlePageChange}
+              />
+            )}
             <div className={styles.worksHeaderRight}>
               <div className={styles.sortMenu}>
                 <FilterSelect
