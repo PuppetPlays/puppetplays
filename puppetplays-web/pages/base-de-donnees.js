@@ -93,6 +93,12 @@ function Home({ initialData }) {
     });
   }, [router.locale, router.query, scrollElementRef]);
 
+  useEffect(() => {
+    if (router.query.view !== filters.view) {
+      setFilters(queryParamsToState(router.query));
+    }
+  }, [router.query]);
+
   const handlePageChange = useCallback(
     (page) => {
       setCurrentPage(page.selected);

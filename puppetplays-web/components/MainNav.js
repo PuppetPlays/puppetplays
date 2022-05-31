@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
+import useWindowSize from 'hooks/useWindowSize';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
-import useWindowSize from 'hooks/useWindowSize';
 
 const NavButton = (props) => {
   const { t } = useTranslation();
@@ -42,13 +42,20 @@ function MainNav({ inverse }) {
   const languageItems =
     width < 480
       ? [
-          <li key="lang-fr">
+          <li key="lang-fr" className={locale === 'fr' ? styles.isCurrent : ''}>
             <Link href="/" locale="fr">
               <a>Français</a>
             </Link>
           </li>,
 
-          <li key="lang-en" className={styles.englishListItem}>
+          <li
+            key="lang-en"
+            className={
+              locale === 'en'
+                ? `${styles.isCurrent} ${styles.englishListItem}`
+                : styles.englishListItem
+            }
+          >
             <Link href="/" locale="en">
               <a>English</a>
             </Link>
@@ -71,9 +78,9 @@ function MainNav({ inverse }) {
             </Link>
           </li>,
           <li key="map">
-            <a href={`${urlLocalePrefix}/base-de-donnees?view=MAP`}>
-              {t('common:map')}
-            </a>
+            <Link href="/base-de-donnees?view=MAP">
+              <a>{t('common:map')}</a>
+            </Link>
           </li>,
           <li key="auteurs">
             <Link href="/auteurs">
