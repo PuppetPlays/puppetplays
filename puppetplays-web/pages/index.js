@@ -47,6 +47,9 @@ const HeaderImage = () => {
       >
         <path d="M0 398V0H1280V75L0 398Z" fill="white" />
       </svg>
+      <div className={styles.headerImageCopyright}>
+        © Bibliothèque nationale de France
+      </div>
     </div>
   );
 };
