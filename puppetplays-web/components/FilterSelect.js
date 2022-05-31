@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Select from 'react-select';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
+import noop from 'lodash/noop';
 import FilterLabel from 'components/FilterLabel';
 import { styles, components, getTheme } from './filterSelectStyles';
 
@@ -15,6 +16,7 @@ function FilterSelect({
   isClearable,
   isSearchable,
   onChange,
+  onFocus,
   inverse,
   isDisabled,
 }) {
@@ -44,6 +46,7 @@ function FilterSelect({
         value={isMulti && isNil(value) ? [] : value}
         options={options}
         onChange={onChange}
+        onFocus={onFocus}
         isClearable={!isMulti && isClearable}
         isSearchable={isSearchable}
         isMulti={isMulti}
@@ -57,18 +60,20 @@ function FilterSelect({
 FilterSelect.defaultProps = {
   value: null,
   placeholder: '',
-  options: null,
+  options: [],
   isMulti: true,
   isClearable: true,
   isSearchable: true,
   inverse: true,
   isDisabled: false,
+  onFocus: noop,
 };
 
 FilterSelect.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
   value: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object),
     PropTypes.object,
