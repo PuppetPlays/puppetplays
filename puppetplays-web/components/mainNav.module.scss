@@ -20,6 +20,10 @@
     margin: 0;
     padding: 8px 14px;
     white-space: nowrap;
+
+    &.isCurrent {
+      font-weight: 700;
+    }
   }
 
   a {
@@ -37,6 +41,7 @@
   margin-top: 6px;
   width: 40px;
   height: 40px;
+  padding: 0;
   border: 0;
   background-color: white;
   color: var(--color-text-subtle);
