@@ -50,6 +50,12 @@
   padding: 0;
 }
 
+.authorsListItem {
+  a:hover {
+    color: var(--color-brand);
+  }
+}
+
 .authorsListItem + .authorsListItem {
   margin-top: 16px;
 }
