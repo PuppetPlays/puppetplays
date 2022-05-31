@@ -3,6 +3,9 @@
     "database": {
       "description": "Works for puppets and marionettes – List of puppet plays in Western Europe – Texts and descriptions of puppet plays – ERC project PuppetPlays"
     },
+    "map": {
+      "description": "Maps of puppet and marionette works – Plays for puppets and marionettes in Western Europe – ERC project PuppetPlays"
+    },
     "authors": {
       "description": "List of authors of puppet plays – Western European plays for puppet and marionette theatres – ERC project PuppetPlays"
     },

@@ -3,6 +3,9 @@
     "database": {
       "description": "Les œuvres de théâtre de marionnettes – Liste des pièces pour marionnettes en Europe de l’Ouest – Textes pour marionnettes - Projet ERC PuppetPlays"
     },
+    "map": {
+      "description": "Carte des œuvres de théâtre de marionnettes – Pièces pour marionnettes en Europe de l'Ouest – Projet ERC PuppetPlays"
+    },
     "authors": {
       "description": "Listes des auteurs de pièces pour marionnettes – Théâtre de marionnettes et écriture théâtrale en Europe de l'Ouest – Projet ERC PuppetPlays"
     },

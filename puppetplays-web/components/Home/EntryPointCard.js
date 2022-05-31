@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
 import styles from './entryPointCard.module.scss';
 import { useCallback, useRef } from 'react';
 
 const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
   const linkRef = useRef(null);
-  const { t } = useTranslation();
 
   const handleClick = useCallback(() => {
     if (linkRef) {
@@ -20,9 +18,6 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
         !href && !to ? styles.isComingSoon : ''
       }`}
     >
-      {!href && !to && (
-        <div className={styles.comingSoonBadge}>{t('common:comingSoon')}</div>
-      )}
       <div className={styles.media} onClick={handleClick} role="presentation">
         <img src={thumbnailUrl} alt="" />
       </div>

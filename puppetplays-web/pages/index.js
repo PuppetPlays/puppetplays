@@ -1,8 +1,9 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash/fp';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import clip from 'text-clipper';
 import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
@@ -56,13 +57,23 @@ const PartnersBar = ({ t }) => {
       <ul className={styles.logosBar}>
         <li>
           <a
+            href="https://european-union.europa.eu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/logo-ue.png" height="86" alt={t('ue.alt')} />
+          </a>
+        </li>
+        <li>
+          <a
             href="https://erc.europa.eu"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img height="86" src="/logo-erc-full.png" alt="ERC - GA 835193" />
+            <img src="/logo-erc.png" height="86" alt={t('erc.alt')} />
           </a>
         </li>
+        <p>{t('projectFinancedBy')}</p>
       </ul>
       <div className={styles.logosBarSpacer} />
       <ul className={styles.logosBar}>
@@ -88,17 +99,9 @@ const PartnersBar = ({ t }) => {
 
 export default function Home({ animationTechnique, authors, work, keywords }) {
   const { t } = useTranslation('home');
-  const headerRef = useRef(null);
-  const topBarRef = useRef(null);
+  const { locale } = useRouter();
   const workLinkRef = useRef(null);
   const animationTechniqueLinkRef = useRef(null);
-  const [EXPLORE_BY] = useState({
-    database: { to: '/base-de-donnees' },
-    anthology: {},
-    pathways: {},
-    publications: {},
-    project: { href: t('ourSiteUrl') },
-  });
 
   return (
     <Fragment>
@@ -108,7 +111,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
       </Head>
 
       <div className={styles.container}>
-        <div className={styles.topBar} ref={topBarRef}>
+        <div className={styles.topBar}>
           <header>
             <div className={styles.LanguageSelector}>
               <LanguageSelector path="/" />
@@ -118,7 +121,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
         </div>
 
         <main>
-          <div className={styles.header} ref={headerRef}>
+          <div className={styles.header}>
             <HeaderImage />
             <div className={styles.headerInner}>
               <div className={styles.headerMain}>
@@ -151,14 +154,31 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 </div>
                 <div className={styles.headerExploreSection}>
                   <ul className={styles.exploreSection}>
-                    {Object.entries(EXPLORE_BY).map(([key, props]) => (
-                      <EntryPointCard
-                        key={key}
-                        title={t(`exploreBy.${key}.title`)}
-                        thumbnailUrl={`/${key}-thumbnail.jpg`}
-                        {...props}
-                      />
-                    ))}
+                    <EntryPointCard
+                      title={t('exploreBy.database.title')}
+                      thumbnailUrl="/database-thumbnail.jpg"
+                      description={t('exploreBy.database.subtitle')}
+                      to="/base-de-donnees"
+                    />
+                    <EntryPointCard
+                      title={t('exploreBy.anthology.title')}
+                      thumbnailUrl="/anthology-thumbnail.jpg"
+                      description={t('exploreBy.anthology.subtitle')}
+                    />
+                    <EntryPointCard
+                      title={t('exploreBy.pathways.title')}
+                      thumbnailUrl="/pathways-thumbnail.jpg"
+                    />
+                    <EntryPointCard
+                      title={t('exploreBy.publications.title')}
+                      thumbnailUrl="/publications-thumbnail.jpg"
+                      href={`https://puppetplays.www.univ-montp3.fr/${locale}/publications`}
+                    />
+                    <EntryPointCard
+                      title={t('exploreBy.project.title')}
+                      thumbnailUrl="/project-thumbnail.jpg"
+                      href={`https://puppetplays.www.univ-montp3.fr/${locale}`}
+                    />
                   </ul>
                 </div>
               </div>

@@ -53,10 +53,12 @@
   "explore": "Explore",
   "exploreBy": {
     "database": {
-      "title": "The database"
+      "title": "The database",
+      "subtitle": "In progress"
     },
     "anthology": {
-      "title": "The anthology"
+      "title": "The anthology",
+      "subtitle": "Coming soon"
     },
     "pathways": {
       "title": "Discover and learn"
