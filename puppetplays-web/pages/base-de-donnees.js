@@ -7,6 +7,7 @@ import {
   Suspense,
 } from 'react';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -77,13 +78,24 @@ function Home({ initialData }) {
   const scrollElementRef = useRef();
 
   useEffect(() => {
-    fetchAPI(getAllWorksQuery(filters), {
+    let newFilters = filters;
+
+    if (
+      router.query.view !== filters.view ||
+      !isEqual(router.query.relatedToTags, filters.relatedToTags) ||
+      !isEqual(router.query.theatricalTechniques, filters.theatricalTechniques)
+    ) {
+      newFilters = queryParamsToState(router.query);
+      setFilters(newFilters);
+    }
+
+    fetchAPI(getAllWorksQuery(newFilters), {
       variables: {
         locale: router.locale,
         offset: currentPage * WORKS_PAGE_SIZE,
         limit: WORKS_PAGE_SIZE,
         search: buildSearchQuery(searchTerms),
-        ...stateToGraphqlVariables(filters),
+        ...stateToGraphqlVariables(newFilters),
       },
     }).then((newData) => {
       setData(newData);
@@ -92,12 +104,6 @@ function Home({ initialData }) {
       }
     });
   }, [router.locale, router.query, scrollElementRef]);
-
-  useEffect(() => {
-    if (router.query.view !== filters.view) {
-      setFilters(queryParamsToState(router.query));
-    }
-  }, [router.query]);
 
   const handlePageChange = useCallback(
     (page) => {

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import styles from './keywords.module.scss';
 
@@ -12,7 +13,9 @@ Keyword.propTypes = {
 export function TheatricalTechniqueTag({ id, children }) {
   return (
     <li className={styles.tag}>
-      <a href={`/base-de-donnees?theatricalTechniques=${id}`}>{children}</a>
+      <Link href={`/base-de-donnees?theatricalTechniques=${id}`}>
+        {children}
+      </Link>
     </li>
   );
 }
@@ -25,7 +28,7 @@ TheatricalTechniqueTag.propTypes = {
 export function Tag({ id, children }) {
   return (
     <li className={styles.tag}>
-      <a href={`/base-de-donnees?relatedToTags=${id}`}>{children}</a>
+      <Link href={`/base-de-donnees?relatedToTags=${id}`}>{children}</Link>
     </li>
   );
 }
