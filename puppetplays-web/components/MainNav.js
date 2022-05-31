@@ -37,7 +37,6 @@ function MainNav({ inverse }) {
   const { t } = useTranslation();
   const { width } = useWindowSize();
   const { locale } = useRouter();
-  const urlLocalePrefix = locale === 'fr' ? '' : '/' + locale;
 
   const languageItems =
     width < 480
