@@ -1,6 +1,6 @@
 .title {
   font-size: 24px;
-  font-family: 'PT Serif', sans-serif;
+  font-family: var(--ff-serif);
   margin: 0;
   color: var(--color-brand);
 
@@ -21,7 +21,7 @@
 
 .subtitle {
   font-size: 21px;
-  font-family: 'PT Serif', sans-serif;
+  font-family: var(--ff-serif);
   font-weight: 700;
   margin: 0 0 20px;
 
