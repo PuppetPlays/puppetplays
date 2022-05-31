@@ -1,4 +1,4 @@
-dateModified: 1653335113
+dateModified: 1653980941
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -158,7 +158,7 @@ plugins:
     enabled: true
     schemaVersion: 2.0.0
     settings:
-      additionalCss: "#fields-characters-field {\r\n    position: relative;\r\n    pointer-events: none;\r\n}\r\n\r\n#fields-characters-field::after {\r\n    position: absolute;\r\n    z-index: 1000;\r\n    content: '';\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: rgba(255, 255, 255, 0.75);\r\n}\r\n\r\n#fields-characters-field button,\r\n#fields-characters-field input {\r\n    pointer-events: none;\r\n}"
+      additionalCss: "#fields-characters-field,\r\ndiv[id$=\"fields-characters-field\"] {\r\n    position: relative;\r\n    pointer-events: none;\r\n}\r\n\r\n#fields-characters-field::after,\r\ndiv[id$=\"fields-characters-field\"]::after {\r\n    position: absolute;\r\n    z-index: 1000;\r\n    content: '';\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    background-color: rgba(255, 255, 255, 0.75);\r\n}\r\n\r\n#fields-characters-field button,\r\ndiv[id$=\"fields-characters-field\"] button,\r\n#fields-characters-field input,\r\ndiv[id$=\"fields-characters-field\"] input {\r\n    pointer-events: none;\r\n}"
       cacheBusting: true
       cssFile: ''
   element-api:
