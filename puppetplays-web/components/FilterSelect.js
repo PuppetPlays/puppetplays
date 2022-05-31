@@ -16,6 +16,7 @@ function FilterSelect({
   isSearchable,
   onChange,
   inverse,
+  isDisabled,
 }) {
   const { t } = useTranslation();
 
@@ -47,6 +48,7 @@ function FilterSelect({
         isSearchable={isSearchable}
         isMulti={isMulti}
         inverse={inverse}
+        isDisabled={isDisabled}
       />
     </div>
   );
@@ -60,6 +62,7 @@ FilterSelect.defaultProps = {
   isClearable: true,
   isSearchable: true,
   inverse: true,
+  isDisabled: false,
 };
 
 FilterSelect.propTypes = {
@@ -75,6 +78,7 @@ FilterSelect.propTypes = {
   isClearable: PropTypes.bool,
   isSearchable: PropTypes.bool,
   inverse: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 export default FilterSelect;

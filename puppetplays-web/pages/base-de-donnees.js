@@ -271,6 +271,7 @@ function Home({ initialData }) {
                   isMulti={false}
                   isClearable={false}
                   isSearchable={false}
+                  isDisabled={data.entryCount === 0}
                   onChange={handleChangeFilters}
                 />
               </div>

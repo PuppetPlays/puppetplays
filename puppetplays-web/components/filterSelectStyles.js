@@ -1,8 +1,9 @@
 export const styles = {
-  container: (provided) => ({
+  container: (provided, state) => ({
     ...provided,
     margin: '2px 0 8px',
     zIndex: 10,
+    opacity: state.isDisabled ? 0.25 : 1,
   }),
   control: (provided, state) => ({
     ...provided,
