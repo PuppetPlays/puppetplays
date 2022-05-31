@@ -3,12 +3,44 @@
   z-index: var(--z-index-works-list);
   top: 0;
   left: 12px;
-  padding-right: 20px;
   width: 310px;
   height: 100%;
+}
+
+.list {
+  height: 100%;
+  padding-right: 20px;
   overflow-y: auto;
 
   > article:first-child {
     margin-top: 20px;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--color-brand);
+  border: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-brand-light);
+  }
+
+  svg {
+    fill: white;
+    width: 16px;
+    height: 16px;
   }
 }

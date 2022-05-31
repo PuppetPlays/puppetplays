@@ -110,21 +110,31 @@ const MapView = ({ filters, searchTerms, locale }) => {
     [setSelectInteraction],
   );
 
-  const handleClick = useCallback((evt) => {
-    if (evt.selected.length > 0) {
-      const { ids } = evt.selected[0].getProperties();
+  const handleClick = useCallback(
+    (evt) => {
+      if (evt.selected.length > 0) {
+        const { ids } = evt.selected[0].getProperties();
 
-      if (hasAtLeastOneItem(ids)) {
-        fetchAPI(getWorksCardByIdsQuery, {
-          variables: { id: ids, locale },
-        }).then(({ entries }) => {
-          setSelectedWorks(entries);
-        });
+        if (hasAtLeastOneItem(ids)) {
+          fetchAPI(getWorksCardByIdsQuery, {
+            variables: { id: ids, locale },
+          }).then(({ entries }) => {
+            setSelectedWorks(entries);
+          });
+        }
+      } else if (evt.deselected.length > 0) {
+        setSelectedWorks(null);
       }
-    } else if (evt.deselected.length > 0) {
-      setSelectedWorks(null);
+    },
+    [locale],
+  );
+
+  const handleCloseList = useCallback(() => {
+    setSelectedWorks(null);
+    if (selectInteraction) {
+      selectInteraction.getFeatures().clear();
     }
-  }, []);
+  }, [selectInteraction]);
 
   return (
     <Fragment>
@@ -132,7 +142,7 @@ const MapView = ({ filters, searchTerms, locale }) => {
         className="map-view"
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       >
-        <WorksList works={selectedWorks} />
+        <WorksList works={selectedWorks} onClose={handleCloseList} />
         <Map
           center={center}
           zoom={zoom}
