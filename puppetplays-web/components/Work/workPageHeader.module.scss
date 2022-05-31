@@ -64,10 +64,18 @@
   align-items: center;
   justify-content: flex-end;
 
+  a {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
   @media (min-width: 740px) {
     position: relative;
     bottom: auto;
     right: auto;
+
+    a {
+      box-shadow: none;
+    }
   }
 
   a + a {
