@@ -1,17 +1,25 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useCookies } from 'react-cookie';
 import useTranslation from 'next-translate/useTranslation';
+import useWindowSize from 'hooks/useWindowSize';
 import styles from './filtersBar.module.scss';
 
 function FiltersBar({ cookieName, children, filtersCount, onClearAll }) {
   const { t } = useTranslation();
+  const { width } = useWindowSize();
   const [cookies, setCookie] = useCookies();
   const isOpen = cookies[cookieName] === 'false' ? false : true;
 
   const handleToggleFiltersBar = () => {
     setCookie(cookieName, !isOpen, { path: '/' });
   };
+
+  useEffect(() => {
+    if (width < 900) {
+      setCookie(cookieName, false, { path: '/' });
+    }
+  }, [width, cookieName, setCookie]);
 
   return (
     <div
