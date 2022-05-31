@@ -11,7 +11,9 @@
 
   &:hover,
   &:hover .expandButton {
-    background-color: var(--color-bg-depth-1);
+    @media (min-width: 640px) {
+      background-color: var(--color-bg-depth-1);
+    }
   }
 
   &:global(.work-page-container):hover {
