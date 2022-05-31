@@ -241,7 +241,11 @@ function Home({ initialData }) {
         <title>{t('common:database')} | Puppetplays</title>
         <meta
           name="description"
-          content={t('common:meta.database.description')}
+          content={t(
+            `common:meta.${
+              filters.view === VIEWS.map ? 'map' : 'database'
+            }.description`,
+          )}
         />
       </Head>
 
