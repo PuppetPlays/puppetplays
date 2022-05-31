@@ -327,10 +327,6 @@
     color: white;
     text-decoration: underline;
   }
-
-  a + a {
-    margin-left: 25px;
-  }
 }
 
 .introContent {
@@ -354,6 +350,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 25px;
   font-size: 14px;
   color: var(--color-brand);
   margin-top: 36px;
