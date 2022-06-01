@@ -135,8 +135,8 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     filtersOptions.places,
     'compositionPlace',
   );
-  const selectedPeriodMin = get(filters, 'period[0]', null);
-  const selectedPeriodMax = get(filters, 'period[1]', null);
+  const selectedPeriodMin = get(filters, 'compositionMinDate[0]', null);
+  const selectedPeriodMax = get(filters, 'compositionMinDate[1]', null);
   const selectedAuthors = getSelectedValues(filtersOptions.authors, 'authors');
   const selectedLiteraryTones = getSelectedValues(
     filtersOptions.literaryTones,
@@ -174,7 +174,9 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   const handleChangeFilters = useCallback(
     (value, { name }) => {
       let normalizedValue;
+      let normalizedName = name;
       if (name === 'period') {
+        normalizedName = 'compositionMinDate';
         if (
           value[0] !== filtersOptions.periodBounds[0] &&
           value[1] !== filtersOptions.periodBounds[1]
@@ -192,7 +194,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
       } else {
         normalizedValue = value.length > 0 ? value.map((v) => v.id) : null;
       }
-      onChange(normalizedValue, { name });
+      onChange(normalizedValue, { name: normalizedName });
     },
     [filtersOptions, onChange],
   );

@@ -12,12 +12,12 @@ function FiltersBar({ cookieName, children, filtersCount, onClearAll }) {
   const isOpen = cookies[cookieName] === 'false' ? false : true;
 
   const handleToggleFiltersBar = () => {
-    setCookie(cookieName, !isOpen, { path: '/' });
+    setCookie(cookieName, !isOpen, { path: '/', sameSite: 'Lax' });
   };
 
   useEffect(() => {
     if (width < 900) {
-      setCookie(cookieName, false, { path: '/' });
+      setCookie(cookieName, false, { path: '/', sameSite: 'Lax' });
     }
   }, [width, cookieName, setCookie]);
 
