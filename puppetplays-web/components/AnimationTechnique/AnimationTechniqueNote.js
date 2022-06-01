@@ -6,6 +6,7 @@ import Hypotext from 'components/Hypotext';
 import { PageIntertitle } from 'components/Primitives';
 import Reel from 'components/Reel';
 import HtmlContent from 'components/HtmlContent';
+import ZoomableImage from 'components/ZoomableImage';
 import styles from 'components/Author/authorNote.module.scss';
 
 function AnimationTechniqueNote({
@@ -32,7 +33,37 @@ function AnimationTechniqueNote({
             <HtmlContent html={description} />
           </div>
         )}
-        <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        {images.length === 0 && hasAtLeastOneItem(mainImage) && (
+          <div className={styles.image} style={{ textAlign: 'center' }}>
+            <ZoomableImage>
+              <img
+                src={mainImage[0].url}
+                alt={mainImage[0].alt}
+                width={mainImage[0].width}
+              />
+            </ZoomableImage>
+            {(mainImage[0].description || mainImage[0].copyright) && (
+              <div className={styles.caption}>
+                {mainImage[0].description && (
+                  <div
+                    className={styles.captionDescription}
+                    dangerouslySetInnerHTML={{
+                      __html: mainImage[0].description,
+                    }}
+                  />
+                )}
+                {mainImage[0].copyright && (
+                  <div className={styles.captionCopyright}>
+                    © {mainImage[0].copyright}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+        {images.length > 0 && (
+          <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        )}
       </div>
 
       {hasAtLeastOneItem(works) && (

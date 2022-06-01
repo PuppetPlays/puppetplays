@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import ZoomableImage from 'components/ZoomableImage';
 import styles from './reel.module.scss';
-import { useEffect, useRef, useState } from 'react';
 
 let debounced;
 

@@ -9,6 +9,7 @@ import Info from 'components/Info';
 import HtmlContent from 'components/HtmlContent';
 import { PageIntertitle } from 'components/Primitives';
 import BirthDeathDates from 'components/BirthDeathDates';
+import ZoomableImage from 'components/ZoomableImage';
 import ArkId from 'components/Work/ArkId';
 import styles from './authorNote.module.scss';
 
@@ -45,7 +46,37 @@ function AuthorNote({
             <HtmlContent html={biographicalNote} />
           </div>
         )}
-        <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        {images.length === 0 && hasAtLeastOneItem(mainImage) && (
+          <div className={styles.image} style={{ textAlign: 'center' }}>
+            <ZoomableImage>
+              <img
+                src={mainImage[0].url}
+                alt={mainImage[0].alt}
+                width={mainImage[0].width}
+              />
+            </ZoomableImage>
+            {(mainImage[0].description || mainImage[0].copyright) && (
+              <div className={styles.caption}>
+                {mainImage[0].description && (
+                  <div
+                    className={styles.captionDescription}
+                    dangerouslySetInnerHTML={{
+                      __html: mainImage[0].description,
+                    }}
+                  />
+                )}
+                {mainImage[0].copyright && (
+                  <div className={styles.captionCopyright}>
+                    © {mainImage[0].copyright}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+        {images.length > 0 && (
+          <Reel images={mainImage.concat(images)} bleed={bleedCarousel} />
+        )}
       </div>
 
       {hasAtLeastOneItem(works) && (

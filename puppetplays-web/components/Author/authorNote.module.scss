@@ -60,3 +60,27 @@
     }
   }
 }
+
+.image {
+  margin: 0 auto;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.caption {
+  color: var(--color-text-inactive);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 15px 0 0;
+  padding: 0;
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+.captionCopyright {
+  font-weight: 400;
+}
