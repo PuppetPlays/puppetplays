@@ -4,21 +4,18 @@
   margin: 0 4px;
 }
 
-.menu {
-  position: absolute;
-  right: 0;
+.menu,
+.menuAdvanced {
   z-index: var(--z-index-dropdown);
-  margin-top: 8px;
   background-color: white;
   border-radius: 7px;
-  visibility: hidden;
-  display: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.menu.isOpen {
-  visibility: visible;
-  display: block;
+.menu {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
 }
 
 .menuItem {
@@ -39,11 +36,13 @@
     background-color: var(--color-bg-depth-2);
   }
 
-  .menu :global([role='menuitem']):first-child & {
+  .menu :global([role='menuitem']):first-child &,
+  .menuAdvanced &:first-child {
     border-radius: 7px 7px 0 0;
   }
 
-  .menu :global([role='menuitem']):last-child & {
+  .menu :global([role='menuitem']):last-child &,
+  .menuAdvanced &:last-child {
     border-radius: 0 0 7px 7px;
   }
 

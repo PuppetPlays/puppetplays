@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
-import classNames from 'classnames/bind';
 import styles from './dropdownMenu.module.scss';
-
-const cx = classNames.bind(styles);
 
 // eslint-disable-next-line react/prop-types
 const DefaultWrapper = ({ children }) => {
@@ -17,22 +14,26 @@ function DropdownMenu({
   children,
   childrenWrapperComponent: ChildrenWrapperComponent,
 }) {
-  const { buttonProps, itemProps, isOpen } = useDropdownMenu(itemsCount);
-  const menuClassNames = cx({
-    menu: true,
-    isOpen: isOpen,
-  });
+  const { buttonProps, itemProps, isOpen, setIsOpen } =
+    useDropdownMenu(itemsCount);
 
   return (
     <div className={styles.container}>
       {renderButton(buttonProps)}
-      <div className={menuClassNames} role="menu">
-        <ChildrenWrapperComponent>
-          {React.Children.map(children, (child, index) => (
-            <div {...itemProps[index]}>{child}</div>
-          ))}
-        </ChildrenWrapperComponent>
-      </div>
+      {isOpen && (
+        /* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus */
+        <div
+          className={styles.menu}
+          role="menu"
+          onClick={() => setIsOpen(false)}
+        >
+          <ChildrenWrapperComponent>
+            {React.Children.map(children, (child, index) => (
+              <div {...itemProps[index]}>{child}</div>
+            ))}
+          </ChildrenWrapperComponent>
+        </div>
+      )}
     </div>
   );
 }
