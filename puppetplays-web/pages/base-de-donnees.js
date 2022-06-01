@@ -83,7 +83,12 @@ function Home({ initialData }) {
     if (
       router.query.view !== filters.view ||
       !isEqual(router.query.relatedToTags, filters.relatedToTags) ||
-      !isEqual(router.query.theatricalTechniques, filters.theatricalTechniques)
+      !isEqual(
+        router.query.theatricalTechniques,
+        filters.theatricalTechniques,
+      ) ||
+      !isEqual(router.query.animationTechniques, filters.animationTechniques) ||
+      !isEqual(router.query.authors, filters.authors)
     ) {
       newFilters = queryParamsToState(router.query);
       setFilters(newFilters);
