@@ -8,8 +8,8 @@ import {
 } from './filters';
 import { identity } from './utils';
 
-export const getFetchAPIClient = ({ variables } = {}, token) => {
-  return (query) => fetchAPI(query, variables, token);
+export const getFetchAPIClient = (params, token) => {
+  return (query) => fetchAPI(query, params, token);
 };
 
 export async function fetchAPI(query, { variables } = {}, token) {
