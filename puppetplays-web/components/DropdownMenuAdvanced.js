@@ -14,6 +14,7 @@ import {
   offset,
   flip,
   shift,
+  autoUpdate,
   useListNavigation,
   useInteractions,
   useRole,
@@ -53,6 +54,7 @@ export const MenuComponent = forwardRef(
       onOpenChange: setOpen,
       middleware: [offset({ mainAxis: 8, alignmentAxis: 0 }), flip(), shift()],
       placement: 'bottom-start',
+      whileElementsMounted: autoUpdate,
     });
 
     const { getReferenceProps, getFloatingProps, getItemProps } =
