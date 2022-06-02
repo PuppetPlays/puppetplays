@@ -63,51 +63,64 @@ const getAllWorksRequestBody = (
   variables: { locale, offset, limit, search, ...rest },
 });
 
-it('should allow to filter the database by languages', () => {
-  cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
+describe('Database page', () => {
+  beforeEach(() => {
+    cy.task('activateNock');
+  });
 
-  cy.intercept(
-    'POST',
-    'http://puppetplays.ddev.site:7080/graphql',
-    graphQlRouteHandler,
-  );
+  afterEach(() => {
+    cy.task('clearNock');
+  });
 
-  cy.visit('/base-de-donnees');
-  cy.wait(['@getAllWorks', '@getPeriodBounds']);
+  it('should allow to filter the database by languages', () => {
+    cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
 
-  // Filter the database by "french" language
-  selectFilterOption('mainLanguage', 'Français');
-  cy.url().should('include', '/base-de-donnees?mainLanguage=1000&page=1');
-  cy.wait('@getAllWorks')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.mainLanguage).to.eql(['1000']);
-    });
+    cy.intercept(
+      'POST',
+      'http://puppetplays.ddev.site:7080/graphql',
+      graphQlRouteHandler,
+    );
 
-  // Filter the database by "french or german" language
-  selectFilterOption('mainLanguage', 'Allemand');
-  cy.url().should('include', '/base-de-donnees?mainLanguage=1000,1300&page=1');
-  cy.wait('@getAllWorks')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.mainLanguage).to.eql(['1000', '1300']);
-    });
+    cy.visit('/base-de-donnees');
+    cy.wait(['@getAllWorks', '@getPeriodBounds']);
 
-  // Remove the “french” language filter (filter by “german” language)
-  cy.get('[aria-label="Remove Français"]').click();
-  cy.url().should('include', '/base-de-donnees?mainLanguage=1300&page=1');
-  cy.wait('@getAllWorks')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.mainLanguage).to.eql(['1300']);
-    });
+    // Filter the database by "french" language
+    selectFilterOption('mainLanguage', 'Français');
+    cy.url().should('include', '/base-de-donnees?mainLanguage=1000&page=1');
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.mainLanguage).to.eql(['1000']);
+      });
 
-  // Reset all filters
-  cy.get('button').contains('Tout effacer').click();
-  cy.url().should('include', '/base-de-donnees?page=1');
-  cy.wait('@getAllWorks')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.mainLanguage).to.be.undefined;
-    });
+    // Filter the database by "french or german" language
+    selectFilterOption('mainLanguage', 'Allemand');
+    cy.url().should(
+      'include',
+      '/base-de-donnees?mainLanguage=1000,1300&page=1',
+    );
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.mainLanguage).to.eql(['1000', '1300']);
+      });
+
+    // Remove the “french” language filter (filter by “german” language)
+    cy.get('[aria-label="Remove Français"]').click();
+    cy.url().should('include', '/base-de-donnees?mainLanguage=1300&page=1');
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.mainLanguage).to.eql(['1300']);
+      });
+
+    // Reset all filters
+    cy.get('button').contains('Tout effacer').click();
+    cy.url().should('include', '/base-de-donnees?page=1');
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.mainLanguage).to.be.undefined;
+      });
+  });
 });

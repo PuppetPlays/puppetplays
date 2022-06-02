@@ -16,20 +16,30 @@ const getAllAnimationTechniquesRequestBody = ({ locale = 'fr' } = {}) => ({
   variables: { locale },
 });
 
-it('should display the animation techniques page', () => {
-  cy.task(
-    'nock',
-    getGraphQlRequestMock(
-      getAllAnimationTechniquesRequestBody(),
-      animationTechniques,
-    ),
-  );
+describe('Animation techniques page', () => {
+  beforeEach(() => {
+    cy.task('activateNock');
+  });
 
-  cy.intercept(
-    'POST',
-    'http://puppetplays.ddev.site:7080/graphql',
-    graphQlRouteHandler,
-  );
+  afterEach(() => {
+    cy.task('clearNock');
+  });
 
-  cy.visit('/techniques-d-animation');
+  it('should display the animation techniques page', () => {
+    cy.task(
+      'nock',
+      getGraphQlRequestMock(
+        getAllAnimationTechniquesRequestBody(),
+        animationTechniques,
+      ),
+    );
+
+    cy.intercept(
+      'POST',
+      'http://puppetplays.ddev.site:7080/graphql',
+      graphQlRouteHandler,
+    );
+
+    cy.visit('/techniques-d-animation');
+  });
 });

@@ -34,55 +34,65 @@ const getAllAuthorsRequestBody = (
   variables: { locale, ...rest },
 });
 
-it('should allow to filter the authors by languages', () => {
-  cy.task(
-    'nock',
-    getGraphQlRequestMock(getAllWorksAuthorsIdsRequestBody(), works),
-  );
-  cy.task('nock', getGraphQlRequestMock(getAllAuthorsRequestBody(), authors));
+describe('Authors page', () => {
+  beforeEach(() => {
+    cy.task('activateNock');
+  });
 
-  cy.intercept(
-    'POST',
-    'http://puppetplays.ddev.site:7080/graphql',
-    graphQlRouteHandler,
-  );
+  afterEach(() => {
+    cy.task('clearNock');
+  });
 
-  cy.visit('/auteurs');
-  cy.wait(['@getAllAuthors', '@getAllLanguages', '@getAllPlaces']);
+  it('should allow to filter the authors by languages', () => {
+    cy.task(
+      'nock',
+      getGraphQlRequestMock(getAllWorksAuthorsIdsRequestBody(), works),
+    );
+    cy.task('nock', getGraphQlRequestMock(getAllAuthorsRequestBody(), authors));
 
-  // Filter the authors by "french" language
-  selectFilterOption('languages', 'Français');
-  cy.url().should('include', '/auteurs?languages=1000');
-  cy.wait('@getAllAuthors')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.languages).to.eql(['1000']);
-    });
+    cy.intercept(
+      'POST',
+      'http://puppetplays.ddev.site:7080/graphql',
+      graphQlRouteHandler,
+    );
 
-  // Filter the authors by "french or german" language
-  selectFilterOption('languages', 'Allemand');
-  cy.url().should('include', '/auteurs?languages=1000,1300');
-  cy.wait('@getAllAuthors')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.languages).to.eql(['1000', '1300']);
-    });
+    cy.visit('/auteurs');
+    cy.wait(['@getAllAuthors', '@getAllLanguages', '@getAllPlaces']);
 
-  // Remove the “french” language filter (filter by “german” language)
-  cy.get('[aria-label="Remove Français"]').click();
-  cy.url().should('include', '/auteurs?languages=1300');
-  cy.wait('@getAllAuthors')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.languages).to.eql(['1300']);
-    });
+    // Filter the authors by "french" language
+    selectFilterOption('languages', 'Français');
+    cy.url().should('include', '/auteurs?languages=1000');
+    cy.wait('@getAllAuthors')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.languages).to.eql(['1000']);
+      });
 
-  // Reset all filters
-  cy.get('button').contains('Tout effacer').click();
-  cy.url().should('include', '/auteurs');
-  cy.wait('@getAllAuthors')
-    .its('request.body.variables')
-    .should((variables) => {
-      expect(variables.languages).to.be.undefined;
-    });
+    // Filter the authors by "french or german" language
+    selectFilterOption('languages', 'Allemand');
+    cy.url().should('include', '/auteurs?languages=1000,1300');
+    cy.wait('@getAllAuthors')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.languages).to.eql(['1000', '1300']);
+      });
+
+    // Remove the “french” language filter (filter by “german” language)
+    cy.get('[aria-label="Remove Français"]').click();
+    cy.url().should('include', '/auteurs?languages=1300');
+    cy.wait('@getAllAuthors')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.languages).to.eql(['1300']);
+      });
+
+    // Reset all filters
+    cy.get('button').contains('Tout effacer').click();
+    cy.url().should('include', '/auteurs');
+    cy.wait('@getAllAuthors')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.languages).to.be.undefined;
+      });
+  });
 });

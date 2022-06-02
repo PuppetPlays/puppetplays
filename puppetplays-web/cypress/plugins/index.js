@@ -24,7 +24,9 @@ module.exports = async (on, config) => {
 
   on('task', {
     activateNock() {
-      nock.activate();
+      if (!nock.isActive()) {
+        nock.activate();
+      }
 
       return null;
     },
