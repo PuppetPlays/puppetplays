@@ -9,9 +9,9 @@
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "lint": "eslint .",
-    "build": "next build",
-    "deploy": "npm run test:ci && npm run build"
+    "build": "next build"
   },
   "jest": {
     "testEnvironment": "jsdom",
