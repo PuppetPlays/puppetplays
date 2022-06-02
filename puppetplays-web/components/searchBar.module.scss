@@ -48,12 +48,17 @@
   height: 30px;
   border-radius: 15px;
   background-color: var(--color-brand);
+  box-shadow: 0 0 6px 8px rgba(255, 255, 255);
   border: 0;
 
   svg {
     width: 16px;
     height: 16px;
   }
+}
+
+.resetButton + .submitButton {
+  box-shadow: none;
 }
 
 button.submitButton,
@@ -68,7 +73,6 @@ button.resetButton {
 .resetButton {
   margin-right: 4px;
   background-color: transparent;
-  box-shadow: 0 0 6px 8px rgba(255, 255, 255);
 
   &:hover {
     background-color: var(--color-brand);
