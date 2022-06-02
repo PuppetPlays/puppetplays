@@ -1,11 +1,6 @@
 import { cond, noop, stubTrue } from 'lodash';
 import { getAllAnimationsTechniquesQuery } from '../../lib/api';
-import {
-  isGraphQlQuery,
-  aliasAndReply,
-  getGraphQlRequestMock,
-  selectFilterOption,
-} from '../utils';
+import { isGraphQlQuery, aliasAndReply, getGraphQlRequestMock } from '../utils';
 import animationTechniques from '../fixtures/animationTechniques';
 
 const graphQlRouteHandler = cond([
@@ -19,14 +14,6 @@ const graphQlRouteHandler = cond([
 const getAllAnimationTechniquesRequestBody = ({ locale = 'fr' } = {}) => ({
   query: getAllAnimationsTechniquesQuery,
   variables: { locale },
-});
-
-beforeEach(() => {
-  cy.task('activateNock');
-});
-
-afterEach(() => {
-  cy.task('clearNock');
 });
 
 it('should display the animation techniques page', () => {

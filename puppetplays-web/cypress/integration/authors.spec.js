@@ -34,14 +34,6 @@ const getAllAuthorsRequestBody = (
   variables: { locale, ...rest },
 });
 
-beforeEach(() => {
-  cy.task('activateNock');
-});
-
-afterEach(() => {
-  cy.task('clearNock');
-});
-
 it('should allow to filter the authors by languages', () => {
   cy.task(
     'nock',

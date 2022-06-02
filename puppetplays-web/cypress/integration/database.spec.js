@@ -63,14 +63,6 @@ const getAllWorksRequestBody = (
   variables: { locale, offset, limit, search, ...rest },
 });
 
-beforeEach(() => {
-  cy.task('activateNock');
-});
-
-afterEach(() => {
-  cy.task('clearNock');
-});
-
 it('should allow to filter the database by languages', () => {
   cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
 
