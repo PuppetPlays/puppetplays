@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import isTouchDevice from 'is-touch-device';
 import Select from 'ol/interaction/Select';
 import { pointerMove } from 'ol/events/condition';
 import Map from 'ol/Map';
@@ -46,7 +47,9 @@ export function MapProvider({
       filter: isFeatureSelecteable,
     });
     mapObject.addInteraction(clickSelect);
-    mapObject.addInteraction(hover);
+    if (!isTouchDevice()) {
+      mapObject.addInteraction(hover);
+    }
     clickSelect.on('select', onClick);
 
     setMap(mapObject);
