@@ -28,6 +28,7 @@ test('renders the work header', () => {
       mostRelevantDate="1926"
       compositionPlace={place}
       mainLanguage={mainLanguage}
+      isCompact
     />,
   );
 
@@ -38,12 +39,12 @@ test('renders the work header', () => {
   expect(h1).toHaveTextContent('My work');
   expect(h2).toHaveTextContent('Is this a work?');
   expect(workHeaderAuthors).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France | French',
+    'Raymond Poisson, Claude Garbut | 1926 | Paris, France | French',
   );
 });
 
 test('renders the work header without a subtitle', () => {
-  renderWithinModalProvider(<WorkHeader title="My work" />);
+  renderWithinModalProvider(<WorkHeader title="My work" isCompact />);
 
   const h2 = screen.queryByRole('heading', { level: 2 });
 
@@ -58,13 +59,14 @@ test('renders the work header without a date', () => {
       authors={authors}
       compositionPlace={place}
       mainLanguage={mainLanguage}
+      isCompact
     />,
   );
 
   const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
   expect(workHeaderAuthors).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France | French',
+    'Raymond Poisson, Claude Garbut | Paris, France | French',
   );
 });
 
@@ -76,13 +78,14 @@ test('renders the work header without a place', () => {
       authors={authors}
       mostRelevantDate="1926"
       mainLanguage={mainLanguage}
+      isCompact
     />,
   );
 
   const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
   expect(workHeaderAuthors).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | French',
+    'Raymond Poisson, Claude Garbut | 1926 | French',
   );
 });
 
@@ -94,13 +97,14 @@ test('renders the work header without a language', () => {
       authors={authors}
       mostRelevantDate="1926"
       compositionPlace={place}
+      isCompact
     />,
   );
 
   const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
   expect(workHeaderAuthors).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | 1926 | Paris, France',
+    'Raymond Poisson, Claude Garbut | 1926 | Paris, France',
   );
 });
 
@@ -111,12 +115,13 @@ test('renders the work header without a language and a date', () => {
       subtitle="Is this a work?"
       authors={authors}
       compositionPlace={place}
+      isCompact
     />,
   );
 
   const workHeaderAuthors = screen.getByTestId('work-header-authors');
 
   expect(workHeaderAuthors).toHaveTextContent(
-    'Raymond Poissoncommon:launchSearchcommon:openNote, Claude Garbutcommon:launchSearchcommon:openNote | Paris, France',
+    'Raymond Poisson, Claude Garbut | Paris, France',
   );
 });
