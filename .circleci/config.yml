@@ -227,16 +227,12 @@ orbs:
 workflows:
   build_and_deploy_on_staging:
     jobs:
-      - test_web:
+      - build_web_staging:
           filters:
             branches:
               only:
                 - develop
                 - release
-      - build_web_staging:
-          requires:
-            - test_web
-          
       - docker_web_staging:
           requires:
             - build_web_staging
@@ -254,13 +250,10 @@ workflows:
             - hold_staging_deploy
   build_and_deploy_on_production:
     jobs:
-      - test_web:
+      - build_web_production:
           filters:
             branches:
               only: master
-      - build_web_production:
-          requires:
-            - test_web
       - docker_web_production:
           requires:
             - build_web_production
