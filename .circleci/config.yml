@@ -29,8 +29,8 @@ parameters:
 jobs:
   test_web:
     executor:
-      name: node/default
-      tag: '14.17'
+      name: cypress/browsers
+      tag: 'node14.7.0-chrome84'
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: http://puppetplays.ddev.site:7080
@@ -228,15 +228,16 @@ orbs:
 workflows:
   build_and_deploy_on_staging:
     jobs:
-      - test_web
-      - build_web_staging:
-          requires:
-            - test_web
+      - test_web:
           filters:
             branches:
               only:
                 - develop
                 - release
+      - build_web_staging:
+          requires:
+            - test_web
+          
       - docker_web_staging:
           requires:
             - build_web_staging
@@ -254,13 +255,13 @@ workflows:
             - hold_staging_deploy
   build_and_deploy_on_production:
     jobs:
-      - test_web
-      - build_web_production:
-          requires:
-            - test_web
+      - test_web:
           filters:
             branches:
               only: master
+      - build_web_production:
+          requires:
+            - test_web
       - docker_web_production:
           requires:
             - build_web_production
