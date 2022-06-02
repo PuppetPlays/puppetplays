@@ -1,5 +1,16 @@
 # Changelog de la plateforme Puppetplays
 
+## Puppetplays 0.8.0
+
+Déployé le 2 juin 2022
+
+### Nouveautés
+
+- Nouveau design de la page d’accueil
+- Optimisation du site sur mobile
+
+---
+
 ## Puppetplays 0.7.1
 
 Déployé le 20 mai 2022
