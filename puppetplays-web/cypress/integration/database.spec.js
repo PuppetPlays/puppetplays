@@ -1,5 +1,11 @@
 import { cond, noop, stubTrue } from 'lodash';
 import { getAllWorksQuery } from '../../lib/api';
+import {
+  isGraphQlQuery,
+  aliasAndReply,
+  getGraphQlRequestMock,
+  selectFilterOption,
+} from '../utils';
 import works from '../fixtures/works';
 import languages from '../fixtures/languages';
 import places from '../fixtures/places';
@@ -10,15 +16,6 @@ import theatricalTechniques from '../fixtures/theatricalTechniques';
 import audiences from '../fixtures/audiences';
 import formats from '../fixtures/formats';
 import keywords from '../fixtures/keywords';
-
-const isGraphQlQuery = (queryName) => (req) => {
-  return req.body.query.includes(queryName);
-};
-
-const aliasAndReply = (alias, body) => (req) => {
-  req.alias = alias;
-  req.reply(body);
-};
 
 const graphQlRouteHandler = cond([
   [
@@ -58,15 +55,6 @@ const graphQlRouteHandler = cond([
   [stubTrue, noop],
 ]);
 
-const getGraphQlRequestMock = (reqBody, resBody) => ({
-  hostname: 'http://puppetplays.ddev.site:7080',
-  method: 'POST',
-  path: '/graphql',
-  reqBody,
-  statusCode: 200,
-  body: resBody,
-});
-
 const getAllWorksRequestBody = (
   { locale = 'fr', offset = null, limit = 10, search = '', ...rest } = {},
   filters = {},
@@ -75,37 +63,25 @@ const getAllWorksRequestBody = (
   variables: { locale, offset, limit, search, ...rest },
 });
 
-const selectFilterOption = (filterKey, optionLabel) => {
-  cy.get(`input[aria-labelledby="aria-label-of-${filterKey}"]`).click();
-  cy.get(`#react-select-select-id-${filterKey}-listbox`)
-    .contains(optionLabel)
-    .click();
-};
-
 beforeEach(() => {
+  cy.task('activateNock');
+});
+
+afterEach(() => {
   cy.task('clearNock');
 });
 
 it('should allow to filter the database by languages', () => {
   cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
 
-  cy.intercept('POST', 'http://puppetplays.ddev.site:7080/graphql', (req) =>
-    graphQlRouteHandler(req),
+  cy.intercept(
+    'POST',
+    'http://puppetplays.ddev.site:7080/graphql',
+    graphQlRouteHandler,
   );
 
   cy.visit('/base-de-donnees');
-  cy.wait([
-    '@getAllWorks',
-    '@getAllLanguages',
-    '@getAllPersons',
-    '@getAllAnimationTechniques',
-    '@getAllLiteraryTones',
-    '@getAllTheatricalTechniques',
-    '@getAllAudiences',
-    '@getAllFormats',
-    '@getAllWorksKeywords',
-    '@getPeriodBounds',
-  ]);
+  cy.wait(['@getAllWorks', '@getPeriodBounds']);
 
   // Filter the database by "french" language
   selectFilterOption('mainLanguage', 'Français');

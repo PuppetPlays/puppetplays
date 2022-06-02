@@ -23,6 +23,11 @@ module.exports = async (on, config) => {
   });
 
   on('task', {
+    activateNock() {
+      nock.activate();
+
+      return null;
+    },
     clearNock() {
       nock.restore();
       nock.cleanAll();
@@ -39,8 +44,6 @@ module.exports = async (on, config) => {
       statusCode,
       body,
     }) {
-      nock.activate();
-
       method = method.toLowerCase();
       nock(hostname)
         [method](path, reqBody)
