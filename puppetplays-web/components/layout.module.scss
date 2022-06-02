@@ -7,14 +7,14 @@
 }
 
 .header {
-  flex: 0 0 78px;
+  flex: 0 0 80px;
 }
 
 .content {
   position: relative;
   display: flex;
   justify-content: stretch;
-  height: calc(100% - 95px);
+  height: calc(100% - 80px);
   flex: 1 1 auto;
 }
 

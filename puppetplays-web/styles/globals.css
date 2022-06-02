@@ -154,14 +154,20 @@ p > a:hover {
 
 .ol-map {
   margin: 0;
-  height: calc(100vh - 95px);
+  height: 100%;
   width: 100%;
 }
 
 .ol-control {
   position: absolute;
   right: 20px;
-  top: 70px;
+  top: 20px;
+}
+
+@media (min-width: 860px) {
+  .ol-control {
+    top: 70px;
+  }
 }
 
 .ol-control button {
