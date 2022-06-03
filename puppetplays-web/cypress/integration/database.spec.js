@@ -224,4 +224,35 @@ describe('Database page', () => {
       'be.checked',
     );
   });
+
+  it('should allow to search the database', () => {
+    cy.task('nock', getGraphQlRequestMock(getAllWorksRequestBody(), works));
+
+    cy.intercept(
+      'POST',
+      'http://puppetplays.ddev.site:7080/graphql',
+      graphQlRouteHandler,
+    );
+
+    cy.visit('/base-de-donnees');
+    cy.wait(['@getAllWorks', '@getPeriodBounds']);
+
+    cy.get('input[name="search"]').type('polux');
+
+    cy.url().should('include', '/base-de-donnees?page=1&search=polux');
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.search).to.equal('polux');
+      });
+
+    cy.get('input[name="search"]').next('button').click();
+
+    cy.url().should('include', '/base-de-donnees?page=1&search=');
+    cy.wait('@getAllWorks')
+      .its('request.body.variables')
+      .should((variables) => {
+        expect(variables.search).to.equal('');
+      });
+  });
 });
