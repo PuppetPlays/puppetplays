@@ -34,7 +34,7 @@
   position: relative;
   margin: 0 auto;
   max-width: 1160px;
-  padding: 40px 0 60px;
+  padding: 40px 0 0;
   background: url('/home-bg-shape.svg') top center no-repeat;
   background-size: cover;
 
@@ -44,6 +44,7 @@
 
   @media (min-width: 860px) {
     background-size: contain;
+    padding-bottom: 60px;
   }
 }
 
