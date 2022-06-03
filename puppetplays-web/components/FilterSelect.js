@@ -1,10 +1,10 @@
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import Select from 'react-select';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
 import noop from 'lodash/noop';
-import constant from 'lodash/constant';
 import FilterLabel from 'components/FilterLabel';
 import { styles, components, getTheme } from './filterSelectStyles';
 
@@ -22,6 +22,15 @@ function FilterSelect({
   isDisabled,
 }) {
   const { t } = useTranslation();
+  const getNoOptionsMessage = useCallback(
+    ({ inputValue }) => {
+      if (inputValue) {
+        return t('common:filters.noOptions');
+      }
+      return '…';
+    },
+    [t],
+  );
 
   return (
     <div>
@@ -53,7 +62,7 @@ function FilterSelect({
         isMulti={isMulti}
         inverse={inverse}
         isDisabled={isDisabled}
-        noOptionsMessage={constant('…')}
+        noOptionsMessage={getNoOptionsMessage}
       />
     </div>
   );

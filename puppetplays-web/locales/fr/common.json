@@ -117,7 +117,8 @@
     "typePlaceholder": "Auteur ou compagnie",
     "lowerBoundPeriod": "Borne minimum de la période",
     "upperBoundPeriod": "Borne maximum de la période",
-    "selectedPeriod": "Période sélectionnée"
+    "selectedPeriod": "Période sélectionnée",
+    "noOptions": "Aucune option"
   },
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",

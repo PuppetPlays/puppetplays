@@ -117,7 +117,8 @@
     "typePlaceholder": "Author or company",
     "lowerBoundPeriod": "Lower bound period",
     "upperBoundPeriod": "Upper bound period",
-    "selectedPeriod": "Selected period"
+    "selectedPeriod": "Selected period",
+    "noOptions": "No option"
   },
   "imageCopyright": "Copyright: ",
   "works": "Works",
