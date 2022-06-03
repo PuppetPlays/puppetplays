@@ -15,6 +15,8 @@ import {
   getAllLiteraryTonesQuery,
   getAllPlacesQuery,
   getPeriodBoundsQuery,
+  getFilterEntriesByIdsQuery,
+  getSectionName,
 } from 'lib/filtersApi';
 import FilterSelect from 'components/FilterSelect';
 import FilterRange from 'components/FilterRange';
@@ -41,7 +43,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   };
 
   const getLanguagesOptions = () => {
-    apiClient(getAllLanguagesQuery).then((languages) => {
+    apiClient(getAllLanguagesQuery('works')).then((languages) => {
       setFiltersOptions({
         ...filtersOptions,
         languages: languages.entries,
@@ -49,7 +51,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getPlacesOptions = () => {
-    apiClient(getAllPlacesQuery).then((places) => {
+    apiClient(getAllPlacesQuery('works')).then((places) => {
       setFiltersOptions({
         ...filtersOptions,
         places: places.entries,
@@ -114,17 +116,51 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   };
 
   useEffect(() => {
+    const keepActiveFiltersWithNoOption = ([key, values]) =>
+      values && !filtersOptions[getSectionName(key)];
+    const getFilersOptionsQueries = ([key]) => {
+      if (key === 'relatedToTags') {
+        return apiClient(getAllWorksKeywordsQuery);
+      } else {
+        return getFetchAPIClient({
+          variables: { locale, ids: filters[key] },
+        })(getFilterEntriesByIdsQuery(getSectionName(key)));
+      }
+    };
+    const activeFiltersWithNoOption = Object.entries(filters).filter(
+      keepActiveFiltersWithNoOption,
+    );
+    const requests = activeFiltersWithNoOption.map(getFilersOptionsQueries);
+    const requestsKeys = activeFiltersWithNoOption.map(([key]) => key);
+
+    if (requests.length > 0) {
+      Promise.all(requests).then((results) => {
+        const newFilterOptions = results.reduce((acc, data, index) => {
+          acc[getSectionName(requestsKeys[index])] = data.entries || data.tags;
+          return acc;
+        }, {});
+        setFiltersOptions({
+          ...filtersOptions,
+          ...newFilterOptions,
+        });
+      });
+    }
+  }, [filters, filtersOptions, locale, apiClient]);
+
+  useEffect(() => {
     apiClient(getPeriodBoundsQuery).then((periodBounds) => {
       const getSafelyPeriodBound = (bound) =>
         hasAtLeastOneItem(bound) ? bound[0].value : null;
 
       setFiltersOptions({
+        ...filtersOptions,
         periodBounds: [
           getSafelyPeriodBound(periodBounds.min),
           getSafelyPeriodBound(periodBounds.max),
         ],
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiClient, setFiltersOptions]);
 
   const selectedLanguages = getSelectedValues(
@@ -137,7 +173,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   );
   const selectedPeriodMin = get(filters, 'compositionMinDate[0]', null);
   const selectedPeriodMax = get(filters, 'compositionMinDate[1]', null);
-  const selectedAuthors = getSelectedValues(filtersOptions.authors, 'authors');
+  const selectedPersons = getSelectedValues(filtersOptions.persons, 'authors');
   const selectedLiteraryTones = getSelectedValues(
     filtersOptions.literaryTones,
     'literaryTones',
@@ -152,7 +188,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   );
   const selectedAudiences = getSelectedValues(
     filtersOptions.audiences,
-    'audiences',
+    'audience',
   );
   const selectedFormats = getSelectedValues(filtersOptions.formats, 'formats');
   const selectedTags = getSelectedValues(filtersOptions.tags, 'relatedToTags');
@@ -161,7 +197,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     get(selectedLanguages, 'length', 0),
     get(selectedPlaces, 'length', 0),
     !!selectedPeriodMin || !!selectedPeriodMax,
-    get(selectedAuthors, 'length', 0),
+    get(selectedPersons, 'length', 0),
     get(selectedLiteraryTones, 'length', 0),
     get(selectedAnimationTechniques, 'length', 0),
     get(selectedTheatricalTechniques, 'length', 0),
@@ -240,10 +276,10 @@ function WorksFilters({ filters, onChange, onClearAll }) {
         <FilterSelect
           name="authors"
           placeholder={t('common:filters.authorsPlaceholder')}
-          options={filtersOptions.authors}
+          options={filtersOptions.persons}
           onChange={handleChangeFilters}
           onFocus={getPersonsOptions}
-          value={selectedAuthors}
+          value={selectedPersons}
         />
       </div>
       <div style={{ position: 'relative', zIndex: 60 }}>

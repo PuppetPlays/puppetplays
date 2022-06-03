@@ -22,3 +22,17 @@ export const selectFilterOption = (filterKey, optionLabel) => {
     .contains(optionLabel)
     .click();
 };
+
+export const getSelectFilterSelectedValue = (filterKey, value) => {
+  return cy
+    .get(`label[for="select-input-of-${filterKey}"] + div .select__multi-value`)
+    .contains(value);
+};
+
+export const getSelectFilterSelectedSingleValue = (filterKey, value) => {
+  return cy
+    .get(
+      `label[for="select-input-of-${filterKey}"] + div .select__single-value`,
+    )
+    .contains(value);
+};

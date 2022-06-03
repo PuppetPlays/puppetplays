@@ -5,6 +5,8 @@ import {
   aliasAndReply,
   getGraphQlRequestMock,
   selectFilterOption,
+  getSelectFilterSelectedValue,
+  getSelectFilterSelectedSingleValue,
 } from '../utils';
 import works from '../fixtures/works';
 import authors from '../fixtures/persons';
@@ -97,6 +99,8 @@ describe('Authors page', () => {
     const filters = {
       gender: 'female',
       languages: ['1000', '1300'],
+      places: ['1300'],
+      type: 'persons',
     };
     cy.task(
       'nock',
@@ -104,10 +108,7 @@ describe('Authors page', () => {
     );
     cy.task(
       'nock',
-      getGraphQlRequestMock(
-        getAllAuthorsRequestBody({ locale: 'fr', ...filters }),
-        authors,
-      ),
+      getGraphQlRequestMock(getAllAuthorsRequestBody(filters), authors),
     );
 
     cy.intercept(
@@ -116,11 +117,15 @@ describe('Authors page', () => {
       graphQlRouteHandler,
     );
 
-    cy.visit('/auteurs?gender=female&languages=1000,1300');
+    cy.visit(
+      '/auteurs?gender=female&languages=1000,1300&places=1300&type=persons',
+    );
     cy.wait(['@getAllAuthors', '@getAllLanguages', '@getAllPlaces']);
 
-    cy.get('.select__multi-value').contains('Allemand').should('exist');
-    cy.get('.select__multi-value').contains('Français').should('exist');
-    cy.get('.select__single-value').contains('Femme').should('exist');
+    getSelectFilterSelectedValue('languages', 'Allemand').should('exist');
+    getSelectFilterSelectedValue('languages', 'Français').should('exist');
+    getSelectFilterSelectedValue('places', 'Vienne').should('exist');
+    getSelectFilterSelectedSingleValue('gender', 'Femme').should('exist');
+    getSelectFilterSelectedSingleValue('type', 'Auteur').should('exist');
   });
 });

@@ -1,3 +1,30 @@
+import { cond, constant, identity, stubTrue } from 'lodash';
+import { isEqual } from 'lodash/fp';
+
+export const getSectionName = cond([
+  [isEqual('authors'), constant('persons')],
+  [isEqual('mainLanguage'), constant('languages')],
+  [isEqual('compositionPlace'), constant('places')],
+  [isEqual('audience'), constant('audiences')],
+  [isEqual('relatedToTags'), constant('tags')],
+  [stubTrue, identity],
+]);
+
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const getFilterEntriesByIdsQuery = (section) => `
+query Get${capitalizeFirstLetter(
+  section,
+)}ByIds($locale: [String], $ids: [QueryArgument]) {
+  entries(section: "${section}", site: $locale, orderBy: "title", id: $ids) {
+    id,
+    title,
+  }
+}
+`;
+
 export const getPeriodBoundsQuery = `
 query GetPeriodBounds {
   min: entries(section: "works", compositionMinDate: ["not", null], limit: 1, orderBy: "compositionMinDate asc") {
@@ -13,18 +40,18 @@ query GetPeriodBounds {
 }
 `;
 
-export const getAllLanguagesQuery = `
+export const getAllLanguagesQuery = (relatedToSection) => `
 query GetAllLanguages($locale: [String]) {
-  entries(section: "languages", site: $locale, orderBy: "title", relatedToEntries: { section: "works" }) {
+  entries(section: "languages", site: $locale, orderBy: "title", relatedToEntries: { section: "${relatedToSection}" }) {
     id,
     title,
   }
 }
 `;
 
-export const getAllPlacesQuery = `
+export const getAllPlacesQuery = (relatedToSection) => `
 query GetAllPlaces($locale: [String]) {
-  entries(section: ["places", "countries"], site: $locale, orderBy: "title", relatedToEntries: { section: "works" }) {
+  entries(section: ["places", "countries"], site: $locale, orderBy: "title", relatedToEntries: { section: "${relatedToSection}" }) {
     id,
     title,
     ... on places_places_Entry {

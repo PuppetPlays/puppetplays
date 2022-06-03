@@ -348,14 +348,12 @@ export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const [data] = await Promise.all([
-    getAllWorks(
-      locale,
-      query.page * WORKS_PAGE_SIZE,
-      buildSearchQuery(query.search),
-      query,
-    ),
-  ]);
+  const data = await getAllWorks(
+    locale,
+    query.page * WORKS_PAGE_SIZE,
+    buildSearchQuery(query.search),
+    query,
+  );
 
   return {
     props: {

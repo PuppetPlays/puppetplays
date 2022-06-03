@@ -44,8 +44,8 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
     });
 
     Promise.all([
-      apiClient(getAllLanguagesQuery),
-      apiClient(getAllPlacesQuery),
+      apiClient(getAllLanguagesQuery('persons')),
+      apiClient(getAllPlacesQuery('persons')),
     ]).then((result) => {
       const [languages, places] = result;
 
