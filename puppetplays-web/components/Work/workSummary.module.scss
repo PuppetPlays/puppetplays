@@ -173,6 +173,7 @@
 
   .media {
     grid-area: media;
+    display: block;
   }
 
   .body {
@@ -181,5 +182,6 @@
 
   .extra {
     grid-area: extra;
+    display: block;
   }
 }
