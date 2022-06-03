@@ -205,22 +205,23 @@ export async function getServerSideProps({ locale, req, res, query }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCraftAuthMiddleware(req, res, locale);
 
-  const apiClient = getFetchAPIClient({
-    variables: { locale },
-  });
   const filtersState = queryParamsToState(query);
-  const authorsIds = await apiClient(getAllWorksAuthorsIdsQuery);
+
+  const authorsIds = await getFetchAPIClient({
+    variables: { locale },
+  })(getAllWorksAuthorsIdsQuery);
   const uniqueAuthorsIds = uniq(
     authorsIds.entries.flatMap((entry) =>
       entry.authors.map((author) => author.id),
     ),
   );
-  const personsRelatedToWorks = await apiClient(
-    getAllAuthorsQuery(filtersState),
-  );
+  const personsRelatedToWorks = await getFetchAPIClient({
+    variables: { locale, ...filtersState },
+  })(getAllAuthorsQuery(filtersState));
   const authors = personsRelatedToWorks.entries.filter(({ id }) =>
     uniqueAuthorsIds.includes(id),
   );
+
   return {
     props: {
       initialData: { entries: groupBy(authors, getFirstLetter) },

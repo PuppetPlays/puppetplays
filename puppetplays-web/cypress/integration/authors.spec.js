@@ -26,12 +26,9 @@ const getAllWorksAuthorsIdsRequestBody = ({ locale = 'fr' } = {}) => ({
   variables: { locale },
 });
 
-const getAllAuthorsRequestBody = (
-  { locale = 'fr', ...rest } = {},
-  filters = {},
-) => ({
+const getAllAuthorsRequestBody = ({ locale = 'fr', ...filters } = {}) => ({
   query: getAllAuthorsQuery(filters),
-  variables: { locale, ...rest },
+  variables: { locale, ...filters },
 });
 
 describe('Authors page', () => {
@@ -94,5 +91,36 @@ describe('Authors page', () => {
       .should((variables) => {
         expect(variables.languages).to.be.undefined;
       });
+  });
+
+  it('should fill the filters according to the url query params', () => {
+    const filters = {
+      gender: 'female',
+      languages: ['1000', '1300'],
+    };
+    cy.task(
+      'nock',
+      getGraphQlRequestMock(getAllWorksAuthorsIdsRequestBody(), works),
+    );
+    cy.task(
+      'nock',
+      getGraphQlRequestMock(
+        getAllAuthorsRequestBody({ locale: 'fr', ...filters }),
+        authors,
+      ),
+    );
+
+    cy.intercept(
+      'POST',
+      'http://puppetplays.ddev.site:7080/graphql',
+      graphQlRouteHandler,
+    );
+
+    cy.visit('/auteurs?gender=female&languages=1000,1300');
+    cy.wait(['@getAllAuthors', '@getAllLanguages', '@getAllPlaces']);
+
+    cy.get('.select__multi-value').contains('Allemand').should('exist');
+    cy.get('.select__multi-value').contains('Français').should('exist');
+    cy.get('.select__single-value').contains('Femme').should('exist');
   });
 });
