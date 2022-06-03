@@ -4,6 +4,7 @@ import Select from 'react-select';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
 import noop from 'lodash/noop';
+import constant from 'lodash/constant';
 import FilterLabel from 'components/FilterLabel';
 import { styles, components, getTheme } from './filterSelectStyles';
 
@@ -52,6 +53,7 @@ function FilterSelect({
         isMulti={isMulti}
         inverse={inverse}
         isDisabled={isDisabled}
+        noOptionsMessage={constant('…')}
       />
     </div>
   );
