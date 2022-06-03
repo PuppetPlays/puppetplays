@@ -15,7 +15,7 @@ query GetPeriodBounds {
 
 export const getAllLanguagesQuery = `
 query GetAllLanguages($locale: [String]) {
-  entries(section: "languages", site: $locale, orderBy: "title") {
+  entries(section: "languages", site: $locale, orderBy: "title", relatedToEntries: { section: "works" }) {
     id,
     title,
   }
@@ -24,7 +24,7 @@ query GetAllLanguages($locale: [String]) {
 
 export const getAllPlacesQuery = `
 query GetAllPlaces($locale: [String]) {
-  entries(section: ["places", "countries"], site: $locale, orderBy: "title") {
+  entries(section: ["places", "countries"], site: $locale, orderBy: "title", relatedToEntries: { section: "works" }) {
     id,
     title,
     ... on places_places_Entry {
@@ -38,7 +38,7 @@ query GetAllPlaces($locale: [String]) {
 
 export const getAllPersonsQuery = `
 query GetAllPersons($locale: [String]) {
-  entries(section: "persons", site: $locale, orderBy: "title") {
+  entries(section: "persons", site: $locale, orderBy: "title", relatedToEntries: { section: "works" }) {
     id,
     title,
   }
