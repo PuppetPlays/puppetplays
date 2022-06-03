@@ -157,7 +157,7 @@ describe('Database page', () => {
       });
   });
 
-  it.only('should fill the filters according to the url query params', () => {
+  it('should fill the filters according to the url query params', () => {
     const filters = {
       mainLanguage: ['1000', '1300'],
       compositionPlace: ['1300'],

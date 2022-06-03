@@ -116,6 +116,8 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   };
 
   useEffect(() => {
+    const keepRequestableOptions = ([key]) =>
+      key !== 'compositionMinDate' && key !== 'publicDomain';
     const keepActiveFiltersWithNoOption = ([key, values]) =>
       values && !filtersOptions[getSectionName(key)];
     const getFilersOptionsQueries = ([key]) => {
@@ -127,9 +129,9 @@ function WorksFilters({ filters, onChange, onClearAll }) {
         })(getFilterEntriesByIdsQuery(getSectionName(key)));
       }
     };
-    const activeFiltersWithNoOption = Object.entries(filters).filter(
-      keepActiveFiltersWithNoOption,
-    );
+    const activeFiltersWithNoOption = Object.entries(filters)
+      .filter(keepRequestableOptions)
+      .filter(keepActiveFiltersWithNoOption);
     const requests = activeFiltersWithNoOption.map(getFilersOptionsQueries);
     const requestsKeys = activeFiltersWithNoOption.map(([key]) => key);
 
