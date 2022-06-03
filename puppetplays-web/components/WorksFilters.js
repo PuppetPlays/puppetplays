@@ -59,10 +59,10 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getPersonsOptions = () => {
-    apiClient(getAllPersonsQuery).then((authors) => {
+    apiClient(getAllPersonsQuery).then((persons) => {
       setFiltersOptions({
         ...filtersOptions,
-        authors: authors.entries,
+        persons: persons.entries,
       });
     });
   };
