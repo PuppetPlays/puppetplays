@@ -175,7 +175,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <EntryPointCard
                       title={t('exploreBy.publications.title')}
                       thumbnailUrl="/publications-thumbnail.jpg"
-                      href={`https://puppetplays.www.univ-montp3.fr/${locale}/publications`}
                     />
                     <EntryPointCard
                       title={t('exploreBy.project.title')}
