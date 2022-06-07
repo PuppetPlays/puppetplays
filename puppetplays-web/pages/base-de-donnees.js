@@ -12,7 +12,6 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
   getAllWorksQuery,
@@ -345,9 +344,6 @@ Home.propTypes = {
 export default Home;
 
 export async function getServerSideProps({ locale, req, res, query }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const data = await getAllWorks(
     locale,
     query.page * WORKS_PAGE_SIZE,

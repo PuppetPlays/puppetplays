@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { getWorkById } from 'lib/api';
 import Layout from 'components/Layout';
 import PropTypes from 'prop-types';
@@ -40,9 +39,6 @@ WorkPage.propTypes = {
 export default WorkPage;
 
 export async function getServerSideProps({ locale, req, res, params, query }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const token = query && query.token;
   const data = await getWorkById(params.id, locale, token);
   return {

@@ -3,7 +3,6 @@ import useSWR from 'swr';
 import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { fetchAPI, getAllAnimationsTechniquesQuery } from 'lib/api';
 import Layout from 'components/Layout';
 import { PageTitle } from 'components/Primitives';
@@ -66,9 +65,6 @@ AnimationTechniques.propTypes = {
 export default AnimationTechniques;
 
 export async function getServerSideProps({ locale, req, res }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const data = await fetchAPI(getAllAnimationsTechniquesQuery, {
     variables: { locale },
   });

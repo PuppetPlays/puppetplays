@@ -2,7 +2,6 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
 import { groupBy } from 'lodash';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';
 import Layout from 'components/Layout';
 import useActiveAnchor from 'hooks/useActiveAnchor';
@@ -75,9 +74,6 @@ MediasPage.propTypes = {
 export default MediasPage;
 
 export async function getServerSideProps({ locale, req, res, params }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const { entry } = await fetchAPI(getWorkMediasByIdQuery, {
     variables: { locale, id: params.id },
   });

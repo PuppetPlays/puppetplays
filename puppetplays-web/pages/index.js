@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import clip from 'text-clipper';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
   getHomeQuery,
@@ -429,9 +428,6 @@ Home.propTypes = {
 };
 
 export async function getServerSideProps({ locale, req, res }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const apiClient = getFetchAPIClient({
     variables: { locale },
   });

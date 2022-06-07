@@ -11,7 +11,6 @@ import stubTrue from 'lodash/stubTrue';
 import useSWR, { mutate } from 'swr';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   fetchAPI,
   getAllAuthorsQuery,
@@ -202,9 +201,6 @@ Authors.propTypes = {
 export default Authors;
 
 export async function getServerSideProps({ locale, req, res, query }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const filtersState = queryParamsToState(query);
 
   const authorsIds = await getFetchAPIClient({

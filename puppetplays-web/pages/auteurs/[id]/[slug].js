@@ -2,7 +2,6 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import useTranslation from 'next-translate/useTranslation';
-import useCraftAuthMiddleware from 'lib/craftAuthMiddleware';
 import {
   getAuthorByIdQuery,
   getFetchAPIClient,
@@ -52,9 +51,6 @@ AuthorPage.propTypes = {
 export default AuthorPage;
 
 export async function getServerSideProps({ locale, req, res, params, query }) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCraftAuthMiddleware(req, res, locale);
-
   const token = query && query.token;
   const apiClient = getFetchAPIClient({
     variables: { locale, id: params.id },
