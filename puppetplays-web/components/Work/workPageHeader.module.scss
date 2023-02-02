@@ -78,11 +78,8 @@
     }
   }
 
-  a + a {
+  a + a,
+  a + button {
     margin-left: 10px;
-  }
-
-  a:last-child svg {
-    fill-rule: evenodd;
   }
 }

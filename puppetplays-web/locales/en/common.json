@@ -137,5 +137,6 @@
     "audio": "Sound record(s)"
   },
   "permalink": "Permalink",
-  "permalinkCopy": "Copy the permalink"
+  "permalinkCopy": "Copy the permalink",
+  "document": "Document"
 }

@@ -493,6 +493,28 @@ fieldLayouts:
             width: 100
         name: Identifiants
         sortOrder: 4
+      -
+        elements:
+          -
+            fieldUid: 2634dd0c-e6eb-4be4-88a7-c3b674e71c36 # Pdf du document scanné
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 2e9e0ef6-71c0-4e08-931b-6b53d7197c7d # Pages du document scanné
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Anthologie
+        sortOrder: 5
 handle: works
 hasTitleField: true
 name: Œuvres

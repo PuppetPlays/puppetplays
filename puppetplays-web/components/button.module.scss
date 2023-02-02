@@ -15,6 +15,15 @@
   &:hover {
     background-color: var(--color-brand-light);
   }
+
+  &[data-inverse='false'] {
+    background-color: var(--color-bg-depth-1);
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-brand-light);
+    }
+  }
 }
 
 .icon {
@@ -22,4 +31,8 @@
   width: 20px;
   height: 20px;
   margin-right: 8px;
+
+  svg {
+    fill: currentcolor;
+  }
 }

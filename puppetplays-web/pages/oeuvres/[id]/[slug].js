@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import { getWorkById } from 'lib/api';
 import Layout from 'components/Layout';
@@ -5,30 +6,42 @@ import PropTypes from 'prop-types';
 import Work from 'components/Work/Work';
 import ContentLayout from 'components/ContentLayout';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
+import WorkDocument from 'components/Work/WorkDocument';
 import styles from 'styles/Work.module.scss';
-import { hasAtLeastOneItem } from 'lib/utils';
 
 const WorkPage = ({ initialData }) => {
-  return (
-    <Layout>
-      <Head>
-        <title>{initialData.title} | Puppetplays</title>
-      </Head>
+  const [isDocumentOpen, setIsDocumentOpen] = useState(false);
 
-      <div className={styles.workHeader}>
-        <WorkPageHeader
-          id={initialData.id}
-          slug={initialData.slug}
-          title={initialData.title}
-          authors={initialData.authors}
-          writingPlace={initialData.writingPlace}
-          hasMedia={hasAtLeastOneItem(initialData.medias)}
+  return (
+    <>
+      <Layout>
+        <Head>
+          <title>{initialData.title} | Puppetplays</title>
+        </Head>
+
+        <div className={styles.workHeader}>
+          <WorkPageHeader
+            id={initialData.id}
+            slug={initialData.slug}
+            title={initialData.title}
+            authors={initialData.authors}
+            writingPlace={initialData.writingPlace}
+            hasMedia={initialData.mediasCount > 0}
+            hasDocument={initialData.scannedDocumentPagesCount > 0}
+            onOpenDocument={() => setIsDocumentOpen(true)}
+          />
+        </div>
+        <ContentLayout style={{ maxWidth: 1200 }}>
+          <Work {...initialData} />
+        </ContentLayout>
+      </Layout>
+      {isDocumentOpen && (
+        <WorkDocument
+          workId={initialData.id}
+          onClose={() => setIsDocumentOpen(false)}
         />
-      </div>
-      <ContentLayout style={{ maxWidth: 1200 }}>
-        <Work {...initialData} />
-      </ContentLayout>
-    </Layout>
+      )}
+    </>
   );
 };
 

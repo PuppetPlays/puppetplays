@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.scss';
 
-const Button = ({ children, type, icon, onClick }) => {
+const Button = ({ children, type, icon, inverse, onClick }) => {
   return (
-    <button className={styles.button} onClick={onClick} type={type}>
+    <button
+      className={styles.button}
+      onClick={onClick}
+      type={type}
+      data-inverse={inverse}
+    >
       {icon && <span className={styles.icon}>{icon}</span>}
       <span className={styles.label}>{children}</span>
     </button>
@@ -14,6 +19,7 @@ const Button = ({ children, type, icon, onClick }) => {
 Button.defaultProps = {
   icon: null,
   type: 'button',
+  inverse: false,
 };
 
 Button.propTypes = {
@@ -21,6 +27,7 @@ Button.propTypes = {
   icon: PropTypes.node,
   onClick: PropTypes.func.isRequired,
   type: PropTypes.string,
+  inverse: PropTypes.bool,
 };
 
 export default Button;

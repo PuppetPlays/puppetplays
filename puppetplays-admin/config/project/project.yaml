@@ -1,4 +1,4 @@
-dateModified: 1653980941
+dateModified: 1675336050
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -24,6 +24,7 @@ meta:
     2cbf68ec-55ec-4aee-bf2d-b255cad39232: Langues # Langues
     2d8643ae-5357-48a9-a90c-59e78c29508c: 'Nombre de pages' # Nombre de pages
     2dd7c17a-3ef4-4aaf-a784-62648f6632fd: Auteur # Auteur
+    2e9e0ef6-71c0-4e08-931b-6b53d7197c7d: 'Pages du document scanné' # Pages du document scanné
     2f8bb2d7-f182-4a78-afa8-46f228a557e6: Traduction # Traduction
     3b937625-42ca-4656-9a7b-c999af708c26: 'Date de la 1ère représentation (min)' # Date de la 1ère représentation (min)
     03d78236-fed0-4e43-b21c-f2cd1a49e83c: Personnage # Personnage
@@ -80,6 +81,7 @@ meta:
     492cc09a-052e-40d6-a33b-7ca74a831805: 'Institutions de conservation' # Institutions de conservation
     980b265a-4482-43da-940c-1d595933f6db: Langue # Langue
     1817d1f9-6682-4c22-b338-19654ae0c45c: 'Techniques d’animation' # Techniques d’animation
+    2634dd0c-e6eb-4be4-88a7-c3b674e71c36: 'Pdf du document scanné' # Pdf du document scanné
     2955ed2b-b666-48a6-81c5-99e6d9de1253: 'Type d''image' # Type d'image
     3023cfcd-a11d-4ed7-b779-4b40493ac931: Édition # Édition
     3802b7c5-d17c-4241-873e-872425f9ea93: DOI # DOI

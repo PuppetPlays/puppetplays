@@ -1,0 +1,19 @@
+.button {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  background-color: transparent;
+  stroke: var(--color-text-subtle);
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    stroke: var(--color-text);
+  }
+
+  svg {
+    height: 16px;
+    width: 16px;
+    stroke-width: 2px;
+  }
+}

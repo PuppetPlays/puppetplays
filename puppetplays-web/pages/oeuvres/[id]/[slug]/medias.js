@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import useTranslation from 'next-translate/useTranslation';
@@ -11,10 +12,10 @@ import MediaSection from 'components/Work/MediaSection';
 import MediaMenu from 'components/Work/MediaMenu';
 import { PageTitle } from 'components/Primitives';
 import styles from 'styles/Work.module.scss';
-import { useState } from 'react';
 
 function MediasPage({ initialData }) {
   const { t } = useTranslation();
+  const [isDocumentOpen, setIsDocumentOpen] = useState(false);
   const [firstMediaSection] = useState(() => {
     const keys = Object.keys(initialData.medias);
     return keys.length > 0 ? keys[0] : null;
@@ -25,45 +26,55 @@ function MediasPage({ initialData }) {
   );
 
   return (
-    <Layout>
-      <Head>
-        <title>{initialData.title} - Medias | Puppetplays</title>
-      </Head>
+    <>
+      <Layout>
+        <Head>
+          <title>{initialData.title} - Medias | Puppetplays</title>
+        </Head>
 
-      <div className={styles.workHeader}>
-        <WorkPageHeader
-          id={initialData.id}
-          slug={initialData.slug}
-          title={initialData.title}
-          authors={initialData.authors}
-          writingPlace={initialData.writingPlace}
-          hasMedia
-        />
-      </div>
-      <ContentLayout style={{ maxWidth: 600 }} onScroll={handleScroll}>
-        <div className={styles.contentHeader}>
-          <PageTitle>{t('common:medias')}</PageTitle>
-        </div>
-        <div className={styles.mediaMenu}>
-          <MediaMenu
-            sections={Object.keys(initialData.medias)}
-            activeAnchor={activeAnchor}
+        <div className={styles.workHeader}>
+          <WorkPageHeader
+            id={initialData.id}
+            slug={initialData.slug}
+            title={initialData.title}
+            authors={initialData.authors}
+            writingPlace={initialData.writingPlace}
+            hasMedia
+            hasDocument={initialData.scannedDocumentPagesCount > 0}
+            onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>
-        <div className={styles.mediasContent}>
-          {Object.entries(initialData.medias).map(
-            ([kind, medias], _, entries) => (
-              <MediaSection
-                key={kind}
-                kind={kind}
-                medias={medias}
-                showTitle={entries.length > 1}
-              />
-            ),
-          )}
-        </div>
-      </ContentLayout>
-    </Layout>
+        <ContentLayout style={{ maxWidth: 600 }} onScroll={handleScroll}>
+          <div className={styles.contentHeader}>
+            <PageTitle>{t('common:medias')}</PageTitle>
+          </div>
+          <div className={styles.mediaMenu}>
+            <MediaMenu
+              sections={Object.keys(initialData.medias)}
+              activeAnchor={activeAnchor}
+            />
+          </div>
+          <div className={styles.mediasContent}>
+            {Object.entries(initialData.medias).map(
+              ([kind, medias], _, entries) => (
+                <MediaSection
+                  key={kind}
+                  kind={kind}
+                  medias={medias}
+                  showTitle={entries.length > 1}
+                />
+              ),
+            )}
+          </div>
+        </ContentLayout>
+      </Layout>
+      {isDocumentOpen && (
+        <WorkDocument
+          workId={initialData.id}
+          onClose={() => setIsDocumentOpen(false)}
+        />
+      )}
+    </>
   );
 }
 

@@ -372,9 +372,8 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       },
       publicDomain,
       additionalLicenseInformation,
-      medias {
-        id
-      }
+      mediasCount: _count(field: "medias")
+      scannedDocumentPagesCount: _count(field: "scannedDocumentPages")
     }
   }
 }`;
@@ -386,6 +385,7 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
     slug,
     title,
     ... on works_works_Entry {
+      scannedDocumentPagesCount: _count(field: "scannedDocumentPages"),
       medias @transform(width: 600) {
         id,
         url,
@@ -411,6 +411,25 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
             title
           }
         }
+      }
+    }
+  }
+}
+`;
+
+export const getWorkDocumentByIdQuery = `
+${assetFragment}
+query GetWorkById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "works", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on works_works_Entry {
+      pdf: scannedDocumentPdf {
+        ...assetFragment
+      },
+      images: scannedDocumentPages {
+        ...assetFragment
       }
     }
   }

@@ -85,35 +85,27 @@ function Work(props) {
         {authors.map(({ typeHandle, ...rest }) => {
           if (typeHandle === 'persons') {
             const author = `${rest.lastName} ${rest.firstName}`;
-            return (
-              <>
-                <meta
-                  key={`${rest.id}-DC`}
-                  name="DC.creator"
-                  content={author}
-                />
-                <meta
-                  key={`${rest.id}-Google`}
-                  name="citation_author"
-                  content={author}
-                />
-              </>
-            );
+            return [
+              <meta key={`${rest.id}-DC`} name="DC.creator" content={author} />,
+              <meta
+                key={`${rest.id}-Google`}
+                name="citation_author"
+                content={author}
+              />,
+            ];
           } else if (typeHandle === 'companies') {
-            return (
-              <>
-                <meta
-                  key={`${rest.id}-DC`}
-                  name="DC.creator"
-                  content={rest.title}
-                />
-                <meta
-                  key={`${rest.id}-Google`}
-                  name="citation_author"
-                  content={rest.title}
-                />
-              </>
-            );
+            return [
+              <meta
+                key={`${rest.id}-DC`}
+                name="DC.creator"
+                content={rest.title}
+              />,
+              <meta
+                key={`${rest.id}-Google`}
+                name="citation_author"
+                content={rest.title}
+              />,
+            ];
           }
         })}
         <meta

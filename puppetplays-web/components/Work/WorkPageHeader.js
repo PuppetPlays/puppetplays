@@ -9,7 +9,9 @@ import Place from 'components/Place';
 import ButtonLink from 'components/ButtonLink';
 import NoteIcon from './icons/icon-note.svg';
 import MediaIcon from './icons/icon-media.svg';
+import OriginalWorkIcon from './icons/icon-original-work.svg';
 import styles from './workPageHeader.module.scss';
+import Button from 'components/Button';
 
 const WorkPageHeader = ({
   id,
@@ -18,6 +20,8 @@ const WorkPageHeader = ({
   authors,
   compositionPlace,
   hasMedia,
+  hasDocument,
+  onOpenDocument,
 }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -66,7 +70,7 @@ const WorkPageHeader = ({
           </Fragment>
         )}
       </div>
-      {hasMedia && (
+      {(hasMedia || hasDocument) && (
         <div className={styles.nav}>
           <ButtonLink
             icon={<NoteIcon />}
@@ -75,13 +79,24 @@ const WorkPageHeader = ({
           >
             {t('common:presentation')}
           </ButtonLink>
-          <ButtonLink
-            icon={<MediaIcon />}
-            href={`/oeuvres/${id}/${slug}/medias`}
-            inverse={router.asPath !== `/oeuvres/${id}/${slug}/medias`}
-          >
-            {t('common:medias')}
-          </ButtonLink>
+          {hasMedia && (
+            <ButtonLink
+              icon={<MediaIcon fillRule="evenodd" />}
+              href={`/oeuvres/${id}/${slug}/medias`}
+              inverse={router.asPath !== `/oeuvres/${id}/${slug}/medias`}
+            >
+              {t('common:medias')}
+            </ButtonLink>
+          )}
+          {hasDocument && (
+            <Button
+              icon={<OriginalWorkIcon fillRule="evenodd" />}
+              onClick={onOpenDocument}
+              inverse={false}
+            >
+              {t('common:document')}
+            </Button>
+          )}
         </div>
       )}
     </div>
@@ -92,6 +107,8 @@ WorkPageHeader.defaultProps = {
   authors: null,
   compositionPlace: null,
   hasMedia: false,
+  hasDocument: false,
+  isDocumentOpen: false,
 };
 
 WorkPageHeader.propTypes = {
@@ -101,6 +118,9 @@ WorkPageHeader.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.object),
   compositionPlace: PropTypes.arrayOf(PropTypes.object),
   hasMedia: PropTypes.bool,
+  hasDocument: PropTypes.bool,
+  isDocumentOpen: PropTypes.bool,
+  onOpenDocument: PropTypes.func.isRequired,
 };
 
 export default WorkPageHeader;
