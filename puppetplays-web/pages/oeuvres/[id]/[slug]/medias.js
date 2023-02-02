@@ -7,6 +7,7 @@ import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';
 import Layout from 'components/Layout';
 import useActiveAnchor from 'hooks/useActiveAnchor';
 import ContentLayout from 'components/ContentLayout';
+import WorkDocument from 'components/Work/WorkDocument';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import MediaSection from 'components/Work/MediaSection';
 import MediaMenu from 'components/Work/MediaMenu';

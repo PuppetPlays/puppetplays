@@ -1,12 +1,13 @@
 import { useCallback, useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
+import { hasAtLeastOneItem } from 'lib/utils';
 import { fetchAPI, getWorkDocumentByIdQuery } from 'lib/api';
 import CloseButton from 'components/CloseButton';
 import IconDownload from './icons/icon-download.svg';
 import styles from './workDocument.module.scss';
-import { hasAtLeastOneItem } from 'lib/utils';
 
 const usePagination = (initialPage) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
@@ -28,6 +29,7 @@ const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;
 
 const WorkDocument = ({ workId, onClose }) => {
+  const { t } = useTranslation();
   const [isSideBarOpen, setIsSidebarOpen] = useState(true);
   const [zoom, setZoom] = useState(1);
   const [currentPage, onScroll] = usePagination(0);
@@ -55,24 +57,60 @@ const WorkDocument = ({ workId, onClose }) => {
   const handleZoomOut = () => {
     setZoom(zoom - 1);
   };
-  console.log(data);
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <CloseButton onClick={onClose} />
       </header>
-      <div className={styles.content} onScroll={onScroll}>
-        <div className={styles.scroll} data-zoom={zoom}>
-          {data &&
-            data.entry.images.map((image, index) => (
-              <img
-                key={image.id}
-                src={image.url}
-                alt=""
-                id={`page-${index}`}
-                data-page={index}
-              />
-            ))}
+      <div className={styles.layout}>
+        {data && (
+          <div className={styles.sidebar} data-open={isSideBarOpen}>
+            <div className={styles.sidebarHeader}>
+              <h2>{t('common:flatplan')}</h2>
+              <button
+                className={styles.iconButton}
+                type="button"
+                onClick={() => setIsSidebarOpen(!isSideBarOpen)}
+              >
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10 3.5L5 8L10 12.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <ul className={styles.sidebarContent}>
+              {data.entry.images.map((image, index) => (
+                <li
+                  key={image.id}
+                  className={styles.sidebarPage}
+                  data-selected={index === currentPage}
+                >
+                  <a href={`#page-${index}`}>
+                    <div>{index + 1}</div>
+                    <img src={image.url} alt="" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className={styles.content} onScroll={onScroll}>
+          <div className={styles.scroll} data-zoom={zoom}>
+            {data &&
+              data.entry.images.map((image, index) => (
+                <img
+                  key={image.id}
+                  src={image.url}
+                  alt=""
+                  id={`page-${index}`}
+                  data-page={index}
+                />
+              ))}
+          </div>
         </div>
       </div>
       {data && (
@@ -121,40 +159,6 @@ const WorkDocument = ({ workId, onClose }) => {
               <rect x="4" y="7" width="8" height="2" />
             </svg>
           </button>
-        </div>
-      )}
-      {data && (
-        <div className={styles.sidebar} data-open={isSideBarOpen}>
-          <div className={styles.sidebarHeader}>
-            <h2>Chemin de fer</h2>
-            <button
-              className={styles.iconButton}
-              type="button"
-              onClick={() => setIsSidebarOpen(!isSideBarOpen)}
-            >
-              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 3.5L5 8L10 12.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-          <ul className={styles.sidebarContent}>
-            {data.entry.images.map((image, index) => (
-              <li
-                key={image.id}
-                className={styles.sidebarPage}
-                data-selected={index === currentPage}
-              >
-                <a href={`#page-${index}`}>
-                  <div>{index + 1}</div>
-                  <img src={image.url} alt="" />
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       )}
       <div className={styles.action}>
