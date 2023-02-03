@@ -11,6 +11,9 @@
     },
     "animationTechniques": {
       "description": "Définition des techniques d’animation pour marionnettes – Les techniques de manipulation des marionnettes et leurs répertoires – Projet ERC PuppetPlays"
+    },
+    "discoveryPaths": {
+      "description": "Parcours découverte – Projet ERC PuppetPlays"
     }
   },
   "navMenu": "Menu de navigation",
@@ -139,5 +142,6 @@
   "permalink": "Permalien",
   "permalinkCopy": "Copier le permalien",
   "document": "Document",
-  "flatplan": "Chemin de fer"
+  "flatplan": "Chemin de fer",
+  "discoveryPaths": "Parcours découverte"
 }

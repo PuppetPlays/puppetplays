@@ -680,3 +680,35 @@ query GetWorksCardByIds($locale: [String], $id: [QueryArgument]) {
   }
 }
 `;
+
+export const getAllDiscoveryPaths = `
+${assetFragment}
+query GetAllDiscoveryPaths($locale: [String]) {
+  entries(section: "discoveryPaths", site: $locale) {
+    id,
+    slug,
+    title,
+    ... on discoveryPaths_default_Entry {
+      abstract,
+      thumbnail @transform(width: 680) {
+        ...assetFragment
+      }
+      richContent
+    }
+  }
+}
+`;
+
+export const getDiscoveryPathById = `
+query GetDiscoveryPathById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "discoveryPaths", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on discoveryPaths_default_Entry {
+      abstract,
+      richContent
+    }
+  }
+}
+`;

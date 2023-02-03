@@ -11,6 +11,9 @@
     },
     "animationTechniques": {
       "description": "Animation techniques for puppets and marionettes and their repertoires – Description of the different ways to manipulate puppets – ERC project PuppetPlays"
+    },
+    "discoveryPaths": {
+      "description": "Discovery paths – ERC project PuppetPlays"
     }
   },
   "navMenu": "Browsing menu",
@@ -139,5 +142,6 @@
   "permalink": "Permalink",
   "permalinkCopy": "Copy the permalink",
   "document": "Document",
-  "flatplan": "Flatplan"
+  "flatplan": "Flatplan",
+  "discoveryPaths": "Discovery paths"
 }

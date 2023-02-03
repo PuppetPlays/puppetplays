@@ -1,0 +1,56 @@
+field: 2e9e0ef6-71c0-4e08-931b-6b53d7197c7d # Pages du document scanné
+fieldLayouts:
+  f3b70f4f-6db4-44a8-b036-738512308f6e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 11f7a6ca-ab33-4bfc-9271-661e04bdf539 # Image
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  11f7a6ca-ab33-4bfc-9271-661e04bdf539: # Image
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+      defaultUploadLocationSubpath: ''
+      limit: ''
+      localizeRelations: false
+      previewMode: thumbs
+      restrictFiles: '1'
+      selectionLabel: 'Sélectionner une image'
+      showSiteMenu: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: list
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+handle: page
+name: Page
+sortOrder: 1

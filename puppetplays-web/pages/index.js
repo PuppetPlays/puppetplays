@@ -170,6 +170,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
                       thumbnailUrl="/pathways-thumbnail.jpg"
+                      to="/parcours-decouverte"
                     />
                     <EntryPointCard
                       title={t('exploreBy.publications.title')}

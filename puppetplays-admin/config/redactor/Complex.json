@@ -1,0 +1,42 @@
+{
+  "air": true,
+  "plugins": ["video", "widget"],
+  "buttons": ["format", "bold", "italic", "lists", "link", "image"],
+  "formatting": [],
+  "formattingAdd": {
+    "paragraph": {
+      "title": "Paragraphe",
+      "api": "module.block.format",
+      "args": {
+        "tag": "p"
+      }
+    },
+    "intertitle-1": {
+      "title": "Intertitre",
+      "api": "module.block.format",
+      "args": {
+        "tag": "h2",
+        "type": "toggle"
+      }
+    },
+    "intertitle-2": {
+      "title": "Intertitre 2",
+      "api": "module.block.format",
+      "args": {
+        "tag": "h3",
+        "type": "toggle"
+      }
+    },
+    "blockquote": {
+      "title": "Citation",
+      "api": "module.block.format",
+      "args": {
+        "tag": "blockquote",
+        "type": "toggle"
+      }
+    }
+  },
+  "pastePlainText": true,
+  "pasteLinkTarget": "_blank",
+  "pasteImages": false
+}
