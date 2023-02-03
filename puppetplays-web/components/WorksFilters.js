@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import uniqBy from 'lodash/uniqBy';
 import get from 'lodash/get';
 import { hasAtLeastOneItem, identity } from 'lib/utils';
 import { getAllWorksKeywordsQuery, getFetchAPIClient } from 'lib/api';
@@ -11,12 +12,12 @@ import {
   getAllAudiencesQuery,
   getAllFormatsQuery,
   getAllLanguagesQuery,
-  getAllPersonsQuery,
   getAllLiteraryTonesQuery,
   getAllPlacesQuery,
   getPeriodBoundsQuery,
   getFilterEntriesByIdsQuery,
   getSectionName,
+  getAllWorksQuery,
 } from 'lib/filtersApi';
 import FilterSelect from 'components/FilterSelect';
 import FilterRange from 'components/FilterRange';
@@ -59,10 +60,14 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getPersonsOptions = () => {
-    apiClient(getAllPersonsQuery).then((persons) => {
+    apiClient(getAllWorksQuery).then((works) => {
+      const uniqueAuthors = uniqBy(
+        works.entries.flatMap(({ authors }) => authors),
+        ({ id }) => id,
+      );
       setFiltersOptions({
         ...filtersOptions,
-        persons: persons.entries,
+        persons: uniqueAuthors,
       });
     });
   };

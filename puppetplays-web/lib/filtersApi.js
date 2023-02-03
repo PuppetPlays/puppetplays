@@ -72,6 +72,19 @@ query GetAllPersons($locale: [String]) {
 }
 `;
 
+export const getAllWorksQuery = `
+query GetAllWorks($locale: [String]) {
+  entries(section: "works", site: $locale, orderBy: "title") {
+    ... on works_works_Entry {
+      authors {
+        id,
+        title
+      }
+    }
+  }
+}
+`;
+
 export const getAllAnimationTechniquesQuery = `
 query GetAllAnimationTechniques($locale: [String]) {
   entries(section: "animationTechniques", site: $locale, orderBy: "title") {
