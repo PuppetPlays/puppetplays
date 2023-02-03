@@ -1,3 +1,4 @@
+import * as stopWords from 'lib/stopWords';
 import {
   authorsStateToGraphqlEntriesParams,
   authorsStateToGraphqlQueryArgument,
@@ -170,7 +171,7 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 `;
 };
 
-export const buildSearchQuery = (search) => {
+export const buildSearchQuery = (search, locale) => {
   const splitRegex = /\s(?=(?:[^'"`]*(['"`])[^'"`]*\1)*[^'"`]*$)/g;
   return search
     ? search
@@ -178,6 +179,11 @@ export const buildSearchQuery = (search) => {
         .replace(/\+\s*/g, '+')
         .split(splitRegex)
         .filter(identity)
+        .filter((term) =>
+          locale === 'fr'
+            ? !stopWords.FR.includes(term)
+            : !stopWords.EN.includes(term),
+        )
         .join(' OR ')
         .replace(/\+/g, ' ')
     : '';

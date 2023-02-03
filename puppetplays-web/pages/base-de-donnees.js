@@ -98,7 +98,7 @@ function Home({ initialData }) {
         locale: router.locale,
         offset: currentPage * WORKS_PAGE_SIZE,
         limit: WORKS_PAGE_SIZE,
-        search: buildSearchQuery(searchTerms),
+        search: buildSearchQuery(searchTerms, router.locale),
         ...stateToGraphqlVariables(newFilters),
       },
     }).then((newData) => {
@@ -347,7 +347,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
   const data = await getAllWorks(
     locale,
     query.page * WORKS_PAGE_SIZE,
-    buildSearchQuery(query.search),
+    buildSearchQuery(query.search, locale),
     query,
   );
 
