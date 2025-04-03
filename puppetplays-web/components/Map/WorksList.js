@@ -19,13 +19,11 @@ const WorksList = ({ works, onClose }) => {
       </button>
       <div className={styles.list}>
         {works && Array.isArray(works) && works.length > 0 ? (
-          works.map((work) => (
-            <WorkCard key={work.id} {...work} />
-          ))
+          works.map(work => <WorkCard key={work.id} {...work} />)
         ) : (
-          <NoResults 
+          <NoResults
             icon="search"
-            title={t('common:error.dataNotFound')} 
+            title={t('common:error.dataNotFound')}
             message={t('common:error.noResultsFound')}
             customStyles={{ margin: '20px auto' }}
           />

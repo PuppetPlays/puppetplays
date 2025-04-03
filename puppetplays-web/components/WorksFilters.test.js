@@ -2,33 +2,52 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 // Mock les composants importés par WorksFilters pour éviter les problèmes avec react-select
-jest.mock('components/FilterSelect', () => () => <div data-testid="filter-select">FilterSelect Mock</div>);
-jest.mock('components/FilterRange', () => () => <div data-testid="filter-range">FilterRange Mock</div>);
+jest.mock('components/FilterSelect', () => () => (
+  <div data-testid="filter-select">FilterSelect Mock</div>
+));
+jest.mock('components/FilterRange', () => () => (
+  <div data-testid="filter-range">FilterRange Mock</div>
+));
 jest.mock('components/FilterCheckbox', () => ({ label, onChange }) => (
   <div data-testid="filter-checkbox">
     <label>
-      <input type="checkbox" aria-label={label} onChange={() => onChange(true)} />
+      <input
+        type="checkbox"
+        aria-label={label}
+        onChange={() => onChange(true)}
+      />
       {label}
     </label>
   </div>
 ));
-jest.mock('components/FiltersBar', () => ({ children, onClearAll, disabled }) => (
-  <div data-testid="filters-bar">
-    {children}
-    <button data-testid="clear-all-button" disabled={disabled} onClick={onClearAll}>Effacer tout</button>
-  </div>
-));
+jest.mock(
+  'components/FiltersBar',
+  () =>
+    ({ children, onClearAll, disabled }) =>
+      (
+        <div data-testid="filters-bar">
+          {children}
+          <button
+            data-testid="clear-all-button"
+            disabled={disabled}
+            onClick={onClearAll}
+          >
+            Effacer tout
+          </button>
+        </div>
+      ),
+);
 
 // Mock next/router
 jest.mock('next/router', () => ({
   useRouter: () => ({
-    locale: 'fr'
-  })
+    locale: 'fr',
+  }),
 }));
 
 // Mock next-translate
 jest.mock('next-translate/useTranslation', () => () => ({
-  t: (key) => {
+  t: key => {
     const translations = {
       'common:filterByLanguage': 'Filtrer par langue',
       'common:filterByPlace': 'Filtrer par lieu',
@@ -36,19 +55,21 @@ jest.mock('next-translate/useTranslation', () => () => ({
       'common:filterByTag': 'Filtrer par mot-clé',
       'common:clearAll': 'Effacer tout',
       'common:publicDomain': 'Domaine public',
-      'common:period': 'Période'
+      'common:period': 'Période',
     };
     return translations[key] || key;
-  }
+  },
 }));
 
 // Mock pour les API de données
 jest.mock('lib/api', () => ({
   getAllWorksKeywordsQuery: 'mock-query',
-  getFetchAPIClient: jest.fn(() => jest.fn().mockResolvedValue({ 
-    tags: [], 
-    entries: []
-  }))
+  getFetchAPIClient: jest.fn(() =>
+    jest.fn().mockResolvedValue({
+      tags: [],
+      entries: [],
+    }),
+  ),
 }));
 
 jest.mock('lib/filtersApi', () => ({
@@ -61,7 +82,7 @@ jest.mock('lib/filtersApi', () => ({
   getAllPlacesQuery: jest.fn(() => 'mock-query'),
   getPeriodBoundsQuery: 'mock-query',
   getFilterEntriesByIdsQuery: jest.fn(() => 'mock-query'),
-  getSectionName: jest.fn((key) => {
+  getSectionName: jest.fn(key => {
     const sections = {
       mainLanguage: 'languages',
       compositionPlace: 'places',
@@ -71,23 +92,26 @@ jest.mock('lib/filtersApi', () => ({
       theatricalTechniques: 'theatricalTechniques',
       audience: 'audiences',
       formats: 'formats',
-      relatedToTags: 'tags'
+      relatedToTags: 'tags',
     };
     return sections[key] || key;
   }),
-  getAllWorksQuery: 'mock-query'
+  getAllWorksQuery: 'mock-query',
 }));
 
 // Mock lodash functions
 jest.mock('lodash/uniqBy', () => arr => arr);
-jest.mock('lodash/get', () => (obj, path, defaultValue) => 
-  path.split('.').reduce((acc, part) => acc && acc[part], obj) || defaultValue
+jest.mock(
+  'lodash/get',
+  () => (obj, path, defaultValue) =>
+    path.split('.').reduce((acc, part) => acc && acc[part], obj) ||
+    defaultValue,
 );
 
 // Mock lib/utils
 jest.mock('lib/utils', () => ({
-  hasAtLeastOneItem: (arr) => Array.isArray(arr) && arr.length > 0,
-  identity: (x) => x
+  hasAtLeastOneItem: arr => Array.isArray(arr) && arr.length > 0,
+  identity: x => x,
 }));
 
 // Importer après les mocks
@@ -103,17 +127,17 @@ describe('WorksFilters component', () => {
 
   test('renders basic structure', () => {
     render(
-      <WorksFilters 
-        filters={{}} 
-        onChange={mockOnChange} 
-        onClearAll={mockOnClearAll} 
-      />
+      <WorksFilters
+        filters={{}}
+        onChange={mockOnChange}
+        onClearAll={mockOnClearAll}
+      />,
     );
-    
+
     // Vérifier que les éléments de base sont rendus
     expect(screen.getByTestId('filters-bar')).toBeInTheDocument();
     expect(screen.getByTestId('clear-all-button')).toBeInTheDocument();
-    
+
     // Vérifier que les filtres select sont rendus
     const filterSelects = screen.getAllByTestId('filter-select');
     expect(filterSelects.length).toBeGreaterThan(0);
@@ -121,13 +145,13 @@ describe('WorksFilters component', () => {
 
   test('calls onClearAll when clear button is clicked', () => {
     render(
-      <WorksFilters 
-        filters={{ mainLanguage: ['1'] }} 
-        onChange={mockOnChange} 
-        onClearAll={mockOnClearAll} 
-      />
+      <WorksFilters
+        filters={{ mainLanguage: ['1'] }}
+        onChange={mockOnChange}
+        onClearAll={mockOnClearAll}
+      />,
     );
-    
+
     // Cliquer sur le bouton d'effacement
     fireEvent.click(screen.getByTestId('clear-all-button'));
     expect(mockOnClearAll).toHaveBeenCalledTimes(1);
@@ -135,15 +159,15 @@ describe('WorksFilters component', () => {
 
   test('renders checkbox filters', () => {
     render(
-      <WorksFilters 
-        filters={{}} 
-        onChange={mockOnChange} 
-        onClearAll={mockOnClearAll} 
-      />
+      <WorksFilters
+        filters={{}}
+        onChange={mockOnChange}
+        onClearAll={mockOnClearAll}
+      />,
     );
-    
+
     // Vérifier que les filtres checkbox sont rendus
     const filterCheckboxes = screen.getAllByTestId('filter-checkbox');
     expect(filterCheckboxes.length).toBeGreaterThan(0);
   });
-}); 
+});

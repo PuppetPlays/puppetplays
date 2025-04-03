@@ -102,7 +102,7 @@ function Home({ initialData }) {
         search: buildSearchQuery(searchTerms, router.locale),
         ...stateToGraphqlVariables(newFilters),
       },
-    }).then((newData) => {
+    }).then(newData => {
       setData(newData);
       if (scrollElementRef.current) {
         scrollElementRef.current.scrollTop = 0;
@@ -111,7 +111,7 @@ function Home({ initialData }) {
   }, [router.locale, router.query, scrollElementRef]);
 
   const handlePageChange = useCallback(
-    (page) => {
+    page => {
       setCurrentPage(page.selected);
       router.push(
         `base-de-donnees/?${stringifyQuery({
@@ -160,14 +160,14 @@ function Home({ initialData }) {
   );
 
   const handleChangeSearchQuery = useCallback(
-    (search) => {
+    search => {
       setSearchTerms(search);
     },
     [setSearchTerms],
   );
 
   const handleAfterChangeSearchQuery = useCallback(
-    (search) => {
+    search => {
       setCurrentPage(0);
       router.push(
         `base-de-donnees/?${stringifyQuery({
@@ -285,7 +285,7 @@ function Home({ initialData }) {
                   inverse={false}
                   name="orderBy"
                   value={
-                    orderByOptions.find((o) => o.id === filters.orderBy) || {
+                    orderByOptions.find(o => o.id === filters.orderBy) || {
                       id: 'chronology',
                       title: t('common:chronology'),
                     }
@@ -310,14 +310,16 @@ function Home({ initialData }) {
 
           <div className={styles.works} ref={scrollElementRef}>
             <div className={styles.worksScroll}>
-              {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
-                data.entries.map((work) => (
+              {data?.entries &&
+              Array.isArray(data.entries) &&
+              data.entries.length > 0 ? (
+                data.entries.map(work => (
                   <WorkSummary key={work.id} {...work} />
                 ))
               ) : (
-                <NoResults 
+                <NoResults
                   icon="search"
-                  title={t('common:error.dataNotFound')} 
+                  title={t('common:error.dataNotFound')}
                   message={t('common:error.noResultsFound')}
                 />
               )}

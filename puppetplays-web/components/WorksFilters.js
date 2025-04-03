@@ -29,7 +29,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   const { locale } = useRouter();
   const [filtersOptions, setFiltersOptions] = useState({});
   const apiClient = useCallback(
-    (query) =>
+    query =>
       getFetchAPIClient({
         variables: { locale },
       })(query),
@@ -44,7 +44,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   };
 
   const getLanguagesOptions = () => {
-    apiClient(getAllLanguagesQuery('works')).then((languages) => {
+    apiClient(getAllLanguagesQuery('works')).then(languages => {
       setFiltersOptions({
         ...filtersOptions,
         languages: languages.entries,
@@ -52,7 +52,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getPlacesOptions = () => {
-    apiClient(getAllPlacesQuery('works')).then((places) => {
+    apiClient(getAllPlacesQuery('works')).then(places => {
       setFiltersOptions({
         ...filtersOptions,
         places: places.entries,
@@ -60,7 +60,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getPersonsOptions = () => {
-    apiClient(getAllWorksQuery).then((works) => {
+    apiClient(getAllWorksQuery).then(works => {
       const uniqueAuthors = uniqBy(
         works.entries.flatMap(({ authors }) => authors),
         ({ id }) => id,
@@ -72,7 +72,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getLiteraryTonesOptions = () => {
-    apiClient(getAllLiteraryTonesQuery).then((literaryTones) => {
+    apiClient(getAllLiteraryTonesQuery).then(literaryTones => {
       setFiltersOptions({
         ...filtersOptions,
         literaryTones: literaryTones.entries,
@@ -80,7 +80,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getAnimationTechniquesOptions = () => {
-    apiClient(getAllAnimationTechniquesQuery).then((animationTechniques) => {
+    apiClient(getAllAnimationTechniquesQuery).then(animationTechniques => {
       setFiltersOptions({
         ...filtersOptions,
         animationTechniques: animationTechniques.entries,
@@ -88,7 +88,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getTheatricalTechniquesOptions = () => {
-    apiClient(getAllTheatricalTechniquesQuery).then((theatricalTechniques) => {
+    apiClient(getAllTheatricalTechniquesQuery).then(theatricalTechniques => {
       setFiltersOptions({
         ...filtersOptions,
         theatricalTechniques: theatricalTechniques.entries,
@@ -96,7 +96,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getAudiencesOptions = () => {
-    apiClient(getAllAudiencesQuery).then((audiences) => {
+    apiClient(getAllAudiencesQuery).then(audiences => {
       setFiltersOptions({
         ...filtersOptions,
         audiences: audiences.entries,
@@ -104,7 +104,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getFormatsOptions = () => {
-    apiClient(getAllFormatsQuery).then((formats) => {
+    apiClient(getAllFormatsQuery).then(formats => {
       setFiltersOptions({
         ...filtersOptions,
         formats: formats.entries,
@@ -112,7 +112,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     });
   };
   const getTagsOptions = () => {
-    apiClient(getAllWorksKeywordsQuery).then((data) => {
+    apiClient(getAllWorksKeywordsQuery).then(data => {
       setFiltersOptions({
         ...filtersOptions,
         tags: data.tags,
@@ -141,7 +141,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     const requestsKeys = activeFiltersWithNoOption.map(([key]) => key);
 
     if (requests.length > 0) {
-      Promise.all(requests).then((results) => {
+      Promise.all(requests).then(results => {
         const newFilterOptions = results.reduce((acc, data, index) => {
           acc[getSectionName(requestsKeys[index])] = data.entries || data.tags;
           return acc;
@@ -155,8 +155,8 @@ function WorksFilters({ filters, onChange, onClearAll }) {
   }, [filters, filtersOptions, locale, apiClient]);
 
   useEffect(() => {
-    apiClient(getPeriodBoundsQuery).then((periodBounds) => {
-      const getSafelyPeriodBound = (bound) =>
+    apiClient(getPeriodBoundsQuery).then(periodBounds => {
+      const getSafelyPeriodBound = bound =>
         hasAtLeastOneItem(bound) ? bound[0].value : null;
 
       setFiltersOptions({
@@ -235,7 +235,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
       } else if (name === 'publicDomain') {
         normalizedValue = value ? value : undefined;
       } else {
-        normalizedValue = value.length > 0 ? value.map((v) => v.id) : null;
+        normalizedValue = value.length > 0 ? value.map(v => v.id) : null;
       }
       onChange(normalizedValue, { name: normalizedName });
     },

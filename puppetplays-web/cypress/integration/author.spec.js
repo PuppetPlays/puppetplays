@@ -3,12 +3,12 @@ import { getGraphQlRequestMock } from '../utils';
 import author from '../fixtures/author';
 import works from '../fixtures/works';
 
-const getAuthorRequestBody = (id) => ({
+const getAuthorRequestBody = id => ({
   query: getAuthorByIdQuery,
   variables: { locale: 'fr', id },
 });
 
-const getWorksOfAuthorRequestBody = (id) => ({
+const getWorksOfAuthorRequestBody = id => ({
   query: getWorksOfAuthorQuery,
   variables: { locale: 'fr', id },
 });

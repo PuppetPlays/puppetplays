@@ -4,11 +4,11 @@ const useActiveAnchor = (anchorSelector, initialActiveAnchor) => {
   const [currentAnchor, setCurrentAnchor] = useState(initialActiveAnchor);
 
   const handleScroll = useCallback(
-    (evt) => {
+    evt => {
       const containerScrollTop = evt.target.scrollTop;
       const currentNode = Array.from(
         evt.target.querySelectorAll(anchorSelector),
-      ).find((node) => {
+      ).find(node => {
         return node.offsetTop >= containerScrollTop;
       });
       if (currentNode) {

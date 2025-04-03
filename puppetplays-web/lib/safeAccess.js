@@ -16,7 +16,7 @@ export const safeGet = (obj, path, defaultValue = undefined) => {
  * @param {Array|*} value - The value to ensure is an array
  * @returns {Array} The value as an array or an empty array
  */
-export const safeArray = (value) => {
+export const safeArray = value => {
   if (Array.isArray(value)) {
     return value;
   }
@@ -31,7 +31,7 @@ export const safeArray = (value) => {
  * @param {Object|*} value - The value to ensure is an object
  * @returns {Object} The value as an object or an empty object
  */
-export const safeObject = (value) => {
+export const safeObject = value => {
   if (value === null || value === undefined) {
     return {};
   }
@@ -46,7 +46,7 @@ export const safeObject = (value) => {
  * @param {string|*} value - The value to ensure is a string
  * @returns {string} The value as a string or an empty string
  */
-export const safeString = (value) => {
+export const safeString = value => {
   if (value === null || value === undefined) {
     return '';
   }
@@ -65,4 +65,4 @@ export const safeNumber = (value, defaultValue = 0) => {
   }
   const parsed = Number(value);
   return isNaN(parsed) ? defaultValue : parsed;
-}; 
+};

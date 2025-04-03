@@ -9,11 +9,13 @@ function Hypotexts({ hypotexts }) {
 
   return (
     <Info label={t('common:hypotexts')} show={hasAtLeastOneItem(hypotexts)}>
-      {hypotexts && Array.isArray(hypotexts) && hypotexts.map((hypotext) => (
-        <div key={hypotext.title}>
-          <Hypotext {...hypotext} />
-        </div>
-      ))}
+      {hypotexts &&
+        Array.isArray(hypotexts) &&
+        hypotexts.map(hypotext => (
+          <div key={hypotext.title}>
+            <Hypotext {...hypotext} />
+          </div>
+        ))}
     </Info>
   );
 }

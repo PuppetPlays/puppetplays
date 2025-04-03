@@ -3,7 +3,7 @@ import Author from './Author';
 
 import { ModalProvider } from 'components/modalContext';
 
-const renderWithinModalProvider = (component) =>
+const renderWithinModalProvider = component =>
   render(<ModalProvider>{component}</ModalProvider>);
 
 test('renders an author with a common name', () => {

@@ -10,7 +10,7 @@ import {
 import { identity } from './utils';
 
 export const getFetchAPIClient = (params, token) => {
-  return (query) => fetchAPI(query, params, token);
+  return query => fetchAPI(query, params, token);
 };
 
 export async function fetchAPI(query, { variables } = {}, token) {
@@ -179,7 +179,7 @@ export const buildSearchQuery = (search, locale) => {
         .replace(/\+\s*/g, '+')
         .split(splitRegex)
         .filter(identity)
-        .filter((term) =>
+        .filter(term =>
           locale === 'fr'
             ? !stopWords.FR.includes(term)
             : !stopWords.EN.includes(term),
@@ -464,7 +464,7 @@ query GetAllWorksAuthorsIds($locale: [String]) {
   }
 }`;
 
-export const getAllAuthorsQuery = (filters) => `
+export const getAllAuthorsQuery = filters => `
 query GetAllAuthors($locale: [String]${authorsStateToGraphqlQueryArgument(
   filters,
 )}) {

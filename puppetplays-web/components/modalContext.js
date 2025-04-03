@@ -33,7 +33,7 @@ function modalReducer(state, { type, payload }) {
 
     case 'close': {
       return payload && payload.type
-        ? state.filter((modal) => modal.type !== payload.type)
+        ? state.filter(modal => modal.type !== payload.type)
         : [];
     }
 
@@ -44,11 +44,11 @@ function modalReducer(state, { type, payload }) {
 }
 
 export const isModalOfTypeOpen = (state, type) =>
-  !!state.find((modal) => modal.type === type);
+  !!state.find(modal => modal.type === type);
 
 export const getMetaOfModalByType = (state, modalType) =>
   get(
-    state.find((modal) => modal.type === modalType),
+    state.find(modal => modal.type === modalType),
     'meta',
     {},
   );

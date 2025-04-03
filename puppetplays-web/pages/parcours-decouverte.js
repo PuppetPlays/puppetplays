@@ -47,8 +47,10 @@ function ParcoursDecouverte({ initialData }) {
           {data?.entries && <span>({data.entries.length})</span>}
         </div>
         <div className={styles.list}>
-          {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
-            data.entries.map((entry) => (
+          {data?.entries &&
+          Array.isArray(data.entries) &&
+          data.entries.length > 0 ? (
+            data.entries.map(entry => (
               <article key={entry.id} className={styles.listItem}>
                 {hasAtLeastOneItem(entry.thumbnail) && (
                   <div key={entry.id} className={styles.listItemImage}>
@@ -71,9 +73,9 @@ function ParcoursDecouverte({ initialData }) {
               </article>
             ))
           ) : (
-            <NoResults 
+            <NoResults
               icon="info"
-              title={t('common:error.dataNotFound')} 
+              title={t('common:error.dataNotFound')}
               message={t('common:error.noResultsFound')}
             />
           )}

@@ -46,7 +46,7 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
     Promise.all([
       apiClient(getAllLanguagesQuery('persons')),
       apiClient(getAllPlacesQuery('persons')),
-    ]).then((result) => {
+    ]).then(result => {
       const [languages, places] = result;
 
       setFiltersOptions({
@@ -73,7 +73,7 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
 
   const handleChangeFilters = useCallback(
     (value, { name }) => {
-      const isArrayWithElements = (v) => isArray(v) && v.length > 0;
+      const isArrayWithElements = v => isArray(v) && v.length > 0;
       const getNewFilterValue = cond([
         [isArrayWithElements, map(getFp('id'))],
         [isArray, constant(null)],

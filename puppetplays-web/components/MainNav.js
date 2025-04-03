@@ -6,7 +6,7 @@ import useWindowSize from 'hooks/useWindowSize';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
 
-const NavButton = (props) => {
+const NavButton = props => {
   const { t } = useTranslation();
 
   return (

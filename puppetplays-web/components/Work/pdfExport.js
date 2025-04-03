@@ -39,7 +39,7 @@ export const contentDefinition = [
   { props: ['compositionDisplayDate'], withLabel: true },
 ];
 
-export const getPdfDefinition = (props) => ({
+export const getPdfDefinition = props => ({
   pageSize: 'A4',
   pageMargins: [40, 60, 40, 60],
   styles: {
@@ -66,6 +66,6 @@ export const getPdfDefinition = (props) => ({
   info: {
     title: props.title,
     author: 'Puppetplays',
-    keywords: props.keywords.map((k) => k.title).join(', '),
+    keywords: props.keywords.map(k => k.title).join(', '),
   },
 });

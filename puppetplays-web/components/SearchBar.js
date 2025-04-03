@@ -19,7 +19,7 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
   );
 
   const handleChange = useCallback(
-    (evt) => {
+    evt => {
       debounceOnChange(evt.target.value);
       onChange(evt.target.value);
     },

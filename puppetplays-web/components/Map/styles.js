@@ -36,7 +36,7 @@ const getNumberTextStyle = (text, offsetY, fill = '#2037b1') => {
   });
 };
 
-const isType = (type) => (value) => type === value;
+const isType = type => value => type === value;
 const isCountry = isType('countries');
 
 const getPlaceStyleProps = ({ ids, type }) => {
@@ -60,14 +60,14 @@ const getBaseStyle = (properties, textColor, state) => {
   });
 };
 
-export const getPlaceStyle = (feature) => {
+export const getPlaceStyle = feature => {
   const properties = feature.getProperties();
   const baseStyle = getBaseStyle(properties);
   baseStyle.setZIndex(feature.getId());
   return baseStyle;
 };
 
-export const getSelectedPlaceStyle = (feature) => {
+export const getSelectedPlaceStyle = feature => {
   const properties = feature.getProperties();
   const labelOffsetY = isCountry(properties.type) ? 34 : 2;
   const baseStyle = getBaseStyle(properties, '#fff', 'selected');
@@ -83,7 +83,7 @@ export const getSelectedPlaceStyle = (feature) => {
   return [baseStyle, labelStyle];
 };
 
-export const getHoveredPlaceStyle = (feature) => {
+export const getHoveredPlaceStyle = feature => {
   const properties = feature.getProperties();
   const labelOffsetY = isCountry(properties.type) ? 34 : 2;
   const baseStyle = getBaseStyle(properties, '#2d4df6', 'hovered');

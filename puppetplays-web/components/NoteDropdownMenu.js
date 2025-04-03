@@ -9,7 +9,7 @@ import { modalTypes, useModal } from 'components/modalContext';
 import styles from './noteDropdownMenu.module.scss';
 import { useRouter } from 'next/router';
 
-const NoteDropdownMenuButton = (props) => {
+const NoteDropdownMenuButton = props => {
   const { t } = useTranslation();
 
   return (

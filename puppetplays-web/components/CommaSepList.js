@@ -13,7 +13,7 @@ function CommaSepList({
   if (!list || !Array.isArray(list)) {
     return null;
   }
-  
+
   if (!itemComponent && !itemComponents) {
     return list.map(listTransform).join(separator);
   }

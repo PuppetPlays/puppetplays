@@ -15,14 +15,14 @@ const SearchBarStateful = () => {
   }, [setSearchValue]);
 
   const handleSearchChange = useCallback(
-    (evt) => {
+    evt => {
       setSearchValue(evt.target.value);
     },
     [setSearchValue],
   );
 
   const handleSubmit = useCallback(
-    (evt) => {
+    evt => {
       evt.preventDefault();
       router.push(
         `/base-de-donnees/?search=${evt.target.elements.search.value}`,

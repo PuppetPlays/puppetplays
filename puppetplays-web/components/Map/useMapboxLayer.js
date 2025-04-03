@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useMap } from './mapContext';
 import MapboxVector from 'ol/layer/MapboxVector';
 
-const useMapboxLayer = (options) => {
+const useMapboxLayer = options => {
   const map = useMap();
   const mapboxLayer = useRef(null);
 

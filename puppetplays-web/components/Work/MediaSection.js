@@ -8,7 +8,7 @@ import VideoIcon from './icons/icon-video.svg';
 import AudioIcon from './icons/icon-sound.svg';
 import styles from './mediaSection.module.scss';
 
-const isOfKind = (kind) => (value) => kind === value;
+const isOfKind = kind => value => kind === value;
 
 export const getMediaKindIcon = cond([
   [isOfKind('image'), constant(<PhotoIcon />)],
@@ -38,12 +38,17 @@ const MediaSection = ({ kind, medias, showTitle }) => {
             <Media key={id} {...media} kind={kind} />
           ))
         ) : (
-          <NoResults 
+          <NoResults
             icon="info"
-            title={t('common:error.dataNotFound')} 
-            message={t(`common:no${kind.charAt(0).toUpperCase() + kind.slice(1)}Available`, {
-              fallback: t('common:error.noResultsFound')
-            })}
+            title={t('common:error.dataNotFound')}
+            message={t(
+              `common:no${
+                kind.charAt(0).toUpperCase() + kind.slice(1)
+              }Available`,
+              {
+                fallback: t('common:error.noResultsFound'),
+              },
+            )}
             customStyles={{ margin: '20px auto', padding: '20px' }}
           />
         )}

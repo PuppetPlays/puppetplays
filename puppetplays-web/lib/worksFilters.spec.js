@@ -53,9 +53,8 @@ describe('stateToGraphqlQueryArgument', () => {
 
   test('should omit nil filters', () => {
     const localFiltersState = { ...filtersState, mainLanguage: null };
-    const graphqlQueryArguments = stateToGraphqlQueryArgument(
-      localFiltersState,
-    );
+    const graphqlQueryArguments =
+      stateToGraphqlQueryArgument(localFiltersState);
 
     expect(graphqlQueryArguments).toEqual(
       ', $compositionPlace: [QueryArgument], $compositionMinDate: [QueryArgument]',

@@ -10,16 +10,16 @@ function NewsletterForm() {
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [isSubmitError, setIsSubmitError] = useState(false);
 
-  const handleFormSubmissionError = (response) => {
+  const handleFormSubmissionError = response => {
     if (!response.ok) {
       throw Error(response.statusText);
     }
     return response.json();
   };
 
-  const hideMessage = (cb) => setTimeout(() => cb(false), 6000);
+  const hideMessage = cb => setTimeout(() => cb(false), 6000);
 
-  const handleFormSubmit = (evt) => {
+  const handleFormSubmit = evt => {
     evt.preventDefault();
     const target = evt.target;
     setIsSubmitting(true);

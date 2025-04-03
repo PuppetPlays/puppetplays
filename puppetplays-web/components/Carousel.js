@@ -10,7 +10,7 @@ function Carousel({ images, bleed }) {
   const [currentImage, setCurrentImage] = useState(0);
   const cx = classNames.bind(styles);
 
-  const reduceImagesWidth = (index) => {
+  const reduceImagesWidth = index => {
     return images.slice(0, index).reduce((acc, image) => {
       return (acc += image.width);
     }, 0);
@@ -47,32 +47,34 @@ function Carousel({ images, bleed }) {
         ›
       </button>
       <div className={styles.inner} ref={innerRef}>
-        {images && Array.isArray(images) && images.map((image, index) => (
-          <div
-            key={`${image.id}-${index}`}
-            className={styles.image}
-            style={{ width: image.width }}
-          >
-            <ZoomableImage>
-              <img src={image.url} alt={image.alt} width={image.width} />
-            </ZoomableImage>
-            {(image.description || image.copyright) && (
-              <div className={styles.caption}>
-                {image.description && (
-                  <div
-                    className={styles.captionDescription}
-                    dangerouslySetInnerHTML={{ __html: image.description }}
-                  />
-                )}
-                {image.copyright && (
-                  <div className={styles.captionCopyright}>
-                    © {image.copyright}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
+        {images &&
+          Array.isArray(images) &&
+          images.map((image, index) => (
+            <div
+              key={`${image.id}-${index}`}
+              className={styles.image}
+              style={{ width: image.width }}
+            >
+              <ZoomableImage>
+                <img src={image.url} alt={image.alt} width={image.width} />
+              </ZoomableImage>
+              {(image.description || image.copyright) && (
+                <div className={styles.caption}>
+                  {image.description && (
+                    <div
+                      className={styles.captionDescription}
+                      dangerouslySetInnerHTML={{ __html: image.description }}
+                    />
+                  )}
+                  {image.copyright && (
+                    <div className={styles.captionCopyright}>
+                      © {image.copyright}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );

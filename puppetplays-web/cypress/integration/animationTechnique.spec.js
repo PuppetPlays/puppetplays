@@ -6,12 +6,12 @@ import { getGraphQlRequestMock } from '../utils';
 import animationTechnique from '../fixtures/animationTechnique';
 import works from '../fixtures/works';
 
-const getAnimationTechniqueRequestBody = (id) => ({
+const getAnimationTechniqueRequestBody = id => ({
   query: getAnimationTechniqueByIdQuery,
   variables: { locale: 'fr', id },
 });
 
-const getWorksOfAnimationTechniqueRequestBody = (id) => ({
+const getWorksOfAnimationTechniqueRequestBody = id => ({
   query: getWorksOfAnimationTechniqueQuery,
   variables: { locale: 'fr', id },
 });

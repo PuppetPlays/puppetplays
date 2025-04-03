@@ -9,14 +9,14 @@ import CloseButton from 'components/CloseButton';
 import IconDownload from './icons/icon-download.svg';
 import styles from './workDocument.module.scss';
 
-const usePagination = (initialPage) => {
+const usePagination = initialPage => {
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const handleScroll = useCallback((evt) => {
+  const handleScroll = useCallback(evt => {
     const containerScrollTop = evt.target.scrollTop;
     const currentNode = Array.from(
       evt.target.querySelectorAll('[data-page]'),
-    ).find((node) => {
+    ).find(node => {
       return node.offsetTop + node.clientHeight >= containerScrollTop;
     });
     setCurrentPage(parseInt(currentNode.dataset.page, 10));
@@ -46,7 +46,7 @@ const WorkDocument = ({ workId, onClose }) => {
     },
   );
 
-  const handleScrollToPage = (page) => {
+  const handleScrollToPage = page => {
     location.hash = '#page-' + page;
   };
 
@@ -83,25 +83,29 @@ const WorkDocument = ({ workId, onClose }) => {
               </button>
             </div>
             <ul className={styles.sidebarContent}>
-              {data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
-                <li
-                  key={image.id}
-                  className={styles.sidebarPage}
-                  data-selected={index === currentPage}
-                >
-                  <a href={`#page-${index}`}>
-                    <div>{index + 1}</div>
-                    <img src={image.url} alt="" />
-                  </a>
-                </li>
-              ))}
+              {data.entry?.images &&
+                Array.isArray(data.entry.images) &&
+                data.entry.images.map((image, index) => (
+                  <li
+                    key={image.id}
+                    className={styles.sidebarPage}
+                    data-selected={index === currentPage}
+                  >
+                    <a href={`#page-${index}`}>
+                      <div>{index + 1}</div>
+                      <img src={image.url} alt="" />
+                    </a>
+                  </li>
+                ))}
             </ul>
           </div>
         )}
         <div className={styles.content} onScroll={onScroll}>
           <div className={styles.scroll} data-zoom={zoom}>
             {data &&
-              data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
+              data.entry?.images &&
+              Array.isArray(data.entry.images) &&
+              data.entry.images.map((image, index) => (
                 <img
                   key={image.id}
                   src={image.url}

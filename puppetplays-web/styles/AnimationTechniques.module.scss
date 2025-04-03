@@ -30,7 +30,7 @@
   max-width: 800px;
   margin: 0 auto;
   cursor: not-allowed;
-  
+
   h2 {
     position: absolute;
     top: 50%;
@@ -46,7 +46,7 @@
     width: auto;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;

@@ -12,19 +12,21 @@ const MediaMenu = ({ sections, activeAnchor }) => {
 
   return (
     <ul className={styles.container}>
-      {sections && Array.isArray(sections) && sections.map((section) => (
-        <li
-          key={section}
-          className={`${
-            activeAnchor === `media-${section}` ? styles.isActive : ''
-          }`}
-        >
-          <a href={`#media-${section}`}>
-            <span className={styles.icon}>{getMediaKindIcon(section)}</span>
-            <span>{t(`common:mediaKinds.${section}`)}</span>
-          </a>
-        </li>
-      ))}
+      {sections &&
+        Array.isArray(sections) &&
+        sections.map(section => (
+          <li
+            key={section}
+            className={`${
+              activeAnchor === `media-${section}` ? styles.isActive : ''
+            }`}
+          >
+            <a href={`#media-${section}`}>
+              <span className={styles.icon}>{getMediaKindIcon(section)}</span>
+              <span>{t(`common:mediaKinds.${section}`)}</span>
+            </a>
+          </li>
+        ))}
     </ul>
   );
 };

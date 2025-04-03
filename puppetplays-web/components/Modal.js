@@ -23,7 +23,7 @@ function Modal({
   }, [dispatch, modalType]);
 
   const setModalContentRef = useCallback(
-    (node) => {
+    node => {
       modalContentRef.current = node;
     },
     [modalContentRef],

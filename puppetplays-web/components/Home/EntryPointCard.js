@@ -19,10 +19,10 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
       }`}
     >
       <div
-        className={styles.media} 
-        onClick={to || href ? handleClick : undefined} 
+        className={styles.media}
+        onClick={to || href ? handleClick : undefined}
         role="presentation"
-        style={!to && !href ? { cursor: 'not-allowed' } : {cursor: 'pointer'}}
+        style={!to && !href ? { cursor: 'not-allowed' } : { cursor: 'pointer' }}
       >
         <img src={thumbnailUrl} alt="" />
       </div>

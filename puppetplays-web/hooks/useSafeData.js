@@ -12,13 +12,13 @@ const useSafeData = (key, fetcher, options = {}) => {
     suspense: false, // Default to not using Suspense
     ...options,
   });
-  
+
   // Explicit loading state
   const isLoading = !error && !data;
-  
+
   // Safe data access - never undefined or null
   const safeData = data || {};
-  
+
   return {
     data, // Original data for backwards compatibility
     safeData, // Guaranteed to be at least an empty object
@@ -30,4 +30,4 @@ const useSafeData = (key, fetcher, options = {}) => {
   };
 };
 
-export default useSafeData; 
+export default useSafeData;

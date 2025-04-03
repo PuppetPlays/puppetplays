@@ -2,7 +2,7 @@ import { getWorkByIdQuery } from '../../lib/api';
 import { getGraphQlRequestMock } from '../utils';
 import work from '../fixtures/work';
 
-const getWorkRequestBody = (id) => ({
+const getWorkRequestBody = id => ({
   query: getWorkByIdQuery,
   variables: { locale: 'fr', id },
 });
@@ -28,7 +28,7 @@ describe('Work page', () => {
       .contains('Auteur(s)')
       .parents('section')
       .find('a')
-      .each((link) => {
+      .each(link => {
         cy.wrap(link).should(
           'have.attr',
           'href',

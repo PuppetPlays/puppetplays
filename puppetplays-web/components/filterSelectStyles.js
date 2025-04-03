@@ -53,15 +53,15 @@ export const styles = {
       color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
     },
   }),
-  menu: (provided) => ({
+  menu: provided => ({
     ...provided,
     margin: '2px 0 0',
   }),
-  menuList: (provided) => ({
+  menuList: provided => ({
     ...provided,
     color: 'var(--color-text)',
   }),
-  option: (provided) => ({
+  option: provided => ({
     ...provided,
     borderBottom: '1px solid var(--color-bg-depth-2)',
     fontSize: '15px',
@@ -100,7 +100,7 @@ export const styles = {
 
 export const components = { IndicatorSeparator: null };
 
-export const getTheme = (theme) => {
+export const getTheme = theme => {
   return {
     ...theme,
     spacing: {

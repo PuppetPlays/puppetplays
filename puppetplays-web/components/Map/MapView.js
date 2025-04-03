@@ -37,12 +37,12 @@ const MapView = ({ filters, searchTerms, locale }) => {
       clusteredByPlaceSource.clear();
       clusteredByCountrySource.clear();
 
-      const entriesWithCompositionPlace = entries.filter((entry) =>
+      const entriesWithCompositionPlace = entries.filter(entry =>
         hasAtLeastOneItem(entry.compositionPlace),
       );
 
       const countries = Object.entries(
-        groupBy(entriesWithCompositionPlace, (entry) => {
+        groupBy(entriesWithCompositionPlace, entry => {
           const { typeHandle, title, country } = entry.compositionPlace[0];
           return typeHandle === 'countries' ? title : country[0].title;
         }),
@@ -55,7 +55,7 @@ const MapView = ({ filters, searchTerms, locale }) => {
         return {
           name: countryName,
           coordinates: [longitude, latitude],
-          ids: works && Array.isArray(works) ? works.map((w) => w.id) : [],
+          ids: works && Array.isArray(works) ? works.map(w => w.id) : [],
           type: 'countries',
         };
       });
@@ -63,7 +63,7 @@ const MapView = ({ filters, searchTerms, locale }) => {
       const places = Object.entries(
         groupBy(
           entriesWithCompositionPlace,
-          (entry) => entry.compositionPlace[0].title,
+          entry => entry.compositionPlace[0].title,
         ),
       ).map(([name, works]) => {
         const { longitude, latitude, typeHandle } =
@@ -71,13 +71,13 @@ const MapView = ({ filters, searchTerms, locale }) => {
         return {
           name,
           coordinates: [longitude, latitude],
-          ids: works && Array.isArray(works) ? works.map((w) => w.id) : [],
+          ids: works && Array.isArray(works) ? works.map(w => w.id) : [],
           type: typeHandle,
         };
       });
 
       const createFeatureForSource =
-        (source) =>
+        source =>
         ({ coordinates, name, type, ids }, index) => {
           const feature = new Feature({
             geometry: new Point(coordinates).transform(
@@ -104,14 +104,14 @@ const MapView = ({ filters, searchTerms, locale }) => {
   }, [setSelectedWorks, filters, selectInteraction]);
 
   const handleSetSelectInteraction = useCallback(
-    (select) => {
+    select => {
       setSelectInteraction(select);
     },
     [setSelectInteraction],
   );
 
   const handleClick = useCallback(
-    (evt) => {
+    evt => {
       if (evt.selected.length > 0) {
         const { ids } = evt.selected[0].getProperties();
 

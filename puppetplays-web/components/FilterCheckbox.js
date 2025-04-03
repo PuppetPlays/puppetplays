@@ -8,7 +8,7 @@ function FilterCheckbox({ name, checked, onChange }) {
   const { t } = useTranslation();
 
   const handeChange = useCallback(
-    (evt) => {
+    evt => {
       onChange(evt.target.checked, { name });
     },
     [name, onChange],

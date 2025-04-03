@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ModalProvider } from 'components/modalContext';
 import WorkHeader from './WorkHeader';
 
-const renderWithinModalProvider = (component) =>
+const renderWithinModalProvider = component =>
   render(<ModalProvider>{component}</ModalProvider>);
 
 const authors = [

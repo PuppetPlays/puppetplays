@@ -9,7 +9,8 @@ function Card({ href, title, subtitle, mainImage, imageUrl, fixedHeight }) {
 
   // Handle different image sources (backward compatibility + new pattern)
   const hasImage = imageUrl || hasAtLeastOneItem(mainImage);
-  const imageSource = imageUrl || (hasAtLeastOneItem(mainImage) ? mainImage[0].url : null);
+  const imageSource =
+    imageUrl || (hasAtLeastOneItem(mainImage) ? mainImage[0].url : null);
 
   const cardContent = (
     <>

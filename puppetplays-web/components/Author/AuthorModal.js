@@ -49,7 +49,12 @@ function AuthorModal() {
   const filteredWorks = isModalOfTypeOpen(modalState, modalTypes.author)
     ? works &&
       works.entries
-        .filter(({ authors }) => authors && Array.isArray(authors) && authors.map(({ id }) => id).includes(authorId))
+        .filter(
+          ({ authors }) =>
+            authors &&
+            Array.isArray(authors) &&
+            authors.map(({ id }) => id).includes(authorId),
+        )
         // eslint-disable-next-line no-unused-vars
         .map(({ authors, ...entry }) => entry)
     : null;

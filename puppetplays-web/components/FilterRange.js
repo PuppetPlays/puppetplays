@@ -5,7 +5,7 @@ import ReactSlider from 'react-slider';
 import FilterLabel from 'components/FilterLabel';
 import styles from './filterRange.module.scss';
 
-const renderThumb = (props) => {
+const renderThumb = props => {
   return <div {...props} />;
 };
 
@@ -18,14 +18,14 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   ]);
 
   const handeAfterChange = useCallback(
-    (value) => {
+    value => {
       onAfterChange(value, { name });
     },
     [name, onAfterChange],
   );
 
   const handeChange = useCallback(
-    (value) => {
+    value => {
       setValues(value);
     },
     [setValues],
@@ -60,7 +60,7 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
               t('common:filters.lowerBoundPeriod'),
               t('common:filters.upperBoundPeriod'),
             ]}
-            ariaValuetext={(state) =>
+            ariaValuetext={state =>
               t('common:filters.selectedPeriod', { count: state.valueNow })
             }
             renderThumb={renderThumb}

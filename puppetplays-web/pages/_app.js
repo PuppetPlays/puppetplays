@@ -19,7 +19,7 @@ const swrConfig = {
   fetcher: async (resource, init) => {
     try {
       const res = await fetch(resource, init);
-      
+
       // Handle non-2xx responses
       if (!res.ok) {
         const error = new Error('An error occurred while fetching the data.');
@@ -27,7 +27,7 @@ const swrConfig = {
         error.info = await res.json().catch(() => ({}));
         throw error;
       }
-      
+
       return res.json();
     } catch (error) {
       // Transform to standardized error

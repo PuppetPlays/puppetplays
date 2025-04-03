@@ -82,32 +82,38 @@ function Work(props) {
         <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
         <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
         <meta name="DC.title" lang={locale} content={title} />
-        {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
-          if (typeHandle === 'persons') {
-            const author = `${rest.lastName} ${rest.firstName}`;
-            return [
-              <meta key={`${rest.id}-DC`} name="DC.creator" content={author} />,
-              <meta
-                key={`${rest.id}-Google`}
-                name="citation_author"
-                content={author}
-              />,
-            ];
-          } else if (typeHandle === 'companies') {
-            return [
-              <meta
-                key={`${rest.id}-DC`}
-                name="DC.creator"
-                content={rest.title}
-              />,
-              <meta
-                key={`${rest.id}-Google`}
-                name="citation_author"
-                content={rest.title}
-              />,
-            ];
-          }
-        })}
+        {authors &&
+          Array.isArray(authors) &&
+          authors.map(({ typeHandle, ...rest }) => {
+            if (typeHandle === 'persons') {
+              const author = `${rest.lastName} ${rest.firstName}`;
+              return [
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={author}
+                />,
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={author}
+                />,
+              ];
+            } else if (typeHandle === 'companies') {
+              return [
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={rest.title}
+                />,
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={rest.title}
+                />,
+              ];
+            }
+          })}
         <meta
           name="DC.date"
           scheme="DCTERMS.W3CDTF"
@@ -128,7 +134,11 @@ function Work(props) {
         <meta
           name="DC.subject"
           lang="fr"
-          content={keywords && Array.isArray(keywords) ? keywords.map(({ title }) => title).join(', ') : ''}
+          content={
+            keywords && Array.isArray(keywords)
+              ? keywords.map(({ title }) => title).join(', ')
+              : ''
+          }
         />
         <meta
           name="DC.language"
@@ -187,13 +197,15 @@ function Work(props) {
           title={t('common:author(s)')}
           show={hasAtLeastOneItem(authors)}
         >
-          {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
-            if (typeHandle === 'persons') {
-              return <AuthorCard key={rest.id} {...rest} />;
-            } else if (typeHandle === 'companies') {
-              return <CompanyCard key={rest.id} {...rest} />;
-            }
-          })}
+          {authors &&
+            Array.isArray(authors) &&
+            authors.map(({ typeHandle, ...rest }) => {
+              if (typeHandle === 'persons') {
+                return <AuthorCard key={rest.id} {...rest} />;
+              } else if (typeHandle === 'companies') {
+                return <CompanyCard key={rest.id} {...rest} />;
+              }
+            })}
         </Section>
       </div>
       <div className={styles.body}>
@@ -284,18 +296,20 @@ function Work(props) {
           >
             <div className={styles.translations}>
               <ul>
-                {translations && Array.isArray(translations) && translations.map(
-                  ({ bibliographicRecord, translationLanguage }) => (
-                    <li key={translationLanguage}>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: bibliographicRecord,
-                        }}
-                      />{' '}
-                      ({translationLanguage[0].title})
-                    </li>
-                  ),
-                )}
+                {translations &&
+                  Array.isArray(translations) &&
+                  translations.map(
+                    ({ bibliographicRecord, translationLanguage }) => (
+                      <li key={translationLanguage}>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: bibliographicRecord,
+                          }}
+                        />{' '}
+                        ({translationLanguage[0].title})
+                      </li>
+                    ),
+                  )}
               </ul>
             </div>
           </Info>

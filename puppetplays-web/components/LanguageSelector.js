@@ -12,7 +12,7 @@ function LanguageSelector({ inverse, path }) {
         inverse && styles['container--inverse']
       }`}
     >
-      {locales.map((l) => (
+      {locales.map(l => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
           <Link href={path} locale={l}>
             <a>{l}</a>

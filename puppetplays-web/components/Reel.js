@@ -55,7 +55,7 @@ const Reel = ({ images, bleed }) => {
       listRef.current
     ) {
       const callback = function (items) {
-        Array.prototype.forEach.call(items, (item) => {
+        Array.prototype.forEach.call(items, item => {
           if (item.intersectionRatio > 0.5) {
             item.target.removeAttribute('inert');
           } else {
@@ -69,7 +69,7 @@ const Reel = ({ images, bleed }) => {
         threshold: 0.5,
       });
 
-      Array.prototype.forEach.call(listRef.current.children, (item) => {
+      Array.prototype.forEach.call(listRef.current.children, item => {
         observer.observe(item);
       });
     }
@@ -118,32 +118,34 @@ const Reel = ({ images, bleed }) => {
       </div>
       <div className={styles.scrollable} ref={scrollableRef}>
         <ul className={styles.list} ref={listRef}>
-          {images && Array.isArray(images) && images.map((image, index) => (
-            <li
-              key={`${image.id}-${index}`}
-              className={styles.image}
-              style={{ width: image.width }}
-            >
-              <ZoomableImage>
-                <img src={image.url} alt={image.alt} width={image.width} />
-              </ZoomableImage>
-              {(image.description || image.copyright) && (
-                <div className={styles.caption}>
-                  {image.description && (
-                    <div
-                      className={styles.captionDescription}
-                      dangerouslySetInnerHTML={{ __html: image.description }}
-                    />
-                  )}
-                  {image.copyright && (
-                    <div className={styles.captionCopyright}>
-                      © {image.copyright}
-                    </div>
-                  )}
-                </div>
-              )}
-            </li>
-          ))}
+          {images &&
+            Array.isArray(images) &&
+            images.map((image, index) => (
+              <li
+                key={`${image.id}-${index}`}
+                className={styles.image}
+                style={{ width: image.width }}
+              >
+                <ZoomableImage>
+                  <img src={image.url} alt={image.alt} width={image.width} />
+                </ZoomableImage>
+                {(image.description || image.copyright) && (
+                  <div className={styles.caption}>
+                    {image.description && (
+                      <div
+                        className={styles.captionDescription}
+                        dangerouslySetInnerHTML={{ __html: image.description }}
+                      />
+                    )}
+                    {image.copyright && (
+                      <div className={styles.captionCopyright}>
+                        © {image.copyright}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </li>
+            ))}
         </ul>
       </div>
     </div>

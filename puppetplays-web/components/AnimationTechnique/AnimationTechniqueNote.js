@@ -72,18 +72,22 @@ function AnimationTechniqueNote({
           <PageIntertitle>{t('common:works')}</PageIntertitle>
           {works.length > 0 ? (
             <ul>
-              {works && Array.isArray(works) && works.map((entry) => (
-                // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-                <li key={entry.id} onClick={handleClickOnLink}>
-                  <Hypotext {...entry} />
-                </li>
-              ))}
+              {works &&
+                Array.isArray(works) &&
+                works.map(entry => (
+                  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+                  <li key={entry.id} onClick={handleClickOnLink}>
+                    <Hypotext {...entry} />
+                  </li>
+                ))}
             </ul>
           ) : (
-            <NoResults 
+            <NoResults
               icon="info"
-              title={t('common:error.dataNotFound')} 
-              message={t('common:noWorksForTechnique', { fallback: t('common:error.noResultsFound') })}
+              title={t('common:error.dataNotFound')}
+              message={t('common:noWorksForTechnique', {
+                fallback: t('common:error.noResultsFound'),
+              })}
               customStyles={{ margin: '20px auto', padding: '20px' }}
             />
           )}

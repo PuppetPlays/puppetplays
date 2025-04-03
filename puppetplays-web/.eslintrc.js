@@ -8,7 +8,7 @@ module.exports = {
     'cypress/globals': true,
   },
   parserOptions: {
-    ecmaVersion: 9,
+    ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -16,34 +16,69 @@ module.exports = {
   },
   ignorePatterns: [
     'node_modules/*',
-    'pages/*',
     '.next/*',
     '.out/*',
+    'build/*',
+    'dist/*',
+    'coverage/*',
     '!.prettierrc.js',
-  ], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
+  ],
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended', // React rules
-    'plugin:react-hooks/recommended', // React hooks rules
-    'plugin:jsx-a11y/recommended', // Accessibility rules
-    'plugin:prettier/recommended', // Prettier plugin
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['jest', 'cypress'],
+  plugins: ['jest', 'cypress', 'import'],
   settings: {
     react: {
-      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+      version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     },
     linkComponents: [
-      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       { name: 'Link', linkAttribute: 'to' },
+      { name: 'NextLink', linkAttribute: 'href' },
     ],
   },
   rules: {
-    // No need to import React when using Next.js
     'react/react-in-jsx-scope': 'off',
-    // This rule is not compatible with Next.js's <Link /> components
+    'react/prop-types': ['error', { skipUndeclared: true }],
+    'react/jsx-curly-brace-presence': [
+      'error',
+      { props: 'never', children: 'never' },
+    ],
+    'react/self-closing-comp': 'error',
     'jsx-a11y/anchor-is-valid': 'off',
-    // Includes .prettierrc.json rules
+    'jsx-a11y/click-events-have-key-events': 'error',
+    'jsx-a11y/no-noninteractive-element-interactions': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'no-unused-vars': [
+      'error',
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
+    'prefer-const': 'error',
+    eqeqeq: ['error', 'always'],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
   },
 };
