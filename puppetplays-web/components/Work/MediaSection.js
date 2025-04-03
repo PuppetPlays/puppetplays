@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { cond, constant, stubTrue } from 'lodash';
 import useTranslation from 'next-translate/useTranslation';
 import Media from './Media';
+import NoResults from 'components/NoResults';
 import PhotoIcon from './icons/icon-photo.svg';
 import VideoIcon from './icons/icon-video.svg';
 import AudioIcon from './icons/icon-sound.svg';
@@ -32,9 +33,20 @@ const MediaSection = ({ kind, medias, showTitle }) => {
         </h2>
       )}
       <div>
-        {medias.map(({ id, ...media }) => (
-          <Media key={id} {...media} kind={kind} />
-        ))}
+        {medias && Array.isArray(medias) && medias.length > 0 ? (
+          medias.map(({ id, ...media }) => (
+            <Media key={id} {...media} kind={kind} />
+          ))
+        ) : (
+          <NoResults 
+            icon="info"
+            title={t('common:error.dataNotFound')} 
+            message={t(`common:no${kind.charAt(0).toUpperCase() + kind.slice(1)}Available`, {
+              fallback: t('common:error.noResultsFound')
+            })}
+            customStyles={{ margin: '20px auto', padding: '20px' }}
+          />
+        )}
       </div>
     </div>
   );

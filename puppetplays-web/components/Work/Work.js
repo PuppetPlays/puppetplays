@@ -82,7 +82,7 @@ function Work(props) {
         <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
         <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
         <meta name="DC.title" lang={locale} content={title} />
-        {authors.map(({ typeHandle, ...rest }) => {
+        {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
           if (typeHandle === 'persons') {
             const author = `${rest.lastName} ${rest.firstName}`;
             return [
@@ -128,7 +128,7 @@ function Work(props) {
         <meta
           name="DC.subject"
           lang="fr"
-          content={keywords.map(({ title }) => title).join(', ')}
+          content={keywords && Array.isArray(keywords) ? keywords.map(({ title }) => title).join(', ') : ''}
         />
         <meta
           name="DC.language"
@@ -187,7 +187,7 @@ function Work(props) {
           title={t('common:author(s)')}
           show={hasAtLeastOneItem(authors)}
         >
-          {authors.map(({ typeHandle, ...rest }) => {
+          {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
             if (typeHandle === 'persons') {
               return <AuthorCard key={rest.id} {...rest} />;
             } else if (typeHandle === 'companies') {
@@ -284,7 +284,7 @@ function Work(props) {
           >
             <div className={styles.translations}>
               <ul>
-                {translations.map(
+                {translations && Array.isArray(translations) && translations.map(
                   ({ bibliographicRecord, translationLanguage }) => (
                     <li key={translationLanguage}>
                       <span

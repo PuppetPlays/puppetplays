@@ -1,11 +1,11 @@
 {
   "title": "Répertoires pour les théâtres de marionnettes",
-  "subtitle": "En Europe de l’Ouest de 1600 à nos jours",
-  "fullTitle": "Répertoires pour les théâtres de marionnettes en Europe de l’Ouest de 1600 à nos jours",
+  "subtitle": "En Europe de l'Ouest de 1600 à nos jours",
+  "fullTitle": "Répertoires pour les théâtres de marionnettes en Europe de l'Ouest de 1600 à nos jours",
   "metaDescription": "Projet ERC PuppetPlays – Répertoires pour les théâtres de marionnettes – Base de données de pièces pour marionnettes  – Articles scientifiques – Ressources",
   "ercLabel": "ERC - GA 835193",
   "releaseDate": "Ouverture prévue en 2022",
-  "projectNews": "L’actualité du projet",
+  "projectNews": "L'actualité du projet",
   "projectNewsUrl": "https://puppetplays.www.univ-montp3.fr/fr/actualit%C3%A9s-0",
   "ourSiteLabel": "Notre site",
   "ourSiteUrl": "https://puppetplays.www.univ-montp3.fr/fr",
@@ -13,7 +13,7 @@
   "subscribeTitle": "Soyez informé de l'ouverture du site",
   "subscribeLabel": "Abonnez-vous à la newsletter mensuelle",
   "emailPlaceholder": "Votre adresse email",
-  "subscribe": "s’inscrire",
+  "subscribe": "s'inscrire",
   "subscriptionSuccessful": "Merci de vous être inscrit à notre newsletter",
   "subscriptionError": "Nous avons rencontré un problème lors de votre inscription à notre newsletter",
   "introTitle": "Mettre en lumière un répertoire fragmenté et presque invisible",
@@ -23,9 +23,9 @@
   "introText2": "L'objectif de PuppetPlays est de réunir, d'étudier et de rendre accessible à un large public, grâce à une plateforme numérique dédiée, une large sélection de pièces pour marionnettes écrites en Europe de l'Ouest, du 17e au 21e siècle. Cette plateforme rassemblera une base de données de 2 000 références, une anthologie de 300 textes numérisés, des publications scientifiques (une monographie, deux thèses de doctorat, les actes de deux colloques internationaux, des articles), ainsi que des dossiers thématiques et des outils pédagogiques (dictionnaire des auteurs, glossaire).",
   "introText3": "Une première version de la plateforme numérique PuppetPlays sera accessible dans le courant de l'année 2022. Sa version complète sera publiée en 2024.",
   "introImageCaption": "Illustration : Christophe Loiseau et Matt Jackson",
-  "theTeam": "L’équipe",
+  "theTeam": "L'équipe",
   "theTeamUrl": "https://puppetplays.www.univ-montp3.fr/fr/l%C3%A9quipe",
-  "projectFinancedBy": "Ce projet est financé par le Programme de recherche et d’innovation Horizon 2020 de l’Union Européenne, dans le cadre du Grant Agreement ERC 835193",
+  "projectFinancedBy": "Ce projet est financé par le Programme de recherche et d'innovation Horizon 2020 de l'Union Européenne, dans le cadre du Grant Agreement ERC 835193",
   "ue": {
     "url": "https://europa.eu/european-union/index_fr",
     "alt": "Union Européenne"
@@ -71,8 +71,8 @@
     }
   },
   "accessToIntregralWorks": "Accéder à des œuvres intégrales",
-  "consultTheAnthology": "Consulter l’anthologie",
-  "seeAllAnimationTechniques": "Voir toutes les techniques d’animation",
+  "consultTheAnthology": "Consulter l'anthologie",
+  "seeAllAnimationTechniques": "Voir toutes les techniques d'animation",
   "exploreByAuthors": "Explorer par auteurs",
   "exploreByKeywords": "Parcourir les œuvres selon leurs mots-clés",
   "browseAllAuthors": "Parcourir la liste des auteurs",
@@ -93,5 +93,7 @@
     }
   },
   "pulcinellaPathwayTitle": "La figure de Pulcinella",
-  "pathway": "Parcours découverte"
+  "pathway": "Parcours découverte",
+  "animationTechniqueTitle": "Techniques d'animation",
+  "animationTechniqueDescription": "Découvrez les différentes techniques utilisées pour manipuler les marionnettes au cours de l'histoire du théâtre de marionnettes européen. Cette section explore les approches artistiques et techniques qui donnent vie à ces personnages."
 }

@@ -83,7 +83,7 @@ const WorkDocument = ({ workId, onClose }) => {
               </button>
             </div>
             <ul className={styles.sidebarContent}>
-              {data.entry.images.map((image, index) => (
+              {data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
                 <li
                   key={image.id}
                   className={styles.sidebarPage}
@@ -101,7 +101,7 @@ const WorkDocument = ({ workId, onClose }) => {
         <div className={styles.content} onScroll={onScroll}>
           <div className={styles.scroll} data-zoom={zoom}>
             {data &&
-              data.entry.images.map((image, index) => (
+              data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
                 <img
                   key={image.id}
                   src={image.url}

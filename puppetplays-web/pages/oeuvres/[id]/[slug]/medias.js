@@ -17,31 +17,67 @@ import styles from 'styles/Work.module.scss';
 function MediasPage({ initialData }) {
   const { t } = useTranslation();
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
+  
+  // Vérifie si les données initiales sont complètes
+  const hasAllRequiredData = initialData && initialData.id && initialData.title && initialData.medias;
+  
   const [firstMediaSection] = useState(() => {
-    const keys = Object.keys(initialData.medias);
+    const keys = Object.keys(initialData?.medias || {});
     return keys.length > 0 ? keys[0] : null;
   });
+  
   const [activeAnchor, handleScroll] = useActiveAnchor(
     '[data-media-section]',
     firstMediaSection,
   );
+  
+  if (!hasAllRequiredData) {
+    return (
+      <Layout>
+        <Head>
+          <title>{t('common:medias')} | Puppetplays</title>
+        </Head>
+        <ContentLayout style={{ maxWidth: 800, padding: '60px 20px' }}>
+          <div style={{textAlign: 'center'}}>
+            <h1 style={{
+              fontSize: '24px',
+              fontWeight: '500',
+              marginBottom: '20px',
+              color: 'var(--color-text-default)'
+            }}>
+              {t('common:error.dataNotFound')}
+            </h1>
+            <p style={{
+              fontSize: '16px',
+              lineHeight: '1.6',
+              color: 'var(--color-text-subtle)',
+              maxWidth: '600px',
+              margin: '0 auto 30px'
+            }}>
+              {t('common:error.notFound')}
+            </p>
+          </div>
+        </ContentLayout>
+      </Layout>
+    );
+  }
 
   return (
     <>
       <Layout>
         <Head>
-          <title>{initialData.title} - Medias | Puppetplays</title>
+          <title>{initialData?.title || t('common:medias')} - Medias | Puppetplays</title>
         </Head>
 
         <div className={styles.workHeader}>
           <WorkPageHeader
-            id={initialData.id}
-            slug={initialData.slug}
-            title={initialData.title}
-            authors={initialData.authors}
-            writingPlace={initialData.writingPlace}
+            id={initialData?.id}
+            slug={initialData?.slug}
+            title={initialData?.title}
+            authors={initialData?.authors || []}
+            writingPlace={initialData?.writingPlace || ''}
             hasMedia
-            hasDocument={initialData.scannedDocumentPagesCount > 0}
+            hasDocument={(initialData?.scannedDocumentPagesCount || 0) > 0}
             onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>
@@ -51,17 +87,17 @@ function MediasPage({ initialData }) {
           </div>
           <div className={styles.mediaMenu}>
             <MediaMenu
-              sections={Object.keys(initialData.medias)}
+              sections={Object.keys(initialData?.medias || {})}
               activeAnchor={activeAnchor}
             />
           </div>
           <div className={styles.mediasContent}>
-            {Object.entries(initialData.medias).map(
+            {Object.entries(initialData?.medias || {}).map(
               ([kind, medias], _, entries) => (
                 <MediaSection
                   key={kind}
                   kind={kind}
-                  medias={medias}
+                  medias={medias || []}
                   showTitle={entries.length > 1}
                 />
               ),
@@ -86,13 +122,41 @@ MediasPage.propTypes = {
 export default MediasPage;
 
 export async function getServerSideProps({ locale, req, res, params }) {
-  const { entry } = await fetchAPI(getWorkMediasByIdQuery, {
-    variables: { locale, id: params.id },
-  });
-  const mediasByKind = groupBy(entry.medias, (m) => m.kind);
-  const entryWithGroupedMedias = { ...entry, medias: mediasByKind };
+  try {
+    const result = await fetchAPI(getWorkMediasByIdQuery, {
+      variables: { locale, id: params?.id },
+    });
+    
+    // Vérifier si les données sont valides
+    if (!result || !result.entry) {
+      return {
+        props: { 
+          initialData: { 
+            id: params?.id, 
+            slug: params?.slug, 
+            medias: {} 
+          } 
+        },
+      };
+    }
+    
+    const { entry } = result;
+    const mediasByKind = groupBy(entry?.medias || [], (m) => m?.kind);
+    const entryWithGroupedMedias = { ...entry, medias: mediasByKind };
 
-  return {
-    props: { initialData: entryWithGroupedMedias },
-  };
+    return {
+      props: { initialData: entryWithGroupedMedias },
+    };
+  } catch (error) {
+    console.error('Error fetching work medias:', error);
+    return {
+      props: { 
+        initialData: { 
+          id: params?.id, 
+          slug: params?.slug, 
+          medias: {} 
+        } 
+      },
+    };
+  }
 }

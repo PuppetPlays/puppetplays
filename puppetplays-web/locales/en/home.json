@@ -19,13 +19,13 @@
   "introTitle": "Bringing into the light a fragmented and almost invisible repertoire",
   "introSubtitle": "The project",
   "aboutPuppetplays": "About PuppetPlays",
-  "introText1": "PuppetPlays - Reconsidérer les réperertoires pour les théâtres de marionnettes en Europe de l'Ouest (17e-21e siècles) est un ambitieux projet de recherche financé par l'Union Européenne dans le cadre du programme Horizon 2020 (Conseil Européen de la Recherche, GA 835193, 2019-2024). Lauréat de l'appel à projets “Advanced Grant” 2018, il est dirigé par Didier Plassard, professeur en études théâtrales, et porté par l'Université Paul-Valéry Montpellier 3.",
+  "introText1": "PuppetPlays - Reconsidérer les réperertoires pour les théâtres de marionnettes en Europe de l'Ouest (17e-21e siècles) is an ambitious research project funded by the European Union within the Horizon 2020 programme (European Research Council, GA 835193, 2019-2024). Winner of the \"Advanced Grant\" call for projects in 2018, it is directed by Didier Plassard, professor of theatre studies, and led by the University of Paul-Valéry Montpellier 3.",
   "introText2": "The aim of PuppetPlays is to gather, study and make accessible to a wide audience, through a dedicated digital platform, a large selection of plays for puppets and marionettes written in Western Europe, from the 17th to the 21st century. This platform will bring together a database of 2.000 references, an anthology of 300 digitized texts, scientific publications (a monograph, two PhD dissertations, the proceedings of two international conferences, articles), as well as thematic presentations and pedagogical tools (dictionary of authors, glossary).",
   "introText3": "A first version of the PuppetPlays digital platform will be available in 2022. The full version will be published in 2024.",
   "introImageCaption": "Image: Christophe Loiseau and Matt Jackson",
   "theTeam": "The team",
   "theTeamUrl": "https://puppetplays.www.univ-montp3.fr/en/team",
-  "projectFinancedBy": "This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement ERC 835193",
+  "projectFinancedBy": "This project has received funding from the European Union's Horizon 2020 research and innovation programme under Grant Agreement ERC 835193",
   "ue": {
     "url": "https://europa.eu/european-union/index_en",
     "alt": "European Union"
@@ -93,5 +93,7 @@
     }
   },
   "pulcinellaPathwayTitle": "The figure of Pulcinella",
-  "pathway": "Discover and learn"
+  "pathway": "Discover and learn",
+  "animationTechniqueTitle": "Animation Techniques",
+  "animationTechniqueDescription": "Discover the different techniques used to manipulate puppets and marionettes throughout the history of European puppet theater. This section explores the artistic and technical approaches that give life to these characters."
 }

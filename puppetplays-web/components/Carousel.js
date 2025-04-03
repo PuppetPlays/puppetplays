@@ -47,7 +47,7 @@ function Carousel({ images, bleed }) {
         ›
       </button>
       <div className={styles.inner} ref={innerRef}>
-        {images.map((image, index) => (
+        {images && Array.isArray(images) && images.map((image, index) => (
           <div
             key={`${image.id}-${index}`}
             className={styles.image}

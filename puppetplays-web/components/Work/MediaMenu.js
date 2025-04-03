@@ -12,7 +12,7 @@ const MediaMenu = ({ sections, activeAnchor }) => {
 
   return (
     <ul className={styles.container}>
-      {sections.map((section) => (
+      {sections && Array.isArray(sections) && sections.map((section) => (
         <li
           key={section}
           className={`${

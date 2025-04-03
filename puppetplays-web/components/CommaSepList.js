@@ -9,6 +9,11 @@ function CommaSepList({
   separator = ', ',
   ...additionalProps
 }) {
+  // Sécurité pour s'assurer que list est un tableau
+  if (!list || !Array.isArray(list)) {
+    return null;
+  }
+  
   if (!itemComponent && !itemComponents) {
     return list.map(listTransform).join(separator);
   }

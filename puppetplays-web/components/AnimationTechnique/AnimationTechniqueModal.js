@@ -1,7 +1,7 @@
 import get from 'lodash/get';
 import useTranslation from 'next-translate/useTranslation';
-import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 import {
   fetchAPI,
   getAnimationTechniqueByIdQuery,
@@ -13,9 +13,13 @@ import {
   modalTypes,
   useModal,
 } from 'components/modalContext';
+
 import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
 import Modal from 'components/Modal';
-import { useCallback } from 'react';
+import useSafeData from 'hooks/useSafeData';
+import LoadingSpinner from 'components/LoadingSpinner';
+import ErrorMessage from 'components/ErrorMessage';
+import { handleApiError } from 'lib/apiErrorHandler';
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
@@ -24,33 +28,32 @@ function AnimationTechniqueModal() {
   const { id: animationTechniqueId } = getMetaOfModalByType(
     modalState,
     modalTypes.animationTechnique,
+  ) || {};
+
+  const isOpen = isModalOfTypeOpen(modalState, modalTypes.animationTechnique);
+  const queryKey = isOpen ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId] : null;
+
+  const fetcher = async (query, locale, id) => {
+    try {
+      return await fetchAPI(query, {
+        variables: {
+          locale,
+          id,
+        },
+      });
+    } catch (error) {
+      throw handleApiError(error);
+    }
+  };
+
+  const { safeData: data, error: techError, isLoading: techLoading, mutate: mutateTech } = useSafeData(
+    queryKey,
+    fetcher
   );
 
-  const { data } = useSWR(
-    isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
-      ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
-      : null,
-    (query, locale, id) => {
-      return fetchAPI(query, {
-        variables: {
-          locale,
-          id,
-        },
-      });
-    },
-  );
-  const { data: works } = useSWR(
-    isModalOfTypeOpen(modalState, modalTypes.animationTechnique)
-      ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId]
-      : null,
-    (query, locale, id) => {
-      return fetchAPI(query, {
-        variables: {
-          locale,
-          id,
-        },
-      });
-    },
+  const { safeData: works, error: worksError, isLoading: worksLoading, mutate: mutateWorks } = useSafeData(
+    isOpen ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId] : null,
+    fetcher
   );
 
   const handleCloseModal = useCallback(() => {
@@ -60,16 +63,38 @@ function AnimationTechniqueModal() {
     });
   }, [dispatch]);
 
+  const handleRetry = useCallback(() => {
+    mutateTech();
+    mutateWorks();
+  }, [mutateTech, mutateWorks]);
+
+  const isLoading = techLoading || worksLoading;
+  const error = techError || worksError;
+  const title = get(data, 'entry.title', '');
+  const hasData = data.entry && works.entries;
+
   return (
     <Modal
       modalType={modalTypes.animationTechnique}
-      isOpen={isModalOfTypeOpen(modalState, modalTypes.animationTechnique)}
-      title={data && get(data, 'entry.title', '')}
-      subtitle={t('common:animationTechnique')}
+      isOpen={isOpen}
+      title={title || t('common:animationTechnique')}
+      subtitle={title ? t('common:animationTechnique') : ''}
     >
-      {data && works && (
+      {isLoading && (
+        <LoadingSpinner text={t('common:loading')} />
+      )}
+
+      {error && (
+        <ErrorMessage 
+          error={error} 
+          onRetry={handleRetry}
+          className="m-4" 
+        />
+      )}
+
+      {!isLoading && !error && hasData && (
         <AnimationTechniqueNote
-          works={works.entries}
+          works={works.entries || []}
           onCloseModal={handleCloseModal}
           {...data.entry}
         />

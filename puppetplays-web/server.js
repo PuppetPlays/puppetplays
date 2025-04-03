@@ -1,3 +1,6 @@
+// Charger les variables d'environnement depuis .env.local
+require('dotenv').config({ path: '.env.local' });
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const next = require('next');

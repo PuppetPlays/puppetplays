@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
+import useTranslation from 'next-translate/useTranslation';
 import WorkCard from 'components/Work/WorkCard';
+import NoResults from 'components/NoResults';
 import CrossIcon from '../icon-cross.svg';
 import styles from './worksList.module.scss';
 
 const WorksList = ({ works, onClose }) => {
+  const { t } = useTranslation();
+
   if (!works) {
     return null;
   }
@@ -14,9 +18,18 @@ const WorksList = ({ works, onClose }) => {
         <CrossIcon />
       </button>
       <div className={styles.list}>
-        {works.map((work) => (
-          <WorkCard key={work.id} {...work} />
-        ))}
+        {works && Array.isArray(works) && works.length > 0 ? (
+          works.map((work) => (
+            <WorkCard key={work.id} {...work} />
+          ))
+        ) : (
+          <NoResults 
+            icon="search"
+            title={t('common:error.dataNotFound')} 
+            message={t('common:error.noResultsFound')}
+            customStyles={{ margin: '20px auto' }}
+          />
+        )}
       </div>
     </div>
   );

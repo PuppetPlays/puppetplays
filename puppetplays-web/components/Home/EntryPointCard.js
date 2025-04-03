@@ -7,7 +7,7 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
   const linkRef = useRef(null);
 
   const handleClick = useCallback(() => {
-    if (linkRef) {
+    if (linkRef && linkRef.current) {
       linkRef.current.click();
     }
   }, [linkRef]);
@@ -18,7 +18,12 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
         !href && !to ? styles.isComingSoon : ''
       }`}
     >
-      <div className={styles.media} onClick={handleClick} role="presentation">
+      <div
+        className={styles.media} 
+        onClick={to || href ? handleClick : undefined} 
+        role="presentation"
+        style={!to && !href ? { cursor: 'not-allowed' } : {cursor: 'pointer'}}
+      >
         <img src={thumbnailUrl} alt="" />
       </div>
       <h2>

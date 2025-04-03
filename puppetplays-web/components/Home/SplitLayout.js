@@ -3,11 +3,18 @@ import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './splitLayout.module.scss';
 import { useCallback } from 'react';
 
-const SplitLayout = ({ title, subtitle, children, image, linkRef }) => {
+const SplitLayout = ({ 
+  title, 
+  subtitle, 
+  children, 
+  image, 
+  linkRef, 
+  date 
+}) => {
   const handleImageClick = useCallback(
     (evt) => {
       evt.preventDefault();
-      if (linkRef.current) {
+      if (linkRef && linkRef.current) {
         linkRef.current.click();
       }
     },
@@ -17,15 +24,24 @@ const SplitLayout = ({ title, subtitle, children, image, linkRef }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <PageSubtitle>{subtitle}</PageSubtitle>
-        <PageTitle>{title}</PageTitle>
+        {subtitle && <PageSubtitle>{subtitle}</PageSubtitle>}
+        {title && <PageTitle>{title}</PageTitle>}
+        {date && <div className={styles.date}>{date}</div>}
         {children}
       </div>
-      {image && (
+      {image && image.url && (
         <div
           className={styles.media}
-          onClick={handleImageClick}
-          role="presentation"
+          onClick={linkRef ? handleImageClick : undefined}
+          role={linkRef ? "button" : "presentation"}
+          tabIndex={linkRef ? 0 : undefined}
+          aria-label={linkRef ? `View details for ${title || ''}` : undefined}
+          onKeyDown={linkRef ? (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleImageClick(e);
+            }
+          } : undefined}
           style={{
             backgroundImage: `url(${image.url})`,
           }}
@@ -36,18 +52,24 @@ const SplitLayout = ({ title, subtitle, children, image, linkRef }) => {
 };
 
 SplitLayout.defaultProps = {
-  title: null,
-  footer: null,
-  isComingSoon: false,
-  linkRef: {},
+  title: '',
+  subtitle: '',
+  date: '',
+  image: null,
+  linkRef: null,
 };
 
 SplitLayout.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  date: PropTypes.string,
   children: PropTypes.node.isRequired,
-  image: PropTypes.object.isRequired,
-  linkRef: PropTypes.object,
+  image: PropTypes.shape({
+    url: PropTypes.string
+  }),
+  linkRef: PropTypes.shape({
+    current: PropTypes.any
+  }),
 };
 
 export default SplitLayout;
