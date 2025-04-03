@@ -7,6 +7,7 @@
     "proxy-ssl": "npx local-ssl-proxy --source 7001 --target 7000",
     "start": "next start",
     "test": "jest --watch",
+    "test:no-watch": "jest --no-watch",
     "test:ci": "jest --ci --coverage",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --browser chrome",
