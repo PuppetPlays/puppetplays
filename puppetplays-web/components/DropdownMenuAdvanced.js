@@ -22,7 +22,7 @@ import {
   useDismiss,
   FloatingPortal,
   FloatingFocusManager,
-} from '@floating-ui/react-dom-interactions';
+} from '@floating-ui/react';
 import classNames from 'classnames/bind';
 import { mergeRefs } from 'react-merge-refs';
 import styles from './dropdownMenu.module.scss';

@@ -36,10 +36,12 @@
       "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "^react-merge-refs$": "<rootDir>/__mocks__/react-merge-refs.js",
       "^query-string$": "<rootDir>/__mocks__/query-string.js",
-      "^cookie$": "<rootDir>/__mocks__/cookie.js"
+      "^cookie$": "<rootDir>/__mocks__/cookie.js",
+      "^react-accessible-dropdown-menu-hook$": "<rootDir>/__mocks__/react-accessible-dropdown-menu-hook.js",
+      "^@floating-ui/react$": "<rootDir>/__mocks__/@floating-ui/react.js"
     },
     "transformIgnorePatterns": [
-      "/node_modules/(?!query-string|react-merge-refs|cookie).+\\.js$"
+      "/node_modules/(?!query-string|react-merge-refs|cookie|react-accessible-dropdown-menu-hook|@floating-ui).+\\.js$"
     ],
     "watchman": false
   },
