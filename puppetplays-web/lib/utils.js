@@ -1,5 +1,6 @@
 import queryString from 'query-string';
-import cookie from 'cookie';
+
+const cookie = require('cookie');
 
 export const identity = i => i;
 

@@ -24,7 +24,7 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
 import classNames from 'classnames/bind';
-import mergeRefs from 'react-merge-refs';
+import { mergeRefs } from 'react-merge-refs';
 import styles from './dropdownMenu.module.scss';
 
 export const MenuItem = forwardRef(

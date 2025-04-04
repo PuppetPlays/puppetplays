@@ -33,8 +33,14 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "^react-merge-refs$": "<rootDir>/__mocks__/react-merge-refs.js",
+      "^query-string$": "<rootDir>/__mocks__/query-string.js",
+      "^cookie$": "<rootDir>/__mocks__/cookie.js"
     },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!query-string|react-merge-refs|cookie).+\\.js$"
+    ],
     "watchman": false
   },
   "dependencies": {
@@ -42,7 +48,7 @@
     "@floating-ui/react-dom-interactions": "^0.6.3",
     "@tippyjs/react": "^4.2.6",
     "classnames": "^2.3.1",
-    "cookie": "^0.5.0",
+    "cookie": "^1.0.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.7",
     "express": "^4.18.1",
@@ -54,12 +60,12 @@
     "next-translate": "^1.4.0",
     "ol": "^6.5.0",
     "prop-types": "^15.8.1",
-    "query-string": "^7.1.1",
+    "query-string": "^9.1.1",
     "react": "^18.1.0",
-    "react-accessible-dropdown-menu-hook": "^3.2.0",
+    "react-accessible-dropdown-menu-hook": "^4.0.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.1.0",
-    "react-merge-refs": "^1.1.0",
+    "react-merge-refs": "^2.1.1",
     "react-modal": "^3.15.1",
     "react-paginate": "^8.1.0",
     "react-select": "^5.3.2",
