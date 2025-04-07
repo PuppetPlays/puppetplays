@@ -9,29 +9,20 @@ jest.mock(
       children,
 );
 
-// Mock pour next-translate/useTranslation
-jest.mock('next-translate/useTranslation', () => () => ({
-  t: key => {
-    const translations = {
-      'common:note': 'Note',
-      'common:otherTitles': 'Autres titres',
-      'common:publications': 'Publications',
-      'common:publication': 'Publication',
-      'common:modernEdition': 'Édition moderne',
-      'common:onlineCopy': 'Copie en ligne',
-      'common:literaryTones': 'Tonalités littéraires',
-      'common:animationTechniques': "Techniques d'animation",
-      'common:audience': 'Public',
-      'common:characters': 'Personnages',
-      'common:actsCount': "Nombre d'actes",
-      'common:license': 'Licence',
-      'common:publicDomain': 'Domaine public',
-      'common:expandNote': 'Afficher plus',
-      'common:closeNote': 'Réduire',
-      'common:pagesCount': '1 page',
-    };
-    return translations[key] || key;
-  },
+// Mock pour next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:note': 'Note',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
 }));
 
 // Mock pour @tippyjs/react

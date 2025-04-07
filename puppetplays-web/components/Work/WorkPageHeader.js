@@ -1,6 +1,6 @@
 import { Fragment, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Author from 'components/Author';
 import Company from 'components/Company';

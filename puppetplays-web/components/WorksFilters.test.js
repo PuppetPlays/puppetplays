@@ -45,20 +45,20 @@ jest.mock('next/router', () => ({
   }),
 }));
 
-// Mock next-translate
-jest.mock('next-translate/useTranslation', () => () => ({
-  t: key => {
-    const translations = {
-      'common:filterByLanguage': 'Filtrer par langue',
-      'common:filterByPlace': 'Filtrer par lieu',
-      'common:filterByPerson': 'Filtrer par personne',
-      'common:filterByTag': 'Filtrer par mot-clé',
-      'common:clearAll': 'Effacer tout',
-      'common:publicDomain': 'Domaine public',
-      'common:period': 'Période',
-    };
-    return translations[key] || key;
-  },
+// Mock next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:filterByLanguage': 'Filtrer par langue',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
 }));
 
 // Mock pour les API de données

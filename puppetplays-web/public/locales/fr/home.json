@@ -95,5 +95,10 @@
   "pulcinellaPathwayTitle": "La figure de Pulcinella",
   "pathway": "Parcours découverte",
   "animationTechniqueTitle": "Techniques d'animation",
-  "animationTechniqueDescription": "Découvrez les différentes techniques utilisées pour manipuler les marionnettes au cours de l'histoire du théâtre de marionnettes européen. Cette section explore les approches artistiques et techniques qui donnent vie à ces personnages."
+  "animationTechniqueDescription": "Découvrez les différentes techniques utilisées pour manipuler les marionnettes au cours de l'histoire du théâtre de marionnettes européen. Cette section explore les approches artistiques et techniques qui donnent vie à ces personnages.",
+  "description": "Une base de données collaborative sur les spectacles de marionnettes",
+  "search": {
+    "placeholder": "Rechercher...",
+    "button": "Rechercher"
+  }
 }

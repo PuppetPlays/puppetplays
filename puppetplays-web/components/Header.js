@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import LanguageSelector from 'components/LanguageSelector';
 import MainNav from 'components/MainNav';
 import Logo from './logo.svg';
@@ -12,10 +13,8 @@ function Header({ children }) {
   return (
     <header className={styles.container}>
       <h1 className={styles.logo}>
-        <Link href="/">
-          <a title={t('common:backToHome')}>
-            <Logo />
-          </a>
+        <Link href="/" title={t('common:backToHome')}>
+          <Logo />
         </Link>
       </h1>
       <div className={styles.content}>{children}</div>
@@ -28,12 +27,12 @@ function Header({ children }) {
   );
 }
 
-Header.defaultProps = {
-  children: null,
-};
-
 Header.propTypes = {
   children: PropTypes.node,
+};
+
+Header.defaultProps = {
+  children: null,
 };
 
 export default Header;

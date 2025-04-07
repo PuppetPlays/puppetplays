@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 import get from 'lodash/get';
-import useTranslation from 'next-translate/useTranslation';
 import {
   getAnimationTechniqueByIdQuery,
   getFetchAPIClient,

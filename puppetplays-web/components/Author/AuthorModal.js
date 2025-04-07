@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import get from 'lodash/get';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';

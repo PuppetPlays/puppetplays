@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Hypotext from 'components/Hypotext';
 import { PageIntertitle } from 'components/Primitives';

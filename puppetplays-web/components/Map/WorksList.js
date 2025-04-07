@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import WorkCard from 'components/Work/WorkCard';
 import NoResults from 'components/NoResults';
 import CrossIcon from '../icon-cross.svg';

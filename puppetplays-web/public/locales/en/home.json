@@ -1,5 +1,10 @@
 {
-  "title": "Puppet and marionette theatre repertoires",
+  "title": "Puppet Theater Repertoire",
+  "description": "A collaborative database on puppet shows",
+  "search": {
+    "placeholder": "Search...",
+    "button": "Search"
+  },
   "subtitle": "In Western Europe from 1600 till now",
   "fullTitle": "Puppet and marionette theatre repertoires in Western Europe from 1600 till now",
   "metaDescription": "ERC project PuppetPlays – Puppet and marionette theatre repertoires – Database on drama for puppet or marionette – Scientific papers – Resources - Puppetry",

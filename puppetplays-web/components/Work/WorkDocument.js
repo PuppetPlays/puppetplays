@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
@@ -91,10 +91,10 @@ const WorkDocument = ({ workId, onClose }) => {
                     className={styles.sidebarPage}
                     data-selected={index === currentPage}
                   >
-                    <a href={`#page-${index}`}>
+                    <Link href={`#page-${index}`}>
                       <div>{index + 1}</div>
                       <img src={image.url} alt="" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
             </ul>
@@ -167,9 +167,9 @@ const WorkDocument = ({ workId, onClose }) => {
       )}
       <div className={styles.action}>
         {data && hasAtLeastOneItem(data.entry.pdf) && (
-          <a href={data.entry.pdf[0].url} target="_blank" rel="noreferrer">
+          <Link href={data.entry.pdf[0].url} target="_blank" rel="noreferrer">
             <IconDownload />
-          </a>
+          </Link>
         )}
       </div>
     </div>

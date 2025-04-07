@@ -14,6 +14,22 @@ useRouter.mockImplementation(() => ({
   query: '',
 }));
 
+// Mock pour next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:note': 'Note',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
+}));
+
 const authors = [
   { id: '1', firstName: 'Raymond', lastName: 'Poisson', typeHandle: 'persons' },
   { id: '2', firstName: 'Claude', lastName: 'Garbut', typeHandle: 'persons' },

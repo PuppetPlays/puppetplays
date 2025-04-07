@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useCookies } from 'react-cookie';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import useWindowSize from 'hooks/useWindowSize';
 import styles from './filtersBar.module.scss';
 

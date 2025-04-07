@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import groupBy from 'lodash/groupBy';
@@ -232,6 +232,7 @@ function Authors({ initialData, uniqueAuthorsIds }) {
                             {typeHandle === 'persons' && (
                               <Link
                                 href={`/auteurs/${author.id}/${author.slug}`}
+                                legacyBehavior
                               >
                                 <a>
                                   <Author {...author} lastNameFirst />{' '}
@@ -245,6 +246,7 @@ function Authors({ initialData, uniqueAuthorsIds }) {
                             {typeHandle === 'companies' && (
                               <Link
                                 href={`/auteurs/${author.id}/${author.slug}`}
+                                legacyBehavior
                               >
                                 <a>
                                   <Company {...author} />
@@ -274,7 +276,9 @@ function Authors({ initialData, uniqueAuthorsIds }) {
                   currentLetter === key ? styles.letterPaginationCurrent : ''
                 }
               >
-                <a href={`#authors-letter-${key}`}>{key}</a>
+                <Link href={`#authors-letter-${key}`} legacyBehavior>
+                  {key}
+                </Link>
               </li>
             ))}
           </ol>

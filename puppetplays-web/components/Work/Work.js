@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import {
   getTitle,
   getFirstItemTitle,
@@ -285,9 +285,9 @@ function Work(props) {
           </Info>
           {onlineCopy && (
             <div className={styles.onlineCopy}>
-              <a href={onlineCopy} target="_blank" rel="noopener noreferrer">
+              <Link href={onlineCopy} target="_blank" rel="noopener noreferrer">
                 {t('common:onlineCopy')}
-              </a>
+              </Link>
             </div>
           )}
           <Info

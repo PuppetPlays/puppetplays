@@ -41,35 +41,38 @@ function Card({ href, title, subtitle, mainImage, imageUrl, fixedHeight }) {
   }
 
   return (
-    <Link href={href}>
-      <a
-        className={cx({
-          container: true,
-          fixedHeight: fixedHeight || hasImage,
-        })}
-      >
-        {cardContent}
-      </a>
+    <Link
+      href={href}
+      className={cx({
+        container: true,
+        fixedHeight: fixedHeight || hasImage,
+      })}
+    >
+      {cardContent}
     </Link>
   );
 }
 
-Card.defaultProps = {
-  href: null,
-  title: '',
-  fixedHeight: false,
-  mainImage: null,
-  imageUrl: null,
-  subtitle: null,
-};
-
 Card.propTypes = {
   href: PropTypes.string,
-  title: PropTypes.node,
-  fixedHeight: PropTypes.bool,
-  subtitle: PropTypes.node,
-  mainImage: PropTypes.array,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  mainImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  ),
   imageUrl: PropTypes.string,
+  fixedHeight: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  href: null,
+  title: null,
+  subtitle: null,
+  mainImage: null,
+  imageUrl: null,
+  fixedHeight: false,
 };
 
 export default Card;

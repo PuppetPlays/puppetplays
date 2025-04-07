@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 
 /**
  * Error boundary component to catch and display errors in a user-friendly way
@@ -54,32 +54,15 @@ ErrorBoundaryClass.propTypes = {
   fallback: PropTypes.node,
 };
 
-// Wrapper with translation support
+ErrorBoundaryClass.defaultProps = {
+  fallback: null,
+};
+
 const ErrorBoundary = ({ children, fallback }) => {
   const { t } = useTranslation();
 
-  const defaultFallback = (
-    <div className="p-6 mx-auto my-8 max-w-md border border-red-300 rounded-md bg-red-50 text-center">
-      <h2 className="text-xl font-semibold text-red-700 mb-2">
-        {t('common:error.title', 'Something went wrong')}
-      </h2>
-      <p className="text-red-600 mb-4">
-        {t(
-          'common:error.message',
-          'An error occurred while rendering this component.',
-        )}
-      </p>
-      <button
-        onClick={() => window.location.reload()}
-        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-      >
-        {t('common:error.tryAgain', 'Try again')}
-      </button>
-    </div>
-  );
-
   return (
-    <ErrorBoundaryClass fallback={fallback || defaultFallback}>
+    <ErrorBoundaryClass fallback={fallback}>
       {children}
     </ErrorBoundaryClass>
   );
@@ -88,6 +71,10 @@ const ErrorBoundary = ({ children, fallback }) => {
 ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
   fallback: PropTypes.node,
+};
+
+ErrorBoundary.defaultProps = {
+  fallback: null,
 };
 
 export default ErrorBoundary;

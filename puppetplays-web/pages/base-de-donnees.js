@@ -11,7 +11,7 @@ import { isEqual } from 'lodash';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import {
   fetchAPI,
   getAllWorksQuery,

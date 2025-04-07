@@ -39,140 +39,101 @@ export const MenuItem = forwardRef(
   },
 );
 
+MenuItem.displayName = 'MenuItem';
+
 export const MenuComponent = forwardRef(
   // eslint-disable-next-line react/prop-types
-  ({ children, renderButton, ...props }, ref) => {
+  ({ children, renderButton }, ref) => {
     const [open, setOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(null);
-    const [allowHover, setAllowHover] = useState(false);
+    const [_allowHover, _setAllowHover] = useState(false);
     const cx = classNames.bind(styles);
 
     const listItemsRef = useRef([]);
+    const listRef = useRef(null);
+    const buttonRef = useRef(null);
 
-    const { x, y, reference, floating, strategy, context } = useFloating({
+    const { x, y, strategy, refs, context } = useFloating({
       open,
       onOpenChange: setOpen,
-      middleware: [offset({ mainAxis: 8, alignmentAxis: 0 }), flip(), shift()],
-      placement: 'bottom-start',
+      middleware: [offset(5), flip(), shift()],
       whileElementsMounted: autoUpdate,
     });
 
-    const { getReferenceProps, getFloatingProps, getItemProps } =
-      useInteractions([
-        useClick(context),
-        useRole(context, { role: 'menu' }),
-        useDismiss(context),
-        useListNavigation(context, {
-          listRef: listItemsRef,
-          activeIndex,
-          onNavigate: setActiveIndex,
-        }),
-      ]);
+    const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
+      useClick(context),
+      useDismiss(context),
+      useRole(context),
+      useListNavigation(context, {
+        listRef,
+        activeIndex,
+        onNavigate: setActiveIndex,
+        virtual: true,
+        loop: true,
+      }),
+    ]);
 
-    // Determine if "hover" logic can run based on the modality of input. This
-    // prevents unwanted focus synchronization as menus open and close with
-    // keyboard navigation and the cursor is resting on the menu.
     useEffect(() => {
-      function onPointerMove() {
-        setAllowHover(true);
+      if (open) {
+        setActiveIndex(null);
       }
+    }, [open]);
 
-      function onKeyDown() {
-        setAllowHover(false);
-      }
+    const mergedRefs = useMemo(
+      () => mergeRefs([refs.setReference, buttonRef]),
+      [refs.setReference],
+    );
 
-      window.addEventListener('pointermove', onPointerMove, {
-        once: true,
-        capture: true,
-      });
-      window.addEventListener('keydown', onKeyDown, true);
-
-      return () => {
-        window.removeEventListener('pointermove', onPointerMove, {
-          capture: true,
-        });
-        window.removeEventListener('keydown', onKeyDown, true);
-      };
-    }, [allowHover]);
-
-    const mergedReferenceRef = useMemo(
-      () => mergeRefs([ref, reference]),
-      [reference, ref],
+    const mergedListRefs = useMemo(
+      () => mergeRefs([refs.setFloating, listRef, ref]),
+      [refs.setFloating, ref],
     );
 
     return (
-      <div className={styles.container}>
-        {renderButton(
-          getReferenceProps({
-            ...props,
-            ref: mergedReferenceRef,
-            onClick(event) {
-              event.stopPropagation();
-              event.currentTarget.focus();
-            },
-            className: cx({ button: true, open }),
-          }),
-        )}
+      <>
+        {renderButton({
+          ref: mergedRefs,
+          ...getReferenceProps(),
+        })}
         <FloatingPortal>
           {open && (
-            <FloatingFocusManager
-              context={context}
-              preventTabbing
-              modal
-              // Touch-based screen readers will be able to navigate back to the
-              // reference and click it to dismiss the menu without clicking an item.
-              // This acts as a touch-based `Esc` key. A visually-hidden dismiss button
-              // is an alternative.
-              order={['reference', 'content']}
-            >
+            <FloatingFocusManager context={context} modal={false}>
               <div
-                {...getFloatingProps({
-                  className: styles.menuAdvanced,
-                  ref: floating,
-                  style: {
-                    position: strategy,
-                    top: y ? y : '',
-                    left: x ? x : '',
-                  },
-                  onClick() {
-                    setOpen(false);
-                  },
-                })}
+                ref={mergedListRefs}
+                className={cx('menu', { open })}
+                style={{
+                  position: strategy,
+                  top: y ?? 0,
+                  left: x ?? 0,
+                }}
+                {...getFloatingProps()}
               >
                 {Children.map(children, (child, index) => {
                   if (isValidElement(child)) {
-                    return cloneElement(
-                      child,
-                      getItemProps({
-                        role: 'menuitem',
-                        className: styles.menuItem,
-                        ref(node) {
+                    return cloneElement(child, {
+                      ...getItemProps({
+                        ref: node => {
                           listItemsRef.current[index] = node;
                         },
-                        onClick: child.props.onClick,
-                        // By default `focusItemOnHover` uses `mousemove` to sync focus,
-                        // but when a menu closes we want this to sync it on `enter`
-                        // even if the cursor didn't move. NB: Safari does not sync in
-                        // this case.
                         onPointerEnter() {
-                          if (allowHover) {
+                          if (_allowHover) {
                             setActiveIndex(index);
                           }
                         },
                       }),
-                    );
+                    });
                   }
-                  return null;
+                  return child;
                 })}
               </div>
             </FloatingFocusManager>
           )}
         </FloatingPortal>
-      </div>
+      </>
     );
   },
 );
 
-export const Menu = forwardRef((props, ref) => {
-  return <MenuComponent {...props} ref={ref} />;
-});
+MenuComponent.displayName = 'MenuComponent';
+
+export default MenuComponent;

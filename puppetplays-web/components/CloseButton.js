@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import styles from './closeButton.module.scss';
 
 function CloseButton({ onClick }) {

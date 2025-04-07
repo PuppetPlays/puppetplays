@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 function ArkId({ id }) {
@@ -5,9 +6,9 @@ function ArkId({ id }) {
     return null;
   } else if (id.startsWith('http')) {
     return (
-      <a href={id} target="_blank" rel="nofollow noopener noreferrer">
+      <Link href={id} target="_blank" rel="nofollow noopener noreferrer">
         {id}
-      </a>
+      </Link>
     );
   }
 

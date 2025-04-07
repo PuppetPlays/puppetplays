@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import {
   getTitle,
   getFirstItemTitle,
@@ -70,7 +70,7 @@ function WorkSummary({
       <div className={styles.body}>
         <WorkHeader
           title={
-            <Link href={`/oeuvres/${id}/${slug}`}>
+            <Link href={`/oeuvres/${id}/${slug}`} legacyBehavior>
               <a>{title}</a>
             </Link>
           }
@@ -121,13 +121,13 @@ function WorkSummary({
               </Info>
               {onlineCopy && (
                 <div className={styles.onlineCopy}>
-                  <a
+                  <Link
                     href={onlineCopy}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('common:onlineCopy')}
-                  </a>
+                  </Link>
                 </div>
               )}
             </Section>

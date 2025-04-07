@@ -17,7 +17,7 @@ function WorkCard({
       <WorkHeader
         title={
           <Link href={`/oeuvres/${id}/${slug}`}>
-            <a>{title}</a>
+            {title}
           </Link>
         }
         authors={authors}
@@ -30,21 +30,33 @@ function WorkCard({
   );
 }
 
-WorkCard.defaultProps = {
-  authors: [],
-  mostRelevantDate: null,
-  compositionPlace: [],
-  mainLanguage: [],
-};
-
 WorkCard.propTypes = {
   id: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.array,
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      typeHandle: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ),
   mostRelevantDate: PropTypes.string,
-  compositionPlace: PropTypes.array,
-  mainLanguage: PropTypes.array,
+  compositionPlace: PropTypes.shape({
+    name: PropTypes.string,
+    country: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
+  mainLanguage: PropTypes.string,
+};
+
+WorkCard.defaultProps = {
+  authors: null,
+  mostRelevantDate: null,
+  compositionPlace: null,
+  mainLanguage: null,
 };
 
 export default WorkCard;

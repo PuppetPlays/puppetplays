@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import Select from 'react-select';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';

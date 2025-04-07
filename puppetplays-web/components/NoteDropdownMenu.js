@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { Menu, MenuItem } from 'components/DropdownMenuAdvanced';
 import { modalTypes, useModal } from 'components/modalContext';
 import styles from './noteDropdownMenu.module.scss';

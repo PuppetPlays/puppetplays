@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 
 /**
  * Composant réutilisable pour afficher un message lorsqu'aucune donnée n'est disponible

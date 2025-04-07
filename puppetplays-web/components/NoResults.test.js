@@ -2,15 +2,20 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NoResults from './NoResults';
 
-// Mock next-translate
-jest.mock('next-translate/useTranslation', () => () => ({
-  t: key => {
-    const translations = {
-      'common:contentNotAvailable': 'Contenu non disponible',
-      'common:error.noResultsFound': 'Aucun résultat trouvé',
-    };
-    return translations[key] || key;
-  },
+// Mock next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:contentNotAvailable': 'Contenu non disponible',
+        'common:error.noResultsFound': 'Aucun résultat trouvé',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
 }));
 
 describe('NoResults component', () => {

@@ -162,5 +162,8 @@
     "notFound": "La ressource demandée n'a pas été trouvée.",
     "noResultsFound": "Aucun résultat trouvé"
   },
-  "readMore": "En savoir plus"
+  "readMore": "En savoir plus",
+  "home": "Accueil",
+  "about": "À propos",
+  "contact": "Contact"
 }

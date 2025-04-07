@@ -4,7 +4,7 @@ import { get } from 'lodash/fp';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import clip from 'text-clipper';
 import {
   fetchAPI,
@@ -32,7 +32,7 @@ import HtmlContent from 'components/HtmlContent';
 import BirthDeathDates from 'components/BirthDeathDates';
 import NewsletterForm from 'components/NewsletterForm';
 import styles from 'styles/Home.module.scss';
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 const PARTNERS = ['rir', 'upvm'];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
@@ -59,22 +59,22 @@ const PartnersBar = ({ t }) => {
     <div className={styles.partnersBar}>
       <ul className={styles.logosBar}>
         <li>
-          <a
+          <Link
             href="https://european-union.europa.eu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src="/logo-ue.png" height="86" alt={t('ue.alt')} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href="https://erc.europa.eu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src="/logo-erc.png" height="86" alt={t('erc.alt')} />
-          </a>
+          </Link>
         </li>
         <p>{t('projectFinancedBy')}</p>
       </ul>
@@ -84,7 +84,7 @@ const PartnersBar = ({ t }) => {
           Array.isArray(PARTNERS) &&
           PARTNERS.map(partner => (
             <li key={partner}>
-              <a
+              <Link
                 href={t(`${partner}.url`)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -94,7 +94,7 @@ const PartnersBar = ({ t }) => {
                   src={`/logo-${partner}.svg`}
                   alt={t(`${partner}.alt`)}
                 />
-              </a>
+              </Link>
             </li>
           ))}
       </ul>
@@ -235,7 +235,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 title={t('exploreByAuthors')}
                 isComingSoon={safeAuthors.length === 0}
                 footer={
-                  <Link href="/auteurs">
+                  <Link href="/auteurs" legacyBehavior>
                     <a>{t('browseAllAuthors')}</a>
                   </Link>
                 }
@@ -313,7 +313,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   title={t('discoverSingleWork')}
                   footer={
                     <Link href="/base-de-donnees">
-                      <a>{t('browseDatabaseWorks')}</a>
+                      {t('browseDatabaseWorks')}
                     </Link>
                   }
                 >
@@ -394,7 +394,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   Array.isArray(PARTNERS) &&
                   PARTNERS.map(partner => (
                     <li key={partner}>
-                      <a
+                      <Link
                         href={t(`${partner}.url`)}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -404,7 +404,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                           src={`/logo-${partner}.svg`}
                           alt={t(`${partner}.alt`)}
                         />
-                      </a>
+                      </Link>
                     </li>
                   ))}
               </ul>
@@ -412,7 +412,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
           </section>
           <section className={styles.intro}>
             <div className={styles.footerTopBar}>
-              <a
+              <Link
                 href="https://www.facebook.com/ERCPuppetPlays"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -429,7 +429,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     fill="#F0F0F3"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className={styles.footerInner}>
               <div className={styles.introContent}>
@@ -444,31 +444,31 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <NewsletterForm />
 
                 <div className={styles.introContentLinks}>
-                  <a
+                  <Link
                     href={t('ourSiteUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.buttonLink}
                   >
                     {t('common:knowMore')}
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={t('theTeamUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('theTeam')}
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={t('projectNewsUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('projectNews')}
-                  </a>
-                  <a href="mailto:puppetplays@univ-montp3.fr">
+                  </Link>
+                  <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className={styles.introMedia}>
@@ -499,7 +499,7 @@ Home.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.object),
 };
 
-export async function getServerSideProps({ locale, req, res }) {
+export async function getServerSideProps({ locale }) {
   try {
     const apiClient = getFetchAPIClient({
       variables: { locale },
@@ -580,6 +580,7 @@ export async function getServerSideProps({ locale, req, res }) {
 
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common', 'home'])),
         animationTechnique: homeAnimationTechniqueEntry || null,
         work: homeWorkEntry || null,
         keywords: homeKeywords || [],
@@ -591,6 +592,7 @@ export async function getServerSideProps({ locale, req, res }) {
     // Return safe default values
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common', 'home'])),
         animationTechnique: null,
         work: null,
         keywords: [],

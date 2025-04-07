@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
 import useWindowSize from 'hooks/useWindowSize';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
@@ -42,67 +42,51 @@ function MainNav({ inverse }) {
     width < 480
       ? [
           <li key="lang-fr" className={locale === 'fr' ? styles.isCurrent : ''}>
-            <Link href="/" locale="fr">
+            <Link href="/" locale="fr" legacyBehavior>
               <a>Français</a>
             </Link>
           </li>,
-
-          <li
-            key="lang-en"
-            className={
-              locale === 'en'
-                ? `${styles.isCurrent} ${styles.englishListItem}`
-                : styles.englishListItem
-            }
-          >
-            <Link href="/" locale="en">
+          <li key="lang-en" className={locale === 'en' ? styles.isCurrent : ''}>
+            <Link href="/" locale="en" legacyBehavior>
               <a>English</a>
             </Link>
           </li>,
         ]
-      : [];
+      : null;
 
   return (
-    <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
+    <nav className={`${styles.container} ${inverse ? styles.inverse : ''}`}>
       <DropdownMenu
-        itemsCount={width < 480 ? 6 : 4}
-        renderButton={NavButton}
-        childrenWrapperComponent={Wrapper}
+        renderButton={buttonProps => <NavButton {...buttonProps} />}
+        itemsCount={6}
       >
-        {[
-          ...languageItems,
-          <li key="database">
-            <Link href="/base-de-donnees">
-              <a>{t('common:database')}</a>
-            </Link>
-          </li>,
-          <li key="map">
-            <Link href="/base-de-donnees?view=MAP">
-              <a>{t('common:map')}</a>
-            </Link>
-          </li>,
-          <li key="auteurs">
-            <Link href="/auteurs">
-              <a>{t('common:authors')}</a>
-            </Link>
-          </li>,
-          <li key="techniques">
-            <Link href="/techniques-d-animation">
-              <a>{t('common:animationTechniques')}</a>
-            </Link>
-          </li>,
-        ]}
+        <li key="home">
+          <Link href="/">{t('common:home')}</Link>
+        </li>
+        <li key="database">
+          <Link href="/base-de-donnees">{t('common:database')}</Link>
+        </li>
+        <li key="authors">
+          <Link href="/auteurs">{t('common:authors')}</Link>
+        </li>
+        <li key="about">
+          <Link href="/a-propos">{t('common:about')}</Link>
+        </li>
+        <li key="contact">
+          <Link href="/contact">{t('common:contact')}</Link>
+        </li>
+        {languageItems}
       </DropdownMenu>
     </nav>
   );
 }
 
-MainNav.defaultProps = {
-  inverse: false,
-};
-
 MainNav.propTypes = {
   inverse: PropTypes.bool,
+};
+
+MainNav.defaultProps = {
+  inverse: false,
 };
 
 export default MainNav;

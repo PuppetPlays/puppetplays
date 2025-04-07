@@ -15,7 +15,7 @@ function LanguageSelector({ inverse, path }) {
       {locales.map(l => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
           <Link href={path} locale={l}>
-            <a>{l}</a>
+            {l}
           </Link>
         </li>
       ))}
@@ -23,14 +23,14 @@ function LanguageSelector({ inverse, path }) {
   );
 }
 
-LanguageSelector.defaultProps = {
-  inverse: false,
-  path: '/',
-};
-
 LanguageSelector.propTypes = {
   inverse: PropTypes.bool,
   path: PropTypes.string,
+};
+
+LanguageSelector.defaultProps = {
+  inverse: false,
+  path: '/',
 };
 
 export default LanguageSelector;

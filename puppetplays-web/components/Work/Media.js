@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { getTitle, hasAtLeastOneItem } from 'lib/utils';
 import CommaSepList from 'components/CommaSepList';
 import ZoomableImage from 'components/ZoomableImage';

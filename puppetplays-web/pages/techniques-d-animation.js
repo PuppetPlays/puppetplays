@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { fetchAPI, getAllAnimationsTechniquesQuery } from 'lib/api';
 import Layout from 'components/Layout';
 import { PageTitle } from 'components/Primitives';

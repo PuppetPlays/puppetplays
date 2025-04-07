@@ -28,19 +28,23 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
       </div>
       <h2>
         {to && (
-          <Link href={to}>
-            <a ref={linkRef}>{title}</a>
+          <Link href={to} ref={linkRef}>
+            {title}
           </Link>
         )}
         {href && (
-          <a
-            ref={linkRef}
+          <Link
             href={href}
-            rel="noopener noreferrer"
-            target="_blank"
+            ref={linkRef}
+            legacyBehavior
           >
-            {title}
-          </a>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {title}
+            </Link>
+          </Link>
         )}
         {!href && !to && title}
       </h2>
@@ -49,18 +53,18 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
   );
 };
 
-EntryPointCard.defaultProps = {
-  to: null,
-  href: null,
-  description: null,
-};
-
 EntryPointCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   thumbnailUrl: PropTypes.string.isRequired,
   to: PropTypes.string,
   href: PropTypes.string,
+};
+
+EntryPointCard.defaultProps = {
+  description: null,
+  to: null,
+  href: null,
 };
 
 export default EntryPointCard;

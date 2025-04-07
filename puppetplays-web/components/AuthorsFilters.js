@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import constant from 'lodash/constant';
 import cond from 'lodash/cond';
 import stubTrue from 'lodash/stubTrue';

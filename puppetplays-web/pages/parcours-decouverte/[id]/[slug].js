@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import useSWR from 'swr';
 import Head from 'next/head';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { hasAtLeastOneItem } from 'lib/utils';
 import { fetchAPI, getDiscoveryPathById } from 'lib/api';

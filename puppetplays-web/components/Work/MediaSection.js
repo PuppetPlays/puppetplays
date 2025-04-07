@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { cond, constant, stubTrue } from 'lodash';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import Media from './Media';
 import NoResults from 'components/NoResults';
 import PhotoIcon from './icons/icon-photo.svg';

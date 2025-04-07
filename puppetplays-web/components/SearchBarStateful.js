@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import SearchIcon from './icon-search.svg';
 import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';

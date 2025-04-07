@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { stopEventPropagation } from 'lib/utils';
+import { useTranslation } from 'next-i18next';
+
 import Author from 'components/Author';
 import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
@@ -17,7 +19,7 @@ function Hypotext({ id, title, slug, date, authors }) {
       <span className={styles.title}>
         {id && asPath !== `/oeuvres/${id}/${slug}` && (
           <Link href={`/oeuvres/${id}/${slug}`}>
-            <a>{title}</a>
+            {title}
           </Link>
         )}
         <span onClick={stopEventPropagation}>
@@ -44,19 +46,26 @@ function Hypotext({ id, title, slug, date, authors }) {
   );
 }
 
+Hypotext.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  slug: PropTypes.string,
+  date: PropTypes.string,
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      typeHandle: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
 Hypotext.defaultProps = {
   id: null,
   slug: null,
   date: null,
   authors: null,
-};
-
-Hypotext.propTypes = {
-  id: PropTypes.string,
-  slug: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string,
-  authors: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Hypotext;

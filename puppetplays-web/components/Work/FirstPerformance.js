@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { hasAtLeastOneItem } from 'lib/utils';
 import Section from 'components/Section';
 import Place from 'components/Place';
