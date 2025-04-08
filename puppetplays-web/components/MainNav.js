@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'next-i18next';
 import useWindowSize from 'hooks/useWindowSize';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
 
-const NavButton = props => {
+const NavButton = (props) => {
   const { t } = useTranslation();
 
   return (
@@ -46,47 +46,63 @@ function MainNav({ inverse }) {
               <a>Français</a>
             </Link>
           </li>,
-          <li key="lang-en" className={locale === 'en' ? styles.isCurrent : ''}>
+
+          <li
+            key="lang-en"
+            className={
+              locale === 'en'
+                ? `${styles.isCurrent} ${styles.englishListItem}`
+                : styles.englishListItem
+            }
+          >
             <Link href="/" locale="en" legacyBehavior>
               <a>English</a>
             </Link>
           </li>,
         ]
-      : null;
+      : [];
 
   return (
-    <nav className={`${styles.container} ${inverse ? styles.inverse : ''}`}>
+    <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        renderButton={buttonProps => <NavButton {...buttonProps} />}
-        itemsCount={6}
+        itemsCount={width < 480 ? 6 : 4}
+        renderButton={NavButton}
+        childrenWrapperComponent={Wrapper}
       >
-        <li key="home">
-          <Link href="/">{t('common:home')}</Link>
-        </li>
-        <li key="database">
-          <Link href="/base-de-donnees">{t('common:database')}</Link>
-        </li>
-        <li key="authors">
-          <Link href="/auteurs">{t('common:authors')}</Link>
-        </li>
-        <li key="about">
-          <Link href="/a-propos">{t('common:about')}</Link>
-        </li>
-        <li key="contact">
-          <Link href="/contact">{t('common:contact')}</Link>
-        </li>
-        {languageItems}
+        {[
+          ...languageItems,
+          <li key="database">
+            <Link href="/base-de-donnees" legacyBehavior>
+              <a>{t('common:database')}</a>
+            </Link>
+          </li>,
+          <li key="map">
+            <Link href="/base-de-donnees?view=MAP" legacyBehavior>
+              <a>{t('common:map')}</a>
+            </Link>
+          </li>,
+          <li key="auteurs">
+            <Link href="/auteurs" legacyBehavior>
+              <a>{t('common:authors')}</a>
+            </Link>
+          </li>,
+          <li key="techniques">
+            <Link href="/techniques-d-animation" legacyBehavior>
+              <a>{t('common:animationTechniques')}</a>
+            </Link>
+          </li>,
+        ]}
       </DropdownMenu>
     </nav>
   );
 }
 
-MainNav.propTypes = {
-  inverse: PropTypes.bool,
-};
-
 MainNav.defaultProps = {
   inverse: false,
+};
+
+MainNav.propTypes = {
+  inverse: PropTypes.bool,
 };
 
 export default MainNav;

@@ -4,7 +4,7 @@ import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
 import { useTranslation } from 'next-i18next';
-import { Menu, MenuItem } from 'components/DropdownMenuAdvanced';
+import { MenuComponent as Menu, MenuItem } from 'components/DropdownMenuAdvanced';
 import { modalTypes, useModal } from 'components/modalContext';
 import styles from './noteDropdownMenu.module.scss';
 import { useRouter } from 'next/router';

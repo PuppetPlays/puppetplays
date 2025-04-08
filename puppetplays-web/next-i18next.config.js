@@ -12,15 +12,15 @@ const config = {
   reloadOnPrerender: process.env.NODE_ENV === 'development',
   defaultNS: 'common',
   ns: ['common', 'home'],
-  serializeConfig: false,
+  serializeConfig: true,
   use: [],
   react: {
-    useSuspense: false,
+    useSuspense: true,
   },
   interpolation: {
     escapeValue: false,
   },
-  load: 'languageOnly',
+  load: 'all',
 };
 
 module.exports = config; 

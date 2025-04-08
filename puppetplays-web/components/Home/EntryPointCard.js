@@ -38,12 +38,12 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
             ref={linkRef}
             legacyBehavior
           >
-            <Link
+            <a
               rel="noopener noreferrer"
               target="_blank"
             >
               {title}
-            </Link>
+            </a>
           </Link>
         )}
         {!href && !to && title}
