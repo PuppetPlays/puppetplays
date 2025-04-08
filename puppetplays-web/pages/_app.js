@@ -6,6 +6,7 @@ import { ModalProvider } from 'components/modalContext';
 import { SWRConfig } from 'swr';
 import ErrorBoundary from 'components/ErrorBoundary';
 import { handleApiError } from 'lib/apiErrorHandler';
+import 'lib/i18n'; // Import i18n initialization
 import 'styles/globals.css';
 import nextI18NextConfig from '../next-i18next.config.js';
 

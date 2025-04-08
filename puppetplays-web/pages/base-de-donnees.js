@@ -12,6 +12,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   fetchAPI,
   getAllWorksQuery,
@@ -55,7 +56,7 @@ const VIEWS = {
 };
 
 function Home({ initialData }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const router = useRouter();
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
@@ -355,7 +356,7 @@ Home.propTypes = {
 
 export default Home;
 
-export async function getServerSideProps({ locale, req, res, query }) {
+export async function getServerSideProps({ locale, query }) {
   const data = await getAllWorks(
     locale,
     query.page * WORKS_PAGE_SIZE,
@@ -365,6 +366,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       initialData: data,
     },
   };

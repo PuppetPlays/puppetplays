@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import groupBy from 'lodash/groupBy';
@@ -75,22 +76,30 @@ function Authors({ initialData, uniqueAuthorsIds }) {
   const { data } = useSWR(
     [getAllAuthorsQuery(filters), router.locale, filters],
     async (query, locale, filtersState) => {
-      const data = await fetchAPI(query, {
-        variables: {
-          locale,
-          ...stateToGraphqlVariables(filtersState),
-        },
-      });
-      const authors = (data?.entries || []).filter(({ id }) =>
-        uniqueAuthorsIds.includes(id),
-      );
-      return {
-        entries: groupBy(authors, getFirstLetter),
-      };
+      try {
+        const data = await fetchAPI(query, {
+          variables: {
+            locale,
+            ...stateToGraphqlVariables(filtersState),
+          },
+        });
+        const authors = (data?.entries || []).filter(({ id }) =>
+          uniqueAuthorsIds.includes(id),
+        );
+        return {
+          entries: groupBy(authors, getFirstLetter),
+        };
+      } catch (error) {
+        console.error('Error fetching authors data:', error);
+        return initialData; // Return initial data as fallback
+      }
     },
     {
       initialData,
       revalidateOnFocus: false,
+      onError: error => {
+        console.error('SWR error:', error);
+      },
     },
   );
 
@@ -122,7 +131,7 @@ function Authors({ initialData, uniqueAuthorsIds }) {
   return (
     <Layout
       aside={
-        <Suspense fallback={`loading`}>
+        <Suspense fallback="loading">
           <Filters
             filters={filters}
             onChange={handleChangeFilters}
@@ -206,7 +215,7 @@ function Authors({ initialData, uniqueAuthorsIds }) {
               opacity: 0.3,
               borderRadius: '2px',
             }}
-          ></div>
+          />
         </div>
       ) : (
         <>
@@ -295,28 +304,41 @@ Authors.propTypes = {
 
 export default Authors;
 
-export async function getServerSideProps({ locale, req, res, query }) {
+export async function getServerSideProps({ locale, query }) {
   try {
     const filtersState = queryParamsToState(query);
 
-    const authorsIds = await getFetchAPIClient({
-      variables: { locale },
-    })(getAllWorksAuthorsIdsQuery);
+    // Wrap each API call in try/catch to prevent one failure from breaking everything
+    let uniqueAuthorsIds = [];
+    let authors = [];
 
-    // Ajouter null safety pour éviter l'erreur
-    const uniqueAuthorsIds = uniq(
-      (authorsIds?.entries || []).flatMap(entry =>
-        (entry?.authors || []).map(author => author?.id).filter(Boolean),
-      ),
-    );
+    try {
+      const authorsIds = await getFetchAPIClient({
+        variables: { locale },
+      })(getAllWorksAuthorsIdsQuery);
 
-    const personsRelatedToWorks = await getFetchAPIClient({
-      variables: { locale, ...stateToGraphqlVariables(filtersState) },
-    })(getAllAuthorsQuery(filtersState));
+      uniqueAuthorsIds = uniq(
+        (authorsIds?.entries || []).flatMap(entry =>
+          (entry?.authors || []).map(author => author?.id).filter(Boolean),
+        ),
+      );
+    } catch (error) {
+      console.error('Error fetching authors IDs:', error);
+    }
 
-    const authors = (personsRelatedToWorks?.entries || []).filter(({ id }) =>
-      uniqueAuthorsIds.includes(id),
-    );
+    try {
+      if (uniqueAuthorsIds.length > 0) {
+        const personsRelatedToWorks = await getFetchAPIClient({
+          variables: { locale, ...stateToGraphqlVariables(filtersState) },
+        })(getAllAuthorsQuery(filtersState));
+
+        authors = (personsRelatedToWorks?.entries || []).filter(({ id }) =>
+          uniqueAuthorsIds.includes(id),
+        );
+      }
+    } catch (error) {
+      console.error('Error fetching authors details:', error);
+    }
 
     return {
       props: {
@@ -325,7 +347,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
       },
     };
   } catch (error) {
-    console.error('Error fetching authors:', error);
+    console.error('Error in getServerSideProps:', error);
     return {
       props: {
         initialData: { entries: {} },

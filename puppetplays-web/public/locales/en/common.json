@@ -93,6 +93,7 @@
     "mainLanguagePlaceholder": "French, German…",
     "languages": "Language",
     "period": "Period",
+    "periodRange": "Period selection",
     "composeAfter": "composed after",
     "composeBefore": "composed before",
     "authors": "Author",

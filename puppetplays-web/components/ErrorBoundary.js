@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 
 /**
  * Error boundary component to catch and display errors in a user-friendly way
@@ -58,9 +57,8 @@ ErrorBoundaryClass.defaultProps = {
   fallback: null,
 };
 
+// Wrapper component without hooks to avoid infinite loops
 const ErrorBoundary = ({ children, fallback }) => {
-  const { t } = useTranslation();
-
   return (
     <ErrorBoundaryClass fallback={fallback}>
       {children}

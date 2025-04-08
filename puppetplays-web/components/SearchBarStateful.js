@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import SearchIcon from './icon-search.svg';
-import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';
 
 const SearchBarStateful = () => {
@@ -46,11 +45,11 @@ const SearchBarStateful = () => {
           onClick={handleReset}
           className={styles.resetButton}
         >
-          <CrossIcon />
+          <Image src="/icon-cross.svg" alt="" width={15} height={15} />
         </button>
       )}
       <button type="submit" className={styles.submitButton}>
-        <SearchIcon />
+        <Image src="/icon-search.svg" alt="" width={20} height={20} />
       </button>
     </form>
   );

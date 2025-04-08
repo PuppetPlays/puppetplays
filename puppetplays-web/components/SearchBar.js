@@ -1,10 +1,9 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import SearchIcon from './icon-search.svg';
-import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';
 
 const SearchBar = ({ value, onChange, onAfterChange }) => {
@@ -47,11 +46,11 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
           onClick={handleReset}
           className={styles.resetButton}
         >
-          <CrossIcon />
+          <Image src="/icon-cross.svg" alt="" width={15} height={15} />
         </button>
       )}
       <div className={styles.submitButton}>
-        <SearchIcon />
+        <Image src="/icon-search.svg" alt="" width={20} height={20} />
       </div>
     </div>
   );

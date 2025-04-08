@@ -1,5 +1,6 @@
 /** @type {import('next-i18next').UserConfig} */
 const path = require('path');
+const HttpBackend = require('i18next-http-backend/cjs');
 
 const config = {
   debug: process.env.NODE_ENV === 'development',
@@ -9,16 +10,18 @@ const config = {
   },
   /** To avoid issues when deploying to some paas (vercel...) */
   localePath: path.resolve('./public/locales'),
-  reloadOnPrerender: process.env.NODE_ENV === 'development',
   defaultNS: 'common',
   ns: ['common', 'home'],
-  serializeConfig: true,
-  use: [],
+  serializeConfig: false,
+  use: typeof window !== 'undefined' ? [HttpBackend] : [],
   react: {
     useSuspense: true,
   },
   interpolation: {
     escapeValue: false,
+  },
+  backend: {
+    loadPath: './public/locales/{{lng}}/{{ns}}.json',
   },
   load: 'all',
 };

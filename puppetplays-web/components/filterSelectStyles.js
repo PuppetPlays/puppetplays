@@ -33,6 +33,13 @@ export const styles = {
   input: (provided, state) => ({
     ...provided,
     color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
+    '& input': {
+      color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
+    },
+  }),
+  valueContainer: (provided, state) => ({
+    ...provided,
+    color: state.selectProps.inverse ? 'white' : 'var(--color-text-subtle)',
   }),
   dropdownIndicator: (provided, state) => ({
     ...provided,
