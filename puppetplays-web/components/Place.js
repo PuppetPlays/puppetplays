@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { hasAtLeastOneItem } from 'lib/utils';
 
-const Place = ({ title, country }) => {
+const Place = ({ title = null, country = null }) => {
   return (
     <Fragment>
       <span>{title}</span>
@@ -11,10 +11,6 @@ const Place = ({ title, country }) => {
       )}
     </Fragment>
   );
-};
-
-Place.defaultProps = {
-  country: null,
 };
 
 Place.propTypes = {

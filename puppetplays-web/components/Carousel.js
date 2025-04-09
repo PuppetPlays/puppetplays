@@ -5,7 +5,7 @@ import { hasAtLeastOneItem } from 'lib/utils';
 import ZoomableImage from 'components/ZoomableImage';
 import styles from './carousel.module.scss';
 
-function Carousel({ images, bleed }) {
+function Carousel({ images = [], bleed = false }) {
   const innerRef = useRef(null);
   const [currentImage, setCurrentImage] = useState(0);
   const cx = classNames.bind(styles);
@@ -79,11 +79,6 @@ function Carousel({ images, bleed }) {
     </div>
   );
 }
-
-Carousel.defaultProps = {
-  images: null,
-  bleed: false,
-};
 
 Carousel.propTypes = {
   images: PropTypes.arrayOf(PropTypes.object),

@@ -11,7 +11,7 @@ import CommaSepList from 'components/CommaSepList';
 import styles from './hypotext.module.scss';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */
-function Hypotext({ id, title, slug, date, authors }) {
+function Hypotext({ id = null, title = null, slug = null, date = null, authors = null }) {
   const { asPath } = useRouter();
 
   return (
@@ -59,13 +59,6 @@ Hypotext.propTypes = {
       slug: PropTypes.string.isRequired,
     }),
   ),
-};
-
-Hypotext.defaultProps = {
-  id: null,
-  slug: null,
-  date: null,
-  authors: null,
 };
 
 export default Hypotext;

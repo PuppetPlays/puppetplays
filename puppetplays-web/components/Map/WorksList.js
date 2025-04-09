@@ -5,7 +5,7 @@ import NoResults from 'components/NoResults';
 import CrossIcon from '../icon-cross.svg';
 import styles from './worksList.module.scss';
 
-const WorksList = ({ works, onClose }) => {
+const WorksList = ({ works = null, onClose = null }) => {
   const { t } = useTranslation();
 
   if (!works) {
@@ -31,10 +31,6 @@ const WorksList = ({ works, onClose }) => {
       </div>
     </div>
   );
-};
-
-WorksList.defaultProps = {
-  works: null,
 };
 
 WorksList.propTypes = {

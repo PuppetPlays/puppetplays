@@ -31,7 +31,7 @@ const MediaMenu = ({ sections, activeAnchor }) => {
   );
 };
 
-MediaMenu.defaultProps = {
+MediaMenu. = {
   activeAnchor: null,
 };
 

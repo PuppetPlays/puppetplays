@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './languageSelector.module.scss';
 
-function LanguageSelector({ inverse, path }) {
+function LanguageSelector({ inverse = false, path = '/' }) {
   const { locale, locales } = useRouter();
 
   return (
@@ -28,9 +28,5 @@ LanguageSelector.propTypes = {
   path: PropTypes.string,
 };
 
-LanguageSelector.defaultProps = {
-  inverse: false,
-  path: '/',
-};
 
 export default LanguageSelector;

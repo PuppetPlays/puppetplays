@@ -5,7 +5,7 @@ import 'tippy.js/dist/tippy.css';
 import styles from './tooltip.module.scss';
 import isNil from 'lodash/isNil';
 
-function Tooltip({ content, children, ...props }) {
+function Tooltip({ content = null, children, ...props }) {
   return (
     <Tippy
       className={styles.container}
@@ -18,10 +18,6 @@ function Tooltip({ content, children, ...props }) {
     </Tippy>
   );
 }
-
-Tooltip.defaultProps = {
-  content: null,
-};
 
 Tooltip.propTypes = {
   content: PropTypes.node,

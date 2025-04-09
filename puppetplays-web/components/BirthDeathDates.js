@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const BirthDeathDates = ({ birthDate, deathDate }) => {
+const BirthDeathDates = ({ birthDate = null, deathDate = null }) => {
   if (!birthDate && !deathDate) {
     return null;
   }
@@ -12,10 +12,6 @@ const BirthDeathDates = ({ birthDate, deathDate }) => {
   );
 };
 
-BirthDeathDates.defaultProps = {
-  birthDate: null,
-  deathDate: null,
-};
 
 BirthDeathDates.propTypes = {
   birthDate: PropTypes.string,

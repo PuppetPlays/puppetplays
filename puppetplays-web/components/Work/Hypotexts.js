@@ -4,7 +4,7 @@ import { hasAtLeastOneItem } from 'lib/utils';
 import Info from 'components/Info';
 import Hypotext from 'components/Hypotext';
 
-function Hypotexts({ hypotexts }) {
+function Hypotexts({ hypotexts = [] }) {
   const { t } = useTranslation();
 
   return (
@@ -15,10 +15,6 @@ function Hypotexts({ hypotexts }) {
     </Info>
   );
 }
-
-Hypotexts.defaultProps = {
-  hypotexts: [],
-};
 
 Hypotexts.propTypes = {
   hypotexts: PropTypes.arrayOf(

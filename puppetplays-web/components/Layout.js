@@ -6,7 +6,7 @@ import AnimationTechniqueModal from 'components/AnimationTechnique/AnimationTech
 import SearchBarStateful from 'components/SearchBarStateful';
 import styles from './layout.module.scss';
 
-function Layout({ aside, header, children }) {
+function Layout({ aside = null, header = <SearchBarStateful />, children }) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -23,11 +23,6 @@ function Layout({ aside, header, children }) {
     </div>
   );
 }
-
-Layout.defaultProps = {
-  aside: null,
-  header: <SearchBarStateful />,
-};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

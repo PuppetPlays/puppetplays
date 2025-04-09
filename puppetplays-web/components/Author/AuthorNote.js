@@ -15,18 +15,18 @@ import ArkId from 'components/Work/ArkId';
 import styles from './authorNote.module.scss';
 
 function AuthorNote({
-  birthDate,
-  deathDate,
-  biographicalNote,
-  mainImage,
-  images,
-  idrefId,
-  viafId,
-  arkId,
-  isniId,
-  works,
-  bleedCarousel,
-  onCloseModal,
+  birthDate = null,
+  deathDate = null,
+  biographicalNote = null,
+  mainImage = [],
+  images = [],
+  idrefId = null,
+  viafId = null,
+  arkId = null,
+  isniId = null,
+  works = null,
+  bleedCarousel = false,
+  onCloseModal = null,
 }) {
   const { t } = useTranslation();
 
@@ -129,21 +129,6 @@ function AuthorNote({
     </Fragment>
   );
 }
-
-AuthorNote.defaultProps = {
-  birthDate: null,
-  deathDate: null,
-  biographicalNote: null,
-  mainImage: [],
-  images: [],
-  idrefId: null,
-  viafId: null,
-  arkId: null,
-  isniId: null,
-  works: null,
-  bleedCarousel: false,
-  onCloseModal: null,
-};
 
 AuthorNote.propTypes = {
   birthDate: PropTypes.string,

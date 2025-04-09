@@ -1,6 +1,8 @@
 .container {
   position: relative;
 
+  border: 1px solid red;
+
   &.isBleeding {
     max-width: calc(100vw - 40px);
 

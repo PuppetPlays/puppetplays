@@ -3,7 +3,7 @@ import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './splitLayout.module.scss';
 import { useCallback } from 'react';
 
-const SplitLayout = ({ title, subtitle, children, image, linkRef, date }) => {
+const SplitLayout = ({ title = null, subtitle = null, children = null, image = null, linkRef = null, date = null }) => {
   const handleImageClick = useCallback(
     evt => {
       evt.preventDefault();
@@ -48,13 +48,6 @@ const SplitLayout = ({ title, subtitle, children, image, linkRef, date }) => {
   );
 };
 
-SplitLayout.defaultProps = {
-  title: '',
-  subtitle: '',
-  date: '',
-  image: null,
-  linkRef: null,
-};
 
 SplitLayout.propTypes = {
   title: PropTypes.string,

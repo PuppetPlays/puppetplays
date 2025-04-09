@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './info.module.scss';
 
-function Info({ label, children, fill, show }) {
+function Info({ label = null, children = null, fill = false, show = true }) {
   if (!show) {
     return null;
   }
@@ -13,11 +13,6 @@ function Info({ label, children, fill, show }) {
   );
 }
 
-Info.defaultProps = {
-  fill: false,
-  show: true,
-  children: null,
-};
 
 Info.propTypes = {
   label: PropTypes.string.isRequired,

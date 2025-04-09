@@ -2,11 +2,9 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { useTranslation } from 'next-i18next';
-import SearchIcon from './icon-search.svg';
-import CrossIcon from './icon-cross.svg';
 import styles from './searchBar.module.scss';
 
-const SearchBar = ({ value, onChange, onAfterChange }) => {
+const SearchBar = ({ value = '', onChange = null, onAfterChange = null }) => {
   const { t } = useTranslation();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,10 +56,6 @@ const SearchBar = ({ value, onChange, onAfterChange }) => {
       </div>
     </div>
   );
-};
-
-SearchBar.defaultProps = {
-  value: '',
 };
 
 SearchBar.propTypes = {

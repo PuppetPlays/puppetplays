@@ -4,13 +4,13 @@ import WorkHeader from './WorkHeader';
 import styles from './workCard.module.scss';
 
 function WorkCard({
-  id,
-  slug,
-  title,
-  authors,
-  mostRelevantDate,
-  compositionPlace,
-  mainLanguage,
+  id = null,
+  slug = null,
+  title = null,
+  authors = [],
+  mostRelevantDate = null,
+  compositionPlace = [],
+  mainLanguage = null,
 }) {
   return (
     <article className={styles.container}>
@@ -50,13 +50,6 @@ WorkCard.propTypes = {
     }),
   }),
   mainLanguage: PropTypes.string,
-};
-
-WorkCard.defaultProps = {
-  authors: null,
-  mostRelevantDate: null,
-  compositionPlace: null,
-  mainLanguage: null,
 };
 
 export default WorkCard;

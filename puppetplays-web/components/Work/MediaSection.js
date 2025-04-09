@@ -17,7 +17,7 @@ export const getMediaKindIcon = cond([
   [stubTrue, constant(null)],
 ]);
 
-const MediaSection = ({ kind, medias, showTitle }) => {
+const MediaSection = ({ kind = null, medias = [], showTitle = false }) => {
   const { t } = useTranslation();
 
   return (
@@ -57,9 +57,6 @@ const MediaSection = ({ kind, medias, showTitle }) => {
   );
 };
 
-MediaSection.defaultProps = {
-  showTitle: false,
-};
 
 MediaSection.propTypes = {
   kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'audio']).isRequired,

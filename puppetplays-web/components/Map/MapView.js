@@ -20,7 +20,7 @@ import Map from './Map';
 const clusteredByCountrySource = new VectorSource({ features: [] });
 const clusteredByPlaceSource = new VectorSource({ features: [] });
 
-const MapView = ({ filters, searchTerms, locale }) => {
+const MapView = ({ filters = {}, searchTerms = '', locale }) => {
   const [selectInteraction, setSelectInteraction] = useState(null);
   const [selectedWorks, setSelectedWorks] = useState(null);
   const [center] = useState(olProj.fromLonLat([10, 50]));
@@ -157,11 +157,6 @@ const MapView = ({ filters, searchTerms, locale }) => {
       </div>
     </Fragment>
   );
-};
-
-MapView.defaultProps = {
-  filters: {},
-  searchTerms: '',
 };
 
 MapView.propTypes = {

@@ -17,7 +17,7 @@ import { getAllLanguagesQuery, getAllPlacesQuery } from 'lib/filtersApi';
 import FilterSelect from 'components/FilterSelect';
 import FiltersBar from 'components/FiltersBar';
 
-function AuthorsFilters({ filters, onChange, onClearAll }) {
+function AuthorsFilters({ filters = {}, onChange, onClearAll }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [filtersOptions, setFiltersOptions] = useState({});
@@ -137,10 +137,6 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
     </FiltersBar>
   );
 }
-
-AuthorsFilters.defaultProps = {
-  filters: {},
-};
 
 AuthorsFilters.propTypes = {
   filters: PropTypes.object,

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-function ArkId({ id }) {
+function ArkId({ id = null }) {
   if (!id) {
     return null;
   } else if (id.startsWith('http')) {
@@ -14,10 +14,6 @@ function ArkId({ id }) {
 
   return id;
 }
-
-ArkId.defaultProps = {
-  id: null,
-};
 
 ArkId.propTypes = {
   id: PropTypes.string,

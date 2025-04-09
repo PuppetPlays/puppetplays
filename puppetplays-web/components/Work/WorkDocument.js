@@ -28,7 +28,7 @@ const usePagination = initialPage => {
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;
 
-const WorkDocument = ({ workId, onClose }) => {
+const WorkDocument = ({ workId = null, onClose = null }) => {
   const { t } = useTranslation();
   const [isSideBarOpen, setIsSidebarOpen] = useState(true);
   const [zoom, setZoom] = useState(1);
@@ -175,8 +175,6 @@ const WorkDocument = ({ workId, onClose }) => {
     </div>
   );
 };
-
-WorkDocument.defaultProps = {};
 
 WorkDocument.propTypes = {
   onClose: PropTypes.func.isRequired,

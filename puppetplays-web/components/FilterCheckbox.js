@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import FilterLabel from 'components/FilterLabel';
 import styles from './filterCheckbox.module.scss';
 
-function FilterCheckbox({ name, checked, onChange }) {
+function FilterCheckbox({ name = null, checked = false, onChange = null }) {
   const { t } = useTranslation();
 
   const handeChange = useCallback(
@@ -31,10 +31,6 @@ function FilterCheckbox({ name, checked, onChange }) {
     </div>
   );
 }
-
-FilterCheckbox.defaultProps = {
-  checked: false,
-};
 
 FilterCheckbox.propTypes = {
   name: PropTypes.string.isRequired,

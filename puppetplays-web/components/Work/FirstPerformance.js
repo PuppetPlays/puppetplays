@@ -5,7 +5,7 @@ import Section from 'components/Section';
 import Place from 'components/Place';
 import styles from './firstPerformance.module.scss';
 
-function FirstPerformance({ place, date, extraInfo }) {
+function FirstPerformance({ place = [], date = null, extraInfo = null }) {
   const { t } = useTranslation();
   const hasOnePlace = hasAtLeastOneItem(place);
 
@@ -28,11 +28,6 @@ function FirstPerformance({ place, date, extraInfo }) {
   );
 }
 
-FirstPerformance.defaultProps = {
-  place: null,
-  date: null,
-  extraInfo: null,
-};
 
 FirstPerformance.propTypes = {
   place: PropTypes.arrayOf(PropTypes.object),

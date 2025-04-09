@@ -5,7 +5,7 @@ import * as Slider from '@radix-ui/react-slider';
 import FilterLabel from 'components/FilterLabel';
 import styles from './filterRange.module.scss';
 
-function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
+function FilterRange({ name = null, valueMin = null, valueMax = null, bounds = null, onAfterChange = null }) {
   const { t } = useTranslation();
   const [values, setValues] = useState([
     valueMin || bounds[0],
@@ -74,11 +74,6 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   );
 }
 
-FilterRange.defaultProps = {
-  valueMin: null,
-  valueMax: null,
-  bounds: null,
-};
 
 FilterRange.propTypes = {
   name: PropTypes.string.isRequired,

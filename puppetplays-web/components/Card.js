@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { hasAtLeastOneItem } from 'lib/utils';
 import styles from './card.module.scss';
 
-function Card({ href, title, subtitle, mainImage, imageUrl, fixedHeight }) {
+function Card({ href = null, title = null, subtitle = null, mainImage = null, imageUrl = null, fixedHeight = false }) {
   const cx = classNames.bind(styles);
 
   // Handle different image sources (backward compatibility + new pattern)
@@ -64,15 +64,6 @@ Card.propTypes = {
   ),
   imageUrl: PropTypes.string,
   fixedHeight: PropTypes.bool,
-};
-
-Card.defaultProps = {
-  href: null,
-  title: null,
-  subtitle: null,
-  mainImage: null,
-  imageUrl: null,
-  fixedHeight: false,
 };
 
 export default Card;

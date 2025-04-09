@@ -8,13 +8,13 @@ import CommaSepList from 'components/CommaSepList';
 import styles from './workHeader.module.scss';
 
 const WorkHeader = ({
-  title,
-  subtitle,
-  authors,
-  mostRelevantDate,
-  compositionPlace,
-  mainLanguage,
-  isCompact,
+  title = null,
+  subtitle = null,
+  authors = [],
+  mostRelevantDate = null,
+  compositionPlace = [],
+  mainLanguage = null,
+  isCompact = false,
 }) => {
   return (
     <header className={isCompact ? styles.isCompact : null}>
@@ -55,15 +55,6 @@ const WorkHeader = ({
       </div>
     </header>
   );
-};
-
-WorkHeader.defaultProps = {
-  subtitle: null,
-  authors: null,
-  mostRelevantDate: null,
-  compositionPlace: null,
-  mainLanguage: null,
-  isCompact: false,
 };
 
 WorkHeader.propTypes = {

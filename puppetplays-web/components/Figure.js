@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import PropTypes from 'prop-types';
 import styles from './figure.module.scss';
 
-function Figure({ url, alt, copyright, description }) {
+function Figure({ url = null, alt = null, copyright = null, description = null }) {
   const { t } = useTranslation();
 
   return (
@@ -22,12 +22,6 @@ function Figure({ url, alt, copyright, description }) {
     </figure>
   );
 }
-
-Figure.defaultProps = {
-  alt: null,
-  copyright: null,
-  description: null,
-};
 
 Figure.propTypes = {
   url: PropTypes.string.isRequired,

@@ -7,12 +7,12 @@ import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './modal.module.scss';
 
 function Modal({
-  modalType,
-  isOpen,
-  title,
-  subtitle,
-  scrollElement,
-  children,
+  modalType = null,
+  isOpen = false,
+  title = null,
+  subtitle = null,
+  scrollElement = 'body',
+  children = null,
 }) {
   const modalContentRef = useRef(null);
   const { t } = useTranslation();
@@ -79,13 +79,6 @@ function Modal({
     </ReactModal>
   );
 }
-
-Modal.defaultProps = {
-  title: '',
-  subtitle: null,
-  children: null,
-  scrollElement: 'body',
-};
 
 Modal.propTypes = {
   modalType: PropTypes.oneOf(Object.values(modalTypes)).isRequired,

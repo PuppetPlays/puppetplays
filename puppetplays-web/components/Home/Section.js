@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import styles from './section.module.scss';
 import { Fragment } from 'react';
 
-const Section = ({ title, subtitle, children, footer, isComingSoon }) => {
+const Section = ({ title = null, subtitle = null, children = null, footer = null, isComingSoon = false }) => {
   const { t } = useTranslation();
 
   return (
@@ -46,12 +46,6 @@ const Section = ({ title, subtitle, children, footer, isComingSoon }) => {
   );
 };
 
-Section.defaultProps = {
-  title: null,
-  subtitle: null,
-  footer: null,
-  isComingSoon: false,
-};
 
 Section.propTypes = {
   title: PropTypes.string,

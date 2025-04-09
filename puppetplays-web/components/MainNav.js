@@ -33,7 +33,7 @@ const Wrapper = ({ children }) => {
   return <ul>{children}</ul>;
 };
 
-function MainNav({ inverse }) {
+function MainNav({ inverse = false }) {
   const { t } = useTranslation();
   const { width } = useWindowSize();
   const { locale } = useRouter();
@@ -96,10 +96,6 @@ function MainNav({ inverse }) {
     </nav>
   );
 }
-
-MainNav.defaultProps = {
-  inverse: false,
-};
 
 MainNav.propTypes = {
   inverse: PropTypes.bool,

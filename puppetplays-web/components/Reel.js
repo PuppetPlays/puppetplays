@@ -6,7 +6,7 @@ import styles from './reel.module.scss';
 
 let debounced;
 
-const Reel = ({ images, bleed }) => {
+const Reel = ({ images = [], bleed = false }) => {
   const cx = classNames.bind(styles);
   const scrollableRef = useRef();
   const listRef = useRef();
@@ -150,11 +150,6 @@ const Reel = ({ images, bleed }) => {
       </div>
     </div>
   );
-};
-
-Reel.defaultProps = {
-  images: null,
-  bleed: false,
 };
 
 Reel.propTypes = {

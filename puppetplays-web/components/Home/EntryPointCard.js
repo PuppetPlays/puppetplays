@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './entryPointCard.module.scss';
 import { useCallback, useRef } from 'react';
 
-const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
+const EntryPointCard = ({ title = null, description = null, thumbnailUrl = null, to = null, href = null }) => {
   const linkRef = useRef(null);
 
   const handleClick = useCallback(() => {
@@ -59,12 +59,6 @@ EntryPointCard.propTypes = {
   thumbnailUrl: PropTypes.string.isRequired,
   to: PropTypes.string,
   href: PropTypes.string,
-};
-
-EntryPointCard.defaultProps = {
-  description: null,
-  to: null,
-  href: null,
 };
 
 export default EntryPointCard;

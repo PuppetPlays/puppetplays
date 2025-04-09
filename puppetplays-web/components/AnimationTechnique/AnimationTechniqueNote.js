@@ -11,12 +11,12 @@ import NoResults from 'components/NoResults';
 import styles from 'components/Author/authorNote.module.scss';
 
 function AnimationTechniqueNote({
-  description,
-  mainImage,
-  images,
-  works,
-  bleedCarousel,
-  onCloseModal,
+  description = null,
+  mainImage = [],
+  images = [],
+  works = null,
+  bleedCarousel = false,
+  onCloseModal = null,
 }) {
   const { t } = useTranslation();
 
@@ -96,15 +96,6 @@ function AnimationTechniqueNote({
     </Fragment>
   );
 }
-
-AnimationTechniqueNote.defaultProps = {
-  description: null,
-  mainImage: [],
-  images: [],
-  works: null,
-  bleedCarousel: false,
-  onCloseModal: null,
-};
 
 AnimationTechniqueNote.propTypes = {
   description: PropTypes.string,

@@ -24,7 +24,7 @@ import FilterRange from 'components/FilterRange';
 import FilterCheckbox from 'components/FilterCheckbox';
 import FiltersBar from 'components/FiltersBar';
 
-function WorksFilters({ filters, onChange, onClearAll }) {
+function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [filtersOptions, setFiltersOptions] = useState({});
@@ -360,11 +360,6 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     </FiltersBar>
   );
 }
-
-WorksFilters.defaultProps = {
-  filters: {},
-  isInitiallyOpen: true,
-};
 
 WorksFilters.propTypes = {
   filters: PropTypes.object,

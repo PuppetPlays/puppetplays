@@ -45,7 +45,7 @@ Tag.propTypes = {
   children: PropTypes.node,
 };
 
-function Keywords({ keywords, component: Component, fill }) {
+function Keywords({ keywords = [], component: Component = Keyword, fill = false }) {
   // Handle null, undefined, or empty keywords array
   const safeKeywords = Array.isArray(keywords) ? keywords : [];
 
@@ -67,11 +67,6 @@ function Keywords({ keywords, component: Component, fill }) {
   );
 }
 
-Keywords.defaultProps = {
-  fill: false,
-  component: Keyword,
-  keywords: [],
-};
 
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.object),

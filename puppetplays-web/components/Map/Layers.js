@@ -7,7 +7,7 @@ import { getPlaceStyle } from './styles';
 import useMapboxLayer from './useMapboxLayer';
 import useVectorLayer from './useVectorLayer';
 
-const Layers = ({ byCountrySource, byPlaceSource, children }) => {
+const Layers = ({ byCountrySource = null, byPlaceSource = null, children = null }) => {
   const placeSourceOption = useRef({
     source: byPlaceSource,
     style: getPlaceStyle,
@@ -34,10 +34,6 @@ const Layers = ({ byCountrySource, byPlaceSource, children }) => {
   useVectorLayer(countrySourceOption.current);
 
   return <div>{children}</div>;
-};
-
-Layers.defaultProps = {
-  children: null,
 };
 
 Layers.propTypes = {

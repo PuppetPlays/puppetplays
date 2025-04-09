@@ -14,14 +14,14 @@ import styles from './workPageHeader.module.scss';
 import Button from 'components/Button';
 
 const WorkPageHeader = ({
-  id,
-  slug,
-  title,
-  authors,
-  compositionPlace,
-  hasMedia,
-  hasDocument,
-  onOpenDocument,
+  id = null,
+  slug = null,
+  title = null,
+  authors = [],
+  compositionPlace = [],
+  hasMedia = false,
+  hasDocument = false,
+  onOpenDocument = null,
 }) => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -103,13 +103,6 @@ const WorkPageHeader = ({
   );
 };
 
-WorkPageHeader.defaultProps = {
-  authors: null,
-  compositionPlace: null,
-  hasMedia: false,
-  hasDocument: false,
-  isDocumentOpen: false,
-};
 
 WorkPageHeader.propTypes = {
   id: PropTypes.string.isRequired,

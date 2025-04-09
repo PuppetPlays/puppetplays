@@ -58,7 +58,7 @@ ErrorBoundaryClass.defaultProps = {
 };
 
 // Wrapper component without hooks to avoid infinite loops
-const ErrorBoundary = ({ children, fallback }) => {
+const ErrorBoundary = ({ children, fallback = null }) => {
   return (
     <ErrorBoundaryClass fallback={fallback}>
       {children}
@@ -69,10 +69,6 @@ const ErrorBoundary = ({ children, fallback }) => {
 ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
   fallback: PropTypes.node,
-};
-
-ErrorBoundary.defaultProps = {
-  fallback: null,
 };
 
 export default ErrorBoundary;

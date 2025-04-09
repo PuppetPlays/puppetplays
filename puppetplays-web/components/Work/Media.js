@@ -6,7 +6,7 @@ import ZoomableImage from 'components/ZoomableImage';
 import styles from './media.module.scss';
 
 /* eslint-disable jsx-a11y/media-has-caption */
-const Media = ({ kind, url, alt, description, copyright, languages }) => {
+const Media = ({ kind = null, url = null, alt = null, description = null, copyright = null, languages = null }) => {
   const { t } = useTranslation();
 
   return (
@@ -40,12 +40,6 @@ const Media = ({ kind, url, alt, description, copyright, languages }) => {
   );
 };
 
-Media.defaultProps = {
-  alt: null,
-  description: null,
-  copyright: null,
-  languages: null,
-};
 
 Media.propTypes = {
   kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'audio']).isRequired,
