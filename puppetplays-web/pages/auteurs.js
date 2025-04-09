@@ -4,14 +4,21 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import useSWR, { mutate } from 'swr';
+
 import groupBy from 'lodash/groupBy';
 import uniq from 'lodash/uniq';
 import cond from 'lodash/cond';
 import constant from 'lodash/constant';
 import stubTrue from 'lodash/stubTrue';
-import useSWR, { mutate } from 'swr';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+
+import Layout from 'components/Layout';
+import Author from 'components/Author';
+import Company from 'components/Company';
+import BirthDeathDates from 'components/BirthDeathDates';
+import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import {
   fetchAPI,
   getAllAuthorsQuery,
@@ -23,11 +30,6 @@ import {
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
 import { stringifyQuery } from 'lib/utils';
-import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
-import Layout from 'components/Layout';
-import Author from 'components/Author';
-import Company from 'components/Company';
-import BirthDeathDates from 'components/BirthDeathDates';
 import styles from 'styles/Authors.module.scss';
 
 const Filters = dynamic(() => import('../components/AuthorsFilters'), {
@@ -79,7 +81,7 @@ function Authors({ initialData, uniqueAuthorsIds }) {
       try {
         const data = await fetchAPI(query, {
           variables: {
-            locale,
+            locale: locale,
             ...stateToGraphqlVariables(filtersState),
           },
         });
@@ -91,7 +93,8 @@ function Authors({ initialData, uniqueAuthorsIds }) {
         };
       } catch (error) {
         console.error('Error fetching authors data:', error);
-        return initialData; // Return initial data as fallback
+        // Retourner les données initiales comme fallback mais ne pas masquer l'erreur UI
+        return initialData;
       }
     },
     {
@@ -314,7 +317,7 @@ export async function getServerSideProps({ locale, query }) {
 
     try {
       const authorsIds = await getFetchAPIClient({
-        variables: { locale },
+        variables: { locale: locale },
       })(getAllWorksAuthorsIdsQuery);
 
       uniqueAuthorsIds = uniq(
@@ -329,7 +332,10 @@ export async function getServerSideProps({ locale, query }) {
     try {
       if (uniqueAuthorsIds.length > 0) {
         const personsRelatedToWorks = await getFetchAPIClient({
-          variables: { locale, ...stateToGraphqlVariables(filtersState) },
+          variables: { 
+            locale: locale,
+            ...stateToGraphqlVariables(filtersState) 
+          },
         })(getAllAuthorsQuery(filtersState));
 
         authors = (personsRelatedToWorks?.entries || []).filter(({ id }) =>
@@ -342,6 +348,7 @@ export async function getServerSideProps({ locale, query }) {
 
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common'])),
         initialData: { entries: groupBy(authors, getFirstLetter) },
         uniqueAuthorsIds,
       },
@@ -350,6 +357,7 @@ export async function getServerSideProps({ locale, query }) {
     console.error('Error in getServerSideProps:', error);
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common'])),
         initialData: { entries: {} },
         uniqueAuthorsIds: [],
       },

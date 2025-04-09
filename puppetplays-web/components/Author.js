@@ -5,11 +5,11 @@ import NoteDropdownMenu from 'components/NoteDropdownMenu';
 import { modalTypes } from 'components/modalContext';
 
 export const formatAuthor = ({
-  usualName,
-  lastNameFirst,
-  lastName,
-  firstName,
-  nickname,
+  usualName = null,
+  lastNameFirst = false,
+  lastName = null,
+  firstName = null,
+  nickname = null,
   t,
 }) => {
   return `${usualName ? usualName : ''}${usualName ? ' (' : ''}${
@@ -50,15 +50,6 @@ function Author({
     </Fragment>
   );
 }
-
-Author.defaultProps = {
-  usualName: null,
-  firstName: null,
-  nickname: null,
-  lastName: null,
-  lastNameFirst: false,
-  showMenu: false,
-};
 
 Author.propTypes = {
   id: PropTypes.string.isRequired,

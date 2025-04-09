@@ -6,7 +6,7 @@ import LanguageSelector from 'components/LanguageSelector';
 import MainNav from 'components/MainNav';
 import styles from './header.module.scss';
 
-function Header({ children }) {
+function Header({ children = null }) {
   const { t } = useTranslation();
 
   return (
@@ -31,10 +31,6 @@ function Header({ children }) {
 
 Header.propTypes = {
   children: PropTypes.node,
-};
-
-Header.defaultProps = {
-  children: null,
 };
 
 export default Header;

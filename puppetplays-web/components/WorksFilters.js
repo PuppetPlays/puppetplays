@@ -250,6 +250,7 @@ function WorksFilters({ filters, onChange, onClearAll }) {
     >
       <div style={{ position: 'relative', zIndex: 100 }}>
         <FilterSelect
+          inverse={true}
           name="mainLanguage"
           placeholder={t('common:filters.mainLanguagePlaceholder')}
           options={filtersOptions.languages}
