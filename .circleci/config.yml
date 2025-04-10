@@ -158,7 +158,7 @@ jobs:
             docker push << pipeline.parameters.admin-image-release >>
   deploy_staging:
     machine:
-      image: ubuntu-2004:202101-01
+      image: ubuntu-2204:current
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
       POSTGRES_USER: puppetplays
@@ -195,7 +195,7 @@ jobs:
             ./deploy.sh
   deploy_production:
     machine:
-      image: ubuntu-2004:202101-01
+      image: ubuntu-2204:current
     environment:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD_PRODUCTION
       POSTGRES_USER: puppetplays
