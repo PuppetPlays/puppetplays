@@ -244,25 +244,23 @@ function Authors({ initialData, uniqueAuthorsIds }) {
                             {typeHandle === 'persons' && (
                               <Link
                                 href={`/auteurs/${author.id}/${author.slug}`}
-                                legacyBehavior
                               >
-                                <a>
+                                <div>
                                   <Author {...author} lastNameFirst />{' '}
                                   <BirthDeathDates
                                     birthDate={birthDate}
                                     deathDate={deathDate}
                                   />
-                                </a>
+                                </div>
                               </Link>
                             )}
                             {typeHandle === 'companies' && (
                               <Link
                                 href={`/auteurs/${author.id}/${author.slug}`}
-                                legacyBehavior
                               >
-                                <a>
+                                <div>
                                   <Company {...author} />
-                                </a>
+                                </div>
                               </Link>
                             )}
                           </li>
@@ -288,8 +286,8 @@ function Authors({ initialData, uniqueAuthorsIds }) {
                   currentLetter === key ? styles.letterPaginationCurrent : ''
                 }
               >
-                <Link href={`#authors-letter-${key}`} legacyBehavior>
-                  {key}
+                <Link href={`#authors-letter-${key}`}>
+                  <p>{key}</p>
                 </Link>
               </li>
             ))}

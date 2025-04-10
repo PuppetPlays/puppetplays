@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
 import { getMediaKindIcon } from 'components/Work/MediaSection';
 import styles from './mediaMenu.module.scss';
 
-const MediaMenu = ({ sections, activeAnchor }) => {
+const MediaMenu = ({ sections, activeAnchor = null }) => {
   const { t } = useTranslation();
 
   if (sections.length < 2) {
@@ -21,7 +22,7 @@ const MediaMenu = ({ sections, activeAnchor }) => {
               activeAnchor === `media-${section}` ? styles.isActive : ''
             }`}
           >
-            <Link href={`#media-${section}`} legacyBehavior>
+            <Link href={`#media-${section}`}>
               <span className={styles.icon}>{getMediaKindIcon(section)}</span>
               <span>{t(`common:mediaKinds.${section}`)}</span>
             </Link>
@@ -31,9 +32,6 @@ const MediaMenu = ({ sections, activeAnchor }) => {
   );
 };
 
-MediaMenu. = {
-  activeAnchor: null,
-};
 
 MediaMenu.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.string).isRequired,

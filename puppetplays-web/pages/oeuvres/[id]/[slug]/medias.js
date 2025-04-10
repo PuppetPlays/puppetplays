@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { groupBy } from 'lodash';
 import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';

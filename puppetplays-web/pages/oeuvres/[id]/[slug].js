@@ -9,7 +9,6 @@ import WorkPageHeader from 'components/Work/WorkPageHeader';
 import WorkDocument from 'components/Work/WorkDocument';
 import styles from 'styles/Work.module.scss';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 
 const WorkPage = ({ initialData }) => {
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);

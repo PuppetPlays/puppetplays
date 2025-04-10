@@ -102,7 +102,7 @@ const PartnersBar = ({ t }) => {
   );
 };
 
-export default function Home({ animationTechnique, authors, work, keywords }) {
+export default function Home({ animationTechnique = null, authors = [], work = null, keywords = [] }) {
   const { t } = useTranslation('home');
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
@@ -235,8 +235,8 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 title={t('exploreByAuthors')}
                 isComingSoon={safeAuthors.length === 0}
                 footer={
-                  <Link href="/auteurs" legacyBehavior>
-                    <a>{t('browseAllAuthors')}</a>
+                  <Link href="/auteurs">
+                    <p>{t('browseAllAuthors')}</p>
                   </Link>
                 }
               >
@@ -484,13 +484,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
     </Fragment>
   );
 }
-
-Home.defaultProps = {
-  animationTechnique: null,
-  work: null,
-  keywords: [],
-  authors: [],
-};
 
 Home.propTypes = {
   animationTechnique: PropTypes.object,

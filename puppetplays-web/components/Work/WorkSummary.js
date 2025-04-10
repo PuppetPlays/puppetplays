@@ -70,8 +70,8 @@ function WorkSummary({
       <div className={styles.body}>
         <WorkHeader
           title={
-            <Link href={`/oeuvres/${id}/${slug}`} legacyBehavior>
-              <a>{title}</a>
+            <Link href={`/oeuvres/${id}/${slug}`}>
+              <p>{title}</p>
             </Link>
           }
           subtitle={subtitle}

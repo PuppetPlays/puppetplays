@@ -21,17 +21,6 @@ function FilterSelect({
   inverse = true,
   isDisabled = false,
 }) {
-  console.log('FilterSelect', {
-    name,
-    placeholder,
-    value,
-    options,
-    isMulti,
-    isClearable,
-    isSearchable,
-    inverse,
-    isDisabled,
-  });
   const { t } = useTranslation();
   const getNoOptionsMessage = useCallback(
     ({ inputValue }) => {

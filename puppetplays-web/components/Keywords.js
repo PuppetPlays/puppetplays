@@ -16,8 +16,8 @@ export function TheatricalTechniqueTag({ id, children }) {
 
   return (
     <li className={styles.tag}>
-      <Link href={`/base-de-donnees?theatricalTechniques=${id}`} legacyBehavior>
-        <a tabIndex="0">{children}</a>
+      <Link href={`/base-de-donnees?theatricalTechniques=${id}`}>
+        <p>{children}</p>
       </Link>
     </li>
   );
@@ -33,8 +33,8 @@ export function Tag({ id, children }) {
 
   return (
     <li className={styles.tag}>
-      <Link href={`/base-de-donnees?relatedToTags=${id}`} legacyBehavior>
-        <a tabIndex="0">{children}</a>
+      <Link href={`/base-de-donnees?relatedToTags=${id}`}>
+        <p>{children}</p>
       </Link>
     </li>
   );

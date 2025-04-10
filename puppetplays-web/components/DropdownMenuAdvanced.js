@@ -9,22 +9,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {
-  useFloating,
-  offset,
-  flip,
-  shift,
-  autoUpdate,
-  useListNavigation,
-  useInteractions,
-  useRole,
-  useClick,
-  useDismiss,
-  FloatingPortal,
-  FloatingFocusManager,
-} from '@floating-ui/react';
 import classNames from 'classnames/bind';
 import { mergeRefs } from 'react-merge-refs';
+
 import styles from './dropdownMenu.module.scss';
 
 export const MenuItem = forwardRef(
@@ -39,101 +26,116 @@ export const MenuItem = forwardRef(
   },
 );
 
-MenuItem.displayName = 'MenuItem';
-
 export const MenuComponent = forwardRef(
   // eslint-disable-next-line react/prop-types
-  ({ children, renderButton }, ref) => {
+  ({ children, renderButton, ...props }, ref) => {
     const [open, setOpen] = useState(false);
-    const [activeIndex, setActiveIndex] = useState(null);
-    const [_allowHover, _setAllowHover] = useState(false);
     const cx = classNames.bind(styles);
-
-    const listItemsRef = useRef([]);
-    const listRef = useRef(null);
+    
     const buttonRef = useRef(null);
-
-    const { x, y, strategy, refs, context } = useFloating({
-      open,
-      onOpenChange: setOpen,
-      middleware: [offset(5), flip(), shift()],
-      whileElementsMounted: autoUpdate,
-    });
-
-    const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
-      useClick(context),
-      useDismiss(context),
-      useRole(context),
-      useListNavigation(context, {
-        listRef,
-        activeIndex,
-        onNavigate: setActiveIndex,
-        virtual: true,
-        loop: true,
-      }),
-    ]);
-
+    const menuRef = useRef(null);
+    
+    // Simple positioning logic
+    const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
+    
+    // Update position when open changes
     useEffect(() => {
-      if (open) {
-        setActiveIndex(null);
+      if (open && buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        setMenuPosition({
+          top: rect.bottom + window.scrollY + 8, // Add offset similar to original
+          left: rect.left + window.scrollX,
+        });
       }
     }, [open]);
-
-    const mergedRefs = useMemo(
-      () => mergeRefs([refs.setReference, buttonRef]),
-      [refs.setReference],
+    
+    // Close on outside click
+    useEffect(() => {
+      if (!open) return;
+      
+      const handleOutsideClick = e => {
+        if (
+          menuRef.current && 
+          !menuRef.current.contains(e.target) &&
+          buttonRef.current && 
+          !buttonRef.current.contains(e.target)
+        ) {
+          setOpen(false);
+        }
+      };
+      
+      document.addEventListener('mousedown', handleOutsideClick);
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+      };
+    }, [open]);
+    
+    // Close on Escape key
+    useEffect(() => {
+      const handleKeyDown = e => {
+        if (e.key === 'Escape' && open) {
+          setOpen(false);
+        }
+      };
+      
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }, [open]);
+    
+    const mergedReferenceRef = useMemo(
+      () => mergeRefs([ref, buttonRef]),
+      [ref]
     );
 
-    const mergedListRefs = useMemo(
-      () => mergeRefs([refs.setFloating, listRef, ref]),
-      [refs.setFloating, ref],
-    );
+    const handleButtonClick = event => {
+      event.stopPropagation();
+      setOpen(!open);
+    };
 
     return (
-      <>
+      <div className={styles.container}>
         {renderButton({
-          ref: mergedRefs,
-          ...getReferenceProps(),
+          ...props,
+          ref: mergedReferenceRef,
+          onClick: handleButtonClick,
+          className: cx({ button: true, open }),
         })}
-        <FloatingPortal>
-          {open && (
-            <FloatingFocusManager context={context} modal={false}>
-              <div
-                ref={mergedListRefs}
-                className={cx('menu', { open })}
-                style={{
-                  position: strategy,
-                  top: y ?? 0,
-                  left: x ?? 0,
-                }}
-                {...getFloatingProps()}
-              >
-                {Children.map(children, (child, index) => {
-                  if (isValidElement(child)) {
-                    return cloneElement(child, {
-                      ...getItemProps({
-                        ref: node => {
-                          listItemsRef.current[index] = node;
-                        },
-                        onPointerEnter() {
-                          if (_allowHover) {
-                            setActiveIndex(index);
-                          }
-                        },
-                      }),
-                    });
-                  }
-                  return child;
-                })}
-              </div>
-            </FloatingFocusManager>
-          )}
-        </FloatingPortal>
-      </>
+        
+        {open && (
+          <div 
+            ref={menuRef}
+            className={styles.menuAdvanced}
+            style={{
+              position: 'absolute',
+              top: `${menuPosition.top}px`,
+              left: `${menuPosition.left}px`,
+              zIndex: 1000,
+            }}
+          >
+            {Children.map(children, (child, index) => {
+              if (isValidElement(child)) {
+                return cloneElement(child, {
+                  className: styles.menuItem,
+                  onClick: e => {
+                    if (child.props.onClick) {
+                      child.props.onClick(e);
+                    }
+                    setOpen(false);
+                  },
+                  role: 'menuitem',
+                });
+              }
+              return null;
+            })}
+          </div>
+        )}
+      </div>
     );
   },
 );
 
-MenuComponent.displayName = 'MenuComponent';
-
-export default MenuComponent;
+export const Menu = forwardRef((props, ref) => {
+  return <MenuComponent {...props} ref={ref} />;
+});

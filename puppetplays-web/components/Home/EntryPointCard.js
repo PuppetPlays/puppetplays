@@ -33,17 +33,8 @@ const EntryPointCard = ({ title = null, description = null, thumbnailUrl = null,
           </Link>
         )}
         {href && (
-          <Link
-            href={href}
-            ref={linkRef}
-            legacyBehavior
-          >
-            <a
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {title}
-            </a>
+          <Link href={href} ref={linkRef} target="_blank">
+            <p>{title}</p>
           </Link>
         )}
         {!href && !to && title}
