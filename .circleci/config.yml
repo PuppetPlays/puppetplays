@@ -3,28 +3,28 @@ version: 2.1
 parameters:
   web-image-staging:
     type: string
-    default: "intactiledesign/puppetplays-web:<< pipeline.git.revision >>-staging"
+    default: "puppetplays/puppetplays-web:<< pipeline.git.revision >>-staging"
   web-image-release-staging:
     type: string
-    default: "intactiledesign/puppetplays-web:latest-staging"
+    default: "puppetplays/puppetplays-web:latest-staging"
   web-image:
     type: string
-    default: "intactiledesign/puppetplays-web:<< pipeline.git.revision >>"
+    default: "puppetplays/puppetplays-web:<< pipeline.git.revision >>"
   web-image-release:
     type: string
-    default: "intactiledesign/puppetplays-web:latest"
+    default: "puppetplays/puppetplays-web:latest"
   admin-image-staging:
     type: string
-    default: "intactiledesign/puppetplays-admin:<< pipeline.git.revision >>-staging"
+    default: "puppetplays/puppetplays-admin:<< pipeline.git.revision >>-staging"
   admin-image-release-staging:
     type: string
-    default: "intactiledesign/puppetplays-admin:latest-staging"
+    default: "puppetplays/puppetplays-admin:latest-staging"
   admin-image:
     type: string
-    default: "intactiledesign/puppetplays-admin:<< pipeline.git.revision >>"
+    default: "puppetplays/puppetplays-admin:<< pipeline.git.revision >>"
   admin-image-release:
     type: string
-    default: "intactiledesign/puppetplays-admin:latest"
+    default: "puppetplays/puppetplays-admin:latest"
 
 jobs:
   test_web:
