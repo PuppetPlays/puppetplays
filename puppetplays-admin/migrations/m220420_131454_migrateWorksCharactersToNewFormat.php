@@ -32,7 +32,7 @@ class m220420_131454_migrateWorksCharactersToNewFormat extends Migration
                     'type' => 'character',
                     'fields' => array(
                         'nameInText' => $originalCharacter->textName,
-                        'roles' => $originalCharacter->character->ids()
+                        'roles' => $originalCharacter->character ? $originalCharacter->character->ids() : []
                     )
                 );
                 }
@@ -43,7 +43,7 @@ class m220420_131454_migrateWorksCharactersToNewFormat extends Migration
             $success = Craft::$app->elements->saveElement($entry);
 
             if (!$success) {
-                Craft::error('Couldn’t migrate the characters field to the new format', __METHOD__);
+                Craft::error('Could not migrate the characters field to the new format', __METHOD__);
             }
         }
     }

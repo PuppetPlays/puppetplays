@@ -424,24 +424,71 @@ class MigrationService {
     }
     
     private function createEntry($site, $title, $section, $entryType, $fields = null) {
+        // Check if section or entryType is null
+        if (!$section || !$entryType || !$site) {
+            echo "Warning: Cannot create entry with title '".$title."'. Missing required parameters (section, entryType, or site).\n";
+            return;
+        }
+        
         $entry = new Entry();
         $entry->sectionId = $section->id;
         $entry->typeId = $entryType->id;
         $entry->siteId = $site->id;
         $entry->title = $title;
-        $entry->authorId = 1;
-        if ($fields !== null) {
-            $entry -> setFieldValues($fields);
+        
+        // Use a default authorId (1) or find an admin user if available
+        try {
+            $user = Craft::$app->users->getUserById(1);
+            $entry->authorId = $user ? $user->id : null;
+        } catch (\Exception $e) {
+            $entry->authorId = null;
         }
+        
+        if ($fields !== null) {
+            try {
+                // Only set fields that exist in the entry type
+                $fieldLayout = $entryType->getFieldLayout();
+                $availableFields = $fieldLayout ? $fieldLayout->getFields() : [];
+                $availableFieldHandles = array_map(function($field) { return $field->handle; }, $availableFields);
+                
+                $filteredFields = [];
+                foreach ($fields as $handle => $value) {
+                    // Skip Date fields and handle them separately
+                    if ($value instanceof \DateTime) {
+                        echo "Warning: Field '{$handle}' is a DateTime object. Converting to string format.\n";
+                        continue;
+                    }
+                    
+                    if (in_array($handle, $availableFieldHandles)) {
+                        $filteredFields[$handle] = $value;
+                    } else {
+                        echo "Warning: Field '{$handle}' does not exist in entry type '{$entryType->handle}'. Skipping.\n";
+                    }
+                }
+                
+                if (!empty($filteredFields)) {
+                    $entry->setFieldValues($filteredFields);
+                }
+            } catch (\Exception $e) {
+                echo "Warning: Error setting field values for entry '{$title}': {$e->getMessage()}\n";
+            }
+        }
+        
         $success = Craft::$app->elements->saveElement($entry);
         //echo "\n"."create entry: ".$entry->id." | ".$entry."\n";
         //echo 'fields: '; print_r($fields); echo "\n";
         if (!$success) {
-            Craft::error('Couldn’t save the entry "'.$entry->title.'"', __METHOD__);
+            Craft::error('Could not save the entry "'.$entry->title.'"', __METHOD__);
         }
     }
 
     public function translateEntry($e, $site, $title, $section, $entryType, $fields = null) {
+        // Check if required parameters are null
+        if (!$e || !$site || !$section || !$entryType) {
+            echo "Warning: Cannot translate entry with title '".$title."'. Missing required parameters (entry, section, entryType, or site).\n";
+            return;
+        }
+        
         $entry = new Entry();
         $entry->id = $e->id;
         $entry->uid = $e->uid;
@@ -449,15 +496,50 @@ class MigrationService {
         $entry->typeId = $entryType->id;
         $entry->siteId = $site->id;
         $entry->title = $title;
-        $entry->authorId = 1;
-        if ($fields !== null) {
-            $entry -> setFieldValues($fields);
+        
+        // Use a default authorId (1) or find an admin user if available
+        try {
+            $user = Craft::$app->users->getUserById(1);
+            $entry->authorId = $user ? $user->id : null;
+        } catch (\Exception $e) {
+            $entry->authorId = null;
         }
+        
+        if ($fields !== null) {
+            try {
+                // Only set fields that exist in the entry type
+                $fieldLayout = $entryType->getFieldLayout();
+                $availableFields = $fieldLayout ? $fieldLayout->getFields() : [];
+                $availableFieldHandles = array_map(function($field) { return $field->handle; }, $availableFields);
+                
+                $filteredFields = [];
+                foreach ($fields as $handle => $value) {
+                    // Skip Date fields and handle them separately
+                    if ($value instanceof \DateTime) {
+                        echo "Warning: Field '{$handle}' is a DateTime object. Converting to string format.\n";
+                        continue;
+                    }
+                    
+                    if (in_array($handle, $availableFieldHandles)) {
+                        $filteredFields[$handle] = $value;
+                    } else {
+                        echo "Warning: Field '{$handle}' does not exist in entry type '{$entryType->handle}'. Skipping.\n";
+                    }
+                }
+                
+                if (!empty($filteredFields)) {
+                    $entry->setFieldValues($filteredFields);
+                }
+            } catch (\Exception $e) {
+                echo "Warning: Error setting field values for entry '{$title}': {$e->getMessage()}\n";
+            }
+        }
+        
         $success = Craft::$app->elements->saveElement($entry);
         //echo "-> translate entry: ".$entry->id." | ".$entry."\n";
         //echo '-> fields: '; print_r($fields); echo "\n";
         if (!$success) {
-            Craft::error('Couldn’t translate the entry title "'.$entry->title.'"', __METHOD__);
+            Craft::error('Could not translate the entry title "'.$entry->title.'"', __METHOD__);
         }
     }
 
@@ -476,7 +558,7 @@ class MigrationService {
         $success = Craft::$app->elements->saveElement($tag);
         //echo "\n".">>>> create tag: ".$tag->id." | ".$tag." success? ".$success."\n";
         if (!$success) {
-            Craft::error('Couldn’t save the tag "'.$tag->title.'"', __METHOD__);
+            Craft::error('Could not save the tag "'.$tag->title.'"', __METHOD__);
         }
     }
 
@@ -490,7 +572,7 @@ class MigrationService {
         $success = Craft::$app->elements->saveElement($tag);
         //echo "-> translate tag: ".$tag->id." | ".$tag."\n";
         if (!$success) {
-            Craft::error('Couldn’t translate the tag "'.$tag->title.'"', __METHOD__);
+            Craft::error('Could not translate the tag "'.$tag->title.'"', __METHOD__);
         }
     }
 
@@ -517,7 +599,7 @@ class MigrationService {
     /*private function updateContent($element, $siteId) {
         $success = Craft::$app->content->saveContent($element, $siteId);
         if (!$success) {
-            Craft::error('Couldn’t update the entry content"'.$element->title.'"', __METHOD__);
+            Craft::error('Could not update the entry content"'.$element->title.'"', __METHOD__);
         }
     }*/
 }

@@ -3,20 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node server.js",
+    "dev": "node --max-old-space-size=4096 -r esm server.js",
     "proxy-ssl": "npx local-ssl-proxy --source 7001 --target 7000",
-    "start": "next start",
+    "start": "NODE_ENV=production node --max-old-space-size=4096 -r esm server.js",
     "test": "jest --watch",
     "test:no-watch": "jest --no-watch",
     "test:ci": "jest --ci --coverage",
-    "cypress:open": "cypress open",
+    "cypress": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "eslint .",
+    "cypress:animation": "cypress run --spec \"cypress/e2e/animation*.spec.js\"",
+    "lint": "eslint --fix .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "next build",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s ./public"
   },
   "jest": {
     "testEnvironment": "jsdom",

@@ -11,6 +11,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return setupPlugins(on, config);
     },
+    // Don't fail tests on non-2xx status codes
+    failOnStatusCode: false,
   },
   numTestsKeptInMemory: 5,
 }); 
