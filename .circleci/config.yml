@@ -48,7 +48,7 @@ jobs:
             echo "NEXT_PUBLIC_API_URL=http://puppetplays.ddev.site:7080" > .env.local
       - run:
           name: Run Cypress tests
-          command: yarn cypress run || echo "Some tests failed but continuing build"
+          command: yarn cypress:run || echo "Some tests failed but continuing build"
       - run:
           name: Run unit/integration tests
           command: yarn run test:ci
