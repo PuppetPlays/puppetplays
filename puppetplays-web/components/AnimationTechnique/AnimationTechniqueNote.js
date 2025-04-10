@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
 import { hasAtLeastOneItem } from 'lib/utils';
@@ -9,12 +8,13 @@ import HtmlContent from 'components/HtmlContent';
 import ZoomableImage from 'components/ZoomableImage';
 import NoResults from 'components/NoResults';
 import styles from 'components/Author/authorNote.module.scss';
+import { Fragment } from 'react';
 
 function AnimationTechniqueNote({
   description = null,
   mainImage = [],
   images = [],
-  works = null,
+  works = [],
   bleedCarousel = false,
   onCloseModal = null,
 }) {

@@ -24,7 +24,7 @@ function AuthorNote({
   viafId = null,
   arkId = null,
   isniId = null,
-  works = null,
+  works = [],
   bleedCarousel = false,
   onCloseModal = null,
 }) {
