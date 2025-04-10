@@ -90,7 +90,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
       - run: 
           name: Publish web staging image to docker hub
           command: |
@@ -110,7 +109,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
       - run: 
           name: Publish web production image to docker hub
           command: |
@@ -128,7 +126,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
       - run:
           name: Publish admin staging image to docker hub
           command: |
@@ -145,7 +142,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
       - run:
           name: Publish admin production image to docker hub
           command: |
