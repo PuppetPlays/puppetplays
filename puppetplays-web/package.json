@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "jest --watch",
     "test:no-watch": "jest",
+    "test:no-watch": "jest --no-watch",
     "test:ci": "jest --ci --coverage",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --browser chrome",

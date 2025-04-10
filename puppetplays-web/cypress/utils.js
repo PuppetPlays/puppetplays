@@ -8,7 +8,7 @@ export const aliasAndReply = (alias, body) => (req) => {
 };
 
 export const getGraphQlRequestMock = (reqBody, resBody) => ({
-  hostname: 'http://puppetplays.ddev.site:7080',
+  hostname: process.env.NEXT_PUBLIC_API_URL,
   method: 'POST',
   path: '/graphql',
   reqBody,

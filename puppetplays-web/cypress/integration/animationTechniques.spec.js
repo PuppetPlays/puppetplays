@@ -36,7 +36,7 @@ describe('Animation techniques page', () => {
 
     cy.intercept(
       'POST',
-      'http://puppetplays.ddev.site:7080/graphql',
+      `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
       graphQlRouteHandler,
     );
 
