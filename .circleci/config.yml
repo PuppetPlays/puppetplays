@@ -29,7 +29,7 @@ parameters:
 jobs:
   test_web:
     docker:
-      - image: cypress/browsers:node14.17.6-chrome100-ff98
+      - image: cypress/browsers:node20.18.3-chrome120-ff115
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: http://puppetplays.ddev.site:7080
@@ -47,7 +47,7 @@ jobs:
   build_web_staging:
     executor:
       name: node/default
-      tag: '14.17'
+      tag: '20.18'
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
@@ -62,7 +62,7 @@ jobs:
   build_web_production:
     executor:
       name: node/default
-      tag: '14.17'
+      tag: '20.18'
     working_directory: ~/project/puppetplays-web
     environment:
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
