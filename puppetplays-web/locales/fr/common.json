@@ -1,7 +1,7 @@
 {
   "meta": {
     "database": {
-      "description": "Les œuvres de théâtre de marionnettes – Liste des pièces pour marionnettes en Europe de l’Ouest – Textes pour marionnettes - Projet ERC PuppetPlays"
+      "description": "Les œuvres de théâtre de marionnettes – Liste des pièces pour marionnettes en Europe de l'Ouest – Textes pour marionnettes - Projet ERC PuppetPlays"
     },
     "map": {
       "description": "Carte des œuvres de théâtre de marionnettes – Pièces pour marionnettes en Europe de l'Ouest – Projet ERC PuppetPlays"
@@ -10,7 +10,7 @@
       "description": "Listes des auteurs de pièces pour marionnettes – Théâtre de marionnettes et écriture théâtrale en Europe de l'Ouest – Projet ERC PuppetPlays"
     },
     "animationTechniques": {
-      "description": "Définition des techniques d’animation pour marionnettes – Les techniques de manipulation des marionnettes et leurs répertoires – Projet ERC PuppetPlays"
+      "description": "Définition des techniques d'animation pour marionnettes – Les techniques de manipulation des marionnettes et leurs répertoires – Projet ERC PuppetPlays"
     },
     "discoveryPaths": {
       "description": "Parcours découverte – Projet ERC PuppetPlays"
@@ -18,7 +18,7 @@
   },
   "navMenu": "Menu de navigation",
   "menu": "Menu",
-  "backToHome": "Retour à la page d’accueil ›",
+  "backToHome": "Retour à la page d'accueil ›",
   "database": "Base de données",
   "map": "Carte",
   "knowMore": "En savoir +",
@@ -36,16 +36,16 @@
   "language": "Langue",
   "languageWithColon": "Langue :",
   "languageWithColon_other": "Langues :",
-  "genre": "Genre (indiqué par l’auteur)",
+  "genre": "Genre (indiqué par l'auteur)",
   "literaryTones": "Registres littéraires",
-  "animationTechniques": "Techniques d’animation",
-  "animationTechnique": "Technique d’animation",
+  "animationTechniques": "Techniques d'animation",
+  "animationTechnique": "Technique d'animation",
   "keywords": "Mots-clés",
   "theatricalTechniques": "Procédés théâtraux",
   "audience": "Public visé",
   "note": "Notice",
   "abstract": "Résumé",
-  "compositionDate": "Date d’écriture",
+  "compositionDate": "Date d'écriture",
   "otherTitles": "Autres titres",
   "hypotexts": "Œuvres corrélées",
   "firstPerformance": "Première représentation",
@@ -59,7 +59,7 @@
   "onlineCopy": "Exemplaire en ligne",
   "translations": "Traductions",
   "characters": "Personnages",
-  "actsCount": "Nombre d’actes",
+  "actsCount": "Nombre d'actes",
   "pagesCount": "{{count}} page",
   "pagesCount_0": "Nombre de page inconnue",
   "pagesCount_other": "{{count}} pages",
@@ -99,7 +99,7 @@
     "authorsPlaceholder": "Auteur",
     "literaryTones": "Registres littéraires",
     "literaryTonesPlaceholder": "Comique, dramatique…",
-    "animationTechniques": "Techniques d’animation",
+    "animationTechniques": "Techniques d'animation",
     "animationTechniquesPlaceholder": "Marionnette à gaine…",
     "theatricalTechniques": "Procédés théâtraux",
     "theatricalTechniquesPlaceholder": "…",
@@ -130,6 +130,9 @@
   "launchSearch": "Lancer une recherche",
   "readBiography": "Lire la biographie",
   "comingSoon": "Prochainement",
+  "contentNotAvailable": "Contenu en préparation",
+  "animationTechniquesNotAvailable": "Cette section présentera bientôt les différentes techniques d'animation utilisées en marionnettes. Nous travaillons actuellement à l'intégration de ces contenus dans notre base de données.",
+  "authorsSectionComingSoon": "Cette section présentera bientôt les auteurs de pièces pour marionnettes référencés dans notre base de données. Vous pourrez explorer leurs biographies et consulter leurs œuvres.",
   "showMap": "Afficher la carte",
   "showList": "Afficher la liste",
   "presentation": "Présentation",
@@ -142,6 +145,22 @@
   "permalink": "Permalien",
   "permalinkCopy": "Copier le permalien",
   "document": "Document",
-  "flatplan": "Chemin de fer",
-  "discoveryPaths": "Parcours découverte"
+  "flatplan": "Plan du document",
+  "discoveryPaths": "Parcours découverte",
+  "loading": "Chargement en cours...",
+  "error": {
+    "title": "Erreur",
+    "message": "Une erreur s'est produite lors du chargement de ce composant.",
+    "tryAgain": "Réessayer",
+    "default": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "dataNotFound": "Aucune donnée trouvée",
+    "network": "Impossible de se connecter au serveur. Veuillez vérifier votre connexion internet.",
+    "server": "Le serveur a rencontré une erreur. Veuillez réessayer plus tard.",
+    "authentication": "Vous n'avez pas l'autorisation d'accéder à cette ressource.",
+    "validation": "La requête contient des données invalides.",
+    "notFound": "La ressource demandée n'a pas été trouvée.",
+    "noResultsFound": "Aucun résultat trouvé"
+  },
+  "readMore": "En savoir plus"
 }

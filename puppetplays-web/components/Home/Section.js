@@ -11,6 +11,7 @@ const Section = ({ title, subtitle, children, footer, isComingSoon }) => {
       className={`${styles.container} ${
         isComingSoon ? styles.isComingSoon : null
       }`}
+        data-coming-soon={isComingSoon}
     >
       {title && (
         <header className={styles.header}>

@@ -30,6 +30,7 @@ import Pagination from 'components/Pagination';
 import FilterSelect from 'components/FilterSelect';
 import SearchBar from 'components/SearchBar';
 import Button from 'components/Button';
+import NoResults from 'components/NoResults';
 import styles from 'styles/Database.module.scss';
 
 const MapView = dynamic(() => import('../components/Map/MapView'), {
@@ -300,6 +301,7 @@ function Home({ initialData }) {
               <Button
                 onClick={handleSetMapView}
                 icon={<img src="/icon-map.svg" alt="" />}
+                inverse={true}
               >
                 {t('common:showMap')}
               </Button>
@@ -308,10 +310,17 @@ function Home({ initialData }) {
 
           <div className={styles.works} ref={scrollElementRef}>
             <div className={styles.worksScroll}>
-              {data.entries &&
+              {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
                 data.entries.map((work) => (
                   <WorkSummary key={work.id} {...work} />
-                ))}
+                ))
+              ) : (
+                <NoResults 
+                  icon="search"
+                  title={t('common:error.dataNotFound')} 
+                  message={t('common:error.noResultsFound')}
+                />
+              )}
             </div>
           </div>
         </Fragment>
@@ -322,6 +331,7 @@ function Home({ initialData }) {
             <Button
               onClick={handleSetListView}
               icon={<img src="/icon-list.svg" alt="" />}
+              inverse={true}
             >
               {t('common:showList')}
             </Button>

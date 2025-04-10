@@ -39,7 +39,7 @@ puppetplays/
 The development workflow follows these steps:
 
 1. **Local Development**:
-   - Setting up local environments (see [SETUP.md](./SETUP.md))
+   - Setting up local environments (see [Setup.md](./SETUP.md))
    - Development and local testing
 
 2. **Continuous Integration**:
@@ -53,7 +53,7 @@ The development workflow follows these steps:
 
 ## 🔧 Installation and Configuration
 
-For detailed documentation on installation and configuration, please see [SETUP.md](./SETUP.md).
+For detailed documentation on installation and configuration, please see [Setup.md](./SETUP.md).
 
 In summary:
 
@@ -110,7 +110,7 @@ For complete information on environment variables for each component, refer to t
 
 For more details, consult the following documents:
 
-- [SETUP](./puppetplays-docs/1-SETUP.md)
+- [Setup](./puppetplays-docs/1-SETUP.md)
 - [Development Guide](./puppetplays-docs/2-Développement.md)
 - [Server Configuration](./puppetplays-docs/3-Configuration-serveur.md)
 - [Deployment](./puppetplays-docs/4-Déploiement.md)

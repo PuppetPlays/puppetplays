@@ -19,6 +19,7 @@ import {
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { getRandom } from 'lib/utils';
+import { safeObject, safeArray } from 'lib/safeAccess';
 import LanguageSelector from 'components/LanguageSelector';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import ButtonLink from 'components/ButtonLink';
@@ -79,7 +80,7 @@ const PartnersBar = ({ t }) => {
       </ul>
       <div className={styles.logosBarSpacer} />
       <ul className={styles.logosBar}>
-        {PARTNERS.map((partner) => (
+        {PARTNERS && Array.isArray(PARTNERS) && PARTNERS.map((partner) => (
           <li key={partner}>
             <a
               href={t(`${partner}.url`)}
@@ -104,11 +105,15 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
   const animationTechniqueLinkRef = useRef(null);
-
+  
+  // Create safe arrays with fallbacks
+  const safeAuthors = authors || [];
+  const safeKeywords = keywords || [];
+  
   return (
     <Fragment>
       <Head>
-        <title>Puppetplays | {t('title')}</title>
+        <title>{`Puppetplays | ${t('title')}`}</title>
         <meta name="description" content={t('metaDescription')} />
       </Head>
 
@@ -170,7 +175,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
                       thumbnailUrl="/pathways-thumbnail.jpg"
-                      to="/parcours-decouverte"
                     />
                     <EntryPointCard
                       title={t('exploreBy.publications.title')}
@@ -199,95 +203,149 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <img src="/home-integral-works.jpg" alt="" />
               </Section>
 
-              <Section>
-                <SplitLayout
-                  title={animationTechnique.title}
-                  subtitle={t('common:animationTechnique')}
-                  image={
-                    animationTechnique.mainImage &&
-                    animationTechnique.mainImage[0]
-                  }
-                  linkRef={animationTechniqueLinkRef}
-                >
-                  <HtmlContent html={animationTechnique.excerpt} />
-                  <ButtonLink
-                    href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
-                    ref={animationTechniqueLinkRef}
+              <Section title={t('animationTechniqueTitle')} isComingSoon>
+                <div className={styles.comingSoonWrapper}>
+                  <SplitLayout
+                    title={animationTechnique ? (animationTechnique.title || '') : t('animationTechniqueTitle')}
+                    subtitle={t('common:animationTechnique')}
+                    image={{ 
+                      url: animationTechnique && 
+                           animationTechnique.mainImage && 
+                           Array.isArray(animationTechnique.mainImage) && 
+                           animationTechnique.mainImage.length > 0 
+                        ? animationTechnique.mainImage[0].url 
+                        : '/photo-manuscrit.jpg' 
+                    }}
                   >
-                    {t('common:readNote')}
-                  </ButtonLink>
-                  <div className={styles.blockLink}>
-                    <Link href="/techniques-d-animation">
-                      <a>{t('seeAllAnimationTechniques')}</a>
-                    </Link>
-                  </div>
-                </SplitLayout>
+                    <div className={styles.comingSoonContent}>
+                      <p>{t('animationTechniqueDescription')}</p>
+                    </div>
+                  </SplitLayout>
+                </div>
               </Section>
-
-              <div className={styles.keywords}>
-                <Section title={t('exploreByKeywords')}>
-                  <Keywords keywords={keywords} component={Tag} />
-                </Section>
-              </div>
 
               <Section
                 title={t('exploreByAuthors')}
+                isComingSoon={safeAuthors.length === 0}
                 footer={
                   <Link href="/auteurs">
                     <a>{t('browseAllAuthors')}</a>
                   </Link>
                 }
               >
-                <div className={styles.authors}>
-                  {authors.map((entry) => (
-                    <Card
-                      key={entry.id}
-                      fixedHeight
-                      subtitle={
-                        <BirthDeathDates
-                          birthDate={entry.birthDate}
-                          deathDate={entry.deathDate}
-                        />
-                      }
-                      href={`/auteurs/${entry.id}/${entry.slug}`}
-                      {...entry}
-                    />
-                  ))}
-                </div>
+                {safeAuthors.length > 0 ? (
+                  <div className={styles.authors}>
+                    {safeAuthors && Array.isArray(safeAuthors) && safeAuthors.map((entry) => (
+                      <Card
+                        key={entry.id || Math.random().toString()}
+                        fixedHeight
+                        subtitle={
+                          entry.birthDate || entry.deathDate ? (
+                            <BirthDeathDates
+                              birthDate={entry.birthDate}
+                              deathDate={entry.deathDate}
+                            />
+                          ) : null
+                        }
+                        imageUrl={
+                          entry.mainImage && 
+                          Array.isArray(entry.mainImage) && 
+                          entry.mainImage.length > 0
+                            ? entry.mainImage[0].optimizedSrc
+                            : null
+                        }
+                        title={entry.title || ''}
+                        href={
+                          entry.id && entry.slug
+                            ? `/auteurs/${entry.id}/${entry.slug}`
+                            : '#'
+                        }
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className={styles.comingSoonWrapper}>
+                    <div className={styles.authors}>
+                      <Card
+                        fixedHeight
+                        subtitle={<span>1901 — 1983</span>}
+                        imageUrl="/authors/Nino Pozzo.jpg"
+                        title="Nino Pozzo"
+                        href="#"
+                      />
+                      <Card
+                        fixedHeight
+                        subtitle={<span>1902 — 1977</span>}
+                        imageUrl="/authors/Hermann Aicher.jpg"
+                        title="Hermann Aicher"
+                        href="#"
+                      />
+                      <Card
+                        fixedHeight
+                        subtitle={<span>1809 — 1866</span>}
+                        imageUrl="/authors/Johann Scheible.jpg"
+                        title="Johann Scheible"
+                        href="#"
+                      />
+                      <Card
+                        fixedHeight
+                        subtitle={<span>1755 — 1835</span>}
+                        imageUrl="/authors/Schink Johann Friedrich.gif"
+                        title="Schink Johann Friedrich"
+                        href="#"
+                      />
+                    </div>
+                  </div>
+                )}
               </Section>
 
               {work && (
-                <Section>
+                <Section
+                  title={t('discoverSingleWork')}
+                  footer={
+                    <Link href="/base-de-donnees">
+                      <a>{t('browseDatabaseWorks')}</a>
+                    </Link>
+                  }
+                >
                   <SplitLayout
-                    title={work.title}
-                    subtitle={t('lightOnWork')}
-                    image={work.mainImage && work.mainImage[0]}
+                    title={work.title || ''}
+                    subtitle={work.originalTitle || ''}
+                    date={work.date || ''}
                     linkRef={workLinkRef}
+                    image={
+                      work.mainImage &&
+                      Array.isArray(work.mainImage) &&
+                      work.mainImage.length > 0
+                        ? work.mainImage[0]
+                        : null
+                    }
                   >
-                    <div style={{ marginBottom: 20 }}>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: clip(work.note, 250, {
-                            html: true,
-                            maxLines: 5,
-                          }),
-                        }}
+                    {work.textExcerpt && (
+                      <HtmlContent
+                        html={
+                          // Safe text clipping
+                          typeof work.textExcerpt === 'string'
+                            ? clip(work.textExcerpt, 250, { html: true })
+                            : ''
+                        }
                       />
-                      <Keywords keywords={work.keywords} component={Tag} />
+                    )}
+                    <div className={styles.workActions} component={Tag}>
+                      <ButtonLink
+                        href={`/oeuvres/${work.id}/${work.slug}`}
+                        ref={workLinkRef}
+                      >
+                        {t('common:readNote')}
+                      </ButtonLink>
                     </div>
-                    <ButtonLink
-                      href={`/oeuvres/${work.id}/${work.slug}`}
-                      ref={workLinkRef}
-                    >
-                      {t('common:readNote')}
-                    </ButtonLink>
                   </SplitLayout>
                 </Section>
               )}
 
               <Section title={t('ourPublications')}>
                 <ul className={styles.publications}>
-                  {PUBLICATIONS.map((key, index) => (
+                  {PUBLICATIONS && Array.isArray(PUBLICATIONS) && PUBLICATIONS.map((key, index) => (
                     <EntryPointCard
                       key={index}
                       title={t(`publications.${key}.title`)}
@@ -321,7 +379,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <p>{t('projectFinancedBy')}</p>
               </div>
               <ul className={styles.footerPartnersPartners}>
-                {PARTNERS.map((partner) => (
+                {PARTNERS && Array.isArray(PARTNERS) && PARTNERS.map((partner) => (
                   <li key={partner}>
                     <a
                       href={t(`${partner}.url`)}
@@ -429,56 +487,91 @@ Home.propTypes = {
 };
 
 export async function getServerSideProps({ locale, req, res }) {
-  const apiClient = getFetchAPIClient({
-    variables: { locale },
-  });
+  try {
+    const apiClient = getFetchAPIClient({
+      variables: { locale },
+    });
 
-  const [
-    { entry: homeEntry },
-    { tags: keywords },
-    { entries: animationTechniquesEntries },
-    { entries: personEntries },
-  ] = await Promise.all([
-    apiClient(getHomeQuery),
-    apiClient(getAllWorksKeywordsQuery),
-    apiClient(getAllAnimationTechniquesQuery),
-    apiClient(getAllAuthorsIdsQuery),
-  ]);
+    // Fetch initial data with null safety checks
+    const [
+      homeResult,
+      keywordsResult,
+      animationTechniquesResult,
+      personEntriesResult,
+    ] = await Promise.all([
+      apiClient(getHomeQuery).catch(() => ({})),
+      apiClient(getAllWorksKeywordsQuery).catch(() => ({})),
+      apiClient(getAllAnimationTechniquesQuery).catch(() => ({})),
+      apiClient(getAllAuthorsIdsQuery).catch(() => ({})),
+    ]);
 
-  const randomWorkId = getRandom(homeEntry.works, 1).map(get('id'));
-  const randomKeywordsIds = getRandom(keywords, 20).map(get('id'));
-  const randomAnimationTechninquesId = getRandom(
-    animationTechniquesEntries,
-    1,
-  ).map(get('id'));
-  const randomPersonIds = getRandom(personEntries, 4).map(get('id'));
+    // Apply null safety to the results
+    const homeEntry = safeObject(homeResult).entry || {};
+    const keywords = safeArray(safeObject(keywordsResult).tags);
+    const animationTechniquesEntries = safeArray(safeObject(animationTechniquesResult).entries);
+    const personEntries = safeArray(safeObject(personEntriesResult).entries);
 
-  const [
-    { entry: homeWorkEntry },
-    { tags: homeKeywords },
-    { entry: homeAnimationTechninqueEntry },
-    { entries: homePersonEntries },
-  ] = await Promise.all([
-    fetchAPI(getWorkByIdQuery, {
-      variables: { locale, id: randomWorkId[0] },
-    }),
-    fetchAPI(getWorksKeywordsByIdsQuery, {
-      variables: { locale, id: randomKeywordsIds },
-    }),
-    fetchAPI(getAnimationTechniqueByIdQuery, {
-      variables: { locale, id: randomAnimationTechninquesId[0] },
-    }),
-    fetchAPI(getAuthorsByIdsQuery, {
-      variables: { locale, id: randomPersonIds },
-    }),
-  ]);
+    // Safe random selections with null checks
+    const homeWorks = safeArray(homeEntry.works);
+    const randomWorkId = homeWorks.length ? getRandom(homeWorks, 1).map(get('id')) : [];
+    const randomKeywordsIds = keywords.length ? getRandom(keywords, 20).map(get('id')) : [];
+    const randomAnimationTechninquesId = animationTechniquesEntries.length ? 
+      getRandom(animationTechniquesEntries, 1).map(get('id')) : [];
+    const randomPersonIds = personEntries.length ? getRandom(personEntries, 4).map(get('id')) : [];
 
-  return {
-    props: {
-      animationTechnique: homeAnimationTechninqueEntry,
-      work: homeWorkEntry,
-      keywords: homeKeywords,
-      authors: homePersonEntries,
-    },
-  };
+    // Fetch secondary data with null safety for keys
+    const [
+      workResult,
+      keywordsIdsResult,
+      animationTechniqueResult,
+      authorsResult,
+    ] = await Promise.all([
+      randomWorkId.length > 0 
+        ? fetchAPI(getWorkByIdQuery, {
+            variables: { locale, id: randomWorkId[0] },
+          }).catch(() => ({}))
+        : Promise.resolve({}),
+      randomKeywordsIds.length > 0
+        ? fetchAPI(getWorksKeywordsByIdsQuery, {
+            variables: { locale, id: randomKeywordsIds },
+          }).catch(() => ({}))
+        : Promise.resolve({}),
+      randomAnimationTechninquesId.length > 0
+        ? fetchAPI(getAnimationTechniqueByIdQuery, {
+            variables: { locale, id: randomAnimationTechninquesId[0] },
+          }).catch(() => ({}))
+        : Promise.resolve({}),
+      randomPersonIds.length > 0
+        ? fetchAPI(getAuthorsByIdsQuery, {
+            variables: { locale, id: randomPersonIds },
+          }).catch(() => ({}))
+        : Promise.resolve({}),
+    ]);
+
+    // Apply null safety to secondary results
+    const homeWorkEntry = safeObject(workResult).entry;
+    const homeKeywords = safeArray(safeObject(keywordsIdsResult).tags);
+    const homeAnimationTechniqueEntry = safeObject(animationTechniqueResult).entry;
+    const homePersonEntries = safeArray(safeObject(authorsResult).entries);
+
+    return {
+      props: {
+        animationTechnique: homeAnimationTechniqueEntry || null,
+        work: homeWorkEntry || null,
+        keywords: homeKeywords || [],
+        authors: homePersonEntries || [],
+      },
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    // Return safe default values
+    return {
+      props: {
+        animationTechnique: null,
+        work: null,
+        keywords: [],
+        authors: [],
+      },
+    };
+  }
 }

@@ -9,6 +9,7 @@ import { fetchAPI, getAllDiscoveryPaths } from 'lib/api';
 import Layout from 'components/Layout';
 import { PageTitle } from 'components/Primitives';
 import ContentLayout from 'components/ContentLayout';
+import NoResults from 'components/NoResults';
 import styles from 'styles/DiscoveryPaths.module.scss';
 
 function ParcoursDecouverte({ initialData }) {
@@ -43,10 +44,10 @@ function ParcoursDecouverte({ initialData }) {
       <ContentLayout style={{ maxWidth: 930, padding: '32px 20px' }}>
         <div className={styles.pageTitle}>
           {t('common:discoveryPaths')}{' '}
-          {data && <span>({data.entries.length})</span>}
+          {data?.entries && <span>({data.entries.length})</span>}
         </div>
         <div className={styles.list}>
-          {data &&
+          {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
             data.entries.map((entry) => (
               <article key={entry.id} className={styles.listItem}>
                 {hasAtLeastOneItem(entry.thumbnail) && (
@@ -68,7 +69,14 @@ function ParcoursDecouverte({ initialData }) {
                   <div dangerouslySetInnerHTML={{ __html: entry.abstract }} />
                 </div>
               </article>
-            ))}
+            ))
+          ) : (
+            <NoResults 
+              icon="info"
+              title={t('common:error.dataNotFound')} 
+              message={t('common:error.noResultsFound')}
+            />
+          )}
         </div>
       </ContentLayout>
     </Layout>

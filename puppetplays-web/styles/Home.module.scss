@@ -509,3 +509,38 @@
     color: white;
   }
 }
+
+.comingSoonContent {
+  margin: 20px 0;
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.comingSoonWrapper {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  img {
+    filter: grayscale(40%);
+  }
+  
+  a {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

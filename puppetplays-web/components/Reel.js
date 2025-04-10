@@ -118,7 +118,7 @@ const Reel = ({ images, bleed }) => {
       </div>
       <div className={styles.scrollable} ref={scrollableRef}>
         <ul className={styles.list} ref={listRef}>
-          {images.map((image, index) => (
+          {images && Array.isArray(images) && images.map((image, index) => (
             <li
               key={`${image.id}-${index}`}
               className={styles.image}

@@ -3,49 +3,64 @@ import PropTypes from 'prop-types';
 import styles from './keywords.module.scss';
 
 export function Keyword({ children }) {
+  if (!children) return null;
   return <li className={styles.keyword}>{children}</li>;
 }
 
 Keyword.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export function TheatricalTechniqueTag({ id, children }) {
+  if (!id || !children) return null;
+  
   return (
     <li className={styles.tag}>
       <Link href={`/base-de-donnees?theatricalTechniques=${id}`}>
-        {children}
+        <a tabIndex="0">{children}</a>
       </Link>
     </li>
   );
 }
 
 TheatricalTechniqueTag.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  id: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export function Tag({ id, children }) {
+  if (!id || !children) return null;
+  
   return (
     <li className={styles.tag}>
-      <Link href={`/base-de-donnees?relatedToTags=${id}`}>{children}</Link>
+      <Link href={`/base-de-donnees?relatedToTags=${id}`}>
+        <a tabIndex="0">{children}</a>
+      </Link>
     </li>
   );
 }
 
 Tag.propTypes = {
-  id: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  id: PropTypes.string,
+  children: PropTypes.node,
 };
 
 function Keywords({ keywords, component: Component, fill }) {
+  // Handle null, undefined, or empty keywords array
+  const safeKeywords = Array.isArray(keywords) ? keywords : [];
+  
+  if (safeKeywords.length === 0) return null;
+  
   return (
     <ul className={styles.container} data-fill={fill}>
-      {keywords.map(({ title, ...keyword }) => (
-        <Component key={title} {...keyword}>
-          {title}
-        </Component>
-      ))}
+      {safeKeywords && Array.isArray(safeKeywords) && safeKeywords.map(({ title, id, ...keyword }) => {
+        if (!title) return null;
+        return (
+          <Component key={id || title} id={id} {...keyword}>
+            {title}
+          </Component>
+        );
+      })}
     </ul>
   );
 }
@@ -53,10 +68,11 @@ function Keywords({ keywords, component: Component, fill }) {
 Keywords.defaultProps = {
   fill: false,
   component: Keyword,
+  keywords: [],
 };
 
 Keywords.propTypes = {
-  keywords: PropTypes.arrayOf(PropTypes.object).isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.object),
   component: PropTypes.func,
   fill: PropTypes.bool,
 };

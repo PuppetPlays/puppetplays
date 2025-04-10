@@ -55,7 +55,7 @@ const MapView = ({ filters, searchTerms, locale }) => {
         return {
           name: countryName,
           coordinates: [longitude, latitude],
-          ids: works.map((w) => w.id),
+          ids: works && Array.isArray(works) ? works.map((w) => w.id) : [],
           type: 'countries',
         };
       });
@@ -71,7 +71,7 @@ const MapView = ({ filters, searchTerms, locale }) => {
         return {
           name,
           coordinates: [longitude, latitude],
-          ids: works.map((w) => w.id),
+          ids: works && Array.isArray(works) ? works.map((w) => w.id) : [],
           type: typeHandle,
         };
       });

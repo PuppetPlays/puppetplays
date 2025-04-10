@@ -1,8 +1,43 @@
 .container {
   margin-top: 84px;
+  position: relative;
 
   &:first-child {
     margin-top: 0;
+  }
+  
+  &.isComingSoon {
+    .content {
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(240, 240, 240, 0.2);
+        z-index: 2;
+        pointer-events: all; /* Bloquer les interactions */
+        cursor: not-allowed;
+      }
+      
+      img {
+        filter: grayscale(40%);
+      }
+      
+      a, button {
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    }
+    
+    .footer {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   }
 }
 
@@ -29,6 +64,8 @@
 }
 
 .content {
+  position: relative;
+  
   > img {
     max-width: 100%;
   }

@@ -10,6 +10,7 @@ import HtmlContent from 'components/HtmlContent';
 import { PageIntertitle } from 'components/Primitives';
 import BirthDeathDates from 'components/BirthDeathDates';
 import ZoomableImage from 'components/ZoomableImage';
+import NoResults from 'components/NoResults';
 import ArkId from 'components/Work/ArkId';
 import styles from './authorNote.module.scss';
 
@@ -79,17 +80,26 @@ function AuthorNote({
         )}
       </div>
 
-      {hasAtLeastOneItem(works) && (
+      {works && Array.isArray(works) && (
         <div className={styles.works}>
           <PageIntertitle>{t('common:works')}</PageIntertitle>
-          <ul>
-            {works.map((entry) => (
-              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-              <li key={entry.id} onClick={handleClickOnLink}>
-                <Hypotext {...entry} />
-              </li>
-            ))}
-          </ul>
+          {works.length > 0 ? (
+            <ul>
+              {works && Array.isArray(works) && works.map((entry) => (
+                // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+                <li key={entry.id} onClick={handleClickOnLink}>
+                  <Hypotext {...entry} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <NoResults 
+              icon="info"
+              title={t('common:error.dataNotFound')} 
+              message={t('common:noWorksForAuthor', { fallback: t('common:error.noResultsFound') })}
+              customStyles={{ margin: '20px auto', padding: '20px' }}
+            />
+          )}
         </div>
       )}
 
