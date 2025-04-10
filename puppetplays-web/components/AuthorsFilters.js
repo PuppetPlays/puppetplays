@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import constant from 'lodash/constant';
 import cond from 'lodash/cond';
 import stubTrue from 'lodash/stubTrue';
@@ -17,7 +17,7 @@ import { getAllLanguagesQuery, getAllPlacesQuery } from 'lib/filtersApi';
 import FilterSelect from 'components/FilterSelect';
 import FiltersBar from 'components/FiltersBar';
 
-function AuthorsFilters({ filters, onChange, onClearAll }) {
+function AuthorsFilters({ filters = {}, onChange, onClearAll }) {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const [filtersOptions, setFiltersOptions] = useState({});
@@ -46,7 +46,7 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
     Promise.all([
       apiClient(getAllLanguagesQuery('persons')),
       apiClient(getAllPlacesQuery('persons')),
-    ]).then((result) => {
+    ]).then(result => {
       const [languages, places] = result;
 
       setFiltersOptions({
@@ -73,7 +73,7 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
 
   const handleChangeFilters = useCallback(
     (value, { name }) => {
-      const isArrayWithElements = (v) => isArray(v) && v.length > 0;
+      const isArrayWithElements = v => isArray(v) && v.length > 0;
       const getNewFilterValue = cond([
         [isArrayWithElements, map(getFp('id'))],
         [isArray, constant(null)],
@@ -137,10 +137,6 @@ function AuthorsFilters({ filters, onChange, onClearAll }) {
     </FiltersBar>
   );
 }
-
-AuthorsFilters.defaultProps = {
-  filters: {},
-};
 
 AuthorsFilters.propTypes = {
   filters: PropTypes.object,

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.scss';
 
-const Button = ({ children, type, icon, inverse, onClick }) => {
+const Button = ({ children, type = 'button', icon = null, inverse = false, onClick }) => {
   return (
     <button
       className={styles.button}
@@ -14,12 +14,6 @@ const Button = ({ children, type, icon, inverse, onClick }) => {
       <span className={styles.label}>{children}</span>
     </button>
   );
-};
-
-Button.defaultProps = {
-  icon: null,
-  type: 'button',
-  inverse: false,
 };
 
 Button.propTypes = {

@@ -1,8 +1,8 @@
-export const isGraphQlQuery = (queryName) => (req) => {
+export const isGraphQlQuery = queryName => req => {
   return req.body.query.includes(queryName);
 };
 
-export const aliasAndReply = (alias, body) => (req) => {
+export const aliasAndReply = (alias, body) => req => {
   req.alias = alias;
   req.reply(body);
 };

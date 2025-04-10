@@ -4,12 +4,13 @@ import classNames from 'classnames/bind';
 import { hasAtLeastOneItem } from 'lib/utils';
 import styles from './card.module.scss';
 
-function Card({ href, title, subtitle, mainImage, imageUrl, fixedHeight }) {
+function Card({ href = null, title = null, subtitle = null, mainImage = null, imageUrl = null, fixedHeight = false }) {
   const cx = classNames.bind(styles);
 
   // Handle different image sources (backward compatibility + new pattern)
   const hasImage = imageUrl || hasAtLeastOneItem(mainImage);
-  const imageSource = imageUrl || (hasAtLeastOneItem(mainImage) ? mainImage[0].url : null);
+  const imageSource =
+    imageUrl || (hasAtLeastOneItem(mainImage) ? mainImage[0].url : null);
 
   const cardContent = (
     <>
@@ -40,35 +41,29 @@ function Card({ href, title, subtitle, mainImage, imageUrl, fixedHeight }) {
   }
 
   return (
-    <Link href={href}>
-      <a
-        className={cx({
-          container: true,
-          fixedHeight: fixedHeight || hasImage,
-        })}
-      >
-        {cardContent}
-      </a>
+    <Link
+      href={href}
+      className={cx({
+        container: true,
+        fixedHeight: fixedHeight || hasImage,
+      })}
+    >
+      {cardContent}
     </Link>
   );
 }
 
-Card.defaultProps = {
-  href: null,
-  title: '',
-  fixedHeight: false,
-  mainImage: null,
-  imageUrl: null,
-  subtitle: null,
-};
-
 Card.propTypes = {
   href: PropTypes.string,
-  title: PropTypes.node,
-  fixedHeight: PropTypes.bool,
-  subtitle: PropTypes.node,
-  mainImage: PropTypes.array,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  mainImage: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  ),
   imageUrl: PropTypes.string,
+  fixedHeight: PropTypes.bool,
 };
 
 export default Card;

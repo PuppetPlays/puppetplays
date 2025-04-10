@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './htmlContent.module.scss';
 
-function MainNav({ html }) {
+function HtmlContent({ html = null }) {
   if (!html) {
     return null;
   }
@@ -16,12 +16,8 @@ function MainNav({ html }) {
   );
 }
 
-MainNav.defaultProps = {
-  html: null,
-};
-
-MainNav.propTypes = {
+HtmlContent.propTypes = {
   html: PropTypes.string,
 };
 
-export default MainNav;
+export default HtmlContent;

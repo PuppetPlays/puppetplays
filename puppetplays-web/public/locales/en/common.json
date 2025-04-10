@@ -93,6 +93,7 @@
     "mainLanguagePlaceholder": "French, German…",
     "languages": "Language",
     "period": "Period",
+    "periodRange": "Period selection",
     "composeAfter": "composed after",
     "composeBefore": "composed before",
     "authors": "Author",
@@ -168,5 +169,8 @@
     "notFound": "The requested resource was not found.",
     "noResultsFound": "No results found for your search criteria."
   },
-  "readMore": "Read more"
+  "readMore": "Read more",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact"
 }

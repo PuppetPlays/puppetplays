@@ -13,11 +13,11 @@ Keyword.propTypes = {
 
 export function TheatricalTechniqueTag({ id, children }) {
   if (!id || !children) return null;
-  
+
   return (
     <li className={styles.tag}>
       <Link href={`/base-de-donnees?theatricalTechniques=${id}`}>
-        <a tabIndex="0">{children}</a>
+        <p>{children}</p>
       </Link>
     </li>
   );
@@ -30,11 +30,11 @@ TheatricalTechniqueTag.propTypes = {
 
 export function Tag({ id, children }) {
   if (!id || !children) return null;
-  
+
   return (
     <li className={styles.tag}>
       <Link href={`/base-de-donnees?relatedToTags=${id}`}>
-        <a tabIndex="0">{children}</a>
+        <p>{children}</p>
       </Link>
     </li>
   );
@@ -45,31 +45,28 @@ Tag.propTypes = {
   children: PropTypes.node,
 };
 
-function Keywords({ keywords, component: Component, fill }) {
+function Keywords({ keywords = [], component: Component = Keyword, fill = false }) {
   // Handle null, undefined, or empty keywords array
   const safeKeywords = Array.isArray(keywords) ? keywords : [];
-  
+
   if (safeKeywords.length === 0) return null;
-  
+
   return (
     <ul className={styles.container} data-fill={fill}>
-      {safeKeywords && Array.isArray(safeKeywords) && safeKeywords.map(({ title, id, ...keyword }) => {
-        if (!title) return null;
-        return (
-          <Component key={id || title} id={id} {...keyword}>
-            {title}
-          </Component>
-        );
-      })}
+      {safeKeywords &&
+        Array.isArray(safeKeywords) &&
+        safeKeywords.map(({ title, id, ...keyword }) => {
+          if (!title) return null;
+          return (
+            <Component key={id || title} id={id} {...keyword}>
+              {title}
+            </Component>
+          );
+        })}
     </ul>
   );
 }
 
-Keywords.defaultProps = {
-  fill: false,
-  component: Keyword,
-  keywords: [],
-};
 
 Keywords.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.object),

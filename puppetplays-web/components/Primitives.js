@@ -5,7 +5,7 @@ const childrenProp = {
   children: PropTypes.node.isRequired,
 };
 
-export function PageTitle({ children, smaller, ...props }) {
+export function PageTitle({ children, smaller = false, ...props }) {
   return (
     <h1
       className={`${styles.pageTitle} ${smaller ? styles.isSmaller : ''}`}
@@ -15,10 +15,6 @@ export function PageTitle({ children, smaller, ...props }) {
     </h1>
   );
 }
-
-PageTitle.defaultProps = {
-  smaller: false,
-};
 
 PageTitle.propTypes = {
   ...childrenProp,

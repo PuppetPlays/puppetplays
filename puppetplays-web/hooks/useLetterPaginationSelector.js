@@ -1,16 +1,32 @@
 import { useCallback, useState } from 'react';
 
-const useLetterPaginationSelector = (initialLetter) => {
+const useLetterPaginationSelector = initialLetter => {
   const [currentLetter, setCurrentLetter] = useState(initialLetter);
 
-  const handleScroll = useCallback((evt) => {
+  const handleScroll = useCallback(evt => {
+    // Safety check for evt and evt.target
+    if (!evt || !evt.target) return;
+    
     const containerScrollTop = evt.target.scrollTop;
-    const currentNode = Array.from(
-      evt.target.querySelectorAll('[data-paginate-letter]'),
-    ).find((node) => {
-      return node.offsetTop >= containerScrollTop;
-    });
-    setCurrentLetter(currentNode.dataset.paginateLetter);
+    
+    // Safety check for querySelectorAll method
+    if (!evt.target.querySelectorAll) return;
+    
+    try {
+      const nodes = Array.from(
+        evt.target.querySelectorAll('[data-paginate-letter]') || []
+      );
+      
+      const currentNode = nodes.find(node => {
+        return node && node.offsetTop >= containerScrollTop;
+      });
+      
+      if (currentNode && currentNode.dataset && currentNode.dataset.paginateLetter) {
+        setCurrentLetter(currentNode.dataset.paginateLetter);
+      }
+    } catch (error) {
+      console.error('Error in handleScroll:', error);
+    }
   }, []);
 
   return [currentLetter, handleScroll];

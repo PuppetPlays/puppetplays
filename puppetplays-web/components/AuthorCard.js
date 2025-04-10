@@ -7,13 +7,13 @@ import styles from './authorCard.module.scss';
 function AuthorCard({
   id,
   slug,
-  usualName,
-  firstName,
-  lastName,
-  nickname,
-  birthDate,
-  deathDate,
-  mainImage,
+  usualName = null,
+  firstName = null,
+  lastName = null,
+  nickname = null,
+  birthDate = null,
+  deathDate = null,
+  mainImage = null,
 }) {
   return (
     <section className={styles.container}>
@@ -38,16 +38,6 @@ function AuthorCard({
     </section>
   );
 }
-
-AuthorCard.defaultProps = {
-  usualName: null,
-  firstName: null,
-  lastName: null,
-  nickname: null,
-  birthDate: null,
-  deathDate: null,
-  mainImage: null,
-};
 
 AuthorCard.propTypes = {
   id: PropTypes.string.isRequired,

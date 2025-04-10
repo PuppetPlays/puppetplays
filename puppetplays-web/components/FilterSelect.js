@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import Select from 'react-select';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
@@ -10,16 +10,16 @@ import { styles, components, getTheme } from './filterSelectStyles';
 
 function FilterSelect({
   name,
-  placeholder,
-  value,
-  options,
-  isMulti,
-  isClearable,
-  isSearchable,
+  placeholder = '',
+  value = null,
+  options = [],
+  isMulti = true,
+  isClearable = true,
+  isSearchable = true,
   onChange,
-  onFocus,
-  inverse,
-  isDisabled,
+  onFocus = noop,
+  inverse = true,
+  isDisabled = false,
 }) {
   const { t } = useTranslation();
   const getNoOptionsMessage = useCallback(
@@ -67,18 +67,6 @@ function FilterSelect({
     </div>
   );
 }
-
-FilterSelect.defaultProps = {
-  value: null,
-  placeholder: '',
-  options: [],
-  isMulti: true,
-  isClearable: true,
-  isSearchable: true,
-  inverse: true,
-  isDisabled: false,
-  onFocus: noop,
-};
 
 FilterSelect.propTypes = {
   name: PropTypes.string.isRequired,

@@ -29,59 +29,66 @@ export const createErrorObject = (type, message, originalError = null) => ({
  * @param {Error} error - The error to process
  * @returns {Object} Standardized error object
  */
-export const handleApiError = (error) => {
+export const handleApiError = error => {
   console.error('API Error:', error);
-  
+
   // Network errors
-  if (!navigator.onLine || error.message === 'Network Error' || error.name === 'TypeError') {
+  if (
+    !navigator.onLine ||
+    error.message === 'Network Error' ||
+    error.name === 'TypeError'
+  ) {
     return createErrorObject(
       ErrorTypes.NETWORK,
       'Unable to connect to the server. Please check your internet connection.',
-      error
+      error,
     );
   }
-  
+
   // Server errors (status 5xx)
   if (error.response && error.response.status >= 500) {
     return createErrorObject(
       ErrorTypes.SERVER,
       'The server encountered an error. Please try again later.',
-      error
+      error,
     );
   }
-  
+
   // Authentication errors (status 401, 403)
-  if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+  if (
+    error.response &&
+    (error.response.status === 401 || error.response.status === 403)
+  ) {
     return createErrorObject(
       ErrorTypes.AUTHENTICATION,
       'You do not have permission to access this resource.',
-      error
+      error,
     );
   }
-  
+
   // Validation errors (status 400)
   if (error.response && error.response.status === 400) {
     return createErrorObject(
       ErrorTypes.VALIDATION,
       'The request contains invalid data.',
-      error
+      error,
     );
   }
-  
+
   // Not found errors (status 404)
   if (error.response && error.response.status === 404) {
     return createErrorObject(
       ErrorTypes.NOT_FOUND,
       'The requested resource was not found.',
-      error
+      error,
     );
   }
-  
+
   // Default case - unknown error
   return createErrorObject(
     ErrorTypes.UNKNOWN,
     'An unexpected error occurred. Please try again later.',
-    error
+    error,
   );
 };
 
@@ -93,4 +100,4 @@ export const handleApiError = (error) => {
  */
 export const isErrorOfType = (error, type) => {
   return error && error.type === type;
-}; 
+};

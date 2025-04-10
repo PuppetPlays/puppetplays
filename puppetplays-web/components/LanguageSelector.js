@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './languageSelector.module.scss';
 
-function LanguageSelector({ inverse, path }) {
+function LanguageSelector({ inverse = false, path = '/' }) {
   const { locale, locales } = useRouter();
 
   return (
@@ -12,10 +12,10 @@ function LanguageSelector({ inverse, path }) {
         inverse && styles['container--inverse']
       }`}
     >
-      {locales.map((l) => (
+      {locales.map(l => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
           <Link href={path} locale={l}>
-            <a>{l}</a>
+            {l}
           </Link>
         </li>
       ))}
@@ -23,14 +23,10 @@ function LanguageSelector({ inverse, path }) {
   );
 }
 
-LanguageSelector.defaultProps = {
-  inverse: false,
-  path: '/',
-};
-
 LanguageSelector.propTypes = {
   inverse: PropTypes.bool,
   path: PropTypes.string,
 };
+
 
 export default LanguageSelector;

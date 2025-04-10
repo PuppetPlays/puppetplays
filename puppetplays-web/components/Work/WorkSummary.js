@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import {
   getTitle,
   getFirstItemTitle,
@@ -20,38 +20,38 @@ import CoverImage from './CoverImage';
 import styles from './workSummary.module.scss';
 
 function WorkSummary({
-  id,
-  slug,
-  title,
-  subtitle,
-  translatedTitle,
-  theatricalTechniques,
-  mainImage,
-  keywords,
-  authors,
-  mostRelevantDate,
-  compositionMinDate,
-  compositionPlace,
-  mainLanguage,
-  note,
-  mainTheme,
-  abstract,
-  otherTitles,
-  firstPerformancePlace,
-  firstPerformanceDate,
-  firstPerformanceComplementaryInformation,
-  publication,
-  modernEdition,
-  onlineCopy,
-  literaryTones,
-  animationTechniques,
-  audience,
-  textCharacters,
-  actsCount,
-  pagesCount,
-  formats,
-  publicDomain,
-  additionalLicenseInformation,
+  id = null,
+  slug = null,
+  title = null,
+  subtitle = null,
+  translatedTitle = null,
+  theatricalTechniques = [],
+  mainImage = [],
+  keywords = [],
+  authors = [],
+  mostRelevantDate = null,
+  compositionMinDate = null,
+  compositionPlace = [],
+  mainLanguage = [],
+  note = null,
+  mainTheme = null,
+  abstract = null,
+  otherTitles = null,
+  firstPerformancePlace = [],
+  firstPerformanceDate = null,
+  firstPerformanceComplementaryInformation = null,
+  publication = null,
+  modernEdition = null,
+  onlineCopy = null,
+  literaryTones = [],
+  animationTechniques = [],
+  audience = [],
+  textCharacters = [],
+  actsCount = null,
+  pagesCount = null,
+  formats = [],
+  publicDomain = false,
+  additionalLicenseInformation = null,
 }) {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -71,7 +71,7 @@ function WorkSummary({
         <WorkHeader
           title={
             <Link href={`/oeuvres/${id}/${slug}`}>
-              <a>{title}</a>
+              <p>{title}</p>
             </Link>
           }
           subtitle={subtitle}
@@ -121,13 +121,13 @@ function WorkSummary({
               </Info>
               {onlineCopy && (
                 <div className={styles.onlineCopy}>
-                  <a
+                  <Link
                     href={onlineCopy}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('common:onlineCopy')}
-                  </a>
+                  </Link>
                 </div>
               )}
             </Section>
@@ -199,38 +199,6 @@ function WorkSummary({
     </article>
   );
 }
-
-WorkSummary.defaultProps = {
-  subtitle: null,
-  mainImage: [],
-  translatedTitle: null,
-  theatricalTechniques: [],
-  keywords: [],
-  authors: [],
-  mostRelevantDate: null,
-  compositionMinDate: null,
-  compositionPlace: [],
-  mainLanguage: [],
-  note: null,
-  mainTheme: null,
-  abstract: null,
-  otherTitles: null,
-  firstPerformancePlace: [],
-  firstPerformanceDate: null,
-  firstPerformanceComplementaryInformation: null,
-  publication: null,
-  modernEdition: null,
-  onlineCopy: null,
-  literaryTones: [],
-  animationTechniques: [],
-  audience: [],
-  textCharacters: [],
-  actsCount: null,
-  pagesCount: null,
-  formats: [],
-  publicDomain: false,
-  additionalLicenseInformation: null,
-};
 
 WorkSummary.propTypes = {
   id: PropTypes.string.isRequired,

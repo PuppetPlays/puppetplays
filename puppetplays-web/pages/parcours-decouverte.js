@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import useSWR from 'swr';
 import Head from 'next/head';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import { hasAtLeastOneItem } from 'lib/utils';
 import { fetchAPI, getAllDiscoveryPaths } from 'lib/api';
 import Layout from 'components/Layout';
@@ -47,8 +47,10 @@ function ParcoursDecouverte({ initialData }) {
           {data?.entries && <span>({data.entries.length})</span>}
         </div>
         <div className={styles.list}>
-          {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
-            data.entries.map((entry) => (
+          {data?.entries &&
+          Array.isArray(data.entries) &&
+          data.entries.length > 0 ? (
+            data.entries.map(entry => (
               <article key={entry.id} className={styles.listItem}>
                 {hasAtLeastOneItem(entry.thumbnail) && (
                   <div key={entry.id} className={styles.listItemImage}>
@@ -71,9 +73,9 @@ function ParcoursDecouverte({ initialData }) {
               </article>
             ))
           ) : (
-            <NoResults 
+            <NoResults
               icon="info"
-              title={t('common:error.dataNotFound')} 
+              title={t('common:error.dataNotFound')}
               message={t('common:error.noResultsFound')}
             />
           )}

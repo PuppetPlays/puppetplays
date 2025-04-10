@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import {
   getTitle,
   getFirstItemTitle,
@@ -18,7 +18,6 @@ import CommaSepList from 'components/CommaSepList';
 import AuthorCard from 'components/AuthorCard';
 import CompanyCard from 'components/CompanyCard';
 import AnimationTechnique from 'components/AnimationTechnique';
-import PermalinkIcon from './icons/icon-permalink.svg';
 import WorkHeader from './WorkHeader';
 import Abstract from './Abstract';
 import Hypotexts from './Hypotexts';
@@ -27,49 +26,58 @@ import CoverImage from './CoverImage';
 import ArkId from './ArkId';
 import styles from './workSummary.module.scss';
 
+const PermalinkIcon = () => {
+  return (
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.3358 12.6891L18.5785 8.44648C19.5548 7.47017 19.5548 5.88725 18.5785 4.91094C17.6022 3.93463 16.0192 3.93463 15.0429 4.91094L12.1283 7.82555C11.2701 7.55078 10.3577 7.492 9.47626 7.6492L13.6287 3.49673C15.3861 1.73937 18.2353 1.73937 19.9927 3.49673C21.75 5.25409 21.75 8.10333 19.9927 9.86069L15.75 14.1033C13.9927 15.8607 11.1434 15.8607 9.38608 14.1033C9.30068 14.0179 9.21943 13.93 9.14233 13.8396L10.7405 12.6272C10.76 12.6481 10.7799 12.6687 10.8003 12.6891C11.7766 13.6654 13.3595 13.6654 14.3358 12.6891Z" />
+      <path d="M7.97187 19.0738L10.8761 16.1696C11.7344 16.4443 12.6468 16.5031 13.5282 16.3459L9.38608 20.488C7.62872 22.2454 4.77948 22.2454 3.02212 20.488C1.26476 18.7306 1.26476 15.8814 3.02212 14.124L7.26476 9.88141C9.02212 8.12405 11.8714 8.12405 13.6287 9.88141C13.7121 9.96474 13.7914 10.0505 13.8669 10.1386L12.2737 11.3568C12.2544 11.3362 12.2347 11.3158 12.2145 11.2956C11.2382 10.3193 9.65529 10.3193 8.67898 11.2956L4.43633 15.5383C3.46002 16.5146 3.46002 18.0975 4.43633 19.0738C5.41265 20.0501 6.99556 20.0501 7.97187 19.0738Z" />
+    </svg>
+  );
+};
+
 function Work(props) {
   const {
-    writtenBy,
-    doi,
-    viafId,
-    arkId,
-    title,
-    subtitle,
-    translatedTitle,
-    mainImage,
-    genre,
-    keywords,
-    authors,
-    mostRelevantDate,
-    compositionMinDate,
-    compositionDisplayDate,
-    compositionPlace,
-    mainLanguage,
-    note,
-    mainTheme,
-    abstract,
-    hypotexts,
-    otherTitles,
-    firstPerformancePlace,
-    firstPerformanceDate,
-    firstPerformanceComplementaryInformation,
-    publication,
-    modernEdition,
-    onlineCopy,
-    translations,
-    transcribers,
-    editors,
-    literaryTones,
-    animationTechniques,
-    theatricalTechniques,
-    audience,
-    textCharacters,
-    actsCount,
-    pagesCount,
-    formats,
-    publicDomain,
-    additionalLicenseInformation,
-    conservationPlace,
+    writtenBy = {},
+    doi = null,
+    viafId = null,
+    arkId = null,
+    title = null,
+    subtitle = null,
+    translatedTitle = null,
+    mainImage = [],
+    genre = null,
+    keywords = [],
+    authors = [],
+    mostRelevantDate = null,
+    compositionMinDate = null,
+    compositionDisplayDate = null,
+    compositionPlace = [],
+    mainLanguage = [],
+    note = null,
+    mainTheme = null,
+    abstract = null,
+    hypotexts = [],
+    otherTitles = null,
+    firstPerformancePlace = [],
+    firstPerformanceDate = null,
+    firstPerformanceComplementaryInformation = null,
+    publication = null,
+    modernEdition = null,
+    onlineCopy = null,
+    translations = [],
+    transcribers = [],
+    editors = [],
+    literaryTones = [],
+    animationTechniques = [],
+    theatricalTechniques = [],
+    audience = [],
+    textCharacters = [],
+    actsCount = null,
+    pagesCount = null,
+    formats = [],
+    publicDomain = false,
+    additionalLicenseInformation = null,
+    conservationPlace = [],
   } = props;
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -82,32 +90,38 @@ function Work(props) {
         <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
         <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
         <meta name="DC.title" lang={locale} content={title} />
-        {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
-          if (typeHandle === 'persons') {
-            const author = `${rest.lastName} ${rest.firstName}`;
-            return [
-              <meta key={`${rest.id}-DC`} name="DC.creator" content={author} />,
-              <meta
-                key={`${rest.id}-Google`}
-                name="citation_author"
-                content={author}
-              />,
-            ];
-          } else if (typeHandle === 'companies') {
-            return [
-              <meta
-                key={`${rest.id}-DC`}
-                name="DC.creator"
-                content={rest.title}
-              />,
-              <meta
-                key={`${rest.id}-Google`}
-                name="citation_author"
-                content={rest.title}
-              />,
-            ];
-          }
-        })}
+        {authors &&
+          Array.isArray(authors) &&
+          authors.map(({ typeHandle, ...rest }) => {
+            if (typeHandle === 'persons') {
+              const author = `${rest.lastName} ${rest.firstName}`;
+              return [
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={author}
+                />,
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={author}
+                />,
+              ];
+            } else if (typeHandle === 'companies') {
+              return [
+                <meta
+                  key={`${rest.id}-DC`}
+                  name="DC.creator"
+                  content={rest.title}
+                />,
+                <meta
+                  key={`${rest.id}-Google`}
+                  name="citation_author"
+                  content={rest.title}
+                />,
+              ];
+            }
+          })}
         <meta
           name="DC.date"
           scheme="DCTERMS.W3CDTF"
@@ -128,7 +142,11 @@ function Work(props) {
         <meta
           name="DC.subject"
           lang="fr"
-          content={keywords && Array.isArray(keywords) ? keywords.map(({ title }) => title).join(', ') : ''}
+          content={
+            keywords && Array.isArray(keywords)
+              ? keywords.map(({ title }) => title).join(', ')
+              : ''
+          }
         />
         <meta
           name="DC.language"
@@ -187,13 +205,15 @@ function Work(props) {
           title={t('common:author(s)')}
           show={hasAtLeastOneItem(authors)}
         >
-          {authors && Array.isArray(authors) && authors.map(({ typeHandle, ...rest }) => {
-            if (typeHandle === 'persons') {
-              return <AuthorCard key={rest.id} {...rest} />;
-            } else if (typeHandle === 'companies') {
-              return <CompanyCard key={rest.id} {...rest} />;
-            }
-          })}
+          {authors &&
+            Array.isArray(authors) &&
+            authors.map(({ typeHandle, ...rest }) => {
+              if (typeHandle === 'persons') {
+                return <AuthorCard key={rest.id} {...rest} />;
+              } else if (typeHandle === 'companies') {
+                return <CompanyCard key={rest.id} {...rest} />;
+              }
+            })}
         </Section>
       </div>
       <div className={styles.body}>
@@ -273,9 +293,9 @@ function Work(props) {
           </Info>
           {onlineCopy && (
             <div className={styles.onlineCopy}>
-              <a href={onlineCopy} target="_blank" rel="noopener noreferrer">
+              <Link href={onlineCopy} target="_blank" rel="noopener noreferrer">
                 {t('common:onlineCopy')}
-              </a>
+              </Link>
             </div>
           )}
           <Info
@@ -284,18 +304,20 @@ function Work(props) {
           >
             <div className={styles.translations}>
               <ul>
-                {translations && Array.isArray(translations) && translations.map(
-                  ({ bibliographicRecord, translationLanguage }) => (
-                    <li key={translationLanguage}>
-                      <span
-                        dangerouslySetInnerHTML={{
-                          __html: bibliographicRecord,
-                        }}
-                      />{' '}
-                      ({translationLanguage[0].title})
-                    </li>
-                  ),
-                )}
+                {translations &&
+                  Array.isArray(translations) &&
+                  translations.map(
+                    ({ bibliographicRecord, translationLanguage }) => (
+                      <li key={translationLanguage}>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: bibliographicRecord,
+                          }}
+                        />{' '}
+                        ({translationLanguage[0].title})
+                      </li>
+                    ),
+                  )}
               </ul>
             </div>
           </Info>
@@ -405,57 +427,14 @@ function Work(props) {
 
         <Section
           title={t('common:writtenBy')}
-          show={!!writtenBy.firstName || !!writtenBy.lastName}
+          show={writtenBy && (!!writtenBy.firstName || !!writtenBy.lastName)}
         >
-          {writtenBy.firstName} {writtenBy.lastName}
+          {writtenBy?.firstName} {writtenBy?.lastName}
         </Section>
       </div>
     </article>
   );
 }
-
-Work.defaultProps = {
-  writtenBy: {},
-  mainImage: [],
-  doi: null,
-  viafId: null,
-  arkId: null,
-  subtitle: null,
-  translatedTitle: null,
-  genre: null,
-  keywords: [],
-  authors: [],
-  mostRelevantDate: null,
-  compositionMinDate: null,
-  compositionDisplayDate: null,
-  compositionPlace: [],
-  mainLanguage: [],
-  note: null,
-  mainTheme: null,
-  abstract: null,
-  hypotexts: [],
-  otherTitles: null,
-  firstPerformancePlace: [],
-  firstPerformanceDate: null,
-  firstPerformanceComplementaryInformation: null,
-  publication: null,
-  modernEdition: null,
-  onlineCopy: null,
-  translations: [],
-  transcribers: [],
-  editors: [],
-  literaryTones: [],
-  animationTechniques: [],
-  theatricalTechniques: [],
-  audience: [],
-  textCharacters: [],
-  actsCount: null,
-  pagesCount: null,
-  formats: [],
-  publicDomain: false,
-  additionalLicenseInformation: null,
-  conservationPlace: [],
-};
 
 Work.propTypes = {
   writtenBy: PropTypes.shape({

@@ -1,14 +1,14 @@
-const nextTranslate = require('next-translate');
-const withTranspile = require('next-transpile-modules')(['ol', 'react-slider']);
+const { i18n } = require('./next-i18next.config');
 
-module.exports = nextTranslate(
-  withTranspile({
-    poweredByHeader: false,
-    swcMinify: false,
-    eslint: {
-      // Warning: Dangerously allow production builds to successfully complete even if
-      // your project has ESLint errors.
-      ignoreDuringBuilds: true,
-    },
-  }),
-);
+module.exports = {
+  i18n,
+  poweredByHeader: false,
+  eslint: {
+    // Warning: Dangerously allow production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+  experimental: {
+    forceSwcTransforms: true,
+  },
+};

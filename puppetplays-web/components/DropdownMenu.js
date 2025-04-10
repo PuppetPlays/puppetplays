@@ -4,15 +4,17 @@ import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import styles from './dropdownMenu.module.scss';
 
 // eslint-disable-next-line react/prop-types
-const DefaultWrapper = ({ children }) => {
-  return <Fragment>{children}</Fragment>;
-};
+const DefaultWrapper = React.forwardRef(({ children }, ref) => {
+  return <Fragment ref={ref}>{children}</Fragment>;
+});
+
+DefaultWrapper.displayName = 'DefaultWrapper';
 
 function DropdownMenu({
   itemsCount,
   renderButton,
   children,
-  childrenWrapperComponent: ChildrenWrapperComponent,
+  childrenWrapperComponent: ChildrenWrapperComponent = DefaultWrapper,
 }) {
   const { buttonProps, itemProps, isOpen, setIsOpen } =
     useDropdownMenu(itemsCount);
@@ -38,15 +40,11 @@ function DropdownMenu({
   );
 }
 
-DropdownMenu.defaultProps = {
-  childrenWrapperComponent: DefaultWrapper,
-};
-
 DropdownMenu.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   renderButton: PropTypes.func.isRequired,
   children: PropTypes.array.isRequired,
-  childrenWrapperComponent: PropTypes.func,
+  childrenWrapperComponent: PropTypes.elementType,
 };
 
 export default DropdownMenu;

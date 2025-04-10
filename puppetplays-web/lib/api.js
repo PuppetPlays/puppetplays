@@ -10,31 +10,60 @@ import {
 import { identity } from './utils';
 
 export const getFetchAPIClient = (params, token) => {
-  return (query) => fetchAPI(query, params, token);
+  if (params?.variables?.locale && Array.isArray(params.variables.locale)) {
+    params.variables.locale = params.variables.locale[0] || params.variables.locale;
+  }
+  
+  return query => {
+    // S'assurer que la requête est une chaîne
+    const queryString = Array.isArray(query) ? query[0] : query;
+    return fetchAPI(queryString, params, token);
+  };
 };
 
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
-  const res = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...craftTokenHeader,
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
-  const json = await res.json();
-
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error('Failed to fetch API');
+  
+  const queryString = Array.isArray(query) ? query[0] : query;
+  
+  if (variables && variables.locale && Array.isArray(variables.locale)) {
+    variables.locale = variables.locale[0] || variables.locale;
   }
+  
+  try {
+    console.log('Sending GraphQL query:', queryString.substring(0, 100) + '...');
+    console.log('Variables:', JSON.stringify(variables));
+    
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...craftTokenHeader,
+      },
+      body: JSON.stringify({
+        query: queryString,
+        variables,
+      }),
+    });
+    
+    if (!res.ok) {
+      console.error('Network response error:', res.status, res.statusText);
+      throw new Error(`API responded with status: ${res.status}`);
+    }
+    
+    const json = await res.json();
 
-  return json.data;
+    if (json.errors) {
+      console.error('GraphQL errors:', JSON.stringify(json.errors));
+      throw new Error(`GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`);
+    }
+
+    return json.data;
+  } catch (error) {
+    console.error('API fetch error:', error.message);
+    throw error;
+  }
 }
 
 export const placeInfoFragment = `
@@ -179,7 +208,7 @@ export const buildSearchQuery = (search, locale) => {
         .replace(/\+\s*/g, '+')
         .split(splitRegex)
         .filter(identity)
-        .filter((term) =>
+        .filter(term =>
           locale === 'fr'
             ? !stopWords.FR.includes(term)
             : !stopWords.EN.includes(term),
@@ -464,7 +493,7 @@ query GetAllWorksAuthorsIds($locale: [String]) {
   }
 }`;
 
-export const getAllAuthorsQuery = (filters) => `
+export const getAllAuthorsQuery = filters => `
 query GetAllAuthors($locale: [String]${authorsStateToGraphqlQueryArgument(
   filters,
 )}) {

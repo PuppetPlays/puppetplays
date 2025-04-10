@@ -4,7 +4,7 @@ import { get } from 'lodash/fp';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import clip from 'text-clipper';
 import {
   fetchAPI,
@@ -32,7 +32,7 @@ import HtmlContent from 'components/HtmlContent';
 import BirthDeathDates from 'components/BirthDeathDates';
 import NewsletterForm from 'components/NewsletterForm';
 import styles from 'styles/Home.module.scss';
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 const PARTNERS = ['rir', 'upvm'];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
@@ -59,57 +59,59 @@ const PartnersBar = ({ t }) => {
     <div className={styles.partnersBar}>
       <ul className={styles.logosBar}>
         <li>
-          <a
+          <Link
             href="https://european-union.europa.eu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src="/logo-ue.png" height="86" alt={t('ue.alt')} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href="https://erc.europa.eu"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img src="/logo-erc.png" height="86" alt={t('erc.alt')} />
-          </a>
+          </Link>
         </li>
         <p>{t('projectFinancedBy')}</p>
       </ul>
       <div className={styles.logosBarSpacer} />
       <ul className={styles.logosBar}>
-        {PARTNERS && Array.isArray(PARTNERS) && PARTNERS.map((partner) => (
-          <li key={partner}>
-            <a
-              href={t(`${partner}.url`)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                height="52"
-                src={`/logo-${partner}.svg`}
-                alt={t(`${partner}.alt`)}
-              />
-            </a>
-          </li>
-        ))}
+        {PARTNERS &&
+          Array.isArray(PARTNERS) &&
+          PARTNERS.map(partner => (
+            <li key={partner}>
+              <Link
+                href={t(`${partner}.url`)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  height="52"
+                  src={`/logo-${partner}.svg`}
+                  alt={t(`${partner}.alt`)}
+                />
+              </Link>
+            </li>
+          ))}
       </ul>
     </div>
   );
 };
 
-export default function Home({ animationTechnique, authors, work, keywords }) {
+export default function Home({ animationTechnique = null, authors = [], work = null, keywords = [] }) {
   const { t } = useTranslation('home');
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
   const animationTechniqueLinkRef = useRef(null);
-  
+
   // Create safe arrays with fallbacks
   const safeAuthors = authors || [];
   const safeKeywords = keywords || [];
-  
+
   return (
     <Fragment>
       <Head>
@@ -183,7 +185,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     <EntryPointCard
                       title={t('exploreBy.project.title')}
                       thumbnailUrl="/project-thumbnail.jpg"
-                      href={`https://puppetplays.www.univ-montp3.fr/${locale}`}
+                      to={t('ourSiteUrl')}
                     />
                   </ul>
                 </div>
@@ -206,15 +208,20 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
               <Section title={t('animationTechniqueTitle')} isComingSoon>
                 <div className={styles.comingSoonWrapper}>
                   <SplitLayout
-                    title={animationTechnique ? (animationTechnique.title || '') : t('animationTechniqueTitle')}
+                    title={
+                      animationTechnique
+                        ? animationTechnique.title || ''
+                        : t('animationTechniqueTitle')
+                    }
                     subtitle={t('common:animationTechnique')}
-                    image={{ 
-                      url: animationTechnique && 
-                           animationTechnique.mainImage && 
-                           Array.isArray(animationTechnique.mainImage) && 
-                           animationTechnique.mainImage.length > 0 
-                        ? animationTechnique.mainImage[0].url 
-                        : '/photo-manuscrit.jpg' 
+                    image={{
+                      url:
+                        animationTechnique &&
+                        animationTechnique.mainImage &&
+                        Array.isArray(animationTechnique.mainImage) &&
+                        animationTechnique.mainImage.length > 0
+                          ? animationTechnique.mainImage[0].url
+                          : '/photo-manuscrit.jpg',
                     }}
                   >
                     <div className={styles.comingSoonContent}>
@@ -229,39 +236,41 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 isComingSoon={safeAuthors.length === 0}
                 footer={
                   <Link href="/auteurs">
-                    <a>{t('browseAllAuthors')}</a>
+                    <p>{t('browseAllAuthors')}</p>
                   </Link>
                 }
               >
                 {safeAuthors.length > 0 ? (
                   <div className={styles.authors}>
-                    {safeAuthors && Array.isArray(safeAuthors) && safeAuthors.map((entry) => (
-                      <Card
-                        key={entry.id || Math.random().toString()}
-                        fixedHeight
-                        subtitle={
-                          entry.birthDate || entry.deathDate ? (
-                            <BirthDeathDates
-                              birthDate={entry.birthDate}
-                              deathDate={entry.deathDate}
-                            />
-                          ) : null
-                        }
-                        imageUrl={
-                          entry.mainImage && 
-                          Array.isArray(entry.mainImage) && 
-                          entry.mainImage.length > 0
-                            ? entry.mainImage[0].optimizedSrc
-                            : null
-                        }
-                        title={entry.title || ''}
-                        href={
-                          entry.id && entry.slug
-                            ? `/auteurs/${entry.id}/${entry.slug}`
-                            : '#'
-                        }
-                      />
-                    ))}
+                    {safeAuthors &&
+                      Array.isArray(safeAuthors) &&
+                      safeAuthors.map(entry => (
+                        <Card
+                          key={entry.id || Math.random().toString()}
+                          fixedHeight
+                          subtitle={
+                            entry.birthDate || entry.deathDate ? (
+                              <BirthDeathDates
+                                birthDate={entry.birthDate}
+                                deathDate={entry.deathDate}
+                              />
+                            ) : null
+                          }
+                          imageUrl={
+                            entry.mainImage &&
+                            Array.isArray(entry.mainImage) &&
+                            entry.mainImage.length > 0
+                              ? entry.mainImage[0].optimizedSrc
+                              : null
+                          }
+                          title={entry.title || ''}
+                          href={
+                            entry.id && entry.slug
+                              ? `/auteurs/${entry.id}/${entry.slug}`
+                              : '#'
+                          }
+                        />
+                      ))}
                   </div>
                 ) : (
                   <div className={styles.comingSoonWrapper}>
@@ -304,7 +313,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                   title={t('discoverSingleWork')}
                   footer={
                     <Link href="/base-de-donnees">
-                      <a>{t('browseDatabaseWorks')}</a>
+                      {t('browseDatabaseWorks')}
                     </Link>
                   }
                 >
@@ -345,14 +354,16 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
 
               <Section title={t('ourPublications')}>
                 <ul className={styles.publications}>
-                  {PUBLICATIONS && Array.isArray(PUBLICATIONS) && PUBLICATIONS.map((key, index) => (
-                    <EntryPointCard
-                      key={index}
-                      title={t(`publications.${key}.title`)}
-                      description={t(`publications.${key}.subtitle`)}
-                      thumbnailUrl={`/publications-${key}.png`}
-                    />
-                  ))}
+                  {PUBLICATIONS &&
+                    Array.isArray(PUBLICATIONS) &&
+                    PUBLICATIONS.map((key, index) => (
+                      <EntryPointCard
+                        key={index}
+                        title={t(`publications.${key}.title`)}
+                        description={t(`publications.${key}.subtitle`)}
+                        thumbnailUrl={`/publications-${key}.png`}
+                      />
+                    ))}
                 </ul>
               </Section>
 
@@ -379,27 +390,29 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <p>{t('projectFinancedBy')}</p>
               </div>
               <ul className={styles.footerPartnersPartners}>
-                {PARTNERS && Array.isArray(PARTNERS) && PARTNERS.map((partner) => (
-                  <li key={partner}>
-                    <a
-                      href={t(`${partner}.url`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        height="50"
-                        src={`/logo-${partner}.svg`}
-                        alt={t(`${partner}.alt`)}
-                      />
-                    </a>
-                  </li>
-                ))}
+                {PARTNERS &&
+                  Array.isArray(PARTNERS) &&
+                  PARTNERS.map(partner => (
+                    <li key={partner}>
+                      <Link
+                        href={t(`${partner}.url`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          height="50"
+                          src={`/logo-${partner}.svg`}
+                          alt={t(`${partner}.alt`)}
+                        />
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </div>
           </section>
           <section className={styles.intro}>
             <div className={styles.footerTopBar}>
-              <a
+              <Link
                 href="https://www.facebook.com/ERCPuppetPlays"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -416,7 +429,7 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                     fill="#F0F0F3"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className={styles.footerInner}>
               <div className={styles.introContent}>
@@ -431,31 +444,31 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
                 <NewsletterForm />
 
                 <div className={styles.introContentLinks}>
-                  <a
+                  <Link
                     href={t('ourSiteUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.buttonLink}
                   >
                     {t('common:knowMore')}
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={t('theTeamUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('theTeam')}
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={t('projectNewsUrl')}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {t('projectNews')}
-                  </a>
-                  <a href="mailto:puppetplays@univ-montp3.fr">
+                  </Link>
+                  <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className={styles.introMedia}>
@@ -472,13 +485,6 @@ export default function Home({ animationTechnique, authors, work, keywords }) {
   );
 }
 
-Home.defaultProps = {
-  animationTechnique: null,
-  work: null,
-  keywords: [],
-  authors: [],
-};
-
 Home.propTypes = {
   animationTechnique: PropTypes.object,
   work: PropTypes.object,
@@ -486,7 +492,7 @@ Home.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.object),
 };
 
-export async function getServerSideProps({ locale, req, res }) {
+export async function getServerSideProps({ locale }) {
   try {
     const apiClient = getFetchAPIClient({
       variables: { locale },
@@ -508,16 +514,25 @@ export async function getServerSideProps({ locale, req, res }) {
     // Apply null safety to the results
     const homeEntry = safeObject(homeResult).entry || {};
     const keywords = safeArray(safeObject(keywordsResult).tags);
-    const animationTechniquesEntries = safeArray(safeObject(animationTechniquesResult).entries);
+    const animationTechniquesEntries = safeArray(
+      safeObject(animationTechniquesResult).entries,
+    );
     const personEntries = safeArray(safeObject(personEntriesResult).entries);
 
     // Safe random selections with null checks
     const homeWorks = safeArray(homeEntry.works);
-    const randomWorkId = homeWorks.length ? getRandom(homeWorks, 1).map(get('id')) : [];
-    const randomKeywordsIds = keywords.length ? getRandom(keywords, 20).map(get('id')) : [];
-    const randomAnimationTechninquesId = animationTechniquesEntries.length ? 
-      getRandom(animationTechniquesEntries, 1).map(get('id')) : [];
-    const randomPersonIds = personEntries.length ? getRandom(personEntries, 4).map(get('id')) : [];
+    const randomWorkId = homeWorks.length
+      ? getRandom(homeWorks, 1).map(get('id'))
+      : [];
+    const randomKeywordsIds = keywords.length
+      ? getRandom(keywords, 20).map(get('id'))
+      : [];
+    const randomAnimationTechninquesId = animationTechniquesEntries.length
+      ? getRandom(animationTechniquesEntries, 1).map(get('id'))
+      : [];
+    const randomPersonIds = personEntries.length
+      ? getRandom(personEntries, 4).map(get('id'))
+      : [];
 
     // Fetch secondary data with null safety for keys
     const [
@@ -526,7 +541,7 @@ export async function getServerSideProps({ locale, req, res }) {
       animationTechniqueResult,
       authorsResult,
     ] = await Promise.all([
-      randomWorkId.length > 0 
+      randomWorkId.length > 0
         ? fetchAPI(getWorkByIdQuery, {
             variables: { locale, id: randomWorkId[0] },
           }).catch(() => ({}))
@@ -551,11 +566,14 @@ export async function getServerSideProps({ locale, req, res }) {
     // Apply null safety to secondary results
     const homeWorkEntry = safeObject(workResult).entry;
     const homeKeywords = safeArray(safeObject(keywordsIdsResult).tags);
-    const homeAnimationTechniqueEntry = safeObject(animationTechniqueResult).entry;
+    const homeAnimationTechniqueEntry = safeObject(
+      animationTechniqueResult,
+    ).entry;
     const homePersonEntries = safeArray(safeObject(authorsResult).entries);
 
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common', 'home'])),
         animationTechnique: homeAnimationTechniqueEntry || null,
         work: homeWorkEntry || null,
         keywords: homeKeywords || [],
@@ -567,6 +585,7 @@ export async function getServerSideProps({ locale, req, res }) {
     // Return safe default values
     return {
       props: {
+        ...(await serverSideTranslations(locale, ['common', 'home'])),
         animationTechnique: null,
         work: null,
         keywords: [],

@@ -122,7 +122,7 @@ describe('Database page', () => {
     cy.url().should('include', '/base-de-donnees?mainLanguage=1000&page=1');
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.mainLanguage).to.eql(['1000']);
       });
 
@@ -134,7 +134,7 @@ describe('Database page', () => {
     );
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.mainLanguage).to.eql(['1000', '1300']);
       });
 
@@ -143,7 +143,7 @@ describe('Database page', () => {
     cy.url().should('include', '/base-de-donnees?mainLanguage=1300&page=1');
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.mainLanguage).to.eql(['1300']);
       });
 
@@ -152,7 +152,7 @@ describe('Database page', () => {
     cy.url().should('include', '/base-de-donnees?page=1');
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.mainLanguage).to.be.undefined;
       });
   });
@@ -242,7 +242,7 @@ describe('Database page', () => {
     cy.url().should('include', '/base-de-donnees?page=1&search=polux');
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.search).to.equal('polux');
       });
 
@@ -251,7 +251,7 @@ describe('Database page', () => {
     cy.url().should('include', '/base-de-donnees?page=1&search=');
     cy.wait('@getAllWorks')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.search).to.equal('');
       });
   });

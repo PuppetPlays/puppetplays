@@ -13,7 +13,7 @@ module.exports = async (on, config) => {
   });
 
   await new Promise((resolve, reject) => {
-    customServer.listen(5000, (err) => {
+    customServer.listen(5000, err => {
       if (err) {
         return reject(err);
       }

@@ -3,7 +3,7 @@ import { hasAtLeastOneItem } from 'lib/utils';
 import Tooltip from 'components/Tooltip';
 import styles from './coverImage.module.scss';
 
-function CoverImage({ image, year, hasPlaceholder }) {
+function CoverImage({ image = [], year = null, hasPlaceholder = true }) {
   const { url, alt, description, copyright } = hasAtLeastOneItem(image)
     ? image[0]
     : {};
@@ -46,11 +46,6 @@ function CoverImage({ image, year, hasPlaceholder }) {
   );
 }
 
-CoverImage.defaultProps = {
-  image: null,
-  year: null,
-  hasPlaceholder: true,
-};
 
 CoverImage.propTypes = {
   image: PropTypes.arrayOf(PropTypes.object),

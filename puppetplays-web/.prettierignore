@@ -1,0 +1,66 @@
+# Dossiers build
+.next/
+out/
+build/
+dist/
+coverage/
+
+# Dépendances
+node_modules/
+.pnp/
+.pnp.js
+
+# Fichiers de cache
+.npm
+.eslintcache
+
+# Fichiers de logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers de données
+*.json
+!.prettierrc.json
+!package.json
+!tsconfig.json
+!jsconfig.json
+
+# Fichiers générés
+public/sitemap*.xml
+public/robots.txt
+public/sw.js
+public/workbox-*.js
+
+# Autres
+.DS_Store
+.env*
+!.env.example
+.vercel
+.idea/
+.vscode/
+*.min.js
+yarn.lock
+package-lock.json
+
+# Dossiers spécifiques au projet
+cypress/videos/
+cypress/screenshots/
+
+# Fichiers qui ne sont pas destinés à être formatés
+*.md
+*.mdx
+*.svg
+*.ico
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.eot
+*.otf
+*.ttf
+*.woff
+*.woff2 

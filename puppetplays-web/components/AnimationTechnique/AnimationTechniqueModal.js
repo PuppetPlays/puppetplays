@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import {
@@ -25,13 +25,13 @@ function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
-  const { id: animationTechniqueId } = getMetaOfModalByType(
-    modalState,
-    modalTypes.animationTechnique,
-  ) || {};
+  const { id: animationTechniqueId } =
+    getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
 
   const isOpen = isModalOfTypeOpen(modalState, modalTypes.animationTechnique);
-  const queryKey = isOpen ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId] : null;
+  const queryKey = isOpen
+    ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
+    : null;
 
   const fetcher = async (query, locale, id) => {
     try {
@@ -46,14 +46,23 @@ function AnimationTechniqueModal() {
     }
   };
 
-  const { safeData: data, error: techError, isLoading: techLoading, mutate: mutateTech } = useSafeData(
-    queryKey,
-    fetcher
-  );
+  const {
+    safeData: data,
+    error: techError,
+    isLoading: techLoading,
+    mutate: mutateTech,
+  } = useSafeData(queryKey, fetcher);
 
-  const { safeData: works, error: worksError, isLoading: worksLoading, mutate: mutateWorks } = useSafeData(
-    isOpen ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId] : null,
-    fetcher
+  const {
+    safeData: works,
+    error: worksError,
+    isLoading: worksLoading,
+    mutate: mutateWorks,
+  } = useSafeData(
+    isOpen
+      ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId]
+      : null,
+    fetcher,
   );
 
   const handleCloseModal = useCallback(() => {
@@ -80,16 +89,10 @@ function AnimationTechniqueModal() {
       title={title || t('common:animationTechnique')}
       subtitle={title ? t('common:animationTechnique') : ''}
     >
-      {isLoading && (
-        <LoadingSpinner text={t('common:loading')} />
-      )}
+      {isLoading && <LoadingSpinner text={t('common:loading')} />}
 
       {error && (
-        <ErrorMessage 
-          error={error} 
-          onRetry={handleRetry}
-          className="m-4" 
-        />
+        <ErrorMessage error={error} onRetry={handleRetry} className="m-4" />
       )}
 
       {!isLoading && !error && hasData && (

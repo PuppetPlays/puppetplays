@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import useWindowSize from 'hooks/useWindowSize';
 import DropdownMenu from 'components/DropdownMenu';
 import styles from './mainNav.module.scss';
@@ -33,7 +33,7 @@ const Wrapper = ({ children }) => {
   return <ul>{children}</ul>;
 };
 
-function MainNav({ inverse }) {
+function MainNav({ inverse = false }) {
   const { t } = useTranslation();
   const { width } = useWindowSize();
   const { locale } = useRouter();
@@ -42,7 +42,7 @@ function MainNav({ inverse }) {
     width < 480
       ? [
           <li key="lang-fr" className={locale === 'fr' ? styles.isCurrent : ''}>
-            <Link href="/" locale="fr">
+            <Link href="/" locale="fr" legacyBehavior>
               <a>Français</a>
             </Link>
           </li>,
@@ -55,7 +55,7 @@ function MainNav({ inverse }) {
                 : styles.englishListItem
             }
           >
-            <Link href="/" locale="en">
+            <Link href="/" locale="en" legacyBehavior>
               <a>English</a>
             </Link>
           </li>,
@@ -72,22 +72,22 @@ function MainNav({ inverse }) {
         {[
           ...languageItems,
           <li key="database">
-            <Link href="/base-de-donnees">
+            <Link href="/base-de-donnees" legacyBehavior>
               <a>{t('common:database')}</a>
             </Link>
           </li>,
           <li key="map">
-            <Link href="/base-de-donnees?view=MAP">
+            <Link href="/base-de-donnees?view=MAP" legacyBehavior>
               <a>{t('common:map')}</a>
             </Link>
           </li>,
           <li key="auteurs">
-            <Link href="/auteurs">
+            <Link href="/auteurs" legacyBehavior>
               <a>{t('common:authors')}</a>
             </Link>
           </li>,
           <li key="techniques">
-            <Link href="/techniques-d-animation">
+            <Link href="/techniques-d-animation" legacyBehavior>
               <a>{t('common:animationTechniques')}</a>
             </Link>
           </li>,
@@ -96,10 +96,6 @@ function MainNav({ inverse }) {
     </nav>
   );
 }
-
-MainNav.defaultProps = {
-  inverse: false,
-};
 
 MainNav.propTypes = {
   inverse: PropTypes.bool,

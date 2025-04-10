@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './section.module.scss';
 
-function Section({ title, children, show }) {
+function Section({ title = null, children = null, show = true }) {
   if (!show) {
     return null;
   }
@@ -15,10 +15,6 @@ function Section({ title, children, show }) {
   );
 }
 
-Section.defaultProps = {
-  show: true,
-  children: null,
-};
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,

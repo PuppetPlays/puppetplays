@@ -23,7 +23,7 @@ const worksAllowedFilters = [
   'publicDomain',
 ];
 
-const getAllowedNonNilFilterKeys = (allowedFilters) => (filters) =>
+const getAllowedNonNilFilterKeys = allowedFilters => filters =>
   Object.keys(pick(omitBy(filters, isNil), allowedFilters));
 
 const reduceQueryArguments = (arr, mappers) =>
@@ -40,35 +40,37 @@ const reduceEntriesParams = (arr, mappers) =>
     return acc;
   }, '');
 
-const stateToGraphqlVariables = (allowedFilters, mappers = {}) => (filters) => {
-  return mapValues(
-    pick(omitBy(filters, isNil), allowedFilters),
-    (filter, key) => {
-      const mapper = mappers[key] || identity;
-      return mapper(filter, filters);
-    },
-  );
-};
+const stateToGraphqlVariables =
+  (allowedFilters, mappers = {}) =>
+  filters => {
+    return mapValues(
+      pick(omitBy(filters, isNil), allowedFilters),
+      (filter, key) => {
+        const mapper = mappers[key] || identity;
+        return mapper(filter, filters);
+      },
+    );
+  };
 
-const stateToGraphqlQueryArgument = (allowedFilters, mappers = {}) => (
-  filters,
-) => {
-  return reduceQueryArguments(
-    getAllowedNonNilFilterKeys(allowedFilters)(filters),
-    mappers,
-  );
-};
+const stateToGraphqlQueryArgument =
+  (allowedFilters, mappers = {}) =>
+  filters => {
+    return reduceQueryArguments(
+      getAllowedNonNilFilterKeys(allowedFilters)(filters),
+      mappers,
+    );
+  };
 
-const stateToGraphqlEntriesParams = (allowedFilters, mappers = {}) => (
-  filters,
-) => {
-  return reduceEntriesParams(
-    getAllowedNonNilFilterKeys(allowedFilters)(filters),
-    mappers,
-  );
-};
+const stateToGraphqlEntriesParams =
+  (allowedFilters, mappers = {}) =>
+  filters => {
+    return reduceEntriesParams(
+      getAllowedNonNilFilterKeys(allowedFilters)(filters),
+      mappers,
+    );
+  };
 
-const queryParamsToState = (mappers) => (queryParams) => {
+const queryParamsToState = mappers => queryParams => {
   return mapValues(
     pick(omitBy(queryParams, isNil), Object.keys(mappers)),
     (filter, key) => {
@@ -89,7 +91,7 @@ export const authorsStateToGraphqlVariables = stateToGraphqlVariables(
 export const worksStateToGraphqlVariables = stateToGraphqlVariables(
   worksAllowedFilters,
   {
-    compositionMinDate: (filter) => {
+    compositionMinDate: filter => {
       const [compositionMinDate, compositionMaxDate] = filter || [];
       if (!compositionMaxDate || compositionMaxDate === 0) {
         return `>= ${compositionMinDate}`;
@@ -136,7 +138,7 @@ export const authorsQueryParamsToState = queryParamsToState({
 export const worksQueryParamsToState = queryParamsToState({
   mainLanguage: split(','),
   compositionPlace: split(','),
-  compositionMinDate: (filter) => filter.split(',').map(parseInteger(10)),
+  compositionMinDate: filter => filter.split(',').map(parseInteger(10)),
   authors: split(','),
   literaryTones: split(','),
   animationTechniques: split(','),
@@ -144,13 +146,13 @@ export const worksQueryParamsToState = queryParamsToState({
   audience: split(','),
   formats: split(','),
   relatedToTags: split(','),
-  publicDomain: (filter) => (filter === 'true' ? true : undefined),
+  publicDomain: filter => (filter === 'true' ? true : undefined),
   view: identity,
   orderBy: identity,
 });
 
-export const authorsQueryParamsToGraphqlVariables = (queryParams) =>
+export const authorsQueryParamsToGraphqlVariables = queryParams =>
   authorsStateToGraphqlVariables(authorsQueryParamsToState(queryParams));
 
-export const worksQueryParamsToGraphqlVariables = (queryParams) =>
+export const worksQueryParamsToGraphqlVariables = queryParams =>
   worksStateToGraphqlVariables(worksQueryParamsToState(queryParams));

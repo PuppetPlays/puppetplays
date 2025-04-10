@@ -1,22 +1,31 @@
 import { useCallback, useState } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { hasAtLeastOneItem } from 'lib/utils';
 import { fetchAPI, getWorkDocumentByIdQuery } from 'lib/api';
 import CloseButton from 'components/CloseButton';
-import IconDownload from './icons/icon-download.svg';
 import styles from './workDocument.module.scss';
 
-const usePagination = (initialPage) => {
+const IconDownload = () => {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 10V13H13V10" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M8 3V9" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M5.5 7.5L8 9.5L10.5 7.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+};
+
+const usePagination = initialPage => {
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const handleScroll = useCallback((evt) => {
+  const handleScroll = useCallback(evt => {
     const containerScrollTop = evt.target.scrollTop;
     const currentNode = Array.from(
       evt.target.querySelectorAll('[data-page]'),
-    ).find((node) => {
+    ).find(node => {
       return node.offsetTop + node.clientHeight >= containerScrollTop;
     });
     setCurrentPage(parseInt(currentNode.dataset.page, 10));
@@ -28,7 +37,7 @@ const usePagination = (initialPage) => {
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 4;
 
-const WorkDocument = ({ workId, onClose }) => {
+const WorkDocument = ({ workId = null, onClose = null }) => {
   const { t } = useTranslation();
   const [isSideBarOpen, setIsSidebarOpen] = useState(true);
   const [zoom, setZoom] = useState(1);
@@ -46,7 +55,7 @@ const WorkDocument = ({ workId, onClose }) => {
     },
   );
 
-  const handleScrollToPage = (page) => {
+  const handleScrollToPage = page => {
     location.hash = '#page-' + page;
   };
 
@@ -83,25 +92,29 @@ const WorkDocument = ({ workId, onClose }) => {
               </button>
             </div>
             <ul className={styles.sidebarContent}>
-              {data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
-                <li
-                  key={image.id}
-                  className={styles.sidebarPage}
-                  data-selected={index === currentPage}
-                >
-                  <a href={`#page-${index}`}>
-                    <div>{index + 1}</div>
-                    <img src={image.url} alt="" />
-                  </a>
-                </li>
-              ))}
+              {data.entry?.images &&
+                Array.isArray(data.entry.images) &&
+                data.entry.images.map((image, index) => (
+                  <li
+                    key={image.id}
+                    className={styles.sidebarPage}
+                    data-selected={index === currentPage}
+                  >
+                    <Link href={`#page-${index}`}>
+                      <div>{index + 1}</div>
+                      <img src={image.url} alt="" />
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
         )}
         <div className={styles.content} onScroll={onScroll}>
           <div className={styles.scroll} data-zoom={zoom}>
             {data &&
-              data.entry?.images && Array.isArray(data.entry.images) && data.entry.images.map((image, index) => (
+              data.entry?.images &&
+              Array.isArray(data.entry.images) &&
+              data.entry.images.map((image, index) => (
                 <img
                   key={image.id}
                   src={image.url}
@@ -163,16 +176,14 @@ const WorkDocument = ({ workId, onClose }) => {
       )}
       <div className={styles.action}>
         {data && hasAtLeastOneItem(data.entry.pdf) && (
-          <a href={data.entry.pdf[0].url} target="_blank" rel="noreferrer">
+          <Link href={data.entry.pdf[0].url} target="_blank" rel="noreferrer">
             <IconDownload />
-          </a>
+          </Link>
         )}
       </div>
     </div>
   );
 };
-
-WorkDocument.defaultProps = {};
 
 WorkDocument.propTypes = {
   onClose: PropTypes.func.isRequired,

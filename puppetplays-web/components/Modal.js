@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { modalTypes, useModal } from 'components/modalContext';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './modal.module.scss';
 
 function Modal({
-  modalType,
-  isOpen,
-  title,
-  subtitle,
-  scrollElement,
-  children,
+  modalType = null,
+  isOpen = false,
+  title = null,
+  subtitle = null,
+  scrollElement = 'body',
+  children = null,
 }) {
   const modalContentRef = useRef(null);
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ function Modal({
   }, [dispatch, modalType]);
 
   const setModalContentRef = useCallback(
-    (node) => {
+    node => {
       modalContentRef.current = node;
     },
     [modalContentRef],
@@ -79,13 +79,6 @@ function Modal({
     </ReactModal>
   );
 }
-
-Modal.defaultProps = {
-  title: '',
-  subtitle: null,
-  children: null,
-  scrollElement: 'body',
-};
 
 Modal.propTypes = {
   modalType: PropTypes.oneOf(Object.values(modalTypes)).isRequired,

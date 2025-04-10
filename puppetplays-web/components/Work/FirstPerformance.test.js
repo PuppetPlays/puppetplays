@@ -3,6 +3,22 @@ import FirstPerformance from './FirstPerformance';
 
 const france = [{ title: 'France' }];
 
+// Mock pour next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:note': 'Note',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
+}));
+
 test('renders a section with a heading given a place, a date and an extraInfo', () => {
   render(
     <FirstPerformance place={france} date="1832" extraInfo="By Maurice Jo" />,

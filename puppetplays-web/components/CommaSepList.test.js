@@ -2,6 +2,22 @@ import { render } from '@testing-library/react';
 import CommaSepList from './CommaSepList';
 import Author from './Author';
 
+// Mock pour next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:note': 'Note',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
+}));
+
 test('renders a list with on string', () => {
   const list = ['keyword'];
   const { container } = render(<CommaSepList list={list} />);

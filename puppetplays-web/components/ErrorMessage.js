@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { ErrorTypes } from 'lib/apiErrorHandler';
 
 /**
@@ -7,9 +7,9 @@ import { ErrorTypes } from 'lib/apiErrorHandler';
  */
 const ErrorMessage = ({ error, onRetry, className = '' }) => {
   const { t } = useTranslation();
-  
+
   if (!error) return null;
-  
+
   const errorTypeToIcon = {
     [ErrorTypes.NETWORK]: '🌐',
     [ErrorTypes.SERVER]: '🖥️',
@@ -18,12 +18,17 @@ const ErrorMessage = ({ error, onRetry, className = '' }) => {
     [ErrorTypes.NOT_FOUND]: '🔍',
     [ErrorTypes.UNKNOWN]: '❓',
   };
-  
+
   const icon = errorTypeToIcon[error.type] || '❓';
-  const message = error.message || t('common:error.default', 'An error occurred');
-  
+  const message =
+    error.message || t('common:error.default', 'An error occurred');
+
   return (
-    <div className={`p-4 border rounded-md ${className}`} role="alert" aria-live="assertive">
+    <div
+      className={`p-4 border rounded-md ${className}`}
+      role="alert"
+      aria-live="assertive"
+    >
       <div className="flex items-center">
         <span className="text-2xl mr-3">{icon}</span>
         <div>
@@ -33,7 +38,7 @@ const ErrorMessage = ({ error, onRetry, className = '' }) => {
           <p className="text-gray-700">{message}</p>
         </div>
       </div>
-      
+
       {onRetry && (
         <button
           onClick={onRetry}
@@ -56,4 +61,4 @@ ErrorMessage.propTypes = {
   className: PropTypes.string,
 };
 
-export default ErrorMessage; 
+export default ErrorMessage;

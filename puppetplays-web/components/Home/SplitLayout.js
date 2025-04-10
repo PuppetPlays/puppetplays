@@ -3,16 +3,9 @@ import { PageSubtitle, PageTitle } from 'components/Primitives';
 import styles from './splitLayout.module.scss';
 import { useCallback } from 'react';
 
-const SplitLayout = ({ 
-  title, 
-  subtitle, 
-  children, 
-  image, 
-  linkRef, 
-  date 
-}) => {
+const SplitLayout = ({ title = null, subtitle = null, children = null, image = null, linkRef = null, date = null }) => {
   const handleImageClick = useCallback(
-    (evt) => {
+    evt => {
       evt.preventDefault();
       if (linkRef && linkRef.current) {
         linkRef.current.click();
@@ -33,15 +26,19 @@ const SplitLayout = ({
         <div
           className={styles.media}
           onClick={linkRef ? handleImageClick : undefined}
-          role={linkRef ? "button" : "presentation"}
+          role={linkRef ? 'button' : 'presentation'}
           tabIndex={linkRef ? 0 : undefined}
           aria-label={linkRef ? `View details for ${title || ''}` : undefined}
-          onKeyDown={linkRef ? (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleImageClick(e);
-            }
-          } : undefined}
+          onKeyDown={
+            linkRef
+              ? e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleImageClick(e);
+                  }
+                }
+              : undefined
+          }
           style={{
             backgroundImage: `url(${image.url})`,
           }}
@@ -51,13 +48,6 @@ const SplitLayout = ({
   );
 };
 
-SplitLayout.defaultProps = {
-  title: '',
-  subtitle: '',
-  date: '',
-  image: null,
-  linkRef: null,
-};
 
 SplitLayout.propTypes = {
   title: PropTypes.string,
@@ -65,10 +55,10 @@ SplitLayout.propTypes = {
   date: PropTypes.string,
   children: PropTypes.node.isRequired,
   image: PropTypes.shape({
-    url: PropTypes.string
+    url: PropTypes.string,
   }),
   linkRef: PropTypes.shape({
-    current: PropTypes.any
+    current: PropTypes.any,
   }),
 };
 

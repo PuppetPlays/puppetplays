@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import Info from 'components/Info';
 import styles from './abstract.module.scss';
 
-function Abstract({ mainTheme, abstract }) {
+function Abstract({ mainTheme = null, abstract = null }) {
   const { t } = useTranslation();
 
   return (
@@ -16,11 +16,6 @@ function Abstract({ mainTheme, abstract }) {
     </Info>
   );
 }
-
-Abstract.defaultProps = {
-  mainTheme: null,
-  abstract: null,
-};
 
 Abstract.propTypes = {
   mainTheme: PropTypes.string,

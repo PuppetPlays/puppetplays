@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import get from 'lodash/get';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
@@ -49,7 +49,12 @@ function AuthorModal() {
   const filteredWorks = isModalOfTypeOpen(modalState, modalTypes.author)
     ? works &&
       works.entries
-        .filter(({ authors }) => authors && Array.isArray(authors) && authors.map(({ id }) => id).includes(authorId))
+        .filter(
+          ({ authors }) =>
+            authors &&
+            Array.isArray(authors) &&
+            authors.map(({ id }) => id).includes(authorId),
+        )
         // eslint-disable-next-line no-unused-vars
         .map(({ authors, ...entry }) => entry)
     : null;

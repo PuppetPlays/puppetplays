@@ -19,7 +19,7 @@ export function stateToGraphqlVariables(filters) {
   );
 }
 
-const getAllowedNonNilFilterKeys = (filters) =>
+const getAllowedNonNilFilterKeys = filters =>
   Object.keys(pick(omitBy(filters, isNil), allowedFilters));
 
 export function stateToGraphqlQueryArgument(filters) {

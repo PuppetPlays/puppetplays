@@ -11,7 +11,8 @@ import { isEqual } from 'lodash';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   fetchAPI,
   getAllWorksQuery,
@@ -55,7 +56,7 @@ const VIEWS = {
 };
 
 function Home({ initialData }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const router = useRouter();
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
@@ -102,7 +103,7 @@ function Home({ initialData }) {
         search: buildSearchQuery(searchTerms, router.locale),
         ...stateToGraphqlVariables(newFilters),
       },
-    }).then((newData) => {
+    }).then(newData => {
       setData(newData);
       if (scrollElementRef.current) {
         scrollElementRef.current.scrollTop = 0;
@@ -111,7 +112,7 @@ function Home({ initialData }) {
   }, [router.locale, router.query, scrollElementRef]);
 
   const handlePageChange = useCallback(
-    (page) => {
+    page => {
       setCurrentPage(page.selected);
       router.push(
         `base-de-donnees/?${stringifyQuery({
@@ -160,14 +161,14 @@ function Home({ initialData }) {
   );
 
   const handleChangeSearchQuery = useCallback(
-    (search) => {
+    search => {
       setSearchTerms(search);
     },
     [setSearchTerms],
   );
 
   const handleAfterChangeSearchQuery = useCallback(
-    (search) => {
+    search => {
       setCurrentPage(0);
       router.push(
         `base-de-donnees/?${stringifyQuery({
@@ -285,7 +286,7 @@ function Home({ initialData }) {
                   inverse={false}
                   name="orderBy"
                   value={
-                    orderByOptions.find((o) => o.id === filters.orderBy) || {
+                    orderByOptions.find(o => o.id === filters.orderBy) || {
                       id: 'chronology',
                       title: t('common:chronology'),
                     }
@@ -310,14 +311,16 @@ function Home({ initialData }) {
 
           <div className={styles.works} ref={scrollElementRef}>
             <div className={styles.worksScroll}>
-              {data?.entries && Array.isArray(data.entries) && data.entries.length > 0 ? (
-                data.entries.map((work) => (
+              {data?.entries &&
+              Array.isArray(data.entries) &&
+              data.entries.length > 0 ? (
+                data.entries.map(work => (
                   <WorkSummary key={work.id} {...work} />
                 ))
               ) : (
-                <NoResults 
+                <NoResults
                   icon="search"
-                  title={t('common:error.dataNotFound')} 
+                  title={t('common:error.dataNotFound')}
                   message={t('common:error.noResultsFound')}
                 />
               )}
@@ -353,7 +356,7 @@ Home.propTypes = {
 
 export default Home;
 
-export async function getServerSideProps({ locale, req, res, query }) {
+export async function getServerSideProps({ locale, query }) {
   const data = await getAllWorks(
     locale,
     query.page * WORKS_PAGE_SIZE,
@@ -363,6 +366,7 @@ export async function getServerSideProps({ locale, req, res, query }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       initialData: data,
     },
   };

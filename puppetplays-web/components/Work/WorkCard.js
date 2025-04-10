@@ -4,20 +4,20 @@ import WorkHeader from './WorkHeader';
 import styles from './workCard.module.scss';
 
 function WorkCard({
-  id,
-  slug,
-  title,
-  authors,
-  mostRelevantDate,
-  compositionPlace,
-  mainLanguage,
+  id = null,
+  slug = null,
+  title = null,
+  authors = [],
+  mostRelevantDate = null,
+  compositionPlace = [],
+  mainLanguage = null,
 }) {
   return (
     <article className={styles.container}>
       <WorkHeader
         title={
           <Link href={`/oeuvres/${id}/${slug}`}>
-            <a>{title}</a>
+            {title}
           </Link>
         }
         authors={authors}
@@ -30,21 +30,26 @@ function WorkCard({
   );
 }
 
-WorkCard.defaultProps = {
-  authors: [],
-  mostRelevantDate: null,
-  compositionPlace: [],
-  mainLanguage: [],
-};
-
 WorkCard.propTypes = {
   id: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.array,
+  authors: PropTypes.arrayOf(
+    PropTypes.shape({
+      typeHandle: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ),
   mostRelevantDate: PropTypes.string,
-  compositionPlace: PropTypes.array,
-  mainLanguage: PropTypes.array,
+  compositionPlace: PropTypes.shape({
+    name: PropTypes.string,
+    country: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
+  mainLanguage: PropTypes.string,
 };
 
 export default WorkCard;

@@ -63,7 +63,7 @@ describe('Authors page', () => {
     cy.url().should('include', '/auteurs?languages=1000');
     cy.wait('@getAllAuthors')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.languages).to.eql(['1000']);
       });
 
@@ -72,7 +72,7 @@ describe('Authors page', () => {
     cy.url().should('include', '/auteurs?languages=1000,1300');
     cy.wait('@getAllAuthors')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.languages).to.eql(['1000', '1300']);
       });
 
@@ -81,7 +81,7 @@ describe('Authors page', () => {
     cy.url().should('include', '/auteurs?languages=1300');
     cy.wait('@getAllAuthors')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.languages).to.eql(['1300']);
       });
 
@@ -90,7 +90,7 @@ describe('Authors page', () => {
     cy.url().should('include', '/auteurs');
     cy.wait('@getAllAuthors')
       .its('request.body.variables')
-      .should((variables) => {
+      .should(variables => {
         expect(variables.languages).to.be.undefined;
       });
   });

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './contentLayout.module.scss';
 
-function ContentLayout({ children, style, onScroll }) {
+function ContentLayout({ children, style = {}, onScroll = null }) {
   return (
     <div className={styles.container} onScroll={onScroll}>
       <div className={styles.content} style={style}>
@@ -10,10 +10,6 @@ function ContentLayout({ children, style, onScroll }) {
     </div>
   );
 }
-
-ContentLayout.defaultProps = {
-  onScroll: null,
-};
 
 ContentLayout.propTypes = {
   children: PropTypes.node.isRequired,

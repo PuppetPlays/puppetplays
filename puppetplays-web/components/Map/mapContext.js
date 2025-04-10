@@ -31,7 +31,7 @@ export function MapProvider({
     const mapObject = new Map(options);
     mapObject.setTarget(mapRef.current);
 
-    const isFeatureSelecteable = (feature) => {
+    const isFeatureSelecteable = feature => {
       const { isSelectable } = feature.getProperties();
       return !!isSelectable;
     };

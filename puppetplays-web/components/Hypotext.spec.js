@@ -9,6 +9,22 @@ jest.mock('next/router', () => ({
   },
 }));
 
+// Mock pour next-i18next
+jest.mock('next-i18next', () => ({
+  useTranslation: () => ({
+    t: key => {
+      const translations = {
+        'common:note': 'Note',
+        'common:contentNotAvailable': 'Contenu non disponible',
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
+  }),
+}));
+
 test('renders an hypotext with only a title', () => {
   const { container } = render(<Hypotext title="Liliade" />);
   expect(container).toHaveTextContent('Liliade');

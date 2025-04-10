@@ -42,9 +42,8 @@ describe('worksStateToGraphqlVariables', () => {
 
 describe('worksStateToGraphqlQueryArgument', () => {
   test('should return graphql query arguments from the state', () => {
-    const graphqlQueryArguments = worksStateToGraphqlQueryArgument(
-      filtersState,
-    );
+    const graphqlQueryArguments =
+      worksStateToGraphqlQueryArgument(filtersState);
 
     expect(graphqlQueryArguments).toEqual(
       ', $mainLanguage: [QueryArgument], $compositionPlace: [QueryArgument], $compositionMinDate: [QueryArgument]',
@@ -53,9 +52,8 @@ describe('worksStateToGraphqlQueryArgument', () => {
 
   test('should omit nil filters', () => {
     const localFiltersState = { ...filtersState, mainLanguage: null };
-    const graphqlQueryArguments = worksStateToGraphqlQueryArgument(
-      localFiltersState,
-    );
+    const graphqlQueryArguments =
+      worksStateToGraphqlQueryArgument(localFiltersState);
 
     expect(graphqlQueryArguments).toEqual(
       ', $compositionPlace: [QueryArgument], $compositionMinDate: [QueryArgument]',
@@ -80,9 +78,8 @@ describe('worksStateToGraphqlEntriesParams', () => {
 
   test('should omit nil filters', () => {
     const localFiltersState = { ...filtersState, mainLanguage: null };
-    const graphqlEntriesParams = worksStateToGraphqlEntriesParams(
-      localFiltersState,
-    );
+    const graphqlEntriesParams =
+      worksStateToGraphqlEntriesParams(localFiltersState);
 
     expect(graphqlEntriesParams).toEqual(
       ', compositionPlace: $compositionPlace, compositionMinDate: $compositionMinDate',
@@ -133,9 +130,8 @@ describe('worksQueryParamsToGraphqlVariables', () => {
 
   test('should omit nil filters', () => {
     const localQueryParams = { ...queryParams, mainLanguage: null };
-    const graphqlVariables = worksQueryParamsToGraphqlVariables(
-      localQueryParams,
-    );
+    const graphqlVariables =
+      worksQueryParamsToGraphqlVariables(localQueryParams);
 
     expect(graphqlVariables).toEqual({
       compositionPlace: ['1', '2'],

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './entryPointCard.module.scss';
 import { useCallback, useRef } from 'react';
 
-const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
+const EntryPointCard = ({ title = null, description = null, thumbnailUrl = null, to = null, href = null }) => {
   const linkRef = useRef(null);
 
   const handleClick = useCallback(() => {
@@ -19,40 +19,29 @@ const EntryPointCard = ({ title, description, thumbnailUrl, to, href }) => {
       }`}
     >
       <div
-        className={styles.media} 
-        onClick={to || href ? handleClick : undefined} 
+        className={styles.media}
+        onClick={to || href ? handleClick : undefined}
         role="presentation"
-        style={!to && !href ? { cursor: 'not-allowed' } : {cursor: 'pointer'}}
+        style={!to && !href ? { cursor: 'not-allowed' } : { cursor: 'pointer' }}
       >
         <img src={thumbnailUrl} alt="" />
       </div>
       <h2>
         {to && (
-          <Link href={to}>
-            <a ref={linkRef}>{title}</a>
+          <Link href={to} ref={linkRef}>
+            {title}
           </Link>
         )}
         {href && (
-          <a
-            ref={linkRef}
-            href={href}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {title}
-          </a>
+          <Link href={href} ref={linkRef} target="_blank">
+            <p>{title}</p>
+          </Link>
         )}
         {!href && !to && title}
       </h2>
       {description && <p>{description}</p>}
     </li>
   );
-};
-
-EntryPointCard.defaultProps = {
-  to: null,
-  href: null,
-  description: null,
 };
 
 EntryPointCard.propTypes = {

@@ -10,11 +10,11 @@ export const getSectionName = cond([
   [stubTrue, identity],
 ]);
 
-const capitalizeFirstLetter = (string) => {
+const capitalizeFirstLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const getFilterEntriesByIdsQuery = (section) => `
+export const getFilterEntriesByIdsQuery = section => `
 query Get${capitalizeFirstLetter(
   section,
 )}ByIds($locale: [String], $ids: [QueryArgument]) {
@@ -40,7 +40,7 @@ query GetPeriodBounds {
 }
 `;
 
-export const getAllLanguagesQuery = (relatedToSection) => `
+export const getAllLanguagesQuery = relatedToSection => `
 query GetAllLanguages($locale: [String]) {
   entries(section: "languages", site: $locale, orderBy: "title", relatedToEntries: { section: "${relatedToSection}" }) {
     id,
@@ -49,7 +49,7 @@ query GetAllLanguages($locale: [String]) {
 }
 `;
 
-export const getAllPlacesQuery = (relatedToSection) => `
+export const getAllPlacesQuery = relatedToSection => `
 query GetAllPlaces($locale: [String]) {
   entries(section: ["places", "countries"], site: $locale, orderBy: "title", relatedToEntries: { section: "${relatedToSection}" }) {
     id,

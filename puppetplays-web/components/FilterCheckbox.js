@@ -1,14 +1,14 @@
 import { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import FilterLabel from 'components/FilterLabel';
 import styles from './filterCheckbox.module.scss';
 
-function FilterCheckbox({ name, checked, onChange }) {
+function FilterCheckbox({ name = null, checked = false, onChange = null }) {
   const { t } = useTranslation();
 
   const handeChange = useCallback(
-    (evt) => {
+    evt => {
       onChange(evt.target.checked, { name });
     },
     [name, onChange],
@@ -31,10 +31,6 @@ function FilterCheckbox({ name, checked, onChange }) {
     </div>
   );
 }
-
-FilterCheckbox.defaultProps = {
-  checked: false,
-};
 
 FilterCheckbox.propTypes = {
   name: PropTypes.string.isRequired,

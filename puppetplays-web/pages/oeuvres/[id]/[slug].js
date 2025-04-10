@@ -8,15 +8,15 @@ import ContentLayout from 'components/ContentLayout';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
 import WorkDocument from 'components/Work/WorkDocument';
 import styles from 'styles/Work.module.scss';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 
 const WorkPage = ({ initialData }) => {
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
   const { t } = useTranslation();
-  
+
   // Vérifie si les données initiales sont complètes
   const hasAllRequiredData = initialData && initialData.id && initialData.title;
-  
+
   if (!hasAllRequiredData) {
     return (
       <Layout>
@@ -24,22 +24,26 @@ const WorkPage = ({ initialData }) => {
           <title>{t('common:database')} | Puppetplays</title>
         </Head>
         <ContentLayout style={{ maxWidth: 800, padding: '60px 20px' }}>
-          <div style={{textAlign: 'center'}}>
-            <h1 style={{
-              fontSize: '24px',
-              fontWeight: '500',
-              marginBottom: '20px',
-              color: 'var(--color-text-default)'
-            }}>
+          <div style={{ textAlign: 'center' }}>
+            <h1
+              style={{
+                fontSize: '24px',
+                fontWeight: '500',
+                marginBottom: '20px',
+                color: 'var(--color-text-default)',
+              }}
+            >
               {t('common:error.dataNotFound')}
             </h1>
-            <p style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
-              color: 'var(--color-text-subtle)',
-              maxWidth: '600px',
-              margin: '0 auto 30px'
-            }}>
+            <p
+              style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'var(--color-text-subtle)',
+                maxWidth: '600px',
+                margin: '0 auto 30px',
+              }}
+            >
               {t('common:error.notFound')}
             </p>
           </div>
@@ -52,7 +56,9 @@ const WorkPage = ({ initialData }) => {
     <>
       <Layout>
         <Head>
-          <title>{initialData?.title || t('common:database')} | Puppetplays</title>
+          <title>
+            {initialData?.title || t('common:database')} | Puppetplays
+          </title>
         </Head>
 
         <div className={styles.workHeader}>
@@ -91,14 +97,14 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
   try {
     const token = query && query.token;
     const data = await getWorkById(params?.id, locale, token);
-    
+
     // Vérifier si les données sont valides
     if (!data || !data.entry) {
       return {
         props: { initialData: {} },
       };
     }
-    
+
     return {
       props: { initialData: data.entry || {} },
     };

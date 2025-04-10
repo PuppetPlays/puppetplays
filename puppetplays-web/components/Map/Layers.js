@@ -1,10 +1,13 @@
+import MVT from 'ol/format/MVT';
+import VectorTileSource from 'ol/source/VectorTile';
 import PropTypes from 'prop-types';
-import useVectorLayer from './useVectorLayer';
-import useMapboxLayer from './useMapboxLayer';
-import { getPlaceStyle } from './styles';
 import { useRef } from 'react';
 
-const Layers = ({ byCountrySource, byPlaceSource, children }) => {
+import { getPlaceStyle } from './styles';
+import useMapboxLayer from './useMapboxLayer';
+import useVectorLayer from './useVectorLayer';
+
+const Layers = ({ byCountrySource = null, byPlaceSource = null, children = null }) => {
   const placeSourceOption = useRef({
     source: byPlaceSource,
     style: getPlaceStyle,
@@ -18,9 +21,11 @@ const Layers = ({ byCountrySource, byPlaceSource, children }) => {
     zIndex: 20000,
   });
   const mapboxSourceOption = useRef({
-    styleUrl: 'mapbox://styles/tpaillot/ckq9hgnpk23wl17qkyc24ybjc',
-    accessToken:
-      'pk.eyJ1IjoidHBhaWxsb3QiLCJhIjoiY2txOTY4cmd3MDA5YjJvcGlpNGt4aTF4MCJ9.wfMlWQiXo_BGWYR1OJL9bQ',
+    source: new VectorTileSource({
+      url: 'https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoidHBhaWxsb3QiLCJhIjoiY2txOTY4cmd3MDA5YjJvcGlpNGt4aTF4MCJ9.wfMlWQiXo_BGWYR1OJL9bQ',
+      format: new MVT(),
+      maxZoom: 19,
+    }),
     zIndex: 1,
     declutter: false,
   });
@@ -29,10 +34,6 @@ const Layers = ({ byCountrySource, byPlaceSource, children }) => {
   useVectorLayer(countrySourceOption.current);
 
   return <div>{children}</div>;
-};
-
-Layers.defaultProps = {
-  children: null,
 };
 
 Layers.propTypes = {

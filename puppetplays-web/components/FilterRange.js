@@ -1,41 +1,24 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
-import ReactSlider from 'react-slider';
+import { useTranslation } from 'next-i18next';
+import * as Slider from '@radix-ui/react-slider';
 import FilterLabel from 'components/FilterLabel';
 import styles from './filterRange.module.scss';
 
-const renderThumb = (props) => {
-  return <div {...props} />;
-};
-
-function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
+function FilterRange({ name = null, valueMin = null, valueMax = null, bounds = null, onAfterChange = null }) {
   const { t } = useTranslation();
-  const sliderRef = useRef(null);
   const [values, setValues] = useState([
     valueMin || bounds[0],
     valueMax || bounds[1],
   ]);
 
-  const handeAfterChange = useCallback(
-    (value) => {
+  const handleChange = useCallback(
+    value => {
+      setValues(value);
       onAfterChange(value, { name });
     },
     [name, onAfterChange],
   );
-
-  const handeChange = useCallback(
-    (value) => {
-      setValues(value);
-    },
-    [setValues],
-  );
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      sliderRef.current.resize();
-    }
-  }, [sliderRef]);
 
   useEffect(() => {
     setValues([valueMin || bounds[0], valueMax || bounds[1]]);
@@ -48,27 +31,28 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
       </FilterLabel>
       {bounds && (
         <Fragment>
-          <ReactSlider
-            ref={sliderRef}
+          <Slider.Root
             className={styles.container}
-            thumbClassName={styles.thumb}
-            trackClassName={styles.track}
             value={[valueMin || bounds[0], valueMax || bounds[1]]}
             min={bounds[0]}
             max={bounds[1]}
-            ariaLabel={[
-              t('common:filters.lowerBoundPeriod'),
-              t('common:filters.upperBoundPeriod'),
-            ]}
-            ariaValuetext={(state) =>
-              t('common:filters.selectedPeriod', { count: state.valueNow })
-            }
-            renderThumb={renderThumb}
-            pearling
-            minDistance={1}
-            onAfterChange={handeAfterChange}
-            onChange={handeChange}
-          />
+            step={1}
+            minStepsBetweenThumbs={1}
+            onValueChange={handleChange}
+            aria-label={t('common:filters.periodRange')}
+          >
+            <Slider.Track className={styles.track}>
+              <Slider.Range className={styles.range} />
+            </Slider.Track>
+            <Slider.Thumb
+              className={styles.thumb}
+              aria-label={t('common:filters.lowerBoundPeriod')}
+            />
+            <Slider.Thumb
+              className={styles.thumb}
+              aria-label={t('common:filters.upperBoundPeriod')}
+            />
+          </Slider.Root>
           <div className={styles.valuesContainer}>
             <div className={styles.value}>
               <div className={styles.valueLabel}>
@@ -90,11 +74,6 @@ function FilterRange({ name, valueMin, valueMax, bounds, onAfterChange }) {
   );
 }
 
-FilterRange.defaultProps = {
-  valueMin: null,
-  valueMax: null,
-  bounds: null,
-};
 
 FilterRange.propTypes = {
   name: PropTypes.string.isRequired,

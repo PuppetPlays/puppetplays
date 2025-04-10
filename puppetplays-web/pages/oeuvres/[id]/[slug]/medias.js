@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { groupBy } from 'lodash';
 import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';
 import Layout from 'components/Layout';
@@ -17,20 +17,21 @@ import styles from 'styles/Work.module.scss';
 function MediasPage({ initialData }) {
   const { t } = useTranslation();
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
-  
+
   // Vérifie si les données initiales sont complètes
-  const hasAllRequiredData = initialData && initialData.id && initialData.title && initialData.medias;
-  
+  const hasAllRequiredData =
+    initialData && initialData.id && initialData.title && initialData.medias;
+
   const [firstMediaSection] = useState(() => {
     const keys = Object.keys(initialData?.medias || {});
     return keys.length > 0 ? keys[0] : null;
   });
-  
+
   const [activeAnchor, handleScroll] = useActiveAnchor(
     '[data-media-section]',
     firstMediaSection,
   );
-  
+
   if (!hasAllRequiredData) {
     return (
       <Layout>
@@ -38,22 +39,26 @@ function MediasPage({ initialData }) {
           <title>{t('common:medias')} | Puppetplays</title>
         </Head>
         <ContentLayout style={{ maxWidth: 800, padding: '60px 20px' }}>
-          <div style={{textAlign: 'center'}}>
-            <h1 style={{
-              fontSize: '24px',
-              fontWeight: '500',
-              marginBottom: '20px',
-              color: 'var(--color-text-default)'
-            }}>
+          <div style={{ textAlign: 'center' }}>
+            <h1
+              style={{
+                fontSize: '24px',
+                fontWeight: '500',
+                marginBottom: '20px',
+                color: 'var(--color-text-default)',
+              }}
+            >
               {t('common:error.dataNotFound')}
             </h1>
-            <p style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
-              color: 'var(--color-text-subtle)',
-              maxWidth: '600px',
-              margin: '0 auto 30px'
-            }}>
+            <p
+              style={{
+                fontSize: '16px',
+                lineHeight: '1.6',
+                color: 'var(--color-text-subtle)',
+                maxWidth: '600px',
+                margin: '0 auto 30px',
+              }}
+            >
               {t('common:error.notFound')}
             </p>
           </div>
@@ -66,7 +71,9 @@ function MediasPage({ initialData }) {
     <>
       <Layout>
         <Head>
-          <title>{initialData?.title || t('common:medias')} - Medias | Puppetplays</title>
+          <title>
+            {initialData?.title || t('common:medias')} - Medias | Puppetplays
+          </title>
         </Head>
 
         <div className={styles.workHeader}>
@@ -126,22 +133,22 @@ export async function getServerSideProps({ locale, req, res, params }) {
     const result = await fetchAPI(getWorkMediasByIdQuery, {
       variables: { locale, id: params?.id },
     });
-    
+
     // Vérifier si les données sont valides
     if (!result || !result.entry) {
       return {
-        props: { 
-          initialData: { 
-            id: params?.id, 
-            slug: params?.slug, 
-            medias: {} 
-          } 
+        props: {
+          initialData: {
+            id: params?.id,
+            slug: params?.slug,
+            medias: {},
+          },
         },
       };
     }
-    
+
     const { entry } = result;
-    const mediasByKind = groupBy(entry?.medias || [], (m) => m?.kind);
+    const mediasByKind = groupBy(entry?.medias || [], m => m?.kind);
     const entryWithGroupedMedias = { ...entry, medias: mediasByKind };
 
     return {
@@ -150,12 +157,12 @@ export async function getServerSideProps({ locale, req, res, params }) {
   } catch (error) {
     console.error('Error fetching work medias:', error);
     return {
-      props: { 
-        initialData: { 
-          id: params?.id, 
-          slug: params?.slug, 
-          medias: {} 
-        } 
+      props: {
+        initialData: {
+          id: params?.id,
+          slug: params?.slug,
+          medias: {},
+        },
       },
     };
   }
