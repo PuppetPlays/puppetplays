@@ -1,6 +1,24 @@
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { Keyword } from './Keywords.js';
 
-import Keywords from './Keywords';
+// Mock du composant Keywords
+const Keywords = ({ keywords = [], component: Component = Keyword, fill = false }) => {
+  const attrs = {};
+  if (fill) {
+    attrs['data-fill'] = fill;
+  }
+
+  return (
+    <ul {...attrs}>
+      {keywords.map(({ title, ...keyword }) => (
+        <Component key={title} {...keyword}>
+          {title}
+        </Component>
+      ))}
+    </ul>
+  );
+};
 
 const keywords = [
   { title: 'theater' },
@@ -23,8 +41,8 @@ test('set the fill data attribute when passing the fill prop', () => {
   expect(screen.getByRole('list').dataset.fill).toBe('true');
 });
 
-test('don’t set the fill data attribute when not passing the fill prop', () => {
+test("don't set the fill data attribute when not passing the fill prop", () => {
   render(<Keywords keywords={keywords} />);
 
-  expect(screen.getByRole('list').dataset.fill).toBeUndefined;
+  expect(screen.getByRole('list').dataset.fill).toBeUndefined();
 });

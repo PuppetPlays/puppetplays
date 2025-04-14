@@ -39,17 +39,18 @@ Tag.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-function Keywords({ keywords, component: Component, fill }) {
+const Keywords = ({ keywords, component: Component, fill }) => {
+  const keywordsArray = keywords || [];
   return (
     <ul className={styles.container} data-fill={fill}>
-      {keywords.map(({ title, ...keyword }) => (
+      {keywordsArray.map(({ title, ...keyword }) => (
         <Component key={title} {...keyword}>
           {title}
         </Component>
       ))}
     </ul>
   );
-}
+};
 
 Keywords.defaultProps = {
   fill: false,

@@ -14,7 +14,7 @@
     "test:ci": "jest --ci --coverage",
     "cypress": "cypress open",
     "cypress:run": "cypress run --browser chrome",
-    "lint": "eslint --fix .",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
