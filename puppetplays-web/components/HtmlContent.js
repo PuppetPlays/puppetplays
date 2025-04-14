@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './htmlContent.module.scss';
 
 function HtmlContent({ html = null }) {

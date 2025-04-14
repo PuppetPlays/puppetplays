@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
-import { useMap } from './mapContext';
 import VectorLayer from 'ol/layer/Vector';
+import { useEffect, useRef } from 'react';
+
+import { useMap } from './mapContext';
 
 const useVectorLayer = options => {
   const map = useMap();

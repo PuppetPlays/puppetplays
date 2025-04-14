@@ -1,17 +1,18 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { hasAtLeastOneItem } from 'lib/utils';
-import Reel from 'components/Reel';
-import Hypotext from 'components/Hypotext';
-import Section from 'components/Section';
-import Info from 'components/Info';
-import HtmlContent from 'components/HtmlContent';
-import { PageIntertitle } from 'components/Primitives';
 import BirthDeathDates from 'components/BirthDeathDates';
-import ZoomableImage from 'components/ZoomableImage';
+import HtmlContent from 'components/HtmlContent';
+import Hypotext from 'components/Hypotext';
+import Info from 'components/Info';
 import NoResults from 'components/NoResults';
+import { PageIntertitle } from 'components/Primitives';
+import Reel from 'components/Reel';
+import Section from 'components/Section';
 import ArkId from 'components/Work/ArkId';
+import ZoomableImage from 'components/ZoomableImage';
+import { hasAtLeastOneItem } from 'lib/utils';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+
 import styles from './authorNote.module.scss';
 
 function AuthorNote({

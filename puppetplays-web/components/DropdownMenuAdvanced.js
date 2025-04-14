@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import classNames from 'classnames/bind';
 import React, {
   Children,
   cloneElement,
@@ -9,13 +10,11 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import classNames from 'classnames/bind';
 import { mergeRefs } from 'react-merge-refs';
 
 import styles from './dropdownMenu.module.scss';
 
 export const MenuItem = forwardRef(
-  // eslint-disable-next-line react/prop-types
   ({ children, icon, disabled, ...props }, ref) => {
     return (
       <button {...props} ref={ref} role="menuitem" disabled={disabled}>
@@ -27,17 +26,16 @@ export const MenuItem = forwardRef(
 );
 
 export const MenuComponent = forwardRef(
-  // eslint-disable-next-line react/prop-types
   ({ children, renderButton, ...props }, ref) => {
     const [open, setOpen] = useState(false);
     const cx = classNames.bind(styles);
-    
+
     const buttonRef = useRef(null);
     const menuRef = useRef(null);
-    
+
     // Simple positioning logic
     const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
-    
+
     // Update position when open changes
     useEffect(() => {
       if (open && buttonRef.current) {
@@ -48,28 +46,28 @@ export const MenuComponent = forwardRef(
         });
       }
     }, [open]);
-    
+
     // Close on outside click
     useEffect(() => {
       if (!open) return;
-      
+
       const handleOutsideClick = e => {
         if (
-          menuRef.current && 
+          menuRef.current &&
           !menuRef.current.contains(e.target) &&
-          buttonRef.current && 
+          buttonRef.current &&
           !buttonRef.current.contains(e.target)
         ) {
           setOpen(false);
         }
       };
-      
+
       document.addEventListener('mousedown', handleOutsideClick);
       return () => {
         document.removeEventListener('mousedown', handleOutsideClick);
       };
     }, [open]);
-    
+
     // Close on Escape key
     useEffect(() => {
       const handleKeyDown = e => {
@@ -77,16 +75,16 @@ export const MenuComponent = forwardRef(
           setOpen(false);
         }
       };
-      
+
       document.addEventListener('keydown', handleKeyDown);
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
       };
     }, [open]);
-    
+
     const mergedReferenceRef = useMemo(
       () => mergeRefs([ref, buttonRef]),
-      [ref]
+      [ref],
     );
 
     const handleButtonClick = event => {
@@ -102,9 +100,9 @@ export const MenuComponent = forwardRef(
           onClick: handleButtonClick,
           className: cx({ button: true, open }),
         })}
-        
+
         {open && (
-          <div 
+          <div
             ref={menuRef}
             className={styles.menuAdvanced}
             style={{

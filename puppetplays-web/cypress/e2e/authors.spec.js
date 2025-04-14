@@ -1,5 +1,10 @@
 import { cond, noop, stubTrue } from 'lodash';
+
 import { getAllAuthorsQuery, getAllWorksAuthorsIdsQuery } from '../../lib/api';
+import languages from '../fixtures/languages';
+import authors from '../fixtures/persons';
+import places from '../fixtures/places';
+import works from '../fixtures/works';
 import {
   isGraphQlQuery,
   aliasAndReply,
@@ -8,10 +13,6 @@ import {
   getSelectFilterSelectedValue,
   getSelectFilterSelectedSingleValue,
 } from '../utils';
-import works from '../fixtures/works';
-import authors from '../fixtures/persons';
-import languages from '../fixtures/languages';
-import places from '../fixtures/places';
 
 const graphQlRouteHandler = cond([
   [isGraphQlQuery('GetAllAuthors'), aliasAndReply('getAllAuthors', authors)],
@@ -61,7 +62,7 @@ describe('Authors page', () => {
     // Filter the authors by "french" language
     selectFilterOption('languages', 'Français');
     cy.url().should('include', '/auteurs?languages=1000');
-    
+
     // Verify the "french" filter was applied
     getSelectFilterSelectedValue('languages', 'Français').should('exist');
     cy.wait('@getAllAuthors');
@@ -69,7 +70,7 @@ describe('Authors page', () => {
     // Filter the authors by "french or german" language
     selectFilterOption('languages', 'Allemand');
     cy.url().should('include', '/auteurs?languages=1000,1300');
-    
+
     // Verify both filters are displayed in the UI
     getSelectFilterSelectedValue('languages', 'Français').should('exist');
     getSelectFilterSelectedValue('languages', 'Allemand').should('exist');
@@ -78,7 +79,7 @@ describe('Authors page', () => {
     // Remove the "french" language filter (filter by "german" language)
     cy.get('[aria-label="Remove Français"]').click();
     cy.url().should('include', '/auteurs?languages=1300');
-    
+
     // Verify only German is selected now
     getSelectFilterSelectedValue('languages', 'Allemand').should('exist');
     cy.wait('@getAllAuthors');
@@ -87,9 +88,11 @@ describe('Authors page', () => {
     cy.get('button').contains('Tout effacer').click();
     cy.url().should('include', '/auteurs');
     cy.wait('@getAllAuthors');
-    
+
     // Verify no filters are selected
-    cy.get(`label[for="select-input-of-languages"] + div .select__multi-value`).should('not.exist');
+    cy.get(
+      `label[for="select-input-of-languages"] + div .select__multi-value`,
+    ).should('not.exist');
   });
 
   it('should fill the filters according to the url query params', () => {

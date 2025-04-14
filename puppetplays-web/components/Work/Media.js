@@ -1,12 +1,20 @@
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { getTitle, hasAtLeastOneItem } from 'lib/utils';
 import CommaSepList from 'components/CommaSepList';
 import ZoomableImage from 'components/ZoomableImage';
+import { getTitle, hasAtLeastOneItem } from 'lib/utils';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+
 import styles from './media.module.scss';
 
 /* eslint-disable jsx-a11y/media-has-caption */
-const Media = ({ kind = null, url = null, alt = null, description = null, copyright = null, languages = null }) => {
+const Media = ({
+  kind = null,
+  url = null,
+  alt = null,
+  description = null,
+  copyright = null,
+  languages = null,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -39,7 +47,6 @@ const Media = ({ kind = null, url = null, alt = null, description = null, copyri
     </div>
   );
 };
-
 
 Media.propTypes = {
   kind: PropTypes.oneOf(['photo', 'illustration', 'video', 'audio']).isRequired,

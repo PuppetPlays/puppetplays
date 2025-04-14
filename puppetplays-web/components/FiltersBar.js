@@ -1,11 +1,17 @@
-import { Fragment, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useCookies } from 'react-cookie';
-import { useTranslation } from 'next-i18next';
 import useWindowSize from 'hooks/useWindowSize';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment, useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
+
 import styles from './filtersBar.module.scss';
 
-function FiltersBar({ cookieName = null, children = null, filtersCount = 0, onClearAll = null }) {
+function FiltersBar({
+  cookieName = null,
+  children = null,
+  filtersCount = 0,
+  onClearAll = null,
+}) {
   const { t } = useTranslation();
   const { width } = useWindowSize();
   const [cookies, setCookie] = useCookies([cookieName]);
@@ -15,7 +21,10 @@ function FiltersBar({ cookieName = null, children = null, filtersCount = 0, onCl
   const handleToggleFiltersBar = () => {
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
-    setCookie(cookieName, newIsOpen ? 'true' : 'false', { path: '/', sameSite: 'Lax' });
+    setCookie(cookieName, newIsOpen ? 'true' : 'false', {
+      path: '/',
+      sameSite: 'Lax',
+    });
   };
 
   useEffect(() => {

@@ -1,13 +1,14 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
-import jest from 'eslint-plugin-jest';
-import cypress from 'eslint-plugin-cypress';
-import _import from 'eslint-plugin-import';
-import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
+
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import cypress from 'eslint-plugin-cypress';
+import _import from 'eslint-plugin-import';
+import jest from 'eslint-plugin-jest';
+import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

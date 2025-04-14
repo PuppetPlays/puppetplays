@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 /**
  * Composant réutilisable pour afficher un message lorsqu'aucune donnée n'est disponible
@@ -131,7 +131,7 @@ const NoResults = ({ title, message, icon = 'clock', customStyles = {} }) => {
           opacity: 0.3,
           borderRadius: '2px',
         }}
-      ></div>
+      />
     </div>
   );
 };

@@ -18,7 +18,9 @@ export const getGraphQlRequestMock = (reqBody, resBody) => ({
 
 export const selectFilterOption = (filterKey, optionLabel) => {
   cy.get(`input[aria-labelledby="aria-label-of-${filterKey}"]`).click();
-  cy.get(`#react-select-select-id-${filterKey}-listbox, [id^="react-select-select-id-${filterKey}-option"]`)
+  cy.get(
+    `#react-select-select-id-${filterKey}-listbox, [id^="react-select-select-id-${filterKey}-option"]`,
+  )
     .contains(optionLabel)
     .click();
 };

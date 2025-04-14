@@ -1,6 +1,6 @@
+import { hasAtLeastOneItem } from 'lib/utils';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
-import { hasAtLeastOneItem } from 'lib/utils';
 
 const Place = ({ title = null, country = null }) => {
   return (

@@ -1,5 +1,5 @@
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 
 // Mock les composants importés par WorksFilters pour éviter les problèmes avec react-select
 jest.mock('components/FilterSelect', () => () => (
@@ -23,19 +23,18 @@ jest.mock('components/FilterCheckbox', () => ({ label, onChange }) => (
 jest.mock(
   'components/FiltersBar',
   () =>
-    ({ children, onClearAll, disabled }) =>
-      (
-        <div data-testid="filters-bar">
-          {children}
-          <button
-            data-testid="clear-all-button"
-            disabled={disabled}
-            onClick={onClearAll}
-          >
-            Effacer tout
-          </button>
-        </div>
-      ),
+    ({ children, onClearAll, disabled }) => (
+      <div data-testid="filters-bar">
+        {children}
+        <button
+          data-testid="clear-all-button"
+          disabled={disabled}
+          onClick={onClearAll}
+        >
+          Effacer tout
+        </button>
+      </div>
+    ),
 );
 
 // Mock next/router
@@ -65,9 +64,11 @@ jest.mock('next-i18next', () => ({
 jest.mock('lib/api', () => ({
   getAllWorksKeywordsQuery: 'mock-query',
   getFetchAPIClient: jest.fn(() =>
-    jest.fn().mockResolvedValue({
-      tags: [],
-      entries: [],
+    jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        tags: [],
+        entries: [],
+      });
     }),
   ),
 }));
@@ -125,14 +126,16 @@ describe('WorksFilters component', () => {
     jest.clearAllMocks();
   });
 
-  test('renders basic structure', () => {
-    render(
-      <WorksFilters
-        filters={{}}
-        onChange={mockOnChange}
-        onClearAll={mockOnClearAll}
-      />,
-    );
+  test('renders basic structure', async () => {
+    await act(async () => {
+      render(
+        <WorksFilters
+          filters={{}}
+          onChange={mockOnChange}
+          onClearAll={mockOnClearAll}
+        />,
+      );
+    });
 
     // Vérifier que les éléments de base sont rendus
     expect(screen.getByTestId('filters-bar')).toBeInTheDocument();
@@ -143,28 +146,34 @@ describe('WorksFilters component', () => {
     expect(filterSelects.length).toBeGreaterThan(0);
   });
 
-  test('calls onClearAll when clear button is clicked', () => {
-    render(
-      <WorksFilters
-        filters={{ mainLanguage: ['1'] }}
-        onChange={mockOnChange}
-        onClearAll={mockOnClearAll}
-      />,
-    );
+  test('calls onClearAll when clear button is clicked', async () => {
+    await act(async () => {
+      render(
+        <WorksFilters
+          filters={{ mainLanguage: ['1'] }}
+          onChange={mockOnChange}
+          onClearAll={mockOnClearAll}
+        />,
+      );
+    });
 
     // Cliquer sur le bouton d'effacement
-    fireEvent.click(screen.getByTestId('clear-all-button'));
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('clear-all-button'));
+    });
     expect(mockOnClearAll).toHaveBeenCalledTimes(1);
   });
 
-  test('renders checkbox filters', () => {
-    render(
-      <WorksFilters
-        filters={{}}
-        onChange={mockOnChange}
-        onClearAll={mockOnClearAll}
-      />,
-    );
+  test('renders checkbox filters', async () => {
+    await act(async () => {
+      render(
+        <WorksFilters
+          filters={{}}
+          onChange={mockOnChange}
+          onClearAll={mockOnClearAll}
+        />,
+      );
+    });
 
     // Vérifier que les filtres checkbox sont rendus
     const filterCheckboxes = screen.getAllByTestId('filter-checkbox');

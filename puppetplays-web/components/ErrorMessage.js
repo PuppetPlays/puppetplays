@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import { ErrorTypes } from 'lib/apiErrorHandler';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
 
 /**
  * Component for displaying API errors with appropriate UI based on error type

@@ -12,7 +12,10 @@ module.exports = {
     update: jest.fn(),
     context: {},
   })),
-  useInteractions: jest.fn(() => ({ getReferenceProps: jest.fn(), getFloatingProps: jest.fn() })),
+  useInteractions: jest.fn(() => ({
+    getReferenceProps: jest.fn(),
+    getFloatingProps: jest.fn(),
+  })),
   useHover: jest.fn(() => ({})),
   useFocus: jest.fn(() => ({})),
   useClick: jest.fn(() => ({})),
@@ -26,4 +29,4 @@ module.exports = {
   shift: jest.fn(),
   size: jest.fn(),
   autoUpdate: jest.fn(),
-}; 
+};

@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import Head from 'next/head';
-import { getWorkById } from 'lib/api';
-import Layout from 'components/Layout';
-import PropTypes from 'prop-types';
-import Work from 'components/Work/Work';
 import ContentLayout from 'components/ContentLayout';
-import WorkPageHeader from 'components/Work/WorkPageHeader';
+import Layout from 'components/Layout';
+import Work from 'components/Work/Work';
 import WorkDocument from 'components/Work/WorkDocument';
-import styles from 'styles/Work.module.scss';
+import WorkPageHeader from 'components/Work/WorkPageHeader';
+import { getWorkById } from 'lib/api';
+import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import styles from 'styles/Work.module.scss';
 
 const WorkPage = ({ initialData }) => {
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
@@ -93,7 +94,7 @@ WorkPage.propTypes = {
 
 export default WorkPage;
 
-export async function getServerSideProps({ locale, req, res, params, query }) {
+export async function getServerSideProps({ locale, params, query }) {
   try {
     const token = query && query.token;
     const data = await getWorkById(params?.id, locale, token);
@@ -101,17 +102,26 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
     // Vérifier si les données sont valides
     if (!data || !data.entry) {
       return {
-        props: { initialData: {} },
+        props: {
+          ...(await serverSideTranslations(locale || 'fr', ['common'])),
+          initialData: {},
+        },
       };
     }
 
     return {
-      props: { initialData: data.entry || {} },
+      props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
+        initialData: data.entry || {},
+      },
     };
   } catch (error) {
     console.error('Error fetching work:', error);
     return {
-      props: { initialData: {} },
+      props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
+        initialData: {},
+      },
     };
   }
 }

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './filterLabel.module.scss';
 
 function FilterLabel({ id, htmlFor, children }) {

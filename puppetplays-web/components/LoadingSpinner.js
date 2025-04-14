@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
 
 /**
  * Loading spinner component with customizable size and text

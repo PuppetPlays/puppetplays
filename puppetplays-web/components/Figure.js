@@ -1,8 +1,14 @@
 import useTranslation from 'next-translate/useTranslation';
 import PropTypes from 'prop-types';
+
 import styles from './figure.module.scss';
 
-function Figure({ url = null, alt = null, copyright = null, description = null }) {
+function Figure({
+  url = null,
+  alt = null,
+  copyright = null,
+  description = null,
+}) {
   const { t } = useTranslation();
 
   return (

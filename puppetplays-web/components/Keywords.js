@@ -1,75 +1,63 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+
 import styles from './keywords.module.scss';
 
 export function Keyword({ children }) {
-  if (!children) return null;
   return <li className={styles.keyword}>{children}</li>;
 }
 
 Keyword.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export function TheatricalTechniqueTag({ id, children }) {
-  if (!id || !children) return null;
-
   return (
     <li className={styles.tag}>
       <Link href={`/base-de-donnees?theatricalTechniques=${id}`}>
-        <p>{children}</p>
+        {children}
       </Link>
     </li>
   );
 }
 
 TheatricalTechniqueTag.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export function Tag({ id, children }) {
-  if (!id || !children) return null;
-
   return (
     <li className={styles.tag}>
-      <Link href={`/base-de-donnees?relatedToTags=${id}`}>
-        <p>{children}</p>
-      </Link>
+      <Link href={`/base-de-donnees?relatedToTags=${id}`}>{children}</Link>
     </li>
   );
 }
 
 Tag.propTypes = {
-  id: PropTypes.string,
-  children: PropTypes.node,
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-function Keywords({ keywords = [], component: Component = Keyword, fill = false }) {
-  // Handle null, undefined, or empty keywords array
-  const safeKeywords = Array.isArray(keywords) ? keywords : [];
-
-  if (safeKeywords.length === 0) return null;
-
+function Keywords({ keywords, component: Component, fill }) {
   return (
     <ul className={styles.container} data-fill={fill}>
-      {safeKeywords &&
-        Array.isArray(safeKeywords) &&
-        safeKeywords.map(({ title, id, ...keyword }) => {
-          if (!title) return null;
-          return (
-            <Component key={id || title} id={id} {...keyword}>
-              {title}
-            </Component>
-          );
-        })}
+      {keywords.map(({ title, ...keyword }) => (
+        <Component key={title} {...keyword}>
+          {title}
+        </Component>
+      ))}
     </ul>
   );
 }
 
+Keywords.defaultProps = {
+  fill: false,
+  component: Keyword,
+};
 
 Keywords.propTypes = {
-  keywords: PropTypes.arrayOf(PropTypes.object),
+  keywords: PropTypes.arrayOf(PropTypes.object).isRequired,
   component: PropTypes.func,
   fill: PropTypes.bool,
 };

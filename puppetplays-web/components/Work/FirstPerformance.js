@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { hasAtLeastOneItem } from 'lib/utils';
-import Section from 'components/Section';
 import Place from 'components/Place';
+import Section from 'components/Section';
+import { hasAtLeastOneItem } from 'lib/utils';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+
 import styles from './firstPerformance.module.scss';
 
 function FirstPerformance({ place = [], date = null, extraInfo = null }) {
@@ -27,7 +28,6 @@ function FirstPerformance({ place = [], date = null, extraInfo = null }) {
     </Section>
   );
 }
-
 
 FirstPerformance.propTypes = {
   place: PropTypes.arrayOf(PropTypes.object),

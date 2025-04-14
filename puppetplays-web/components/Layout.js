@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
-import Header from 'components/Header';
-import AuthorModal from 'components/Author/AuthorModal';
-import ImageModal from 'components/ImageModal';
 import AnimationTechniqueModal from 'components/AnimationTechnique/AnimationTechniqueModal';
+import AuthorModal from 'components/Author/AuthorModal';
+import Header from 'components/Header';
+import ImageModal from 'components/ImageModal';
 import SearchBarStateful from 'components/SearchBarStateful';
+import PropTypes from 'prop-types';
+
 import styles from './layout.module.scss';
 
 function Layout({ aside = null, header = <SearchBarStateful />, children }) {

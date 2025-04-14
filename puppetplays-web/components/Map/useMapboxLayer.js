@@ -1,8 +1,9 @@
-import Stroke from 'ol/style/Stroke';
-import Fill from 'ol/style/Fill';
-import Style from 'ol/style/Style';
 import VectorTile from 'ol/layer/VectorTile';
+import Fill from 'ol/style/Fill';
+import Stroke from 'ol/style/Stroke';
+import Style from 'ol/style/Style';
 import { useEffect, useRef } from 'react';
+
 import { useMap } from './mapContext';
 
 const useMapboxLayer = options => {
@@ -16,7 +17,7 @@ const useMapboxLayer = options => {
         ...options,
         style: feature => {
           const layerName = feature.get('layer');
-          
+
           if (layerName === 'water') {
             return new Style({
               fill: new Fill({
@@ -52,7 +53,7 @@ const useMapboxLayer = options => {
           }
         },
       };
-      
+
       mapboxLayer.current = new VectorTile(mapboxLayerOptions);
       map.addLayer(mapboxLayer.current);
     }

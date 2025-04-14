@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './contentLayout.module.scss';
 
 function ContentLayout({ children, style = {}, onScroll = null }) {

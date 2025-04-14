@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import Place from './Place';
 
 const france = [{ title: 'France' }];

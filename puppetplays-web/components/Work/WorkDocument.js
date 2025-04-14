@@ -1,21 +1,26 @@
-import { useCallback, useState } from 'react';
+import CloseButton from 'components/CloseButton';
+import { fetchAPI, getWorkDocumentByIdQuery } from 'lib/api';
+import { hasAtLeastOneItem } from 'lib/utils';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
+import { useCallback, useState } from 'react';
 import useSWR from 'swr';
-import { hasAtLeastOneItem } from 'lib/utils';
-import { fetchAPI, getWorkDocumentByIdQuery } from 'lib/api';
-import CloseButton from 'components/CloseButton';
+
 import styles from './workDocument.module.scss';
 
 const IconDownload = () => {
   return (
     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 10V13H13V10" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M8 3V9" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M5.5 7.5L8 9.5L10.5 7.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3 10V13H13V10" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 3V9" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M5.5 7.5L8 9.5L10.5 7.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 };
 
 const usePagination = initialPage => {

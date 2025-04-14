@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import isTouchDevice from 'is-touch-device';
-import Select from 'ol/interaction/Select';
+import Zoom from 'ol/control/Zoom';
 import { pointerMove } from 'ol/events/condition';
+import Select from 'ol/interaction/Select';
 import Map from 'ol/Map';
 import View from 'ol/View';
-import Zoom from 'ol/control/Zoom';
+import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+
 import { getSelectedPlaceStyle, getHoveredPlaceStyle } from './styles';
 
 const MapContext = React.createContext();

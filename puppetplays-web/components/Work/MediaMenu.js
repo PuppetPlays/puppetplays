@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import { getMediaKindIcon } from 'components/Work/MediaSection';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+
 import styles from './mediaMenu.module.scss';
 
 const MediaMenu = ({ sections, activeAnchor = null }) => {
@@ -31,7 +32,6 @@ const MediaMenu = ({ sections, activeAnchor = null }) => {
     </ul>
   );
 };
-
 
 MediaMenu.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.string).isRequired,

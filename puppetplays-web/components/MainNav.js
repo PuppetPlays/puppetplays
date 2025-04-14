@@ -1,12 +1,13 @@
+import DropdownMenu from 'components/DropdownMenu';
+import useWindowSize from 'hooks/useWindowSize';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
-import useWindowSize from 'hooks/useWindowSize';
-import DropdownMenu from 'components/DropdownMenu';
+import PropTypes from 'prop-types';
+
 import styles from './mainNav.module.scss';
 
-const NavButton = (props) => {
+const NavButton = props => {
   const { t } = useTranslation();
 
   return (
@@ -28,7 +29,6 @@ const NavButton = (props) => {
   );
 };
 
-// eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => {
   return <ul>{children}</ul>;
 };

@@ -1,7 +1,7 @@
 import { getAuthorByIdQuery, getWorksOfAuthorQuery } from '../../lib/api';
-import { getGraphQlRequestMock } from '../utils';
 import author from '../fixtures/author';
 import works from '../fixtures/works';
+import { getGraphQlRequestMock } from '../utils';
 
 const getAuthorRequestBody = id => ({
   query: getAuthorByIdQuery,

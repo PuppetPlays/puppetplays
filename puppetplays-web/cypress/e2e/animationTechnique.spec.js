@@ -2,9 +2,9 @@ import {
   getAnimationTechniqueByIdQuery,
   getWorksOfAnimationTechniqueQuery,
 } from '../../lib/api';
-import { getGraphQlRequestMock } from '../utils';
 import animationTechnique from '../fixtures/animationTechnique';
 import works from '../fixtures/works';
+import { getGraphQlRequestMock } from '../utils';
 
 const getAnimationTechniqueRequestBody = id => ({
   query: getAnimationTechniqueByIdQuery,

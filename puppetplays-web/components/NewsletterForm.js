@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
+
 import styles from './NewsletterForm.module.scss';
 
 function NewsletterForm() {

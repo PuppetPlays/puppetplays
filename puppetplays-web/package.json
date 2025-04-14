@@ -2,23 +2,24 @@
   "name": "puppetplays-web",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.18.3"
+  },
   "scripts": {
-    "dev": "node --max-old-space-size=4096 -r esm server.js",
+    "dev": "NODE_ENV=development node server.js",
     "proxy-ssl": "npx local-ssl-proxy --source 7001 --target 7000",
-    "start": "NODE_ENV=production node --max-old-space-size=4096 -r esm server.js",
+    "start": "next start",
     "test": "jest --watch",
     "test:no-watch": "jest --no-watch",
     "test:ci": "jest --ci --coverage",
     "cypress": "cypress open",
-    "cypress:run": "cypress run",
+    "cypress:run": "cypress run --browser chrome",
     "lint": "eslint --fix .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build": "next build",
-    "postbuild": "next-sitemap",
-    "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook -s ./public"
+    "postbuild": "next-sitemap"
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -53,8 +54,7 @@
     ],
     "testEnvironmentOptions": {
       "url": "http://localhost"
-    },
-    "watchman": false
+    }
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.6",
@@ -66,14 +66,13 @@
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-http-backend": "^3.0.2",
     "i18next-locize-backend": "^7.0.4",
-    "i18next-xhr-backend": "^3.2.2",
     "is-touch-device": "^1.0.1",
     "jest-environment-jsdom": "^29.7.0",
     "lodash": "^4.17.21",

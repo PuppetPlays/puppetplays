@@ -1,5 +1,6 @@
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
+
 import { MapProvider } from './mapContext';
 
 const Map = ({ children, zoom, center, onClick, setSelectInteraction }) => {

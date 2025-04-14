@@ -1,10 +1,10 @@
-import omitBy from 'lodash/omitBy';
-import isNil from 'lodash/isNil';
-import identity from 'lodash/identity';
-import mapValues from 'lodash/mapValues';
-import pick from 'lodash/pick';
-import split from 'lodash/fp/split';
 import parseInteger from 'lodash/fp/parseInt';
+import split from 'lodash/fp/split';
+import identity from 'lodash/identity';
+import isNil from 'lodash/isNil';
+import mapValues from 'lodash/mapValues';
+import omitBy from 'lodash/omitBy';
+import pick from 'lodash/pick';
 
 const authorsAllowedFilters = ['languages', 'places', 'gender', 'type'];
 

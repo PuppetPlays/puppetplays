@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { modalTypes, useModal } from './modalContext';
-
 import styles from './noteDropdownMenu.module.scss';
 
 function NoteDropdownMenu({ id, modalType }) {

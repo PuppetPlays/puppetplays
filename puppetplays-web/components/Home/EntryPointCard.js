@@ -1,9 +1,17 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import styles from './entryPointCard.module.scss';
 import { useCallback, useRef } from 'react';
 
-const EntryPointCard = ({ title = null, description = null, thumbnailUrl = null, to = null, href = null }) => {
+import styles from './entryPointCard.module.scss';
+
+const EntryPointCard = ({
+  title = null,
+  description = null,
+  thumbnailUrl = null,
+  to = null,
+  href = null,
+  target = null,
+}) => {
   const linkRef = useRef(null);
 
   const handleClick = useCallback(() => {
@@ -28,12 +36,12 @@ const EntryPointCard = ({ title = null, description = null, thumbnailUrl = null,
       </div>
       <h2>
         {to && (
-          <Link href={to} ref={linkRef}>
+          <Link href={to} ref={linkRef} target={target}>
             {title}
           </Link>
         )}
         {href && (
-          <Link href={href} ref={linkRef} target="_blank">
+          <Link href={href} ref={linkRef} target={target}>
             <p>{title}</p>
           </Link>
         )}
@@ -50,6 +58,7 @@ EntryPointCard.propTypes = {
   thumbnailUrl: PropTypes.string.isRequired,
   to: PropTypes.string,
   href: PropTypes.string,
+  target: PropTypes.string,
 };
 
 export default EntryPointCard;

@@ -1,7 +1,8 @@
 import { cond, noop, stubTrue } from 'lodash';
+
 import { getAllAnimationsTechniquesQuery } from '../../lib/api';
-import { isGraphQlQuery, aliasAndReply, getGraphQlRequestMock } from '../utils';
 import animationTechniques from '../fixtures/animationTechniques';
+import { isGraphQlQuery, aliasAndReply, getGraphQlRequestMock } from '../utils';
 
 const graphQlRouteHandler = cond([
   [

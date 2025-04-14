@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
-import { hasAtLeastOneItem } from 'lib/utils';
 import Tooltip from 'components/Tooltip';
+import { hasAtLeastOneItem } from 'lib/utils';
+import PropTypes from 'prop-types';
+
 import styles from './coverImage.module.scss';
 
 function CoverImage({ image = [], year = null, hasPlaceholder = true }) {
@@ -45,7 +46,6 @@ function CoverImage({ image = [], year = null, hasPlaceholder = true }) {
     </div>
   );
 }
-
 
 CoverImage.propTypes = {
   image: PropTypes.arrayOf(PropTypes.object),

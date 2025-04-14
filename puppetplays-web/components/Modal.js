@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import ReactModal from 'react-modal';
-import { useTranslation } from 'next-i18next';
 import { modalTypes, useModal } from 'components/modalContext';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { useCallback, useEffect, useRef } from 'react';
+import ReactModal from 'react-modal';
+
 import styles from './modal.module.scss';
 
 function Modal({

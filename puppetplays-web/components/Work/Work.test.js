@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import Work from './Work';
 
 jest.mock('@tippyjs/react', () => ({

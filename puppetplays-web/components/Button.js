@@ -1,8 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import styles from './button.module.scss';
 
-const Button = ({ children, type = 'button', icon = null, inverse = false, onClick }) => {
+const Button = ({
+  children,
+  type = 'button',
+  icon = null,
+  inverse = false,
+  onClick,
+}) => {
   return (
     <button
       className={styles.button}

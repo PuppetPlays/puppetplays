@@ -1,4 +1,5 @@
 import * as stopWords from 'lib/stopWords';
+
 import {
   authorsStateToGraphqlEntriesParams,
   authorsStateToGraphqlQueryArgument,
@@ -11,9 +12,10 @@ import { identity } from './utils';
 
 export const getFetchAPIClient = (params, token) => {
   if (params?.variables?.locale && Array.isArray(params.variables.locale)) {
-    params.variables.locale = params.variables.locale[0] || params.variables.locale;
+    params.variables.locale =
+      params.variables.locale[0] || params.variables.locale;
   }
-  
+
   return query => {
     // S'assurer que la requête est une chaîne
     const queryString = Array.isArray(query) ? query[0] : query;
@@ -24,17 +26,20 @@ export const getFetchAPIClient = (params, token) => {
 export async function fetchAPI(query, { variables } = {}, token) {
   const craftTokenHeader = token ? { 'X-Craft-Token': token } : null;
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/graphql`;
-  
+
   const queryString = Array.isArray(query) ? query[0] : query;
-  
+
   if (variables && variables.locale && Array.isArray(variables.locale)) {
     variables.locale = variables.locale[0] || variables.locale;
   }
-  
+
   try {
-    console.log('Sending GraphQL query:', queryString.substring(0, 100) + '...');
+    console.log(
+      'Sending GraphQL query:',
+      queryString.substring(0, 100) + '...',
+    );
     console.log('Variables:', JSON.stringify(variables));
-    
+
     const res = await fetch(apiUrl, {
       method: 'POST',
       headers: {
@@ -46,17 +51,19 @@ export async function fetchAPI(query, { variables } = {}, token) {
         variables,
       }),
     });
-    
+
     if (!res.ok) {
       console.error('Network response error:', res.status, res.statusText);
       throw new Error(`API responded with status: ${res.status}`);
     }
-    
+
     const json = await res.json();
 
     if (json.errors) {
       console.error('GraphQL errors:', JSON.stringify(json.errors));
-      throw new Error(`GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`);
+      throw new Error(
+        `GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`,
+      );
     }
 
     return json.data;

@@ -1,6 +1,7 @@
+import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
-import { useTranslation } from 'next-i18next';
+
 import styles from './pagination.module.scss';
 
 function Pagination({ forcePage = 0, pageCount = 0, onPageChange = null }) {

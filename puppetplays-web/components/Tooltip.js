@@ -1,8 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import 'tippy.js/dist/tippy.css';
 import styles from './tooltip.module.scss';
+
 import isNil from 'lodash/isNil';
 
 function Tooltip({ content = null, children, ...props }) {

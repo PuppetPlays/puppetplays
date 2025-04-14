@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { modalTypes, useModal } from 'components/modalContext';
+import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
 
 function ZoomableImage({ children }) {
   const [, dispatch] = useModal();

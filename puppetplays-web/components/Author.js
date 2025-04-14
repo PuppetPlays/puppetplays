@@ -1,8 +1,8 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import NoteDropdownMenu from 'components/NoteDropdownMenu';
 import { modalTypes } from 'components/modalContext';
+import NoteDropdownMenu from 'components/NoteDropdownMenu';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment } from 'react';
 
 export const formatAuthor = ({
   usualName = null,

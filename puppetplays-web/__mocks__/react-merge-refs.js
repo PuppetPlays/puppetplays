@@ -1,6 +1,6 @@
 module.exports = function mergeRefs(refs) {
-  return (value) => {
-    refs.forEach((ref) => {
+  return value => {
+    refs.forEach(ref => {
       if (typeof ref === 'function') {
         ref(value);
       } else if (ref != null) {
@@ -8,4 +8,4 @@ module.exports = function mergeRefs(refs) {
       }
     });
   };
-}; 
+};

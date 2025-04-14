@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
-import BirthDeathDates from 'components/BirthDeathDates';
 import Author from 'components/Author';
+import BirthDeathDates from 'components/BirthDeathDates';
 import Card from 'components/Card';
+import PropTypes from 'prop-types';
+
 import styles from './authorCard.module.scss';
 
 function AuthorCard({

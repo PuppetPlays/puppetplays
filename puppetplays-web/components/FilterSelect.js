@@ -1,11 +1,12 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import Select from 'react-select';
+import FilterLabel from 'components/FilterLabel';
 import get from 'lodash/fp/get';
 import isNil from 'lodash/isNil';
 import noop from 'lodash/noop';
-import FilterLabel from 'components/FilterLabel';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { useCallback } from 'react';
+import Select from 'react-select';
+
 import { styles, components, getTheme } from './filterSelectStyles';
 
 function FilterSelect({

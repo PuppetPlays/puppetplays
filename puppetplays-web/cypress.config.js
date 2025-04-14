@@ -15,4 +15,4 @@ module.exports = defineConfig({
     failOnStatusCode: false,
   },
   numTestsKeptInMemory: 5,
-}); 
+});

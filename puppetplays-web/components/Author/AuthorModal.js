@@ -1,18 +1,18 @@
-import { useCallback } from 'react';
-import get from 'lodash/get';
-import { useTranslation } from 'next-i18next';
-import useSWR from 'swr';
-import { useRouter } from 'next/router';
-import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
+import Author from 'components/Author';
+import AuthorNote from 'components/Author/AuthorNote';
+import Modal from 'components/Modal';
 import {
   getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
 } from 'components/modalContext';
-import AuthorNote from 'components/Author/AuthorNote';
-import Modal from 'components/Modal';
-import Author from 'components/Author';
+import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
+import get from 'lodash/get';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { useCallback } from 'react';
+import useSWR from 'swr';
 
 function AuthorModal() {
   const { t } = useTranslation();

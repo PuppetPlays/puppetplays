@@ -1,11 +1,14 @@
-import { Fragment, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { get } from 'lodash/fp';
-import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import clip from 'text-clipper';
+import BirthDeathDates from 'components/BirthDeathDates';
+import ButtonLink from 'components/ButtonLink';
+import Card from 'components/Card';
+import EntryPointCard from 'components/Home/EntryPointCard';
+import Section from 'components/Home/Section';
+import SplitLayout from 'components/Home/SplitLayout';
+import HtmlContent from 'components/HtmlContent';
+import Keywords, { Tag } from 'components/Keywords';
+import LanguageSelector from 'components/LanguageSelector';
+import MainNav from 'components/MainNav';
+import NewsletterForm from 'components/NewsletterForm';
 import {
   fetchAPI,
   getHomeQuery,
@@ -18,21 +21,18 @@ import {
   getFetchAPIClient,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
-import { getRandom } from 'lib/utils';
 import { safeObject, safeArray } from 'lib/safeAccess';
-import LanguageSelector from 'components/LanguageSelector';
-import EntryPointCard from 'components/Home/EntryPointCard';
-import ButtonLink from 'components/ButtonLink';
-import Card from 'components/Card';
-import Section from 'components/Home/Section';
-import SplitLayout from 'components/Home/SplitLayout';
-import Keywords, { Tag } from 'components/Keywords';
-import MainNav from 'components/MainNav';
-import HtmlContent from 'components/HtmlContent';
-import BirthDeathDates from 'components/BirthDeathDates';
-import NewsletterForm from 'components/NewsletterForm';
+import { getRandom } from 'lib/utils';
+import { get } from 'lodash/fp';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
+import { Fragment, useRef } from 'react';
 import styles from 'styles/Home.module.scss';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import clip from 'text-clipper';
 const PARTNERS = ['rir', 'upvm'];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
@@ -102,7 +102,12 @@ const PartnersBar = ({ t }) => {
   );
 };
 
-export default function Home({ animationTechnique = null, authors = [], work = null, keywords = [] }) {
+export default function Home({
+  animationTechnique = null,
+  authors = [],
+  work = null,
+  keywords = [],
+}) {
   const { t } = useTranslation('home');
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
@@ -186,6 +191,7 @@ export default function Home({ animationTechnique = null, authors = [], work = n
                       title={t('exploreBy.project.title')}
                       thumbnailUrl="/project-thumbnail.jpg"
                       to={t('ourSiteUrl')}
+                      target="_blank"
                     />
                   </ul>
                 </div>

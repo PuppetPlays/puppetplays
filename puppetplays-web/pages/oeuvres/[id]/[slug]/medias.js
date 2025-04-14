@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { groupBy } from 'lodash';
-import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';
-import Layout from 'components/Layout';
-import useActiveAnchor from 'hooks/useActiveAnchor';
 import ContentLayout from 'components/ContentLayout';
+import Layout from 'components/Layout';
+import { PageTitle } from 'components/Primitives';
+import MediaMenu from 'components/Work/MediaMenu';
+import MediaSection from 'components/Work/MediaSection';
 import WorkDocument from 'components/Work/WorkDocument';
 import WorkPageHeader from 'components/Work/WorkPageHeader';
-import MediaSection from 'components/Work/MediaSection';
-import MediaMenu from 'components/Work/MediaMenu';
-import { PageTitle } from 'components/Primitives';
+import useActiveAnchor from 'hooks/useActiveAnchor';
+import { fetchAPI, getWorkMediasByIdQuery } from 'lib/api';
+import { groupBy } from 'lodash';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styles from 'styles/Work.module.scss';
 
 function MediasPage({ initialData }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
 
   // Vérifie si les données initiales sont complètes
@@ -36,7 +37,7 @@ function MediasPage({ initialData }) {
     return (
       <Layout>
         <Head>
-          <title>{t('common:medias')} | Puppetplays</title>
+          <title>{t('medias')} | Puppetplays</title>
         </Head>
         <ContentLayout style={{ maxWidth: 800, padding: '60px 20px' }}>
           <div style={{ textAlign: 'center' }}>
@@ -48,7 +49,7 @@ function MediasPage({ initialData }) {
                 color: 'var(--color-text-default)',
               }}
             >
-              {t('common:error.dataNotFound')}
+              {t('error.dataNotFound')}
             </h1>
             <p
               style={{
@@ -59,7 +60,7 @@ function MediasPage({ initialData }) {
                 margin: '0 auto 30px',
               }}
             >
-              {t('common:error.notFound')}
+              {t('error.notFound')}
             </p>
           </div>
         </ContentLayout>
@@ -72,7 +73,7 @@ function MediasPage({ initialData }) {
       <Layout>
         <Head>
           <title>
-            {initialData?.title || t('common:medias')} - Medias | Puppetplays
+            {initialData?.title || t('medias')} - Medias | Puppetplays
           </title>
         </Head>
 
@@ -90,7 +91,7 @@ function MediasPage({ initialData }) {
         </div>
         <ContentLayout style={{ maxWidth: 600 }} onScroll={handleScroll}>
           <div className={styles.contentHeader}>
-            <PageTitle>{t('common:medias')}</PageTitle>
+            <PageTitle>{t('medias')}</PageTitle>
           </div>
           <div className={styles.mediaMenu}>
             <MediaMenu
@@ -128,7 +129,7 @@ MediasPage.propTypes = {
 
 export default MediasPage;
 
-export async function getServerSideProps({ locale, req, res, params }) {
+export async function getServerSideProps({ locale, params }) {
   try {
     const result = await fetchAPI(getWorkMediasByIdQuery, {
       variables: { locale, id: params?.id },
@@ -138,6 +139,7 @@ export async function getServerSideProps({ locale, req, res, params }) {
     if (!result || !result.entry) {
       return {
         props: {
+          ...(await serverSideTranslations(locale || 'fr', ['common'])),
           initialData: {
             id: params?.id,
             slug: params?.slug,
@@ -152,12 +154,16 @@ export async function getServerSideProps({ locale, req, res, params }) {
     const entryWithGroupedMedias = { ...entry, medias: mediasByKind };
 
     return {
-      props: { initialData: entryWithGroupedMedias },
+      props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
+        initialData: entryWithGroupedMedias,
+      },
     };
   } catch (error) {
     console.error('Error fetching work medias:', error);
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         initialData: {
           id: params?.id,
           slug: params?.slug,

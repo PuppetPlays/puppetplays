@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+
 import WorkSummary from './WorkSummary';
 
 // Mock pour next/link

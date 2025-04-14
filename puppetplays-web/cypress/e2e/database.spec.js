@@ -1,5 +1,16 @@
 import { cond, noop, stubTrue } from 'lodash';
+
 import { getAllWorksQuery } from '../../lib/api';
+import animationTechniques from '../fixtures/animationTechniques';
+import audiences from '../fixtures/audiences';
+import formats from '../fixtures/formats';
+import keywords from '../fixtures/keywords';
+import languages from '../fixtures/languages';
+import literaryTones from '../fixtures/literaryTones';
+import persons from '../fixtures/persons';
+import places from '../fixtures/places';
+import theatricalTechniques from '../fixtures/theatricalTechniques';
+import works from '../fixtures/works';
 import {
   isGraphQlQuery,
   aliasAndReply,
@@ -7,16 +18,6 @@ import {
   selectFilterOption,
   getSelectFilterSelectedValue,
 } from '../utils';
-import works from '../fixtures/works';
-import languages from '../fixtures/languages';
-import places from '../fixtures/places';
-import persons from '../fixtures/persons';
-import animationTechniques from '../fixtures/animationTechniques';
-import literaryTones from '../fixtures/literaryTones';
-import theatricalTechniques from '../fixtures/theatricalTechniques';
-import audiences from '../fixtures/audiences';
-import formats from '../fixtures/formats';
-import keywords from '../fixtures/keywords';
 
 const graphQlRouteHandler = cond([
   [

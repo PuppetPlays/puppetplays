@@ -1,25 +1,24 @@
-import get from 'lodash/get';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
-import { useCallback } from 'react';
-import {
-  fetchAPI,
-  getAnimationTechniqueByIdQuery,
-  getWorksOfAnimationTechniqueQuery,
-} from 'lib/api';
+import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
+import ErrorMessage from 'components/ErrorMessage';
+import LoadingSpinner from 'components/LoadingSpinner';
+import Modal from 'components/Modal';
 import {
   getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
 } from 'components/modalContext';
-
-import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
-import Modal from 'components/Modal';
 import useSafeData from 'hooks/useSafeData';
-import LoadingSpinner from 'components/LoadingSpinner';
-import ErrorMessage from 'components/ErrorMessage';
+import {
+  fetchAPI,
+  getAnimationTechniqueByIdQuery,
+  getWorksOfAnimationTechniqueQuery,
+} from 'lib/api';
 import { handleApiError } from 'lib/apiErrorHandler';
+import get from 'lodash/get';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { useCallback } from 'react';
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();

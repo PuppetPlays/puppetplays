@@ -1,7 +1,7 @@
-import Style from 'ol/style/Style';
-import Icon from 'ol/style/Icon';
 import Fill from 'ol/style/Fill';
+import Icon from 'ol/style/Icon';
 import Stroke from 'ol/style/Stroke';
+import Style from 'ol/style/Style';
 import Text from 'ol/style/Text';
 
 const getLabelStyle = (

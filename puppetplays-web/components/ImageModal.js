@@ -1,10 +1,11 @@
+import Modal from 'components/Modal';
 import {
   getMetaOfModalByType,
   isModalOfTypeOpen,
   modalTypes,
   useModal,
 } from 'components/modalContext';
-import Modal from 'components/Modal';
+
 import styles from './ImageModal.module.scss';
 
 function ImageModal() {

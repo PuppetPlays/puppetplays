@@ -12,7 +12,6 @@ const BirthDeathDates = ({ birthDate = null, deathDate = null }) => {
   );
 };
 
-
 BirthDeathDates.propTypes = {
   birthDate: PropTypes.string,
   deathDate: PropTypes.string,

@@ -1,7 +1,8 @@
-import { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import FilterLabel from 'components/FilterLabel';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { useCallback } from 'react';
+
 import styles from './filterCheckbox.module.scss';
 
 function FilterCheckbox({ name = null, checked = false, onChange = null }) {

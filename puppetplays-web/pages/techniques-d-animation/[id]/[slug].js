@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import get from 'lodash/get';
+import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
+import ContentLayout from 'components/ContentLayout';
+import Layout from 'components/Layout';
+import { PageSubtitle, PageTitle } from 'components/Primitives';
 import {
   getAnimationTechniqueByIdQuery,
   getFetchAPIClient,
   getWorksOfAnimationTechniqueQuery,
 } from 'lib/api';
-import Layout from 'components/Layout';
-import { PageSubtitle, PageTitle } from 'components/Primitives';
-import ContentLayout from 'components/ContentLayout';
-import AnimationTechniqueNote from 'components/AnimationTechnique/AnimationTechniqueNote';
+import get from 'lodash/get';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
 
 const AnimationTechniquesPage = ({
   animationTechniquesData,
@@ -101,7 +102,7 @@ const AnimationTechniquesPage = ({
                 opacity: 0.3,
                 borderRadius: '2px',
               }}
-            ></div>
+            />
           </div>
         </ContentLayout>
       </Layout>
@@ -143,7 +144,7 @@ AnimationTechniquesPage.propTypes = {
 
 export default AnimationTechniquesPage;
 
-export async function getServerSideProps({ locale, req, res, params, query }) {
+export async function getServerSideProps({ locale, params, query }) {
   try {
     const token = query && query.token;
     const apiClient = getFetchAPIClient({
@@ -167,6 +168,7 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
 
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         animationTechniquesData: safeAnimationTechniquesData,
         animationTechniquesWorksData: safeAnimationTechniquesWorksData,
       },
@@ -175,6 +177,7 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
     console.error('Error fetching animation technique:', error);
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         animationTechniquesData: { entry: {} },
         animationTechniquesWorksData: { entries: [] },
       },

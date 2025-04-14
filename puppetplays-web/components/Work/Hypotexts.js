@@ -1,14 +1,18 @@
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { hasAtLeastOneItem } from 'lib/utils';
-import Info from 'components/Info';
 import Hypotext from 'components/Hypotext';
+import Info from 'components/Info';
+import { hasAtLeastOneItem } from 'lib/utils';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
 
 function Hypotexts({ hypotexts = [] }) {
   const { t } = useTranslation();
 
   return (
-    <Info label={t('common:hypotexts')} fill show={hasAtLeastOneItem(hypotexts)}>
+    <Info
+      label={t('common:hypotexts')}
+      fill
+      show={hasAtLeastOneItem(hypotexts)}
+    >
       {hypotexts.map(hypotext => (
         <Hypotext key={hypotext.id} {...hypotext} />
       ))}

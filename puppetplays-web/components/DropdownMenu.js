@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
+
 import styles from './dropdownMenu.module.scss';
 
-// eslint-disable-next-line react/prop-types
 const DefaultWrapper = React.forwardRef(({ children }, ref) => {
   return <Fragment ref={ref}>{children}</Fragment>;
 });

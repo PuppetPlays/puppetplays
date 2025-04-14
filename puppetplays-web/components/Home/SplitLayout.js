@@ -1,9 +1,17 @@
-import PropTypes from 'prop-types';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
-import styles from './splitLayout.module.scss';
+import PropTypes from 'prop-types';
 import { useCallback } from 'react';
 
-const SplitLayout = ({ title = null, subtitle = null, children = null, image = null, linkRef = null, date = null }) => {
+import styles from './splitLayout.module.scss';
+
+const SplitLayout = ({
+  title = null,
+  subtitle = null,
+  children = null,
+  image = null,
+  linkRef = null,
+  date = null,
+}) => {
   const handleImageClick = useCallback(
     evt => {
       evt.preventDefault();
@@ -47,7 +55,6 @@ const SplitLayout = ({ title = null, subtitle = null, children = null, image = n
     </div>
   );
 };
-
 
 SplitLayout.propTypes = {
   title: PropTypes.string,

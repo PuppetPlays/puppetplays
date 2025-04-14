@@ -1,11 +1,3 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { groupBy } from 'lodash';
-import * as olProj from 'ol/proj';
-import Point from 'ol/geom/Point';
-import VectorSource from 'ol/source/Vector';
-import Feature from 'ol/Feature';
-import { hasAtLeastOneItem } from 'lib/utils';
 import {
   fetchAPI,
   getWorksCardByIdsQuery,
@@ -13,9 +5,18 @@ import {
   buildSearchQuery,
 } from 'lib/api';
 import { worksStateToGraphqlVariables as stateToGraphqlVariables } from 'lib/filters';
-import WorksList from './WorksList';
+import { hasAtLeastOneItem } from 'lib/utils';
+import { groupBy } from 'lodash';
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
+import * as olProj from 'ol/proj';
+import VectorSource from 'ol/source/Vector';
+import PropTypes from 'prop-types';
+import { Fragment, useCallback, useEffect, useState } from 'react';
+
 import Layers from './Layers';
 import Map from './Map';
+import WorksList from './WorksList';
 
 const clusteredByCountrySource = new VectorSource({ features: [] });
 const clusteredByPlaceSource = new VectorSource({ features: [] });

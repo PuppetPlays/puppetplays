@@ -1,10 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import uniqBy from 'lodash/uniqBy';
-import get from 'lodash/get';
-import { hasAtLeastOneItem, identity } from 'lib/utils';
+import FilterCheckbox from 'components/FilterCheckbox';
+import FilterRange from 'components/FilterRange';
+import FiltersBar from 'components/FiltersBar';
+import FilterSelect from 'components/FilterSelect';
 import { getAllWorksKeywordsQuery, getFetchAPIClient } from 'lib/api';
 import {
   getAllAnimationTechniquesQuery,
@@ -19,10 +16,13 @@ import {
   getSectionName,
   getAllWorksQuery,
 } from 'lib/filtersApi';
-import FilterSelect from 'components/FilterSelect';
-import FilterRange from 'components/FilterRange';
-import FilterCheckbox from 'components/FilterCheckbox';
-import FiltersBar from 'components/FiltersBar';
+import { hasAtLeastOneItem, identity } from 'lib/utils';
+import get from 'lodash/get';
+import uniqBy from 'lodash/uniqBy';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { useCallback, useEffect, useState } from 'react';
 
 function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
   const { t } = useTranslation();

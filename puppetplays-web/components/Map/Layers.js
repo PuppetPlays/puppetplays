@@ -7,7 +7,11 @@ import { getPlaceStyle } from './styles';
 import useMapboxLayer from './useMapboxLayer';
 import useVectorLayer from './useVectorLayer';
 
-const Layers = ({ byCountrySource = null, byPlaceSource = null, children = null }) => {
+const Layers = ({
+  byCountrySource = null,
+  byPlaceSource = null,
+  children = null,
+}) => {
   const placeSourceOption = useRef({
     source: byPlaceSource,
     style: getPlaceStyle,

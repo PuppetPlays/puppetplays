@@ -1,10 +1,11 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { getFirstItemTitle } from 'lib/utils';
-import Place from 'components/Place';
 import Author from 'components/Author';
-import Company from 'components/Company';
 import CommaSepList from 'components/CommaSepList';
+import Company from 'components/Company';
+import Place from 'components/Place';
+import { getFirstItemTitle } from 'lib/utils';
+import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+
 import styles from './workHeader.module.scss';
 
 const WorkHeader = ({

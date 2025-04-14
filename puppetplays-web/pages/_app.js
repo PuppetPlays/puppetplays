@@ -1,12 +1,12 @@
-import Head from 'next/head';
-import ReactModal from 'react-modal';
-import { CookiesProvider } from 'react-cookie';
-import { appWithTranslation } from 'next-i18next';
 import { ModalProvider } from 'components/modalContext';
-import { SWRConfig } from 'swr';
 import { handleApiError } from 'lib/apiErrorHandler';
-import 'lib/i18n'; // Import i18n initialization
-import 'styles/globals.css';
+import Head from 'next/head';
+import { appWithTranslation } from 'next-i18next';
+import { CookiesProvider } from 'react-cookie';
+import ReactModal from 'react-modal';
+import { SWRConfig } from 'swr';
+
+import '../styles/globals.css';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 ReactModal.setAppElement('#__next');
@@ -19,7 +19,6 @@ const swrConfig = {
   revalidateOnReconnect: false,
 };
 
-// eslint-disable-next-line react/prop-types
 function CustomApp({ Component, pageProps }) {
   return (
     <SWRConfig value={swrConfig}>

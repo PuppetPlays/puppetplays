@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
 import { identity } from 'lib/utils';
+import { Fragment } from 'react';
 
 function CommaSepList({
   list,

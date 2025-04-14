@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import Card from 'components/Card';
+import PropTypes from 'prop-types';
+
 import styles from './authorCard.module.scss';
 
 function CompanyCard({ id, slug, title }) {

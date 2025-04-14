@@ -1,21 +1,21 @@
-import { useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import constant from 'lodash/constant';
-import cond from 'lodash/cond';
-import stubTrue from 'lodash/stubTrue';
-import negate from 'lodash/negate';
-import map from 'lodash/fp/map';
-import getFp from 'lodash/fp/get';
-import isNil from 'lodash/isNil';
-import isArray from 'lodash/isArray';
-import get from 'lodash/get';
-import { identity } from 'lib/utils';
+import FiltersBar from 'components/FiltersBar';
+import FilterSelect from 'components/FilterSelect';
 import { getFetchAPIClient } from 'lib/api';
 import { getAllLanguagesQuery, getAllPlacesQuery } from 'lib/filtersApi';
-import FilterSelect from 'components/FilterSelect';
-import FiltersBar from 'components/FiltersBar';
+import { identity } from 'lib/utils';
+import cond from 'lodash/cond';
+import constant from 'lodash/constant';
+import getFp from 'lodash/fp/get';
+import map from 'lodash/fp/map';
+import get from 'lodash/get';
+import isArray from 'lodash/isArray';
+import isNil from 'lodash/isNil';
+import negate from 'lodash/negate';
+import stubTrue from 'lodash/stubTrue';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { useCallback, useEffect, useState } from 'react';
 
 function AuthorsFilters({ filters = {}, onChange, onClearAll }) {
   const { t } = useTranslation();

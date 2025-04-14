@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import Hypotext from './Hypotext';
 
 jest.mock('next/router', () => ({

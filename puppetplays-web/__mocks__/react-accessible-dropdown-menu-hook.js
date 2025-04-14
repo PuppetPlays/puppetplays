@@ -6,14 +6,16 @@ module.exports = function useDropdownMenu(itemsCount) {
       onClick: jest.fn(),
       onKeyDown: jest.fn(),
     },
-    itemProps: Array(itemsCount).fill({}).map(() => ({
-      role: 'menuitem',
-      tabIndex: -1,
-      onKeyDown: jest.fn(),
-      onClick: jest.fn(),
-    })),
+    itemProps: Array(itemsCount)
+      .fill({})
+      .map(() => ({
+        role: 'menuitem',
+        tabIndex: -1,
+        onKeyDown: jest.fn(),
+        onClick: jest.fn(),
+      })),
     isOpen: false,
     setIsOpen: jest.fn(),
     moveFocus: jest.fn(),
   };
-}; 
+};

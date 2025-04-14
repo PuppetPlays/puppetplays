@@ -1,22 +1,23 @@
-import { Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
+import AnimationTechnique from 'components/AnimationTechnique';
+import CommaSepList from 'components/CommaSepList';
+import Info from 'components/Info';
+import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
+import Section from 'components/Section';
 import {
   getTitle,
   getFirstItemTitle,
   hasAtLeastOneItem,
   getProperty,
 } from 'lib/utils';
-import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
-import CommaSepList from 'components/CommaSepList';
-import Section from 'components/Section';
-import Info from 'components/Info';
-import AnimationTechnique from 'components/AnimationTechnique';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment, useState } from 'react';
+
 import Abstract from './Abstract';
-import WorkHeader from './WorkHeader';
-import FirstPerformance from './FirstPerformance';
 import CoverImage from './CoverImage';
+import FirstPerformance from './FirstPerformance';
+import WorkHeader from './WorkHeader';
 import styles from './workSummary.module.scss';
 
 function WorkSummary({

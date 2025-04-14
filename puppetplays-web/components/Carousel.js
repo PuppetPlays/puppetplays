@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { hasAtLeastOneItem } from 'lib/utils';
 import ZoomableImage from 'components/ZoomableImage';
+import { hasAtLeastOneItem } from 'lib/utils';
+import PropTypes from 'prop-types';
+import { useRef, useState } from 'react';
+
 import styles from './carousel.module.scss';
 
 function Carousel({ images = [], bleed = false }) {

@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
-import useSWR from 'swr';
+import ContentLayout from 'components/ContentLayout';
+import Layout from 'components/Layout';
+import NoResults from 'components/NoResults';
+import { PageTitle } from 'components/Primitives';
+import { fetchAPI, getAllDiscoveryPaths } from 'lib/api';
+import { hasAtLeastOneItem } from 'lib/utils';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { hasAtLeastOneItem } from 'lib/utils';
-import { fetchAPI, getAllDiscoveryPaths } from 'lib/api';
-import Layout from 'components/Layout';
-import { PageTitle } from 'components/Primitives';
-import ContentLayout from 'components/ContentLayout';
-import NoResults from 'components/NoResults';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
 import styles from 'styles/DiscoveryPaths.module.scss';
+import useSWR from 'swr';
 
 function ParcoursDecouverte({ initialData }) {
   const { t } = useTranslation();
@@ -92,13 +93,24 @@ ParcoursDecouverte.propTypes = {
 export default ParcoursDecouverte;
 
 export async function getServerSideProps({ locale }) {
-  const data = await fetchAPI(getAllDiscoveryPaths, {
-    variables: { locale },
-  });
+  try {
+    const data = await fetchAPI(getAllDiscoveryPaths, {
+      variables: { locale },
+    });
 
-  return {
-    props: {
-      initialData: data,
-    },
-  };
+    return {
+      props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
+        initialData: data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching discovery paths:', error);
+    return {
+      props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
+        initialData: {},
+      },
+    };
+  }
 }

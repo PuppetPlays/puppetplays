@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import styles from './info.module.scss';
 
 function Info({ label = null, children = null, fill = false, show = true }) {
@@ -12,7 +13,6 @@ function Info({ label = null, children = null, fill = false, show = true }) {
     </div>
   );
 }
-
 
 Info.propTypes = {
   label: PropTypes.string.isRequired,

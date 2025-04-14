@@ -1,23 +1,7 @@
-import { useState, useCallback, useEffect, Suspense } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import useSWR, { mutate } from 'swr';
-
-import groupBy from 'lodash/groupBy';
-import uniq from 'lodash/uniq';
-import cond from 'lodash/cond';
-import constant from 'lodash/constant';
-import stubTrue from 'lodash/stubTrue';
-
-import Layout from 'components/Layout';
 import Author from 'components/Author';
-import Company from 'components/Company';
 import BirthDeathDates from 'components/BirthDeathDates';
+import Company from 'components/Company';
+import Layout from 'components/Layout';
 import useLetterPaginationSelector from 'hooks/useLetterPaginationSelector';
 import {
   fetchAPI,
@@ -30,7 +14,21 @@ import {
   authorsStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
 import { stringifyQuery } from 'lib/utils';
+import cond from 'lodash/cond';
+import constant from 'lodash/constant';
+import groupBy from 'lodash/groupBy';
+import stubTrue from 'lodash/stubTrue';
+import uniq from 'lodash/uniq';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
+import { useState, useCallback, useEffect, Suspense } from 'react';
 import styles from 'styles/Authors.module.scss';
+import useSWR, { mutate } from 'swr';
 
 const Filters = dynamic(() => import('../components/AuthorsFilters'), {
   ssr: false,
@@ -330,9 +328,9 @@ export async function getServerSideProps({ locale, query }) {
     try {
       if (uniqueAuthorsIds.length > 0) {
         const personsRelatedToWorks = await getFetchAPIClient({
-          variables: { 
+          variables: {
             locale: locale,
-            ...stateToGraphqlVariables(filtersState) 
+            ...stateToGraphqlVariables(filtersState),
           },
         })(getAllAuthorsQuery(filtersState));
 

@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
-import { fetchAPI, getAllAnimationsTechniquesQuery } from 'lib/api';
+import ContentLayout from 'components/ContentLayout';
 import Layout from 'components/Layout';
 import { PageTitle } from 'components/Primitives';
-import ContentLayout from 'components/ContentLayout';
+import { fetchAPI, getAllAnimationsTechniquesQuery } from 'lib/api';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
 
 function AnimationTechniques({ initialData }) {
   const { t } = useTranslation();
@@ -92,7 +93,7 @@ function AnimationTechniques({ initialData }) {
                 opacity: 0.3,
                 borderRadius: '2px',
               }}
-            ></div>
+            />
           </div>
         ) : (
           // Ici, vous pouvez ajouter le rendu pour quand il y a des données
@@ -118,7 +119,7 @@ AnimationTechniques.propTypes = {
 
 export default AnimationTechniques;
 
-export async function getServerSideProps({ locale, req, res }) {
+export async function getServerSideProps({ locale }) {
   try {
     const data = await fetchAPI(getAllAnimationsTechniquesQuery, {
       variables: { locale },
@@ -129,6 +130,7 @@ export async function getServerSideProps({ locale, req, res }) {
 
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         initialData: safeData,
       },
     };
@@ -136,6 +138,7 @@ export async function getServerSideProps({ locale, req, res }) {
     console.error('Error fetching animation techniques:', error);
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         initialData: { entries: [] },
       },
     };

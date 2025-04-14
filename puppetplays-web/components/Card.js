@@ -1,10 +1,18 @@
-import PropTypes from 'prop-types';
-import Link from 'next/link';
 import classNames from 'classnames/bind';
 import { hasAtLeastOneItem } from 'lib/utils';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+
 import styles from './card.module.scss';
 
-function Card({ href = null, title = null, subtitle = null, mainImage = null, imageUrl = null, fixedHeight = false }) {
+function Card({
+  href = null,
+  title = null,
+  subtitle = null,
+  mainImage = null,
+  imageUrl = null,
+  fixedHeight = false,
+}) {
   const cx = classNames.bind(styles);
 
   // Handle different image sources (backward compatibility + new pattern)

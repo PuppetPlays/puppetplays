@@ -1,7 +1,8 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import Info from 'components/Info';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+
 import styles from './abstract.module.scss';
 
 function Abstract({ mainTheme = null, abstract = null }) {

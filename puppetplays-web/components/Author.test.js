@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import Author from './Author';
-
 import { ModalProvider } from 'components/modalContext';
+
+import Author from './Author';
 
 // Mock pour next-i18next
 jest.mock('next-i18next', () => ({

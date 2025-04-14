@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
-import WorkHeader from './WorkHeader';
+import PropTypes from 'prop-types';
+
 import styles from './workCard.module.scss';
+import WorkHeader from './WorkHeader';
 
 function WorkCard({
   id = null,
@@ -15,11 +16,7 @@ function WorkCard({
   return (
     <article className={styles.container}>
       <WorkHeader
-        title={
-          <Link href={`/oeuvres/${id}/${slug}`}>
-            {title}
-          </Link>
-        }
+        title={<Link href={`/oeuvres/${id}/${slug}`}>{title}</Link>}
         authors={authors}
         mostRelevantDate={mostRelevantDate}
         compositionPlace={compositionPlace}

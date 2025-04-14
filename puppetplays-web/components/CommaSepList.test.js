@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-import CommaSepList from './CommaSepList';
+
 import Author from './Author';
+import CommaSepList from './CommaSepList';
 
 // Mock pour next-i18next
 jest.mock('next-i18next', () => ({

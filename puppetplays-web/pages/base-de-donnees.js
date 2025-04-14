@@ -1,18 +1,10 @@
-import {
-  useCallback,
-  useEffect,
-  useState,
-  Fragment,
-  useRef,
-  Suspense,
-} from 'react';
-import PropTypes from 'prop-types';
-import { isEqual } from 'lodash';
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Button from 'components/Button';
+import FilterSelect from 'components/FilterSelect';
+import Layout from 'components/Layout';
+import NoResults from 'components/NoResults';
+import Pagination from 'components/Pagination';
+import SearchBar from 'components/SearchBar';
+import WorkSummary from 'components/Work/WorkSummary';
 import {
   fetchAPI,
   getAllWorksQuery,
@@ -25,13 +17,21 @@ import {
   worksStateToGraphqlVariables as stateToGraphqlVariables,
 } from 'lib/filters';
 import { stringifyQuery } from 'lib/utils';
-import Layout from 'components/Layout';
-import WorkSummary from 'components/Work/WorkSummary';
-import Pagination from 'components/Pagination';
-import FilterSelect from 'components/FilterSelect';
-import SearchBar from 'components/SearchBar';
-import Button from 'components/Button';
-import NoResults from 'components/NoResults';
+import { isEqual } from 'lodash';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useState,
+  Fragment,
+  useRef,
+  Suspense,
+} from 'react';
 import styles from 'styles/Database.module.scss';
 
 const MapView = dynamic(() => import('../components/Map/MapView'), {
@@ -246,7 +246,7 @@ function Home({ initialData }) {
         />
       }
       aside={
-        <Suspense fallback={`loading`}>
+        <Suspense fallback="loading">
           <Filters
             filters={filters}
             onChange={handleChangeFilters}
@@ -329,7 +329,7 @@ function Home({ initialData }) {
         </Fragment>
       )}
       {filters.view === VIEWS.map && (
-        <Suspense fallback={`loading`}>
+        <Suspense fallback="loading">
           <div className={styles.map}>
             <Button
               onClick={handleSetListView}

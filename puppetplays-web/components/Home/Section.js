@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
-import styles from './section.module.scss';
+import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 
-const Section = ({ title = null, subtitle = null, children = null, footer = null, isComingSoon = false }) => {
+import styles from './section.module.scss';
+
+const Section = ({
+  title = null,
+  subtitle = null,
+  children = null,
+  footer = null,
+  isComingSoon = false,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -45,7 +52,6 @@ const Section = ({ title = null, subtitle = null, children = null, footer = null
     </section>
   );
 };
-
 
 Section.propTypes = {
   title: PropTypes.string,

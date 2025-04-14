@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+
 import Info from './Info';
 
 test('renders the work info', () => {

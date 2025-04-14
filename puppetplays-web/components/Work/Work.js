@@ -1,29 +1,30 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import AnimationTechnique from 'components/AnimationTechnique';
+import Author from 'components/Author';
+import AuthorCard from 'components/AuthorCard';
+import CommaSepList from 'components/CommaSepList';
+import CompanyCard from 'components/CompanyCard';
+import Info from 'components/Info';
+import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
+import Place from 'components/Place';
+import Section from 'components/Section';
 import {
   getTitle,
   getFirstItemTitle,
   hasAtLeastOneItem,
   getProperty,
 } from 'lib/utils';
-import Place from 'components/Place';
-import Section from 'components/Section';
-import Author from 'components/Author';
-import Info from 'components/Info';
-import Keywords, { Tag, TheatricalTechniqueTag } from 'components/Keywords';
-import CommaSepList from 'components/CommaSepList';
-import AuthorCard from 'components/AuthorCard';
-import CompanyCard from 'components/CompanyCard';
-import AnimationTechnique from 'components/AnimationTechnique';
-import WorkHeader from './WorkHeader';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment, useState, useEffect } from 'react';
+
 import Abstract from './Abstract';
-import Hypotexts from './Hypotexts';
-import FirstPerformance from './FirstPerformance';
-import CoverImage from './CoverImage';
 import ArkId from './ArkId';
+import CoverImage from './CoverImage';
+import FirstPerformance from './FirstPerformance';
+import Hypotexts from './Hypotexts';
+import WorkHeader from './WorkHeader';
 import styles from './workSummary.module.scss';
 
 const PermalinkIcon = () => {
@@ -81,6 +82,11 @@ function Work(props) {
   } = props;
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const [permalinkUrl, setPermalinkUrl] = useState('');
+
+  useEffect(() => {
+    setPermalinkUrl(window.location.href);
+  }, []);
 
   return (
     <article
@@ -419,9 +425,7 @@ function Work(props) {
             >
               <PermalinkIcon />
             </button>
-            <div className={styles.permalinkHref}>
-              {typeof window !== 'undefined' && window.location.href}
-            </div>
+            <div className={styles.permalinkHref}>{permalinkUrl}</div>
           </div>
         </Section>
 

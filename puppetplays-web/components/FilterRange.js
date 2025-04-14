@@ -1,11 +1,18 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useTranslation } from 'next-i18next';
 import * as Slider from '@radix-ui/react-slider';
 import FilterLabel from 'components/FilterLabel';
+import { useTranslation } from 'next-i18next';
+import PropTypes from 'prop-types';
+import { Fragment, useCallback, useEffect, useState } from 'react';
+
 import styles from './filterRange.module.scss';
 
-function FilterRange({ name = null, valueMin = null, valueMax = null, bounds = null, onAfterChange = null }) {
+function FilterRange({
+  name = null,
+  valueMin = null,
+  valueMax = null,
+  bounds = null,
+  onAfterChange = null,
+}) {
   const { t } = useTranslation();
   const [values, setValues] = useState([
     valueMin || bounds[0],
@@ -73,7 +80,6 @@ function FilterRange({ name = null, valueMin = null, valueMax = null, bounds = n
     </div>
   );
 }
-
 
 FilterRange.propTypes = {
   name: PropTypes.string.isRequired,

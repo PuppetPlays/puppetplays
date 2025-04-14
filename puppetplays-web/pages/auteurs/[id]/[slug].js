@@ -1,20 +1,21 @@
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import { useTranslation } from 'next-i18next';
+import Author from 'components/Author';
+import AuthorNote from 'components/Author/AuthorNote';
+import ContentLayout from 'components/ContentLayout';
+import Layout from 'components/Layout';
+import { PageSubtitle, PageTitle } from 'components/Primitives';
 import {
   getAuthorByIdQuery,
   getFetchAPIClient,
   getWorksOfAuthorQuery,
 } from 'lib/api';
-import Layout from 'components/Layout';
-import Author from 'components/Author';
-import { PageSubtitle, PageTitle } from 'components/Primitives';
-import ContentLayout from 'components/ContentLayout';
-import AuthorNote from 'components/Author/AuthorNote';
+import get from 'lodash/get';
+import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import PropTypes from 'prop-types';
 
 const AuthorPage = ({ authorData, authorWorksData }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   // Vérifier si les données nécessaires sont disponibles
   const hasData = authorData?.entry?.title;
@@ -29,10 +30,10 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
     return (
       <Layout>
         <Head>
-          <title>{`${t('common:authors')} | Puppetplays`}</title>
+          <title>{`${t('authors')} | Puppetplays`}</title>
         </Head>
         <ContentLayout style={{ maxWidth: 1072, padding: '32px 20px' }}>
-          <PageTitle smaller>{t('common:authors')}</PageTitle>
+          <PageTitle smaller>{t('authors')}</PageTitle>
           <div
             style={{
               maxWidth: '800px',
@@ -75,7 +76,7 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
                 color: 'var(--color-text-default)',
               }}
             >
-              {t('common:contentNotAvailable')}
+              {t('contentNotAvailable')}
             </h2>
 
             <p
@@ -87,7 +88,7 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
                 margin: '0 auto 24px',
               }}
             >
-              {t('common:authorsSectionComingSoon')}
+              {t('authorsSectionComingSoon')}
             </p>
 
             <div
@@ -99,7 +100,7 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
                 opacity: 0.3,
                 borderRadius: '2px',
               }}
-            ></div>
+            />
           </div>
         </ContentLayout>
       </Layout>
@@ -109,14 +110,12 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
   return (
     <Layout>
       <Head>
-        <title>
-          {authorData?.entry?.title || t('common:authors')} | Puppetplays
-        </title>
+        <title>{authorData?.entry?.title || t('authors')} | Puppetplays</title>
       </Head>
       <ContentLayout
         style={{ maxWidth: 678, padding: '62px 20px', textAlign: 'center' }}
       >
-        <PageSubtitle>{t('common:author')}</PageSubtitle>
+        <PageSubtitle>{t('author')}</PageSubtitle>
         {authorData?.entry && (
           <PageTitle>
             <Author {...get(authorData, 'entry', {})} />
@@ -142,7 +141,7 @@ AuthorPage.propTypes = {
 
 export default AuthorPage;
 
-export async function getServerSideProps({ locale, req, res, params, query }) {
+export async function getServerSideProps({ locale, params, query }) {
   try {
     const token = query && query.token;
     const apiClient = getFetchAPIClient({
@@ -164,6 +163,7 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
 
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         authorData: authorData || { entry: {} },
         authorWorksData: { entries: entries || [] },
       },
@@ -172,6 +172,7 @@ export async function getServerSideProps({ locale, req, res, params, query }) {
     console.error('Error fetching author:', error);
     return {
       props: {
+        ...(await serverSideTranslations(locale || 'fr', ['common'])),
         authorData: { entry: {} },
         authorWorksData: { entries: [] },
       },

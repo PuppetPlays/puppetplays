@@ -1,6 +1,6 @@
 import { modalTypes } from 'components/modalContext';
-import PropTypes from 'prop-types';
 import NoteDropdownMenu from 'components/NoteDropdownMenu';
+import PropTypes from 'prop-types';
 
 function AnimationTechnique({ id, title }) {
   return (

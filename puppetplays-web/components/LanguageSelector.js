@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+
 import styles from './languageSelector.module.scss';
 
 function LanguageSelector({ inverse = false, path = '/' }) {
@@ -27,6 +28,5 @@ LanguageSelector.propTypes = {
   inverse: PropTypes.bool,
   path: PropTypes.string,
 };
-
 
 export default LanguageSelector;

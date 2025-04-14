@@ -1,6 +1,6 @@
 import { getWorkByIdQuery } from '../../lib/api';
-import { getGraphQlRequestMock } from '../utils';
 import work from '../fixtures/work';
+import { getGraphQlRequestMock } from '../utils';
 
 const getWorkRequestBody = id => ({
   query: getWorkByIdQuery,
@@ -55,19 +55,25 @@ describe('Work page', () => {
     cy.visit('/oeuvres/2000/une-oeuvre-du-repertoire');
 
     // Click the menu button
-    cy.get('[data-testid="work-header-authors"] button[aria-label="Menu"]').click();
-    
+    cy.get(
+      '[data-testid="work-header-authors"] button[aria-label="Menu"]',
+    ).click();
+
     // Look for any dropdown/popup that appears with a more relaxed selector
     cy.get('body')
-      .find('[role="menu"], .dropdown-menu, .popup-menu, [aria-label*="menu"], .menu, [id*="menu"]')
+      .find(
+        '[role="menu"], .dropdown-menu, .popup-menu, [aria-label*="menu"], .menu, [id*="menu"]',
+      )
       .should('exist');
 
     // Click somewhere else to close the menu
     cy.get('body').click(10, 10); // Click at top-left corner of the page
-    
+
     // Verify that all menus are gone with the same relaxed selector
     cy.get('body')
-      .find('[role="menu"], .dropdown-menu, .popup-menu, [aria-label*="menu"], .menu, [id*="menu"]')
+      .find(
+        '[role="menu"], .dropdown-menu, .popup-menu, [aria-label*="menu"], .menu, [id*="menu"]',
+      )
       .should('not.exist');
   });
 });
