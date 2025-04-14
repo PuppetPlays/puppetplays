@@ -1,4 +1,4 @@
-dateModified: 1675435858
+dateModified: 1744643326
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -13,19 +13,39 @@ email:
     useAuthentication: ''
     username: ''
   transportType: craft\mail\transportadapters\Smtp
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@assetBasePath/images'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/images'
+  sounds:
+    hasUrls: true
+    name: Sounds
+    settings:
+      path: '@assetBasePath/sounds'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/sounds'
+  videos:
+    hasUrls: true
+    name: Videos
+    settings:
+      path: '@assetBasePath/videos'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/videos'
 meta:
   __names__:
     0efb8d7c-638f-4652-b952-44092a5657f1: 'Nombre d’actes / de parties' # Nombre d’actes / de parties
     0f4c66c2-2100-45f0-88f3-0f6f4d473f63: 'Langue principale' # Langue principale
     1b752928-627a-4f0d-a6a9-41a22636ab41: Public # Public
     1bddc6ff-b8f1-4708-af28-108cd6e92099: Works # Works
-    1c3b8264-0aba-4c01-bafa-956427f3e154: 'Contenu riche' # Contenu riche
     1c1041b2-7307-47b5-b3da-f7da389ed14b: 'Domaine public' # Domaine public
     2a3117bf-dd2f-46f2-802d-42fbd2e52e0a: Pseudonyme # Pseudonyme
     2cbf68ec-55ec-4aee-bf2d-b255cad39232: Langues # Langues
     2d8643ae-5357-48a9-a90c-59e78c29508c: 'Nombre de pages' # Nombre de pages
     2dd7c17a-3ef4-4aaf-a784-62648f6632fd: Auteur # Auteur
-    2e9e0ef6-71c0-4e08-931b-6b53d7197c7d: 'Pages du document scanné' # Pages du document scanné
     2f8bb2d7-f182-4a78-afa8-46f228a557e6: Traduction # Traduction
     3b937625-42ca-4656-9a7b-c999af708c26: 'Date de la 1ère représentation (min)' # Date de la 1ère représentation (min)
     03d78236-fed0-4e43-b21c-f2cd1a49e83c: Personnage # Personnage
@@ -42,7 +62,6 @@ meta:
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
     07c0d544-d28a-449e-a643-936d89cb7a3a: Images # Images
     07cc50ee-05e5-483d-8911-22552f44be92: 'Personnages du texte' # Personnages du texte
-    8bb29c67-1705-4166-95be-10680e4e36a9: 'Par défaut' # Par défaut
     8c8213c1-75f5-4c1c-bc23-96b213711e06: Formats # Formats
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale
     8e095ccd-7ed1-4c9b-99e1-b98480a0e9df: Compagnies # Compagnies
@@ -50,7 +69,6 @@ meta:
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
     9e670e52-0ab0-4dc1-a6e1-adc8efea5c13: 'Notice biographique' # Notice biographique
-    11f7a6ca-ab33-4bfc-9271-661e04bdf539: Image # Image
     18acc84f-5d36-4e13-8a6b-deff0a3d529b: 'Mots-clé des œuvres' # Mots-clé des œuvres
     22b828fc-b5e2-42a0-9050-446047f73230: Formats # Formats
     23c8664d-0988-47dc-96c4-e3887b436569: Prénom # Prénom
@@ -60,7 +78,6 @@ meta:
     33cd919f-b3f5-4276-be62-d114dbab9934: Personnages # Personnages
     040b562a-a40a-4667-84e7-0dc3ea1787ac: 'Édition moderne' # Édition moderne
     42a8e3c5-6dcf-483a-93e3-a0f462764cfc: Sous-titre # Sous-titre
-    42eb1ad9-7192-49f3-b9a8-1ba673244536: Page # Page
     45df3231-3a21-4a0c-93ea-01b0f58c5582: 'Genre (indiqué par l’auteur)' # Genre (indiqué par l’auteur)
     51f537ef-8b54-4c2f-b68c-f19542600077: 'Lieu d’écriture' # Lieu d’écriture
     53b06a2d-abbf-4ee4-b770-ca48f26e094e: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
@@ -79,14 +96,12 @@ meta:
     157ddd75-0868-4e2b-ba35-028ae3c8ae42: Pays # Pays
     209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
     269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
-    374cfc9a-f44d-4173-9b1a-08ee58b72e0c: 'Parcours découverte' # Parcours découverte
     397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
     412f63f1-746e-468d-8c05-6e0deedc2b05: 'Procédés théâtraux' # Procédés théâtraux
     461b2661-d7d4-4998-8e56-f8ed7dacfb2f: 'Titre traduit' # Titre traduit
     492cc09a-052e-40d6-a33b-7ca74a831805: 'Institutions de conservation' # Institutions de conservation
     980b265a-4482-43da-940c-1d595933f6db: Langue # Langue
     1817d1f9-6682-4c22-b338-19654ae0c45c: 'Techniques d’animation' # Techniques d’animation
-    2634dd0c-e6eb-4be4-88a7-c3b674e71c36: 'Pdf du document scanné' # Pdf du document scanné
     2955ed2b-b666-48a6-81c5-99e6d9de1253: 'Type d''image' # Type d'image
     3023cfcd-a11d-4ed7-b779-4b40493ac931: Édition # Édition
     3802b7c5-d17c-4241-873e-872425f9ea93: DOI # DOI
@@ -142,7 +157,6 @@ meta:
     e2d5c38e-3607-4630-bddf-0875190aa133: 'Œuvres corrélées' # Œuvres corrélées
     e4e23bc0-a6bd-4075-943f-4607a5fac9be: 'Œuvres corrélées' # Œuvres corrélées
     e9d4c568-7f9b-4fe4-bb99-e3b7b2759c40: 'Lieu de la première représentation' # Lieu de la première représentation
-    e9f030e0-d5e7-485b-be1a-39496843ac8c: Thumbnail # Thumbnail
     e170dd2d-c858-4261-834a-9c2fee02cbd5: Mots-clés # Mots-clés
     e205ebe8-5557-4b7c-a43f-9cf548e90c8d: Pays # Pays
     e9587719-a8d4-42d6-97c2-f0259ec67922: 'Institutions de conservation' # Institutions de conservation
@@ -180,7 +194,7 @@ plugins:
   preparse-field:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.5
+    schemaVersion: 1.1.0
   reasons:
     edition: standard
     enabled: true
@@ -189,6 +203,11 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: Q4BYB7UT1ERYYGMOD31CNABL
+    schemaVersion: 3.0.12
   tag-manager:
     edition: standard
     enabled: true
@@ -197,26 +216,91 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: $PLUGIN_WORKFLOW_KEY
-    schemaVersion: 2.1.5
+    schemaVersion: 2.6.0
     settings:
-      editorNotesRequired: ''
+      editorNotesRequired:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       editorNotifications: '1'
       editorNotificationsOptions:
         - replyToReviewer
-      editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+      editorUserGroup:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
       enabledSections: '*'
       lockDraftSubmissions: '1'
-      publisherNotesRequired: ''
+      publisherNotesRequired:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       publisherNotifications: '1'
-      publisherUserGroup: a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+      publisherUserGroup:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
       reviewerApprovalNotifications: ''
       reviewerNotifications: '1'
-      reviewerUserGroups: ''
+      reviewerUserGroups:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       selectedPublishers: '*'
 system:
   edition: pro
   live: true
   name: puppetplays
   retryDuration: null
-  schemaVersion: 3.7.8
+  schemaVersion: 4.5.3.0
   timeZone: Europe/Paris

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Site module for Craft CMS 3.x
  *
@@ -47,7 +48,7 @@ class HypotextEntries extends BaseRelationField
     // =========================================================================
 
     // public $inputTemplate = 'sitemodule/_components/fields/HypotextEntries_input';
-    public $inputTemplate = '_includes/forms/elementSelect';
+    public string $inputTemplate = '_includes/forms/elementSelect';
 
     // Static Methods
     // =========================================================================
@@ -55,7 +56,7 @@ class HypotextEntries extends BaseRelationField
     /**
      * @inheritdoc
      */
-    protected static function elementType(): string
+    public static function elementType(): string
     {
         return Entry::class;
     }
@@ -96,7 +97,7 @@ class HypotextEntries extends BaseRelationField
      * @inheritdoc
      * @since 3.3.0
      */
-    public function getContentGqlType()
+    public function getContentGqlType(): array
     {
         return [
             'name' => $this->handle,
@@ -110,14 +111,15 @@ class HypotextEntries extends BaseRelationField
      * @inheritdoc
      * @since 3.3.0
      */
-    public function getEagerLoadingGqlConditions()
+    public function getEagerLoadingGqlConditions(): ?array
     {
         $allowedEntities = Gql::extractAllowedEntitiesFromSchema();
         $allowedSectionUids = $allowedEntities['sections'] ?? [];
         $allowedEntryTypeUids = $allowedEntities['entrytypes'] ?? [];
 
+        //! IT WAS RETURNING FALSE BUT THIS METHOD MUST RETURN ARRAY OR NULL
         if (empty($allowedSectionUids) || empty($allowedEntryTypeUids)) {
-            return false;
+            return [];
         }
 
         $entryTypeIds = Db::idsByUids(DbTable::ENTRYTYPES, $allowedEntryTypeUids);

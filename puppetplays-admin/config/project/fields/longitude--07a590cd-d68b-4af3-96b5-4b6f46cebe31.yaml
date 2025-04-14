@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: 'decimal(10,7)'
 fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716 # Places
 handle: longitude
@@ -9,11 +10,11 @@ settings:
   defaultValue: null
   max: '180'
   min: '-180'
-  prefix: ''
+  prefix: null
   previewCurrency: ''
   previewFormat: decimal
   size: '10'
-  suffix: ''
+  suffix: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Number

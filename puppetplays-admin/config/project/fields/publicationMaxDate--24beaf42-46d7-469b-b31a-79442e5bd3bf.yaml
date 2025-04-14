@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: integer(10)
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: publicationMaxDate
@@ -9,11 +10,11 @@ settings:
   defaultValue: null
   max: null
   min: '1000'
-  prefix: ''
+  prefix: null
   previewCurrency: ''
   previewFormat: none
   size: '4'
-  suffix: ''
+  suffix: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Number

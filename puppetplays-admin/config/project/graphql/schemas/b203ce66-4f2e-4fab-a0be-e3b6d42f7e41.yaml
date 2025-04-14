@@ -18,8 +18,6 @@ scope:
   - 'entrytypes.67544b27-a5f2-4753-acf4-8a396c6d000e:read' # Personnages originaux
   - 'sections.bfd49b21-b009-43f4-bb18-fcb1b08f5bd5:read' # Nom du personnage pour l’indexation
   - 'entrytypes.33cd919f-b3f5-4276-be62-d114dbab9934:read' # Personnages
-  - 'sections.374cfc9a-f44d-4173-9b1a-08ee58b72e0c:read' # Parcours découverte
-  - 'entrytypes.8bb29c67-1705-4166-95be-10680e4e36a9:read' # Par défaut
   - 'sections.e205ebe8-5557-4b7c-a43f-9cf548e90c8d:read' # Pays
   - 'entrytypes.bd5e6b34-8b0b-4a47-93f3-f9a23c0a39aa:read' # Pays
   - 'sections.63ea829e-b0e4-4021-8ab5-1b0f095d3daf:read' # Personnes
@@ -42,3 +40,7 @@ scope:
   - 'volumes.37720b4b-f4c6-42b4-8400-af5f71b3e072:read' # Sounds
   - 'usergroups.everyone:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
+  - 'sites.4cda444a-a132-4409-8e1e-5205e6a53896:read' # Puppetplays IT
+  - 'sites.397a9f9f-ff18-42c4-98ff-dbb87c17b754:read' # Puppetplays FR
+  - 'sites.59986aab-e6c1-4cdf-a062-8db833d2b327:read' # Puppetplays EN
+  - 'sites.bf194204-844c-4373-ad71-db3f6243b824:read' # Puppetplays DE

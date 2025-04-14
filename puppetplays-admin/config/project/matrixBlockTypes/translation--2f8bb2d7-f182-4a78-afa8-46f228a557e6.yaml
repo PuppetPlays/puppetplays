@@ -26,6 +26,7 @@ fieldLayouts:
         sortOrder: 1
 fields:
   80e9ab34-aa2b-44e3-9798-dadda7e7a772: # Références bibliographiques
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: bibliographicRecord
@@ -54,6 +55,7 @@ fields:
     translationMethod: none
     type: craft\redactor\Field
   980b265a-4482-43da-940c-1d595933f6db: # Langue
+    columnSuffix: null
     contentColumnType: string
     fieldGroup: null
     handle: translationLanguage

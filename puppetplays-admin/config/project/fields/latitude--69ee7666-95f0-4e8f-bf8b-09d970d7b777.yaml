@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: 'decimal(9,7)'
 fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716 # Places
 handle: latitude
@@ -9,11 +10,11 @@ settings:
   defaultValue: null
   max: '90'
   min: '-90'
-  prefix: ''
+  prefix: null
   previewCurrency: ''
   previewFormat: decimal
   size: '9'
-  suffix: ''
+  suffix: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Number
