@@ -66,7 +66,7 @@ puppetplays-web/
 ├── __mocks__/             # Jest mock files
 ├── server.js              # Custom Express server
 ├── next.config.js         # Next.js configuration
-└── i18n.js                # Internationalization config
+└── next-i18next.config.js # Internationalization config
 ```
 
 ### Key Directories
