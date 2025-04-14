@@ -168,20 +168,20 @@ jobs:
       SECURITY_KEY: $SECURITY_KEY_STAGING
       PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
       ENVIRONMENT: staging
-      SITE_URL: http://cchum-kvm-puppetplays.huma-num.fr:7000
-      CP_URL: http://cchum-kvm-puppetplays.huma-num.fr:11000
-      COOKIE_DOMAIN: cchum-kvm-puppetplays.huma-num.fr
+      SITE_URL: https://staging.puppetplays.intactile.info
+      CP_URL: https://admin.staging.puppetplays.intactile.info
+      COOKIE_DOMAIN: .staging.puppetplays.intactile.info
       EMAIL_HOSTNAME: 0.0.0.0
       EMAIL_PORT: 1025
       EMAIL_SENDER: no-reply@intactile.info
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
-      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
+      DOCKER_HOST: ssh://root@104.236.6.205
       COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"
+            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
       - run: 
           name: Deploy to staging server
           command: |
