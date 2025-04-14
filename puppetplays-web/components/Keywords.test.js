@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+
 import { Keyword } from './Keywords.js';
 
 // Mock du composant Keywords
-const Keywords = ({ keywords = [], component: Component = Keyword, fill = false }) => {
+const Keywords = ({
+  keywords = [],
+  component: Component = Keyword,
+  fill = false,
+}) => {
   const attrs = {};
   if (fill) {
     attrs['data-fill'] = fill;

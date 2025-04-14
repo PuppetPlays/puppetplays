@@ -1,10 +1,10 @@
 module.exports = {
-  stringify: jest.fn((obj) => {
+  stringify: jest.fn(obj => {
     return Object.entries(obj)
       .map(([key, value]) => `${key}=${value}`)
       .join('&');
   }),
-  parse: jest.fn((str) => {
+  parse: jest.fn(str => {
     if (!str) return {};
     return str
       .split('&')
@@ -13,5 +13,5 @@ module.exports = {
         result[key] = value;
         return result;
       }, {});
-  })
-}; 
+  }),
+};
