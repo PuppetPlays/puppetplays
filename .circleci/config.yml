@@ -181,7 +181,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
+            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"
       - run: 
           name: Deploy to staging server
           command: |
