@@ -52,13 +52,14 @@ jobs:
       - run:
           name: Run unit/integration tests
           command: yarn run test:ci
+  # TODO: Staging need to be revaluated
   build_web_staging:
     executor:
       name: node/default
       tag: '20.18'
     working_directory: ~/project/puppetplays-web
     environment:
-      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
+      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
     steps:
       - checkout:
           path: ~/project
@@ -82,19 +83,24 @@ jobs:
       - run:
           name: Build code
           command: yarn run build
+  # TODO: Staging need to be revaluated
   docker_web_staging:
     docker:
       - image: cimg/base:2020.01
     environment:
-      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
+      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
     steps:
       - checkout
       - setup_remote_docker
       - run: 
           name: Publish web staging image to docker hub
           command: |
-            export NEXT_PUBLIC_API_URL=https://api.staging.puppetplays.intactile.info
+            export NEXT_PUBLIC_API_URL=http://cchum-kvm-puppetplays.huma-num.fr:8080
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker pull << pipeline.parameters.web-image-staging >> || true
             docker build --build-arg NEXT_PUBLIC_API_URL --pull -t << pipeline.parameters.web-image-staging >> --cache-from << pipeline.parameters.web-image-staging >> puppetplays-web
@@ -115,6 +121,10 @@ jobs:
           command: |
             export NEXT_PUBLIC_API_URL=https://api.puppetplays.eu
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker pull << pipeline.parameters.web-image >> || true
             docker build --build-arg NEXT_PUBLIC_API_URL --pull -t << pipeline.parameters.web-image >> --cache-from << pipeline.parameters.web-image >> puppetplays-web
@@ -122,6 +132,7 @@ jobs:
             docker pull << pipeline.parameters.web-image >>
             docker tag << pipeline.parameters.web-image >> << pipeline.parameters.web-image-release >>
             docker push << pipeline.parameters.web-image-release >>
+  # TODO: Staging need to be revaluated
   docker_admin_staging:
     docker:
       - image: cimg/base:2020.01
@@ -132,6 +143,10 @@ jobs:
           name: Publish admin staging image to docker hub
           command: |
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker pull << pipeline.parameters.admin-image-staging >> || true
             docker build --pull -t << pipeline.parameters.admin-image-staging >> --cache-from << pipeline.parameters.admin-image-staging >> puppetplays-admin
@@ -149,6 +164,10 @@ jobs:
           name: Publish admin production image to docker hub
           command: |
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker pull << pipeline.parameters.admin-image >> || true
             docker build --pull -t << pipeline.parameters.admin-image >> --cache-from << pipeline.parameters.admin-image >> puppetplays-admin
@@ -156,6 +175,7 @@ jobs:
             docker pull << pipeline.parameters.admin-image >>
             docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
             docker push << pipeline.parameters.admin-image-release >>
+  # TODO: Staging need to be revaluated
   deploy_staging:
     machine:
       image: ubuntu-2204:current
@@ -168,14 +188,14 @@ jobs:
       SECURITY_KEY: $SECURITY_KEY_STAGING
       PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
       ENVIRONMENT: staging
-      SITE_URL: https://staging.puppetplays.intactile.info
-      CP_URL: https://admin.staging.puppetplays.intactile.info
-      COOKIE_DOMAIN: .staging.puppetplays.intactile.info
+      SITE_URL: http://cchum-kvm-puppetplays.huma-num.fr:7000
+      CP_URL: http://cchum-kvm-puppetplays.huma-num.fr:11000
+      COOKIE_DOMAIN: cchum-kvm-puppetplays.huma-num.fr
       EMAIL_HOSTNAME: 0.0.0.0
       EMAIL_PORT: 1025
-      EMAIL_SENDER: no-reply@intactile.info
-      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
-      DOCKER_HOST: ssh://root@104.236.6.205
+      EMAIL_SENDER: no-reply@puppetplays.eu
+      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
+      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
       COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
@@ -190,6 +210,10 @@ jobs:
             echo -e "$DOCKER_STAGING_TLS_CERT" > ~/.docker/cert.pem
             echo -e "$DOCKER_STAGING_TLS_KEY" > ~/.docker/key.pem
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
@@ -212,21 +236,32 @@ jobs:
       EMAIL_PORT: 25
       EMAIL_SENDER: no-reply@puppetplays.eu
       NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
-      DOCKER_HOST: ssh://tpaillot@134.158.38.161
+      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
       COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
+            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"
       - run: 
           name: Deploy to production server
           command: |
+          
+            # Check if environment variables are properly set
+            if [ "$POSTGRES_PASSWORD_PRODUCTION" = "\$POSTGRES_PASSWORD_PRODUCTION" ] || [ "$SECURITY_KEY_PRODUCTION" = "\$SECURITY_KEY_PRODUCTION" ]; then
+              echo "Error: POSTGRES_PASSWORD_PRODUCTION or SECURITY_KEY_PRODUCTION environment variables are not properly set in CircleCI"
+              exit 1
+            fi
+            
             mkdir -p ~/.docker
             echo -e "$DOCKER_PRODUCTION_TLS_CA" > ~/.docker/ca.pem
             echo -e "$DOCKER_PRODUCTION_TLS_CERT" > ~/.docker/cert.pem
             echo -e "$DOCKER_PRODUCTION_TLS_KEY" > ~/.docker/key.pem
             # Use direct authentication with API token instead of interactive login
+            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
+              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
+              exit 1
+            fi
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
