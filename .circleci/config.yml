@@ -175,13 +175,13 @@ jobs:
       EMAIL_PORT: 1025
       EMAIL_SENDER: no-reply@intactile.info
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.intactile.info
-      DOCKER_HOST: ssh://root@104.236.6.205
+      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
       COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "43:e4:82:b2:69:24:9e:79:4a:d4:73:3f:97:2b:67:d8"
+            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"  # Remplacez par la nouvelle empreinte fournie par CircleCI après avoir ajouté la clé
       - run: 
           name: Deploy to staging server
           command: |
