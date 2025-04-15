@@ -211,31 +211,52 @@ export default function Home({
                 <img src="/home-integral-works.jpg" alt="" />
               </Section>
 
-              <Section title={t('animationTechniqueTitle')} isComingSoon>
-                <div className={styles.comingSoonWrapper}>
-                  <SplitLayout
-                    title={
-                      animationTechnique
-                        ? animationTechnique.title || ''
-                        : t('animationTechniqueTitle')
-                    }
-                    subtitle={t('common:animationTechnique')}
-                    image={{
-                      url:
-                        animationTechnique &&
-                        animationTechnique.mainImage &&
-                        Array.isArray(animationTechnique.mainImage) &&
-                        animationTechnique.mainImage.length > 0
-                          ? animationTechnique.mainImage[0].url
-                          : '/photo-manuscrit.jpg',
-                    }}
-                  >
+              <Section isComingSoon={!animationTechnique}>
+                <SplitLayout
+                  title={
+                    animationTechnique
+                      ? animationTechnique.title || ''
+                      : t('animationTechniqueTitle')
+                  }
+                  subtitle={t('common:animationTechnique')}
+                  image={{
+                    url:
+                      animationTechnique &&
+                      animationTechnique.mainImage &&
+                      Array.isArray(animationTechnique.mainImage) &&
+                      animationTechnique.mainImage.length > 0
+                        ? animationTechnique.mainImage[0]
+                        : '/photo-manuscrit.jpg',
+                  }}
+                >
+                  {animationTechnique && animationTechnique.excerpt ? (
+                    <>
+                      <HtmlContent html={animationTechnique.excerpt} />
+                      <ButtonLink
+                        href={`/techniques-d-animation/${animationTechnique.id}/${animationTechnique.slug}`}
+                        ref={animationTechniqueLinkRef}
+                      >
+                        {t('common:readNote')}
+                      </ButtonLink>
+                    </>
+                  ) : (
                     <div className={styles.comingSoonContent}>
                       <p>{t('animationTechniqueDescription')}</p>
                     </div>
-                  </SplitLayout>
-                </div>
+                  )}
+                  <div className={styles.blockLink}>
+                    <Link href="/techniques-d-animation">
+                      {t('seeAllAnimationTechniques')}
+                    </Link>
+                  </div>
+                </SplitLayout>
               </Section>
+
+              <div className={styles.keywords}>
+                <Section title={t('exploreByKeywords')}>
+                  <Keywords keywords={keywords} component={Tag} />
+                </Section>
+              </div>
 
               <Section
                 title={t('exploreByAuthors')}
@@ -252,7 +273,7 @@ export default function Home({
                       Array.isArray(safeAuthors) &&
                       safeAuthors.map(entry => (
                         <Card
-                          key={entry.id || Math.random().toString()}
+                          key={entry.id}
                           fixedHeight
                           subtitle={
                             entry.birthDate || entry.deathDate ? (
@@ -266,7 +287,7 @@ export default function Home({
                             entry.mainImage &&
                             Array.isArray(entry.mainImage) &&
                             entry.mainImage.length > 0
-                              ? entry.mainImage[0].optimizedSrc
+                              ? entry.mainImage[0]
                               : null
                           }
                           title={entry.title || ''}
@@ -279,54 +300,44 @@ export default function Home({
                       ))}
                   </div>
                 ) : (
-                  <div className={styles.comingSoonWrapper}>
-                    <div className={styles.authors}>
-                      <Card
-                        fixedHeight
-                        subtitle={<span>1901 — 1983</span>}
-                        imageUrl="/authors/Nino Pozzo.jpg"
-                        title="Nino Pozzo"
-                        href="#"
-                      />
-                      <Card
-                        fixedHeight
-                        subtitle={<span>1902 — 1977</span>}
-                        imageUrl="/authors/Hermann Aicher.jpg"
-                        title="Hermann Aicher"
-                        href="#"
-                      />
-                      <Card
-                        fixedHeight
-                        subtitle={<span>1809 — 1866</span>}
-                        imageUrl="/authors/Johann Scheible.jpg"
-                        title="Johann Scheible"
-                        href="#"
-                      />
-                      <Card
-                        fixedHeight
-                        subtitle={<span>1755 — 1835</span>}
-                        imageUrl="/authors/Schink Johann Friedrich.gif"
-                        title="Schink Johann Friedrich"
-                        href="#"
-                      />
-                    </div>
+                  <div className={styles.authors}>
+                    <Card
+                      fixedHeight
+                      subtitle={<span>1901 — 1983</span>}
+                      imageUrl="/authors/Nino Pozzo.jpg"
+                      title="Nino Pozzo"
+                      href="#"
+                    />
+                    <Card
+                      fixedHeight
+                      subtitle={<span>1902 — 1977</span>}
+                      imageUrl="/authors/Hermann Aicher.jpg"
+                      title="Hermann Aicher"
+                      href="#"
+                    />
+                    <Card
+                      fixedHeight
+                      subtitle={<span>1809 — 1866</span>}
+                      imageUrl="/authors/Johann Scheible.jpg"
+                      title="Johann Scheible"
+                      href="#"
+                    />
+                    <Card
+                      fixedHeight
+                      subtitle={<span>1755 — 1835</span>}
+                      imageUrl="/authors/Schink Johann Friedrich.gif"
+                      title="Schink Johann Friedrich"
+                      href="#"
+                    />
                   </div>
                 )}
               </Section>
 
               {work && (
-                <Section
-                  title={t('discoverSingleWork')}
-                  footer={
-                    <Link href="/base-de-donnees">
-                      {t('browseDatabaseWorks')}
-                    </Link>
-                  }
-                >
+                <Section>
                   <SplitLayout
                     title={work.title || ''}
-                    subtitle={work.originalTitle || ''}
-                    date={work.date || ''}
+                    subtitle={t('lightOnWork')}
                     linkRef={workLinkRef}
                     image={
                       work.mainImage &&
@@ -336,17 +347,18 @@ export default function Home({
                         : null
                     }
                   >
-                    {work.textExcerpt && (
+                    {work.note && (
                       <HtmlContent
                         html={
                           // Safe text clipping
-                          typeof work.textExcerpt === 'string'
-                            ? clip(work.textExcerpt, 250, { html: true })
+                          typeof work.note === 'string'
+                            ? clip(work.note, 250, { html: true })
                             : ''
                         }
                       />
                     )}
-                    <div className={styles.workActions} component={Tag}>
+                    <div className={styles.workActions}>
+                      <Keywords keywords={work.keywords} component={Tag} />
                       <ButtonLink
                         href={`/oeuvres/${work.id}/${work.slug}`}
                         ref={workLinkRef}
