@@ -1,6 +1,7 @@
 import CloseButton from 'components/CloseButton';
 import { fetchAPI, getWorkDocumentByIdQuery } from 'lib/api';
 import { hasAtLeastOneItem } from 'lib/utils';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';

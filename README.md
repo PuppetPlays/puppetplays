@@ -148,3 +148,9 @@ See [CHANGELOG.md](./CHANGELOG.md) for version history and features.
 ## 📄 License
 
 See [LICENSE.md](./LICENSE.md) for more information.
+
+## 🔄 Database Synchronization
+
+For development with production data, a database synchronization script is available in the `scripts` directory. This tool allows you to download and import the production database into your local DDEV environment.
+
+See [Database Sync Documentation](./scripts/README.md) for setup and usage instructions.
