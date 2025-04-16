@@ -172,7 +172,7 @@ export default function Home({
                       title={t('exploreBy.database.title')}
                       thumbnailUrl="/database-thumbnail.jpg"
                       description={t('exploreBy.database.subtitle')}
-                      to="/base-de-donnees"
+                      to="/base-de-donnees?view=MAP"
                     />
                     <EntryPointCard
                       title={t('exploreBy.anthology.title')}
@@ -400,34 +400,6 @@ export default function Home({
           </div>
         </main>
         <footer className={styles.footer}>
-          <section className={styles.footerPartners}>
-            <div className={styles.footerPartnersInner}>
-              <div className={styles.footerPartnersFinancers}>
-                <img src="/logo-ue.png" height="80" alt={t('ue.alt')} />
-                <img src="/logo-erc.png" height="80" alt={t('erc.alt')} />
-                <p>{t('projectFinancedBy')}</p>
-              </div>
-              <ul className={styles.footerPartnersPartners}>
-                {PARTNERS &&
-                  Array.isArray(PARTNERS) &&
-                  PARTNERS.map(partner => (
-                    <li key={partner}>
-                      <Link
-                        href={t(`${partner}.url`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          height="50"
-                          src={`/logo-${partner}.svg`}
-                          alt={t(`${partner}.alt`)}
-                        />
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </section>
           <section className={styles.intro}>
             <div className={styles.footerTopBar}>
               <Link

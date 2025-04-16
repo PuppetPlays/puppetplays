@@ -1,3 +1,4 @@
+import Card from 'components/Card';
 import ContentLayout from 'components/ContentLayout';
 import Layout from 'components/Layout';
 import { PageTitle } from 'components/Primitives';
@@ -6,6 +7,7 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
+import styles from 'styles/AnimationTechniques.module.scss';
 
 function AnimationTechniques({ initialData }) {
   const { t } = useTranslation();
@@ -96,14 +98,23 @@ function AnimationTechniques({ initialData }) {
             />
           </div>
         ) : (
-          // Ici, vous pouvez ajouter le rendu pour quand il y a des données
-          <div>
+          <div className={styles.grid}>
             {initialData?.entries &&
               Array.isArray(initialData.entries) &&
               initialData.entries.map(technique => (
-                <div key={technique.id}>
-                  <h2>{technique.title}</h2>
-                  {/* Autres informations sur la technique d'animation */}
+                <div key={technique.id} className={styles.gridItem}>
+                  <Card
+                    fixedHeight
+                    title={technique.title}
+                    imageUrl={
+                      technique.mainImage &&
+                      Array.isArray(technique.mainImage) &&
+                      technique.mainImage.length > 0
+                        ? technique.mainImage[0]
+                        : null
+                    }
+                    href={`/techniques-d-animation/${technique.id}/${technique.slug}`}
+                  />
                 </div>
               ))}
           </div>

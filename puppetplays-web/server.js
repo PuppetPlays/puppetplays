@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const next = require('next');
 
-const port = parseInt(process.env.PORT, 10) || 7001;
+const port = parseInt(process.env.PORT, 10) || 7000;
 const env = process.env.NODE_ENV;
 const dev = env !== 'production';
 const app = next({
