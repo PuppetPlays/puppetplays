@@ -58,6 +58,7 @@ const VIEWS = {
 function Home({ initialData }) {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const [isClientSide, setIsClientSide] = useState(false);
   const [filters, setFilters] = useState(() => {
     return queryParamsToState(router.query);
   });
@@ -77,6 +78,10 @@ function Home({ initialData }) {
     { id: 'firstAuthorTitle', title: t('common:author') },
   ];
   const scrollElementRef = useRef();
+
+  useEffect(() => {
+    setIsClientSide(true);
+  }, []);
 
   useEffect(() => {
     let newFilters = filters;
@@ -256,7 +261,7 @@ function Home({ initialData }) {
       }
     >
       <Head>
-        <title>{t('common:database')} | Puppetplays</title>
+        <title>{`${t('common:database')} | Puppetplays`}</title>
         <meta
           name="description"
           content={t(
@@ -328,7 +333,7 @@ function Home({ initialData }) {
           </div>
         </Fragment>
       )}
-      {filters.view === VIEWS.map && (
+      {filters.view === VIEWS.map && isClientSide && (
         <Suspense fallback="loading">
           <div className={styles.map}>
             <Button
