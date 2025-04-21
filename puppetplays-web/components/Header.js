@@ -29,7 +29,7 @@ function Header({ children = null }) {
       </h1>
       <div className={styles.content}>{children}</div>
       <div className={styles.languageSelector}>
-        <LanguageSelector path="/" />
+        <LanguageSelector />
       </div>
 
       <MainNav />

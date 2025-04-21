@@ -65,7 +65,7 @@ function MainNav({ inverse = false }) {
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        itemsCount={width < 480 ? 6 : 4}
+        itemsCount={width < 480 ? 7 : 5}
         renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
@@ -89,6 +89,17 @@ function MainNav({ inverse = false }) {
           <li key="techniques">
             <Link href="/techniques-d-animation" legacyBehavior>
               <a>{t('common:animationTechniques')}</a>
+            </Link>
+          </li>,
+          <li key="tact" className={styles.externalLink}>
+            <Link
+              href="https://tact.demarre-shs.fr/project/41"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.externalLinkAnchor}
+            >
+              {t('common:tactPlatform')}
+              <span className={styles.externalLinkIcon}>↗</span>
             </Link>
           </li>,
         ]}

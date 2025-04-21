@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './languageSelector.module.scss';
 
-function LanguageSelector({ inverse = false, path = '/' }) {
+function LanguageSelector({ inverse = false }) {
   const { locale, locales } = useRouter();
 
   return (
@@ -15,7 +15,7 @@ function LanguageSelector({ inverse = false, path = '/' }) {
     >
       {locales.map(l => (
         <li key={l} className={l === locale ? 'is-current' : ''}>
-          <Link href={path} locale={l}>
+          <Link href="#" locale={l}>
             {l}
           </Link>
         </li>

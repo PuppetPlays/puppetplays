@@ -362,6 +362,21 @@
   font-size: 14px;
   color: var(--color-brand);
   margin-top: 36px;
+  padding-bottom: 10px;
+  
+  a {
+    white-space: normal;
+  }
+  
+  @media (min-width: 980px) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    
+    a {
+      white-space: nowrap;
+    }
+  }
 }
 
 .introMedia {

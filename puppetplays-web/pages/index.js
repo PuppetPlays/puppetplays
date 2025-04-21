@@ -128,7 +128,7 @@ export default function Home({
         <div className={styles.topBar}>
           <header>
             <div className={styles.LanguageSelector}>
-              <LanguageSelector path="/" />
+              <LanguageSelector />
             </div>
             <MainNav />
           </header>
@@ -455,6 +455,13 @@ export default function Home({
                     rel="noopener noreferrer"
                   >
                     {t('projectNews')}
+                  </Link>
+                  <Link
+                    href="https://tact.demarre-shs.fr/project/41"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('common:tactPlatform')}
                   </Link>
                   <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
