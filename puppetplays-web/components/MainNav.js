@@ -34,7 +34,7 @@ const Wrapper = ({ children }) => {
 };
 
 function MainNav({ inverse = false }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['common', 'project']);
   const { width } = useWindowSize();
   const { locale } = useRouter();
 
@@ -65,7 +65,7 @@ function MainNav({ inverse = false }) {
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        itemsCount={width < 480 ? 7 : 5}
+        itemsCount={width < 480 ? 8 : 6}
         renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
@@ -89,6 +89,11 @@ function MainNav({ inverse = false }) {
           <li key="techniques">
             <Link href="/techniques-d-animation" legacyBehavior>
               <a>{t('common:animationTechniques')}</a>
+            </Link>
+          </li>,
+          <li key="project">
+            <Link href="/projet" legacyBehavior>
+              <a>{t('project:title')}</a>
             </Link>
           </li>,
           <li key="tact" className={styles.externalLink}>

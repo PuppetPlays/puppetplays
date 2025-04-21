@@ -19,7 +19,7 @@
     &.isCurrent {
       font-weight: 700;
     }
-    
+
     &.externalLink {
       border-top: 1px solid var(--color-bg-depth-2);
     }
@@ -33,7 +33,7 @@
     &:focus {
       color: var(--color-text);
     }
-    
+
     &.externalLinkAnchor {
       display: flex;
       align-items: center;

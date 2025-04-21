@@ -1,0 +1,107 @@
+.nav {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(1, 5, 91, 0.1);
+  position: relative;
+}
+
+.navTitleContainer {
+  margin-bottom: 1.5rem;
+}
+
+.navTitle {
+  font-size: 1.25rem;
+  color: #01055b;
+  margin-bottom: 0;
+  font-weight: 500;
+  display: block;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #f8d04e;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.15rem;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin-right: 2rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.navLink {
+  display: inline-block;
+  padding: 0.75rem 0;
+  color: #555;
+  font-weight: 400;
+  font-size: 0.95rem;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #01055b;
+  }
+
+  &.active {
+    font-weight: 500;
+    color: #01055b;
+    position: relative;
+  }
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #01055b;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+  }
+
+  .navItem {
+    flex: 0 0 auto;
+    margin-right: 1.5rem;
+    white-space: nowrap;
+  }
+
+  .navLink {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+}
