@@ -91,11 +91,6 @@ function MainNav({ inverse = false }) {
               <a>{t('common:animationTechniques')}</a>
             </Link>
           </li>,
-          <li key="project">
-            <Link href="/projet" legacyBehavior>
-              <a>{t('project:title')}</a>
-            </Link>
-          </li>,
           <li key="tact" className={styles.externalLink}>
             <Link
               href="https://tact.demarre-shs.fr/project/41"

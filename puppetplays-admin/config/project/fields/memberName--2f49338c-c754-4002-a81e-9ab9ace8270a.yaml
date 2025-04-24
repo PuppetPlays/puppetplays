@@ -1,0 +1,19 @@
+columnSuffix: hqxpnnbb
+contentColumnType: text
+fieldGroup: d602197a-ca5a-473a-961c-bf792880b11f # Scientific Committee
+handle: memberName
+instructions: 'Full name of the scientific committee member'
+name: 'Member Name'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

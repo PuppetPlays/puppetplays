@@ -1,0 +1,15 @@
+columnSuffix: gpfsmivt
+contentColumnType: string(255)
+fieldGroup: e2264f91-0ef8-4237-9334-9b9061b59c0e # Partners
+handle: partnerLink
+instructions: 'Link to the partner''s website'
+name: 'Partner Link'
+searchable: false
+settings:
+  maxLength: '255'
+  placeholder: null
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

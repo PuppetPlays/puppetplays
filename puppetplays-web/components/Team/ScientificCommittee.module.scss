@@ -1,0 +1,137 @@
+/* Scientific Committee Styles */
+.committeeContainer {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.paragraph {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  max-width: 100%;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 480px) {
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    max-width: 900px;
+  }
+}
+
+.committeeAccordion {
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 480px) {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+  }
+}
+
+.committeeItem {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.committeeButtonContainer {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.committeeButton {
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 1.25rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+
+  &:hover {
+    background-color: rgba(1, 5, 91, 0.02);
+  }
+}
+
+.committeeHeading {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #01055b;
+  flex: 1;
+  padding-right: 20px;
+  max-width: 100%;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+.committeeIcon {
+  color: #01055b;
+  transition: transform 0.3s ease;
+  background: rgba(1, 5, 91, 0.05);
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-top: 2px;
+
+  &.committeeIconOpen {
+    transform: rotate(180deg);
+    background: rgba(248, 208, 78, 0.2);
+  }
+}
+
+.committeeContent {
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+.committeeBio {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,15 @@
+columnSuffix: qznhhaja
+contentColumnType: string(255)
+fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
+handle: orcid
+instructions: ''
+name: 'ORCID Link'
+searchable: false
+settings:
+  maxLength: '255'
+  placeholder: null
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

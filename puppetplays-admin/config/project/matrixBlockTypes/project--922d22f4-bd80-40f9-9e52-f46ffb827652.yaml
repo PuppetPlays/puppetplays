@@ -1,0 +1,95 @@
+field: b81de301-cf42-40e7-88d2-fcce6f00cafc # Research Project
+fieldLayouts:
+  d229b2d1-9794-4870-82b3-af27359473b1:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: dd98b4ac-7f07-42c8-84ba-2ef778802ee9 # research Title
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 482ccda1-74c5-4555-8575-9f829fce5155 # research Content
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: fe4f7b25-47ca-473c-a6a2-85d827124f50 # research Link
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  482ccda1-74c5-4555-8575-9f829fce5155: # research Content
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: researchContent
+    instructions: ''
+    name: 'research Content'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '10'
+      multiline: '1'
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  dd98b4ac-7f07-42c8-84ba-2ef778802ee9: # research Title
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: researchTitle
+    instructions: ''
+    name: 'research Title'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: language
+    type: craft\fields\PlainText
+  fe4f7b25-47ca-473c-a6a2-85d827124f50: # research Link
+    columnSuffix: eoommocn
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: researchLink
+    instructions: ''
+    name: 'research Link'
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: null
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+handle: project
+name: project
+sortOrder: 1

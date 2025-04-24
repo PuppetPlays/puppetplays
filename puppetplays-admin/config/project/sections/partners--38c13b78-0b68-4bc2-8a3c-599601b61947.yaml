@@ -1,0 +1,39 @@
+defaultPlacement: end
+enableVersioning: true
+handle: partners
+name: Partners
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - ''
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  4cda444a-a132-4409-8e1e-5205e6a53896: # Puppetplays IT
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: 'partners/{slug}'
+  397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: 'partners/{slug}'
+  59986aab-e6c1-4cdf-a062-8db833d2b327: # Puppetplays EN
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: 'partners/{slug}'
+  bf194204-844c-4373-ad71-db3f6243b824: # Puppetplays DE
+    enabledByDefault: true
+    hasUrls: true
+    template: null
+    uriFormat: 'partners/{slug}'
+type: channel

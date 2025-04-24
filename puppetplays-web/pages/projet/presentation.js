@@ -188,30 +188,14 @@ const ProjectPresentation = () => {
               {t('presentation.video.title')}
             </h2>
             <div className={styles.videoWrapper}>
-              <video
-                controls
-                preload="metadata"
+              <iframe
+                src="https://www.youtube.com/embed/Ique18J-erw"
+                title="PuppetPlays Presentation"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
                 className={styles.video}
-                playsInline
-                controlsList="nodownload"
-                aria-label={
-                  t('presentation.video.ariaLabel') ||
-                  'Vidéo de présentation PuppetPlays'
-                }
-              >
-                <source
-                  src="/videos/PuppetPlays Presentation.mp4"
-                  type="video/mp4"
-                />
-                <track
-                  kind="captions"
-                  src="/videos/captions.vtt"
-                  srcLang="fr"
-                  label="Français"
-                  default
-                />
-                <p>{t('presentation.video.placeholder')}</p>
-              </video>
+              />
             </div>
             <p className={styles.videoCaption}>
               {t('presentation.video.caption')}

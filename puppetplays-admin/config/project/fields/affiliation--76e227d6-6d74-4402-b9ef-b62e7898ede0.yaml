@@ -1,0 +1,19 @@
+columnSuffix: cfcpqzfu
+contentColumnType: text
+fieldGroup: d602197a-ca5a-473a-961c-bf792880b11f # Scientific Committee
+handle: affiliation
+instructions: 'Member''s academic or professional affiliation'
+name: Affiliation
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

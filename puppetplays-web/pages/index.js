@@ -265,11 +265,13 @@ export default function Home({
                 </SplitLayout>
               </Section>
 
-              <div className={styles.keywords}>
-                <Section title={t('exploreByKeywords')}>
-                  <Keywords keywords={keywords} component={Tag} />
-                </Section>
-              </div>
+              {keywords.length > 0 && (
+                <div className={styles.keywords}>
+                  <Section title={t('exploreByKeywords')}>
+                    <Keywords keywords={keywords} component={Tag} />
+                  </Section>
+                </div>
+              )}
 
               <Section
                 title={t('exploreByAuthors')}
