@@ -1,0 +1,19 @@
+columnSuffix: ifwdazux
+contentColumnType: text
+fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
+handle: biography
+instructions: ''
+name: Biography
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '20'
+  multiline: '1'
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

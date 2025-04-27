@@ -1,0 +1,92 @@
+{
+  "title": "Qu'est-ce que PuppetPlays ?",
+  "metaDescription": "Découvrez le projet PuppetPlays, une initiative de recherche axée sur l'exploration des répertoires des théâtres de marionnettes d'Europe occidentale.",
+  "mainNav": {
+    "presentation": "Présentation du projet",
+    "team": "L'équipe",
+    "videos": "Ressources vidéos",
+    "communications": "Communications"
+  },
+  "videos": {
+    "titleUnavailable": "Titre non disponible",
+    "exploreIntro": "Explorez notre collection de vidéos sur le théâtre de marionnettes",
+    "oneCollection": "1 collection",
+    "noCollections": "Aucune collection",
+    "collectionCount": "{{count}} collections",
+    "collectionCount_plural": "{{count}} collections",
+    "viewCollectionAria": "Voir la collection: {{title}}",
+    "video": "vidéo",
+    "video_plural": "vidéos",
+    "videoCount": "{{count}} vidéo",
+    "videoCount_plural": "{{count}} vidéos",
+    "oneVideoTotal": "1 vidéo au total",
+    "noVideos": "Aucune vidéo",
+    "videosTotal": "{{count}} vidéos au total",
+    "totalVideoCount": "{{count}} vidéos au total",
+    "totalVideoCount_plural": "{{count}} vidéos au total",
+    "loadingVideos": "Chargement des vidéos...",
+    "metaDescription": "Collections de vidéos sur le théâtre de marionnettes - Projet PuppetPlays"
+  },
+  "videoDetail": {
+    "notFoundTitle": "Vidéo non trouvée",
+    "notFoundMetaDescription": "Vidéo non trouvée - Projet PuppetPlays",
+    "notFoundMessage": "La vidéo que vous recherchez n'existe pas ou une erreur s'est produite.",
+    "backToGallery": "Retour à la galerie vidéo",
+    "defaultMetaDescription": "Vidéo du projet PuppetPlays",
+    "pageTitle": "{{title}} | Puppetplays",
+    "playerComingSoon": "Lecteur vidéo bientôt disponible",
+    "browserNotSupported": "Votre navigateur ne prend pas en charge la lecture de cette vidéo.",
+    "noVideoAvailable": "Aucune vidéo disponible pour cette ressource",
+    "captions": "Sous-titres",
+    "relatedVideos": "Vidéos similaires",
+    "errorNotFoundNakala": "Vidéo non trouvée dans Nakala.",
+    "errorLoadingData": "Impossible de charger les données de la vidéo."
+  },
+  "presentation": {
+    "title": "Présentation du projet",
+    "subtitle": "PuppetPlays (GA 835193) - Un programme de recherche financé par l'Union Européenne",
+    "video": {
+      "title": "Présentation vidéo du projet",
+      "caption": "Découvrez notre programme de recherche à travers cette vidéo",
+      "placeholder": "Présentation vidéo à venir"
+    },
+    "description": {
+      "intro": "PuppetPlays est un programme de recherche sur les pièces pour marionnettes, dirigé par Didier Plassard, professeur d'études théâtrales, soutenu par l'Université Paul-Valéry – Montpellier 3. Lauréat de l'appel à projets \"Advanced Grant\" du Conseil Européen de la Recherche (ERC) en 2018, il est financé par l'Union Européenne pour cinq ans (octobre 2019 – septembre 2025).",
+      "goals": {
+        "title": "Les principaux objectifs de PuppetPlays sont :",
+        "goal1": "collecter un corpus représentatif de pièces d'Europe occidentale (Allemagne, Autriche, Belgique, Espagne, France, Grande-Bretagne, Italie, Pays-Bas, Portugal, Suisse) entre le XVIIe et le XXIe siècle ;",
+        "goal2": "identifier les caractéristiques de la dramaturgie pour marionnettes et leurs variations selon les époques, les sphères culturelles, les conditions de production et le public visé ;",
+        "goal3": "réévaluer la contribution de ces répertoires à la construction d'une identité culturelle européenne."
+      },
+      "ambitions": {
+        "title": "PuppetPlays a pour ambition de :",
+        "ambition1": "contribuer au développement d'outils et de méthodes pour les Humanités Numériques à travers la création d'une plateforme en ligne avec une base de données, une anthologie de textes, ainsi que plusieurs ressources documentaires et pédagogiques pour les chercheurs, les artistes, les enseignants, les étudiants...",
+        "ambition2": "approfondir la recherche sur le sujet peu connu de l'écriture pour la marionnette avec la production d'une monographie conclusive par Didier Plassard et l'organisation de deux colloques internationaux ;",
+        "ambition3": "stimuler et soutenir les jeunes chercheurs dans ce domaine en attribuant des bourses doctorales et post-doctorales pour 5 ans."
+      },
+      "access": "L'accès à tous les résultats publiés et à toutes les ressources de PuppetPlays sera ouvert et gratuit."
+    },
+    "invisibleRepertoire": {
+      "title": "Un répertoire invisible",
+      "paragraph1": "Avez-vous déjà assisté à une représentation de l'Opera dei pupi, les marionnettes à tiges traditionnelles de Naples et de Sicile ? Si oui, vous avez peut-être été surpris d'apprendre que la plupart des histoires racontées par les pupari (les marionnettistes) sont basées sur les aventures de Charlemagne et de ses paladins, bien que la Sicile n'ait jamais fait partie de l'empire carolingien.",
+      "paragraph2": "Et vous êtes-vous déjà demandé comment les pupari pouvaient mémoriser tous les épisodes de ces aventures, puis les transmettre à la génération suivante ? Bien sûr, les dialogues étaient souvent improvisés pendant les représentations, mais les pupari devaient néanmoins jouer quotidiennement un nouvel épisode d'épopées très longues, avec leurs multiples intrigues entremêlées, sur plusieurs mois. Pour ce faire, les pupari prenaient des notes de base sur la structure narrative de ces cycles, les divisions en épisodes, les changements de scène, et parfois aussi sur les parties les plus importantes de chaque épisode.",
+      "paragraph3": "Comme d'autres institutions siciliennes aujourd'hui, le Museo Internazionale delle Marionette Antonio Pasqualino à Palerme conserve des dizaines de ces manuscrits, datant pour la plupart des premières décennies du XXe siècle. Ces textes étaient écrits sur les matériaux d'écriture les moins chers qu'on pouvait trouver à l'époque : des cahiers d'écolier en papier de mauvaise qualité à forte teneur en acidité, qui devenaient de plus en plus fragiles avec le temps. En tournant les pages de ces précieux cahiers, on risque toujours de les déchirer, comme s'il s'agissait d'anciens papyrus égyptiens. Et n'espérez pas lire ces pièces ou ces canevas dans des livres, car seul un très petit nombre de ces textes ont été publiés par des historiens. Si certaines transcriptions de représentations se trouvent dans des thèses universitaires, la plupart de ces travaux académiques ne sont que dactylographiés : comme les manuscrits originaux, ils dorment sur les étagères des bibliothèques, sans être consultés.",
+      "paragraph4": "Cette situation est typique de la grande majorité des pièces pour marionnettes dans toute l'Europe. Parce que la marionnette était autrefois largement un art populaire, s'adressant aux classes inférieures, puis aux enfants, les pièces étaient rarement publiées. Elles ont donc eu tendance à rester en dehors de l'histoire du théâtre, ou ont été considérées, au mieux, comme une branche distincte, voire insignifiante, de celle-ci.",
+      "paragraph5": "Les spécialistes du théâtre de marionnettes eux-mêmes accordent très peu d'attention aux questions dramaturgiques. Lorsque vous regardez les collections de musées, les expositions et les publications, la marionnette semble souvent n'être qu'une collection de poupées : de beaux objets émouvants, peut-être des chefs-d'œuvre de sculpture ou d'artisanat, sans aucune indication sur la façon dont ils sont animés, les scènes dans lesquelles ils apparaissaient, ni surtout les pièces dans lesquelles ils jouaient. S'ils jouaient Hamlet, par exemple, la représentation de marionnettes était-elle une parodie, une version résumée ou une réécriture de la pièce ? Le texte de la représentation était-il directement inspiré de la tragédie de Shakespeare ou conservait-il des aspects de Fratricide Punished, ou Prince Hamlet of Dannemark, la pièce anonyme souvent considérée comme un vestige d'un \"Ur-Hamlet\", que les compagnies itinérantes anglaises jouaient dans les pays germanophones au XVIe siècle ? Dans plusieurs pays européens, les légendes de Saint Antoine ou de Geneviève de Brabant (Genovefa) figuraient parmi les plus grands succès sur les scènes de marionnettes ; mais personne n'a comparé leurs différentes versions et nous ne savons pas où elles ont été jouées pour la première fois.",
+      "paragraph6": "Cela n'est pas seulement dû au fait que de grandes parties de ces répertoires sont anonymes ou ont été composées par les marionnettistes eux-mêmes, parfois sous forme de réductions de drames d'acteurs ou d'adaptations de romans, de légendes et de contes, et parfois comme des histoires originales. Les pièces écrites par des dramaturges reconnus sont également exclues de l'histoire du théâtre et des éditions actuelles de leurs œuvres.",
+      "paragraph7": "En France, le Théâtre complet de Goethe dans la prestigieuse collection \"Bibliothèque de la Pléiade\" n'inclut pas Jahrmarksfest zu Plundersweilern (La Foire de Plundersweiler), ni Ein Fastnachtspiel (Une Pièce de Carnaval), ni le fragment Hanswursts Hochzeit (Les Noces d'Hanswurst).",
+      "paragraph8": "En Allemagne, l'édition Suhrkamp des pièces de Thomas Bernhard, par exemple, n'incluait pas Der Berg (La Montagne), une pièce \"pour hommes-marionnettes ou marionnettes-hommes\", qui n'a été incluse que récemment dans l'édition complète des œuvres de Bernhard.",
+      "paragraph9": "Et qui sait que le plus important dramaturge portugais du XVIIIe siècle, Antonio José da Silva, dit \"Le Juif\", qui fut torturé, condamné à mort et brûlé par l'Inquisition, écrivit toutes ses comédies pour marionnettes ? Qui sait aujourd'hui que David Garrick, Gerhart Hauptmann, Edmond Rostand, Paul Claudel, Hugo von Hofmannsthal, Italo Calvino, Ernst Toller, Rafael Alberti ou Howard Barker ont écrit pour la scène de marionnettes ? Qui a lu leurs pièces ou même quelques analyses de leurs œuvres ?",
+      "paragraph10": "Des milliers de pièces sont ainsi éparpillées : Henryk Jurkowski, dans Écrivains et marionnettes – Quatre siècles de littérature dramatique (Institut International de la Marionnette, 1991), a déjà répertorié 500 pièces d'auteurs littéraires, bien que son enquête ne dépasse pas les années 1930. Dans certaines collections, comme celle du Musée Municipal de Munich, environ 1 500 pièces manuscrites ou dactylographiées sont actuellement conservées.",
+      "paragraph11": "Mettre en lumière ce répertoire fragmenté et presque invisible est le principal objectif de PuppetPlays."
+    },
+    "centralHypothesis": {
+      "title": "L'hypothèse centrale",
+      "paragraph1": "L'hypothèse centrale de PuppetPlays est que le théâtre de marionnettes, qui durant les XVIIe et XVIIIe siècles était essentiellement une pratique pour contourner les interdictions du théâtre d'acteurs, est progressivement devenu un médium théâtral spécifique. Il maintient en vie des modes et des genres que le théâtre d'acteurs a abandonnés ; il donne vie à des personnages spécifiques profondément ancrés dans les identités locales et régionales ; et il explore des formes expérimentales d'écriture dramatique.",
+      "paragraph2": "Prendre en compte les répertoires de marionnettes dans l'histoire de la littérature dramatique peut ainsi conduire à certaines révisions du champ : cela permettra d'introduire plus de diversité et de complexité dans la succession linéaire traditionnelle des poétiques (le Romantisme après le Classicisme, le Symbolisme après le Réalisme, le Post-Modernisme après le Modernisme, etc.), qui ne reflète pas la variété des productions théâtrales d'une même époque.",
+      "paragraph3": "Cette question d'une dramaturgie spécifique se pose particulièrement lorsque nous examinons l'écriture contemporaine. Pourquoi certains auteurs choisissent-ils de composer des pièces pour marionnettes, ombres et toutes sortes d'objets animés – parfois comme seuls interprètes sur scène, parfois mêlés à des acteurs vivants ?",
+      "paragraph4": "Lorsque les marionnettistes ont besoin de textes pour une nouvelle production, quel imaginaire spécifique de la marionnette ces dramaturges développent-ils ? Il semble que l'introduction d'interprètes artificiels sur scène élargisse le spectre des possibilités dramaturgiques : l'écriture s'affranchit des \"lois\" du réalisme et de la vraisemblance ; mais elle peut aussi conduire à dire (ou à montrer) l'inexprimable : explosions de violence, cruauté (souvenons-nous du vieux spectacle de Punch et Judy !), ou obscénité. La naissance, la maladie, le handicap, la vieillesse et la souffrance peuvent être représentés sur scène, avec empathie mais sans les risques d'un pathos excessif ou forcé.",
+      "paragraph5": "Parce qu'ils représentent l'humain sous les traits d'un objet, les arts de la marionnette sont sans doute l'instrument le mieux adapté pour raconter des histoires de déshumanisation et de réhumanisation : c'est, en tout cas, l'une des principales hypothèses que PuppetPlays se propose de tester."
+    }
+  }
+} 

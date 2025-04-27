@@ -1,0 +1,33 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
+handle: profileImage
+instructions: ''
+name: Image
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  defaultUploadLocationSubpath: team
+  limit: '1'
+  localizeRelations: false
+  previewMode: full
+  restrictFiles: '1'
+  selectionLabel: ''
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  singleUploadLocationSubpath: ''
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: false
+  validateRelatedElements: true
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

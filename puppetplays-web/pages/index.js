@@ -33,7 +33,21 @@ import PropTypes from 'prop-types';
 import { Fragment, useRef } from 'react';
 import styles from 'styles/Home.module.scss';
 import clip from 'text-clipper';
-const PARTNERS = ['rir', 'upvm'];
+
+const PARTNERS = [
+  {
+    name: 'rir',
+    link: 'https://rirra21.www.univ-montp3.fr/',
+    logo: '/logo-rir.svg',
+    alt: 'RIR',
+  },
+  {
+    name: 'upvm',
+    link: 'https://www.univ-montp3.fr/',
+    logo: '/logo-upvm.svg',
+    alt: 'UPVM',
+  },
+];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
 
 const HeaderImage = () => {
@@ -64,7 +78,7 @@ const PartnersBar = ({ t }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/logo-ue.png" height="86" alt={t('ue.alt')} />
+            <img src="/logo-ue.png" height="86" alt={t('home:ue.alt')} />
           </Link>
         </li>
         <li>
@@ -73,26 +87,26 @@ const PartnersBar = ({ t }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/logo-erc.png" height="86" alt={t('erc.alt')} />
+            <img src="/logo-erc.png" height="86" alt={t('home:erc.alt')} />
           </Link>
         </li>
-        <p>{t('projectFinancedBy')}</p>
+        <p>{t('home:projectFinancedBy')}</p>
       </ul>
       <div className={styles.logosBarSpacer} />
       <ul className={styles.logosBar}>
         {PARTNERS &&
           Array.isArray(PARTNERS) &&
           PARTNERS.map(partner => (
-            <li key={partner}>
+            <li key={partner.name}>
               <Link
-                href={t(`${partner}.url`)}
+                href={partner.link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
                   height="52"
-                  src={`/logo-${partner}.svg`}
-                  alt={t(`${partner}.alt`)}
+                  src={partner.logo}
+                  alt={partner.alt || `${partner.name} logo`}
                 />
               </Link>
             </li>
@@ -128,7 +142,7 @@ export default function Home({
         <div className={styles.topBar}>
           <header>
             <div className={styles.LanguageSelector}>
-              <LanguageSelector path="/" />
+              <LanguageSelector />
             </div>
             <MainNav />
           </header>
@@ -190,8 +204,7 @@ export default function Home({
                     <EntryPointCard
                       title={t('exploreBy.project.title')}
                       thumbnailUrl="/project-thumbnail.jpg"
-                      to={t('ourSiteUrl')}
-                      target="_blank"
+                      to="/projet/presentation"
                     />
                   </ul>
                 </div>
@@ -252,11 +265,13 @@ export default function Home({
                 </SplitLayout>
               </Section>
 
-              <div className={styles.keywords}>
-                <Section title={t('exploreByKeywords')}>
-                  <Keywords keywords={keywords} component={Tag} />
-                </Section>
-              </div>
+              {keywords.length > 0 && (
+                <div className={styles.keywords}>
+                  <Section title={t('exploreByKeywords')}>
+                    <Keywords keywords={keywords} component={Tag} />
+                  </Section>
+                </div>
+              )}
 
               <Section
                 title={t('exploreByAuthors')}
@@ -455,6 +470,13 @@ export default function Home({
                     rel="noopener noreferrer"
                   >
                     {t('projectNews')}
+                  </Link>
+                  <Link
+                    href="https://tact.demarre-shs.fr/project/41"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('common:tactPlatform')}
                   </Link>
                   <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}

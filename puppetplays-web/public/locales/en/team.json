@@ -1,0 +1,27 @@
+{
+  "title": "Team",
+  "metaDescription": "The PuppetPlays project brings together researchers and experts in puppet theatre from across Europe.",
+  "introduction": "Our international team brings together passionate researchers and experts in the field of puppet theatre, under the direction of Professor Didier Plassard at University Paul-Valéry Montpellier 3.",
+  "present": "Present",
+  "viewProfile": "View profile",
+  "viewOrcid": "View ORCID profile for",
+  "viewCV": "View CV for",
+  "viewResearchProject": "View research project",
+  "close": "Close",
+  "researchProject": "Research Project",
+  
+  "teamMembers": {
+    "title": "The PuppetPlays Team",
+    "description": "Our team brings together specialists in theatre history, performance studies, and puppet arts to uncover and analyze the hidden heritage of puppet theatre literature in Europe."
+  },
+  
+  "scientificCommittee": {
+    "title": "Scientific Committee",
+    "description": "The scientific committee provides expertise and guidance to the PuppetPlays project, ensuring academic rigor and international collaboration."
+  },
+  
+  "partners": {
+    "title": "Partners",
+    "description": "The PuppetPlays project is made possible through the support of our partners and funding institutions."
+  }
+} 

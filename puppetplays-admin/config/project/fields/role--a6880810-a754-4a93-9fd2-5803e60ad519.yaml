@@ -1,0 +1,19 @@
+columnSuffix: jhenkjjf
+contentColumnType: text
+fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
+handle: role
+instructions: ''
+name: Role
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: 'e.g., "Post-doctorate"'
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

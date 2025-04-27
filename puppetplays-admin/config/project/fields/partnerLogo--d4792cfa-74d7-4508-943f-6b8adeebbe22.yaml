@@ -1,0 +1,33 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: e2264f91-0ef8-4237-9334-9b9061b59c0e # Partners
+handle: partnerLogo
+instructions: "Yes (select or create an \"uploads/partners\" folder)\r\n"
+name: 'Partner Logo'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowUploads: true
+  allowedKinds:
+    - image
+  defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  defaultUploadLocationSubpath: uploads/partners
+  limit: '1'
+  localizeRelations: false
+  previewMode: full
+  restrictFiles: '1'
+  selectionLabel: ''
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  singleUploadLocationSubpath: uploads/partners
+  source: null
+  sources: '*'
+  targetSiteId: null
+  useSingleFolder: true
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Assets

@@ -21,6 +21,7 @@
   "backToHome": "Retour à la page d'accueil ›",
   "database": "Base de données",
   "map": "Carte",
+  "tactPlatform": "Transcription TACT",
   "knowMore": "En savoir +",
   "contactUs": "Pour nous contacter",
   "searchPlaceholder": "Recherchez un titre, un auteur, une thématique",
@@ -122,7 +123,10 @@
     "lowerBoundPeriod": "Borne minimum de la période",
     "upperBoundPeriod": "Borne maximum de la période",
     "selectedPeriod": "Période sélectionnée",
-    "noOptions": "Aucune option"
+    "noOptions": "Aucune option",
+    "filterByTag": "Filtrer par tag...",
+    "tags": "Tags",
+    "sortBy": "Trier par"
   },
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",
@@ -161,10 +165,24 @@
     "authentication": "Vous n'avez pas l'autorisation d'accéder à cette ressource.",
     "validation": "La requête contient des données invalides.",
     "notFound": "La ressource demandée n'a pas été trouvée.",
-    "noResultsFound": "Aucun résultat trouvé"
+    "noResultsFound": "Aucun résultat ne correspond à votre recherche.",
+    "loadingTitle": "Erreur de chargement",
+    "loadingData": "Erreur lors du chargement des données: {{error}}",
+    "loadingCollections": "Erreur de chargement des collections : {{error}}",
+    "collections": "collections"
   },
   "readMore": "En savoir plus",
   "home": "Accueil",
   "about": "À propos",
-  "contact": "Contact"
+  "contact": "Contact",
+  "date": "Date",
+  "description": "Description",
+  "seeMore": "Voir plus",
+  "seeLess": "Voir moins",
+  "titleUnavailable": "Titre Indisponible",
+  "descriptionUnavailable": "Pas de description disponible.",
+  "titleUnknown": "Titre Inconnu",
+  "dateLabel": "Date :",
+  "durationLabel": "Durée :",
+  "authorLabel": "Auteur :"
 }

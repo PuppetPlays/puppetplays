@@ -11,4 +11,16 @@ module.exports = {
   experimental: {
     forceSwcTransforms: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'puppetplays.ddev.site',
+        port: '7443',
+        pathname: '/**',
+      },
+    ],
+    dangerouslyAllowSVG: true,
+    unoptimized: true,
+  },
 };

@@ -1,0 +1,20 @@
+columnSuffix: tzbanuba
+contentColumnType: integer(10)
+fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
+handle: displayOrder
+instructions: ''
+name: 'Display Order'
+searchable: false
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: '1'
+  prefix: null
+  previewCurrency: ''
+  previewFormat: none
+  size: null
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number
