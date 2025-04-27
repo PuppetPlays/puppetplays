@@ -53,5 +53,40 @@
       "paragraph4": "When puppeteers require texts for a new production, what specific imaginary of puppetry do these playwrights develop? It seems that the introduction of artificial performers on stage broadens the spectrum of dramaturgical possibilities: writing is freed from the \"laws\" of realism and plausibility; but it can also lead to speaking of (or to showing) the inexpressible: explosions of violence, cruelty (let's remember the old Punch and Judy show!), or obscenity. Birth, illness, disability, old age, and suffering can be portrayed on stage, with empathy but without the risks of excessive or forced pathos.",
       "paragraph5": "Because they represent the human through the guise of an object, the arts of puppetry are undoubtedly the best adapted instrument to tell stories of dehumanization and rehumanization: it is, in any case, one of the main hypotheses that PuppetPlays proposes to test."
     }
+  },
+  "videos": {
+    "titleUnavailable": "Title unavailable",
+    "exploreIntro": "Explore our collection of videos on puppet theatre",
+    "oneCollection": "1 collection",
+    "noCollections": "No collections",
+    "collectionCount": "{{count}} collection",
+    "collectionCount_plural": "{{count}} collections",
+    "viewCollectionAria": "View collection: {{title}}",
+    "video": "video",
+    "video_plural": "videos",
+    "videoCount": "{{count}} video",
+    "videoCount_plural": "{{count}} videos",
+    "oneVideoTotal": "1 video in total",
+    "noVideos": "No videos",
+    "videosTotal": "{{count}} videos in total",
+    "totalVideoCount": "{{count}} video in total",
+    "totalVideoCount_plural": "{{count}} videos in total",
+    "loadingVideos": "Loading videos...",
+    "metaDescription": "Video collections on puppet theatre - PuppetPlays Project"
+  },
+  "videoDetail": {
+    "notFoundTitle": "Video Not Found",
+    "notFoundMetaDescription": "Video Not Found - PuppetPlays Project",
+    "notFoundMessage": "The video you are looking for does not exist or an error occurred.",
+    "backToGallery": "Back to video gallery",
+    "defaultMetaDescription": "PuppetPlays Project Video",
+    "pageTitle": "{{title}} | Puppetplays",
+    "playerComingSoon": "Video player coming soon",
+    "browserNotSupported": "Your browser does not support playing this video.",
+    "noVideoAvailable": "No video available for this resource",
+    "captions": "Captions",
+    "relatedVideos": "Related Videos",
+    "errorNotFoundNakala": "Video not found in Nakala.",
+    "errorLoadingData": "Could not load video data."
   }
 } 

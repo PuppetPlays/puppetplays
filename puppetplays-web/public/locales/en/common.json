@@ -123,7 +123,10 @@
     "lowerBoundPeriod": "Lower bound period",
     "upperBoundPeriod": "Upper bound period",
     "selectedPeriod": "Selected period",
-    "noOptions": "No option"
+    "noOptions": "No option",
+    "filterByTag": "Filter by tag...",
+    "tags": "Tags",
+    "sortBy": "Sort by"
   },
   "imageCopyright": "Copyright: ",
   "works": "Works",
@@ -168,10 +171,23 @@
     "authentication": "You do not have permission to access this resource.",
     "validation": "The request contains invalid data.",
     "notFound": "The requested resource was not found.",
-    "noResultsFound": "No results found for your search criteria."
+    "noResultsFound": "No results found for your search criteria.",
+    "loadingTitle": "Loading Error",
+    "loadingData": "Error loading data: {{error}}",
+    "loadingCollections": "Error loading collections: {{error}}"
   },
   "readMore": "Read more",
   "home": "Home",
   "about": "About",
-  "contact": "Contact"
+  "contact": "Contact",
+  "date": "Date",
+  "description": "Description",
+  "seeMore": "See more",
+  "seeLess": "See less",
+  "titleUnavailable": "Title Unavailable",
+  "descriptionUnavailable": "No description available.",
+  "titleUnknown": "Title Unknown",
+  "dateLabel": "Date:",
+  "durationLabel": "Duration:",
+  "authorLabel": "Author:"
 }
