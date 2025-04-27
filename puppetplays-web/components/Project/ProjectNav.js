@@ -9,21 +9,22 @@ const ProjectNav = ({ currentPath }) => {
   const { t } = useTranslation('project');
   const { locale } = useRouter();
 
-  const navItems = [
+  // Define the navigation items structure without translation
+  const navKeys = [
     {
-      label: t('mainNav.presentation'),
+      key: 'mainNav.presentation',
       path: '/projet/presentation',
     },
     {
-      label: t('mainNav.team'),
+      key: 'mainNav.team',
       path: '/projet/equipe',
     },
     {
-      label: t('mainNav.videos'),
+      key: 'mainNav.videos',
       path: '/projet/videos',
     },
     {
-      label: t('mainNav.communications'),
+      key: 'mainNav.communications',
       path: '/projet/communications',
     },
   ];
@@ -31,8 +32,9 @@ const ProjectNav = ({ currentPath }) => {
   return (
     <nav className={styles.nav} aria-label="Project sections navigation">
       <ul className={styles.navList}>
-        {navItems.map(item => {
+        {navKeys.map(item => {
           const isActive = currentPath === item.path;
+          // Use key for both server and client rendering
           return (
             <li key={item.path} className={styles.navItem}>
               <Link
@@ -41,7 +43,7 @@ const ProjectNav = ({ currentPath }) => {
                 className={`${styles.navLink} ${isActive ? styles.active : ''}`}
                 aria-current={isActive ? 'page' : undefined}
               >
-                {item.label}
+                {t(item.key)}
                 {isActive && <span className={styles.activeIndicator} />}
               </Link>
             </li>
