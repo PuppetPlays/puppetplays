@@ -303,9 +303,10 @@ export default function Home({
                             entry.mainImage &&
                             Array.isArray(entry.mainImage) &&
                             entry.mainImage.length > 0
-                              ? entry.mainImage
+                              ? entry.mainImage[0].url
                               : null
                           }
+                          mainImage={entry.mainImage}
                           title={entry.title || ''}
                           href={
                             entry.id && entry.slug
