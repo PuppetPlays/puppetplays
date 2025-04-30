@@ -16,6 +16,10 @@
       "description": "Discovery paths – ERC project PuppetPlays"
     }
   },
+  "accessibility": {
+    "captions": "Captions"
+  },
+  "noData": "No data available",
   "navMenu": "Browsing menu",
   "menu": "Menu",
   "backToHome": "Back to homepage ›",
@@ -174,7 +178,8 @@
     "noResultsFound": "No results found for your search criteria.",
     "loadingTitle": "Loading Error",
     "loadingData": "Error loading data: {{error}}",
-    "loadingCollections": "Error loading collections: {{error}}"
+    "loadingCollections": "Error loading collections: {{error}}",
+    "collections": "collections"
   },
   "readMore": "Read more",
   "home": "Home",

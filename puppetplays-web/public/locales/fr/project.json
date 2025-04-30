@@ -45,6 +45,9 @@
   "presentation": {
     "title": "Présentation du projet",
     "subtitle": "PuppetPlays (GA 835193) - Un programme de recherche financé par l'Union Européenne",
+    "heroImage": {
+      "alt": "Illustration du projet PuppetPlays"
+    },
     "video": {
       "title": "Présentation vidéo du projet",
       "caption": "Découvrez notre programme de recherche à travers cette vidéo",

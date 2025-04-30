@@ -10,6 +10,9 @@
   "presentation": {
     "title": "Project Presentation",
     "subtitle": "PuppetPlays (GA 835193) - A research programme funded by the European Union",
+    "heroImage": {
+      "alt": "PuppetPlays Project Illustration"
+    },
     "video": {
       "title": "Project video presentation",
       "caption": "Discover our research program through this video",

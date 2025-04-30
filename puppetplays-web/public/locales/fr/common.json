@@ -16,6 +16,11 @@
       "description": "Parcours découverte – Projet ERC PuppetPlays"
     }
   },
+  "accessibility": {
+    "captions": "Sous-titres"
+  },
+  "noData": "Aucune donnée disponible",
+  "collections": "collections",
   "navMenu": "Menu de navigation",
   "menu": "Menu",
   "backToHome": "Retour à la page d'accueil ›",
