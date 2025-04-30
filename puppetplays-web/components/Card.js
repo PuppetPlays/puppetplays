@@ -13,6 +13,7 @@ function Card({
   imageUrl = null,
   fixedHeight = false,
 }) {
+  console.log('Card', { href, title, subtitle, mainImage, imageUrl, fixedHeight });
   const cx = classNames.bind(styles);
 
   // Handle different image sources (backward compatibility + new pattern)

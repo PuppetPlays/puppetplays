@@ -302,7 +302,7 @@ export default function Home({
                             entry.mainImage &&
                             Array.isArray(entry.mainImage) &&
                             entry.mainImage.length > 0
-                              ? entry.mainImage[0]
+                              ? entry.mainImage
                               : null
                           }
                           title={entry.title || ''}
