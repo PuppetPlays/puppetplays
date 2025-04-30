@@ -122,6 +122,7 @@ export default function Home({
   work = null,
   keywords = [],
 }) {
+  console.log('Home', { animationTechnique, authors, work, keywords });
   const { t } = useTranslation('home');
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
