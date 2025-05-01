@@ -1,39 +1,72 @@
 defaultPlacement: end
 enableVersioning: true
 handle: team
-name: Team
+name: Equipe
 previewTargets:
   -
     __assoc__:
       -
         - label
-        - 'Primary entry page'
+        - 'Page FR'
       -
         - urlFormat
-        - 'team/{slug}'
+        - '{alias(''@livePreviewUrl'')}/projet/equipe'
       -
         - refresh
         - '1'
-propagationMethod: all
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page EN'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/en/projet/equipe'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page IT'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/it/projet/equipe'
+      -
+        - refresh
+        - '1'
+  -
+    __assoc__:
+      -
+        - label
+        - 'Page DE'
+      -
+        - urlFormat
+        - '{alias(''@livePreviewUrl'')}/de/projet/equipe'
+      -
+        - refresh
+        - '1'
+propagationMethod: custom
 siteSettings:
   4cda444a-a132-4409-8e1e-5205e6a53896: # Puppetplays IT
-    enabledByDefault: true
+    enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'team/{slug}'
+    uriFormat: projet/equipe
   397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR
-    enabledByDefault: true
+    enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'team/{slug}'
+    uriFormat: projet/equipe
   59986aab-e6c1-4cdf-a062-8db833d2b327: # Puppetplays EN
-    enabledByDefault: true
+    enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'team/{slug}'
+    uriFormat: projet/equipe
   bf194204-844c-4373-ad71-db3f6243b824: # Puppetplays DE
-    enabledByDefault: true
+    enabledByDefault: false
     hasUrls: true
     template: null
-    uriFormat: 'team/{slug}'
+    uriFormat: projet/equipe
 type: channel

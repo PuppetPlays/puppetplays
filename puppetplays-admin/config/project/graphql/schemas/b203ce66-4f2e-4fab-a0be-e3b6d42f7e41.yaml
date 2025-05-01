@@ -24,8 +24,8 @@ scope:
   - 'entrytypes.e4e23bc0-a6bd-4075-943f-4607a5fac9be:read' # Œuvres corrélées
   - 'sections.374cfc9a-f44d-4173-9b1a-08ee58b72e0c:read' # Parcours découverte
   - 'entrytypes.8bb29c67-1705-4166-95be-10680e4e36a9:read' # Par défaut
-  - 'sections.38c13b78-0b68-4bc2-8a3c-599601b61947:read' # Partners
-  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:read' # Default
+  - 'sections.38c13b78-0b68-4bc2-8a3c-599601b61947:read' # Partenaires
+  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:read' # Partenaires
   - 'sections.e205ebe8-5557-4b7c-a43f-9cf548e90c8d:read' # Pays
   - 'entrytypes.bd5e6b34-8b0b-4a47-93f3-f9a23c0a39aa:read' # Pays
   - 'sections.63ea829e-b0e4-4021-8ab5-1b0f095d3daf:read' # Personnes
@@ -37,10 +37,10 @@ scope:
   - 'entrytypes.fa8f9cfe-9074-40b9-b300-5a58cd4ff61c:read' # Publics
   - 'sections.8e72b0db-f5f6-4385-9228-33dd62285d5c:read' # Registres littéraires
   - 'entrytypes.19568c88-e81b-48e1-bab2-ba7f106a823f:read' # Registres
-  - 'sections.f875c77d-f70a-4b8e-a854-a5a1a0ad1348:read' # Scientific Committee
-  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:read' # Default
-  - 'sections.0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6:read' # Team
-  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:read' # Default
+  - 'sections.f875c77d-f70a-4b8e-a854-a5a1a0ad1348:read' # Comite scientifique
+  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:read' # Comite scientifique
+  - 'sections.0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6:read' # Equipe
+  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:read' # Equipe
   - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read' # Techniques d’animation
   - 'entrytypes.48898581-e621-4ea2-bcf6-3c65ac54487f:read' # Techniques d’animation
   - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read' # Images
@@ -48,18 +48,3 @@ scope:
   - 'volumes.37720b4b-f4c6-42b4-8400-af5f71b3e072:read' # Sounds
   - 'usergroups.everyone:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
-  - 'sections.38c13b78-0b68-4bc2-8a3c-599601b61947:edit' # Partners
-  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:edit' # Default
-  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:create' # Default
-  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:save' # Default
-  - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:delete' # Default
-  - 'sections.f875c77d-f70a-4b8e-a854-a5a1a0ad1348:edit' # Scientific Committee
-  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:edit' # Default
-  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:create' # Default
-  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:save' # Default
-  - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:delete' # Default
-  - 'sections.0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6:edit' # Team
-  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:edit' # Default
-  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:create' # Default
-  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:save' # Default
-  - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:delete' # Default

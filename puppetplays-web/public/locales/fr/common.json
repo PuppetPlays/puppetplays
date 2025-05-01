@@ -174,7 +174,8 @@
     "loadingTitle": "Erreur de chargement",
     "loadingData": "Erreur lors du chargement des données: {{error}}",
     "loadingCollections": "Erreur de chargement des collections : {{error}}",
-    "collections": "collections"
+    "collections": "collections",
+    "errorLoading": "Erreur lors du chargement des données"
   },
   "readMore": "En savoir plus",
   "home": "Accueil",

@@ -46,11 +46,11 @@ fieldLayouts:
             width: 100
         name: Content
         sortOrder: 1
-handle: default
+handle: scientificCommittee
 hasTitleField: true
-name: Default
-section: f875c77d-f70a-4b8e-a854-a5a1a0ad1348 # Scientific Committee
+name: 'Comite scientifique'
+section: f875c77d-f70a-4b8e-a854-a5a1a0ad1348 # Comite scientifique
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null
-titleTranslationMethod: site
+titleTranslationMethod: none

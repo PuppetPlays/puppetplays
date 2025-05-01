@@ -17,7 +17,7 @@ query GetAllTeamData($locale: [String]) {
   teamEntries: entries(section: "team", site: $locale) {
     id
     title
-    ... on team_default_Entry {
+    ... on team_team_Entry {
       fullName
       role
       startDate
@@ -48,7 +48,7 @@ query GetAllTeamData($locale: [String]) {
   scientificCommitteeEntries: entries(section: "scientificCommittee", site: $locale) {
     id
     title
-    ... on scientificCommittee_default_Entry {
+    ... on scientificCommittee_scientificCommittee_Entry {
       memberName
       affiliation
     }
@@ -57,7 +57,8 @@ query GetAllTeamData($locale: [String]) {
   partnerEntries: entries(section: "partners", site: $locale) {
     id
     title
-    ... on partners_default_Entry {
+    # Using the correct entry type as suggested by the error
+    ... on partners_partners_Entry {
       partnerName
       partnerLink
       partnerLogo {

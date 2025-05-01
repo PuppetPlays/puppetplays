@@ -34,7 +34,7 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 50
           -
             fieldUid: 900f4fb2-7440-48e0-9c90-f608c727dacd # Partner Link
             instructions: null
@@ -43,7 +43,7 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 50
           -
             fieldUid: d4792cfa-74d7-4508-943f-6b8adeebbe22 # Partner Logo
             instructions: null
@@ -55,11 +55,11 @@ fieldLayouts:
             width: 100
         name: Content
         sortOrder: 1
-handle: default
+handle: partners
 hasTitleField: true
-name: Default
-section: 38c13b78-0b68-4bc2-8a3c-599601b61947 # Partners
+name: Partenaires
+section: 38c13b78-0b68-4bc2-8a3c-599601b61947 # Partenaires
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null
-titleTranslationMethod: site
+titleTranslationMethod: none

@@ -1,4 +1,4 @@
-dateModified: 1745489700
+dateModified: 1746097316
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -15,8 +15,7 @@ email:
   transportType: craft\mail\transportadapters\Smtp
 meta:
   __names__:
-    0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6: Team # Team
-    0d446939-c4fd-4177-9f7e-8abd5867a31a: 'Display Order' # Display Order
+    0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6: Equipe # Equipe
     0efb8d7c-638f-4652-b952-44092a5657f1: 'Nombre d’actes / de parties' # Nombre d’actes / de parties
     0f4c66c2-2100-45f0-88f3-0f6f4d473f63: 'Langue principale' # Langue principale
     1b752928-627a-4f0d-a6a9-41a22636ab41: Public # Public
@@ -64,7 +63,7 @@ meta:
     29f1cf63-9c38-484a-9026-94010557c5af: Œuvres # Œuvres
     33cd919f-b3f5-4276-be62-d114dbab9934: Personnages # Personnages
     34a701b5-35b7-44d7-95a8-3e83b22b2899: 'Full Name' # Full Name
-    38c13b78-0b68-4bc2-8a3c-599601b61947: Partners # Partners
+    38c13b78-0b68-4bc2-8a3c-599601b61947: Partenaires # Partenaires
     040b562a-a40a-4667-84e7-0dc3ea1787ac: 'Édition moderne' # Édition moderne
     42a8e3c5-6dcf-483a-93e3-a0f462764cfc: Sous-titre # Sous-titre
     42eb1ad9-7192-49f3-b9a8-1ba673244536: Page # Page
@@ -82,7 +81,7 @@ meta:
     91e5559d-8541-4d49-90fa-8f06aefe00b7: 'Identifiant VIAF' # Identifiant VIAF
     92ef2670-a9bc-47e7-9d07-dfdbee32a0b2: Lieux # Lieux
     93a3496b-76b7-4696-8639-1c44294aeec0: 'Informations complémentaires sur la licence' # Informations complémentaires sur la licence
-    96bbc411-e9a9-4143-9c48-7c6108ab197b: Default # Default
+    96bbc411-e9a9-4143-9c48-7c6108ab197b: Equipe # Equipe
     96e274be-acfe-4d13-a01e-13b327b04fd1: Langue(s) # Langue(s)
     155d31de-d871-4f90-a86c-9d29b851c29d: Medias # Medias
     157ddd75-0868-4e2b-ba35-028ae3c8ae42: Pays # Pays
@@ -135,7 +134,7 @@ meta:
     b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
     b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
     b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
-    b229f07b-24d2-42a4-900e-23e1b83a5077: Default # Default
+    b229f07b-24d2-42a4-900e-23e1b83a5077: Partenaires # Partenaires
     b242aefb-6f05-426e-9110-18ac25105c2e: 'Première représentation (informations complémentaires)' # Première représentation (informations complémentaires)
     b4287b8a-4f37-43f2-894b-428e99411a04: 'Date d’écriture (min)' # Date d’écriture (min)
     ba087b24-89e6-4a30-8ad7-d72a055d286c: Characters # Characters
@@ -179,8 +178,8 @@ meta:
     f1aeb04a-7fb6-4c3c-87a1-59320850b52e: Personnages # Personnages
     f6c0a973-aaab-4aee-bbdc-c5f7fe02069a: IDs # IDs
     f9d69522-b5ad-442c-873f-739859f6e7f7: 'Registre(s) littéraire(s)' # Registre(s) littéraire(s)
-    f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: Default # Default
-    f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Scientific Committee' # Scientific Committee
+    f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: 'Comite scientifique' # Comite scientifique
+    f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Comite scientifique' # Comite scientifique
     f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
     fa8f9cfe-9074-40b9-b300-5a58cd4ff61c: Publics # Publics

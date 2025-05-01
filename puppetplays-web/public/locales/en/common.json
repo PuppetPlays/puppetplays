@@ -179,7 +179,8 @@
     "loadingTitle": "Loading Error",
     "loadingData": "Error loading data: {{error}}",
     "loadingCollections": "Error loading collections: {{error}}",
-    "collections": "collections"
+    "collections": "collections",
+    "errorLoading": "Error loading data"
   },
   "readMore": "Read more",
   "home": "Home",
