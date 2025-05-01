@@ -10,7 +10,7 @@ previewTargets:
         - 'Page FR'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/projet/equipe'
+        - '{alias(''@livePreviewUrl'')}/projet/equipe/{slug}'
       -
         - refresh
         - '1'
@@ -21,7 +21,7 @@ previewTargets:
         - 'Page EN'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/en/projet/equipe'
+        - '{alias(''@livePreviewUrl'')}/en/projet/equipe/{slug}'
       -
         - refresh
         - '1'
@@ -32,7 +32,7 @@ previewTargets:
         - 'Page IT'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/it/projet/equipe'
+        - '{alias(''@livePreviewUrl'')}/it/projet/equipe/{slug}'
       -
         - refresh
         - '1'
@@ -43,7 +43,7 @@ previewTargets:
         - 'Page DE'
       -
         - urlFormat
-        - '{alias(''@livePreviewUrl'')}/de/projet/equipe'
+        - '{alias(''@livePreviewUrl'')}/de/projet/equipe/{slug}'
       -
         - refresh
         - '1'
@@ -53,20 +53,20 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: projet/equipe
+    uriFormat: 'projet/equipe/{slug}'
   397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: projet/equipe
+    uriFormat: 'projet/equipe/{slug}'
   59986aab-e6c1-4cdf-a062-8db833d2b327: # Puppetplays EN
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: projet/equipe
+    uriFormat: 'projet/equipe/{slug}'
   bf194204-844c-4373-ad71-db3f6243b824: # Puppetplays DE
     enabledByDefault: true
     hasUrls: true
     template: null
-    uriFormat: projet/equipe
+    uriFormat: 'projet/equipe/{slug}'
 type: channel
