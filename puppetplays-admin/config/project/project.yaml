@@ -1,4 +1,4 @@
-dateModified: 1746114166
+dateModified: 1746249373
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -22,6 +22,7 @@ meta:
     1bddc6ff-b8f1-4708-af28-108cd6e92099: Works # Works
     1c3b8264-0aba-4c01-bafa-956427f3e154: 'Contenu riche' # Contenu riche
     1c1041b2-7307-47b5-b3da-f7da389ed14b: 'Domaine public' # Domaine public
+    1f547c74-a13e-424c-acb9-442988088084: Auteurs # Auteurs
     2a3117bf-dd2f-46f2-802d-42fbd2e52e0a: Pseudonyme # Pseudonyme
     2cbf68ec-55ec-4aee-bf2d-b255cad39232: Langues # Langues
     2d8643ae-5357-48a9-a90c-59e78c29508c: 'Nombre de pages' # Nombre de pages
@@ -34,10 +35,12 @@ meta:
     3df1d9d7-f431-4e77-8af6-67a22c501379: 'Identifiant ARK' # Identifiant ARK
     3eec2c18-4dce-4184-a668-02f225266314: Lieux # Lieux
     3fea7d7b-8c14-4919-8016-7d214ca2314b: 'Thème principal' # Thème principal
+    4c0cbfe4-a284-49a1-9bab-3fe7bdbf1f21: Communications # Communications
     4cda444a-a132-4409-8e1e-5205e6a53896: 'Puppetplays IT' # Puppetplays IT
     4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1: 'Nom dans le texte' # Nom dans le texte
     5c594932-2c3a-4678-9988-3ee891a6df21: 'Date de référence' # Date de référence
     5dc50f30-9aba-4974-92fb-08b263ce5716: Places # Places
+    5e4b9413-6946-4790-adef-b347f30fe4fe: thumbnail # thumbnail
     5e83af75-a401-46c6-918f-f56ab78ad797: 'Procédés théâtraux' # Procédés théâtraux
     6cf4b690-6dd1-4003-a2e9-60f991b8ba0c: 'Start Date' # Start Date
     6e173e2f-1a52-45d7-bc3d-ccd4901e799b: Type # Type
@@ -53,6 +56,7 @@ meta:
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
     9e670e52-0ab0-4dc1-a6e1-adc8efea5c13: 'Notice biographique' # Notice biographique
+    11cd5e79-4fd9-42cd-90de-f4ec34fd5af6: 'URL externe' # URL externe
     11f7a6ca-ab33-4bfc-9271-661e04bdf539: Image # Image
     18acc84f-5d36-4e13-8a6b-deff0a3d529b: 'Mots-clé des œuvres' # Mots-clé des œuvres
     22b828fc-b5e2-42a0-9050-446047f73230: Formats # Formats
@@ -73,6 +77,7 @@ meta:
     63ea829e-b0e4-4021-8ab5-1b0f095d3daf: Personnes # Personnes
     65cde714-d150-4ea5-9f9a-da868a716343: 'Nom du personnage pour l’indexation' # Nom du personnage pour l’indexation
     69ee7666-95f0-4e8f-bf8b-09d970d7b777: Latitude # Latitude
+    071a5180-f65a-4cac-910b-8760a8b42989: partsBlock # partsBlock
     72de1311-0c34-4fe9-b04c-813fbc8a7923: 'Oeuvres corrélées à indexer' # Oeuvres corrélées à indexer
     72f7b794-21cc-4ef3-869b-e425785555fb: 'Date de la 1ère représentation (max)' # Date de la 1ère représentation (max)
     76e227d6-6d74-4402-b9ef-b62e7898ede0: Affiliation # Affiliation
@@ -104,6 +109,7 @@ meta:
     3802b7c5-d17c-4241-873e-872425f9ea93: DOI # DOI
     5258bc33-a2cb-4dd3-9a79-6a8db921d40c: Description # Description
     6591dcc5-c98b-41db-91e2-1b3dcd8eb31b: Lieux # Lieux
+    8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f: Communications # Communications
     19568c88-e81b-48e1-bab2-ba7f106a823f: Registres # Registres
     28340a2e-58f9-44f0-92dd-eb54581b97a0: 'Date d’édition (min)' # Date d’édition (min)
     37720b4b-f4c6-42b4-8400-af5f71b3e072: Sounds # Sounds
@@ -112,6 +118,7 @@ meta:
     67544b27-a5f2-4753-acf4-8a396c6d000e: 'Personnages originaux' # Personnages originaux
     93343e67-8611-4266-b864-d311771afbc9: 'Technique d’animation' # Technique d’animation
     240995cf-5c01-4d81-8338-b19a74e20d1a: 'Identifiant ISNI' # Identifiant ISNI
+    408142ac-f959-4def-8f9a-5862b0175509: title # title
     09401318-0a4b-4b56-a6c4-c57d3b151579: 'Exemplaire en ligne' # Exemplaire en ligne
     10525904-b14b-4372-aac3-f9a5146e8b27: 'Nom du premier auteur (preparsed)' # Nom du premier auteur (preparsed)
     48645943-e026-4046-ae42-c8efbe3d0b1c: Videos # Videos
@@ -125,6 +132,7 @@ meta:
     a2007d0c-252f-4367-8e53-da567f836922: ' Copyright' #  Copyright
     a63454cc-f4ca-4c63-a17f-8772cff10def: 'Date d’écriture (pour l’affichage)' # Date d’écriture (pour l’affichage)
     a95459b0-9778-477e-ac36-580e1a77e951: puppetplays # puppetplays
+    a3824935-81c5-4d05-85cb-a7b326914bd4: Extrait # Extrait
     a5261331-a813-4df9-ab61-a125b7713179: Genre # Genre
     a6880810-a754-4a93-9fd2-5803e60ad519: Role # Role
     afb33e8b-94e9-457a-87c1-3b2a96e3c804: 'Metteur en scène' # Metteur en scène
@@ -157,10 +165,12 @@ meta:
     d4792cfa-74d7-4508-943f-6b8adeebbe22: 'Partner Logo' # Partner Logo
     d602197a-ca5a-473a-961c-bf792880b11f: 'Scientific Committee' # Scientific Committee
     db53251e-e713-455c-a15e-37016be4971f: Accueil # Accueil
+    dd1a4870-abc3-4341-b390-1a30cd07a558: Parties # Parties
     dd4fcf15-6584-4f37-8317-ecaada78e196: Extrait # Extrait
     dd98b4ac-7f07-42c8-84ba-2ef778802ee9: 'research Title' # research Title
     e0954bb8-d8bb-4fbb-b5e7-944b482e521e: Personnes # Personnes
     e2d5c38e-3607-4630-bddf-0875190aa133: 'Œuvres corrélées' # Œuvres corrélées
+    e4daf95e-20af-4dac-b0b9-7f562c5c3bc9: url # url
     e4e23bc0-a6bd-4075-943f-4607a5fac9be: 'Œuvres corrélées' # Œuvres corrélées
     e9d4c568-7f9b-4fe4-bb99-e3b7b2759c40: 'Lieu de la première représentation' # Lieu de la première représentation
     e9f030e0-d5e7-485b-be1a-39496843ac8c: Thumbnail # Thumbnail
@@ -183,7 +193,10 @@ meta:
     f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
     fa8f9cfe-9074-40b9-b300-5a58cd4ff61c: Publics # Publics
+    fa662cc1-6c43-4820-b2ba-5f10406d00ca: 'Date de publication' # Date de publication
+    fa95153b-9e8c-4920-9338-df41d11bfe43: date # date
     fbbb13b9-a645-436f-82a9-ad8e5767acda: Œuvres # Œuvres
+    fd15fc2d-a3c9-4686-891d-700dd34684ec: Communications # Communications
     fd390cb8-325d-419c-a64a-95714d698f94: 'Personnage(s) pour l’indexation' # Personnage(s) pour l’indexation
     fe4f7b25-47ca-473c-a6a2-85d827124f50: 'research Link' # research Link
     ffcbd130-d01a-46e8-be41-572fa13bf2fb: Commons # Commons

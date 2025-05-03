@@ -91,5 +91,86 @@
     "relatedVideos": "Related Videos",
     "errorNotFoundNakala": "Video not found in Nakala.",
     "errorLoadingData": "Could not load video data."
+  },
+  "communications": {
+    "metaDescription": "Discover the latest communications, news, and publications of the PuppetPlays project.",
+    "subtitle": "News, publications, and events of the PuppetPlays project",
+    "filterByCategory": "Filter by category",
+    "filterByTag": "Filter by keyword",
+    "filterBy": "Filter by",
+    "showAllCategories": "Show all categories",
+    "showAllTags": "Show all keywords",
+    "noArticlesFound": "No articles found with the selected filters.",
+    "par": "By",
+    "partsTitle": "Article parts",
+    "mockArticles": {
+      "article1": {
+        "title": "European puppetry: between tradition and innovation",
+        "excerpt": "Discover how European puppet traditions are evolving in the contemporary context while preserving their cultural heritage. Our new article explores the creative tensions between heritage preservation and technical innovations.",
+        "category": "Research Article",
+        "tags": {
+          "europeanPuppets": "European Puppets",
+          "tradition": "Tradition",
+          "innovation": "Innovation"
+        }
+      },
+      "article2": {
+        "title": "International Conference on Puppet Theatre - Report",
+        "excerpt": "A look back at the highlights of the international conference held in Paris, bringing together researchers and practitioners from around the world. Discover the new trends and perspectives shared during this major event.",
+        "category": "Event",
+        "tags": {
+          "conference": "Conference",
+          "international": "International",
+          "research": "Research"
+        }
+      },
+      "article3": {
+        "title": "New partnership with the National Puppet Center",
+        "excerpt": "The PuppetPlays project announces a strategic partnership with the National Puppet Center to expand its corpus of works. This collaboration will significantly enrich the database and offer new research perspectives.",
+        "category": "Announcement",
+        "tags": {
+          "partnership": "Partnership",
+          "institution": "Institution"
+        }
+      },
+      "article4": {
+        "title": "Techniques and evolution of puppets in 19th-century Europe",
+        "excerpt": "An in-depth analysis of the technical innovations that transformed the art of puppetry during the 19th century in Europe. This article examines the mechanical and artistic advances that revolutionized puppet shows across the continent.",
+        "category": "Scientific Article",
+        "tags": {
+          "19thCentury": "19th Century",
+          "technique": "Technique",
+          "history": "History"
+        }
+      },
+      "article5": {
+        "title": "PuppetPlays presents its database at the Barcelona Symposium",
+        "excerpt": "The research team presented the progress of its database at the international symposium in Barcelona on performing arts. The enthusiastic feedback from the scientific community testifies to the relevance and interest of the project.",
+        "category": "Presentation",
+        "tags": {
+          "database": "Database",
+          "symposium": "Symposium",
+          "international": "International"
+        }
+      },
+      "article6": {
+        "title": "Publication of the catalog \"Forgotten Puppets of Europe\"",
+        "excerpt": "Our team is proud to announce the publication of a catalog listing rare and little-known puppet works from across Europe. This unprecedented document brings together more than 200 unknown pieces from public and private collections.",
+        "category": "Publication",
+        "tags": {
+          "catalog": "Catalog",
+          "rareWorks": "Rare Works",
+          "documentation": "Documentation"
+        }
+      }
+    },
+    "categories": {
+      "researchArticle": "Research Article",
+      "event": "Event",
+      "announcement": "Announcement",
+      "scientificArticle": "Scientific Article",
+      "presentation": "Presentation",
+      "publication": "Publication"
+    }
   }
 } 

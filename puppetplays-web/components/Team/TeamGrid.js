@@ -55,7 +55,7 @@ const CloseIcon = () => (
 );
 
 const TeamMemberCard = ({ member }) => {
-  const { t } = useTranslation('team');
+  const { t, i18n } = useTranslation(['team', 'common']);
   const [expanded, setExpanded] = useState(false);
   const contentRef = useRef(null);
 
@@ -126,28 +126,13 @@ const TeamMemberCard = ({ member }) => {
 
       // Extraire mois et année en UTC pour éviter les décalages de fuseau horaire
       const year = date.getUTCFullYear();
-      const month = date.getUTCMonth() + 1; // +1 car getUTCMonth() retourne 0-11
+      const month = date.getUTCMonth(); // 0-11
 
-      // Convertir le numéro de mois en nom
-      const getMonthName = monthNum => {
-        const months = [
-          'Janvier',
-          'Février',
-          'Mars',
-          'Avril',
-          'Mai',
-          'Juin',
-          'Juillet',
-          'Août',
-          'Septembre',
-          'Octobre',
-          'Novembre',
-          'Décembre',
-        ];
-        return months[monthNum - 1]; // -1 car notre mois est 1-12
-      };
+      // Utiliser la traduction pour le nom du mois (en s'assurant de l'existence de la clé)
+      const monthKey = `common:months.${month}`;
+      const translatedMonth = t(monthKey, { defaultValue: monthKey });
 
-      return `${getMonthName(month)} ${year}`;
+      return `${translatedMonth} ${year}`;
     };
 
     const start = formatDate(member.startDate);
