@@ -52,14 +52,13 @@ jobs:
       - run:
           name: Run unit/integration tests
           command: yarn run test:ci
-  # TODO: Staging need to be revaluated
   build_web_staging:
     executor:
       name: node/default
       tag: '20.18'
     working_directory: ~/project/puppetplays-web
     environment:
-      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
+      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.eu
     steps:
       - checkout:
           path: ~/project
@@ -83,19 +82,18 @@ jobs:
       - run:
           name: Build code
           command: yarn run build
-  # TODO: Staging need to be revaluated
   docker_web_staging:
     docker:
       - image: cimg/base:2020.01
     environment:
-      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
+      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.eu
     steps:
       - checkout
       - setup_remote_docker
       - run: 
           name: Publish web staging image to docker hub
           command: |
-            export NEXT_PUBLIC_API_URL=http://cchum-kvm-puppetplays.huma-num.fr:8080
+            export NEXT_PUBLIC_API_URL=https://api.staging.puppetplays.eu
             # Use direct authentication with API token instead of interactive login
             if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
               echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
@@ -132,7 +130,6 @@ jobs:
             docker pull << pipeline.parameters.web-image >>
             docker tag << pipeline.parameters.web-image >> << pipeline.parameters.web-image-release >>
             docker push << pipeline.parameters.web-image-release >>
-  # TODO: Staging need to be revaluated
   docker_admin_staging:
     docker:
       - image: cimg/base:2020.01
@@ -175,7 +172,6 @@ jobs:
             docker pull << pipeline.parameters.admin-image >>
             docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
             docker push << pipeline.parameters.admin-image-release >>
-  # TODO: Staging need to be revaluated
   deploy_staging:
     machine:
       image: ubuntu-2204:current
@@ -188,20 +184,20 @@ jobs:
       SECURITY_KEY: $SECURITY_KEY_STAGING
       PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
       ENVIRONMENT: staging
-      SITE_URL: http://cchum-kvm-puppetplays.huma-num.fr:7000
-      CP_URL: http://cchum-kvm-puppetplays.huma-num.fr:11000
-      COOKIE_DOMAIN: cchum-kvm-puppetplays.huma-num.fr
+      SITE_URL: https://staging.puppetplays.eu
+      CP_URL: https://admin.staging.puppetplays.eu
+      COOKIE_DOMAIN: .staging.puppetplays.eu
       EMAIL_HOSTNAME: 0.0.0.0
       EMAIL_PORT: 1025
       EMAIL_SENDER: no-reply@puppetplays.eu
-      NEXT_PUBLIC_API_URL: http://cchum-kvm-puppetplays.huma-num.fr:8080
-      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
+      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.eu
+      DOCKER_HOST: ssh://root@172.233.109.95
       COMPOSE_PARAMIKO_SSH: 1
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"
+            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ"
       - run: 
           name: Deploy to staging server
           command: |
@@ -278,8 +274,6 @@ workflows:
               only:
                 - develop
                 - release
-                - nkler/staging-environment-e2e-ci
-                - nkler/staging-environment-e2e-ci-tmp
       - build_web_staging:
           requires:
             - test_web
