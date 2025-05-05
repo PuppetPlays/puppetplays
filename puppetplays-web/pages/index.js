@@ -122,6 +122,7 @@ export default function Home({
   work = null,
   keywords = [],
 }) {
+  console.log('Home', { animationTechnique, authors, work, keywords });
   const { t } = useTranslation('home');
   const { locale } = useRouter();
   const workLinkRef = useRef(null);
@@ -302,9 +303,10 @@ export default function Home({
                             entry.mainImage &&
                             Array.isArray(entry.mainImage) &&
                             entry.mainImage.length > 0
-                              ? entry.mainImage[0]
+                              ? entry.mainImage[0].url
                               : null
                           }
+                          mainImage={entry.mainImage}
                           title={entry.title || ''}
                           href={
                             entry.id && entry.slug

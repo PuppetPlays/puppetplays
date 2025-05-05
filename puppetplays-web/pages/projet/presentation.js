@@ -1,6 +1,7 @@
 import ProjectLayout from 'components/Project/ProjectLayout';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from 'styles/ProjectPresentation.module.scss';
@@ -84,6 +85,7 @@ const PartnersBar = ({ t }) => {
 
 const ProjectPresentation = () => {
   const { t } = useTranslation(['project', 'common', 'home']);
+  const { locale } = useRouter();
 
   return (
     <ProjectLayout
@@ -188,14 +190,21 @@ const ProjectPresentation = () => {
               {t('presentation.video.title')}
             </h2>
             <div className={styles.videoWrapper}>
-              <iframe
-                src="https://www.youtube.com/embed/Ique18J-erw"
+              <video
+                src="/videos/PuppetPlays Presentation.mp4"
                 title="PuppetPlays Presentation"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                controls
+                preload="metadata"
+                poster="/videos/poster.png"
                 className={styles.video}
-              />
+              >
+                <track
+                  kind="captions"
+                  src="/videos/captions.vtt"
+                  srcLang={locale}
+                  label={t('common:accessibility.captions')}
+                />
+              </video>
             </div>
             <p className={styles.videoCaption}>
               {t('presentation.video.caption')}

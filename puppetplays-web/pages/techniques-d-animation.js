@@ -110,9 +110,10 @@ function AnimationTechniques({ initialData }) {
                       technique.mainImage &&
                       Array.isArray(technique.mainImage) &&
                       technique.mainImage.length > 0
-                        ? technique.mainImage[0]
+                        ? technique.mainImage[0].url
                         : null
                     }
+                    mainImage={technique.mainImage}
                     href={`/techniques-d-animation/${technique.id}/${technique.slug}`}
                   />
                 </div>

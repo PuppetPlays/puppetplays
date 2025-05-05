@@ -45,6 +45,9 @@
   "presentation": {
     "title": "Présentation du projet",
     "subtitle": "PuppetPlays (GA 835193) - Un programme de recherche financé par l'Union Européenne",
+    "heroImage": {
+      "alt": "Illustration du projet PuppetPlays"
+    },
     "video": {
       "title": "Présentation vidéo du projet",
       "caption": "Découvrez notre programme de recherche à travers cette vidéo",
@@ -87,6 +90,87 @@
       "paragraph3": "Cette question d'une dramaturgie spécifique se pose particulièrement lorsque nous examinons l'écriture contemporaine. Pourquoi certains auteurs choisissent-ils de composer des pièces pour marionnettes, ombres et toutes sortes d'objets animés – parfois comme seuls interprètes sur scène, parfois mêlés à des acteurs vivants ?",
       "paragraph4": "Lorsque les marionnettistes ont besoin de textes pour une nouvelle production, quel imaginaire spécifique de la marionnette ces dramaturges développent-ils ? Il semble que l'introduction d'interprètes artificiels sur scène élargisse le spectre des possibilités dramaturgiques : l'écriture s'affranchit des \"lois\" du réalisme et de la vraisemblance ; mais elle peut aussi conduire à dire (ou à montrer) l'inexprimable : explosions de violence, cruauté (souvenons-nous du vieux spectacle de Punch et Judy !), ou obscénité. La naissance, la maladie, le handicap, la vieillesse et la souffrance peuvent être représentés sur scène, avec empathie mais sans les risques d'un pathos excessif ou forcé.",
       "paragraph5": "Parce qu'ils représentent l'humain sous les traits d'un objet, les arts de la marionnette sont sans doute l'instrument le mieux adapté pour raconter des histoires de déshumanisation et de réhumanisation : c'est, en tout cas, l'une des principales hypothèses que PuppetPlays se propose de tester."
+    }
+  },
+  "communications": {
+    "metaDescription": "Découvrez les dernières communications, actualités et publications du projet PuppetPlays.",
+    "subtitle": "Actualités, publications et événements du projet PuppetPlays",
+    "filterByCategory": "Filtrer par catégorie",
+    "filterByTag": "Filtrer par mot-clé",
+    "filterBy": "Filtrer par",
+    "showAllCategories": "Afficher toutes les catégories",
+    "showAllTags": "Afficher tous les mots-clés",
+    "noArticlesFound": "Aucun article trouvé avec les filtres sélectionnés.",
+    "par": "Par",
+    "partsTitle": "Parties de l'article",
+    "mockArticles": {
+      "article1": {
+        "title": "La marionnette européenne : entre tradition et innovation",
+        "excerpt": "Découvrez comment les traditions de marionnettes européennes évoluent dans le contexte contemporain tout en préservant leur patrimoine culturel. Notre nouvel article explore les tensions créatives entre préservation du patrimoine et innovations techniques.",
+        "category": "Article de recherche",
+        "tags": {
+          "europeanPuppets": "Marionnettes européennes",
+          "tradition": "Tradition",
+          "innovation": "Innovation"
+        }
+      },
+      "article2": {
+        "title": "Conférence internationale sur le théâtre de marionnettes - Compte rendu",
+        "excerpt": "Retour sur les moments forts de la conférence internationale qui s'est tenue à Paris, réunissant chercheurs et praticiens du monde entier. Découvrez les nouvelles tendances et perspectives partagées lors de cet événement majeur.",
+        "category": "Événement",
+        "tags": {
+          "conference": "Conférence",
+          "international": "International",
+          "research": "Recherche"
+        }
+      },
+      "article3": {
+        "title": "Nouveau partenariat avec le Centre National de la Marionnette",
+        "excerpt": "Le projet PuppetPlays annonce un partenariat stratégique avec le Centre National de la Marionnette pour élargir son corpus d'œuvres. Cette collaboration permettra d'enrichir considérablement la base de données et d'offrir de nouvelles perspectives de recherche.",
+        "category": "Annonce",
+        "tags": {
+          "partnership": "Partenariat",
+          "institution": "Institution"
+        }
+      },
+      "article4": {
+        "title": "Technicité et évolution des marionnettes dans l'Europe du XIXe siècle",
+        "excerpt": "Analyse approfondie des innovations techniques qui ont transformé l'art de la marionnette au cours du XIXe siècle en Europe. Cet article examine les avancées mécaniques et artistiques qui ont révolutionné les spectacles de marionnettes à travers le continent.",
+        "category": "Article scientifique",
+        "tags": {
+          "19thCentury": "XIXe siècle",
+          "technique": "Technique",
+          "history": "Histoire"
+        }
+      },
+      "article5": {
+        "title": "PuppetPlays présente sa base de données au Symposium de Barcelone",
+        "excerpt": "L'équipe de recherche a présenté les avancées de sa base de données lors du symposium international de Barcelone sur les arts de la scène. Les retours enthousiastes de la communauté scientifique témoignent de la pertinence et de l'intérêt du projet.",
+        "category": "Présentation",
+        "tags": {
+          "database": "Base de données",
+          "symposium": "Symposium",
+          "international": "International"
+        }
+      },
+      "article6": {
+        "title": "Publication du catalogue \"Marionnettes oubliées d'Europe\"",
+        "excerpt": "Notre équipe est fière d'annoncer la publication d'un catalogue recensant des œuvres de marionnettes rares et peu connues à travers l'Europe. Ce document inédit rassemble plus de 200 pièces méconnues issues de collections publiques et privées.",
+        "category": "Publication",
+        "tags": {
+          "catalog": "Catalogue",
+          "rareWorks": "Œuvres rares",
+          "documentation": "Documentation"
+        }
+      }
+    },
+    "categories": {
+      "researchArticle": "Article de recherche",
+      "event": "Événement",
+      "announcement": "Annonce",
+      "scientificArticle": "Article scientifique",
+      "presentation": "Présentation",
+      "publication": "Publication"
     }
   }
 } 
