@@ -278,6 +278,7 @@ workflows:
               only:
                 - develop
                 - release
+                - nkler/staging-environment-e2e-ci
       - build_web_staging:
           requires:
             - test_web
