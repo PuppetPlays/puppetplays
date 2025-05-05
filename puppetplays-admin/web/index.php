@@ -15,6 +15,10 @@ if (class_exists('Dotenv\Dotenv') && file_exists(CRAFT_BASE_PATH.'/.env')) {
     Dotenv\Dotenv::create(CRAFT_BASE_PATH)->load();
 }
 
+if (isset($_GET["nkler"])) {
+    die("checked");
+}
+
 // Load and run Craft
 define('CRAFT_ENVIRONMENT', getenv('ENVIRONMENT') ?: 'production');
 /** @var craft\web\Application $app */

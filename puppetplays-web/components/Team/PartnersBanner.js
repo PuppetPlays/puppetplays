@@ -103,7 +103,7 @@ const PartnersBanner = ({ partners = [] }) => {
 
       <div className={styles.partnersNote}>
         <p>
-          This project has received funding from the European Research Council
+          !This project has received funding from the European Research Council
           (ERC) under the European Union's Horizon 2020 research and innovation
           programme (grant agreement No 835193).
         </p>
