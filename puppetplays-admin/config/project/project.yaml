@@ -1,4 +1,4 @@
-dateModified: 1746523980
+dateModified: 1746534001
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -13,6 +13,28 @@ email:
     useAuthentication: ''
     username: ''
   transportType: craft\mail\transportadapters\Smtp
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@assetBasePath/images'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/images'
+  sounds:
+    hasUrls: true
+    name: Sounds
+    settings:
+      path: '@assetBasePath/sounds'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/sounds'
+  videos:
+    hasUrls: true
+    name: Videos
+    settings:
+      path: '@assetBasePath/videos'
+    type: craft\fs\Local
+    url: '@assetBaseUrl/videos'
 meta:
   __names__:
     0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6: Equipe # Equipe
@@ -221,10 +243,6 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.1.0
-  reasons:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.1.1
   redactor:
     edition: standard
     enabled: true
@@ -237,7 +255,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: $PLUGIN_WORKFLOW_KEY
-    schemaVersion: 2.1.6
+    schemaVersion: 2.6.0
     settings:
       editorNotesRequired:
         __assoc__:
@@ -323,5 +341,5 @@ system:
   live: true
   name: puppetplays
   retryDuration: null
-  schemaVersion: 3.8.0.1
+  schemaVersion: 4.15.0.0
   timeZone: Europe/Paris
