@@ -17,7 +17,7 @@ log() {
   message=$1; shift
   color=$1; shift
   nc='\033[0m\n'
-  echo -e "$color(DEPLOY) $message$nc";
+  echo -e "$color(DEPLOY) $message$nc";
 }
 
 info() {
@@ -51,6 +51,29 @@ startContainer() {
   docker-compose -p "$PROJECT" up -d "$container"
 }
 
+syncProductionDatabase() {
+  # Only run this for staging environment
+  if [ "${ENVIRONMENT:-}" == "staging" ]; then
+    info "syncing production database to staging"
+    
+    # Ensure sshpass is installed on the server
+    if ! command -v sshpass &> /dev/null; then
+      info "installing sshpass for database sync"
+      apt-get update && apt-get install -y sshpass
+    fi
+    
+    # Run the database sync script
+    if [ -f "./scripts/sync-db.sh" ]; then
+      chmod +x ./scripts/sync-db.sh
+      ./scripts/sync-db.sh
+    else
+      warn "database sync script not found at ./scripts/sync-db.sh"
+    fi
+  else
+    info "skipping database sync (not staging environment)"
+  fi
+}
+
 # -----------------------------------------------------------------------------
 # ---- MAIN -------------------------------------------------------------------
 # -----------------------------------------------------------------------------
@@ -58,6 +81,13 @@ main() {
   pullImages
   stopExistingContainers
   startContainer "postgres"
+  
+  # Sync database only for staging environment
+  if [ "${ENVIRONMENT:-}" == "staging" ]; then
+    syncProductionDatabase
+  fi
+  
+  startContainer "puppetplays-admin"
   startContainer "puppetplays-web"
 
   info "$PROJECT deployed"
