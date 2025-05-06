@@ -1,4 +1,4 @@
-dateModified: 1746249373
+dateModified: 1746521737
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -220,7 +220,7 @@ plugins:
   preparse-field:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.5
+    schemaVersion: 1.1.0
   reasons:
     edition: standard
     enabled: true
@@ -258,5 +258,5 @@ system:
   live: true
   name: puppetplays
   retryDuration: null
-  schemaVersion: 3.7.8
+  schemaVersion: 3.8.0.1
   timeZone: Europe/Paris
