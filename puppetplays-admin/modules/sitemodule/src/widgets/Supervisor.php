@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Site module for Craft CMS 3.x
  *
@@ -51,7 +52,7 @@ class Supervisor extends Widget
     /**
      * @inheritdoc
      */
-    public static function maxColspan()
+    public static function maxColspan(): ?int
     {
         return null;
     }
@@ -62,7 +63,7 @@ class Supervisor extends Widget
     /**
      * @inheritdoc
      */
-    public function getBodyHtml()
+    public function getBodyHtml(): ?string
     {
         $userData = array();
         $currentUserId = Craft::$app->getUser()->getId();
@@ -70,12 +71,12 @@ class Supervisor extends Widget
             ->supervisor($currentUserId)
             ->ids();
 
-        
-        $supervisedEntries = count($supervisedUsersIds) > 0 ? 
+
+        $supervisedEntries = count($supervisedUsersIds) > 0 ?
             \craft\elements\Entry::find()
-                ->anyStatus()
-                ->authorId($supervisedUsersIds)
-                ->all() : [];
+            ->anyStatus()
+            ->authorId($supervisedUsersIds)
+            ->all() : [];
 
         Craft::$app->getView()->registerAssetBundle(SupervisorWidgetAsset::class);
 
