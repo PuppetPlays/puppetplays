@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Site module for Craft CMS 3.x
  *
@@ -25,7 +26,7 @@ class AuthController extends Controller
    *         The actions must be in 'kebab-case'
    * @access protected
    */
-  protected $allowAnonymous = ['index'];
+  protected  array|bool|int $allowAnonymous = ['index'];
 
 
   // Public Methods
@@ -42,7 +43,7 @@ class AuthController extends Controller
     Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Origin', '*');
     Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-Craft-Token');
     Craft::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Credentials', true);
-    
+
     $user = Craft::$app->user;
 
     if ($user) {

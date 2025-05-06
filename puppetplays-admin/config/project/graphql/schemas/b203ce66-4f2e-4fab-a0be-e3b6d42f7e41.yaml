@@ -50,3 +50,7 @@ scope:
   - 'volumes.37720b4b-f4c6-42b4-8400-af5f71b3e072:read' # Sounds
   - 'usergroups.everyone:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
+  - 'sites.4cda444a-a132-4409-8e1e-5205e6a53896:read' # Puppetplays IT
+  - 'sites.397a9f9f-ff18-42c4-98ff-dbb87c17b754:read' # Puppetplays FR
+  - 'sites.59986aab-e6c1-4cdf-a062-8db833d2b327:read' # Puppetplays EN
+  - 'sites.bf194204-844c-4373-ad71-db3f6243b824:read' # Puppetplays DE
