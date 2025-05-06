@@ -1,8 +1,8 @@
 {
   "require": {
     "besteadfast/craft-preparse-field": "^1.2",
-    "craftcms/cms": "3.7.27.2",
-    "craftcms/element-api": "2.8.2",
+    "craftcms/cms": "3.9.15",
+    "craftcms/element-api": "2.8.6.1",
     "craftcms/redactor": "2.10.12",
     "doublesecretagency/craft-cpcss": "2.4.0",
     "ether/tags": "^1.0.9",
