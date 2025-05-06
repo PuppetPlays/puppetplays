@@ -1,4 +1,4 @@
-dateModified: 1746521737
+dateModified: 1746523980
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -237,21 +237,86 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: $PLUGIN_WORKFLOW_KEY
-    schemaVersion: 2.1.5
+    schemaVersion: 2.1.6
     settings:
-      editorNotesRequired: ''
+      editorNotesRequired:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       editorNotifications: '1'
       editorNotificationsOptions:
         - replyToReviewer
-      editorUserGroup: c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+      editorUserGroup:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - c8c55cf1-a8a5-4356-b4eb-7984788d01b2 # Contributeurs
       enabledSections: '*'
       lockDraftSubmissions: '1'
-      publisherNotesRequired: ''
+      publisherNotesRequired:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       publisherNotifications: '1'
-      publisherUserGroup: a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+      publisherUserGroup:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - a5c71adc-184b-49c4-8e1a-d251540bf2b1 # Chercheurs
       reviewerApprovalNotifications: ''
       reviewerNotifications: '1'
-      reviewerUserGroups: ''
+      reviewerUserGroups:
+        __assoc__:
+          -
+            - 397a9f9f-ff18-42c4-98ff-dbb87c17b754 # Puppetplays FR
+            - ''
+          -
+            - 59986aab-e6c1-4cdf-a062-8db833d2b327 # Puppetplays EN
+            - ''
+          -
+            - bf194204-844c-4373-ad71-db3f6243b824 # Puppetplays DE
+            - ''
+          -
+            - 4cda444a-a132-4409-8e1e-5205e6a53896 # Puppetplays IT
+            - ''
       selectedPublishers: '*'
 system:
   edition: pro

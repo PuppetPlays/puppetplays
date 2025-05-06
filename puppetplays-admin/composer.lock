@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aae59e5b324eb9de66ade38e966a2924",
+    "content-hash": "89426b20eaf2993d06330093961ba4b7",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
@@ -5379,16 +5379,16 @@
         },
         {
             "name": "verbb/workflow",
-            "version": "1.6.2",
+            "version": "1.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/workflow.git",
-                "reference": "6c9cc55350ea8fcec7569beda12facc6bce82c59"
+                "reference": "2825bbdd8f46d4e53525da823ff9667ad85dce48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/workflow/zipball/6c9cc55350ea8fcec7569beda12facc6bce82c59",
-                "reference": "6c9cc55350ea8fcec7569beda12facc6bce82c59",
+                "url": "https://api.github.com/repos/verbb/workflow/zipball/2825bbdd8f46d4e53525da823ff9667ad85dce48",
+                "reference": "2825bbdd8f46d4e53525da823ff9667ad85dce48",
                 "shasum": ""
             },
             "require": {
@@ -5432,7 +5432,7 @@
                 "rss": "https://github.com/verbb/workflow/commits/v2.atom",
                 "source": "https://github.com/verbb/workflow"
             },
-            "time": "2021-08-29T05:41:37+00:00"
+            "time": "2023-10-25T00:10:09+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
