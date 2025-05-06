@@ -193,16 +193,11 @@ jobs:
       NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.eu
       DOCKER_HOST: ssh://root@172.233.109.95
       COMPOSE_PARAMIKO_SSH: 1
-      # Production DB access for sync
-      PROD_SERVER: cchum-kvm-puppetplays.huma-num.fr
-      PROD_USER: $PROD_DB_USER
-      PROD_PASSWORD: $PROD_DB_PASSWORD
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ" # Staging fingerprint
-            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A" # Production fingerprint
+            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ"
       - run: 
           name: Deploy to staging server
           command: |
