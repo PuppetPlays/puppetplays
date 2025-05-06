@@ -201,7 +201,8 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ"
+            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ" # Staging fingerprint
+            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A" # Production fingerprint
       - run: 
           name: Deploy to staging server
           command: |

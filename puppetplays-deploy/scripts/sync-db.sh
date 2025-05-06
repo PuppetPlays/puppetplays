@@ -19,15 +19,24 @@ log() {
 
 log "Starting database synchronization from production to staging environment"
 
+# Print environment variables for debugging (redacting sensitive info)
+log "Using production server: $PROD_SERVER"
+log "Using production user: $PROD_USER"
+log "Password defined: $(if [ -n "${PROD_PASSWORD:-}" ]; then echo "Yes"; else echo "No"; fi)"
+log "Postgres variables: User=$POSTGRES_USER, DB=$POSTGRES_DB, Password defined=$(if [ -n "${POSTGRES_PASSWORD:-}" ]; then echo "Yes"; else echo "No"; fi)"
+
 # Environment variables should be passed from CircleCI config
 # PROD_SERVER, PROD_USER, PROD_PASSWORD, DB_PASSWORD (for staging)
 
 # Validate required environment variables
-if [ -z "${PROD_SERVER:-}" ] || [ -z "${PROD_USER:-}" ] || [ -z "${PROD_PASSWORD:-}" ] || [ -z "${POSTGRES_PASSWORD:-}" ]; then
+if [ -z "${PROD_SERVER:-}" ] || [ -z "${POSTGRES_PASSWORD:-}" ]; then
   log "ERROR: Missing required environment variables."
-  log "Please ensure PROD_SERVER, PROD_USER, PROD_PASSWORD, and POSTGRES_PASSWORD are set."
+  log "Please ensure PROD_SERVER and POSTGRES_PASSWORD are set."
   exit 1
 fi
+
+# If PROD_USER is not set, use the default (root for production server)
+PROD_USER="${PROD_USER:-root}"
 
 # Temporary directory for database dump
 TEMP_DIR="/tmp/db_sync_staging"
@@ -37,24 +46,52 @@ log "Created temporary directory at $TEMP_DIR"
 # Path to backups on the production server
 BACKUP_PATH="/var/lib/puppetplays/database/postgres-backups/daily"
 
-# Function to check SSH connection to server
+# Function to check SSH connection to server - with multiple methods
 check_server_connection() {
   log "Checking connection to the production server..."
-  if sshpass -p "$PROD_PASSWORD" ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "echo 'Connection successful'" &>/dev/null; then
-    log "Connection to the server is successful."
+  
+  # Method 1: Try using the CircleCI SSH key (should be added already)
+  if ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "echo 'Connection successful'" &>/tmp/ssh_debug.log; then
+    log "Connection to the server successful using SSH key"
+    export USE_SSH_KEY=true
     return 0
-  else
-    log "ERROR: Failed to connect to the server. Please check credentials and network connection."
-    return 1
   fi
+  
+  log "SSH key authentication failed, trying password authentication..."
+  
+  # Method 2: Try using sshpass if available and password is provided
+  if command -v sshpass &> /dev/null && [ -n "${PROD_PASSWORD:-}" ]; then
+    # More verbose SSH command for troubleshooting
+    if sshpass -p "$PROD_PASSWORD" ssh -v -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "echo 'Connection successful'" &>/tmp/ssh_debug.log; then
+      log "Connection to the server successful using password"
+      export USE_SSH_KEY=false
+      return 0
+    else
+      log "ERROR: Failed to connect with password auth. Debug output:"
+      cat /tmp/ssh_debug.log
+    fi
+  else
+    log "ERROR: sshpass not available or password not provided"
+  fi
+  
+  log "ERROR: All connection methods failed"
+  return 1
 }
 
 # Function to download the latest database backup
 download_latest_backup() {
   log "Fetching list of available backups from production..."
   
+  # Command to list backup files on remote server
+  local ssh_cmd
+  if [ "${USE_SSH_KEY:-false}" = true ]; then
+    ssh_cmd="ssh -o StrictHostKeyChecking=no $PROD_USER@$PROD_SERVER"
+  else
+    ssh_cmd="sshpass -p \"$PROD_PASSWORD\" ssh -o StrictHostKeyChecking=no $PROD_USER@$PROD_SERVER"
+  fi
+  
   # Get the list of backup files and sort them by date (newest first)
-  LATEST_BACKUP=$(sshpass -p "$PROD_PASSWORD" ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "ls -t $BACKUP_PATH/*.tar.gz 2>/dev/null | head -1")
+  LATEST_BACKUP=$(eval "$ssh_cmd \"ls -t $BACKUP_PATH/*.tar.gz 2>/dev/null | head -1\"")
   
   if [ -z "$LATEST_BACKUP" ]; then
     log "ERROR: No backup files found in $BACKUP_PATH"
@@ -66,7 +103,12 @@ download_latest_backup() {
   
   # Download the latest backup file
   log "Downloading the latest backup..."
-  sshpass -p "$PROD_PASSWORD" ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "cat $LATEST_BACKUP" > "$TEMP_DIR/$BACKUP_FILENAME"
+  
+  if [ "${USE_SSH_KEY:-false}" = true ]; then
+    ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "cat $LATEST_BACKUP" > "$TEMP_DIR/$BACKUP_FILENAME"
+  else
+    sshpass -p "$PROD_PASSWORD" ssh -o StrictHostKeyChecking=no "$PROD_USER@$PROD_SERVER" "cat $LATEST_BACKUP" > "$TEMP_DIR/$BACKUP_FILENAME"
+  fi
   
   if [ ! -f "$TEMP_DIR/$BACKUP_FILENAME" ]; then
     log "ERROR: Failed to download the backup file."
