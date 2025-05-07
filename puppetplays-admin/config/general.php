@@ -59,7 +59,7 @@ return [
     // Staging environment settings
     'staging' => [
         // Set this to `false` to prevent administrative changes from being made on Staging
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
 
         // Don’t allow updates on Staging
         'allowUpdates' => false,
