@@ -8,7 +8,6 @@
     "ether/tags": "^2.0.0",
     "mmikkel/incognito-field": "^1.3.0",
     "nystudio107/craft-seomatic": "^4.1.12",
-    "verbb/workflow": "2.0.15",
     "vlucas/phpdotenv": "^3.4.0"
   },
   "require-dev": {
