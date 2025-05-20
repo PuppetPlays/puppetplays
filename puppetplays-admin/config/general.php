@@ -1,4 +1,5 @@
 <?php
+
 /**
  * General Configuration
  *
@@ -35,8 +36,8 @@ return [
             '@webroot' => dirname(__DIR__) . '/web',
             '@livePreviewUrl' => getenv('SITE_URL'),
             '@siteUrl' => getenv('SITE_URL'),
-            '@assetBaseUrl' => '@web/static',
-            '@assetBasePath' => '@webroot/static',
+            '@assetBaseUrl' => 'web/static',
+            '@assetBasePath' => 'webroot/static',
         ],
 
         'defaultCookieDomain' => getenv('COOKIE_DOMAIN'),
@@ -58,7 +59,7 @@ return [
     // Staging environment settings
     'staging' => [
         // Set this to `false` to prevent administrative changes from being made on Staging
-        'allowAdminChanges' => false,
+        'allowAdminChanges' => true,
 
         // Don’t allow updates on Staging
         'allowUpdates' => false,

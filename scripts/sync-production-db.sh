@@ -304,8 +304,8 @@ check_ddev_and_db() {
   
   # Check if .env exists in the project directory
   if [ -f "$DDEV_PROJECT_DIR/.env" ]; then
-    # Check if DB_DRIVER is set to pgsql
-    DB_DRIVER=$(grep "DB_DRIVER" "$DDEV_PROJECT_DIR/.env" | cut -d= -f2)
+    # Check if DB_DRIVER is set to pgsql - improved extraction to handle quotes and whitespace
+    DB_DRIVER=$(grep "DB_DRIVER" "$DDEV_PROJECT_DIR/.env" | cut -d= -f2 | tr -d ' "'\'' ')
     
     if [ "$DB_DRIVER" != "pgsql" ]; then
       log "ERROR: Database driver in $DDEV_PROJECT_DIR/.env is not set to PostgreSQL (pgsql)."

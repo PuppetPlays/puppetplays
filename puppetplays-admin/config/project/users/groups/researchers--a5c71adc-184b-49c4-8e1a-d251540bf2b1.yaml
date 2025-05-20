@@ -5,187 +5,186 @@ permissions:
   - accessplugin-tag-manager
   - accessplugin-workflow
   - accesscp
-  - customizesources
   - 'editsite:397a9f9f-ff18-42c4-98ff-dbb87c17b754' # Puppetplays FR
   - 'editsite:59986aab-e6c1-4cdf-a062-8db833d2b327' # Puppetplays EN
   - 'editsite:bf194204-844c-4373-ad71-db3f6243b824' # Puppetplays DE
   - 'editsite:4cda444a-a132-4409-8e1e-5205e6a53896' # Puppetplays IT
-  - 'publishentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
-  - 'publishpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
   - 'deletepeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
-  - 'editpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
-  - 'editentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
   - 'createentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'publishentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'deleteentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'publishpeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'deletepeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'editpeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'publishpeerentrydrafts:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'deletepeerentrydrafts:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'editpeerentrydrafts:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
-  - 'editentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'createentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'publishentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'deleteentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'publishpeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'deletepeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'editpeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'publishpeerentrydrafts:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'deletepeerentrydrafts:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'editpeerentrydrafts:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
-  - 'editentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'createentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'publishentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'deleteentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'publishpeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'deletepeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'editpeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'publishpeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'deletepeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'editpeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
-  - 'editentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'createentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'publishentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
   - 'deleteentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'publishpeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
   - 'deletepeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'editpeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'publishpeerentrydrafts:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
   - 'deletepeerentrydrafts:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'editpeerentrydrafts:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
-  - 'editentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
   - 'createentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'publishentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'deleteentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'publishpeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'deletepeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'editpeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'publishpeerentrydrafts:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'deletepeerentrydrafts:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'editpeerentrydrafts:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
-  - 'editentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'createentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'publishentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
   - 'deleteentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'publishpeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
   - 'deletepeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'editpeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'publishpeerentrydrafts:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
   - 'deletepeerentrydrafts:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'editpeerentrydrafts:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
-  - 'editentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
   - 'createentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'publishentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'deleteentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'publishpeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'deletepeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'editpeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'publishpeerentrydrafts:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'deletepeerentrydrafts:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'editpeerentrydrafts:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
-  - 'editentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'createentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'publishentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'deleteentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'publishpeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'deletepeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'editpeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'publishpeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'deletepeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'editpeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  - 'editentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   - 'createentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'publishentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'deleteentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'publishpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'deletepeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'editpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'publishpeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'deletepeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'editpeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
-  - 'editentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'createentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'publishentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'deleteentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'publishpeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'deletepeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'editpeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'publishpeerentrydrafts:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'deletepeerentrydrafts:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'editpeerentrydrafts:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
-  - 'editentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
   - 'createentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'publishentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   - 'deleteentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'publishpeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   - 'deletepeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'editpeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'publishpeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   - 'deletepeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'editpeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
-  - 'editentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'publishentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'deleteentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'publishpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'deletepeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'editpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'publishpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'deletepeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'editpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
-  - 'editentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'createentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'publishentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
   - 'deleteentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'publishpeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
   - 'deletepeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'editpeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'publishpeerentrydrafts:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
   - 'deletepeerentrydrafts:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'editpeerentrydrafts:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'editentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
   - 'createentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'publishentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
   - 'deleteentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'publishpeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
   - 'deletepeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'editpeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'publishpeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
   - 'deletepeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'editpeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'editentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'saveassetinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'createfoldersinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'deletefilesandfoldersinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'replacefilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'editimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'editpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'replacepeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'deletepeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'editpeerimagesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'viewpeerfilesinvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'viewvolume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  - 'saveassetinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'createfoldersinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'deletefilesandfoldersinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'replacefilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'editimagesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'editpeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'replacepeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'deletepeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'editpeerimagesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'viewpeerfilesinvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'viewvolume:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
-  - 'saveassetinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'createfoldersinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'deletefilesandfoldersinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'replacefilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'editimagesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'editpeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'replacepeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'deletepeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'editpeerimagesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'viewpeerfilesinvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
-  - 'viewvolume:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
   - 'workflow:overview'
+  - 'viewassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'saveassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'deleteassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'replacefiles:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editimages:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewpeerassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'savepeerassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'replacepeerfiles:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'deletepeerassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editpeerimages:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'createfolders:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'saveassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'deleteassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'replacefiles:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editimages:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewpeerassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'savepeerassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'replacepeerfiles:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'deletepeerassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editpeerimages:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'createfolders:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'saveassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'deleteassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'replacefiles:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editimages:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewpeerassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'savepeerassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'replacepeerfiles:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'deletepeerassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editpeerimages:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'createfolders:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'saveentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'viewpeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'savepeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'viewpeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'savepeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'viewentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'saveentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'viewpeerentrydrafts:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'savepeerentrydrafts:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'viewpeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'savepeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'viewentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'saveentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'viewpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'savepeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'viewentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'saveentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'viewpeerentrydrafts:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'savepeerentrydrafts:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'viewpeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'savepeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'viewentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'saveentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'viewpeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'savepeerentrydrafts:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'viewpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'savepeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'viewentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'saveentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'viewpeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'savepeerentrydrafts:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'viewpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'savepeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'viewentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'saveentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'viewpeerentrydrafts:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'savepeerentrydrafts:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'viewpeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'savepeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'viewentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'saveentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'viewpeerentrydrafts:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'savepeerentrydrafts:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'viewpeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'savepeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'viewentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'saveentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'viewpeerentrydrafts:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'savepeerentrydrafts:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'viewpeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'savepeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'viewentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'saveentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'viewpeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'savepeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'viewpeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'savepeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'viewentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'saveentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'viewpeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'savepeerentrydrafts:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'viewpeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'savepeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'viewentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'saveentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'viewpeerentrydrafts:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'savepeerentrydrafts:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'viewpeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'savepeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'viewentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'saveentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'viewpeerentrydrafts:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'savepeerentrydrafts:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'viewpeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'savepeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'viewentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'saveentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'viewpeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'savepeerentrydrafts:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'viewpeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'savepeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'viewentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'saveentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'viewpeerentrydrafts:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'savepeerentrydrafts:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'viewpeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'savepeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Site module for Craft CMS 3.x
  *
@@ -15,6 +16,7 @@ use modules\sitemodule\Sitemodule;
 use Craft;
 use craft\web\Controller;
 use yii\web\Response;
+use yii\web\BadRequestHttpException;
 
 class NewsletterController extends Controller
 {
@@ -26,7 +28,7 @@ class NewsletterController extends Controller
    *         The actions must be in 'kebab-case'
    * @access protected
    */
-  protected $allowAnonymous = ['subscribe'];
+  protected  array|bool|int $allowAnonymous = ['subscribe'];
 
 
   // Public Methods
@@ -34,15 +36,15 @@ class NewsletterController extends Controller
   /**
    * @inheritdoc
    */
-  public function beforeAction($action)
+  public function beforeAction($action): bool
   {
-      if ($action->id === 'subscribe') {
-          $this->enableCsrfValidation = false;
-      }
+    if ($action->id === 'subscribe') {
+      $this->enableCsrfValidation = false;
+    }
 
-      return parent::beforeAction($action);
+    return parent::beforeAction($action);
   }
-  
+
   /**
    * Handle the subscription to the newsletter
    *
@@ -50,7 +52,7 @@ class NewsletterController extends Controller
    */
   public function actionSubscribe()
   {
-    $this-> requireAcceptsJson();
+    $this->requireAcceptsJson();
 
     $request = Craft::$app->getRequest();
     $response = Craft::$app->getResponse();
@@ -68,7 +70,7 @@ class NewsletterController extends Controller
       $response->data = '';
       return $response;
     }
-    
+
     $response->format = Response::FORMAT_JSON;
 
     if ($request->getIsPost()) {
@@ -76,17 +78,16 @@ class NewsletterController extends Controller
       // $locale = $request->getBodyParam('locale');
       // $html = Craft::t('sitemodule', 'Subscription confirmed content', [], $locale);
       // $subject = Craft::t('sitemodule', 'Subscription confirmed', [], $locale);
-      
+
       $emailSuccesfullySent = $this->sendMail('', 'subscribe puppetplays_newsletter', $email, 'sympa@univ-montp3.fr');
-      
+
       if (!$emailSuccesfullySent) {
         throw new BadRequestHttpException('Cannot subscribe to the newsletter');
       }
-      
+
       $response->data = 'Subscription confirmed';
       return $response;
     }
-
   }
 
   /**
@@ -98,13 +99,13 @@ class NewsletterController extends Controller
    */
   public function sendMail(string $html, string $subject, $from, $to): bool
   {
-      return Craft::$app
-          ->getMailer()
-          ->compose()
-          ->setFrom($from)
-          ->setTo($to)
-          ->setSubject($subject)
-          ->setHtmlBody($html)
-          ->send();
+    return Craft::$app
+      ->getMailer()
+      ->compose()
+      ->setFrom($from)
+      ->setTo($to)
+      ->setSubject($subject)
+      ->setHtmlBody($html)
+      ->send();
   }
 }
