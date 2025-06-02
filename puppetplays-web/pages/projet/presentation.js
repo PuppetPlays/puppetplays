@@ -122,17 +122,20 @@ const ProjectPresentation = () => {
               sizes="(max-width: 480px) 100vw, (max-width: 768px) 80vw, (max-width: 860px) 70vw, 45vw"
               priority
             />
+            <div className={styles.heroImageCredit}>
+              Illustration : Christophe Loiseau et Matt Jackson
+            </div>
           </div>
         </div>
 
         <section className={styles.section}>
           <p className={styles.listTitle}>
-            {t('presentation.description.ambitions.title')}
+            {t('presentation.description.contributions.title')}
           </p>
           <ul className={styles.list}>
-            <li>{t('presentation.description.ambitions.ambition1')}</li>
-            <li>{t('presentation.description.ambitions.ambition2')}</li>
-            <li>{t('presentation.description.ambitions.ambition3')}</li>
+            <li>{t('presentation.description.contributions.contribution1')}</li>
+            <li>{t('presentation.description.contributions.contribution2')}</li>
+            <li>{t('presentation.description.contributions.contribution3')}</li>
           </ul>
           <p className={styles.paragraph}>
             {t('presentation.description.access')}
@@ -142,43 +145,52 @@ const ProjectPresentation = () => {
         <div className={styles.divider} />
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>
-            {t('presentation.invisibleRepertoire.title')}
-          </h2>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph1')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph2')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph3')}
-          </p>
-          <div className={styles.blockquote}>
-            {t('presentation.invisibleRepertoire.paragraph4')}
+          <div className={styles.timelineHeader}>
+            <h2 className={styles.sectionTitle}>
+              {t('presentation.chronology.title')}
+            </h2>
           </div>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph5')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph6')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph7')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph8')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph9')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph10')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.invisibleRepertoire.paragraph11')}
-          </p>
+
+          <div className={styles.timelineWrapper}>
+            <div className={styles.timelineContainer}>
+              <div className={styles.timeline}>
+                {Object.keys(
+                  t('presentation.chronology.events', { returnObjects: true }),
+                ).map(eventKey => {
+                  const event = t(
+                    `presentation.chronology.events.${eventKey}`,
+                    { returnObjects: true },
+                  );
+                  return (
+                    <div key={eventKey} className={styles.timelineEvent}>
+                      <div className={styles.timelineDateWrapper}>
+                        <div className={styles.timelineDate}>{event.date}</div>
+                        <div className={styles.timelineLine} />
+                      </div>
+                      <div className={styles.timelineContent}>
+                        <p className={styles.timelineDescription}>
+                          {event.description}
+                        </p>
+                        {event.url && event.url !== 'en cours de dépôt' && (
+                          <Link
+                            href={event.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.timelineLink}
+                          >
+                            {t('common:seeMore')}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </section>
+
+        <div className={styles.divider} />
 
         <div className={styles.partnersSection}>
           <PartnersBar t={t} />

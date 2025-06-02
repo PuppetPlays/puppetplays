@@ -23,5 +23,10 @@
   "partners": {
     "title": "Partenaires",
     "description": "Le projet PuppetPlays est rendu possible grâce au soutien de nos partenaires et institutions de financement."
+  },
+  
+  "acknowledgments": {
+    "title": "Remerciements",
+    "content": "Nous tenons aussi à remercier tous les stagiaires et vacataires qui ont participé au projet : Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
   }
 } 

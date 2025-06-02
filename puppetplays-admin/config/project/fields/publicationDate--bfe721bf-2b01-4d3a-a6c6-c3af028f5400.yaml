@@ -1,0 +1,17 @@
+columnSuffix: ronkknjf
+contentColumnType: datetime
+fieldGroup: f1c3d1d7-7d32-4cd8-a468-27b4ad21d5db # Revues de presse
+handle: publicationDate
+instructions: 'Date de publication de l''article'
+name: 'Date de publication'
+searchable: false
+settings:
+  max: null
+  min: null
+  minuteIncrement: 30
+  showDate: true
+  showTime: false
+  showTimeZone: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Date

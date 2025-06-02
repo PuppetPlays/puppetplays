@@ -384,3 +384,41 @@
     height: 350px;
   }
 }
+
+/* Acknowledgments Section */
+.acknowledgments {
+  margin-top: 2rem;
+  padding: 0;
+  
+  @media (min-width: 768px) {
+    margin-top: 2.5rem;
+  }
+}
+
+.acknowledgmentsTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #01055b;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  
+}
+
+.acknowledgmentsContent {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+  
+}
+
+.memberCardExpandedOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+}

@@ -4,6 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 
 import Pagination from '../../components/Pagination';
+import PressReviews from '../../components/Project/PressReviews';
 import ProjectLayout from '../../components/Project/ProjectLayout';
 import { fetchAPI } from '../../lib/api';
 import styles from '../../styles/Communications.module.scss';
@@ -162,7 +163,7 @@ const ArticleCard = ({ article }) => {
   );
 };
 
-// Requête GraphQL pour récupérer les communications
+// Requête GraphQL pour récupérer les communications et les revues de presse
 const getCommunicationsQuery = `
 query GetCommunications($locale: [String]) {
   entries(section: "communications", site: $locale) {
@@ -198,17 +199,42 @@ query GetCommunications($locale: [String]) {
     }
   }
   entryCount(section: "communications", site: $locale)
+  
+  pressReviews: entries(section: "pressReviews", site: $locale) {
+    id,
+    title,
+    slug,
+    ... on pressReviews_default_Entry {
+      authorsPress,
+      publicationName,
+      publicationDate,
+      consultationDate,
+      articleLink,
+      thumbnail {
+        id,
+        url,
+        width,
+        height
+      }
+    }
+  }
+  pressReviewsCount: entryCount(section: "pressReviews", site: $locale)
 }
 `;
 
-const CommunicationsPage = ({ initialCommunications }) => {
+const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
   const { t } = useTranslation(['project', 'common']);
   const [currentPage, setCurrentPage] = useState(0);
+  const [activeTab, setActiveTab] = useState('newsletters'); // 'newsletters' ou 'pressReviews'
   const ARTICLES_PER_PAGE = 5; // Show 5 articles per page for press review style
 
+  // Determine which data to use based on active tab
+  const currentData =
+    activeTab === 'newsletters' ? initialCommunications : initialPressReviews;
+
   // Calculate pagination values
-  const pageCount = Math.ceil(initialCommunications.length / ARTICLES_PER_PAGE);
-  const paginatedArticles = initialCommunications.slice(
+  const pageCount = Math.ceil(currentData.length / ARTICLES_PER_PAGE);
+  const paginatedArticles = currentData.slice(
     currentPage * ARTICLES_PER_PAGE,
     (currentPage + 1) * ARTICLES_PER_PAGE,
   );
@@ -220,6 +246,11 @@ const CommunicationsPage = ({ initialCommunications }) => {
     if (articlesTop) {
       articlesTop.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleTabChange = tab => {
+    setActiveTab(tab);
+    setCurrentPage(0); // Reset to first page when changing tabs
   };
 
   return (
@@ -237,20 +268,44 @@ const CommunicationsPage = ({ initialCommunications }) => {
           </p>
         </header>
 
+        {/* Tabs Navigation */}
+        <div className={styles.tabsContainer}>
+          <div className={styles.tabs}>
+            <button
+              className={`${styles.tabButton} ${activeTab === 'newsletters' ? styles.active : ''}`}
+              onClick={() => handleTabChange('newsletters')}
+            >
+              {t('project:communications.tabs.newsletters')}
+            </button>
+            <button
+              className={`${styles.tabButton} ${activeTab === 'pressReviews' ? styles.active : ''}`}
+              onClick={() => handleTabChange('pressReviews')}
+            >
+              {t('project:communications.tabs.pressReviews')}
+            </button>
+          </div>
+        </div>
+
         <div className={styles.divider} />
 
         {/* Articles list */}
         <div id="articles-top" />
-        {paginatedArticles.length > 0 ? (
-          <div className={styles.articleGrid}>
-            {paginatedArticles.map(article => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
-          </div>
+        {activeTab === 'newsletters' ? (
+          // Newsletters content
+          paginatedArticles.length > 0 ? (
+            <div className={styles.articleGrid}>
+              {paginatedArticles.map(article => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyState}>
+              <p>{t('project:communications.noArticlesFound')}</p>
+            </div>
+          )
         ) : (
-          <div className={styles.emptyState}>
-            <p>{t('project:communications.noArticlesFound')}</p>
-          </div>
+          // Press Reviews content
+          <PressReviews reviews={paginatedArticles} />
         )}
 
         {/* Pagination */}
@@ -270,16 +325,31 @@ const CommunicationsPage = ({ initialCommunications }) => {
 
 export async function getStaticProps({ locale }) {
   try {
-    // Récupérer les données des communications
+    // Récupérer les données des communications et revues de presse
     const data = await fetchAPI(getCommunicationsQuery, {
       variables: {
         locale,
       },
     });
 
+    // Trier les communications par date, de la plus récente à la plus ancienne
+    const sortedCommunications = (data?.entries || []).sort((a, b) => {
+      const dateA = new Date(a.dateCommunications || '1900-01-01');
+      const dateB = new Date(b.dateCommunications || '1900-01-01');
+      return dateB - dateA; // Tri décroissant (plus récent en premier)
+    });
+
+    // Trier les revues de presse par date de publication
+    const sortedPressReviews = (data?.pressReviews || []).sort((a, b) => {
+      const dateA = new Date(a.publicationDate || '1900-01-01');
+      const dateB = new Date(b.publicationDate || '1900-01-01');
+      return dateB - dateA; // Tri décroissant (plus récent en premier)
+    });
+
     return {
       props: {
-        initialCommunications: data?.entries || [],
+        initialCommunications: sortedCommunications,
+        initialPressReviews: sortedPressReviews,
         ...(await serverSideTranslations(locale, ['common', 'project'])),
       },
       // Revalidation toutes les heures pour mettre à jour le contenu
@@ -290,6 +360,7 @@ export async function getStaticProps({ locale }) {
     return {
       props: {
         initialCommunications: [],
+        initialPressReviews: [],
         ...(await serverSideTranslations(locale, ['common', 'project'])),
       },
       revalidate: 60, // Réessayer plus fréquemment en cas d'erreur

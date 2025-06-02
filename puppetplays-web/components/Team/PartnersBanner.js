@@ -29,19 +29,16 @@ const PartnersBanner = ({ partners = [] }) => {
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef(null);
 
-  if (!partners || partners.length === 0) {
-    return <p>{t('common:noData')}</p>;
-  }
-
   // Pour le défilement infini, nous dupliquons les partenaires
   const extendedPartners = [...partners, ...partners, ...partners];
 
   useEffect(() => {
+    if (!partners || partners.length === 0) return;
+
     // Reset position quand le carousel a défilé un ensemble complet
     const handleScroll = () => {
       if (carouselRef.current) {
         const scrollWidth = carouselRef.current.scrollWidth;
-        const containerWidth = carouselRef.current.clientWidth;
         const scrollLeft = carouselRef.current.scrollLeft;
 
         // Si nous avons défilé un ensemble complet (atteint le deuxième groupe)
@@ -69,20 +66,26 @@ const PartnersBanner = ({ partners = [] }) => {
     };
 
     startScrolling();
-    carouselRef.current.addEventListener('scroll', handleScroll);
+
+    const currentRef = carouselRef.current;
+    if (currentRef) {
+      currentRef.addEventListener('scroll', handleScroll);
+    }
 
     return () => {
       clearInterval(scrollInterval);
-      if (carouselRef.current) {
-        carouselRef.current.removeEventListener('scroll', handleScroll);
+      if (currentRef) {
+        currentRef.removeEventListener('scroll', handleScroll);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, partners]);
+
+  if (!partners || partners.length === 0) {
+    return <p>{t('common:noData')}</p>;
+  }
 
   return (
     <div className={styles.partnersContainer}>
-      <p className={styles.paragraph}>{t('partners.description')}</p>
-
       <div
         className={styles.partnersCarousel}
         ref={carouselRef}
@@ -104,8 +107,8 @@ const PartnersBanner = ({ partners = [] }) => {
       <div className={styles.partnersNote}>
         <p>
           This project has received funding from the European Research Council
-          (ERC) under the European Union's Horizon 2020 research and innovation
-          programme (grant agreement No 835193).
+          (ERC) under the European Union&apos;s Horizon 2020 research and
+          innovation programme (grant agreement No 835193).
         </p>
       </div>
     </div>

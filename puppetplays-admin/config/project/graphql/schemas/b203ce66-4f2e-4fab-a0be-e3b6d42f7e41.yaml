@@ -1,6 +1,10 @@
 isPublic: true
 name: 'Public Schema'
 scope:
+  - 'sites.397a9f9f-ff18-42c4-98ff-dbb87c17b754:read' # Puppetplays FR
+  - 'sites.59986aab-e6c1-4cdf-a062-8db833d2b327:read' # Puppetplays EN
+  - 'sites.bf194204-844c-4373-ad71-db3f6243b824:read' # Puppetplays DE
+  - 'sites.4cda444a-a132-4409-8e1e-5205e6a53896:read' # Puppetplays IT
   - 'elements.drafts:read'
   - 'elements.revisions:read'
   - 'elements.inactive:read'
@@ -35,14 +39,16 @@ scope:
   - 'sections.e205ebe8-5557-4b7c-a43f-9cf548e90c8d:read' # Pays
   - 'entrytypes.bd5e6b34-8b0b-4a47-93f3-f9a23c0a39aa:read' # Pays
   - 'sections.63ea829e-b0e4-4021-8ab5-1b0f095d3daf:read' # Personnes
-  - 'entrytypes.8e095ccd-7ed1-4c9b-99e1-b98480a0e9df:read' # Compagnies
   - 'entrytypes.e0954bb8-d8bb-4fbb-b5e7-944b482e521e:read' # Personnes
+  - 'entrytypes.8e095ccd-7ed1-4c9b-99e1-b98480a0e9df:read' # Compagnies
   - 'sections.ccd48638-f531-4032-a057-8af4f24cd187:read' # Procédés théâtraux
   - 'entrytypes.5e83af75-a401-46c6-918f-f56ab78ad797:read' # Procédés théâtraux
   - 'sections.9cac54fd-67ff-4311-a127-785048ff9146:read' # Publics
   - 'entrytypes.fa8f9cfe-9074-40b9-b300-5a58cd4ff61c:read' # Publics
   - 'sections.8e72b0db-f5f6-4385-9228-33dd62285d5c:read' # Registres littéraires
   - 'entrytypes.19568c88-e81b-48e1-bab2-ba7f106a823f:read' # Registres
+  - 'sections.c536c595-f070-49db-989a-a78e00ec515a:read' # Revues de Presse 
+  - 'entrytypes.3b29f0db-e6d9-4ca5-bfc5-faee1e5070dd:read' # Par défaut
   - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read' # Techniques d’animation
   - 'entrytypes.48898581-e621-4ea2-bcf6-3c65ac54487f:read' # Techniques d’animation
   - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read' # Images
@@ -50,7 +56,3 @@ scope:
   - 'volumes.37720b4b-f4c6-42b4-8400-af5f71b3e072:read' # Sounds
   - 'usergroups.everyone:read'
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
-  - 'sites.4cda444a-a132-4409-8e1e-5205e6a53896:read' # Puppetplays IT
-  - 'sites.397a9f9f-ff18-42c4-98ff-dbb87c17b754:read' # Puppetplays FR
-  - 'sites.59986aab-e6c1-4cdf-a062-8db833d2b327:read' # Puppetplays EN
-  - 'sites.bf194204-844c-4373-ad71-db3f6243b824:read' # Puppetplays DE
