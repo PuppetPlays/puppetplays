@@ -1,12 +1,11 @@
 import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
 import ProjectLayout from 'components/Project/ProjectLayout';
-import PartnersBanner from 'components/Team/PartnersBanner';
 import ScientificCommittee from 'components/Team/ScientificCommittee';
-import TeamGrid from 'components/Team/TeamGrid';
+import TeamGrid, { Acknowledgments } from 'components/Team/TeamGrid';
+import { useFormattedTranslation } from 'hooks/useFormattedTranslation';
 import { fetchAPI } from 'lib/api';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from 'styles/Team.module.scss';
 import useSWR from 'swr';
@@ -34,14 +33,6 @@ query GetAllTeamData($locale: [String]) {
       }
       orcid
       halCvLink
-      researchProject {
-        ... on researchProject_project_BlockType {
-          id
-          researchTitle
-          researchContent
-          researchLink
-        }
-      }
     }
   }
   
@@ -53,29 +44,30 @@ query GetAllTeamData($locale: [String]) {
       affiliation
     }
   }
-  
-  partnerEntries: entries(section: "partners", site: $locale) {
+
+  researchProjects: entries(section: "researchProjects", site: $locale) {
     id
     title
-    # Using the correct entry type as suggested by the error
-    ... on partners_partners_Entry {
-      partnerName
-      partnerLink
-      partnerLogo {
-        id
-        url
-        width
-        height
-        ... on images_Asset {
-          alt
+    slug
+    ... on researchProjects_default_Entry {
+      postdoctorant {
+        ... on team_team_Entry {
+          id
+          fullName
         }
       }
+      projectTitle
+      projectSummary
+      startDate
+      endDate
+      historicalPeriod
+      puppetTradition
     }
   }
 }`;
 
 const TeamPage = () => {
-  const { t } = useTranslation(['project', 'common', 'team']);
+  const { t } = useFormattedTranslation(['project', 'common', 'team']);
   const { locale } = useRouter();
 
   const { data, error } = useSWR(
@@ -90,30 +82,53 @@ const TeamPage = () => {
     },
   );
 
+  // Process team data - sort alphabetically with Didier Plassard first
+  const sortedTeamData = data?.teamEntries
+    ? [...data.teamEntries].sort((a, b) => {
+        const nameA = a.fullName || a.title || '';
+        const nameB = b.fullName || b.title || '';
+
+        // Didier Plassard always first
+        if (nameA === 'Plassard Didier') return -1;
+        if (nameB === 'Plassard Didier') return 1;
+
+        // Alphabetical order for the rest
+        return nameA.localeCompare(nameB);
+      })
+    : [];
+
+  // Associate research projects with team members
+  const teamWithProjects = sortedTeamData.map(member => {
+    const relatedProjects =
+      data?.researchProjects?.filter(project =>
+        project.postdoctorant?.some(postdoc => postdoc.id === member.id),
+      ) || [];
+
+    return {
+      ...member,
+      relatedResearchProjects: relatedProjects,
+    };
+  });
+
   // Process scientific committee data - using alphabetical order by name
   const scientificCommitteeData = data?.scientificCommitteeEntries || [];
   const sortedCommitteeData = [...scientificCommitteeData].sort((a, b) => {
-    const nameA = (a.memberName || a.title || '').toLowerCase();
-    const nameB = (b.memberName || b.title || '').toLowerCase();
-    return nameA.localeCompare(nameB);
+    // Obtenir le nom pour le tri (memberName en priorité, sinon title)
+    const nameA = (a.memberName || a.title || '').trim();
+    const nameB = (b.memberName || b.title || '').trim();
+
+    // Si les noms sont vides, on les place à la fin
+    if (!nameA && !nameB) return 0;
+    if (!nameA) return 1;
+    if (!nameB) return -1;
+
+    // Tri alphabétique en ignorant la casse et les accents
+    return nameA.localeCompare(nameB, 'fr', {
+      sensitivity: 'base',
+      numeric: true,
+      ignorePunctuation: true,
+    });
   });
-
-  // Process partners data - keep original order
-  const partnersData = data?.partnerEntries || [];
-
-  // Map partners data to the format expected by PartnersBanner component
-  const formattedPartnersData = partnersData.map(partner => ({
-    name: partner.partnerName || partner.title,
-    link: partner.partnerLink || '#',
-    logo:
-      partner.partnerLogo && partner.partnerLogo.length > 0
-        ? partner.partnerLogo[0].url
-        : '',
-    alt:
-      partner.partnerLogo && partner.partnerLogo.length > 0
-        ? partner.partnerLogo[0].alt || partner.partnerName
-        : partner.partnerName,
-  }));
 
   return (
     <ProjectLayout
@@ -122,10 +137,18 @@ const TeamPage = () => {
     >
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>{t('team:teamMembers.title')}</h1>
-          <p className={styles.paragraph}>
-            {t('team:teamMembers.description')}
-          </p>
+          <h1
+            className={styles.title}
+            dangerouslySetInnerHTML={{
+              __html: t('team:teamMembers.title'),
+            }}
+          />
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('team:teamMembers.description'),
+            }}
+          />
         </header>
 
         <section className={styles.teamSection}>
@@ -138,14 +161,17 @@ const TeamPage = () => {
           )}
 
           {data && data.teamEntries && data.teamEntries.length > 0 && (
-            <TeamGrid members={data.teamEntries} />
+            <TeamGrid members={teamWithProjects} />
           )}
         </section>
 
         <section className={styles.committeeSection}>
-          <h2 className={styles.sectionTitle}>
-            {t('team:scientificCommittee.title')}
-          </h2>
+          <h2
+            className={styles.sectionTitle}
+            dangerouslySetInnerHTML={{
+              __html: t('team:scientificCommittee.title'),
+            }}
+          />
 
           {/* Use dynamic data from CraftCMS instead of translation file */}
           {data && sortedCommitteeData.length > 0 ? (
@@ -155,16 +181,7 @@ const TeamPage = () => {
           )}
         </section>
 
-        <section className={styles.partnersSection}>
-          <h2 className={styles.sectionTitle}>{t('team:partners.title')}</h2>
-
-          {/* Pass the dynamic partners data to PartnersBanner */}
-          {data && formattedPartnersData.length > 0 ? (
-            <PartnersBanner partners={formattedPartnersData} />
-          ) : (
-            <p>{t('common:noData')}</p>
-          )}
-        </section>
+        <Acknowledgments />
       </div>
     </ProjectLayout>
   );

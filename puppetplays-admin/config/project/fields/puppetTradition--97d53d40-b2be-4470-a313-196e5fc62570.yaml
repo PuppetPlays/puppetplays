@@ -1,0 +1,19 @@
+columnSuffix: mrzwrdkz
+contentColumnType: text
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: puppetTradition
+instructions: 'Ex: "guarattelle napolitaines", "opera dei pupi sicilienne"'
+name: 'Tradition Théâtrale Étudiée'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

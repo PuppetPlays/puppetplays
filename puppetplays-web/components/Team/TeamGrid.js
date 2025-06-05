@@ -55,7 +55,7 @@ const CloseIcon = () => (
 );
 
 const TeamMemberCard = ({ member }) => {
-  const { t, i18n } = useTranslation(['team', 'common']);
+  const { t, i18n: _i18n } = useTranslation(['team', 'common']);
   const [expanded, setExpanded] = useState(false);
   const contentRef = useRef(null);
 
@@ -214,8 +214,12 @@ const TeamMemberCard = ({ member }) => {
       {expanded && (
         <div
           className={styles.memberCardExpanded}
-          onClick={e => {
-            if (e.target === e.currentTarget) {
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="member-dialog-title"
+          tabIndex="-1"
+          onKeyDown={e => {
+            if (e.key === 'Escape') {
               setExpanded(false);
             }
           }}
@@ -290,34 +294,87 @@ const TeamMemberCard = ({ member }) => {
                 </div>
 
                 {/* Affichage des projets de recherche */}
-                {member.researchProject &&
-                  member.researchProject.length > 0 && (
+                {member.relatedResearchProjects &&
+                  member.relatedResearchProjects.length > 0 && (
                     <div className={styles.researchProject}>
-                      <h3>{t('researchProjects', 'Projets de recherche')}</h3>
+                      <h3>{t('researchProjects', 'Travaux de recherche')}</h3>
 
-                      {member.researchProject.map(project => (
-                        <div
-                          key={project.id}
-                          className={styles.researchProjectItem}
-                        >
-                          <h4 className={styles.researchTitle}>
-                            {project.researchTitle}
-                          </h4>
-                          <p>{project.researchContent}</p>
+                      {member.relatedResearchProjects.map(project => {
+                        const startDateFormatted = project.startDate
+                          ? new Date(project.startDate).toLocaleDateString(
+                              'fr-FR',
+                              {
+                                month: 'long',
+                                year: 'numeric',
+                              },
+                            )
+                          : null;
 
-                          {project.researchLink && (
+                        const endDateFormatted = project.endDate
+                          ? new Date(project.endDate).toLocaleDateString(
+                              'fr-FR',
+                              {
+                                month: 'long',
+                                year: 'numeric',
+                              },
+                            )
+                          : null;
+
+                        return (
+                          <div
+                            key={project.id}
+                            className={styles.researchProjectItem}
+                          >
+                            {/* Métadonnées au-dessus du titre */}
+                            <div className={styles.researchMeta}>
+                              {(startDateFormatted || endDateFormatted) && (
+                                <span className={styles.researchMetaItem}>
+                                  <strong>{t('team:contractPeriod')} :</strong>{' '}
+                                  {startDateFormatted}
+                                  {startDateFormatted &&
+                                    endDateFormatted &&
+                                    ' - '}
+                                  {endDateFormatted}
+                                </span>
+                              )}
+
+                              {project.historicalPeriod && (
+                                <span className={styles.researchMetaItem}>
+                                  <strong>
+                                    {t('team:historicalPeriod')} :
+                                  </strong>{' '}
+                                  {project.historicalPeriod}
+                                </span>
+                              )}
+                            </div>
+
+                            <h4 className={styles.researchTitle}>
+                              {project.projectTitle}
+                            </h4>
+
+                            {project.projectSummary && (
+                              <div
+                                className={styles.researchSummary}
+                                dangerouslySetInnerHTML={{
+                                  __html: project.projectSummary,
+                                }}
+                              />
+                            )}
+
                             <a
-                              href={project.researchLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                              href={`/projet/recherche/${project.slug}`}
                               className={styles.researchLink}
+                              onClick={e => {
+                                // Empêcher la propagation pour éviter la fermeture de la modal
+                                e.stopPropagation();
+                              }}
                             >
                               {t('viewProject', 'Voir le projet')}{' '}
                               <ExternalLinkIcon />
                             </a>
-                          )}
-                        </div>
-                      ))}
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
               </div>
@@ -326,6 +383,21 @@ const TeamMemberCard = ({ member }) => {
         </div>
       )}
     </>
+  );
+};
+
+const Acknowledgments = () => {
+  const { t } = useTranslation('team');
+
+  return (
+    <div className={styles.acknowledgments}>
+      <h2 className={styles.acknowledgmentsTitle}>
+        {t('acknowledgments.title')}
+      </h2>
+      <p className={styles.acknowledgmentsContent}>
+        {t('acknowledgments.content')}
+      </p>
+    </div>
   );
 };
 
@@ -340,3 +412,4 @@ const TeamGrid = ({ members }) => {
 };
 
 export default TeamGrid;
+export { Acknowledgments };

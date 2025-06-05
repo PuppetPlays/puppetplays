@@ -42,6 +42,7 @@
   "tactPlatform": "TACT Transcription",
   "knowMore": "Learn more",
   "contactUs": "To contact us",
+  "ourPartners": "Our Partners",
   "searchPlaceholder": "Search for a title, an author, a theme",
   "fr": "French",
   "en": "English",
@@ -195,7 +196,8 @@
     "loadingData": "Error loading data: {{error}}",
     "loadingCollections": "Error loading collections: {{error}}",
     "collections": "collections",
-    "errorLoading": "Error loading data"
+    "errorLoading": "Error loading data",
+    "projectNotFound": "Research project not found"
   },
   "readMore": "Read more",
   "home": "Home",

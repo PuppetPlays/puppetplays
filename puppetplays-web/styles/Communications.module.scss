@@ -672,3 +672,61 @@
   color: #777;
   font-style: italic;
 }
+
+// Tabs navigation styles
+.tabsContainer {
+  margin: 1.5rem 0;
+  position: relative;
+
+  @media (min-width: 640px) {
+    margin: 2rem 0;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+
+  @media (min-width: 640px) {
+    gap: 1.5rem;
+  }
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+
+  @media (min-width: 640px) {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &:hover {
+    color: #01055b;
+  }
+
+  &.active {
+    color: #01055b;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #f8d04e;
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}
