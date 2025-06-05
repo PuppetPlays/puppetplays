@@ -305,11 +305,19 @@
 				<!-- Imagen y datos básicos -->
 				<div class="work-media">
 					<div class="cover-image"></div>
-					{% if entry.medias.one() %}
-						{{ entry.medias.one().url ?? 'Imprimé' }}
-					{% else %}
-						Imprimé
-					{% endif %}
+					<p>
+						{% if entry.formats.all()|length > 0 %}
+							{% set formatsList = [] %}
+							{% for format in entry.formats.all() %}
+								{% set formatsList = formatsList|merge([format.title]) %}
+							{% endfor %}
+							{{ formatsList|join(', ') }}
+						{% elseif entry.medias.one() %}
+							{{ entry.medias.one().title }}
+						{% else %}
+							Imprimé
+						{% endif %}
+					</p>
 					<p>{{ entry.pagesCount ?? '' }}
 						pages</p>
 				</div>
@@ -358,28 +366,47 @@
 						{% if entry.abstract %}
 							<div class="info-container info-container--filled">
 								<div class="info-label">Résumé</div>
-								<div
-									class="info-content">
-									{# {% if entry.abstractTitle %}
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																	<h3 class="abstract-title">{{ entry.abstractTitle }}</h3>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																{% endif %} #}
+								<div class="info-content">
 									{{ entry.abstract|raw }}
 								</div>
 							</div>
 						{% endif %}
 					</section>
 
-					{% if entry.firstPerformancePlace.one() %}
+					{% if entry.firstPerformancePlace.one() or entry.firstPerformanceDate or entry.firstPerformanceComplementaryInformation %}
 						<section class="section">
 							<h2 class="section-title">
 								<span>Première représentation</span>
 							</h2>
 							<div class="section-content">
-								<span>{{ entry.firstPerformancePlace.one().title }}</span>
-								{% if entry.firstPerformanceDate %}
-									<div class="info-container">
-										<p>{{ entry.firstPerformanceDate|date('d/m/Y') }}</p>
-									</div>
+								{% set hasPlace = entry.firstPerformancePlace.one() %}
+								{% set hasDate = entry.firstPerformanceDate %}
+								{% set hasExtraInfo = entry.firstPerformanceComplementaryInformation %}
+
+								{% if hasPlace %}
+									{% set place = entry.firstPerformancePlace.one() %}
+									<span>
+										{{ place.title }}
+										{% if place.country.all()|length > 0 and place.country.one().title != place.title %}
+											,
+											{{ place.country.one().title }}
+										{% endif %}
+									</span>
+								{% endif %}
+
+								{% if hasPlace and (hasDate or hasExtraInfo) %},
+								{% endif %}
+
+								{% if hasDate %}
+									<span>{{ entry.firstPerformanceDate }}</span>
+								{% endif %}
+
+								{% if hasDate and hasExtraInfo %}
+									-
+								{% endif %}
+
+								{% if hasExtraInfo %}
+									<div style="display: inline;">{{ entry.firstPerformanceComplementaryInformation|raw }}</div>
 								{% endif %}
 							</div>
 						</section>
