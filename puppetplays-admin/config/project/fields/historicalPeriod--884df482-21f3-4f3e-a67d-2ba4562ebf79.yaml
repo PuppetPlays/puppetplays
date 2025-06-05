@@ -1,0 +1,19 @@
+columnSuffix: pnfivwni
+contentColumnType: text
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: historicalPeriod
+instructions: 'Ex: "XIXe–XXe siècle", "Époque moderne"'
+name: 'Période Historique Étudiée'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

@@ -1,0 +1,19 @@
+columnSuffix: oemgeqte
+contentColumnType: text
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: projectSummary
+instructions: null
+name: 'Résumé du projet'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 8
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\PlainText

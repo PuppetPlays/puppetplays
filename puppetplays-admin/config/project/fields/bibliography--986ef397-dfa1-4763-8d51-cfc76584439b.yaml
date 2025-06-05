@@ -1,0 +1,27 @@
+columnSuffix: vehhdxqz
+contentColumnType: text
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: bibliography
+instructions: 'Références formatées (italique pour titres d''ouvrages)'
+name: Bibliographie
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  columnType: text
+  configSelectionMode: choose
+  defaultTransform: ''
+  manualConfig: ''
+  purifierConfig: null
+  purifyHtml: true
+  redactorConfig: null
+  removeEmptyTags: false
+  removeInlineStyles: false
+  removeNbsp: false
+  showHtmlButtonForNonAdmins: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  uiMode: enlarged
+translationKeyFormat: null
+translationMethod: language
+type: craft\redactor\Field

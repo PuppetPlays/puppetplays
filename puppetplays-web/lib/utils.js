@@ -25,6 +25,14 @@ export const stringifyQuery = value => {
   });
 };
 
+export const formatPuppetPlays = text => {
+  if (typeof text !== 'string') return text;
+
+  // Remplace toutes les occurrences de "PuppetPlays" par la version italique
+  // Utilise une regex case-insensitive pour capturer toutes les variantes
+  return text.replace(/(PuppetPlays)/gi, '<em>$1</em>');
+};
+
 export const getRandom = (arr, n) => {
   let len = arr.length;
   let nMin = n > len ? len : n;

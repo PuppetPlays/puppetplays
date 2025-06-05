@@ -196,7 +196,8 @@
     "loadingData": "Error loading data: {{error}}",
     "loadingCollections": "Error loading collections: {{error}}",
     "collections": "collections",
-    "errorLoading": "Error loading data"
+    "errorLoading": "Error loading data",
+    "projectNotFound": "Research project not found"
   },
   "readMore": "Read more",
   "home": "Home",

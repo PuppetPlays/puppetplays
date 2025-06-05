@@ -9,6 +9,7 @@ import Keywords, { Tag } from 'components/Keywords';
 import LanguageSelector from 'components/LanguageSelector';
 import MainNav from 'components/MainNav';
 import NewsletterForm from 'components/NewsletterForm';
+import PartnersBanner from 'components/Team/PartnersBanner';
 import {
   fetchAPI,
   getHomeQuery,
@@ -19,6 +20,7 @@ import {
   getAnimationTechniqueByIdQuery,
   getWorkByIdQuery,
   getFetchAPIClient,
+  getPartnersQuery,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { safeObject, safeArray } from 'lib/safeAccess';
@@ -131,13 +133,13 @@ export default function Home({
     partners,
   });
   const { t } = useTranslation('home');
-  const { locale } = useRouter();
+  const { locale: _locale } = useRouter();
   const workLinkRef = useRef(null);
   const animationTechniqueLinkRef = useRef(null);
 
   // Create safe arrays with fallbacks
   const safeAuthors = authors || [];
-  const safeKeywords = keywords || [];
+  const _safeKeywords = keywords || [];
   const safePartners = partners || [];
 
   // Map partners data to the format expected by PartnersBanner component
@@ -463,18 +465,10 @@ export default function Home({
                   >
                     {t('common:knowMore')}
                   </Link>
-                  <Link
-                    href={t('theTeamUrl')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={t('theTeamUrl')} rel="noopener noreferrer">
                     {t('theTeam')}
                   </Link>
-                  <Link
-                    href={t('projectNewsUrl')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={t('projectNewsUrl')} rel="noopener noreferrer">
                     {t('projectNews')}
                   </Link>
                   <Link

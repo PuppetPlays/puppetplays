@@ -191,7 +191,8 @@
     "loadingData": "Erreur lors du chargement des données: {{error}}",
     "loadingCollections": "Erreur de chargement des collections : {{error}}",
     "collections": "collections",
-    "errorLoading": "Erreur lors du chargement des données"
+    "errorLoading": "Erreur lors du chargement des données",
+    "projectNotFound": "Projet de recherche non trouvé"
   },
   "readMore": "En savoir plus",
   "home": "Accueil",

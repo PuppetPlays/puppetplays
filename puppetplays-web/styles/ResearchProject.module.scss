@@ -1,0 +1,469 @@
+.container {
+  width: 100%;
+  position: relative;
+  padding: 0 1rem;
+  min-height: 100%;
+
+  @media (min-width: 640px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 2rem;
+
+  @media (min-width: 640px) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+
+  @media (min-width: 640px) {
+    font-size: 0.925rem;
+  }
+}
+
+.breadcrumbLink {
+  color: #01055b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #2037b1;
+  }
+}
+
+.breadcrumbSeparator {
+  color: #999;
+  font-weight: 300;
+}
+
+.breadcrumbCurrent {
+  color: #666;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 1.75rem;
+  color: #01055b;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  line-height: 1.3;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #f8d04e;
+
+    @media (min-width: 640px) {
+      width: 70px;
+      bottom: -0.65rem;
+    }
+
+    @media (min-width: 860px) {
+      width: 80px;
+      bottom: -0.75rem;
+    }
+  }
+
+  @media (min-width: 480px) {
+    font-size: 1.95rem;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 2.15rem;
+    margin-bottom: 1.75rem;
+  }
+
+  @media (min-width: 860px) {
+    font-size: 2.4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.postdocSection {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+
+  @media (min-width: 640px) {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.postdocInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.postdocImage {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.postdocDetails {
+  flex: 1;
+}
+
+.postdocName {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #01055b;
+  margin: 0 0 0.25rem 0;
+
+  @media (min-width: 640px) {
+    font-size: 1.25rem;
+  }
+}
+
+.postdocRole {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+
+  @media (min-width: 640px) {
+    font-size: 1rem;
+  }
+}
+
+.allProjectMeta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+
+  @media (min-width: 860px) {
+    gap: 1.25rem 2rem;
+  }
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+.metaLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #01055b;
+  min-width: 140px;
+
+  @media (min-width: 640px) {
+    font-size: 0.925rem;
+    min-width: 160px;
+  }
+}
+
+.metaValue {
+  font-size: 0.875rem;
+  color: #444;
+  font-weight: 500;
+  flex: 1;
+
+  @media (min-width: 640px) {
+    font-size: 0.925rem;
+  }
+}
+
+.metaRegions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.metaRegion {
+  font-size: 0.875rem;
+  color: #333;
+  font-weight: 500;
+
+  @media (min-width: 640px) {
+    font-size: 0.9rem;
+  }
+}
+
+.regionDescription {
+  color: #666;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.summarySection,
+.contentSection {
+  margin-bottom: 2.5rem;
+  position: relative;
+
+  @media (min-width: 640px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 860px) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.35rem;
+  color: #01055b;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -0.4rem;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #f8d04e;
+
+    @media (min-width: 640px) {
+      width: 45px;
+      bottom: -0.45rem;
+    }
+
+    @media (min-width: 860px) {
+      width: 50px;
+      bottom: -0.5rem;
+    }
+  }
+
+  @media (min-width: 480px) {
+    font-size: 1.45rem;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 860px) {
+    font-size: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+}
+
+.summaryContent {
+  background-color: rgba(1, 5, 91, 0.02);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #f8d04e;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+
+  @media (min-width: 640px) {
+    padding: 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.regionsList {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.regionItem {
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  border-left: 3px solid #01055b;
+
+  @media (min-width: 640px) {
+    padding: 1.25rem;
+  }
+}
+
+.regionName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #01055b;
+  margin: 0 0 0.5rem 0;
+
+  @media (min-width: 640px) {
+    font-size: 1.1rem;
+  }
+}
+
+.bibliographySection,
+.publicationsSection {
+  margin-bottom: 2rem;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 640px) {
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 860px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.content,
+.bibliography,
+.publications {
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: #333;
+
+  @media (min-width: 640px) {
+    font-size: 1rem;
+  }
+
+  @media (min-width: 860px) {
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2, h3, h4 {
+    color: #01055b;
+    margin: 1.5rem 0 0.75rem 0;
+    font-weight: 600;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  h4 {
+    font-size: 1.05rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid #f8d04e;
+    padding: 0.75rem 0 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #01055b;
+    background-color: rgba(248, 208, 78, 0.05);
+
+    @media (min-width: 640px) {
+      padding: 1rem 0 1rem 1.5rem;
+    }
+  }
+
+  a {
+    color: #01055b;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #2037b1;
+    }
+  }
+
+  em, i {
+    font-style: italic;
+  }
+
+  strong, b {
+    font-weight: 600;
+    color: #01055b;
+  }
+}
+
+.projectInfoContainer {
+  margin-bottom: 2rem;
+
+  @media (min-width: 640px) {
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 860px) {
+    margin-bottom: 3rem;
+  }
+} 

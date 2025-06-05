@@ -43,6 +43,8 @@ scope:
   - 'entrytypes.8e095ccd-7ed1-4c9b-99e1-b98480a0e9df:read' # Compagnies
   - 'sections.ccd48638-f531-4032-a057-8af4f24cd187:read' # Procédés théâtraux
   - 'entrytypes.5e83af75-a401-46c6-918f-f56ab78ad797:read' # Procédés théâtraux
+  - 'sections.e555024e-2651-4c00-9772-7c3b197dc24a:read' # Projets de Recherche
+  - 'entrytypes.fd7f4d50-da7c-491b-9b4a-4c4dd7785ea9:read' # Par défaut
   - 'sections.9cac54fd-67ff-4311-a127-785048ff9146:read' # Publics
   - 'entrytypes.fa8f9cfe-9074-40b9-b300-5a58cd4ff61c:read' # Publics
   - 'sections.8e72b0db-f5f6-4385-9228-33dd62285d5c:read' # Registres littéraires

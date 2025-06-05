@@ -1,0 +1,191 @@
+fieldLayouts:
+  1bf64643-9a61-46be-a041-0605e515300a:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 752a5579-4448-4a0b-a3b6-41f1b4c3a9ff
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 3d8a116f-0412-4e04-960c-f424d0083fd1 # Postdoctorant
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a06a0b99-04b4-435b-8efa-cce5182fb83e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 33d9d2ff-375a-4bd1-ab48-36cc03c360b6 # Titre du Projet
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d8ab3b14-31b4-4e74-be93-5d8b141807ee
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 6cf4b690-6dd1-4003-a2e9-60f991b8ba0c # Start Date
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: db8ce047-701f-43c8-a5fe-bd15b8669430
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: 492cebb9-6c2f-4df5-accf-b7af4cdcabc5 # End Date
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ff465fd5-5292-4435-9d18-248e715168d5
+            userCondition: null
+            warning: null
+            width: 50
+        name: 'Informations Générales'
+        uid: eb07303a-51b4-4abd-9b01-17297de3e9dc
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 884df482-21f3-4f3e-a67d-2ba4562ebf79 # Période Historique Étudiée
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1c37d7d5-9f9a-4c0f-9371-a2f6d5ab6b64
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8ee13776-b19b-43b8-ac93-6a411f27e342 # Pays/Régions Étudiés
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1bf33475-3d1f-472b-a57a-62e757b858c8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 97d53d40-b2be-4470-a313-196e5fc62570 # Tradition Théâtrale Étudiée
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 59bd4e94-5f82-4a43-aad9-0c0cf7833d89
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Contexte de Recherche'
+        uid: c3ec0776-fde5-45a1-abd2-17140bf86353
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 8a9d32f6-b194-40d5-b9b0-c4334cac1828 # Résumé du projet
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ce2040f3-4f07-4b46-9593-fa08232d5d07
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 91db57ab-6637-415e-a0e4-9f069a3e9a61 # Description du Projet
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4699394f-c98f-417c-9614-ca5db86f57dd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 986ef397-dfa1-4763-8d51-cfc76584439b # Bibliographie
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2715cc25-22e6-4dee-a04a-e7eac671b978
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 5fb3bd4f-d96f-46dd-a299-5e12d1bb699d # Publications Liées
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0f80a4db-e964-4a5a-9d31-f64cf8d63419
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Contenu Détaillé'
+        uid: 4133f0aa-9a19-4fcb-bab8-992665ab9822
+        userCondition: null
+handle: default
+hasTitleField: true
+name: 'Par défaut'
+section: e555024e-2651-4c00-9772-7c3b197dc24a # Projets de Recherche
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

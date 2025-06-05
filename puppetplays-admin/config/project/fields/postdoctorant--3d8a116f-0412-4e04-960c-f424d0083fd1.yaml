@@ -1,0 +1,24 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: postdoctorant
+instructions: 'Sélectionner le membre de l''équipe correspondant'
+name: Postdoctorant
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: false
+  sources:
+    - 'section:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

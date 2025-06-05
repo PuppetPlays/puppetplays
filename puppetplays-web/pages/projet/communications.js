@@ -1,5 +1,5 @@
+import { useFormattedTranslation } from 'hooks/useFormattedTranslation';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ import styles from '../../styles/Communications.module.scss';
 
 // Composant pour afficher les parties d'un article
 const ArticleParts = ({ parts }) => {
-  const { t } = useTranslation(['project', 'common']);
+  const { t } = useFormattedTranslation(['project', 'common']);
 
   if (!parts || parts.length === 0) {
     return null;
@@ -73,7 +73,7 @@ const ArticleParts = ({ parts }) => {
 };
 
 const ArticleCard = ({ article }) => {
-  const { t } = useTranslation(['project', 'common']);
+  const { t } = useFormattedTranslation(['project', 'common']);
 
   // Extraire les données depuis la structure GraphQL
   const {
@@ -141,12 +141,18 @@ const ArticleCard = ({ article }) => {
             href={urlCommunications || '#'}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            {title}
-          </Link>
+            dangerouslySetInnerHTML={{
+              __html: title,
+            }}
+          />
         </h3>
 
-        <p className={styles.excerpt}>{excerptComunications}</p>
+        <p
+          className={styles.excerpt}
+          dangerouslySetInnerHTML={{
+            __html: excerptComunications,
+          }}
+        />
 
         <div className={styles.metaContainer}>
           {authors && authors.length > 0 && (
@@ -223,7 +229,7 @@ query GetCommunications($locale: [String]) {
 `;
 
 const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
-  const { t } = useTranslation(['project', 'common']);
+  const { t } = useFormattedTranslation(['project', 'common']);
   const [currentPage, setCurrentPage] = useState(0);
   const [activeTab, setActiveTab] = useState('newsletters'); // 'newsletters' ou 'pressReviews'
   const ARTICLES_PER_PAGE = 5; // Show 5 articles per page for press review style
@@ -260,12 +266,18 @@ const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
     >
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>
-            {t('project:mainNav.communications')}
-          </h1>
-          <p className={styles.subtitle}>
-            {t('project:communications.subtitle')}
-          </p>
+          <h1
+            className={styles.title}
+            dangerouslySetInnerHTML={{
+              __html: t('project:mainNav.communications'),
+            }}
+          />
+          <p
+            className={styles.subtitle}
+            dangerouslySetInnerHTML={{
+              __html: t('project:communications.subtitle'),
+            }}
+          />
         </header>
 
         {/* Tabs Navigation */}

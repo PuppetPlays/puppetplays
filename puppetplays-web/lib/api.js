@@ -748,3 +748,23 @@ query GetDiscoveryPathById($locale: [String], $id: [QueryArgument]) {
   }
 }
 `;
+
+export const getPartnersQuery = `
+${assetFragment}
+query GetPartners($locale: [String]) {
+  partnerEntries: entries(section: "partners", site: $locale, orderBy: "title") {
+    id,
+    title,
+    ... on partners_partners_Entry {
+      partnerName,
+      partnerLink,
+      partnerLogo {
+        ...assetFragment
+      }
+    }
+  }
+}
+`;
+
+export const getTeamDataQuery = `
+`;

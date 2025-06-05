@@ -1,4 +1,4 @@
-dateModified: 1748840408
+dateModified: 1749125284
 email:
   fromEmail: $EMAIL_SENDER
   fromName: Puppetplays
@@ -54,6 +54,7 @@ meta:
     2f49338c-c754-4002-a81e-9ab9ace8270a: 'Member Name' # Member Name
     3b29f0db-e6d9-4ca5-bfc5-faee1e5070dd: 'Par défaut' # Par défaut
     3b937625-42ca-4656-9a7b-c999af708c26: 'Date de la 1ère représentation (min)' # Date de la 1ère représentation (min)
+    3d8a116f-0412-4e04-960c-f424d0083fd1: Postdoctorant # Postdoctorant
     03d78236-fed0-4e43-b21c-f2cd1a49e83c: Personnage # Personnage
     3df1d9d7-f431-4e77-8af6-67a22c501379: 'Identifiant ARK' # Identifiant ARK
     3eec2c18-4dce-4184-a668-02f225266314: Lieux # Lieux
@@ -67,6 +68,7 @@ meta:
     5dc50f30-9aba-4974-92fb-08b263ce5716: Places # Places
     5e4b9413-6946-4790-adef-b347f30fe4fe: thumbnail # thumbnail
     5e83af75-a401-46c6-918f-f56ab78ad797: 'Procédés théâtraux' # Procédés théâtraux
+    5fb3bd4f-d96f-46dd-a299-5e12d1bb699d: 'Publications Liées' # Publications Liées
     6cf4b690-6dd1-4003-a2e9-60f991b8ba0c: 'Start Date' # Start Date
     6e173e2f-1a52-45d7-bc3d-ccd4901e799b: Type # Type
     6e506719-d279-4e2c-9e84-fbf315440712: 'Nom de famille' # Nom de famille
@@ -74,11 +76,13 @@ meta:
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
     07c0d544-d28a-449e-a643-936d89cb7a3a: Images # Images
     07cc50ee-05e5-483d-8911-22552f44be92: 'Personnages du texte' # Personnages du texte
+    8a9d32f6-b194-40d5-b9b0-c4334cac1828: 'Résumé du projet' # Résumé du projet
     8bb29c67-1705-4166-95be-10680e4e36a9: 'Par défaut' # Par défaut
     8c8213c1-75f5-4c1c-bc23-96b213711e06: Formats # Formats
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale
     8e095ccd-7ed1-4c9b-99e1-b98480a0e9df: Compagnies # Compagnies
     8e72b0db-f5f6-4385-9228-33dd62285d5c: 'Registres littéraires' # Registres littéraires
+    8ee13776-b19b-43b8-ac93-6a411f27e342: 'Pays/Régions Étudiés' # Pays/Régions Étudiés
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
     9e670e52-0ab0-4dc1-a6e1-adc8efea5c13: 'Notice biographique' # Notice biographique
@@ -92,6 +96,7 @@ meta:
     26b83bbf-b7b9-48cd-979e-d69b22bceaf1: Résumé # Résumé
     29f1cf63-9c38-484a-9026-94010557c5af: Œuvres # Œuvres
     33cd919f-b3f5-4276-be62-d114dbab9934: Personnages # Personnages
+    33d9d2ff-375a-4bd1-ab48-36cc03c360b6: 'Titre du Projet' # Titre du Projet
     34a701b5-35b7-44d7-95a8-3e83b22b2899: 'Full Name' # Full Name
     38c13b78-0b68-4bc2-8a3c-599601b61947: Partenaires # Partenaires
     040b562a-a40a-4667-84e7-0dc3ea1787ac: 'Édition moderne' # Édition moderne
@@ -100,6 +105,7 @@ meta:
     45df3231-3a21-4a0c-93ea-01b0f58c5582: 'Genre (indiqué par l’auteur)' # Genre (indiqué par l’auteur)
     51f537ef-8b54-4c2f-b68c-f19542600077: 'Lieu d’écriture' # Lieu d’écriture
     53b06a2d-abbf-4ee4-b770-ca48f26e094e: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
+    54aa53d7-846e-4221-bffd-56ad27828429: 'Projets de Recherche' # Projets de Recherche
     63ea829e-b0e4-4021-8ab5-1b0f095d3daf: Personnes # Personnes
     65cde714-d150-4ea5-9f9a-da868a716343: 'Nom du personnage pour l’indexation' # Nom du personnage pour l’indexation
     69ee7666-95f0-4e8f-bf8b-09d970d7b777: Latitude # Latitude
@@ -109,11 +115,13 @@ meta:
     76e227d6-6d74-4402-b9ef-b62e7898ede0: Affiliation # Affiliation
     80e9ab34-aa2b-44e3-9798-dadda7e7a772: 'Références bibliographiques' # Références bibliographiques
     084dbff2-63eb-420b-aac6-22102df927f9: Hypotexte(s) # Hypotexte(s)
+    91db57ab-6637-415e-a0e4-9f069a3e9a61: 'Description du Projet' # Description du Projet
     91e5559d-8541-4d49-90fa-8f06aefe00b7: 'Identifiant VIAF' # Identifiant VIAF
     92ef2670-a9bc-47e7-9d07-dfdbee32a0b2: Lieux # Lieux
     93a3496b-76b7-4696-8639-1c44294aeec0: 'Informations complémentaires sur la licence' # Informations complémentaires sur la licence
     96bbc411-e9a9-4143-9c48-7c6108ab197b: Equipe # Equipe
     96e274be-acfe-4d13-a01e-13b327b04fd1: Langue(s) # Langue(s)
+    97d53d40-b2be-4470-a313-196e5fc62570: 'Tradition Théâtrale Étudiée' # Tradition Théâtrale Étudiée
     155d31de-d871-4f90-a86c-9d29b851c29d: Medias # Medias
     157ddd75-0868-4e2b-ba35-028ae3c8ae42: Pays # Pays
     209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
@@ -125,9 +133,11 @@ meta:
     482ccda1-74c5-4555-8575-9f829fce5155: 'research Content' # research Content
     492cc09a-052e-40d6-a33b-7ca74a831805: 'Institutions de conservation' # Institutions de conservation
     492cebb9-6c2f-4df5-accf-b7af4cdcabc5: 'End Date' # End Date
+    884df482-21f3-4f3e-a67d-2ba4562ebf79: 'Période Historique Étudiée' # Période Historique Étudiée
     900f4fb2-7440-48e0-9c90-f608c727dacd: 'Partner Link' # Partner Link
     922d22f4-bd80-40f9-9e52-f46ffb827652: project # project
     980b265a-4482-43da-940c-1d595933f6db: Langue # Langue
+    986ef397-dfa1-4763-8d51-cfc76584439b: Bibliographie # Bibliographie
     1817d1f9-6682-4c22-b338-19654ae0c45c: 'Techniques d’animation' # Techniques d’animation
     2634dd0c-e6eb-4be4-88a7-c3b674e71c36: 'Pdf du document scanné' # Pdf du document scanné
     2955ed2b-b666-48a6-81c5-99e6d9de1253: 'Type d''image' # Type d'image
@@ -207,6 +217,7 @@ meta:
     e205ebe8-5557-4b7c-a43f-9cf548e90c8d: Pays # Pays
     e780c89d-1896-434f-b228-1af758a8ab24: Biography # Biography
     e2264f91-0ef8-4237-9334-9b9061b59c0e: Partners # Partners
+    e555024e-2651-4c00-9772-7c3b197dc24a: 'Projets de Recherche' # Projets de Recherche
     e9587719-a8d4-42d6-97c2-f0259ec67922: 'Institutions de conservation' # Institutions de conservation
     ea500c41-2beb-4ed4-a12c-afca214004c7: Superviseur # Superviseur
     ec7faa37-6b19-44d2-95ec-2b752648c37d: Langues # Langues
@@ -226,6 +237,7 @@ meta:
     fa662cc1-6c43-4820-b2ba-5f10406d00ca: 'Date de publication' # Date de publication
     fa95153b-9e8c-4920-9338-df41d11bfe43: date # date
     fbbb13b9-a645-436f-82a9-ad8e5767acda: Œuvres # Œuvres
+    fd7f4d50-da7c-491b-9b4a-4c4dd7785ea9: 'Par défaut' # Par défaut
     fd15fc2d-a3c9-4686-891d-700dd34684ec: Communications # Communications
     fd390cb8-325d-419c-a64a-95714d698f94: 'Personnage(s) pour l’indexation' # Personnage(s) pour l’indexation
     fe4f7b25-47ca-473c-a6a2-85d827124f50: 'research Link' # research Link

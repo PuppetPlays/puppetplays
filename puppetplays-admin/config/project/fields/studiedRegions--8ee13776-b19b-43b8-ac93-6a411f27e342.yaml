@@ -1,0 +1,59 @@
+columnSuffix: jwugjawg
+contentColumnType: text
+fieldGroup: 54aa53d7-846e-4221-bffd-56ad27828429 # Projets de Recherche
+handle: studiedRegions
+instructions: 'Aire géographique de l''étude'
+name: 'Pays/Régions Étudiés'
+searchable: false
+settings:
+  addRowLabel: 'Ajouter une ligne'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Pays/Région
+            -
+              - handle
+              - paysRegion
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Description
+            -
+              - handle
+              - description
+            -
+              - width
+              - ''
+            -
+              - type
+              - multiline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - ''
+        -
+          - col2
+          - ''
+  maxRows: null
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: language
+type: craft\fields\Table

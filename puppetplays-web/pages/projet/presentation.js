@@ -1,8 +1,8 @@
 import ProjectLayout from 'components/Project/ProjectLayout';
+import { useFormattedTranslation } from 'hooks/useFormattedTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from 'styles/ProjectPresentation.module.scss';
 
@@ -84,7 +84,7 @@ const PartnersBar = ({ t }) => {
 };
 
 const ProjectPresentation = () => {
-  const { t } = useTranslation(['project', 'common', 'home']);
+  const { t } = useFormattedTranslation(['project', 'common', 'home']);
   const { locale } = useRouter();
 
   return (
@@ -94,27 +94,50 @@ const ProjectPresentation = () => {
     >
       <div className={styles.container}>
         <header className={styles.header}>
-          <h1 className={styles.title}>{t('title')}</h1>
+          <h1
+            className={styles.title}
+            dangerouslySetInnerHTML={{
+              __html: t('title'),
+            }}
+          />
         </header>
 
         <div className={styles.heroSection}>
           <div className={styles.heroContent}>
-            <p className={styles.paragraph}>
-              {t('presentation.description.intro')}
-            </p>
+            <p
+              className={styles.paragraph}
+              dangerouslySetInnerHTML={{
+                __html: t('presentation.description.intro'),
+              }}
+            />
 
-            <p className={styles.listTitle}>
-              {t('presentation.description.goals.title')}
-            </p>
+            <p
+              className={styles.listTitle}
+              dangerouslySetInnerHTML={{
+                __html: t('presentation.description.goals.title'),
+              }}
+            />
             <ul className={styles.list}>
-              <li>{t('presentation.description.goals.goal1')}</li>
-              <li>{t('presentation.description.goals.goal2')}</li>
-              <li>{t('presentation.description.goals.goal3')}</li>
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: t('presentation.description.goals.goal1'),
+                }}
+              />
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: t('presentation.description.goals.goal2'),
+                }}
+              />
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: t('presentation.description.goals.goal3'),
+                }}
+              />
             </ul>
           </div>
           <div className={styles.heroMedia}>
             <Image
-              src="/home-intro-illustration.png"
+              src="/original-puppetplays-illustration.jpg"
               alt={
                 t('presentation.heroImage.alt') || 'PuppetPlays Illustration'
               }
@@ -129,17 +152,41 @@ const ProjectPresentation = () => {
         </div>
 
         <section className={styles.section}>
-          <p className={styles.listTitle}>
-            {t('presentation.description.contributions.title')}
-          </p>
+          <p
+            className={styles.listTitle}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.description.contributions.title'),
+            }}
+          />
           <ul className={styles.list}>
-            <li>{t('presentation.description.contributions.contribution1')}</li>
-            <li>{t('presentation.description.contributions.contribution2')}</li>
-            <li>{t('presentation.description.contributions.contribution3')}</li>
+            <li
+              dangerouslySetInnerHTML={{
+                __html: t(
+                  'presentation.description.contributions.contribution1',
+                ),
+              }}
+            />
+            <li
+              dangerouslySetInnerHTML={{
+                __html: t(
+                  'presentation.description.contributions.contribution2',
+                ),
+              }}
+            />
+            <li
+              dangerouslySetInnerHTML={{
+                __html: t(
+                  'presentation.description.contributions.contribution3',
+                ),
+              }}
+            />
           </ul>
-          <p className={styles.paragraph}>
-            {t('presentation.description.access')}
-          </p>
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.description.access'),
+            }}
+          />
         </section>
 
         <div className={styles.divider} />
@@ -168,9 +215,12 @@ const ProjectPresentation = () => {
                         <div className={styles.timelineLine} />
                       </div>
                       <div className={styles.timelineContent}>
-                        <p className={styles.timelineDescription}>
-                          {event.description}
-                        </p>
+                        <p
+                          className={styles.timelineDescription}
+                          dangerouslySetInnerHTML={{
+                            __html: event.description,
+                          }}
+                        />
                         {event.url && event.url !== 'en cours de dépôt' && (
                           <Link
                             href={event.url}
@@ -228,21 +278,36 @@ const ProjectPresentation = () => {
           <h2 className={styles.sectionTitle}>
             {t('presentation.centralHypothesis.title')}
           </h2>
-          <p className={styles.paragraph}>
-            {t('presentation.centralHypothesis.paragraph1')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.centralHypothesis.paragraph2')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.centralHypothesis.paragraph3')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.centralHypothesis.paragraph4')}
-          </p>
-          <p className={styles.paragraph}>
-            {t('presentation.centralHypothesis.paragraph5')}
-          </p>
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.centralHypothesis.paragraph1'),
+            }}
+          />
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.centralHypothesis.paragraph2'),
+            }}
+          />
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.centralHypothesis.paragraph3'),
+            }}
+          />
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.centralHypothesis.paragraph4'),
+            }}
+          />
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.centralHypothesis.paragraph5'),
+            }}
+          />
         </section>
       </div>
     </ProjectLayout>
