@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Site module for Craft CMS 3.x
  *
@@ -75,7 +76,7 @@ class SiteModule extends Module
         // Translation category
         $i18n = Craft::$app->getI18n();
         /** @noinspection UnSafeIsSetOverArrayInspection */
-        if (!isset($i18n->translations[$id]) && !isset($i18n->translations[$id.'*'])) {
+        if (!isset($i18n->translations[$id]) && !isset($i18n->translations[$id . '*'])) {
             $i18n->translations[$id] = [
                 'class' => PhpMessageSource::class,
                 'sourceLanguage' => 'en-US',
@@ -87,7 +88,7 @@ class SiteModule extends Module
 
         // Base template directory
         Event::on(View::class, View::EVENT_REGISTER_CP_TEMPLATE_ROOTS, function (RegisterTemplateRootsEvent $e) {
-            if (is_dir($baseDir = $this->getBasePath().DIRECTORY_SEPARATOR.'templates')) {
+            if (is_dir($baseDir = $this->getBasePath() . DIRECTORY_SEPARATOR . 'templates')) {
                 $e->roots[$this->id] = $baseDir;
             }
         });
@@ -124,7 +125,7 @@ class SiteModule extends Module
                         Craft::$app->getView()->registerAssetBundle(SiteModuleAsset::class);
                     } catch (InvalidConfigException $e) {
                         Craft::error(
-                            'Error registering AssetBundle - '.$e->getMessage(),
+                            'Error registering AssetBundle - ' . $e->getMessage(),
                             __METHOD__
                         );
                     }
@@ -139,6 +140,7 @@ class SiteModule extends Module
             function (RegisterUrlRulesEvent $event) {
                 $event->rules['auth/user'] = 'sitemodule/auth';
                 $event->rules['newsletter/subscribe'] = 'sitemodule/newsletter/subscribe';
+                $event->rules['api/pdf/<entryId:\d+>'] = 'sitemodule/pdf/generate';
             }
         );
 
@@ -194,7 +196,7 @@ class SiteModule extends Module
         //     }
         // );
 
-        Craft::$app->view->hook('cp.elements.element', function(array &$context) {
+        Craft::$app->view->hook('cp.elements.element', function (array &$context) {
             if (array_key_exists('name', $context)) {
                 if ($context['name'] == 'hypotexts' && array_key_exists('element', $context)) {
                     if (!empty($context['element'])) {
@@ -208,31 +210,31 @@ class SiteModule extends Module
                         $html .= ', ';
                         $html .= $context['element']->date;
                         $html .= '</span></div>';
-                        
+
                         return $html;
                     }
                 }
             }
         });
 
-/**
- * Logging in Craft involves using one of the following methods:
- *
- * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
- * Craft::info(): record a message that conveys some useful information.
- * Craft::warning(): record a warning message that indicates something unexpected has happened.
- * Craft::error(): record a fatal error that should be investigated as soon as possible.
- *
- * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
- *
- * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
- * the category to the method (prefixed with the fully qualified class name) where the constant appears.
- *
- * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
- * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
- *
- * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
- */
+        /**
+         * Logging in Craft involves using one of the following methods:
+         *
+         * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
+         * Craft::info(): record a message that conveys some useful information.
+         * Craft::warning(): record a warning message that indicates something unexpected has happened.
+         * Craft::error(): record a fatal error that should be investigated as soon as possible.
+         *
+         * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
+         *
+         * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
+         * the category to the method (prefixed with the fully qualified class name) where the constant appears.
+         *
+         * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
+         * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
+         *
+         * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
+         */
         Craft::info(
             Craft::t(
                 'sitemodule',

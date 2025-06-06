@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tragédie d'Arlequin</title>
+    <style>
+        @media print {
+
+        /* Fuentes */
+        @font-face {
+            font-family: 'Fira Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local(""), url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap");
+        }
+        
+        @font-face {
+            font-family: 'PT Serif';
+            font-style: normal;
+            font-weight: 700;
+            src: local(""), url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap");
+        }
+
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            padding: 0;
+            margin: 0;
+            font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #1a1b45;
+            background-color: white;
+        }
+
+        /* Layout principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header de la obra */
+        .work-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #d9d9e0;
+            padding-bottom: 30px;
+        }
+
+        .work-title {
+            font-size: 35px;
+            font-family: "PT Serif", "Georgia", "Times New Roman", serif;
+            margin: 0 0 20px 0;
+            color: #2037b1;
+            line-height: 1.2;
+        }
+
+        .work-meta {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+            color: #1a1b45;
+        }
+
+        .work-date {
+            font-weight: 400;
+            color: #1a1b45;
+        }
+
+        .work-place {
+            font-size: 16px;
+            font-weight: 400;
+            color: #1a1b45;
+        }
+
+        .pipe-separator {
+            color: #f0f0f3;
+            margin: 0 8px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        /* Layout del contenido con FLEXBOX */
+        .work-content {
+            display: flex;
+            gap: 36px;
+            margin-top: 40px;
+        }
+
+        /* Imagen de portada */
+        .work-media {
+            flex: 0 0 200px; /* No crece, no se encoge, ancho fijo de 200px */
+            text-align: center;
+            font-size: 14px;
+            color: #1a1b45;
+        }
+
+        .work-media img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            border-radius: 7px;
+        }
+
+        .work-media p {
+            margin: 8px 0 4px 0;
+            text-align: center;
+        }
+
+        /* Contenido principal */
+        .work-body {
+            flex: 1; /* Toma todo el espacio disponible */
+        }
+
+        /* Información adicional */
+        .work-extra {
+            flex: 0 0 185px; /* No crece, no se encoge, ancho fijo de 185px */
+            font-size: 14px;
+        }
+
+        /* Secciones */
+        .section {
+            margin: 24px 0;
+        }
+
+        .section-title {
+            border-top: 1px solid #b3b3c1;
+            font-size: 11px;
+            line-height: 1.2;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 20px 0 12px 0;
+        }
+
+        .section-title span {
+            display: inline-block;
+            background-color: #b3b3c1;
+            border-radius: 0 0 3px 3px;
+            padding: 4px 9px;
+            letter-spacing: 0.0275em;
+        }
+
+        .section-content {
+            font-size: 15px;
+        }
+
+        /* Información en cajas */
+        .info-container {
+            margin: 14px 0;
+        }
+
+        .info-container--filled {
+            background-color: #f0f0f3;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .info-label {
+            color: #595b78;
+            font-size: 12px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .info-content {
+            font-size: 15px;
+        }
+
+        .info-content a {
+            text-decoration: underline;
+            color: #2037b1;
+        }
+
+        /* Resumen */
+        .abstract-title {
+            font-size: 18px;
+            color: #1a1b45;
+            display: inline-block;
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+
+        /* Keywords/Tags */
+        .keywords-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 0 16px 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .keywords-tag {
+            padding: 6px 11px;
+            border-radius: 15px;
+            margin: 0 8px 8px 0;
+            font-size: 13px;
+            line-height: 1.1;
+            color: #2037b1;
+            background-color: #f0f0f3;
+        }
+
+        /* Párrafos */
+        p {
+            margin: 0 0 12px 0;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Enlaces */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p > a {
+            text-decoration: underline;
+            color: #2037b1;
+        }
+
+        /* Listas */
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 4px 0;
+        }
+
+        /* Énfasis */
+        em {
+            font-style: italic;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        /* Responsive para PDF */
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header de la obra -->
+        <header class="work-header">
+            <h1 class="work-title">La Tragédie d'Arlequin</h1>
+            <div class="work-meta">
+                <span class="pipe-separator">|</span>
+                <span class="work-date">1862</span>
+                <span class="pipe-separator">|</span>
+                <span class="work-place">Paris, France</span>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <div class="work-content">
+            <!-- Imagen y datos básicos -->
+            <div class="work-media">
+                <div class="cover-image">
+                    <!-- Placeholder para imagen -->
+                    <div style="width: 150px; height: 200px; background-color: #f0f0f3; border-radius: 7px; margin: 0 auto;"></div>
+                </div>
+                <p>Imprimé</p>
+                <p>16 pages</p>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="work-body">
+                <section class="section">
+                    <div class="info-container">
+                        <div class="info-label">Personnages</div>
+                        <div class="info-content">Cassandre, Colombine, Pierrot, Arlequin, Polichinelle, Le Marchand de ferraille, Le Gendarme, Le Porc, Le Gendarme La Saucisse, Le Commissaire L'Andouille, Le Cauchemar</div>
+                    </div>
+
+                    <div class="info-container">
+                        <div class="info-label">Nombre d'actes</div>
+                        <div class="info-content">4</div>
+                    </div>
+
+                    <div class="info-container info-container--filled">
+                        <div class="info-label">Notice</div>
+                        <div class="info-content">
+                            <p>Sous le titre grandiloquent et parodique de « tragédie d'Arlequin », Duranty compose une intrigue complexe en quatre parties qui multiplie les rebondissements. Tandis que les thèmes du complot, de l'assassinat et du repentir ainsi que le procédé du songe sont des ingrédients empruntés à la tragédie, les situations, les actions et les gags relèvent de la farce. Quant au dénouement, c'est celui d'une comédie avec le mariage final des deux amoureux.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-container info-container--filled">
+                        <div class="info-label">Résumé</div>
+                        <div class="info-content">
+                            <h3 class="abstract-title">Deux criminels rattrapés par le remords</h3>
+                            <p>Polichinelle, Pierrot et Arlequin veulent tous trois épouser Colombine, la fille du riche Cassandre. Comme les trois prétendants se valent par leur médiocrité, Cassandre demande à sa fille de choisir elle-même lequel des trois elle prendra pour mari. Pour obtenir sa main, Polichinelle lui offre un jambon, Pierrot une bouteille de vin et Arlequin un bouquet de pissenlits. Elle éconduit violemment Polichinelle et Pierrot, mais choisit Arlequin.</p>
+                            <p>Polichinelle et Pierrot s'allient pour entraîner Arlequin à l'écart, l'assassiner et l'enterrer. Leur plan est de se faire passer pour Arlequin et son valet afin d'épouser Colombine et de s'emparer de l'argent de son père. Mais Arlequin, déterré et ranimé par un cochon, arrive juste à temps pour interrompre le mariage entre Pierrot (qui a pris son apparence) et Colombine.</p>
+                            <p>Comme Pierrot et Polichinelle ont fait disparaître le cochon (seul témoin de leur tentative d'assassinat) en le dévorant, Cassandre ne sait plus ce qui est vrai ni qui est le vrai Arlequin. Le père reconnaîtra comme le vrai Arlequin celui qui lui rapportera le plus d'écus. Comme Arlequin est pauvre et que Pierrot a réuni 1 000 écus en vendant sa batterie de cuisine, c'est lui qui épousera Colombine le lendemain.</p>
+                            <p>Tourmentés par leurs consciences et par leurs problèmes de digestion, Pierrot et Polichinelle sont malmenés par un horrible Cauchemar accompagné d'un Gendarme-Saucisse et un Commissaire-Andouille qui les frappent sans cesse. Polichinelle et Pierrot appellent à l'aide, avouent leurs crimes et se repentent, ce qui permet le mariage de Colombine et d'Arlequin.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Première représentation</span></h2>
+                    <div class="section-content">
+                        <span>Paris, France</span>
+                        <div class="info-container">
+                            <p>Théâtre des marionnettes du jardin des Tuileries, Paris</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Éditions et traductions</span></h2>
+                    <div class="section-content">
+                        <div class="info-container">
+                            <div class="info-label">Édition</div>
+                            <div class="info-content">
+                                <p>Duranty, <em>Théâtre des marionnettes du jardin des Tuileries</em>, texte et composition des dessins par M. Duranty. Paris: MM. Dubuisson et Cie, Éditeurs-Libraires, 1862.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-container">
+                            <div class="info-label">Édition moderne</div>
+                            <div class="info-content">
+                                <p>Louis Edmond Duranty, <em>Théâtre des marionnettes</em>, Arles, Actes sud, Coll. Babel, 1995.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-container">
+                            <div class="info-label">Exemplaire en ligne</div>
+                            <div class="info-content">
+                                <a href="https://gallica.bnf.fr/ark:/12148/bpt6k618328/f54.item">https://gallica.bnf.fr/ark:/12148/bpt6k618328/f54.item</a>
+                            </div>
+                        </div>
+
+                        <div class="info-container">
+                            <div class="info-label">Traductions</div>
+                            <div class="info-content">
+                                <ul>
+                                    <li>Louis Duranty, <em>Merchant of blows-with-a-stick and other plays</em> (English and French edition), english translation by Sean Keohane, Charlemagne Press (Canada) 2007. (Anglais)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Lieu de conservation</span></h2>
+                    <div class="section-content">
+                        <span>Bibliothèque nationale de France - Paris, France</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Información adicional -->
+            <div class="work-extra">
+                <section class="section">
+                    <div class="info-container">
+                        <div class="info-label">Langue</div>
+                        <div class="info-content">Français</div>
+                    </div>
+
+                    <div class="info-container">
+                        <div class="info-label">Registres littéraires</div>
+                        <div class="info-content">Comique, Parodique, Farcesque, Grotesque</div>
+                    </div>
+
+                    <div class="info-container">
+                        <div class="info-label">Techniques d'animation</div>
+                        <div class="info-content">Marionnette à gaine</div>
+                    </div>
+
+                    <div class="info-container">
+                        <div class="info-label">Public visé</div>
+                        <div class="info-content">Non spécifié</div>
+                    </div>
+
+                    <div class="info-container">
+                        <div class="info-label">Licence</div>
+                        <div class="info-content">Domaine public</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Mots-clés</span></h2>
+                    <div class="section-content">
+                        <ul class="keywords-container">
+                            <li class="keywords-tag">Complot</li>
+                            <li class="keywords-tag">Meurtre</li>
+                            <li class="keywords-tag">Cupidité</li>
+                            <li class="keywords-tag">Gloutonnerie</li>
+                            <li class="keywords-tag">Déguisement</li>
+                            <li class="keywords-tag">Tromperie</li>
+                            <li class="keywords-tag">Cauchemar</li>
+                            <li class="keywords-tag">Mariage d'argent</li>
+                            <li class="keywords-tag">Remords</li>
+                            <li class="keywords-tag">Relation homme-animal</li>
+                            <li class="keywords-tag">Faim</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Procédés théâtraux</span></h2>
+                    <div class="section-content">
+                        <ul class="keywords-container">
+                            <li class="keywords-tag">Déguisement</li>
+                            <li class="keywords-tag">Songe</li>
+                            <li class="keywords-tag">Coup de théâtre</li>
+                            <li class="keywords-tag">Évanouissement</li>
+                            <li class="keywords-tag">Voix hors-scène</li>
+                            <li class="keywords-tag">Danse</li>
+                            <li class="keywords-tag">Chanson</li>
+                            <li class="keywords-tag">Seau d'eau versé sur la tête</li>
+                            <li class="keywords-tag">Coup de bâton</li>
+                            <li class="keywords-tag">Ellipse</li>
+                            <li class="keywords-tag">Gag</li>
+                            <li class="keywords-tag">Personnage caché</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><span>Rédaction de la notice</span></h2>
+                    <div class="section-content">Carole Guidicelli</div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

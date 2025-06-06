@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title ?? 'Document PDF' }}</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body,
+			html {
+				padding: 0;
+				margin: 0;
+				font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+				font-size: 14px;
+				line-height: 1.4;
+				color: #1a1b45;
+				background-color: white;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 25px 15px;
+			}
+
+			.work-header {
+				text-align: center;
+				margin-bottom: 25px;
+				border-bottom: 2px solid #d9d9e0;
+				padding-bottom: 20px;
+			}
+
+			.work-title {
+				font-size: 35px;
+				font-family: "PT Serif", "Georgia", "Times New Roman", serif;
+				margin: 0 0 10px;
+				color: #2037b1;
+				line-height: 1.2;
+			}
+
+			.work-subtitle {
+				font-size: 24px;
+				font-weight: 500;
+				margin: 0 0 15px;
+				color: #1a1b45;
+			}
+
+			.work-meta {
+				font-size: 18px;
+				font-weight: 500;
+				color: #1a1b45;
+			}
+
+			.work-meta-formats {
+				margin-top: 10px;
+				font-size: 16px;
+			}
+
+			.pipe-separator {
+				color: #b3b3c1;
+				margin: 0 6px;
+				font-size: 14px;
+			}
+
+			.title-content-cell {
+				vertical-align: top;
+				text-align: left;
+			}
+
+			.main-layout-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 20px;
+			}
+
+			.image-column {
+				width: 180px;
+				vertical-align: top;
+				padding-right: 20px;
+			}
+
+			.metadata-column {
+				vertical-align: top;
+			}
+
+			.metadata-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 15px 0;
+				background-color: #f8f9fa;
+				border: 1px solid #e0e0e0;
+				border-radius: 6px;
+			}
+
+			.metadata-table td {
+				padding: 8px 10px;
+				border-bottom: 1px solid #e8e8e8;
+				vertical-align: top;
+			}
+
+			.metadata-table tr:last-child td {
+				border-bottom: none;
+			}
+
+			.metadata-label {
+				font-weight: 700;
+				color: #2037b1;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				font-size: 10px;
+				width: 120px;
+				background-color: white;
+				border-radius: 3px;
+			}
+
+			.metadata-value {
+				color: #1a1b45;
+				font-size: 11px;
+				line-height: 1.3;
+			}
+
+			.characters-section {
+				background-color: #f0f0f3;
+				padding: 12px;
+				margin: 15px 0;
+				border-radius: 4px;
+				border-left: 4px solid #b3b3c1;
+			}
+
+			.characters-label {
+				font-weight: 700;
+				color: #1a1b45;
+				font-size: 10px;
+				text-transform: uppercase;
+				margin-bottom: 6px;
+				letter-spacing: 0.5px;
+			}
+
+			.characters-content {
+				font-size: 11px;
+				color: #1a1b45;
+				line-height: 1.4;
+			}
+
+			.performance-info {
+				background-color: #f0f0f3;
+				border: 1px solid #b3b3c1;
+				border-radius: 4px;
+				padding: 12px;
+				margin: 15px 0;
+				text-align: center;
+			}
+
+			.performance-label {
+				font-weight: 600;
+				color: #1a1b45;
+				font-size: 11px;
+				margin-bottom: 6px;
+				text-transform: uppercase;
+				letter-spacing: 0.8px;
+			}
+
+			.performance-content {
+				font-size: 12px;
+				color: #1a1b45;
+			}
+
+			.author-image-container {
+				margin-top: 20px;
+				text-align: center;
+			}
+
+			.author-image {
+				width: 260px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 2px solid #f0f0f3;
+			}
+
+			.author-name {
+				font-size: 12px;
+				color: #595b78;
+				margin-top: 8px;
+				line-height: 1.2;
+				max-width: 160px;
+				word-wrap: break-word;
+			}
+
+			.author-dates {
+				font-size: 11px;
+				color: #888;
+				margin-top: 4px;
+				line-height: 1.2;
+			}
+
+			.visual-separator {
+				height: 1px;
+				background-color: #dee2e6;
+				margin: 18px 0;
+			}
+
+			.content-section {
+				margin-bottom: 16px;
+			}
+
+			.section-title {
+				font-size: 14px;
+				font-weight: 600;
+				color: #2037b1;
+				margin: 0 0 8px;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.section-content {
+				font-size: 13px;
+				line-height: 1.5;
+				text-align: justify;
+			}
+
+			.highlighted-section {
+				background-color: #f8f9fa;
+				border-left: 3px solid #2037b1;
+				padding: 12px;
+				margin: 12px 0;
+				border-radius: 0 4px 4px 0;
+			}
+
+			.publications-section {
+				background-color: #fafafa;
+				padding: 12px;
+				border-radius: 4px;
+			}
+
+			.publication-item {
+				margin-bottom: 8px;
+			}
+
+			.publication-label {
+				font-weight: 600;
+				color: #595b78;
+				font-size: 10px;
+				text-transform: uppercase;
+				margin-bottom: 4px;
+			}
+
+			.publication-content {
+				font-size: 12px;
+			}
+
+			.info-container {
+				margin: 14px 0;
+			}
+
+			.info-label {
+				color: #595b78;
+				font-size: 12px;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
+
+			.info-content {
+				font-size: 12px;
+			}
+
+			.info-content a {
+				text-decoration: underline;
+				color: #2037b1;
+			}
+
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				margin: 4px 0;
+			}
+
+			a {
+				color: #2037b1;
+				text-decoration: underline;
+			}
+
+			p {
+				margin: 0 0 8px;
+			}
+
+			p:last-child {
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			class="container">
+			<!-- Header de la obra -->
+			<header class="work-header">
+				<table class="title-table">
+					<tr>
+						<td
+							class="title-image-cell">
+							<!-- Imagen a la izquierda del título -->
+							{% set mainImage = entry.mainImage.one() %}
+							{% if mainImage %}
+								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="260">
+							{% endif %}
+						</td>
+						<td class="title-content-cell">
+							<h1 class="work-title">{{ title }}</h1>
+							{% if entry.subtitle %}
+								<h2 class="work-subtitle">{{ entry.subtitle }}</h2>
+							{% endif %}
+
+							<div class="work-meta">
+								{% if entry.authors.all()|length > 0 %}
+									<span class="work-authors">
+										{% set authorsList = [] %}
+										{% for author in entry.authors.all() %}
+											{% set authorsList = authorsList|merge([author.title]) %}
+										{% endfor %}
+										{{ authorsList|join(', ') }}
+									</span>
+								{% endif %}
+
+								{% if entry.mostRelevantDate %}
+									{% if entry.authors.all()|length > 0 %}
+										<span class="pipe-separator">|</span>
+									{% endif %}
+									<span class="work-date">{{ entry.mostRelevantDate }}</span>
+								{% else %}
+									{% if entry.authors.all()|length > 0 %}
+										<span class="pipe-separator">|</span>
+									{% endif %}
+									<span class="work-date">{{ entry.compositionMaxDate ?? entry.compositionMinDate ?? 'dateNotAvailable'|t('site') }}</span>
+								{% endif %}
+
+								{% if entry.compositionPlace.all()|length > 0 %}
+									<span class="pipe-separator">|</span>
+									<span class="work-place">
+										{% set place = entry.compositionPlace.one() %}
+										{{ place.title }}
+										{% if place.country.all()|length > 0 and place.country.one().title != place.title %}
+											,
+											{{ place.country.one().title }}
+										{% endif %}
+									</span>
+								{% endif %}
+
+								{% if entry.mainLanguage.all()|length > 0 %}
+									<span class="pipe-separator">|</span>
+									<span class="work-language">{{ entry.mainLanguage.one().title }}</span>
+								{% endif %}
+
+								<div class="work-meta-formats">
+									{% if entry.formats.all()|length > 0 %}
+										{% set formatsList = [] %}
+										{% for format in entry.formats.all() %}
+											{% set formatsList = formatsList|merge([format.title]) %}
+										{% endfor %}
+										<span>{{ formatsList|join(', ') }}</span>
+									{% elseif entry.medias.one() %}
+										<span>{{ entry.medias.one().title }}</span>
+									{% else %}
+										<span>{{ 'printed'|t('site') }}</span>
+									{% endif %}
+
+									{% if entry.pagesCount %}
+										<span class="pipe-separator">|</span>
+										<span>{{ entry.pagesCount }}
+											{{ 'pages'|t('site') }}</span>
+									{% endif %}
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</header>
+
+			<!-- Contenido principal con tabla más simple -->
+			<table class="main-layout-table">
+				<tr>
+					<td
+						class="image-column">
+						<!-- Imagen del autor debajo -->
+						{% if entry.authors.one() %}
+							{% set author = entry.authors.one() %}
+							{% if author.mainImage.one() %}
+								<div class="author-image-container">
+									<img src="{{ author.mainImage.one().url }}" alt="{{ author.usualName ?? author.firstName ~ ' ' ~ author.lastName }}" class="author-image">
+									<div class="author-name">
+										{% set authorName = '' %}
+										{% if author.usualName %}
+											{% set authorName = author.usualName %}
+										{% else %}
+											{% if author.firstName %}
+												{% set authorName = author.firstName %}
+											{% endif %}
+											{% if author.lastName %}
+												{% set authorName = authorName ~ (author.firstName ? ' ' : '') ~ author.lastName %}
+											{% endif %}
+										{% endif %}
+										{{ authorName }}
+									</div>
+									{% if author.birthDate or author.deathDate %}
+										<div class="author-dates">
+											{% if author.birthDate %}
+												{{ author.birthDate }}
+											{% endif %}&nbsp;–&nbsp;
+											{% if author.deathDate %}
+												{{ author.deathDate }}
+											{% endif %}
+										</div>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endif %}
+					</td>
+					<td
+						class="metadata-column">
+						<!-- Metadatos en tabla simple para mejor compatibilidad PDF -->
+						<table class="metadata-table">
+							{% if entry.mainLanguage.one() %}
+								<tr>
+									<td class="metadata-label">{{ 'language'|t('site') }}</td>
+									<td class="metadata-value">{{ entry.mainLanguage.one().title }}</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.genre %}
+								<tr>
+									<td class="metadata-label">{{ 'genre'|t('site') }}</td>
+									<td class="metadata-value">{{ entry.genre }}</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.audience.one() %}
+								<tr>
+									<td class="metadata-label">{{ 'audience'|t('site') }}</td>
+									<td class="metadata-value">{{ entry.audience.one().title }}</td>
+								</tr>
+							{% endif %}
+
+							<tr>
+								<td class="metadata-label">{{ 'notice'|t('site') }}</td>
+								<td class="metadata-value">{{ custom.author }}</td>
+							</tr>
+
+							{% if entry.literaryTones.all()|length > 0 %}
+								<tr>
+									<td class="metadata-label">{{ 'literaryTones'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set tones = [] %}
+										{% for litTone in entry.literaryTones.all() %}
+											{% set tones = tones|merge([litTone.title]) %}
+										{% endfor %}
+										{{ tones|join(', ') }}
+									</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.animationTechniques.all()|length > 0 %}
+								<tr>
+									<td class="metadata-label">{{ 'animationTechniques'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set techniquesList = [] %}
+										{% for technique in entry.animationTechniques.all() %}
+											{% set techniquesList = techniquesList|merge([technique.title]) %}
+										{% endfor %}
+										{{ techniquesList|join(', ') }}
+									</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.conservationPlace.one() %}
+								<tr>
+									<td class="metadata-label">{{ 'conservation'|t('site') }}</td>
+									<td class="metadata-value">{{ entry.conservationPlace.one().title }}</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.keywords.all()|length > 0 %}
+								<tr>
+									<td class="metadata-label">{{ 'keywords'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set keywordsList = [] %}
+										{% for keyword in entry.keywords.all() %}
+											{% set keywordsList = keywordsList|merge([keyword.title]) %}
+										{% endfor %}
+										{{ keywordsList|join(', ') }}
+									</td>
+								</tr>
+							{% endif %}
+
+							{% if entry.theatricalTechniques %}
+								<tr>
+									<td class="metadata-label">{{ 'theatricalTechniques'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set theatricalList = [] %}
+										{% for technique in entry.theatricalTechniques %}
+											{% set theatricalList = theatricalList|merge([technique.title ?? technique]) %}
+										{% endfor %}
+										{{ theatricalList|join(', ') }}
+									</td>
+								</tr>
+							{% endif %}
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<!-- Personajes en sección separada -->
+			{% if entry.textCharacters.all()|length > 0 %}
+				<div class="characters-section">
+					<div class="characters-label">{{ 'characters'|t('site') }}</div>
+					<div class="characters-content">
+						{% set characterList = [] %}
+						{% for character in entry.textCharacters.all() %}
+							{% if character.type.handle == 'character' %}
+								{% set characterName = character.nameInText %}
+								{% if character.roles.all()|length > 0 %}
+									{% set rolesList = [] %}
+									{% for role in character.roles.all() %}
+										{% set rolesList = rolesList|merge([role.title]) %}
+									{% endfor %}
+									{% set characterName = characterName ~ ' (' ~ rolesList|join(', ') ~ ')' %}
+								{% endif %}
+								{% set characterList = characterList|merge([characterName]) %}
+							{% endif %}
+						{% endfor %}
+						{{ characterList|join(', ') }}
+					</div>
+				</div>
+			{% endif %}
+
+			<!-- Información de primera representación -->
+			{% if entry.firstPerformancePlace.one() or entry.firstPerformanceDate or entry.firstPerformanceComplementaryInformation %}
+				<div class="performance-info">
+					<div class="performance-label">{{ 'firstPerformance'|t('site') }}</div>
+					<div class="performance-content">
+						{% set hasPlace = entry.firstPerformancePlace.one() %}
+						{% set hasDate = entry.firstPerformanceDate %}
+						{% set hasExtraInfo = entry.firstPerformanceComplementaryInformation %}
+
+						{% if hasPlace %}
+							{% set place = entry.firstPerformancePlace.one() %}
+							<span>{{ place.title }}
+								{% if place.country.all()|length > 0 and place.country.one().title != place.title %},
+									{{ place.country.one().title }}
+								{% endif %}
+							</span>
+						{% endif %}
+
+						{% if hasPlace and (hasDate or hasExtraInfo) %},
+						{% endif %}
+
+						{% if hasDate %}
+							<span>{{ entry.firstPerformanceDate }}</span>
+						{% endif %}
+
+						{% if hasDate and hasExtraInfo %}
+							-
+						{% endif %}
+
+						{% if hasExtraInfo %}
+							<span>{{ entry.firstPerformanceComplementaryInformation|raw }}</span>
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+
+			<div class="visual-separator"></div>
+
+			<!-- Contenido principal: Notice y Résumé -->
+			<div>
+				{% if entry.note %}
+					<div class="content-section highlighted-section">
+						<h2 class="section-title">{{ 'notice'|t('site') }}</h2>
+						<div class="section-content">{{ entry.note }}</div>
+					</div>
+				{% endif %}
+
+				{% if entry.abstract %}
+					<div class="content-section highlighted-section">
+						<h2 class="section-title">{{ 'abstract'|t('site') }}</h2>
+						<div class="section-content">{{ entry.abstract|raw }}</div>
+					</div>
+				{% endif %}
+			</div>
+
+			<!-- Ediciones y publicaciones -->
+			{% if entry.publication or entry.modernEdition or entry.onlineCopy %}
+				<div class="visual-separator"></div>
+				<div class="content-section">
+					<h2 class="section-title">{{ 'publicationsAndTranslations'|t('site') }}</h2>
+					<div class="publications-section">
+						{% if entry.publication %}
+							<div class="publication-item">
+								<div class="publication-label">{{ 'publication'|t('site') }}</div>
+								<div class="publication-content">{{ entry.publication }}</div>
+							</div>
+						{% endif %}
+
+						{% if entry.modernEdition %}
+							<div class="publication-item">
+								<div class="publication-label">{{ 'modernEdition'|t('site') }}</div>
+								<div class="publication-content">{{ entry.modernEdition }}</div>
+							</div>
+						{% endif %}
+
+						{% if entry.onlineCopy %}
+							<div class="publication-item">
+								<div class="publication-label">{{ 'onlineCopy'|t('site') }}</div>
+								<div class="publication-content">
+									<a href="{{ entry.onlineCopy }}">{{ entry.onlineCopy }}</a>
+								</div>
+							</div>
+						{% endif %}
+						{% if entry.translations.all()|length > 0 %}
+							<div class="info-container">
+								<div class="info-label">{{ 'Traductions'|t('site') }}</div>
+								<div class="info-content">
+									<ul>
+										{% for translation in entry.translations.all() %}
+											{% set translationText = '' %}
+											{% if translation.bibliographicRecord %}
+												{% set translationText = translation.bibliographicRecord|striptags %}
+											{% endif %}
+											{% if translation.translationLanguage.one() %}
+												{% set translationText = translationText ~ ' (' ~ translation.translationLanguage.one().title ~ ')' %}
+											{% endif %}
+											<li>{{ translationText }}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</body>
+</html>
