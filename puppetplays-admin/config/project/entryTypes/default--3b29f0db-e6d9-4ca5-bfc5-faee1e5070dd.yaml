@@ -109,11 +109,11 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: 'Par défaut'
-section: c536c595-f070-49db-989a-a78e00ec515a # Revues de Presse 
+section: c536c595-f070-49db-989a-a78e00ec515a # Newsletters
 showStatusField: true
 slugTranslationKeyFormat: null
-slugTranslationMethod: site
+slugTranslationMethod: none
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null
-titleTranslationMethod: site
+titleTranslationMethod: none

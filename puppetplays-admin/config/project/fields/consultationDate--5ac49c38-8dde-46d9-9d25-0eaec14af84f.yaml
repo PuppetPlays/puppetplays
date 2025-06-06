@@ -1,6 +1,6 @@
 columnSuffix: immovwxz
 contentColumnType: datetime
-fieldGroup: f1c3d1d7-7d32-4cd8-a468-27b4ad21d5db # Revues de presse
+fieldGroup: f1c3d1d7-7d32-4cd8-a468-27b4ad21d5db # Newsletters
 handle: consultationDate
 instructions: 'Date de consultation (pour les articles en ligne uniquement)'
 name: 'Date de consultation'

@@ -206,11 +206,11 @@ query GetCommunications($locale: [String]) {
   }
   entryCount(section: "communications", site: $locale)
   
-  pressReviews: entries(section: "pressReviews", site: $locale) {
+  pressReviews: entries(section: "newsletters", site: $locale) {
     id,
     title,
     slug,
-    ... on pressReviews_default_Entry {
+    ... on newsletters_default_Entry {
       authorsPress,
       publicationName,
       publicationDate,
@@ -224,19 +224,19 @@ query GetCommunications($locale: [String]) {
       }
     }
   }
-  pressReviewsCount: entryCount(section: "pressReviews", site: $locale)
+  pressReviewsCount: entryCount(section: "newsletters", site: $locale)
 }
 `;
 
 const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
   const { t } = useFormattedTranslation(['project', 'common']);
   const [currentPage, setCurrentPage] = useState(0);
-  const [activeTab, setActiveTab] = useState('newsletters'); // 'newsletters' ou 'pressReviews'
+  const [activeTab, setActiveTab] = useState('pressReviews'); // 'newsletters' ou 'pressReviews'
   const ARTICLES_PER_PAGE = 5; // Show 5 articles per page for press review style
 
-  // Determine which data to use based on active tab
+  // Determine which data to use based on active tab - INVERSÉ
   const currentData =
-    activeTab === 'newsletters' ? initialCommunications : initialPressReviews;
+    activeTab === 'newsletters' ? initialPressReviews : initialCommunications;
 
   // Calculate pagination values
   const pageCount = Math.ceil(currentData.length / ARTICLES_PER_PAGE);
@@ -284,16 +284,16 @@ const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
         <div className={styles.tabsContainer}>
           <div className={styles.tabs}>
             <button
-              className={`${styles.tabButton} ${activeTab === 'newsletters' ? styles.active : ''}`}
-              onClick={() => handleTabChange('newsletters')}
-            >
-              {t('project:communications.tabs.newsletters')}
-            </button>
-            <button
               className={`${styles.tabButton} ${activeTab === 'pressReviews' ? styles.active : ''}`}
               onClick={() => handleTabChange('pressReviews')}
             >
               {t('project:communications.tabs.pressReviews')}
+            </button>
+            <button
+              className={`${styles.tabButton} ${activeTab === 'newsletters' ? styles.active : ''}`}
+              onClick={() => handleTabChange('newsletters')}
+            >
+              {t('project:communications.tabs.newsletters')}
             </button>
           </div>
         </div>
@@ -303,21 +303,18 @@ const CommunicationsPage = ({ initialCommunications, initialPressReviews }) => {
         {/* Articles list */}
         <div id="articles-top" />
         {activeTab === 'newsletters' ? (
-          // Newsletters content
-          paginatedArticles.length > 0 ? (
-            <div className={styles.articleGrid}>
-              {paginatedArticles.map(article => (
-                <ArticleCard key={article.id} article={article} />
-              ))}
-            </div>
-          ) : (
-            <div className={styles.emptyState}>
-              <p>{t('project:communications.noArticlesFound')}</p>
-            </div>
-          )
-        ) : (
-          // Press Reviews content
+          // Newsletters content - maintenant affiche Press Reviews
           <PressReviews reviews={paginatedArticles} />
+        ) : paginatedArticles.length > 0 ? (
+          <div className={styles.articleGrid}>
+            {paginatedArticles.map(article => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.emptyState}>
+            <p>{t('project:communications.noArticlesFound')}</p>
+          </div>
         )}
 
         {/* Pagination */}
