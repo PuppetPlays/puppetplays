@@ -300,25 +300,50 @@ const TeamMemberCard = ({ member }) => {
                       <h3>{t('researchProjects', 'Travaux de recherche')}</h3>
 
                       {member.relatedResearchProjects.map(project => {
-                        const startDateFormatted = project.startDate
-                          ? new Date(project.startDate).toLocaleDateString(
-                              'fr-FR',
-                              {
-                                month: 'long',
-                                year: 'numeric',
-                              },
-                            )
-                          : null;
+                        // Fonction pour formater la date avec traduction
+                        const formatProjectDate = dateValue => {
+                          if (!dateValue) return null;
 
-                        const endDateFormatted = project.endDate
-                          ? new Date(project.endDate).toLocaleDateString(
-                              'fr-FR',
-                              {
-                                month: 'long',
-                                year: 'numeric',
-                              },
-                            )
-                          : null;
+                          let date;
+                          try {
+                            if (
+                              typeof dateValue === 'string' &&
+                              dateValue.includes('T')
+                            ) {
+                              const datePart = dateValue.split('T')[0];
+                              date = new Date(`${datePart}T12:00:00Z`);
+                            } else {
+                              date = new Date(dateValue);
+                            }
+                          } catch (e) {
+                            console.error(
+                              'Error parsing project date:',
+                              e,
+                              dateValue,
+                            );
+                            return null;
+                          }
+
+                          if (isNaN(date.getTime())) {
+                            return null;
+                          }
+
+                          const year = date.getUTCFullYear();
+                          const month = date.getUTCMonth();
+                          const monthKey = `common:months.${month}`;
+                          const translatedMonth = t(monthKey, {
+                            defaultValue: monthKey,
+                          });
+
+                          return `${translatedMonth} ${year}`;
+                        };
+
+                        const startDateFormatted = formatProjectDate(
+                          project.startDate,
+                        );
+                        const endDateFormatted = formatProjectDate(
+                          project.endDate,
+                        );
 
                         return (
                           <div

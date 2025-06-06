@@ -98,12 +98,38 @@ const ResearchProjectDetail = () => {
   }
 
   const postdoc = project.postdoctorant?.[0];
-  const startDate = project.startDate
-    ? new Date(project.startDate).getFullYear()
-    : null;
-  const endDate = project.endDate
-    ? new Date(project.endDate).getFullYear()
-    : null;
+  
+  // Fonction pour formater la date avec mois traduit
+  const formatDateWithMonth = dateValue => {
+    if (!dateValue) return null;
+    
+    let date;
+    try {
+      if (typeof dateValue === 'string' && dateValue.includes('T')) {
+        const datePart = dateValue.split('T')[0];
+        date = new Date(`${datePart}T12:00:00Z`);
+      } else {
+        date = new Date(dateValue);
+      }
+    } catch (e) {
+      console.error('Error parsing date:', e, dateValue);
+      return null;
+    }
+
+    if (isNaN(date.getTime())) {
+      return null;
+    }
+
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth();
+    const monthKey = `common:months.${month}`;
+    const translatedMonth = t(monthKey, { defaultValue: monthKey });
+
+    return `${translatedMonth} ${year}`;
+  };
+
+  const startDate = formatDateWithMonth(project.startDate);
+  const endDate = formatDateWithMonth(project.endDate);
 
   return (
     <ProjectLayout
