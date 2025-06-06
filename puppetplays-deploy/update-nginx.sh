@@ -54,7 +54,7 @@ echo "Copying new configurations to server..."
 scp -o StrictHostKeyChecking=no $TEMP_DIR/* root@$SERVER_HOST:/tmp/
 
 # Apply new configs on server
-ssh -o StrictHostKeyChecking=no root@$SERVER_HOST << ENDSSH
+ssh -o StrictHostKeyChecking=no root@$SERVER_HOST << 'ENDSSH'
 set -e
 
 # Move new configs to nginx directory
@@ -82,4 +82,4 @@ fi
 # Clean up backup if successful
 sudo rm -rf /etc/nginx/sites-available.backup.*
 echo "Nginx configuration update completed successfully"
-ENDSSH 
+ENDSSH
