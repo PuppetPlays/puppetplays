@@ -21,5 +21,5 @@
 
 return [
   'graphql' => 'graphql/api',
-  'api/pdf/<entryId:\d+>' => 'main/pdf/generate',
+  'api/pdf/<entryId:\d+>/<language:[a-z]{2}>' => 'sitemodule/pdf/generate',
 ];
