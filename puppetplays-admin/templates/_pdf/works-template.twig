@@ -5,7 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title ?? 'Document PDF' }}</title>
 		<style>
-			/* Reset básico */
 			* {
 				box-sizing: border-box;
 			}
@@ -21,14 +20,12 @@
 				background-color: white;
 			}
 
-			/* Layout principal */
 			.container {
 				max-width: 1000px;
 				margin: 0 auto;
 				padding: 25px 15px;
 			}
 
-			/* Header de la obra */
 			.work-header {
 				text-align: center;
 				margin-bottom: 25px;
@@ -37,19 +34,29 @@
 			}
 
 			.work-title {
-				font-size: 26px;
+				font-size: 35px;
 				font-family: "PT Serif", "Georgia", "Times New Roman", serif;
-				margin: 0 0 12px;
+				margin: 0 0 10px;
 				color: #2037b1;
 				line-height: 1.2;
 			}
 
-			.work-meta {
-				font-size: 15px;
+			.work-subtitle {
+				font-size: 24px;
 				font-weight: 500;
-				margin: 0;
+				margin: 0 0 15px;
 				color: #1a1b45;
-				line-height: 1.3;
+			}
+
+			.work-meta {
+				font-size: 18px;
+				font-weight: 500;
+				color: #1a1b45;
+			}
+
+			.work-meta-formats {
+				margin-top: 10px;
+				font-size: 16px;
 			}
 
 			.pipe-separator {
@@ -58,66 +65,27 @@
 				font-size: 14px;
 			}
 
-			/* Imagen de portada - más grande, sin bordes ni background */
-			.cover-image {
-				width: 160px;
-				height: 210px;
-				overflow: hidden;
-				position: relative;
+			.title-content-cell {
+				vertical-align: top;
+				text-align: left;
 			}
 
-			.cover-image img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 160px;
-				height: 210px;
-				object-fit: cover;
+			.main-layout-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 20px;
 			}
 
-			.cover-image .placeholder {
-				width: 160px;
-				height: 210px;
-				background-color: transparent;
-				margin: 0 auto;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: #999;
-				font-size: 11px;
-				text-align: center;
+			.image-column {
+				width: 180px;
+				vertical-align: top;
+				padding-right: 20px;
 			}
 
-			/* Secciones principales */
-			.content-section {
-				margin-bottom: 16px;
+			.metadata-column {
+				vertical-align: top;
 			}
 
-			.section-title {
-				font-size: 14px;
-				font-weight: 600;
-				color: #2037b1;
-				margin: 0 0 8px;
-				text-transform: uppercase;
-				letter-spacing: 0.5px;
-			}
-
-			.section-content {
-				font-size: 13px;
-				line-height: 1.5;
-				text-align: justify;
-			}
-
-			/* Notice y Résumé destacados */
-			.highlighted-section {
-				background-color: #f8f9fa;
-				border-left: 3px solid #2037b1;
-				padding: 12px;
-				margin: 12px 0;
-				border-radius: 0 4px 4px 0;
-			}
-
-			/* Metadatos con diseño en tabla simple */
 			.metadata-table {
 				width: 100%;
 				border-collapse: collapse;
@@ -154,26 +122,6 @@
 				line-height: 1.3;
 			}
 
-			/* Información de primera representación */
-			.performance-info {
-				background-color: #f0f0f3;
-				border: 1px solid #b3b3c1;
-				border-radius: 4px;
-				padding: 12px;
-				margin: 15px 0;
-				text-align: center;
-			}
-
-			.performance-label {
-				font-weight: 600;
-				color: #1a1b45;
-				font-size: 11px;
-				margin-bottom: 6px;
-				text-transform: uppercase;
-				letter-spacing: 0.8px;
-			}
-
-			/* Personajes */
 			.characters-section {
 				background-color: #f0f0f3;
 				padding: 12px;
@@ -197,20 +145,147 @@
 				line-height: 1.4;
 			}
 
-			/* Separador visual */
+			.performance-info {
+				background-color: #f0f0f3;
+				border: 1px solid #b3b3c1;
+				border-radius: 4px;
+				padding: 12px;
+				margin: 15px 0;
+				text-align: center;
+			}
+
+			.performance-label {
+				font-weight: 600;
+				color: #1a1b45;
+				font-size: 11px;
+				margin-bottom: 6px;
+				text-transform: uppercase;
+				letter-spacing: 0.8px;
+			}
+
+			.performance-content {
+				font-size: 12px;
+				color: #1a1b45;
+			}
+
+			.author-image-container {
+				margin-top: 20px;
+				text-align: center;
+			}
+
+			.author-image {
+				width: 260px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 2px solid #f0f0f3;
+			}
+
+			.author-name {
+				font-size: 12px;
+				color: #595b78;
+				margin-top: 8px;
+				line-height: 1.2;
+				max-width: 160px;
+				word-wrap: break-word;
+			}
+
+			.author-dates {
+				font-size: 11px;
+				color: #888;
+				margin-top: 4px;
+				line-height: 1.2;
+			}
+
 			.visual-separator {
 				height: 1px;
 				background-color: #dee2e6;
 				margin: 18px 0;
 			}
 
-			/* Enlaces */
+			.content-section {
+				margin-bottom: 16px;
+			}
+
+			.section-title {
+				font-size: 14px;
+				font-weight: 600;
+				color: #2037b1;
+				margin: 0 0 8px;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.section-content {
+				font-size: 13px;
+				line-height: 1.5;
+				text-align: justify;
+			}
+
+			.highlighted-section {
+				background-color: #f8f9fa;
+				border-left: 3px solid #2037b1;
+				padding: 12px;
+				margin: 12px 0;
+				border-radius: 0 4px 4px 0;
+			}
+
+			.publications-section {
+				background-color: #fafafa;
+				padding: 12px;
+				border-radius: 4px;
+			}
+
+			.publication-item {
+				margin-bottom: 8px;
+			}
+
+			.publication-label {
+				font-weight: 600;
+				color: #595b78;
+				font-size: 10px;
+				text-transform: uppercase;
+				margin-bottom: 4px;
+			}
+
+			.publication-content {
+				font-size: 12px;
+			}
+
+			.info-container {
+				margin: 14px 0;
+			}
+
+			.info-label {
+				color: #595b78;
+				font-size: 12px;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
+
+			.info-content {
+				font-size: 12px;
+			}
+
+			.info-content a {
+				text-decoration: underline;
+				color: #2037b1;
+			}
+
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				margin: 4px 0;
+			}
+
 			a {
 				color: #2037b1;
 				text-decoration: underline;
 			}
 
-			/* Párrafos */
 			p {
 				margin: 0 0 8px;
 			}
@@ -225,92 +300,128 @@
 			class="container">
 			<!-- Header de la obra -->
 			<header class="work-header">
-				<h1 class="work-title">{{ title }}</h1>
-				{% if entry.subtitle %}
-					<h2 style="font-size: 18px; font-weight: 500; margin: 0 0 10px 0; color: #1a1b45;">{{ entry.subtitle }}</h2>
-				{% endif %}
-
-				<div class="work-meta">
-					{% if entry.authors.all()|length > 0 %}
-						<span class="work-authors">
-							{% set authorsList = [] %}
-							{% for author in entry.authors.all() %}
-								{% set authorsList = authorsList|merge([author.title]) %}
-							{% endfor %}
-							{{ authorsList|join(', ') }}
-						</span>
-					{% endif %}
-
-					{% if entry.mostRelevantDate %}
-						{% if entry.authors.all()|length > 0 %}
-							<span class="pipe-separator">|</span>
-						{% endif %}
-						<span class="work-date">{{ entry.mostRelevantDate }}</span>
-					{% else %}
-						{% if entry.authors.all()|length > 0 %}
-							<span class="pipe-separator">|</span>
-						{% endif %}
-						<span class="work-date">{{ entry.compositionMaxDate ?? entry.compositionMinDate ?? 'dateNotAvailable'|t('site') }}</span>
-					{% endif %}
-
-					{% if entry.compositionPlace.all()|length > 0 %}
-						<span class="pipe-separator">|</span>
-						<span class="work-place">
-							{% set place = entry.compositionPlace.one() %}
-							{{ place.title }}
-							{% if place.country.all()|length > 0 and place.country.one().title != place.title %}
-								,
-								{{ place.country.one().title }}
+				<table class="title-table">
+					<tr>
+						<td
+							class="title-image-cell">
+							<!-- Imagen a la izquierda del título -->
+							{% set mainImage = entry.mainImage.one() %}
+							{% if mainImage %}
+								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="260">
 							{% endif %}
-						</span>
-					{% endif %}
+						</td>
+						<td class="title-content-cell">
+							<h1 class="work-title">{{ title }}</h1>
+							{% if entry.subtitle %}
+								<h2 class="work-subtitle">{{ entry.subtitle }}</h2>
+							{% endif %}
 
-					{% if entry.mainLanguage.all()|length > 0 %}
-						<span class="pipe-separator">|</span>
-						<span class="work-language">{{ entry.mainLanguage.one().title }}</span>
-					{% endif %}
+							<div class="work-meta">
+								{% if entry.authors.all()|length > 0 %}
+									<span class="work-authors">
+										{% set authorsList = [] %}
+										{% for author in entry.authors.all() %}
+											{% set authorsList = authorsList|merge([author.title]) %}
+										{% endfor %}
+										{{ authorsList|join(', ') }}
+									</span>
+								{% endif %}
 
-					<div style="margin-top: 6px; font-size: 13px;">
-						{% if entry.formats.all()|length > 0 %}
-							{% set formatsList = [] %}
-							{% for format in entry.formats.all() %}
-								{% set formatsList = formatsList|merge([format.title]) %}
-							{% endfor %}
-							<span>{{ formatsList|join(', ') }}</span>
-						{% elseif entry.medias.one() %}
-							<span>{{ entry.medias.one().title }}</span>
-						{% else %}
-							<span>{{ 'printed'|t('site') }}</span>
-						{% endif %}
+								{% if entry.mostRelevantDate %}
+									{% if entry.authors.all()|length > 0 %}
+										<span class="pipe-separator">|</span>
+									{% endif %}
+									<span class="work-date">{{ entry.mostRelevantDate }}</span>
+								{% else %}
+									{% if entry.authors.all()|length > 0 %}
+										<span class="pipe-separator">|</span>
+									{% endif %}
+									<span class="work-date">{{ entry.compositionMaxDate ?? entry.compositionMinDate ?? 'dateNotAvailable'|t('site') }}</span>
+								{% endif %}
 
-						{% if entry.pagesCount %}
-							<span class="pipe-separator">|</span>
-							<span>{{ entry.pagesCount }}
-								{{ 'pages'|t('site') }}</span>
-						{% endif %}
-					</div>
-				</div>
+								{% if entry.compositionPlace.all()|length > 0 %}
+									<span class="pipe-separator">|</span>
+									<span class="work-place">
+										{% set place = entry.compositionPlace.one() %}
+										{{ place.title }}
+										{% if place.country.all()|length > 0 and place.country.one().title != place.title %}
+											,
+											{{ place.country.one().title }}
+										{% endif %}
+									</span>
+								{% endif %}
+
+								{% if entry.mainLanguage.all()|length > 0 %}
+									<span class="pipe-separator">|</span>
+									<span class="work-language">{{ entry.mainLanguage.one().title }}</span>
+								{% endif %}
+
+								<div class="work-meta-formats">
+									{% if entry.formats.all()|length > 0 %}
+										{% set formatsList = [] %}
+										{% for format in entry.formats.all() %}
+											{% set formatsList = formatsList|merge([format.title]) %}
+										{% endfor %}
+										<span>{{ formatsList|join(', ') }}</span>
+									{% elseif entry.medias.one() %}
+										<span>{{ entry.medias.one().title }}</span>
+									{% else %}
+										<span>{{ 'printed'|t('site') }}</span>
+									{% endif %}
+
+									{% if entry.pagesCount %}
+										<span class="pipe-separator">|</span>
+										<span>{{ entry.pagesCount }}
+											{{ 'pages'|t('site') }}</span>
+									{% endif %}
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</header>
 
 			<!-- Contenido principal con tabla más simple -->
-			<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+			<table class="main-layout-table">
 				<tr>
 					<td
-						style="width: 180px; vertical-align: top; padding-right: 20px;">
-						<!-- Imagen más grande sin bordes -->
-						<div class="cover-image">
-							{% set mainImage = entry.mainImage.one() %}
-							{% if mainImage %}
-								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="160" height="210">
-							{% else %}
-								<div class="placeholder">
-									<div>Sin imagen<br>disponible</div>
+						class="image-column">
+						<!-- Imagen del autor debajo -->
+						{% if entry.authors.one() %}
+							{% set author = entry.authors.one() %}
+							{% if author.mainImage.one() %}
+								<div class="author-image-container">
+									<img src="{{ author.mainImage.one().url }}" alt="{{ author.usualName ?? author.firstName ~ ' ' ~ author.lastName }}" class="author-image">
+									<div class="author-name">
+										{% set authorName = '' %}
+										{% if author.usualName %}
+											{% set authorName = author.usualName %}
+										{% else %}
+											{% if author.firstName %}
+												{% set authorName = author.firstName %}
+											{% endif %}
+											{% if author.lastName %}
+												{% set authorName = authorName ~ (author.firstName ? ' ' : '') ~ author.lastName %}
+											{% endif %}
+										{% endif %}
+										{{ authorName }}
+									</div>
+									{% if author.birthDate or author.deathDate %}
+										<div class="author-dates">
+											{% if author.birthDate %}
+												{{ author.birthDate }}
+											{% endif %}&nbsp;–&nbsp;
+											{% if author.deathDate %}
+												{{ author.deathDate }}
+											{% endif %}
+										</div>
+									{% endif %}
 								</div>
 							{% endif %}
-						</div>
+						{% endif %}
 					</td>
 					<td
-						style="vertical-align: top;">
+						class="metadata-column">
 						<!-- Metadatos en tabla simple para mejor compatibilidad PDF -->
 						<table class="metadata-table">
 							{% if entry.mainLanguage.one() %}
@@ -426,30 +537,11 @@
 				</div>
 			{% endif %}
 
-			<div class="visual-separator"></div>
-
-			<!-- Contenido principal: Notice y Résumé -->
-			<div>
-				{% if entry.note %}
-					<div class="content-section highlighted-section">
-						<h2 class="section-title">{{ 'notice'|t('site') }}</h2>
-						<div class="section-content">{{ entry.note }}</div>
-					</div>
-				{% endif %}
-
-				{% if entry.abstract %}
-					<div class="content-section highlighted-section">
-						<h2 class="section-title">{{ 'abstract'|t('site') }}</h2>
-						<div class="section-content">{{ entry.abstract|raw }}</div>
-					</div>
-				{% endif %}
-			</div>
-
 			<!-- Información de primera representación -->
 			{% if entry.firstPerformancePlace.one() or entry.firstPerformanceDate or entry.firstPerformanceComplementaryInformation %}
 				<div class="performance-info">
 					<div class="performance-label">{{ 'firstPerformance'|t('site') }}</div>
-					<div style="font-size: 12px; color: #1a1b45;">
+					<div class="performance-content">
 						{% set hasPlace = entry.firstPerformancePlace.one() %}
 						{% set hasDate = entry.firstPerformanceDate %}
 						{% set hasExtraInfo = entry.firstPerformanceComplementaryInformation %}
@@ -481,39 +573,70 @@
 				</div>
 			{% endif %}
 
+			<div class="visual-separator"></div>
+
+			<!-- Contenido principal: Notice y Résumé -->
+			<div>
+				{% if entry.note %}
+					<div class="content-section highlighted-section">
+						<h2 class="section-title">{{ 'notice'|t('site') }}</h2>
+						<div class="section-content">{{ entry.note }}</div>
+					</div>
+				{% endif %}
+
+				{% if entry.abstract %}
+					<div class="content-section highlighted-section">
+						<h2 class="section-title">{{ 'abstract'|t('site') }}</h2>
+						<div class="section-content">{{ entry.abstract|raw }}</div>
+					</div>
+				{% endif %}
+			</div>
+
 			<!-- Ediciones y publicaciones -->
 			{% if entry.publication or entry.modernEdition or entry.onlineCopy %}
 				<div class="visual-separator"></div>
 				<div class="content-section">
 					<h2 class="section-title">{{ 'publicationsAndTranslations'|t('site') }}</h2>
-					<div style="background-color: #fafafa; padding: 12px; border-radius: 4px;">
+					<div class="publications-section">
 						{% if entry.publication %}
-							<div style="margin-bottom: 8px;">
-								<div style="font-weight: 600; color: #595b78; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">{{ 'publication'|t('site') }}</div>
-								<div style="font-size: 12px;">{{ entry.publication }}</div>
+							<div class="publication-item">
+								<div class="publication-label">{{ 'publication'|t('site') }}</div>
+								<div class="publication-content">{{ entry.publication }}</div>
 							</div>
 						{% endif %}
 
 						{% if entry.modernEdition %}
-							<div style="margin-bottom: 8px;">
-								<div style="font-weight: 600; color: #595b78; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">{{ 'modernEdition'|t('site') }}</div>
-								<div style="font-size: 12px;">{{ entry.modernEdition }}</div>
+							<div class="publication-item">
+								<div class="publication-label">{{ 'modernEdition'|t('site') }}</div>
+								<div class="publication-content">{{ entry.modernEdition }}</div>
 							</div>
 						{% endif %}
 
 						{% if entry.onlineCopy %}
-							<div style="margin-bottom: 8px;">
-								<div style="font-weight: 600; color: #595b78; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">{{ 'onlineCopy'|t('site') }}</div>
-								<div style="font-size: 12px;">
+							<div class="publication-item">
+								<div class="publication-label">{{ 'onlineCopy'|t('site') }}</div>
+								<div class="publication-content">
 									<a href="{{ entry.onlineCopy }}">{{ entry.onlineCopy }}</a>
 								</div>
 							</div>
 						{% endif %}
-
-						{% if entry.translations %}
-							<div style="margin-bottom: 8px;">
-								<div style="font-weight: 600; color: #595b78; font-size: 10px; text-transform: uppercase; margin-bottom: 4px;">{{ 'translations'|t('site') }}</div>
-								<div style="font-size: 12px;">{{ entry.translations }}</div>
+						{% if entry.translations.all()|length > 0 %}
+							<div class="info-container">
+								<div class="info-label">{{ 'Traductions'|t('site') }}</div>
+								<div class="info-content">
+									<ul>
+										{% for translation in entry.translations.all() %}
+											{% set translationText = '' %}
+											{% if translation.bibliographicRecord %}
+												{% set translationText = translation.bibliographicRecord|striptags %}
+											{% endif %}
+											{% if translation.translationLanguage.one() %}
+												{% set translationText = translationText ~ ' (' ~ translation.translationLanguage.one().title ~ ')' %}
+											{% endif %}
+											<li>{{ translationText }}</li>
+										{% endfor %}
+									</ul>
+								</div>
 							</div>
 						{% endif %}
 					</div>
