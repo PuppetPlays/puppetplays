@@ -213,6 +213,11 @@ jobs:
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
+      - run:
+          name: Update nginx configurations
+          command: |
+            cd ./puppetplays-deploy
+            ./update-nginx.sh
   deploy_production:
     machine:
       image: ubuntu-2204:current
@@ -261,6 +266,11 @@ jobs:
             echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
             cd ./puppetplays-deploy
             ./deploy.sh
+      - run:
+          name: Update nginx configurations
+          command: |
+            cd ./puppetplays-deploy
+            ./update-nginx.sh
 
 orbs:
   node: circleci/node@4.1.0

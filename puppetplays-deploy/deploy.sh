@@ -17,7 +17,7 @@ log() {
   message=$1; shift
   color=$1; shift
   nc='\033[0m\n'
-  echo -e "$color(DEPLOY) $message$nc";
+  echo -e "$color(DEPLOY) $message$nc";
 }
 
 info() {
@@ -55,9 +55,13 @@ startContainer() {
 # ---- MAIN -------------------------------------------------------------------
 # -----------------------------------------------------------------------------
 main() {
+  # Note: Nginx configs must be updated manually on the server
+  # The CI/CD environment cannot directly access the server filesystem
+  
   pullImages
   stopExistingContainers
   startContainer "postgres"
+  startContainer "puppetplays-admin"
   startContainer "puppetplays-web"
 
   info "$PROJECT deployed"
