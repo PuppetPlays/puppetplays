@@ -133,11 +133,11 @@ const ResearchProjectDetail = () => {
             {postdoc && (
               <div className={styles.postdocSection}>
                 <div className={styles.postdocInfo}>
-                  {postdoc.profileImage && (
+                  {postdoc.profileImage && postdoc.profileImage.length > 0 && (
                     <div className={styles.postdocImage}>
                       <Image
-                        src={postdoc.profileImage.url}
-                        alt={postdoc.profileImage.alt || postdoc.fullName}
+                        src={postdoc.profileImage[0].url}
+                        alt={postdoc.profileImage[0].alt || postdoc.fullName}
                         width={60}
                         height={60}
                       />
