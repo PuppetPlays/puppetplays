@@ -8,16 +8,16 @@ import styles from 'styles/ProjectPresentation.module.scss';
 
 const PARTNERS = [
   {
-    name: 'rir',
-    link: 'https://rirra21.www.univ-montp3.fr/',
-    logo: '/logo-rir.svg',
-    alt: 'RIR',
-  },
-  {
     name: 'upvm',
     link: 'https://www.univ-montp3.fr/',
     logo: '/logo-upvm.svg',
     alt: 'UPVM',
+  },
+  {
+    name: 'rir',
+    link: 'https://rirra21.www.univ-montp3.fr/',
+    logo: '/logo-rir.svg',
+    alt: 'RIR',
   },
 ];
 
