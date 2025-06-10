@@ -140,7 +140,7 @@ class SiteModule extends Module
             function (RegisterUrlRulesEvent $event) {
                 $event->rules['auth/user'] = 'sitemodule/auth';
                 $event->rules['newsletter/subscribe'] = 'sitemodule/newsletter/subscribe';
-                $event->rules['api/pdf/<entryId:\d+>'] = 'sitemodule/pdf/generate';
+                $event->rules['api/pdf/<entryId:\d+>/<language:[a-z]{2}>'] = 'sitemodule/pdf/generate';
             }
         );
 
