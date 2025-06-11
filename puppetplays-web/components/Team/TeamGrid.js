@@ -1,5 +1,8 @@
-import { useTranslation } from 'next-i18next';
 import { useState, useRef, useEffect } from 'react';
+
+import { useTranslation } from 'next-i18next';
+
+import { useFormattedTranslation } from '../../hooks/useFormattedTranslation';
 
 import styles from './TeamGrid.module.scss';
 
@@ -412,16 +415,17 @@ const TeamMemberCard = ({ member }) => {
 };
 
 const Acknowledgments = () => {
-  const { t } = useTranslation('team');
+  const { t } = useFormattedTranslation('team');
 
   return (
     <div className={styles.acknowledgments}>
       <h2 className={styles.acknowledgmentsTitle}>
         {t('acknowledgments.title')}
       </h2>
-      <p className={styles.acknowledgmentsContent}>
-        {t('acknowledgments.content')}
-      </p>
+      <p
+        className={styles.acknowledgmentsContent}
+        dangerouslySetInnerHTML={{ __html: t('acknowledgments.content') }}
+      />
     </div>
   );
 };
