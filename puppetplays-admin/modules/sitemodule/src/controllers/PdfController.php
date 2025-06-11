@@ -20,34 +20,34 @@ class PdfController extends Controller
         Craft::info("PDF Generation started for entryId: $entryId, language: $language", __METHOD__);
 
         try {
-            // Validar que se proporcione un ID
+            // Validate that an ID is provided
             if (!$entryId) {
                 throw new BadRequestHttpException('Entry ID is required');
             }
 
-            // Determinar el site basado en el idioma
+            // Determine the site based on the language
             $site = $this->resolveSite($language);
 
-            // Recuperar la entry por ID en el site específico
+            // Retrieve the entry by ID in the specific site
             $entry = Craft::$app->entries->getEntryById($entryId, $site->id);
 
             if (!$entry) {
                 throw new NotFoundHttpException("Entry with ID $entryId not found for language '{$site->language}'");
             }
 
-            // Verificar que la entry esté habilitada para este site
+            // Verify that the entry is enabled for this site
             if (!$entry->getEnabledForSite($site->id)) {
                 throw new NotFoundHttpException("Entry with ID $entryId is not enabled for language '{$site->language}'");
             }
 
             Craft::info("Entry found: {$entry->title} (Site: {$site->name}, Language: {$site->language})", __METHOD__);
 
-            // Configurar el site actual para el contexto de renderizado
+            // Set up the current site for the rendering context
             $originalSiteId = Craft::$app->sites->getCurrentSite()->id;
             Craft::$app->sites->setCurrentSite($site);
 
             try {
-                // Generar PDF usando template Twig
+                // Generate PDF using Twig template and PDF generator Pluggin
                 $pdfResult = Craft::$app->view->renderString(
                     '{{ craft.documentHelper.pdf(template, destination, filename, entry, pdfOptions) }}',
                     [
@@ -59,24 +59,24 @@ class PdfController extends Controller
                     ]
                 );
             } finally {
-                // Restaurar el site original
+                // Restore original site
                 $originalSite = Craft::$app->sites->getSiteById($originalSiteId);
                 if ($originalSite) {
                     Craft::$app->sites->setCurrentSite($originalSite);
                 }
             }
 
-            // Verificar que se generó contenido
+            // Verificate that content was generated
             if (empty($pdfResult)) {
                 throw new ServerErrorHttpException('PDF generation returned empty result');
             }
 
             Craft::info("PDF generated successfully. Size: " . strlen($pdfResult) . " bytes", __METHOD__);
 
-            // Generar nombre de archivo con idioma
+            // Generating Name
             $filename = $this->generateFilename($entry, $site);
 
-            // Servir el PDF
+            // Serve PDF
             return $this->response->sendContentAsFile(
                 $pdfResult,
                 $filename,
@@ -99,32 +99,33 @@ class PdfController extends Controller
 
     private function resolveSite(?string $language): Site
     {
-        // Si no se proporciona idioma, usar el site por defecto
+        // If no language is provided, use the default site
         if (!$language) {
             return Craft::$app->sites->getPrimarySite();
         }
 
-        // Buscar site por idioma
+        // Search for site by language
         $sites = Craft::$app->sites->getAllSites();
 
         foreach ($sites as $site) {
-            // Comparar con el código de idioma completo (ej: fr, en)
+            // Compare with the full language code (e.g.: fr, en)
             if (substr($site->language, 0, 2) === $language) {
                 return $site;
             }
 
-            // Comparar con el handle del site si coincide
+            // Compare with site handle if it matches
             if ($site->handle === $language) {
                 return $site;
             }
         }
 
-        // Si no se encuentra, lanzar excepción
+        // If not found, throw exception
         throw new BadRequestHttpException("Language '$language' is not supported. Available languages: " .
             implode(', ', array_unique(array_map(fn($s) => substr($s->language, 0, 2), $sites))));
     }
+
     /**
-     * Generar nombre de archivo
+     * Generate filename
      */
     private function generateFilename($entry, Site $site): string
     {
@@ -132,11 +133,11 @@ class PdfController extends Controller
         $language = substr($site->language, 0, 2);
         $date = date('Y-m-d');
 
-        return "documento-{$titleSlug}-{$language}-{$date}.pdf";
+        return "{$titleSlug}-{$language}-{$date}.pdf";
     }
 
     /**
-     * Opciones básicas para PDF
+     * Basic PDF options
      */
     private function getPdfOptions($entry): array
     {
