@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ entry.usualName ?? 'Document PDF' }}</title>
+		<style>
+			@font-face {
+				font-family: 'Fira Sans';
+				font-style: normal;
+				font-weight: 400;
+				src: url('/fonts/fira-sans-v10-latin-regular.woff2') format('woff2'), url('/fonts/fira-sans-v10-latin-regular.woff') format('woff');
+			}
+
+			@font-face {
+				font-family: 'Fira Sans';
+				font-style: italic;
+				font-weight: 400;
+				src: url('/fonts/fira-sans-v10-latin-italic.woff2') format('woff2'), url('/fonts/fira-sans-v10-latin-italic.woff') format('woff');
+			}
+
+			@font-face {
+				font-family: 'Fira Sans';
+				font-style: normal;
+				font-weight: 500;
+				src: url('/fonts/fira-sans-v10-latin-500.woff2') format('woff2'), url('/fonts/fira-sans-v10-latin-500.woff') format('woff');
+			}
+
+			@font-face {
+				font-family: 'PT Serif';
+				font-style: normal;
+				font-weight: 700;
+				src: url('/fonts/pt-serif-v12-latin-700.woff2') format('woff2'), url('/fonts/pt-serif-v12-latin-700.woff') format('woff');
+			}
+
+			body {
+				font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+				font-size: 16px;
+				line-height: 1.5;
+				color: #1a1b45;
+				margin: 0;
+				padding: 40px;
+				background: #fff;
+			}
+
+			.container {
+				max-width: 678px;
+				margin: 0 auto;
+				text-align: center;
+			}
+
+			.page-subtitle {
+				font-size: 12px;
+				margin: 0 0 8px;
+				color: #808097;
+			}
+
+			.page-title {
+				text-align: center;
+				font-family: 'PT Serif', 'Georgia', 'Iowan Old Style', 'Times New Roman', 'Droid Serif', 'Source Serif Pro', serif;
+				font-size: 35px;
+				line-height: 1.2;
+				margin: 0 0 8px;
+			}
+
+			.dates {
+				text-align: center;
+				color: #595b78;
+				font-size: 18px;
+				font-weight: 500;
+				margin-bottom: 30px;
+			}
+
+			.biographical-note {
+				max-width: 70ch;
+				font-size: 16px;
+				text-align: left;
+				line-height: 1.5;
+			}
+
+			.biographical-note p {}
+
+			.biographical-note em {
+				font-style: italic;
+			}
+
+			.image {
+				text-align: center;
+			}
+
+			.image img {
+				max-width: 300px;
+				max-height: 400px;
+				height: auto;
+				width: auto;
+			}
+
+			.images-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 20px 0;
+			}
+
+			.images-table td {
+				width: 50%;
+				/* text-align: center; */
+				vertical-align: top;
+				padding: 10px;
+			}
+
+			.caption {
+				color: #808097;
+				text-align: left;
+				font-size: 13px;
+				font-weight: 500;
+				line-height: 1.4;
+				padding: 0;
+				max-width: 70ch;
+			}
+
+			.caption-copyright {
+				font-weight: 400;
+			}
+
+			.works {
+				text-align: center;
+			}
+
+			.page-intertitle {
+				font-family: 'PT Serif', 'Georgia', 'Iowan Old Style', 'Times New Roman', 'Droid Serif', 'Source Serif Pro', serif;
+				font-size: 24px;
+				font-weight: 700;
+			}
+
+			.works ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.works li {
+				margin: 0;
+			}
+
+			.works li + li {
+				margin-top: 10px;
+			}
+
+			.work-title {
+				color: #2037b1;
+				text-decoration: none;
+			}
+
+			.work-date {
+				color: #595b78;
+			}
+
+			.ids {
+				text-align: left;
+				page-break-inside: avoid;
+				break-inside: avoid;
+			}
+
+			.section-container {
+				padding: 0;
+				margin: 12px 0 0;
+				text-align: left;
+			}
+
+			.section-title {
+				border-top: 1px solid #b3b3c1;
+				font-size: 11px;
+				line-height: 1.2;
+				color: white;
+				text-transform: uppercase;
+				margin: 0 0 12px;
+			}
+
+			.section-title span {
+				display: inline-block;
+				background-color: #b3b3c1;
+				border-radius: 0 0 3px 3px;
+				padding: 4px 9px;
+				letter-spacing: 0.0275em;
+			}
+
+			.section-content {
+				font-size: 15px;
+			}
+
+			.info-container {
+				margin-bottom: 5px;
+			}
+
+			.info-label {
+				color: #595b78;
+				font-size: 12px;
+				margin-bottom: 5px;
+			}
+
+			.info-content {
+				font-size: 15px;
+			}
+
+			.info-content a {
+				text-decoration: none;
+				color: #2037b1;
+			}
+
+			@media print {
+				body {
+					padding: 20px;
+				}
+
+				.page-title {
+					font-size: 28px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-subtitle">{{'Auteur'|t('site')}}</div>
+			<h1 class="page-title">
+				{% if entry.usualName %}
+					{{ entry.usualName }}
+					{% if entry.firstName or entry.lastName %}
+						({{ entry.firstName }}
+						{% if entry.firstName and entry.lastName %}{% endif %}
+						{{ entry.lastName }})
+					{% endif %}
+				{% else %}
+					{{ entry.firstName }}
+					{% if entry.firstName and entry.lastName %}{% endif %}
+					{{ entry.lastName }}
+				{% endif %}
+				{% if entry.nickname %}
+					{% if entry.usualName or entry.firstName or entry.lastName %},
+					{% endif %}dit
+					{{ entry.nickname }}
+				{% endif %}
+			</h1>
+
+			{% if entry.birthDate or entry.deathDate %}
+				<div class="dates">
+					<span>
+						{% if entry.birthDate %}
+							{{ entry.birthDate|date('Y') }}
+						{% endif %}
+						{% if entry.birthDate and entry.deathDate %}
+							–
+						{% endif %}
+						{% if entry.deathDate %}
+							{{ entry.deathDate|date('Y') }}
+						{% endif %}
+					</span>
+				</div>
+			{% endif %}
+
+			{% if entry.biographicalNote %}
+				<div class="biographical-note">
+					{{ entry.biographicalNote|raw }}
+				</div>
+			{% endif %}
+
+			{% set mainImage = entry.mainImage|length ? entry.mainImage.one() : null %}
+			{% set additionalImages = entry.images|length ? entry.images.all() : [] %}
+			{% set allImages = [] %}
+			{% if mainImage %}
+				{% set allImages = allImages|merge([mainImage]) %}
+			{% endif %}
+			{% if additionalImages %}
+				{% set allImages = allImages|merge(additionalImages) %}
+			{% endif %}
+
+			{% if allImages|length > 0 %}
+				{% if allImages|length == 1 %}
+					<div class="image">
+						{% set image = allImages[0] %}
+						<img src="{{ image.url }}" alt="{{ image.alt }}" style="max-width: 300px; max-height: 400px; width: auto; height: auto;">
+						{% if image.title or image.copyright %}
+							<div class="caption">
+								{% if image.title %}
+									<p>{{ image.title }}</p>
+								{% endif %}
+								{% if image.copyright %}
+									<div class="caption-copyright">©
+										{{ image.copyright }}</div>
+								{% endif %}
+							</div>
+						{% endif %}
+					</div>
+				{% else %}
+					<table class="images-table">
+						<tr>
+							{% for image in allImages %}
+								<td>
+									<img src="{{ image.url }}" alt="{{ image.alt }}" style="max-width: 250px; max-height: 300px; width: auto; height: auto; margin-bottom:5px;">
+
+									{% if image.description or image.copyright %}
+										<div class="caption">
+											{% if image.description %}
+												<p>{{ image.description }}</p>
+											{% endif %}
+											{% if image.copyright %}
+												<div class="caption-copyright">©
+													{{ image.copyright }}
+												</div>
+											{% endif %}
+										</div>
+									{% endif %}
+								</td>
+								{% if loop.index is divisible by(2) and not loop.last %}
+								</tr>
+								<tr>
+								{% endif %}
+							{% endfor %}
+						</tr>
+					</table>
+				{% endif %}
+			{% endif %}
+
+			{% set works = custom.works|default([]) %}
+			{% if works|length > 0 %}
+				<div class="works">
+					<h2 class="page-intertitle">{{ 'Œuvres'|t('site') }}</h2>
+					<ul>
+						{% for work in works %}
+							<li>
+								<span class="work-title">{{ work.title }}</span>
+								{% if work.mostRelevantDate %}
+									<span class="work-date">
+										–
+										{{ work.mostRelevantDate }}</span>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			<div class="ids">
+				<section class="section-container">
+					<h1 class="section-title">
+						<span>{{ 'ids'|t('site') }}</span>
+					</h1>
+					<div class="section-content">
+						{% if entry.arkId %}
+							<div class="info-container">
+								<div class="info-label">ARK</div>
+								<div class="info-content">
+									<a href="{{ entry.arkId }}" target="_blank">{{ entry.arkId }}</a>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if entry.viafId %}
+							<div class="info-container">
+								<div class="info-label">VIAF</div>
+								<div class="info-content">{{ entry.viafId }}</div>
+							</div>
+						{% endif %}
+
+						{% if entry.idrefId %}
+							<div class="info-container">
+								<div class="info-label">IDREF</div>
+								<div class="info-content">{{ entry.idrefId }}</div>
+							</div>
+						{% endif %}
+
+						{% if entry.isniId %}
+							<div class="info-container">
+								<div class="info-label">ISNI</div>
+								<div class="info-content">{{ entry.isniId }}</div>
+							</div>
+						{% endif %}
+					</div>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>
