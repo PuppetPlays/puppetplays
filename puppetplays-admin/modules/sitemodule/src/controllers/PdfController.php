@@ -15,6 +15,14 @@ class PdfController extends Controller
 {
     protected array|bool|int $allowAnonymous = ['generate'];
 
+    /**
+     * Template Config
+     */
+    private array $templateConfig = [
+        'works' => 'works-template',
+        'persons' => 'persons-template',
+    ];
+
     public function actionGenerate($entryId = null, $language = null): Response
     {
         Craft::info("PDF Generation started for entryId: $entryId, language: $language", __METHOD__);
@@ -40,22 +48,31 @@ class PdfController extends Controller
                 throw new NotFoundHttpException("Entry with ID $entryId is not enabled for language '{$site->language}'");
             }
 
-            Craft::info("Entry found: {$entry->title} (Site: {$site->name}, Language: {$site->language})", __METHOD__);
+            $pdfOptions = $this->getPdfOptions($entry, $site);
+
+            $entryType = $entry->getType()->handle;
+
+            if ($entryType === 'persons') {
+                $pdfOptions['custom']['works'] = $this->getAuthorWorks($entry);
+            }
+
+            $template = $this->getTemplateForEntryType($entryType);
+
+            Craft::info("Entry found: {$entry->title} (Type: {$entryType}, Site: {$site->name}, Language: {$site->language})", __METHOD__);
 
             // Set up the current site for the rendering context
             $originalSiteId = Craft::$app->sites->getCurrentSite()->id;
             Craft::$app->sites->setCurrentSite($site);
-
             try {
-                // Generate PDF using Twig template and PDF generator Pluggin
+                // Generate PDF using Twig template and PDF generator Plugin
                 $pdfResult = Craft::$app->view->renderString(
                     '{{ craft.documentHelper.pdf(template, destination, filename, entry, pdfOptions) }}',
                     [
-                        'template' => '_pdf/works-template.twig',
+                        'template' => '_pdf/' . $template . '.twig',
                         'destination' => 'string',
                         'filename' => null,
                         'entry' => $entry,
-                        'pdfOptions' => $this->getPdfOptions($entry, $site)
+                        'pdfOptions' => $pdfOptions
                     ]
                 );
             } finally {
@@ -82,7 +99,7 @@ class PdfController extends Controller
                 $filename,
                 [
                     'mimeType' => 'application/pdf',
-                    'inline' => false
+                    'inline' => true
                 ]
             );
         } catch (\Exception $e) {
@@ -95,6 +112,21 @@ class PdfController extends Controller
 
             return $this->response;
         }
+    }
+
+    /**
+     * Get template by entry type
+     */
+    private function getTemplateForEntryType(string $entryType): string
+    {
+        if (!isset($this->templateConfig[$entryType])) {
+            throw new BadRequestHttpException(
+                "No template configured for entry type: '$entryType'. Available types: " .
+                    implode(', ', array_keys($this->templateConfig))
+            );
+        }
+
+        return $this->templateConfig[$entryType];
     }
 
     private function resolveSite(?string $language): Site
@@ -141,6 +173,7 @@ class PdfController extends Controller
      */
     private function getPdfOptions($entry): array
     {
+
         return [
             'format' => 'A4',
             'encoding' => 'UTF-8',
@@ -152,5 +185,34 @@ class PdfController extends Controller
                 'author' => $entry->author->fullName,
             ]
         ];
+    }
+
+    /**
+     * Works by Author
+     */
+    private function getAuthorWorks($authorEntry): array
+    {
+
+        $worksQuery = \craft\elements\Entry::find()
+            ->section('works')
+            ->relatedTo([
+                'targetElement' => $authorEntry,
+                'field' => 'authors'
+            ])
+            ->orderBy('title ASC')
+            ->all();
+        $works = [];
+        foreach ($worksQuery as $work) {
+            $works[] = [
+                'id' => $work->id,
+                'title' => $work->title,
+                'slug' => $work->slug,
+                'date' => $work->date ? $work->date->format('Y') : null,
+                'url' => $work->url,
+                'mostRelevantDate' => $work->mostRelevantDate,
+            ];
+        }
+
+        return $works;
     }
 }
