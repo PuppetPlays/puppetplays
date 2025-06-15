@@ -43,6 +43,31 @@ const OriginalWorkIcon = () => {
   );
 };
 
+const PdfDownloadIcon = () => {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M5 12V15H15V12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M10 4V11"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M7.5 8.5L10 11L12.5 8.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+};
+
 const WorkPageHeader = ({
   id = null,
   slug = null,
@@ -55,9 +80,16 @@ const WorkPageHeader = ({
 }) => {
   const router = useRouter();
   const { t } = useTranslation();
+  const { locale } = router;
+
   const handleGoBack = useCallback(() => {
     router.back();
   }, [router]);
+
+  const handleDownloadPdf = useCallback(() => {
+    const pdfUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/pdf/${id}/${locale}`;
+    window.open(pdfUrl, '_blank');
+  }, [id, locale]);
 
   return (
     <div className={styles.container}>
@@ -100,7 +132,7 @@ const WorkPageHeader = ({
           </Fragment>
         )}
       </div>
-      {(hasMedia || hasDocument) && (
+      {(hasMedia || hasDocument || id) && (
         <div className={styles.nav}>
           <ButtonLink
             icon={<NoteIcon />}
@@ -125,6 +157,15 @@ const WorkPageHeader = ({
               inverse={false}
             >
               {t('common:document')}
+            </Button>
+          )}
+          {id && (
+            <Button
+              icon={<PdfDownloadIcon />}
+              onClick={handleDownloadPdf}
+              inverse={false}
+            >
+              PDF
             </Button>
           )}
         </div>

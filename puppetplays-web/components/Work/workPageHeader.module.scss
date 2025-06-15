@@ -79,7 +79,8 @@
   }
 
   a + a,
-  a + button {
+  a + button,
+  button + button {
     margin-left: 10px;
   }
 }
