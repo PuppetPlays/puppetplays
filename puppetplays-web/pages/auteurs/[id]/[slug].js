@@ -1,5 +1,6 @@
 import Author from 'components/Author';
 import AuthorNote from 'components/Author/AuthorNote';
+import AuthorPageHeader from 'components/Author/AuthorPageHeader';
 import ContentLayout from 'components/ContentLayout';
 import Layout from 'components/Layout';
 import { PageSubtitle, PageTitle } from 'components/Primitives';
@@ -13,6 +14,7 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PropTypes from 'prop-types';
+import styles from 'styles/Author.module.scss';
 
 const AuthorPage = ({ authorData, authorWorksData }) => {
   const { t } = useTranslation('common');
@@ -108,29 +110,36 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
   }
 
   return (
-    <Layout>
-      <Head>
-        <title>{authorData?.entry?.title || t('authors')} | Puppetplays</title>
-      </Head>
-      <ContentLayout
-        style={{ maxWidth: 678, padding: '62px 20px', textAlign: 'center' }}
-      >
-        <PageSubtitle>{t('author')}</PageSubtitle>
-        {authorData?.entry && (
-          <PageTitle>
-            <Author {...get(authorData, 'entry', {})} />
-          </PageTitle>
-        )}
+    <>
+      <Layout>
+        <Head>
+          <title>{authorData?.entry?.title || t('authors')} | Puppetplays</title>
+        </Head>
+        
+        <div className={styles.authorHeader}>
+          <AuthorPageHeader authorData={authorData?.entry} />
+        </div>
+        
+        <ContentLayout
+          style={{ maxWidth: 678, padding: '62px 20px', textAlign: 'center' }}
+        >
+          <PageSubtitle>{t('author')}</PageSubtitle>
+          {authorData?.entry && (
+            <PageTitle>
+              <Author {...get(authorData, 'entry', {})} />
+            </PageTitle>
+          )}
 
-        {authorData?.entry && authorWorksData?.entries && (
-          <AuthorNote
-            {...authorData.entry}
-            works={authorWorksData.entries}
-            bleedCarousel
-          />
-        )}
-      </ContentLayout>
-    </Layout>
+          {authorData?.entry && authorWorksData?.entries && (
+            <AuthorNote
+              {...authorData.entry}
+              works={authorWorksData.entries}
+              bleedCarousel
+            />
+          )}
+        </ContentLayout>
+      </Layout>
+    </>
   );
 };
 
