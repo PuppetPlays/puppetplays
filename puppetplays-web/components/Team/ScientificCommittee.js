@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
 import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
 
 import { useFormattedTranslation } from '../../hooks/useFormattedTranslation';
 
@@ -77,9 +76,11 @@ const ScientificCommittee = ({ members }) => {
 
   return (
     <div className={styles.committeeContainer}>
-      <p 
+      <p
         className={styles.paragraph}
-        dangerouslySetInnerHTML={{ __html: t('scientificCommittee.description') }}
+        dangerouslySetInnerHTML={{
+          __html: t('scientificCommittee.description'),
+        }}
       />
 
       <div className={styles.committeeAccordion}>

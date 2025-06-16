@@ -108,14 +108,14 @@
   font-family: var(--ff-sans-serif, Arial, sans-serif);
   z-index: 2;
   backdrop-filter: blur(4px);
-  
+
   @media (min-width: 640px) {
     font-size: 12px;
     padding: 8px 12px;
     bottom: 16px;
     right: 16px;
   }
-  
+
   @media (min-width: 860px) {
     font-size: 13px;
     padding: 10px 14px;
@@ -808,7 +808,7 @@
 
 .timelineWrapper {
   position: relative;
-  
+
   // Gradient fixe en bas du wrapper
   &::after {
     content: '';
@@ -817,7 +817,12 @@
     left: 0;
     right: 0;
     height: 40px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.95) 50%, white 100%);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.95) 50%,
+      white 100%
+    );
     pointer-events: none;
     z-index: 1;
   }
@@ -830,30 +835,30 @@
   overflow-x: hidden;
   margin: 0 -1rem;
   padding: 0 1rem;
-  
+
   // Style de la scrollbar
   &::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: #f0f0f0;
     border-radius: 3px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: #d0d0d0;
     border-radius: 3px;
-    
+
     &:hover {
       background: #b0b0b0;
     }
   }
-  
+
   // Firefox
   scrollbar-width: thin;
   scrollbar-color: #d0d0d0 #f0f0f0;
-  
+
   @media (min-width: 768px) {
     max-height: 450px;
   }
@@ -870,7 +875,7 @@
   display: flex;
   position: relative;
   margin-bottom: 0;
-  
+
   &:last-child {
     .timelineLine {
       display: none;
@@ -885,7 +890,7 @@
   display: flex;
   align-items: flex-start;
   padding-top: 3px;
-  
+
   @media (max-width: 640px) {
     width: 120px;
   }
@@ -898,7 +903,7 @@
   text-align: right;
   padding-right: 1.5rem;
   width: 100%;
-  
+
   @media (max-width: 640px) {
     font-size: 0.8rem;
     padding-right: 1rem;
@@ -912,7 +917,7 @@
   bottom: -100%;
   width: 2px;
   background: #e8e8e8;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -929,7 +934,7 @@
 .timelineContent {
   flex: 1;
   padding: 0 0 1.5rem 1.5rem;
-  
+
   @media (max-width: 640px) {
     padding: 0 0 1.25rem 1rem;
   }
@@ -945,7 +950,7 @@
   border-radius: 6px;
   border-left: 3px solid transparent;
   transition: all 0.2s ease;
-  
+
   @media (max-width: 640px) {
     font-size: 0.875rem;
     padding: 0.6rem 0.8rem;
@@ -969,15 +974,15 @@
   font-weight: 500;
   text-decoration: none;
   transition: all 0.2s ease;
-  
+
   &::after {
     content: '→';
     transition: transform 0.2s ease;
   }
-  
+
   &:hover {
     color: #2037b1;
-    
+
     &::after {
       transform: translateX(2px);
     }

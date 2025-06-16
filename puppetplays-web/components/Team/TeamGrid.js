@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-
 import { useTranslation } from 'next-i18next';
+import { useState, useRef, useEffect } from 'react';
 
 import { useFormattedTranslation } from '../../hooks/useFormattedTranslation';
 

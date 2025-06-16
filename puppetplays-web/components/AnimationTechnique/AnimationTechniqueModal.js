@@ -18,21 +18,25 @@ import { handleApiError } from 'lib/apiErrorHandler';
 import get from 'lodash/get';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
-  const { id: animationTechniqueId } =
-    getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
+  const meta = getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
+  const animationTechniqueId = meta.id;
 
   const isOpen = isModalOfTypeOpen(modalState, modalTypes.animationTechnique);
-  const queryKey = isOpen
-    ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
-    : null;
+  
+  const queryKey =
+    isOpen && animationTechniqueId
+      ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
+      : null;
 
-  const fetcher = async (query, locale, id) => {
+  const fetcher = async (key) => {
+    const [query, locale, id] = key;
+    
     try {
       return await fetchAPI(query, {
         variables: {
@@ -50,7 +54,10 @@ function AnimationTechniqueModal() {
     error: techError,
     isLoading: techLoading,
     mutate: mutateTech,
-  } = useSafeData(queryKey, fetcher);
+  } = useSafeData(queryKey, fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 0, // Disable deduping to force fresh fetch
+  });
 
   const {
     safeData: works,
@@ -58,10 +65,14 @@ function AnimationTechniqueModal() {
     isLoading: worksLoading,
     mutate: mutateWorks,
   } = useSafeData(
-    isOpen
+    isOpen && animationTechniqueId
       ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId]
       : null,
     fetcher,
+    {
+      revalidateOnMount: true,
+      dedupingInterval: 0, // Disable deduping to force fresh fetch
+    }
   );
 
   const handleCloseModal = useCallback(() => {
@@ -75,15 +86,6 @@ function AnimationTechniqueModal() {
     mutateTech();
     mutateWorks();
   }, [mutateTech, mutateWorks]);
-
-  // Invalidate cache when ID changes
-  useEffect(() => {
-    if (animationTechniqueId && isOpen) {
-      // Force revalidation when modal opens with a new ID
-      mutateTech();
-      mutateWorks();
-    }
-  }, [animationTechniqueId, isOpen, mutateTech, mutateWorks]);
 
   const isLoading = techLoading || worksLoading;
   const error = techError || worksError;

@@ -15,18 +15,22 @@ import { handleApiError } from 'lib/apiErrorHandler';
 import get from 'lodash/get';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 function AuthorModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
-  const { id: authorId } = getMetaOfModalByType(modalState, modalTypes.author);
-
   const isOpen = isModalOfTypeOpen(modalState, modalTypes.author);
-  const queryKey = isOpen ? [getAuthorByIdQuery, router.locale, authorId] : null;
+  const meta = getMetaOfModalByType(modalState, modalTypes.author) || {};
+  const authorId = meta.id;
 
-  const fetcher = async (query, locale, id) => {
+  const queryKey =
+    isOpen && authorId ? [getAuthorByIdQuery, router.locale, authorId] : null;
+
+  const fetcher = async (key) => {
+    const [query, locale, id] = key;
+    
     try {
       return await fetchAPI(query, {
         variables: {
@@ -44,7 +48,10 @@ function AuthorModal() {
     error: authorError,
     isLoading: authorLoading,
     mutate: mutateAuthor,
-  } = useSafeData(queryKey, fetcher);
+  } = useSafeData(queryKey, fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 0, // Disable deduping to force fresh fetch
+  });
 
   const {
     safeData: works,
@@ -54,6 +61,10 @@ function AuthorModal() {
   } = useSafeData(
     isOpen ? [getWorksOfAuthorQuery, router.locale, authorId] : null,
     fetcher,
+    {
+      revalidateOnMount: true,
+      dedupingInterval: 0, // Disable deduping to force fresh fetch
+    }
   );
 
   const filteredWorks = isOpen && works.entries
@@ -69,22 +80,16 @@ function AuthorModal() {
     : null;
 
   const handleCloseModal = useCallback(() => {
-    dispatch({ type: 'close', payload: { type: modalTypes.author } });
+    dispatch({
+      type: 'close',
+      payload: { type: modalTypes.author },
+    });
   }, [dispatch]);
 
   const handleRetry = useCallback(() => {
     mutateAuthor();
     mutateWorks();
   }, [mutateAuthor, mutateWorks]);
-
-  // Invalidate cache when ID changes
-  useEffect(() => {
-    if (authorId && isOpen) {
-      // Force revalidation when modal opens with a new ID
-      mutateAuthor();
-      mutateWorks();
-    }
-  }, [authorId, isOpen, mutateAuthor, mutateWorks]);
 
   const isLoading = authorLoading || worksLoading;
   const error = authorError || worksError;
