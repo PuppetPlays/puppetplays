@@ -18,7 +18,7 @@ import { handleApiError } from 'lib/apiErrorHandler';
 import get from 'lodash/get';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 function AnimationTechniqueModal() {
   const { t } = useTranslation();
@@ -75,6 +75,15 @@ function AnimationTechniqueModal() {
     mutateTech();
     mutateWorks();
   }, [mutateTech, mutateWorks]);
+
+  // Invalidate cache when ID changes
+  useEffect(() => {
+    if (animationTechniqueId && isOpen) {
+      // Force revalidation when modal opens with a new ID
+      mutateTech();
+      mutateWorks();
+    }
+  }, [animationTechniqueId, isOpen, mutateTech, mutateWorks]);
 
   const isLoading = techLoading || worksLoading;
   const error = techError || worksError;

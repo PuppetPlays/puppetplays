@@ -1,5 +1,7 @@
 import Author from 'components/Author';
 import AuthorNote from 'components/Author/AuthorNote';
+import ErrorMessage from 'components/ErrorMessage';
+import LoadingSpinner from 'components/LoadingSpinner';
 import Modal from 'components/Modal';
 import {
   getMetaOfModalByType,
@@ -7,12 +9,13 @@ import {
   modalTypes,
   useModal,
 } from 'components/modalContext';
+import useSafeData from 'hooks/useSafeData';
 import { fetchAPI, getAuthorByIdQuery, getWorksOfAuthorQuery } from 'lib/api';
+import { handleApiError } from 'lib/apiErrorHandler';
 import get from 'lodash/get';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useCallback } from 'react';
-import useSWR from 'swr';
+import { useCallback, useEffect } from 'react';
 
 function AuthorModal() {
   const { t } = useTranslation();
@@ -20,35 +23,41 @@ function AuthorModal() {
   const [modalState, dispatch] = useModal();
   const { id: authorId } = getMetaOfModalByType(modalState, modalTypes.author);
 
-  const { data } = useSWR(
-    isModalOfTypeOpen(modalState, modalTypes.author)
-      ? [getAuthorByIdQuery, router.locale, authorId]
-      : null,
-    (query, locale, id) => {
-      return fetchAPI(query, {
+  const isOpen = isModalOfTypeOpen(modalState, modalTypes.author);
+  const queryKey = isOpen ? [getAuthorByIdQuery, router.locale, authorId] : null;
+
+  const fetcher = async (query, locale, id) => {
+    try {
+      return await fetchAPI(query, {
         variables: {
           locale,
           id,
         },
       });
-    },
+    } catch (error) {
+      throw handleApiError(error);
+    }
+  };
+
+  const {
+    safeData: data,
+    error: authorError,
+    isLoading: authorLoading,
+    mutate: mutateAuthor,
+  } = useSafeData(queryKey, fetcher);
+
+  const {
+    safeData: works,
+    error: worksError,
+    isLoading: worksLoading,
+    mutate: mutateWorks,
+  } = useSafeData(
+    isOpen ? [getWorksOfAuthorQuery, router.locale, authorId] : null,
+    fetcher,
   );
-  const { data: works } = useSWR(
-    isModalOfTypeOpen(modalState, modalTypes.author)
-      ? [getWorksOfAuthorQuery, router.locale, authorId]
-      : null,
-    (query, locale, id) => {
-      return fetchAPI(query, {
-        variables: {
-          locale,
-          id,
-        },
-      });
-    },
-  );
-  const filteredWorks = isModalOfTypeOpen(modalState, modalTypes.author)
-    ? works &&
-      works.entries
+
+  const filteredWorks = isOpen && works.entries
+    ? works.entries
         .filter(
           ({ authors }) =>
             authors &&
@@ -63,14 +72,39 @@ function AuthorModal() {
     dispatch({ type: 'close', payload: { type: modalTypes.author } });
   }, [dispatch]);
 
+  const handleRetry = useCallback(() => {
+    mutateAuthor();
+    mutateWorks();
+  }, [mutateAuthor, mutateWorks]);
+
+  // Invalidate cache when ID changes
+  useEffect(() => {
+    if (authorId && isOpen) {
+      // Force revalidation when modal opens with a new ID
+      mutateAuthor();
+      mutateWorks();
+    }
+  }, [authorId, isOpen, mutateAuthor, mutateWorks]);
+
+  const isLoading = authorLoading || worksLoading;
+  const error = authorError || worksError;
+  const title = get(data, 'entry', {});
+  const hasData = data.entry && filteredWorks;
+
   return (
     <Modal
       modalType={modalTypes.author}
-      isOpen={isModalOfTypeOpen(modalState, modalTypes.author)}
-      title={data && <Author {...get(data, 'entry', {})} />}
+      isOpen={isOpen}
+      title={data && <Author {...title} />}
       subtitle={t('common:author')}
     >
-      {data && filteredWorks && (
+      {isLoading && <LoadingSpinner text={t('common:loading')} />}
+
+      {error && (
+        <ErrorMessage error={error} onRetry={handleRetry} className="m-4" />
+      )}
+
+      {!isLoading && !error && hasData && (
         <AuthorNote
           works={filteredWorks}
           onCloseModal={handleCloseModal}

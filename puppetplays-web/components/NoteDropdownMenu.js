@@ -17,10 +17,20 @@ function NoteDropdownMenu({ id, modalType }) {
   const dropdownRef = useRef(null);
 
   const handleOpenNote = useCallback(() => {
+    // First close any existing modal of the same type
     dispatch({
-      type: 'open',
-      payload: { type: modalType, meta: { id } },
+      type: 'close',
+      payload: { type: modalType },
     });
+    
+    // Then open the new modal after a short delay to ensure React processes the close
+    setTimeout(() => {
+      dispatch({
+        type: 'open',
+        payload: { type: modalType, meta: { id } },
+      });
+    }, 50);
+    
     setIsOpen(false);
   }, [dispatch, id, modalType]);
 
