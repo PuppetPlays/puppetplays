@@ -99,7 +99,7 @@ class PdfController extends Controller
                 $filename,
                 [
                     'mimeType' => 'application/pdf',
-                    'inline' => true
+                    'inline' => false
                 ]
             );
         } catch (\Exception $e) {
