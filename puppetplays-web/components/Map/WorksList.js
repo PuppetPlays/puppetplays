@@ -3,8 +3,6 @@ import WorkCard from 'components/Work/WorkCard';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
 
-import CrossIcon from '../icon-cross.svg';
-
 import styles from './worksList.module.scss';
 
 const WorksList = ({ works = null, onClose = null }) => {

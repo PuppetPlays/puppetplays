@@ -104,6 +104,14 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
     }
   }, [setSelectedWorks, filters, selectInteraction]);
 
+  // Close WorksList when user types in search bar
+  useEffect(() => {
+    setSelectedWorks(null);
+    if (selectInteraction) {
+      selectInteraction.getFeatures().clear();
+    }
+  }, [searchTerms]);
+
   const handleSetSelectInteraction = useCallback(
     select => {
       setSelectInteraction(select);

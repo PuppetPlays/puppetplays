@@ -256,8 +256,12 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
     writtenBy: author {
       firstName,
       lastName
-    },
+          },
     ... on works_works_Entry {
+      translator {
+        firstName,
+        lastName
+      },
       doi,
       viafId,
       arkId,
