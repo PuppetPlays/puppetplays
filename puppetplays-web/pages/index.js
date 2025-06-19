@@ -481,6 +481,7 @@ export default function Home({
                   <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
                   </Link>
+                  <Link href="/accessibilite">{t('common:accessibility')}</Link>
                   <Link
                     href="https://www.facebook.com/ERCPuppetPlays"
                     target="_blank"

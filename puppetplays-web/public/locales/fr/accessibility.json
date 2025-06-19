@@ -1,0 +1,21 @@
+{
+  "title": "Accessibilité",
+  "metaDescription": "Déclaration d'accessibilité du site PuppetPlays - Informations sur la conformité RGAA et les moyens de contact",
+  "pageTitle": "Déclaration d'accessibilité",
+  "lawReminder": {
+    "title": "Rappel de la loi",
+    "content": "L'article 47 de la loi n° 2005-102 du 11 février 2005 pour l'égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées, fait de l'accessibilité une exigence pour tous les services de communication publique en ligne de l'État, des collectivités territoriales et des établissements publics qui en dépendent. Il stipule que les informations diffusées par ces services doivent être accessibles à tous."
+  },
+  "rgaaCompliance": {
+    "title": "Déclaration de conformité RGAA",
+    "content": "L'Université Paul-Valéry Montpellier 3 s'efforce de respecter les principaux critères permettant de rendre son site accessible (recommandation du Référentiel Général d'Amélioration de l'Accessibilité - RGAA). Néanmoins, comme il n'existe aucun résultat d'audit en cours de validité permettant de mesurer le respect des critères RGAA, le site <a href=\"https://www.univ-montp3.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">www.univ-montp3.fr</a> est déclaré à ce titre non conforme.<br/><a href=\"https://accessibilite.numerique.gouv.fr/obligations/mentions-et-pages-obligatoires/\" target=\"_blank\" rel=\"noopener noreferrer\">En savoir plus sur les obligations du référentiel RGAA</a>"
+  },
+  "publicRegister": {
+    "title": "Plus d'information sur le Registre Public Accessibilité",
+    "linkText": "Plus d'information sur le Registre Public Accessibilité",
+    "contactTitle": "Vous avez des remarques ?",
+    "contactText": "Contactez :",
+    "handiEtudesTitle": "Service Handi-Études",
+    "handiEtudesLinkText": "Lien vers les pages du service Handi-Études"
+  }
+} 
