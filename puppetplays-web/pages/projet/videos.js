@@ -618,6 +618,7 @@ const VideosPage = ({ initialCollectionsData, error }) => {
     <ProjectLayout
       title={t('project:mainNav.videos')}
       metaDescription={t('project:videos.metaDescription')}
+      hideNav={!!selectedCollection}
     >
       <div className={styles.container}>
         <div className={styles.mainContent}>{renderContent()}</div>

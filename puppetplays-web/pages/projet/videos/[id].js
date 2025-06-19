@@ -17,12 +17,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 import styles from 'styles/VideoPage.module.scss';
 
-const VideoDetailPage = ({
-  videoData,
-  relatedVideos,
-  collectionData,
-  error,
-}) => {
+const VideoDetailPage = ({ videoData, relatedVideos, error }) => {
   const router = useRouter();
   const { t } = useTranslation(['common', 'project']);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
@@ -39,6 +34,7 @@ const VideoDetailPage = ({
       <ProjectLayout
         title={t(errorTitleKey)}
         metaDescription={t('project:videoDetail.notFoundMetaDescription')}
+        hideNav={true}
       >
         <div className={styles.container}>
           <NoResults
@@ -61,7 +57,6 @@ const VideoDetailPage = ({
 
   // Use fetched data
   const {
-    id,
     rawIdentifier,
     title,
     description,
@@ -81,6 +76,7 @@ const VideoDetailPage = ({
         description?.substring(0, 160) ||
         t('project:videoDetail.defaultMetaDescription')
       }
+      hideNav={true}
     >
       <Head>
         <title>{t('project:videoDetail.pageTitle', { title: title })}</title>
