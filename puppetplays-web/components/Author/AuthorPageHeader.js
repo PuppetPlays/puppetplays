@@ -93,4 +93,4 @@ AuthorPageHeader.propTypes = {
   authorData: PropTypes.object,
 };
 
-export default AuthorPageHeader; 
+export default AuthorPageHeader;

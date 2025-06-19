@@ -24,19 +24,20 @@ function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
-  const meta = getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
+  const meta =
+    getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
   const animationTechniqueId = meta.id;
 
   const isOpen = isModalOfTypeOpen(modalState, modalTypes.animationTechnique);
-  
+
   const queryKey =
     isOpen && animationTechniqueId
       ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
       : null;
 
-  const fetcher = async (key) => {
+  const fetcher = async key => {
     const [query, locale, id] = key;
-    
+
     try {
       return await fetchAPI(query, {
         variables: {
@@ -72,7 +73,7 @@ function AnimationTechniqueModal() {
     {
       revalidateOnMount: true,
       dedupingInterval: 0, // Disable deduping to force fresh fetch
-    }
+    },
   );
 
   const handleCloseModal = useCallback(() => {

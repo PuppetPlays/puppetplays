@@ -28,9 +28,9 @@ function AuthorModal() {
   const queryKey =
     isOpen && authorId ? [getAuthorByIdQuery, router.locale, authorId] : null;
 
-  const fetcher = async (key) => {
+  const fetcher = async key => {
     const [query, locale, id] = key;
-    
+
     try {
       return await fetchAPI(query, {
         variables: {
@@ -64,20 +64,21 @@ function AuthorModal() {
     {
       revalidateOnMount: true,
       dedupingInterval: 0, // Disable deduping to force fresh fetch
-    }
+    },
   );
 
-  const filteredWorks = isOpen && works.entries
-    ? works.entries
-        .filter(
-          ({ authors }) =>
-            authors &&
-            Array.isArray(authors) &&
-            authors.map(({ id }) => id).includes(authorId),
-        )
-        // eslint-disable-next-line no-unused-vars
-        .map(({ authors, ...entry }) => entry)
-    : null;
+  const filteredWorks =
+    isOpen && works.entries
+      ? works.entries
+          .filter(
+            ({ authors }) =>
+              authors &&
+              Array.isArray(authors) &&
+              authors.map(({ id }) => id).includes(authorId),
+          )
+          // eslint-disable-next-line no-unused-vars
+          .map(({ authors, ...entry }) => entry)
+      : null;
 
   const handleCloseModal = useCallback(() => {
     dispatch({

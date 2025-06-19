@@ -39,6 +39,7 @@
   align-items: stretch;
   flex: 1 1 auto;
   height: 100%;
+  margin-bottom: 1rem;
 
   .aside + & {
     @media (max-width: 899px) {

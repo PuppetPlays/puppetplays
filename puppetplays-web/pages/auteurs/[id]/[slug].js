@@ -113,13 +113,15 @@ const AuthorPage = ({ authorData, authorWorksData }) => {
     <>
       <Layout>
         <Head>
-          <title>{authorData?.entry?.title || t('authors')} | Puppetplays</title>
+          <title>
+            {authorData?.entry?.title || t('authors')} | Puppetplays
+          </title>
         </Head>
-        
+
         <div className={styles.authorHeader}>
           <AuthorPageHeader authorData={authorData?.entry} />
         </div>
-        
+
         <ContentLayout
           style={{ maxWidth: 678, padding: '62px 20px', textAlign: 'center' }}
         >
