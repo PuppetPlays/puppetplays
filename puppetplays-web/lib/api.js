@@ -227,7 +227,8 @@ export const buildSearchQuery = (search, locale) => {
   }
 
   // Check if the search contains quotes (exact phrase search)
-  const hasQuotes = /["']/.test(normalizedSearch);
+  // Only double quotes indicate exact phrase search, not apostrophes
+  const hasQuotes = /["]/.test(normalizedSearch);
 
   // For quoted searches, return as-is (let CraftCMS handle exact phrase matching)
   if (hasQuotes) {

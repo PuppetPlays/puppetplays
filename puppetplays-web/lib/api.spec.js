@@ -23,8 +23,8 @@ describe('buildSearchQuery', () => {
   describe('apostrophe handling', () => {
     test('preserves apostrophes and searches variants', () => {
       const result = buildSearchQuery("l'assemblée");
-      // Single term with apostrophe - should be preserved as-is
-      expect(result).toBe("l'assemblée");
+      // Single term with apostrophe - should generate multiple search strategies
+      expect(result).toBe('"l\'assemblée" OR l\'assemblée* OR lassemblée*');
     });
 
     test('normalizes different apostrophe types', () => {
