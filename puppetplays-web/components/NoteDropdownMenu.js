@@ -25,15 +25,15 @@ function NoteDropdownMenu({ id, modalType }) {
 
     // Ensure the close is processed before opening
     requestAnimationFrame(() => {
-      dispatch({
-        type: 'open',
+    dispatch({
+      type: 'open',
         payload: {
           type: modalType,
           meta: {
             id,
           },
         },
-      });
+    });
     });
 
     setIsOpen(false);
