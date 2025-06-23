@@ -47,14 +47,21 @@ describe('buildSearchQuery', () => {
       const result = buildSearchQuery('mot1 mot2');
       expect(result).toContain('"mot1 mot2"'); // exact phrase
       expect(result).toContain('(mot1 AND mot2)'); // both required
-      expect(result).toContain('mot1 OR mot2'); // fallback
+      expect(result).toContain('mot1*'); // wildcards
+      expect(result).toContain('mot2*'); // wildcards
+      // NO fallback OR - all terms must be present
+      expect(result).not.toContain('mot1 OR mot2');
     });
 
     test('three words: comprehensive strategies', () => {
       const result = buildSearchQuery('mot1 mot2 mot3');
       expect(result).toContain('"mot1 mot2 mot3"'); // exact phrase
       expect(result).toContain('(mot1 AND mot2 AND mot3)'); // all required
-      expect(result).toContain('mot1 OR mot2 OR mot3'); // fallback
+      expect(result).toContain('mot1*'); // wildcards
+      expect(result).toContain('mot2*'); // wildcards
+      expect(result).toContain('mot3*'); // wildcards
+      // NO fallback OR - all terms must be present
+      expect(result).not.toContain('mot1 OR mot2 OR mot3');
     });
   });
 

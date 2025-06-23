@@ -236,7 +236,8 @@ export const buildSearchQuery = (search, locale) => {
   }
 
   // Split into terms while preserving quoted phrases
-  const splitRegex = /\s(?=(?:[^'"`]*(['"`])[^'"`]*\1)*[^'"`]*$)/g;
+  // Only consider double quotes for phrase preservation, not apostrophes
+  const splitRegex = /\s(?=(?:[^"]*"[^"]*")*[^"]*$)/;
   const terms = normalizedSearch
     .replace(/\s*\+/g, ' ')
     .replace(/\+\s*/g, ' ')
@@ -269,8 +270,22 @@ export const buildSearchQuery = (search, locale) => {
       return true;
     }
 
-    // Keep terms that are not stop words
-    return !stopWordsSet.has(cleanTerm);
+    // For longer searches, be more careful about filtering
+    // Keep the term if it's not a stop word OR if filtering would remove too many terms
+    const isStopWord = stopWordsSet.has(cleanTerm);
+
+    // Count how many non-stop words we have
+    const nonStopWords = terms.filter(
+      t => !stopWordsSet.has(t.toLowerCase()),
+    ).length;
+
+    // If we have less than 2 non-stop words, keep everything
+    if (nonStopWords < 2) {
+      return true;
+    }
+
+    // Otherwise, filter stop words
+    return !isStopWord;
   });
 
   // Use original terms if all were filtered out
@@ -293,24 +308,43 @@ export const buildSearchQuery = (search, locale) => {
     // For longer terms, use wildcard for partial matching
     return `${term}*`;
   } else if (finalTerms.length === 2) {
-    // Two terms: try multiple strategies
+    // Two terms: require BOTH terms to be present
     const [term1, term2] = finalTerms;
     const phrase = finalTerms.join(' ');
 
-    // Search strategies in order of priority:
-    // 1. Exact phrase match
-    // 2. Both terms present (AND)
-    // 3. Partial matches for each term
-    // 4. Either term (OR) as fallback
+    // For terms with apostrophes, handle them specially
+    const term1HasApostrophe = term1.includes("'");
+    const term2HasApostrophe = term2.includes("'");
 
-    const strategies = [
-      `"${phrase}"`, // Exact phrase
-      `(${term1} AND ${term2})`, // Both terms required
-      `(${term1}* AND ${term2}*)`, // Partial matches for both
-      `"${term1} ${term2}*"`, // First exact, second partial
-      `"${term1}* ${term2}"`, // First partial, second exact
-      `${term1} OR ${term2}`, // Either term
-    ];
+    // Build the search query requiring BOTH terms
+    const strategies = [];
+
+    // 1. Try exact phrase first
+    strategies.push(`"${phrase}"`);
+
+    // 2. Both terms must be present (various forms)
+    if (term1HasApostrophe && !term2HasApostrophe) {
+      // First term has apostrophe: try with and without
+      strategies.push(`("${term1}" AND ${term2}*)`);
+      strategies.push(`(${term1}* AND ${term2}*)`);
+      strategies.push(`(${term1.replace(/'/g, '')}* AND ${term2}*)`);
+    } else if (!term1HasApostrophe && term2HasApostrophe) {
+      // Second term has apostrophe: try with and without
+      strategies.push(`(${term1}* AND "${term2}")`);
+      strategies.push(`(${term1}* AND ${term2}*)`);
+      strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')}*)`);
+    } else if (term1HasApostrophe && term2HasApostrophe) {
+      // Both have apostrophes
+      strategies.push(`("${term1}" AND "${term2}")`);
+      strategies.push(`(${term1}* AND ${term2}*)`);
+      strategies.push(
+        `(${term1.replace(/'/g, '')}* AND ${term2.replace(/'/g, '')}*)`,
+      );
+    } else {
+      // No apostrophes
+      strategies.push(`(${term1} AND ${term2})`);
+      strategies.push(`(${term1}* AND ${term2}*)`);
+    }
 
     return strategies.join(' OR ');
   } else {
@@ -326,20 +360,21 @@ export const buildSearchQuery = (search, locale) => {
     // 2. All terms required (high priority)
     strategies.push(`(${finalTerms.join(' AND ')})`);
 
-    // 3. Most terms required (n-1 terms)
-    if (finalTerms.length > 3) {
-      for (let i = 0; i < finalTerms.length; i++) {
-        const termsWithoutOne = finalTerms.filter((_, index) => index !== i);
-        strategies.push(`(${termsWithoutOne.join(' AND ')})`);
-      }
-    }
-
-    // 4. Partial matches for all terms
+    // 3. All terms with wildcards
     strategies.push(`(${finalTerms.map(t => `${t}*`).join(' AND ')})`);
 
-    // 5. Any term (fallback)
-    strategies.push(finalTerms.join(' OR '));
+    // 4. Handle terms with apostrophes specially
+    const hasApostrophe = finalTerms.some(term => term.includes("'"));
+    if (hasApostrophe) {
+      const termsWithoutApostrophes = finalTerms.map(t =>
+        t.includes("'") ? t.replace(/'/g, '') : t,
+      );
+      strategies.push(
+        `(${termsWithoutApostrophes.map(t => `${t}*`).join(' AND ')})`,
+      );
+    }
 
+    // NO FALLBACK TO OR - all terms must be present
     return strategies.join(' OR ');
   }
 };
