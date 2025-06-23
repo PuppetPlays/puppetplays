@@ -347,6 +347,7 @@ function Home({ initialData }) {
               locale={router.locale}
               filters={filters}
               searchTerms={searchTerms}
+              listData={data}
             />
           </div>
         </Suspense>

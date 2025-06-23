@@ -772,3 +772,22 @@ query GetPartners($locale: [String]) {
 
 export const getTeamDataQuery = `
 `;
+
+// New optimized query for map view - only retrieves essential data for map visualization
+export const getAllWorksForMapQuery = filters => {
+  return `
+${placeInfoFragment}
+query GetAllWorksForMap($locale: [String], $search: String${worksStateToGraphqlQueryArgument(filters)}) {
+  entries(section: "works", site: $locale, search: $search${worksStateToGraphqlEntriesParams(filters)}) {
+    id,
+    title,
+    ... on works_works_Entry {
+      compositionPlace {
+        ...placeInfo
+      }
+    }
+  }
+  entryCount(section: "works", site: $locale, search: $search${worksStateToGraphqlEntriesParams(filters)})
+}
+`;
+};
