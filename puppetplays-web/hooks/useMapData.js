@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
 import { fetchAPI, getAllWorksForMapQuery, buildSearchQuery } from 'lib/api';
 import { worksStateToGraphqlVariables as stateToGraphqlVariables } from 'lib/filters';
 import { hasAtLeastOneItem } from 'lib/utils';
 import { groupBy } from 'lodash';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 // Global cache for map data
 const mapDataCache = new Map();
@@ -31,7 +31,7 @@ export const useMapData = (
   }, [filters, searchTerms, locale]);
 
   // Memoized processing of map data
-  const processMapData = useCallback((entries) => {
+  const processMapData = useCallback(entries => {
     const entriesWithCompositionPlace = entries.filter(entry =>
       hasAtLeastOneItem(entry.compositionPlace),
     );
@@ -61,8 +61,7 @@ export const useMapData = (
         entry => entry.compositionPlace[0].title,
       ),
     ).map(([name, works]) => {
-      const { longitude, latitude, typeHandle } =
-        works[0].compositionPlace[0];
+      const { longitude, latitude, typeHandle } = works[0].compositionPlace[0];
       return {
         name,
         coordinates: [longitude, latitude],
@@ -87,17 +86,25 @@ export const useMapData = (
     setError(null);
 
     // Try to use data from list view if available and no complex search/filters
-    if (listData && listData.entries && !searchTerms && Object.keys(filters).length <= 1) {
+    if (
+      listData &&
+      listData.entries &&
+      !searchTerms &&
+      Object.keys(filters).length <= 1
+    ) {
       try {
         const processedData = processMapData(listData.entries);
         setMapData(processedData);
-        
+
         // Cache the processed data
         mapDataCache.set(cacheKey, processedData);
         setIsLoading(false);
         return;
       } catch (err) {
-        console.warn('Error processing list data for map, falling back to API:', err);
+        console.warn(
+          'Error processing list data for map, falling back to API:',
+          err,
+        );
       }
     }
 
@@ -108,22 +115,24 @@ export const useMapData = (
         search: buildSearchQuery(searchTerms),
         ...stateToGraphqlVariables(filters),
       },
-    }).then(({ entries }) => {
-      const processedData = processMapData(entries);
-      setMapData(processedData);
-      
-      // Cache the processed data
-      mapDataCache.set(cacheKey, processedData);
-      setIsLoading(false);
-      setError(null);
-    }).catch(err => {
-      console.error('Error loading map data:', err);
-      setError(err);
-      setIsLoading(false);
-    });
+    })
+      .then(({ entries }) => {
+        const processedData = processMapData(entries);
+        setMapData(processedData);
+
+        // Cache the processed data
+        mapDataCache.set(cacheKey, processedData);
+        setIsLoading(false);
+        setError(null);
+      })
+      .catch(err => {
+        console.error('Error loading map data:', err);
+        setError(err);
+        setIsLoading(false);
+      });
   }, [filters, locale, searchTerms, listData, cacheKey, processMapData]);
 
   return { mapData, isLoading, error };
 };
 
-export default useMapData; 
+export default useMapData;

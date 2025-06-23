@@ -458,18 +458,11 @@ export default function Home({
                 <NewsletterForm />
 
                 <div className={styles.introContentLinks}>
-                  <Link
-                    href={t('ourSiteUrl')}
-                    className={styles.buttonLink}
-                  >
+                  <Link href={t('ourSiteUrl')} className={styles.buttonLink}>
                     {t('common:knowMore')}
                   </Link>
-                  <Link href={t('theTeamUrl')}>
-                    {t('theTeam')}
-                  </Link>
-                  <Link href={t('projectNewsUrl')}>
-                    {t('projectNews')}
-                  </Link>
+                  <Link href={t('theTeamUrl')}>{t('theTeam')}</Link>
+                  <Link href={t('projectNewsUrl')}>{t('projectNews')}</Link>
                   <Link
                     href="https://tact.demarre-shs.fr/project/41"
                     target="_blank"

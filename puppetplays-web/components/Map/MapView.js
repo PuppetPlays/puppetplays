@@ -7,13 +7,13 @@ import {
 import { worksStateToGraphqlVariables as stateToGraphqlVariables } from 'lib/filters';
 import { hasAtLeastOneItem } from 'lib/utils';
 import { groupBy } from 'lodash';
+import { useTranslation } from 'next-i18next';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import * as olProj from 'ol/proj';
 import VectorSource from 'ol/source/Vector';
 import PropTypes from 'prop-types';
 import { Fragment, useCallback, useEffect, useState, useMemo } from 'react';
-import { useTranslation } from 'next-i18next';
 
 import Layers from './Layers';
 import Map from './Map';
@@ -41,7 +41,7 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
 
   // Memoized processing of map data
   const processMapData = useMemo(() => {
-    return (entries) => {
+    return entries => {
       const entriesWithCompositionPlace = entries.filter(entry =>
         hasAtLeastOneItem(entry.compositionPlace),
       );
@@ -94,10 +94,7 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
       source =>
       ({ coordinates, name, type, ids }, index) => {
         const feature = new Feature({
-          geometry: new Point(coordinates).transform(
-            'EPSG:4326',
-            'EPSG:3857',
-          ),
+          geometry: new Point(coordinates).transform('EPSG:4326', 'EPSG:3857'),
           name,
         });
         feature.setProperties({ ids, type, isSelectable: true });
@@ -127,19 +124,28 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
         search: buildSearchQuery(searchTerms),
         ...stateToGraphqlVariables(filters),
       },
-    }).then(({ entries }) => {
-      const { countries, places } = processMapData(entries);
-      updateMapSources(countries, places);
-      
-      // Cache the processed data
-      mapDataCache = { countries, places };
-      mapDataCacheKey = cacheKey;
-      setIsLoading(false);
-    }).catch(error => {
-      console.error('Error loading map data:', error);
-      setIsLoading(false);
-    });
-  }, [filters, locale, searchTerms, cacheKey, processMapData, updateMapSources]);
+    })
+      .then(({ entries }) => {
+        const { countries, places } = processMapData(entries);
+        updateMapSources(countries, places);
+
+        // Cache the processed data
+        mapDataCache = { countries, places };
+        mapDataCacheKey = cacheKey;
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading map data:', error);
+        setIsLoading(false);
+      });
+  }, [
+    filters,
+    locale,
+    searchTerms,
+    cacheKey,
+    processMapData,
+    updateMapSources,
+  ]);
 
   useEffect(() => {
     setSelectedWorks(null);
@@ -196,12 +202,12 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
         style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
       >
         {isLoading && (
-          <div 
-            style={{ 
-              position: 'absolute', 
-              top: '50%', 
-              left: '50%', 
-              transform: 'translate(-50%, -50%)', 
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
               zIndex: 1000,
               background: 'rgba(32, 55, 177, 0.95)',
               color: 'white',
@@ -212,23 +218,25 @@ const MapView = ({ filters = {}, searchTerms = '', locale }) => {
               alignItems: 'center',
               gap: '15px',
               fontSize: '16px',
-              fontWeight: '500'
+              fontWeight: '500',
             }}
           >
-            <div 
+            <div
               style={{
                 width: '20px',
                 height: '20px',
                 border: '3px solid rgba(255, 255, 255, 0.3)',
                 borderTopColor: 'white',
                 borderRadius: '50%',
-                animation: 'spin 1s linear infinite'
+                animation: 'spin 1s linear infinite',
               }}
             />
             {t('mapLoadingMessage')}
             <style jsx>{`
               @keyframes spin {
-                to { transform: rotate(360deg); }
+                to {
+                  transform: rotate(360deg);
+                }
               }
             `}</style>
           </div>
