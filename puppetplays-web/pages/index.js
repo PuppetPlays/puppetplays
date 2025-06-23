@@ -460,15 +460,14 @@ export default function Home({
                 <div className={styles.introContentLinks}>
                   <Link
                     href={t('ourSiteUrl')}
-                    rel="noopener noreferrer"
                     className={styles.buttonLink}
                   >
                     {t('common:knowMore')}
                   </Link>
-                  <Link href={t('theTeamUrl')} rel="noopener noreferrer">
+                  <Link href={t('theTeamUrl')}>
                     {t('theTeam')}
                   </Link>
-                  <Link href={t('projectNewsUrl')} rel="noopener noreferrer">
+                  <Link href={t('projectNewsUrl')}>
                     {t('projectNews')}
                   </Link>
                   <Link
