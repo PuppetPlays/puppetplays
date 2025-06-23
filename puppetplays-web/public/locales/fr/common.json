@@ -175,6 +175,7 @@
   "flatplan": "Plan du document",
   "discoveryPaths": "Parcours découverte",
   "loading": "Chargement en cours...",
+  "mapLoadingMessage": "Chargement de la carte...",
   "error": {
     "title": "Erreur",
     "message": "Une erreur s'est produite lors du chargement de ce composant.",

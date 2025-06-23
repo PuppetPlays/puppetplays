@@ -179,6 +179,7 @@
   "flatplan": "Flatplan",
   "discoveryPaths": "Discovery paths",
   "loading": "Loading...",
+  "mapLoadingMessage": "Loading map...",
   "error": {
     "title": "Error",
     "message": "An error occurred while rendering this component.",

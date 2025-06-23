@@ -13,6 +13,7 @@ import * as olProj from 'ol/proj';
 import VectorSource from 'ol/source/Vector';
 import PropTypes from 'prop-types';
 import { Fragment, useCallback, useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import Layers from './Layers';
 import Map from './Map';
@@ -25,7 +26,8 @@ const clusteredByPlaceSource = new VectorSource({ features: [] });
 let mapDataCache = null;
 let mapDataCacheKey = null;
 
-const MapView = ({ filters = {}, searchTerms = '', locale, listData = null }) => {
+const MapView = ({ filters = {}, searchTerms = '', locale }) => {
+  const { t } = useTranslation('common');
   const [selectInteraction, setSelectInteraction] = useState(null);
   const [selectedWorks, setSelectedWorks] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -117,19 +119,8 @@ const MapView = ({ filters = {}, searchTerms = '', locale, listData = null }) =>
 
     setIsLoading(true);
 
-    // Try to use data from list view if available and no search/filters
-    if (listData && listData.entries && !searchTerms && Object.keys(filters).length <= 1) {
-      const { countries, places } = processMapData(listData.entries);
-      updateMapSources(countries, places);
-      
-      // Cache the processed data
-      mapDataCache = { countries, places };
-      mapDataCacheKey = cacheKey;
-      setIsLoading(false);
-      return;
-    }
-
-    // Fetch optimized data for map
+    // Always fetch ALL data for map (not paginated list data)
+    // This ensures the map shows all works, not just the 10 from list view
     fetchAPI(getAllWorksForMapQuery(filters), {
       variables: {
         locale,
@@ -148,7 +139,7 @@ const MapView = ({ filters = {}, searchTerms = '', locale, listData = null }) =>
       console.error('Error loading map data:', error);
       setIsLoading(false);
     });
-  }, [filters, locale, searchTerms, listData, cacheKey, processMapData, updateMapSources]);
+  }, [filters, locale, searchTerms, cacheKey, processMapData, updateMapSources]);
 
   useEffect(() => {
     setSelectedWorks(null);
@@ -212,12 +203,34 @@ const MapView = ({ filters = {}, searchTerms = '', locale, listData = null }) =>
               left: '50%', 
               transform: 'translate(-50%, -50%)', 
               zIndex: 1000,
-              background: 'rgba(255, 255, 255, 0.9)',
-              padding: '10px 20px',
-              borderRadius: '4px'
+              background: 'rgba(32, 55, 177, 0.95)',
+              color: 'white',
+              padding: '20px 30px',
+              borderRadius: '8px',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '15px',
+              fontSize: '16px',
+              fontWeight: '500'
             }}
           >
-            Chargement de la carte...
+            <div 
+              style={{
+                width: '20px',
+                height: '20px',
+                border: '3px solid rgba(255, 255, 255, 0.3)',
+                borderTopColor: 'white',
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite'
+              }}
+            />
+            {t('mapLoadingMessage')}
+            <style jsx>{`
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
           </div>
         )}
         <WorksList works={selectedWorks} onClose={handleCloseList} />
@@ -241,7 +254,6 @@ MapView.propTypes = {
   filters: PropTypes.object,
   searchTerms: PropTypes.string,
   locale: PropTypes.string.isRequired,
-  listData: PropTypes.object, // Data from list view to avoid duplicate API calls
 };
 
 export default MapView;
