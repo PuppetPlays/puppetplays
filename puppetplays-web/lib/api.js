@@ -1,5 +1,3 @@
-import * as stopWords from 'lib/stopWords';
-
 import {
   authorsStateToGraphqlEntriesParams,
   authorsStateToGraphqlQueryArgument,
@@ -8,7 +6,7 @@ import {
   worksStateToGraphqlEntriesParams,
   worksStateToGraphqlQueryArgument,
 } from './filters';
-import { identity } from './utils';
+import * as stopWords from './stopWords';
 
 export const getFetchAPIClient = (params, token) => {
   if (params?.variables?.locale && Array.isArray(params.variables.locale)) {
@@ -207,22 +205,146 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 `;
 };
 
+/**
+ * Advanced search query builder for PuppetPlays
+ * Handles partial matching, apostrophe normalization, and intelligent search logic
+ */
 export const buildSearchQuery = (search, locale) => {
+  // Validate input
+  if (!search || typeof search !== 'string') {
+    return '';
+  }
+
+  // Normalize apostrophes, quotes and whitespace
+  const normalizedSearch = search
+    .replace(/[''`]/g, "'") // Normalize apostrophes
+    .replace(/[""«»]/g, '"') // Normalize quotes
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim();
+  
+  if (!normalizedSearch) {
+    return '';
+  }
+
+  // Check if the search contains quotes (exact phrase search)
+  const hasQuotes = /["']/.test(normalizedSearch);
+  
+  // For quoted searches, return as-is (let CraftCMS handle exact phrase matching)
+  if (hasQuotes) {
+    return normalizedSearch
+      .replace(/\s*\+/g, ' ')
+      .replace(/\+\s*/g, ' ');
+  }
+
+  // Split into terms while preserving quoted phrases
   const splitRegex = /\s(?=(?:[^'"`]*(['"`])[^'"`]*\1)*[^'"`]*$)/g;
-  return search
-    ? search
-        .replace(/\s*\+/g, '+')
-        .replace(/\+\s*/g, '+')
-        .split(splitRegex)
-        .filter(identity)
-        .filter(term =>
-          locale === 'fr'
-            ? !stopWords.FR.includes(term)
-            : !stopWords.EN.includes(term),
-        )
-        .join(' OR ')
-        .replace(/\+/g, ' ')
-    : '';
+  const terms = normalizedSearch
+    .replace(/\s*\+/g, ' ')
+    .replace(/\+\s*/g, ' ')
+    .split(splitRegex)
+    .filter(term => term && term.trim())
+    .map(term => term.trim());
+
+  if (terms.length === 0) {
+    return '';
+  }
+
+  // Get stop words for the current locale
+  const stopWordsSet = new Set(
+    locale === 'fr'
+      ? stopWords.FR.map(w => w.toLowerCase())
+      : stopWords.EN.map(w => w.toLowerCase()),
+  );
+
+  // Smart filtering of stop words
+  const filteredTerms = terms.filter(term => {
+    const cleanTerm = term.toLowerCase();
+    
+    // Always keep terms with apostrophes (contractions like "l'assemblée")
+    if (term.includes("'")) {
+      return true;
+    }
+    
+    // Keep all terms if search is very short (2 terms or less)
+    if (terms.length <= 2) {
+      return true;
+    }
+    
+    // Keep terms that are not stop words
+    return !stopWordsSet.has(cleanTerm);
+  });
+  
+  // Use original terms if all were filtered out
+  const finalTerms = filteredTerms.length > 0 ? filteredTerms : terms;
+
+  // Build intelligent search query based on number of terms
+  if (finalTerms.length === 1) {
+    const term = finalTerms[0];
+    
+    // For single terms with apostrophes, search for both exact and wildcard
+    if (term.includes("'")) {
+      return `"${term}" OR ${term}* OR ${term.replace(/'/g, '')}*`;
+    }
+    
+    // For short terms (4 chars or less), prioritize exact match
+    if (term.length <= 4) {
+      return `"${term}" OR ${term}*`;
+    }
+    
+    // For longer terms, use wildcard for partial matching
+    return `${term}*`;
+  } 
+  else if (finalTerms.length === 2) {
+    // Two terms: try multiple strategies
+    const [term1, term2] = finalTerms;
+    const phrase = finalTerms.join(' ');
+    
+    // Search strategies in order of priority:
+    // 1. Exact phrase match
+    // 2. Both terms present (AND)
+    // 3. Partial matches for each term
+    // 4. Either term (OR) as fallback
+    
+    const strategies = [
+      `"${phrase}"`,                              // Exact phrase
+      `(${term1} AND ${term2})`,                  // Both terms required
+      `(${term1}* AND ${term2}*)`,                // Partial matches for both
+      `"${term1} ${term2}*"`,                     // First exact, second partial
+      `"${term1}* ${term2}"`,                     // First partial, second exact
+      `${term1} OR ${term2}`,                     // Either term
+    ];
+    
+    return strategies.join(' OR ');
+  }
+  else {
+    // Multiple terms: comprehensive search strategy
+    const phrase = finalTerms.join(' ');
+    
+    // For 3+ terms, use a weighted approach
+    const strategies = [];
+    
+    // 1. Exact phrase match (highest priority)
+    strategies.push(`"${phrase}"`);
+    
+    // 2. All terms required (high priority)
+    strategies.push(`(${finalTerms.join(' AND ')})`);
+    
+    // 3. Most terms required (n-1 terms)
+    if (finalTerms.length > 3) {
+      for (let i = 0; i < finalTerms.length; i++) {
+        const termsWithoutOne = finalTerms.filter((_, index) => index !== i);
+        strategies.push(`(${termsWithoutOne.join(' AND ')})`);
+      }
+    }
+    
+    // 4. Partial matches for all terms
+    strategies.push(`(${finalTerms.map(t => `${t}*`).join(' AND ')})`);
+    
+    // 5. Any term (fallback)
+    strategies.push(finalTerms.join(' OR '));
+    
+    return strategies.join(' OR ');
+  }
 };
 
 export async function getAllWorks(
