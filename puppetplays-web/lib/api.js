@@ -308,42 +308,65 @@ export const buildSearchQuery = (search, locale) => {
     // For longer terms, use wildcard for partial matching
     return `${term}*`;
   } else if (finalTerms.length === 2) {
-    // Two terms: require BOTH terms to be present
+    // Two terms: handle intelligently
     const [term1, term2] = finalTerms;
     const phrase = finalTerms.join(' ');
+
+    // Check if the second term is very short (likely being typed or a stop word)
+    const term2IsShort = term2.length < 4;
+    const term2IsStopWord = stopWordsSet.has(term2.toLowerCase());
 
     // For terms with apostrophes, handle them specially
     const term1HasApostrophe = term1.includes("'");
     const term2HasApostrophe = term2.includes("'");
 
-    // Build the search query requiring BOTH terms
+    // Build the search query
     const strategies = [];
 
-    // 1. Try exact phrase first
+    // 1. Always try exact phrase first
     strategies.push(`"${phrase}"`);
 
-    // 2. Both terms must be present (various forms)
-    if (term1HasApostrophe && !term2HasApostrophe) {
-      // First term has apostrophe: try with and without
-      strategies.push(`("${term1}" AND ${term2}*)`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(`(${term1.replace(/'/g, '')}* AND ${term2}*)`);
-    } else if (!term1HasApostrophe && term2HasApostrophe) {
-      // Second term has apostrophe: try with and without
-      strategies.push(`(${term1}* AND "${term2}")`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')}*)`);
-    } else if (term1HasApostrophe && term2HasApostrophe) {
-      // Both have apostrophes
-      strategies.push(`("${term1}" AND "${term2}")`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(
-        `(${term1.replace(/'/g, '')}* AND ${term2.replace(/'/g, '')}*)`,
-      );
+    // 2. If second term is short or stop word, be more permissive
+    if (term2IsShort || term2IsStopWord) {
+      // Just search for the first term with wildcards
+      if (term1HasApostrophe) {
+        strategies.push(`${term1}*`);
+        strategies.push(`${term1.replace(/'/g, '')}*`);
+      } else {
+        strategies.push(`${term1}*`);
+      }
+      // Also try the exact phrase as backup
+      strategies.push(`"${term1}" OR "${phrase}"`);
     } else {
-      // No apostrophes
-      strategies.push(`(${term1} AND ${term2})`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
+      // Both terms are significant - require both
+      if (term1HasApostrophe && !term2HasApostrophe) {
+        // First term has apostrophe: try multiple variations
+        // Include versions without quotes for better MySQL compatibility
+        strategies.push(`(${term1} AND ${term2}*)`);
+        strategies.push(`(${term1}* AND ${term2}*)`);
+        strategies.push(`(${term1.replace(/'/g, '')} AND ${term2}*)`);
+        strategies.push(`(${term1.replace(/'/g, '')}* AND ${term2}*)`);
+      } else if (!term1HasApostrophe && term2HasApostrophe) {
+        // Second term has apostrophe: try multiple variations
+        strategies.push(`(${term1}* AND ${term2})`);
+        strategies.push(`(${term1}* AND ${term2}*)`);
+        strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')})`);
+        strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')}*)`);
+      } else if (term1HasApostrophe && term2HasApostrophe) {
+        // Both have apostrophes: try all combinations
+        strategies.push(`(${term1} AND ${term2})`);
+        strategies.push(`(${term1}* AND ${term2}*)`);
+        strategies.push(
+          `(${term1.replace(/'/g, '')} AND ${term2.replace(/'/g, '')})`,
+        );
+        strategies.push(
+          `(${term1.replace(/'/g, '')}* AND ${term2.replace(/'/g, '')}*)`,
+        );
+      } else {
+        // No apostrophes
+        strategies.push(`(${term1} AND ${term2})`);
+        strategies.push(`(${term1}* AND ${term2}*)`);
+      }
     }
 
     return strategies.join(' OR ');
@@ -351,19 +374,35 @@ export const buildSearchQuery = (search, locale) => {
     // Multiple terms: comprehensive search strategy
     const phrase = finalTerms.join(' ');
 
+    // Check if the last term is being typed (very short)
+    const lastTerm = finalTerms[finalTerms.length - 1];
+    const lastTermIsShort = lastTerm.length < 4;
+    const lastTermIsStopWord = stopWordsSet.has(lastTerm.toLowerCase());
+
     // For 3+ terms, use a weighted approach
     const strategies = [];
 
     // 1. Exact phrase match (highest priority)
     strategies.push(`"${phrase}"`);
 
-    // 2. All terms required (high priority)
+    // 2. If last term is short/stop word, also search without it
+    if (lastTermIsShort || lastTermIsStopWord) {
+      const allButLast = finalTerms.slice(0, -1);
+      if (allButLast.length > 0) {
+        // Search for all terms except the last one
+        strategies.push(`"${allButLast.join(' ')}"`);
+        strategies.push(`(${allButLast.join(' AND ')})`);
+        strategies.push(`(${allButLast.map(t => `${t}*`).join(' AND ')})`);
+      }
+    }
+
+    // 3. All terms required (but may fail if short words are ignored by MySQL)
     strategies.push(`(${finalTerms.join(' AND ')})`);
 
-    // 3. All terms with wildcards
+    // 4. All terms with wildcards
     strategies.push(`(${finalTerms.map(t => `${t}*`).join(' AND ')})`);
 
-    // 4. Handle terms with apostrophes specially
+    // 5. Handle terms with apostrophes specially
     const hasApostrophe = finalTerms.some(term => term.includes("'"));
     if (hasApostrophe) {
       const termsWithoutApostrophes = finalTerms.map(t =>
@@ -374,7 +413,6 @@ export const buildSearchQuery = (search, locale) => {
       );
     }
 
-    // NO FALLBACK TO OR - all terms must be present
     return strategies.join(' OR ');
   }
 };
