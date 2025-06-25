@@ -295,5 +295,6 @@ return array(
   "nextPage" => "Page suivante",
   "page" => "Page {{page}}",
   "image" => "Image",
-  'translatedBy' => 'Traduit par'
+  'translatedBy' => 'Traduit par',
+  'noticeAuthor' => 'Auteur de la notice'
 );

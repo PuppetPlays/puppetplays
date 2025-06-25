@@ -300,5 +300,7 @@ return array(
   "nextPage" => "Next page",
   "page" => "Page {{page}}",
   "image" => "Image",
-  'translatedBy' => 'Translated by'
+  'translatedBy' => 'Translated by',
+  'noticeAuthor' => 'Author of the notice'
+
 );
