@@ -450,6 +450,19 @@
 								<td class="metadata-value">{{ custom.author }}</td>
 							</tr>
 
+							<tr>
+								{% if entry.translatedBy.all()|length > 0 %}
+									<td class="metadata-label">{{ 'translatedBy'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set translators = [] %}
+										{% for translator in entry.translatedBy.all() %}
+											{% set translators = translators|merge([translator.name]) %}
+										{% endfor %}
+										{{ translators|join(', ') }}
+									</td>
+								{% endif %}
+							</tr>
+
 							{% if entry.literaryTones.all()|length > 0 %}
 								<tr>
 									<td class="metadata-label">{{ 'literaryTones'|t('site') }}</td>
