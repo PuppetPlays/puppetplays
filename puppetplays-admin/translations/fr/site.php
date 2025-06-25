@@ -294,5 +294,6 @@ return array(
   "previousPage" => "Page précédente",
   "nextPage" => "Page suivante",
   "page" => "Page {{page}}",
-  "image" => "Image"
+  "image" => "Image",
+  'translatedBy' => 'Traduit par'
 );
