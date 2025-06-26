@@ -68,6 +68,7 @@
 			.title-content-cell {
 				vertical-align: top;
 				text-align: left;
+				padding-left: 15px;
 			}
 
 			.main-layout-table {
@@ -355,7 +356,7 @@
 						<td class="title-image-cell">
 							{% set mainImage = entry.mainImage.one() %}
 							{% if mainImage %}
-								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="260">
+								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="100">
 							{% endif %}
 						</td>
 						<td class="title-content-cell">
