@@ -23,7 +23,7 @@
 			.container {
 				max-width: 1000px;
 				margin: 0 auto;
-				padding: 25px 15px;
+				padding: 0 15px;
 			}
 
 			.work-header {
@@ -293,18 +293,66 @@
 			p:last-child {
 				margin-bottom: 0;
 			}
+			.company-logo {
+				text-align: right;
+			}
+
+			.company-logo img {
+				max-width: 10px;
+				max-height: 80px;
+				object-fit: contain;
+			}
+
+			.footer {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-color: #f8f9fa;
+				border-top: 1px solid #d9d9e0;
+				padding: 20px;
+				text-align: center;
+				margin: 0 auto;
+
+			}
+
+			.footer-content {
+				font-size: 12px;
+				color: #595b78;
+				line-height: 1.5;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.footer-content p {
+				margin: 0 0 8px;
+			}
+
+			.footer-content p:last-child {
+				margin-bottom: 0;
+			}
+
+			.footer-content a {
+				color: #2037b1;
+				text-decoration: underline;
+			}
 		</style>
 	</head>
 	<body>
-		<div
-			class="container">
-			<!-- Header de la obra -->
+		{% if templates.logo %}
+			<div class="company-logo">
+				{% set logoImage = templates.logo.one() %}
+				{% if logoImage %}
+					<img src="{{ logoImage.url }}" alt="logo" width="100">
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="container">
+
 			<header class="work-header">
 				<table class="title-table">
 					<tr>
-						<td
-							class="title-image-cell">
-							<!-- Imagen a la izquierda del título -->
+						<td class="title-image-cell">
 							{% set mainImage = entry.mainImage.one() %}
 							{% if mainImage %}
 								<img src="{{ mainImage.url }}" alt="{{ mainImage.title ?? entry.title }}" width="260">
@@ -381,12 +429,9 @@
 				</table>
 			</header>
 
-			<!-- Contenido principal con tabla más simple -->
 			<table class="main-layout-table">
 				<tr>
-					<td
-						class="image-column">
-						<!-- Imagen del autor debajo -->
+					<td class="image-column">
 						{% if entry.authors.one() %}
 							{% set author = entry.authors.one() %}
 							{% if author.mainImage.one() %}
@@ -420,10 +465,25 @@
 							{% endif %}
 						{% endif %}
 					</td>
-					<td
-						class="metadata-column">
-						<!-- Metadatos en tabla simple para mejor compatibilidad PDF -->
+					<td class="metadata-column">
 						<table class="metadata-table">
+							<tr>
+								<td class="metadata-label">{{ 'noticeAuthor'|t('site') }}</td>
+								<td class="metadata-value">{{ custom.author }}</td>
+							</tr>
+
+							<tr>
+								{% if entry.translatedBy.all()|length > 0 %}
+									<td class="metadata-label">{{ 'translatedBy'|t('site') }}</td>
+									<td class="metadata-value">
+										{% set translators = [] %}
+										{% for translator in entry.translatedBy.all() %}
+											{% set translators = translators|merge([translator.name]) %}
+										{% endfor %}
+										{{ translators|join(', ') }}
+									</td>
+								{% endif %}
+							</tr>
 							{% if entry.mainLanguage.one() %}
 								<tr>
 									<td class="metadata-label">{{ 'language'|t('site') }}</td>
@@ -444,11 +504,6 @@
 									<td class="metadata-value">{{ entry.audience.one().title }}</td>
 								</tr>
 							{% endif %}
-
-							<tr>
-								<td class="metadata-label">{{ 'notice'|t('site') }}</td>
-								<td class="metadata-value">{{ custom.author }}</td>
-							</tr>
 
 							{% if entry.literaryTones.all()|length > 0 %}
 								<tr>
@@ -513,7 +568,6 @@
 				</tr>
 			</table>
 
-			<!-- Personajes en sección separada -->
 			{% if entry.textCharacters.all()|length > 0 %}
 				<div class="characters-section">
 					<div class="characters-label">{{ 'characters'|t('site') }}</div>
@@ -537,7 +591,6 @@
 				</div>
 			{% endif %}
 
-			<!-- Información de primera representación -->
 			{% if entry.firstPerformancePlace.one() or entry.firstPerformanceDate or entry.firstPerformanceComplementaryInformation %}
 				<div class="performance-info">
 					<div class="performance-label">{{ 'firstPerformance'|t('site') }}</div>
@@ -575,7 +628,6 @@
 
 			<div class="visual-separator"></div>
 
-			<!-- Contenido principal: Notice y Résumé -->
 			<div>
 				{% if entry.note %}
 					<div class="content-section highlighted-section">
@@ -592,7 +644,6 @@
 				{% endif %}
 			</div>
 
-			<!-- Ediciones y publicaciones -->
 			{% if entry.publication or entry.modernEdition or entry.onlineCopy %}
 				<div class="visual-separator"></div>
 				<div class="content-section">
@@ -642,6 +693,15 @@
 					</div>
 				</div>
 			{% endif %}
+
 		</div>
+		<!-- Footer -->
+		{% if templates.footerText %}
+			<footer class="footer">
+				<div class="footer-content">
+					{{ templates.footerText|raw }}
+				</div>
+			</footer>
+		{% endif %}
 	</body>
 </html>
