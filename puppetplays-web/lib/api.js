@@ -205,13 +205,21 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 };
 
 /**
- * Simple and effective search query builder for CraftCMS
+ * CraftCMS-compliant search query builder
  *
- * Based on CraftCMS documentation and best practices:
- * - Keep queries simple and fast
- * - Use wildcards strategically
- * - Handle apostrophes properly
- * - Prioritize exact matches over complex OR chains
+ * Based on official CraftCMS documentation:
+ * https://craftcms.com/docs/5.x/system/searching.html
+ *
+ * KEY INSIGHTS:
+ * - "word1 word2" = searches for BOTH words in the SAME field (implicit AND)
+ * - "word1 OR word2" = searches across DIFFERENT fields
+ * - CraftCMS stops at first matching OR clause
+ * - Multi-word queries without OR are treated as single terms
+ *
+ * STRATEGY:
+ * 1. Exact phrase first (highest priority)
+ * 2. Progressive fallback with wildcards, but limited scope
+ * 3. Avoid OR with common words that would return too many results
  *
  * @param {string} search - The search query
  * @param {string} _locale - The current locale (unused but kept for compatibility)
@@ -239,7 +247,7 @@ export const buildSearchQuery = (search, _locale) => {
     return normalizedSearch;
   }
 
-  // Split into words (simple split, no complex parsing)
+  // Split into words
   const words = normalizedSearch.split(' ').filter(word => word.trim());
 
   if (words.length === 0) {
@@ -250,37 +258,115 @@ export const buildSearchQuery = (search, _locale) => {
   if (words.length === 1) {
     const word = words[0];
 
-    // Handle apostrophes
+    // Handle apostrophes: create alternatives for better matching
     if (word.includes("'")) {
-      // Simple strategy: exact match OR version without apostrophe
       const withoutApostrophe = word.replace(/'/g, '');
-      return `"${word}" OR ${withoutApostrophe}*`;
+      // Use wildcards for flexible matching
+      return `${word}* OR ${withoutApostrophe}*`;
     }
 
-    // Regular word: use both prefix and suffix wildcards for flexibility
-    // This is key for "triumphs" vs "triumph" matching
-    return `*${word}*`;
+    // Regular word: use wildcard for partial matching
+    return `${word}*`;
   }
 
-  // Multi-word search: keep it simple
+  // Multi-word search: Be more conservative to avoid too many results
   const strategies = [];
 
-  // Strategy 1: Exact phrase (highest priority)
+  // Strategy 1: Exact phrase search (highest priority)
   strategies.push(`"${normalizedSearch}"`);
 
-  // Strategy 2: Individual words with wildcards (allows partial matching)
-  const wordQueries = words.map(word => {
-    if (word.includes("'")) {
-      // For apostrophes: exact match OR no apostrophe version
-      const withoutApostrophe = word.replace(/'/g, '');
-      return `("${word}" OR ${withoutApostrophe}*)`;
+  // Strategy 2: Only for 2-3 words, try limited wildcard approach
+  if (words.length <= 3) {
+    // Check if we have common words that would return too many results
+    const commonWords = [
+      'le',
+      'la',
+      'les',
+      'de',
+      'des',
+      'du',
+      'et',
+      'ou',
+      'un',
+      'une',
+      'dans',
+      'sur',
+      'avec',
+      'pour',
+      'par',
+      'sans',
+      'sous',
+      'the',
+      'and',
+      'or',
+      'of',
+      'in',
+      'on',
+      'at',
+      'to',
+      'for',
+      'with',
+    ];
+
+    const isCommonWord = word =>
+      commonWords.includes(word.toLowerCase().replace(/[*']/g, ''));
+
+    // Count non-common words
+    const nonCommonWords = words.filter(word => !isCommonWord(word));
+
+    // If we have at least one substantial word, add targeted strategies
+    if (nonCommonWords.length > 0) {
+      // Strategy 2a: Try the most significant words with wildcards
+      if (nonCommonWords.length === 1) {
+        strategies.push(`${nonCommonWords[0]}*`);
+      } else if (nonCommonWords.length === 2) {
+        strategies.push(`${nonCommonWords[0]}* ${nonCommonWords[1]}*`);
+        strategies.push(`${nonCommonWords[0]}* OR ${nonCommonWords[1]}*`);
+      }
     }
+  }
 
-    // Use both-sided wildcards for better matching
-    return `*${word}*`;
-  });
+  // Strategy 3: For longer phrases (4+ words), be very conservative
+  // Only exact phrase + first significant word
+  if (words.length >= 4) {
+    const commonWords = [
+      'le',
+      'la',
+      'les',
+      'de',
+      'des',
+      'du',
+      'et',
+      'ou',
+      'un',
+      'une',
+      'dans',
+      'sur',
+      'avec',
+      'pour',
+      'par',
+      'sans',
+      'sous',
+      'the',
+      'and',
+      'or',
+      'of',
+      'in',
+      'on',
+      'at',
+      'to',
+      'for',
+      'with',
+    ];
 
-  strategies.push(wordQueries.join(' OR '));
+    const isCommonWord = word =>
+      commonWords.includes(word.toLowerCase().replace(/[*']/g, ''));
+
+    const firstSignificantWord = words.find(word => !isCommonWord(word));
+    if (firstSignificantWord) {
+      strategies.push(`${firstSignificantWord}*`);
+    }
+  }
 
   return strategies.join(' OR ');
 };
