@@ -205,21 +205,20 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 };
 
 /**
- * CraftCMS-compliant search query builder
+ * CraftCMS-compliant TRULY PROGRESSIVE search query builder
  *
  * Based on official CraftCMS documentation:
  * https://craftcms.com/docs/5.x/system/searching.html
  *
- * KEY INSIGHTS:
- * - "word1 word2" = searches for BOTH words in the SAME field (implicit AND)
- * - "word1 OR word2" = searches across DIFFERENT fields
- * - CraftCMS stops at first matching OR clause
- * - Multi-word queries without OR are treated as single terms
+ * CORE PRINCIPLE: More characters = MORE precise (truly progressive)
+ * - "monstre alchimiste" → "monstre alchimiste" OR monstre* alchimiste*
+ * - NO individual word OR (monstre* OR alchimiste*) - too many results
+ * - Use CraftCMS implicit AND: all words must be in SAME field
  *
- * STRATEGY:
- * 1. Exact phrase first (highest priority)
- * 2. Progressive fallback with wildcards, but limited scope
- * 3. Avoid OR with common words that would return too many results
+ * EXAMPLES:
+ * - "la comica del" → "la comica del" OR la* comica* del*
+ * - "monstre alchimiste" → "monstre alchimiste" OR monstre* alchimiste*
+ * - "le monstre" → "le monstre" OR le* monstre*
  *
  * @param {string} search - The search query
  * @param {string} _locale - The current locale (unused but kept for compatibility)
@@ -269,104 +268,36 @@ export const buildSearchQuery = (search, _locale) => {
     return `${word}*`;
   }
 
-  // Multi-word search: Be more conservative to avoid too many results
+  // Multi-word search: TRULY PROGRESSIVE approach
+  // ALL multi-word searches use the same strategy:
+  // 1. Exact phrase (highest priority)
+  // 2. Implicit AND with wildcards (CraftCMS searches all words in SAME field)
+  
   const strategies = [];
 
   // Strategy 1: Exact phrase search (highest priority)
   strategies.push(`"${normalizedSearch}"`);
 
-  // Strategy 2: Only for 2-3 words, try limited wildcard approach
-  if (words.length <= 3) {
-    // Check if we have common words that would return too many results
-    const commonWords = [
-      'le',
-      'la',
-      'les',
-      'de',
-      'des',
-      'du',
-      'et',
-      'ou',
-      'un',
-      'une',
-      'dans',
-      'sur',
-      'avec',
-      'pour',
-      'par',
-      'sans',
-      'sous',
-      'the',
-      'and',
-      'or',
-      'of',
-      'in',
-      'on',
-      'at',
-      'to',
-      'for',
-      'with',
-    ];
-
-    const isCommonWord = word =>
-      commonWords.includes(word.toLowerCase().replace(/[*']/g, ''));
-
-    // Count non-common words
-    const nonCommonWords = words.filter(word => !isCommonWord(word));
-
-    // If we have at least one substantial word, add targeted strategies
-    if (nonCommonWords.length > 0) {
-      // Strategy 2a: Try the most significant words with wildcards
-      if (nonCommonWords.length === 1) {
-        strategies.push(`${nonCommonWords[0]}*`);
-      } else if (nonCommonWords.length === 2) {
-        strategies.push(`${nonCommonWords[0]}* ${nonCommonWords[1]}*`);
-        strategies.push(`${nonCommonWords[0]}* OR ${nonCommonWords[1]}*`);
+  // Strategy 2: Progressive implicit AND with wildcards
+  // This is the KEY: CraftCMS will search for ALL words in the SAME field
+  // Example: "monstre alchimiste" becomes "monstre* alchimiste*"
+  // CraftCMS implicit AND ensures both words are in same field = precise!
+  const wordsWithWildcards = words
+    .map(word => {
+      if (word.includes("'")) {
+        // For apostrophes, preserve the word structure for implicit AND
+        return word;
       }
-    }
-  }
+      // Add wildcards for partial matching
+      return `${word}*`;
+    })
+    .join(' ');
 
-  // Strategy 3: For longer phrases (4+ words), be very conservative
-  // Only exact phrase + first significant word
-  if (words.length >= 4) {
-    const commonWords = [
-      'le',
-      'la',
-      'les',
-      'de',
-      'des',
-      'du',
-      'et',
-      'ou',
-      'un',
-      'une',
-      'dans',
-      'sur',
-      'avec',
-      'pour',
-      'par',
-      'sans',
-      'sous',
-      'the',
-      'and',
-      'or',
-      'of',
-      'in',
-      'on',
-      'at',
-      'to',
-      'for',
-      'with',
-    ];
+  strategies.push(wordsWithWildcards);
 
-    const isCommonWord = word =>
-      commonWords.includes(word.toLowerCase().replace(/[*']/g, ''));
-
-    const firstSignificantWord = words.find(word => !isCommonWord(word));
-    if (firstSignificantWord) {
-      strategies.push(`${firstSignificantWord}*`);
-    }
-  }
+  // NO individual word OR strategies for ANY multi-word search
+  // This was causing the explosion of results
+  // CraftCMS implicit AND is precise enough
 
   return strategies.join(' OR ');
 };
