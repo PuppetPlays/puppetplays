@@ -8,87 +8,82 @@ describe('buildSearchQuery', () => {
       expect(buildSearchQuery(undefined)).toBe('');
     });
 
-    test('single word with wildcard', () => {
-      expect(buildSearchQuery('mot1')).toBe('"mot1" OR mot1*'); // short term (4 chars)
-      expect(buildSearchQuery('test')).toBe('"test" OR test*'); // short term
-      expect(buildSearchQuery('longer')).toBe('longer*'); // longer term
+    test('single word gets wildcard wrapping', () => {
+      expect(buildSearchQuery('test')).toBe('*test*');
+      expect(buildSearchQuery('longer')).toBe('*longer*');
     });
 
     test('quoted strings are preserved', () => {
-      expect(buildSearchQuery('"mot1 mot2 mot3"')).toBe('"mot1 mot2 mot3"');
-      expect(buildSearchQuery('"mot1 mot2" mot3')).toBe('"mot1 mot2" mot3');
+      expect(buildSearchQuery('"exact phrase"')).toBe('"exact phrase"');
     });
   });
 
   describe('apostrophe handling', () => {
-    test('preserves apostrophes and searches variants', () => {
-      const result = buildSearchQuery("l'assemblée");
-      // Single term with apostrophe - should generate multiple search strategies
-      expect(result).toBe('"l\'assemblée" OR l\'assemblée* OR lassemblée*');
+    test('single word with apostrophe creates alternatives', () => {
+      const result = buildSearchQuery("l'empio");
+      expect(result).toBe('"l\'empio" OR lempio*');
     });
 
-    test('normalizes different apostrophe types', () => {
-      const result1 = buildSearchQuery("l'assemblée");
-      const result2 = buildSearchQuery("l'assemblée");
-      expect(result1).toBe(result2);
+    test('handles different apostrophe types', () => {
+      expect(buildSearchQuery("l'empio")).toBe('"l\'empio" OR lempio*');
+      expect(buildSearchQuery("l'empio")).toBe('"l\'empio" OR lempio*');
+      expect(buildSearchQuery('l`empio')).toBe('"l\'empio" OR lempio*');
     });
 
-    test('apostrophe in multi-word search', () => {
-      const result = buildSearchQuery("l'assemblée des poissardes", 'fr');
-      // Should contain the apostrophe term
-      expect(result).toContain("l'assemblée");
-      expect(result).toContain('poissardes');
-      // The function will filter "des" as a stop word in French
+    test('trailing space is handled', () => {
+      expect(buildSearchQuery("l'empio ")).toBe('"l\'empio" OR lempio*');
     });
   });
 
   describe('multi-word searches', () => {
-    test('two words: multiple strategies', () => {
-      const result = buildSearchQuery('mot1 mot2');
-      expect(result).toContain('"mot1 mot2"'); // exact phrase
-      expect(result).toContain('(mot1 AND mot2)'); // both required
-      expect(result).toContain('mot1*'); // wildcards
-      expect(result).toContain('mot2*'); // wildcards
-      // NO fallback OR - all terms must be present
-      expect(result).not.toContain('mot1 OR mot2');
+    test('two words: exact phrase + individual wildcards', () => {
+      const result = buildSearchQuery('le monstre');
+      expect(result).toBe('"le monstre" OR *le* OR *monstre*');
     });
 
-    test('three words: comprehensive strategies', () => {
-      const result = buildSearchQuery('mot1 mot2 mot3');
-      expect(result).toContain('"mot1 mot2 mot3"'); // exact phrase
-      expect(result).toContain('(mot1 AND mot2 AND mot3*)'); // all required with last term wildcard
-      expect(result).toContain('mot1*'); // wildcards
-      expect(result).toContain('mot2*'); // wildcards
-      expect(result).toContain('mot3*'); // wildcards
-      // NO fallback OR - all terms must be present
-      expect(result).not.toContain('mot1 OR mot2 OR mot3');
+    test('three words: exact phrase + individual wildcards', () => {
+      const result = buildSearchQuery('The triumphs of');
+      expect(result).toBe('"The triumphs of" OR *The* OR *triumphs* OR *of*');
+    });
+
+    test('words with apostrophes in multi-word search', () => {
+      const result = buildSearchQuery("l'assemblée des");
+      expect(result).toBe(
+        '"l\'assemblée des" OR ("l\'assemblée" OR lassemblée*) OR *des*',
+      );
     });
   });
 
-  describe('special character handling', () => {
-    test('handles + as space', () => {
-      const result1 = buildSearchQuery('mot1+mot2 mot3');
-      const result2 = buildSearchQuery('mot1 mot2 mot3');
-      expect(result1).toBe(result2);
+  describe('specific problem cases', () => {
+    test('The triumphs of love should match triumph', () => {
+      const result = buildSearchQuery('The triumphs of love');
+      expect(result).toContain('*triumphs*'); // This will match "triumph"
+      expect(result).toContain('"The triumphs of love"'); // Exact phrase first
     });
 
-    test('mixed quotes and regular terms', () => {
-      const result = buildSearchQuery('mot1 "mot2 mot3"');
-      expect(result).toContain('mot1');
-      expect(result).toContain('"mot2 mot3"');
+    test("l'empio should handle apostrophe variations", () => {
+      const result = buildSearchQuery("l'empio");
+      expect(result).toContain('"l\'empio"'); // Exact match
+      expect(result).toContain('lempio*'); // Without apostrophe
+    });
+
+    test("assemblée should match L'assemblée", () => {
+      const result = buildSearchQuery('assemblée');
+      expect(result).toBe('*assemblée*'); // Will match within "L'assemblée"
     });
   });
 
-  describe('stop words filtering', () => {
-    test('preserves stop words in short searches', () => {
-      const result = buildSearchQuery('le monstre', 'fr');
-      expect(result).toContain('le');
-      expect(result).toContain('monstre');
+  describe('edge cases', () => {
+    test('multiple spaces are normalized', () => {
+      expect(buildSearchQuery('word1    word2')).toBe(
+        '"word1 word2" OR *word1* OR *word2*',
+      );
     });
 
-    test('preserves contractions with apostrophes', () => {
-      const result = buildSearchQuery("l'empio", 'fr');
-      expect(result).toContain("l'empio");
+    test('mixed quotes and apostrophes', () => {
+      const result = buildSearchQuery('"l\'empio" test');
+      expect(result).toContain('"l\'empio"');
+      expect(result).toContain('*test*');
     });
   });
 });

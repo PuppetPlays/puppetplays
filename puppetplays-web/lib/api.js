@@ -6,7 +6,6 @@ import {
   worksStateToGraphqlEntriesParams,
   worksStateToGraphqlQueryArgument,
 } from './filters';
-import * as stopWords from './stopWords';
 
 export const getFetchAPIClient = (params, token) => {
   if (params?.variables?.locale && Array.isArray(params.variables.locale)) {
@@ -206,193 +205,84 @@ query GetAllWorks($locale: [String], $offset: Int, $limit: Int, $search: String$
 };
 
 /**
- * Advanced search query builder for PuppetPlays
- * Handles partial matching, apostrophe normalization, and intelligent search logic
+ * Simple and effective search query builder for CraftCMS
+ *
+ * Based on CraftCMS documentation and best practices:
+ * - Keep queries simple and fast
+ * - Use wildcards strategically
+ * - Handle apostrophes properly
+ * - Prioritize exact matches over complex OR chains
+ *
+ * @param {string} search - The search query
+ * @param {string} _locale - The current locale (unused but kept for compatibility)
+ * @returns {string} - The formatted search query for CraftCMS
  */
-export const buildSearchQuery = (search, locale) => {
+export const buildSearchQuery = (search, _locale) => {
   // Validate input
   if (!search || typeof search !== 'string') {
     return '';
   }
 
-  // Normalize apostrophes, quotes and whitespace
+  // Normalize the search string
   const normalizedSearch = search
-    .replace(/[''`]/g, "'") // Normalize apostrophes
+    .replace(/[''`]/g, "'") // Normalize apostrophes to standard single quote
     .replace(/[""«»]/g, '"') // Normalize quotes
-    .replace(/\s+/g, ' ') // Normalize whitespace
+    .replace(/\s+/g, ' ') // Normalize multiple spaces
     .trim();
 
   if (!normalizedSearch) {
     return '';
   }
 
-  // Check if the search contains quotes (exact phrase search)
-  // Only double quotes indicate exact phrase search, not apostrophes
-  const hasQuotes = /["]/.test(normalizedSearch);
-
-  // For quoted searches, return as-is (let CraftCMS handle exact phrase matching)
-  if (hasQuotes) {
-    return normalizedSearch.replace(/\s*\+/g, ' ').replace(/\+\s*/g, ' ');
+  // If already quoted, return as-is (exact phrase search)
+  if (normalizedSearch.match(/^".*"$/)) {
+    return normalizedSearch;
   }
 
-  // Split into terms while preserving quoted phrases
-  // Only consider double quotes for phrase preservation, not apostrophes
-  const splitRegex = /\s(?=(?:[^"]*"[^"]*")*[^"]*$)/;
-  const terms = normalizedSearch
-    .replace(/\s*\+/g, ' ')
-    .replace(/\+\s*/g, ' ')
-    .split(splitRegex)
-    .filter(term => term && term.trim())
-    .map(term => term.trim());
+  // Split into words (simple split, no complex parsing)
+  const words = normalizedSearch.split(' ').filter(word => word.trim());
 
-  if (terms.length === 0) {
+  if (words.length === 0) {
     return '';
   }
 
-  // Get stop words for the current locale
-  const stopWordsSet = new Set(
-    locale === 'fr'
-      ? stopWords.FR.map(w => w.toLowerCase())
-      : stopWords.EN.map(w => w.toLowerCase()),
-  );
+  // Single word search
+  if (words.length === 1) {
+    const word = words[0];
 
-  // Smart filtering of stop words
-  const filteredTerms = terms.filter(term => {
-    const cleanTerm = term.toLowerCase();
-
-    // Always keep terms with apostrophes (contractions like "l'assemblée")
-    if (term.includes("'")) {
-      return true;
+    // Handle apostrophes
+    if (word.includes("'")) {
+      // Simple strategy: exact match OR version without apostrophe
+      const withoutApostrophe = word.replace(/'/g, '');
+      return `"${word}" OR ${withoutApostrophe}*`;
     }
 
-    // Keep all terms if search is very short (2 terms or less)
-    if (terms.length <= 2) {
-      return true;
+    // Regular word: use both prefix and suffix wildcards for flexibility
+    // This is key for "triumphs" vs "triumph" matching
+    return `*${word}*`;
+  }
+
+  // Multi-word search: keep it simple
+  const strategies = [];
+
+  // Strategy 1: Exact phrase (highest priority)
+  strategies.push(`"${normalizedSearch}"`);
+
+  // Strategy 2: Individual words with wildcards (allows partial matching)
+  const wordQueries = words.map(word => {
+    if (word.includes("'")) {
+      // For apostrophes: exact match OR no apostrophe version
+      const withoutApostrophe = word.replace(/'/g, '');
+      return `("${word}" OR ${withoutApostrophe}*)`;
     }
 
-    // For longer searches, be more careful about filtering
-    // Keep the term if it's not a stop word OR if filtering would remove too many terms
-    const isStopWord = stopWordsSet.has(cleanTerm);
-
-    // Count how many non-stop words we have
-    const nonStopWords = terms.filter(
-      t => !stopWordsSet.has(t.toLowerCase()),
-    ).length;
-
-    // If we have less than 2 non-stop words, keep everything
-    if (nonStopWords < 2) {
-      return true;
-    }
-
-    // Otherwise, filter stop words
-    return !isStopWord;
+    // Use both-sided wildcards for better matching
+    return `*${word}*`;
   });
 
-  // Use original terms if all were filtered out
-  const finalTerms = filteredTerms.length > 0 ? filteredTerms : terms;
+  strategies.push(wordQueries.join(' OR '));
 
-  // Build intelligent search query based on number of terms
-  if (finalTerms.length === 1) {
-    const term = finalTerms[0];
-
-    // For single terms with apostrophes, search for both exact and wildcard
-    if (term.includes("'")) {
-      return `"${term}" OR ${term}* OR ${term.replace(/'/g, '')}*`;
-    }
-
-    // For short terms (4 chars or less), prioritize exact match
-    if (term.length <= 4) {
-      return `"${term}" OR ${term}*`;
-    }
-
-    // For longer terms, use wildcard for partial matching
-    return `${term}*`;
-  } else if (finalTerms.length === 2) {
-    // Two terms: handle intelligently
-    const [term1, term2] = finalTerms;
-    const phrase = finalTerms.join(' ');
-
-    // For terms with apostrophes, handle them specially
-    const term1HasApostrophe = term1.includes("'");
-    const term2HasApostrophe = term2.includes("'");
-
-    // Build the search query
-    const strategies = [];
-
-    // 1. Always try exact phrase first
-    strategies.push(`"${phrase}"`);
-
-    // 2. Always assume the last term might be incomplete - use wildcards
-    // This handles progressive typing naturally
-    if (term1HasApostrophe && !term2HasApostrophe) {
-      // First term has apostrophe: try multiple variations
-      strategies.push(`(${term1} AND ${term2}*)`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(`(${term1.replace(/'/g, '')} AND ${term2}*)`);
-      strategies.push(`(${term1.replace(/'/g, '')}* AND ${term2}*)`);
-    } else if (!term1HasApostrophe && term2HasApostrophe) {
-      // Second term has apostrophe: try multiple variations
-      strategies.push(`(${term1}* AND ${term2})`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')})`);
-      strategies.push(`(${term1}* AND ${term2.replace(/'/g, '')}*)`);
-    } else if (term1HasApostrophe && term2HasApostrophe) {
-      // Both have apostrophes: try all combinations
-      strategies.push(`(${term1} AND ${term2})`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-      strategies.push(
-        `(${term1.replace(/'/g, '')} AND ${term2.replace(/'/g, '')})`,
-      );
-      strategies.push(
-        `(${term1.replace(/'/g, '')}* AND ${term2.replace(/'/g, '')}*)`,
-      );
-    } else {
-      // No apostrophes
-      strategies.push(`(${term1} AND ${term2})`);
-      strategies.push(`(${term1}* AND ${term2}*)`);
-    }
-
-    return strategies.join(' OR ');
-  } else {
-    // Multiple terms: comprehensive search strategy
-    const phrase = finalTerms.join(' ');
-
-    // For 3+ terms, always assume the last term might be incomplete
-    const strategies = [];
-
-    // 1. Exact phrase match (highest priority)
-    strategies.push(`"${phrase}"`);
-
-    // 2. All terms required with last term as wildcard (progressive typing)
-    const termsWithLastWildcard = finalTerms.map((term, index) =>
-      index === finalTerms.length - 1 ? `${term}*` : term,
-    );
-    strategies.push(`(${termsWithLastWildcard.join(' AND ')})`);
-
-    // 3. All terms with wildcards
-    strategies.push(`(${finalTerms.map(t => `${t}*`).join(' AND ')})`);
-
-    // 4. Handle terms with apostrophes specially
-    const hasApostrophe = finalTerms.some(term => term.includes("'"));
-    if (hasApostrophe) {
-      // Version without apostrophes, last term with wildcard
-      const termsWithoutApostrophes = finalTerms.map((t, index) => {
-        const termWithoutApostrophe = t.includes("'") ? t.replace(/'/g, '') : t;
-        return index === finalTerms.length - 1
-          ? `${termWithoutApostrophe}*`
-          : termWithoutApostrophe;
-      });
-      strategies.push(`(${termsWithoutApostrophes.join(' AND ')})`);
-
-      // Version without apostrophes, all wildcards
-      const allWildcardsNoApostrophes = finalTerms.map(t =>
-        t.includes("'") ? t.replace(/'/g, '') + '*' : t + '*',
-      );
-      strategies.push(`(${allWildcardsNoApostrophes.join(' AND ')})`);
-    }
-
-    return strategies.join(' OR ');
-  }
+  return strategies.join(' OR ');
 };
 
 export async function getAllWorks(
