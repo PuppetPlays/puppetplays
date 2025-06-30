@@ -334,13 +334,9 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       firstName,
       lastName
           },
-    translatedBy {
-      fullName
-    },
     ... on works_works_Entry {
-      translator {
-        firstName,
-        lastName
+      translatedBy {
+        fullName
       },
       doi,
       viafId,

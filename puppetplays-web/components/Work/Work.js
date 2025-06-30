@@ -40,7 +40,7 @@ const PermalinkIcon = () => {
 function Work(props) {
   const {
     writtenBy = {},
-    translatedBy = {},
+    translatedBy = [],
     doi = null,
     viafId = null,
     arkId = null,
@@ -440,9 +440,9 @@ function Work(props) {
 
         <Section
           title={t('common:translatedBy')}
-          show={translatedBy && !!translatedBy.fullName}
+          show={translatedBy && Array.isArray(translatedBy) && translatedBy.length > 0 && !!translatedBy[0]?.fullName}
         >
-          {translatedBy?.fullName}
+          {translatedBy && Array.isArray(translatedBy) && translatedBy[0]?.fullName}
         </Section>
       </div>
     </article>
@@ -454,9 +454,11 @@ Work.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
   }),
-  translatedBy: PropTypes.shape({
-    fullName: PropTypes.string,
-  }),
+  translatedBy: PropTypes.arrayOf(
+    PropTypes.shape({
+      fullName: PropTypes.string,
+    })
+  ),
   title: PropTypes.string.isRequired,
   mainImage: PropTypes.array,
   doi: PropTypes.string,
