@@ -1,18 +1,28 @@
 {
   "title": "Team",
-  "metaDescription": "The PuppetPlays project brings together researchers and experts in puppet theatre from across Europe.",
+  "metaDescription": "Meet the PuppetPlays project team: researchers, postdoctoral fellows, and academic partners working on the history of puppet theatre in Europe.",
   "introduction": "Our international team brings together passionate researchers and experts in the field of puppet theatre, under the direction of Professor Didier Plassard at University Paul-Valéry Montpellier 3.",
-  "present": "Present",
+  "present": "present",
   "viewProfile": "View profile",
-  "viewOrcid": "View ORCID profile for",
-  "viewCV": "View CV for",
+  "viewOrcid": "View ORCID profile of",
+  "viewCV": "View CV of",
   "viewResearchProject": "View research project",
   "close": "Close",
-  "researchProject": "Research Project",
+  "researchProjects": "Research Work",
+  "viewProject": "View project",
+  "researchProject": "Research project",
+  "contractPeriod": "Research period",
+  "historicalPeriod": "Period studied",
+  "puppetTradition": "Theatrical tradition",
+  "studiedRegions": "Studied regions",
+  "projectSummary": "Project summary",
+  "projectDescription": "Project description",
+  "bibliography": "Bibliography",
+  "relatedPublications": "Related publications",
   
   "teamMembers": {
-    "title": "The PuppetPlays Team",
-    "description": "Our team brings together specialists in theatre history, performance studies, and puppet arts to uncover and analyze the hidden heritage of puppet theatre literature in Europe."
+    "title": "Team Members",
+    "description": "The PuppetPlays team brings together international specialists in puppet theatre, cultural history, and digital humanities."
   },
   
   "scientificCommittee": {
@@ -23,5 +33,11 @@
   "partners": {
     "title": "Partners",
     "description": "The PuppetPlays project is made possible through the support of our partners and funding institutions."
-  }
+  },
+  
+  "acknowledgments": {
+    "title": "Acknowledgments",
+    "content": "The PuppetPlays project would like to extend its warmest thanks to all the interns and part-time workers who have contributed to the creation of this database through their rigorous work and commitment: Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
+  },
+  "partnersNote": "This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement No 835193)."
 } 

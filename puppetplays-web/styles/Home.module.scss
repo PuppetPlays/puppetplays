@@ -222,6 +222,10 @@
   }
 }
 
+.facebookButton {
+  margin-left: 4%;
+}
+
 .contentInner,
 .footerInner,
 .footerTopBar {
@@ -239,13 +243,17 @@
 }
 
 .footerTopBar {
-  padding-top: 0;
-  padding-bottom: 34px;
+  padding: 0 0 0 0;
   text-align: right;
 }
 
 .footerInner {
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .footerPartners {
@@ -325,7 +333,7 @@
 .intro {
   background-color: var(--color-brand);
   color: white;
-  padding: 25px 0 48px;
+  padding-top: 42px;
 
   .footerInner {
     display: flex;
@@ -370,7 +378,6 @@
 
   @media (min-width: 980px) {
     flex-wrap: nowrap;
-    overflow-x: auto;
     width: 100%;
 
     a {

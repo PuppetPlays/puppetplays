@@ -1,0 +1,14 @@
+columnSuffix: tapcroie
+contentColumnType: string(255)
+fieldGroup: f1c3d1d7-7d32-4cd8-a468-27b4ad21d5db # Newsletters
+handle: articleLink
+instructions: 'Lien vers l''article en ligne (laisser vide si scan hébergé)'
+name: 'Lien vers l''article'
+searchable: false
+settings:
+  maxLength: 255
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

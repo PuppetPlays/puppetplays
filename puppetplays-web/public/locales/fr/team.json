@@ -1,27 +1,43 @@
 {
   "title": "Équipe",
-  "metaDescription": "Le projet PuppetPlays réunit des chercheurs et des experts du théâtre de marionnettes de toute l'Europe.",
+  "metaDescription": "Découvrez l'équipe du projet PuppetPlays : chercheurs, postdoctorants et partenaires académiques travaillant sur l'histoire du théâtre de marionnettes en Europe.",
   "introduction": "Notre équipe internationale rassemble des chercheurs passionnés et experts dans le domaine du théâtre de marionnettes, sous la direction du Professeur Didier Plassard à l'Université Paul-Valéry Montpellier 3.",
-  "present": "Présent",
+  "present": "présent",
   "viewProfile": "Voir le profil",
   "viewOrcid": "Voir le profil ORCID de",
   "viewCV": "Voir le CV de",
   "viewResearchProject": "Voir le projet de recherche",
   "close": "Fermer",
-  "researchProject": "Projet de Recherche",
+  "researchProject": "Projet de recherche",
+  "researchProjects": "Travaux de recherche",
+  "viewProject": "Voir le projet",
+  "contractPeriod": "Période de recherche",
+  "historicalPeriod": "Époque étudiée",
+  "puppetTradition": "Tradition théâtrale",
+  "studiedRegions": "Régions étudiées",
+  "projectSummary": "Résumé du projet",
+  "projectDescription": "Description du projet",
+  "bibliography": "Bibliographie",
+  "relatedPublications": "Publications liées",
   
   "teamMembers": {
-    "title": "L'Équipe PuppetPlays",
-    "description": "Notre équipe réunit des spécialistes de l'histoire du théâtre, des études de performance et des arts de la marionnette pour découvrir et analyser le patrimoine caché de la littérature du théâtre de marionnettes en Europe."
+    "title": "Membres de l'équipe",
+    "description": "L'équipe de PuppetPlays réunit des spécialistes internationaux du théâtre de marionnettes, de l'histoire culturelle et des humanités numériques."
   },
   
   "scientificCommittee": {
-    "title": "Conseil Scientifique",
+    "title": "Comité scientifique",
     "description": "Le conseil scientifique apporte son expertise et ses conseils au projet PuppetPlays, assurant la rigueur académique et la collaboration internationale."
   },
   
   "partners": {
     "title": "Partenaires",
     "description": "Le projet PuppetPlays est rendu possible grâce au soutien de nos partenaires et institutions de financement."
-  }
+  },
+  
+  "acknowledgments": {
+    "title": "Remerciements",
+    "content": "Le projet PuppetPlays souhaite remercier chaleureusement tous les stagiaires et vacataires qui ont contribué à la réalisation de cette base de données par leur travail rigoureux et leur engagement : Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
+  },
+  "partnersNote": "Ce projet est financé par le Programme de recherche et d'innovation Horizon 2020 de l'Union Européenne, dans le cadre du Grant Agreement ERC 835193"
 } 

@@ -1,0 +1,19 @@
+columnSuffix: kmayecdy
+contentColumnType: text
+fieldGroup: f1c3d1d7-7d32-4cd8-a468-27b4ad21d5db # Newsletters
+handle: authorsPress
+instructions: 'Entrez le(s) nom(s) de(s) auteur(s), séparés par des virgules'
+name: Authors
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

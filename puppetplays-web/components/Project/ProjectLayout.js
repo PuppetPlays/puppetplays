@@ -7,7 +7,12 @@ import PropTypes from 'prop-types';
 import styles from './projectLayout.module.scss';
 import ProjectNav from './ProjectNav';
 
-const ProjectLayout = ({ children, title, metaDescription }) => {
+const ProjectLayout = ({
+  children,
+  title,
+  metaDescription,
+  hideNav = false,
+}) => {
   const { t } = useTranslation('project');
   const router = useRouter();
 
@@ -25,7 +30,7 @@ const ProjectLayout = ({ children, title, metaDescription }) => {
           <div className={styles.backgroundShape} />
         </div>
         <div className={styles.container}>
-          <ProjectNav currentPath={router.pathname} />
+          {!hideNav && <ProjectNav currentPath={router.pathname} />}
           <main className={styles.content}>{children}</main>
         </div>
       </div>
@@ -37,6 +42,7 @@ ProjectLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   metaDescription: PropTypes.string,
+  hideNav: PropTypes.bool,
 };
 
 export default ProjectLayout;

@@ -1,12 +1,13 @@
 {
-  "title": "What is PuppetPlays?",
+  "title": "What is PuppetPlays ?",
   "metaDescription": "Learn about the PuppetPlays project, a research initiative focused on exploring Western European puppet and marionette theatre repertoires.",
   "mainNav": {
     "presentation": "Project Presentation",
     "team": "Team",
     "videos": "Video Resources",
-    "communications": "Communications"
+    "communications": "Communication"
   },
+  "researchProjects": "Research Projects",
   "presentation": {
     "title": "Project Presentation",
     "subtitle": "PuppetPlays (GA 835193) - A research programme funded by the European Union",
@@ -19,20 +20,103 @@
       "placeholder": "Video presentation coming soon"
     },
     "description": {
-      "intro": "PuppetPlays is a research programme about plays for puppets and marionettes, directed by Didier Plassard, professor of Theatre Studies, supported by the Université Paul-Valéry – Montpellier 3. Laureate of the \"Advanced Grant\" call for projects of the European Research Council (ERC) in 2018, it is funded by the European Union for five years (October 2019 – September 2025).",
+      "intro": "PuppetPlays is a research programme on plays for puppets and marionettes, directed by Didier Plassard, professor of Theatre Studies, supported by the Université de Montpellier Paul-Valéry. Laureate of the \"Advanced Grant\" call for projects of the European Research Council (ERC) in 2018, it was funded by the European Union for six years (October 2019 – September 2025).",
       "goals": {
-        "title": "The main goals of PuppetPlays are:",
-        "goal1": "collecting a corpus of representative plays from Western Europe (Germany, Austria, Belgium, Spain, France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the 17th and the 21th Century;",
-        "goal2": "identifying the characteristics of puppet dramaturgy and their variations depending on eras, cultural spheres, producing conditions and the aimed public;",
-        "goal3": "re-evaluating the contribution of these repertoires to the construction of a European cultural identity."
+        "title": "The main goals of PuppetPlays were to:",
+        "goal1": "collect a corpus of representative plays from Western Europe (Germany, Austria, Belgium, Spain, France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the 17th and the 21th Century;",
+        "goal2": "identify the characteristics of puppet dramaturgy and their variations depending on eras, cultural spheres, producing conditions and the aimed public;",
+        "goal3": "re-evaluate the contribution of these repertoires to the construction of a European cultural identity."
       },
-      "ambitions": {
-        "title": "PuppetPlays has the ambition to:",
-        "ambition1": "contribute to the development of tools and methods for the Digital Humanities through the creation of an online platform with a database, an anthology of texts, as well as several documentary and pedagogical resources for researchers, artists, teachers, students...",
-        "ambition2": "enhance research on the very little known topic of playwriting for puppetry with the production of a conclusive monography by Didier Plassard and the organisation of two international conferences;",
-        "ambition3": "stimulate and support young researchers in this area awarding two doctoral and 5 years of postdoctoral scolarships."
+      "contributions": {
+        "title": "PuppetPlays contributed to:",
+        "contribution1": "develop tools and methods for the Digital Humanities through the creation of an online platform with a database, an anthology of texts, as well as several documentary and pedagogical resources for researchers, artists, teachers, students...",
+        "contribution2": "enhance research on the very little known topic of playwriting for puppetry with the production of a conclusive monograph Puppetry and Dramaturgy – Western European Plays for Puppet Theatre, 1582-2020 (Palgrave Mcmillan, to be published 2025) by Didier Plassard ; peer-reviewed publications ; a special issue of the Cahiers Élisabéthains focused on \"Shakespeare and puppets\" and the organisation of two international symposiums: L'écriture littéraire pour marionnettes en Europe de l'Ouest (17e-21e siècles) and Portrait du marionnettiste en auteur published in open source ;",
+        "contribution3": "stimulate and support young researchers in this field by awarding research grants to two doctoral students (Francesca Di Fazio et Sophie Courtade) and six post-doctoral fellows (Jean Boutan, Manuela Mohr, Yanna Kor, Anna Leone, Francesca Di Fazio, Cécile Decaix)."
       },
       "access": "Access to all published results and all resources of PuppetPlays will be open and free."
+    },
+    "chronology": {
+      "title": "Project Timeline",
+      "subtitle": "Key dates of the project:",
+      "events": {
+        "event1": {
+          "date": "October 1, 2019",
+          "description": "Official project launch"
+        },
+        "event2": {
+          "date": "November 7-8, 2019",
+          "description": "Project launch and seminar",
+          "url": "https://nakala.fr/10.34847/nkl.5e38866d"
+        },
+        "event3": {
+          "date": "October 29-30, 2020",
+          "description": "International seminar \"What is a puppet repertoire?\""
+        },
+        "event4": {
+          "date": "January 27, 2021",
+          "description": "Facebook event \"Popular repertoire, literary repertoire: borrowings and circulations (about The Temptation of Saint Anthony)\""
+        },
+        "event5": {
+          "date": "February 23, 2021",
+          "description": "Facebook event \"Drammaturgia della figura: il repertorio d'autore\""
+        },
+        "event6": {
+          "date": "March 23, 2021",
+          "description": "Facebook event \"A play for living puppets: actors play the role of puppets, around 1800\""
+        },
+        "event7": {
+          "date": "April 20, 2021",
+          "description": "Facebook event \"Puppets and documentary theatre\""
+        },
+        "event8": {
+          "date": "May 17-27, 2021",
+          "description": "First dramaturgical experimentation laboratory with Zouak company"
+        },
+        "event9": {
+          "date": "October 1-15, 2021",
+          "description": "Second dramaturgical experimentation laboratory with A Tarumba company"
+        },
+        "event10": {
+          "date": "October 14-16, 2021",
+          "description": "First international conference \"Literary Writing for Puppets in Western Europe (17th-21st centuries)\"",
+          "url": "https://nakala.fr/collection/10.34847/nkl.fb7fa5e8"
+        },
+        "event11": {
+          "date": "June 9, 2022",
+          "description": "Public launch of the puppetplays.eu platform"
+        },
+        "event12": {
+          "date": "June 9, 2022",
+          "description": "Round table \"Making objects speak\""
+        },
+        "event13": {
+          "date": "November 21, 2022",
+          "description": "PhD defense of Francesca Di Fazio: The puppet and its drama. Dramaturgies for contemporary puppet theatre in France and Italy (1981-2020)",
+          "url": "https://theses.hal.science/tel-04077521v1"
+        },
+        "event14": {
+          "date": "May 23-25, 2023",
+          "description": "Second international conference \"Portrait of the Puppeteer as Author\"",
+          "url": "https://nakala.fr/collection/10.34847/nkl.2e6b0u0o"
+        },
+        "event15": {
+          "date": "October 4, 2024",
+          "description": "Study day \"Guignol in the text\"",
+          "url": "https://nakala.fr/collection/10.34847/nkl.d6a0715c"
+        },
+        "event16": {
+          "date": "September 2024",
+          "description": "Study and transcription days with the Gadagne Museum (Lyon)"
+        },
+        "event17": {
+          "date": "May 2025",
+          "description": "PhD defense of Sophie Courtade: Shadow Theatre in Western Europe (1770-1920). The emergence of a dramaturgy"
+        },
+        "event18": {
+          "date": "September 30, 2025",
+          "description": "End of project"
+        }
+      }
     },
     "invisibleRepertoire": {
       "title": "An invisible repertoire",
@@ -55,6 +139,10 @@
       "paragraph3": "This question of a specific dramaturgy arises particularly when we examine contemporary playwriting. Why do some authors choose to compose plays for puppets, shadows, and all kinds of animated objects – sometimes as the only performers on the stage, sometimes mixed with live actors?",
       "paragraph4": "When puppeteers require texts for a new production, what specific imaginary of puppetry do these playwrights develop? It seems that the introduction of artificial performers on stage broadens the spectrum of dramaturgical possibilities: writing is freed from the \"laws\" of realism and plausibility; but it can also lead to speaking of (or to showing) the inexpressible: explosions of violence, cruelty (let's remember the old Punch and Judy show!), or obscenity. Birth, illness, disability, old age, and suffering can be portrayed on stage, with empathy but without the risks of excessive or forced pathos.",
       "paragraph5": "Because they represent the human through the guise of an object, the arts of puppetry are undoubtedly the best adapted instrument to tell stories of dehumanization and rehumanization: it is, in any case, one of the main hypotheses that PuppetPlays proposes to test."
+    },
+    "acknowledgments": {
+      "title": "Acknowledgments",
+      "content": "The PuppetPlays project would like to extend its warmest thanks to all the interns and part-time workers who have contributed to the creation of this database through their rigorous work and commitment: Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
     }
   },
   "videos": {
@@ -93,7 +181,7 @@
     "errorLoadingData": "Could not load video data."
   },
   "communications": {
-    "metaDescription": "Discover the latest communications, news, and publications of the PuppetPlays project.",
+    "metaDescription": "Discover the latest communication, news, and publications of the PuppetPlays project.",
     "subtitle": "News, publications, and events of the PuppetPlays project",
     "filterByCategory": "Filter by category",
     "filterByTag": "Filter by keyword",
@@ -103,6 +191,10 @@
     "noArticlesFound": "No articles found with the selected filters.",
     "par": "By",
     "partsTitle": "Article parts",
+    "tabs": {
+      "newsletters": "Newsletters",
+      "pressReviews": "Press Reviews"
+    },
     "mockArticles": {
       "article1": {
         "title": "European puppetry: between tradition and innovation",
@@ -172,5 +264,11 @@
       "presentation": "Presentation",
       "publication": "Publication"
     }
+  },
+  "pressReviews": {
+    "publicationDate": "Publication date",
+    "consultationDate": "Accessed on",
+    "readOnline": "Read article online",
+    "noReviewsFound": "No press reviews found."
   }
 } 

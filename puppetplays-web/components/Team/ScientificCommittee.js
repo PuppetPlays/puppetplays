@@ -1,6 +1,8 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 
+import { useFormattedTranslation } from '../../hooks/useFormattedTranslation';
+
 import styles from './ScientificCommittee.module.scss';
 
 const ChevronIcon = () => (
@@ -66,7 +68,7 @@ const CommitteeMember = ({ member, index }) => {
 };
 
 const ScientificCommittee = ({ members }) => {
-  const { t } = useTranslation('team');
+  const { t } = useFormattedTranslation('team');
 
   if (!members || members.length === 0) {
     return <p>{t('common:noData')}</p>;
@@ -74,7 +76,12 @@ const ScientificCommittee = ({ members }) => {
 
   return (
     <div className={styles.committeeContainer}>
-      <p className={styles.paragraph}>{t('scientificCommittee.description')}</p>
+      <p
+        className={styles.paragraph}
+        dangerouslySetInnerHTML={{
+          __html: t('scientificCommittee.description'),
+        }}
+      />
 
       <div className={styles.committeeAccordion}>
         {members.map((member, index) => (

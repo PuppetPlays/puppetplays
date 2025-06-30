@@ -43,6 +43,7 @@
   "tactPlatform": "Transcription TACT",
   "knowMore": "En savoir +",
   "contactUs": "Pour nous contacter",
+  "ourPartners": "Nos Partenaires",
   "searchPlaceholder": "Recherchez un titre, un auteur, une thématique",
   "fr": "Français",
   "en": "Anglais",
@@ -52,6 +53,7 @@
   "closeNote": "Refermer l'aperçu'",
   "expandNote": "Ouvrir l'aperçu",
   "writtenBy": "Rédaction de la notice",
+  "translatedBy": "Traduit par",
   "alias": "dit",
   "language": "Langue",
   "languageWithColon": "Langue :",
@@ -173,6 +175,7 @@
   "flatplan": "Plan du document",
   "discoveryPaths": "Parcours découverte",
   "loading": "Chargement en cours...",
+  "mapLoadingMessage": "Chargement de la carte...",
   "error": {
     "title": "Erreur",
     "message": "Une erreur s'est produite lors du chargement de ce composant.",
@@ -190,7 +193,8 @@
     "loadingData": "Erreur lors du chargement des données: {{error}}",
     "loadingCollections": "Erreur de chargement des collections : {{error}}",
     "collections": "collections",
-    "errorLoading": "Erreur lors du chargement des données"
+    "errorLoading": "Erreur lors du chargement des données",
+    "projectNotFound": "Projet de recherche non trouvé"
   },
   "readMore": "En savoir plus",
   "home": "Accueil",
@@ -210,5 +214,6 @@
   "previousPage": "Page précédente",
   "nextPage": "Page suivante",
   "page": "Page {{page}}",
-  "image": "Image"
+  "image": "Image",
+  "accessibility": "Accessibilité"
 }

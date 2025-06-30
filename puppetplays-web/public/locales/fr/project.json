@@ -5,8 +5,9 @@
     "presentation": "Présentation du projet",
     "team": "L'équipe",
     "videos": "Ressources vidéos",
-    "communications": "Communications"
+    "communications": "Communication"
   },
+  "researchProjects": "Travaux de recherche",
   "videos": {
     "titleUnavailable": "Titre non disponible",
     "exploreIntro": "Explorez notre collection de vidéos sur le théâtre de marionnettes",
@@ -51,23 +52,107 @@
     "video": {
       "title": "Présentation vidéo du projet",
       "caption": "Découvrez notre programme de recherche à travers cette vidéo",
-      "placeholder": "Présentation vidéo à venir"
+      "placeholder": "Présentation vidéo à venir",
+      "url": "https://nakala.fr/10.34847/nkl.5e38866d"
     },
     "description": {
-      "intro": "PuppetPlays est un programme de recherche sur les pièces pour marionnettes, dirigé par Didier Plassard, professeur d'études théâtrales, soutenu par l'Université Paul-Valéry – Montpellier 3. Lauréat de l'appel à projets \"Advanced Grant\" du Conseil Européen de la Recherche (ERC) en 2018, il est financé par l'Union Européenne pour cinq ans (octobre 2019 – septembre 2025).",
+      "intro": "PuppetPlays est un projet de recherche sur les écritures théâtrales pour marionnettes dirigé par Didier Plassard, professeur en études théâtrales, et porté par l'Université de Montpellier Paul-Valéry. Lauréat de l'appel « Advanced Grant » 2018 du Conseil Européen de la Recherche (ERC), il a été financé par l'Union Européenne dans le cadre du programme Horizon 2020 (ERC – GA 835193) pendant 6 ans (1er octobre 2019 - 30 septembre 2025).",
       "goals": {
-        "title": "Les principaux objectifs de PuppetPlays sont :",
-        "goal1": "collecter un corpus représentatif de pièces d'Europe occidentale (Allemagne, Autriche, Belgique, Espagne, France, Grande-Bretagne, Italie, Pays-Bas, Portugal, Suisse) entre le XVIIe et le XXIe siècle ;",
-        "goal2": "identifier les caractéristiques de la dramaturgie pour marionnettes et leurs variations selon les époques, les sphères culturelles, les conditions de production et le public visé ;",
-        "goal3": "réévaluer la contribution de ces répertoires à la construction d'une identité culturelle européenne."
+        "title": "Les principaux objectifs de PuppetPlays sont de :",
+        "goal1": "rassembler un corpus représentatif de pièces pour marionnettes d'Europe de l'Ouest (Allemagne, Autriche, Belgique, Espagne, France, Grande-Bretagne, Italie, Pays-Bas, Portugal, Suisse), de la fin du 16e au 21e siècles ;",
+        "goal2": "identifier les caractéristiques d'une écriture théâtrale pour marionnettes selon les époques, les aires culturelles, les conditions de production et les types de public ;",
+        "goal3": "mettre en lumière l'apport de ces répertoires à la construction d'une identité culturelle européenne."
       },
-      "ambitions": {
-        "title": "PuppetPlays a pour ambition de :",
-        "ambition1": "contribuer au développement d'outils et de méthodes pour les Humanités Numériques à travers la création d'une plateforme en ligne avec une base de données, une anthologie de textes, ainsi que plusieurs ressources documentaires et pédagogiques pour les chercheurs, les artistes, les enseignants, les étudiants...",
-        "ambition2": "approfondir la recherche sur le sujet peu connu de l'écriture pour la marionnette avec la production d'une monographie conclusive par Didier Plassard et l'organisation de deux colloques internationaux ;",
-        "ambition3": "stimuler et soutenir les jeunes chercheurs dans ce domaine en attribuant des bourses doctorales et post-doctorales pour 5 ans."
+      "contributions": {
+        "title": "PuppetPlays a contribué à :",
+        "contribution1": "développer les humanités numériques en créant une plateforme Internet comportant une base de données, une anthologie de textes et de nombreuses ressources documentaires ou pédagogiques destinées notamment aux chercheurs, aux artistes, aux enseignants, aux étudiants....",
+        "contribution2": "enrichir la recherche sur le domaine très peu connu des écritures pour marionnettes par la production d'une monographie Puppetry and Dramaturgy – Western European Plays for Puppet Theatre, 1582-2020 (Palgrave Mcmillan, à paraître 2025) par Didier Plassard ; des articles scientifiques en peer-review ; un numéro spécial des Cahiers Élisabéthains consacré à « Shakespeare and puppets » et l'organisation de deux colloques internationaux, L'écriture littéraire pour marionnettes en Europe de l'Ouest (17e-21e siècles) et Portrait du marionnettiste en auteur publiés en open source ;",
+        "contribution3": "stimuler et accompagner les jeunes chercheurs dans ce domaine en attribuant deux bourses de recherche à deux doctorantes (Francesca Di Fazio et Sophie Courtade) et six post-doctorants et post-doctorantes (Jean Boutan, Manuela Mohr, Yanna Kor, Anna Leone, Francesca Di Fazio, Cécile Decaix)."
       },
-      "access": "L'accès à tous les résultats publiés et à toutes les ressources de PuppetPlays sera ouvert et gratuit."
+      "access": "Toutes les publications et toutes les ressources de PuppetPlays sont en accès libre et gratuit (open source ou gold open access)."
+    },
+    "chronology": {
+      "title": "Chronologie du projet",
+      "subtitle": "Les dates clés du projet :",
+      "events": {
+        "event1": {
+          "date": "1er octobre 2019",
+          "description": "Démarrage officiel du projet"
+        },
+        "event2": {
+          "date": "7-8 novembre 2019",
+          "description": "Lancement du projet et séminaire",
+          "url": "https://nakala.fr/10.34847/nkl.5e38866d"
+        },
+        "event3": {
+          "date": "29-30 octobre 2020",
+          "description": "Séminaire international « Qu'est-ce qu'un répertoire pour marionnettes ? »"
+        },
+        "event4": {
+          "date": "27 janvier 2021",
+          "description": "Rendez-vous Facebook « Répertoire populaire, répertoire littéraire : emprunts et circulations (à propos de La Tentation de saint Antoine) »"
+        },
+        "event5": {
+          "date": "23 février 2021",
+          "description": "Rendez-vous Facebook « Drammaturgia della figura : il repertorio d'autore »"
+        },
+        "event6": {
+          "date": "23 mars 2021",
+          "description": "Rendez-vous Facebook « A play for living puppets: actors play the role of puppets, around 1800 »"
+        },
+        "event7": {
+          "date": "20 avril 2021",
+          "description": "Rendez-vous Facebook « Marionnettes et théâtre documentaire »"
+        },
+        "event8": {
+          "date": "17-27 mai 2021",
+          "description": "Premier laboratoire d'expérimentation dramaturgique avec la compagnie Zouak"
+        },
+        "event9": {
+          "date": "1-15 octobre 2021",
+          "description": "Deuxième laboratoire d'expérimentation dramaturgique avec la compagnie A Tarumba"
+        },
+        "event10": {
+          "date": "14-16 octobre 2021",
+          "description": "Premier colloque international « L'écriture littéraire pour marionnettes en Europe de l'Ouest (17e-21e siècles) »",
+          "url": "https://nakala.fr/collection/10.34847/nkl.fb7fa5e8"
+        },
+        "event11": {
+          "date": "9 juin 2022",
+          "description": "Ouverture publique de la plateforme puppetplays.eu"
+        },
+        "event12": {
+          "date": "9 juin 2022",
+          "description": "Table ronde « Faire parler les objets »"
+        },
+        "event13": {
+          "date": "21 novembre 2022",
+          "description": "Soutenance de thèse de Francesca Di Fazio : La marionnette et son drame. Les dramaturgies pour le théâtre de marionnettes contemporain en France et en Italie (1981-2020)",
+          "url": "https://theses.hal.science/tel-04077521v1"
+        },
+        "event14": {
+          "date": "23-25 mai 2023",
+          "description": "Deuxième colloque international « Portrait du marionnettiste en auteur »",
+          "url": "https://nakala.fr/collection/10.34847/nkl.2e6b0u0o"
+        },
+        "event15": {
+          "date": "4 octobre 2024",
+          "description": "Journée d'études « Guignol dans le texte »",
+          "url": "https://nakala.fr/collection/10.34847/nkl.d6a0715c"
+        },
+        "event16": {
+          "date": "Septembre 2024",
+          "description": "Journées d'études et de transcription avec le Musée Gadagne (Lyon)"
+        },
+        "event17": {
+          "date": "Mai 2025",
+          "description": "Soutenance de thèse de Sophie Courtade : Le Théâtre d'ombres en Europe de l'Ouest (1770-1920). L'émergence d'une dramaturgie"
+        },
+        "event18": {
+          "date": "30 septembre 2025",
+          "description": "Fin du projet"
+        }
+      }
     },
     "invisibleRepertoire": {
       "title": "Un répertoire invisible",
@@ -90,10 +175,14 @@
       "paragraph3": "Cette question d'une dramaturgie spécifique se pose particulièrement lorsque nous examinons l'écriture contemporaine. Pourquoi certains auteurs choisissent-ils de composer des pièces pour marionnettes, ombres et toutes sortes d'objets animés – parfois comme seuls interprètes sur scène, parfois mêlés à des acteurs vivants ?",
       "paragraph4": "Lorsque les marionnettistes ont besoin de textes pour une nouvelle production, quel imaginaire spécifique de la marionnette ces dramaturges développent-ils ? Il semble que l'introduction d'interprètes artificiels sur scène élargisse le spectre des possibilités dramaturgiques : l'écriture s'affranchit des \"lois\" du réalisme et de la vraisemblance ; mais elle peut aussi conduire à dire (ou à montrer) l'inexprimable : explosions de violence, cruauté (souvenons-nous du vieux spectacle de Punch et Judy !), ou obscénité. La naissance, la maladie, le handicap, la vieillesse et la souffrance peuvent être représentés sur scène, avec empathie mais sans les risques d'un pathos excessif ou forcé.",
       "paragraph5": "Parce qu'ils représentent l'humain sous les traits d'un objet, les arts de la marionnette sont sans doute l'instrument le mieux adapté pour raconter des histoires de déshumanisation et de réhumanisation : c'est, en tout cas, l'une des principales hypothèses que PuppetPlays se propose de tester."
+    },
+    "acknowledgments": {
+      "title": "Remerciements",
+      "content": "Le projet PuppetPlays souhaite remercier chaleureusement tous les stagiaires et vacataires qui ont contribué à la réalisation de cette base de données par leur travail rigoureux et leur engagement : Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
     }
   },
   "communications": {
-    "metaDescription": "Découvrez les dernières communications, actualités et publications du projet PuppetPlays.",
+    "metaDescription": "Découvrez les dernières communication, actualités et publications du projet PuppetPlays.",
     "subtitle": "Actualités, publications et événements du projet PuppetPlays",
     "filterByCategory": "Filtrer par catégorie",
     "filterByTag": "Filtrer par mot-clé",
@@ -103,6 +192,10 @@
     "noArticlesFound": "Aucun article trouvé avec les filtres sélectionnés.",
     "par": "Par",
     "partsTitle": "Parties de l'article",
+    "tabs": {
+      "newsletters": "Newsletters",
+      "pressReviews": "Revues de presse"
+    },
     "mockArticles": {
       "article1": {
         "title": "La marionnette européenne : entre tradition et innovation",
@@ -172,5 +265,11 @@
       "presentation": "Présentation",
       "publication": "Publication"
     }
+  },
+  "pressReviews": {
+    "publicationDate": "Date de publication",
+    "consultationDate": "Consulté le",
+    "readOnline": "Lire l'article en ligne",
+    "noReviewsFound": "Aucune revue de presse trouvée."
   }
 } 

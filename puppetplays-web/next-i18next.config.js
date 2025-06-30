@@ -12,7 +12,7 @@ const config = {
   /** To avoid issues when deploying to some paas (vercel...) */
   localePath: path.resolve('./public/locales'),
   defaultNS: 'common',
-  ns: ['common', 'home', 'project', 'team'],
+  ns: ['common', 'home', 'project', 'team', 'accessibility'],
   serializeConfig: false,
   use: typeof window !== 'undefined' ? [HttpBackend] : [],
   react: {
