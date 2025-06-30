@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: characters
-instructions: ''
+instructions: null
 name: Personnages
 searchable: true
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs personnages dans le texte'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   targetSiteId: null

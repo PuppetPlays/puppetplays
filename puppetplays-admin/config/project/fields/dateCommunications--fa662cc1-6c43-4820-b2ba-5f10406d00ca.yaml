@@ -2,13 +2,13 @@ columnSuffix: coudmqeu
 contentColumnType: datetime
 fieldGroup: fd15fc2d-a3c9-4686-891d-700dd34684ec # Communications
 handle: dateCommunications
-instructions: ''
+instructions: null
 name: 'Date de publication'
 searchable: false
 settings:
   max: null
   min: null
-  minuteIncrement: '30'
+  minuteIncrement: 30
   showDate: true
   showTime: false
   showTimeZone: false

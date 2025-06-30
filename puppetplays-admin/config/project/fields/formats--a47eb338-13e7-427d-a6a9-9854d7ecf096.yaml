@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: formats
-instructions: ''
+instructions: null
 name: Format
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs format(s)'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   targetSiteId: null

@@ -2,6 +2,7 @@ fieldLayouts:
   93af4f65-7aa1-4531-935e-71b9ef30ff76:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,41 +27,56 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 5c2d5f3a-82cc-498d-9e1c-a5eb988f6109
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 26b83bbf-b7b9-48cd-979e-d69b22bceaf1 # Résumé
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: aff3a162-115b-4b2d-9b4a-a96762cdada0
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: e9f030e0-d5e7-485b-be1a-39496843ac8c # Thumbnail
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d4716af4-afc5-4ac6-89db-a52c2c14fed2
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 1c3b8264-0aba-4c01-bafa-956427f3e154 # Contenu riche
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 9141ec32-78c5-4ad1-b9e1-8a5fe85e5e53
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: 66c59d84-6c0e-46fb-994d-4635e61e846e
+        userCondition: null
 handle: default
 hasTitleField: true
 name: 'Par défaut'
 section: 374cfc9a-f44d-4173-9b1a-08ee58b72e0c # Parcours découverte
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

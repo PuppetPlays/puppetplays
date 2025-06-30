@@ -1,0 +1,46 @@
+columnSuffix: qvgipfdy
+contentColumnType: char
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: conferenceGroup
+instructions: null
+name: 'Conference Group'
+searchable: false
+settings:
+  columnType: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Conference 1'
+        -
+          - value
+          - '1'
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Conference 2'
+        -
+          - value
+          - '2'
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Conference 3'
+        -
+          - value
+          - '3'
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

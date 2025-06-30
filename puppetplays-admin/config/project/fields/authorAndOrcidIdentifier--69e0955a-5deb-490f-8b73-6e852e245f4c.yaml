@@ -1,0 +1,19 @@
+columnSuffix: ursgnmkf
+contentColumnType: text
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: authorAndOrcidIdentifier
+instructions: null
+name: 'Author and ORCID identifier'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\PlainText

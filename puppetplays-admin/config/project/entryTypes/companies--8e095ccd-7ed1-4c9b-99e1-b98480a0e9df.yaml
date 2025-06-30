@@ -2,6 +2,7 @@ fieldLayouts:
   0c280a90-eb4c-47bc-8e59-fff6cc6079fa:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,45 +27,62 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 531de528-d0e8-4b7e-aa73-c0ffffae122a
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 3eec2c18-4dce-4184-a668-02f225266314 # Lieux
-            instructions: ''
+            instructions: null
             label: 'Principaux lieux d’activité'
-            required: ''
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 6e2917c5-4f34-48e4-bf35-b1a2ca811c63
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: cee12a12-9390-4d0b-bb86-236f8b169846
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: f545d8f8-80ae-4406-a21a-0872789079db
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 07c0d544-d28a-449e-a643-936d89cb7a3a # Images
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: e792ae3c-1d64-4013-9d10-68c96f8cdfbf
+            userCondition: null
             warning: null
             width: 100
         name: Medias
-        sortOrder: 2
+        uid: 76ad753a-fd54-489f-b8d1-215b12e5bbfe
+        userCondition: null
 handle: companies
 hasTitleField: true
 name: Compagnies
 section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf # Personnes
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 2
 titleFormat: null
 titleTranslationKeyFormat: null

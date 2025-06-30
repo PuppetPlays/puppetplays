@@ -2,19 +2,19 @@ columnSuffix: mkbaakiz
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: relatedWorksToBeIndexed
-instructions: ''
+instructions: null
 name: 'Oeuvres corrélées à indexer'
 searchable: true
 settings:
   allowSelect: false
   columnType: text
-  decimals: '0'
+  decimals: 0
   displayType: hidden
   fieldTwig: "{% set hypotexts = element.hypotexts.all() %}\r\n{% if hypotexts|length %}\r\n{% for hypotext in hypotexts %}\r\n{{ hypotext.title }} \r\n{% if hypotext.authors is defined %}\r\n{% set authors = hypotext.authors.all() %}\r\n{% if authors|length %}\r\n{% for author in authors %}\r\n{{author.title}}\r\n{% endfor %}\r\n{% endif %}\r\n{% endif %}\r\n{% endfor %}\r\n{% endif %}"
   parseBeforeSave: false
   parseOnMove: false
   showField: false
-  textareaRows: '5'
+  textareaRows: 5
 translationKeyFormat: null
 translationMethod: none
 type: jalendport\preparse\fields\PreparseFieldType

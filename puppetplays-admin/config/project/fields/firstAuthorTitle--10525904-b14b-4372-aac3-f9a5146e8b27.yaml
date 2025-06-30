@@ -8,13 +8,13 @@ searchable: false
 settings:
   allowSelect: false
   columnType: text
-  decimals: '0'
+  decimals: 0
   displayType: hidden
   fieldTwig: "{%- set author = element.authors.one() -%}\r\n{{- author.title ?? '' -}}"
   parseBeforeSave: false
   parseOnMove: false
   showField: false
-  textareaRows: '5'
+  textareaRows: 5
 translationKeyFormat: null
 translationMethod: site
 type: jalendport\preparse\fields\PreparseFieldType

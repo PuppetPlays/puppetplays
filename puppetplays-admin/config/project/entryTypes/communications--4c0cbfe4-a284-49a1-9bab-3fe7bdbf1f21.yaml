@@ -2,6 +2,7 @@ fieldLayouts:
   4d88fce6-5352-4213-8f8f-e79aa00c1069:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,68 +27,92 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: d1699a0b-938d-4878-a47a-8315eeb7199d
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 1f547c74-a13e-424c-acb9-442988088084 # Auteurs
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d4745cab-1d01-4c6f-b1ad-dd8a1cd2f2ad
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 11cd5e79-4fd9-42cd-90de-f4ec34fd5af6 # URL externe
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: ccd13702-51d8-46d1-b056-5e8708fca36d
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: fa662cc1-6c43-4820-b2ba-5f10406d00ca # Date de publication
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: ede5a7cf-4149-4595-bf71-faf6f69c5c78
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: a3824935-81c5-4d05-85cb-a7b326914bd4 # Extrait
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: c92076bb-cd76-4683-8a34-58211515cfc3
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: dd1a4870-abc3-4341-b390-1a30cd07a558 # Parties
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 6552a1cd-65de-44a5-9bc0-bb437415ddc3
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: e9f030e0-d5e7-485b-be1a-39496843ac8c # Thumbnail
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 8351ccbb-c9a4-4594-b4f6-459f225e4477
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 6fd876b0-603d-4782-8053-2cc5d695679c
+        userCondition: null
 handle: communications
 hasTitleField: true
 name: Communications
 section: 8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f # Communications
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

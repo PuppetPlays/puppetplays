@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: works
-instructions: ''
+instructions: null
 name: Œuvres
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner une ou plusieurs œuvres'
   showSiteMenu: false
-  source: null
   sources:
     - 'section:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
   targetSiteId: null

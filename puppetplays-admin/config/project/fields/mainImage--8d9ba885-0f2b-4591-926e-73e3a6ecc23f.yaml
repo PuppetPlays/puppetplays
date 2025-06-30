@@ -1,30 +1,35 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: mainImage
-instructions: ''
+instructions: null
 name: 'Image principale'
 searchable: false
 settings:
   allowSelfRelations: false
+  allowSubfolders: false
   allowUploads: true
   allowedKinds:
     - image
+  branchLimit: null
   defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  defaultUploadLocationSubpath: ''
-  limit: '1'
+  defaultUploadLocationSubpath: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
   previewMode: full
-  restrictFiles: '1'
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  restrictedLocationSubpath: '{section.handle}'
   selectionLabel: 'Ajouter une image'
   showSiteMenu: false
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  singleUploadLocationSubpath: '{section.handle}'
-  source: null
   sources: '*'
   targetSiteId: null
-  useSingleFolder: true
   validateRelatedElements: false
   viewMode: large
 translationKeyFormat: null

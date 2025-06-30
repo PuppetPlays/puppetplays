@@ -2,6 +2,7 @@ fieldLayouts:
   1d88b91d-65e0-4853-b908-dc9fcf767bfc:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,179 +27,246 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 1d59ef9b-a492-423f-8d2c-2239614246d4
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 23c8664d-0988-47dc-96c4-e3887b436569 # Prénom
-            instructions: ''
-            label: ''
-            required: ''
+            instructions: null
+            label: null
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 2226c4ab-c7e8-4dad-8d63-f1843a5298cc
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 6e506719-d279-4e2c-9e84-fbf315440712 # Nom de famille
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: f1ad4fb5-e09b-4582-ba7a-c9b6adf0b8ba
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: c2a06b9d-03a3-471c-8452-f62e2d17e60f # Surnom
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 4ce3636d-defd-4ef9-bc6b-42988b26821a
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 66501227-1575-4af8-9ad7-8ddf21716146 # Nom usuel
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: a0312ffc-93c0-49c2-9dba-0a12bb38dd53
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: a5261331-a813-4df9-ab61-a125b7713179 # Genre
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: f6c10ea7-f58f-4526-bd2e-53faf534f022
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1 # Langue(s)
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d2e74238-0a70-4868-96bf-f28b5fe01486
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
+            uid: 73b77e0a-b60c-4c45-a689-b5e288e94d2a
+            userCondition: null
           -
+            elementCondition: null
             fieldUid: 3eec2c18-4dce-4184-a668-02f225266314 # Lieux
-            instructions: ''
+            instructions: null
             label: 'Principaux lieux d’activité'
-            required: ''
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 235b5715-8556-4574-af8e-7ec84fd6d110
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: c18b0f9d-717f-4ce0-a996-f482d7432dba # Date de naissance
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 328e2f69-d265-4276-b0fe-bdcbaee8f283
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: a36b8a5f-17c5-46c5-8d97-43a29656c564 # Date de mort
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: bb9c669c-7ae3-431f-8ac4-c758701b5fd1
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
+            uid: 8f9fd0ea-cc6b-4c1c-818a-d9beabd17713
+            userCondition: null
           -
+            elementCondition: null
             fieldUid: 9e670e52-0ab0-4dc1-a6e1-adc8efea5c13 # Notice biographique
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: f42f681f-2b7b-463b-bd27-3ae03a3fc6dd
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 2a3117bf-dd2f-46f2-802d-42fbd2e52e0a # Pseudonyme
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: a2ba219b-356b-40ba-9718-4892f9aa9958
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: cb623495-db97-4998-acec-52fb3ba39736
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: a8cf2973-20e4-4633-a71d-acb0adc68fd3
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 07c0d544-d28a-449e-a643-936d89cb7a3a # Images
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 769970bf-c595-4980-be3e-24e0b1276952
+            userCondition: null
             warning: null
             width: 100
         name: Medias
-        sortOrder: 2
+        uid: 77c7ae3d-cdb0-48cc-b5ef-f4d710bbc08b
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379 # Identifiant ARK
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 90fcfa89-6499-4705-ad6f-56051d3c93fe
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7 # Identifiant VIAF
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 0eaaa207-b86e-4303-aee2-d11e855ec695
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: f03405c5-53d6-4a5b-820a-1a1880a63524 # Identifiant IDREF
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 9b00a534-a1e9-4be6-b740-2a21cba2ea10
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 240995cf-5c01-4d81-8338-b19a74e20d1a # Identifiant ISNI
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 7e4430ae-da39-443b-8320-a708f6d7d418
+            userCondition: null
             warning: null
             width: 100
         name: Identifiants
-        sortOrder: 3
+        uid: 5bba357d-e2c9-4839-95e5-ca1cb1298bc4
+        userCondition: null
 handle: persons
 hasTitleField: false
 name: Personnes
 section: 63ea829e-b0e4-4021-8ab5-1b0f095d3daf # Personnes
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: '{% include ''_formats/persons-title'' %}'
 titleTranslationKeyFormat: null

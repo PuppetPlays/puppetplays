@@ -1,5 +1,5 @@
 baseUrl: '@siteUrl/it'
-enabled: true
+enabled: 'true'
 handle: it
 hasUrls: true
 language: it

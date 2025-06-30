@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: conservationPlace
-instructions: ''
+instructions: null
 name: 'Lieu de conservation'
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: '1'
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
   selectionLabel: 'Sélectionner une institution de conservation'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   targetSiteId: null

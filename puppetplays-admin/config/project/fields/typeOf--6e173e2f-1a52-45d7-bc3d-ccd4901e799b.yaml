@@ -1,17 +1,18 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: typeOf
-instructions: ''
+instructions: null
 name: Type
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: ''
-  placeholder: ''
+  initialRows: 4
+  multiline: false
+  placeholder: null
   uiMode: normal
 translationKeyFormat: null
 translationMethod: site

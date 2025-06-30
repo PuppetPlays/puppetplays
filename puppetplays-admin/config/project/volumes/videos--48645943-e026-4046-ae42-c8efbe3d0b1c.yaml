@@ -2,6 +2,7 @@ fieldLayouts:
   bc7dbdbb-3f55-4acd-9e7f-c29ad5858a1e:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,8 +10,10 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
+            inputType: null
+            instructions: null
             label: 'Nom du fichier'
             max: null
             min: null
@@ -24,42 +27,54 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: df5b9784-866c-4ec1-9d5d-081f8a03f8e6
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
-            instructions: ''
+            instructions: null
             label: Légende
-            required: ''
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: b6bfe621-80e1-4b4f-818d-adea6cc00227
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: a2007d0c-252f-4367-8e53-da567f836922 #  Copyright
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 3effb3bc-0537-42ad-bcbd-eda72b23cdeb
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1 # Langue(s)
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 2e0ac355-67b7-465f-8381-4255be4f5fbf
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: cd8cef8f-c817-4ec0-8492-0e5b63cc0ac5
+        userCondition: null
 fs: videos
 handle: videos
-hasUrls: true
 name: Videos
 sortOrder: 1
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-url: '@assetBaseUrl/videos'
+transformFs: null
+transformSubpath: ''

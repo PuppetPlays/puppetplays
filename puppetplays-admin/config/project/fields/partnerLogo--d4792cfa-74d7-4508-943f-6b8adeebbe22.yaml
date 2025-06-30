@@ -7,25 +7,29 @@ name: 'Partner Logo'
 searchable: false
 settings:
   allowSelfRelations: false
+  allowSubfolders: false
   allowUploads: true
   allowedKinds:
     - image
+  branchLimit: null
   defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
   defaultUploadLocationSubpath: uploads/partners
-  limit: '1'
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
   previewMode: full
-  restrictFiles: '1'
-  selectionLabel: ''
+  restrictFiles: true
+  restrictLocation: true
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  restrictedLocationSubpath: uploads/partners
+  selectionLabel: null
   showSiteMenu: false
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  singleUploadLocationSubpath: uploads/partners
-  source: null
   sources: '*'
   targetSiteId: null
-  useSingleFolder: true
   validateRelatedElements: false
   viewMode: large
 translationKeyFormat: null

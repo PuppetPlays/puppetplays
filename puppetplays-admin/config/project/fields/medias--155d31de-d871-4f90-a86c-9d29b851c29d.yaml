@@ -1,32 +1,37 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: medias
-instructions: ''
+instructions: null
 name: Medias
 searchable: false
 settings:
   allowSelfRelations: false
+  allowSubfolders: false
   allowUploads: false
   allowedKinds:
     - audio
     - image
     - video
+  branchLimit: null
   defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
   defaultUploadLocationSubpath: '{section.handle}'
-  limit: ''
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   previewMode: full
-  restrictFiles: '1'
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  restrictedLocationSubpath: null
   selectionLabel: 'Sélectionner un ou plusieurs médias (images, vidéos, sons)'
   showSiteMenu: false
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  singleUploadLocationSubpath: ''
-  source: null
   sources: '*'
   targetSiteId: null
-  useSingleFolder: false
   validateRelatedElements: false
   viewMode: large
 translationKeyFormat: null

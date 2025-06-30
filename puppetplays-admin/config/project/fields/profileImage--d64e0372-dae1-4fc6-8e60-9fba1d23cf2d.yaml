@@ -2,30 +2,34 @@ columnSuffix: null
 contentColumnType: string
 fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
 handle: profileImage
-instructions: ''
+instructions: null
 name: Image
 searchable: false
 settings:
   allowSelfRelations: false
+  allowSubfolders: false
   allowUploads: true
   allowedKinds:
     - image
+  branchLimit: null
   defaultUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
   defaultUploadLocationSubpath: team
-  limit: '1'
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
   previewMode: full
-  restrictFiles: '1'
-  selectionLabel: ''
+  restrictFiles: true
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  restrictedLocationSubpath: null
+  selectionLabel: null
   showSiteMenu: false
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  singleUploadLocationSource: 'volume:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
-  singleUploadLocationSubpath: ''
-  source: null
   sources: '*'
   targetSiteId: null
-  useSingleFolder: false
   validateRelatedElements: true
   viewMode: large
 translationKeyFormat: null

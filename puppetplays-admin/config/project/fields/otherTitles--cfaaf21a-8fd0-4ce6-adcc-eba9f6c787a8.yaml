@@ -1,17 +1,18 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: otherTitles
-instructions: ''
+instructions: null
 name: 'Autre(s) titre(s)'
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '2'
-  multiline: '1'
-  placeholder: ''
+  initialRows: 2
+  multiline: true
+  placeholder: null
   uiMode: normal
 translationKeyFormat: null
 translationMethod: none

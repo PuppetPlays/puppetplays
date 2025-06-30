@@ -2,13 +2,13 @@ columnSuffix: null
 contentColumnType: string
 fieldGroup: fd15fc2d-a3c9-4686-891d-700dd34684ec # Communications
 handle: parts
-instructions: ''
+instructions: null
 name: Parties
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_parts}}'
-  maxBlocks: ''
-  minBlocks: ''
+  maxBlocks: null
+  minBlocks: null
   propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null

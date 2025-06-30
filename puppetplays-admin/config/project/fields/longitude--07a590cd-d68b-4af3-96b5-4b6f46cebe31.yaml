@@ -1,19 +1,20 @@
+columnSuffix: null
 contentColumnType: 'decimal(10,7)'
 fieldGroup: 5dc50f30-9aba-4974-92fb-08b263ce5716 # Places
 handle: longitude
-instructions: ''
+instructions: null
 name: Longitude
 searchable: false
 settings:
-  decimals: '7'
+  decimals: 7
   defaultValue: null
-  max: '180'
-  min: '-180'
-  prefix: ''
-  previewCurrency: ''
+  max: 180
+  min: -180
+  prefix: null
+  previewCurrency: null
   previewFormat: decimal
-  size: '10'
-  suffix: ''
+  size: 10
+  suffix: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Number

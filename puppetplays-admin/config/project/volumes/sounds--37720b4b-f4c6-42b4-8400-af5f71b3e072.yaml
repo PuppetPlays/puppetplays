@@ -2,6 +2,7 @@ fieldLayouts:
   263642a7-146d-4193-9693-d21418e54c3a:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,8 +10,10 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
+            inputType: null
+            instructions: null
             label: 'Nom du fichier'
             max: null
             min: null
@@ -24,42 +27,54 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: f3652471-0b90-4c8a-9726-26bd37c48fca
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
-            instructions: ''
+            instructions: null
             label: Légende
-            required: ''
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 84c0bcef-fb78-45bf-8e1c-d5e82532a435
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: a2007d0c-252f-4367-8e53-da567f836922 #  Copyright
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: b43529e7-4df8-4840-bb2d-d677fcf77f04
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 96e274be-acfe-4d13-a01e-13b327b04fd1 # Langue(s)
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 67bd2860-9896-4b98-9451-4a24f93ac2ed
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: ad1925d8-77fa-41c7-9878-6cbb551776d3
+        userCondition: null
 fs: sounds
 handle: sounds
-hasUrls: true
 name: Sounds
 sortOrder: 2
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-url: '@assetBaseUrl/sounds'
+transformFs: null
+transformSubpath: ''

@@ -2,13 +2,13 @@ columnSuffix: awpubvtz
 contentColumnType: datetime
 fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
 handle: startDate
-instructions: ''
+instructions: null
 name: 'Start Date'
 searchable: false
 settings:
   max: null
   min: null
-  minuteIncrement: '30'
+  minuteIncrement: 30
   showDate: true
   showTime: false
   showTimeZone: false

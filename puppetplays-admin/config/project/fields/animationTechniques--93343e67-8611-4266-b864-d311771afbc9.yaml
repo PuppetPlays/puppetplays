@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: animationTechniques
-instructions: ''
+instructions: null
 name: 'Technique d’animation'
 searchable: true
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner une ou plusieurs technique(s) d’animation'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   targetSiteId: null
