@@ -1,11 +1,12 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750 # Persons
 handle: gender
-instructions: ''
+instructions: null
 name: Genre
 searchable: false
 settings:
-  optgroups: true
+  columnType: string
   options:
     -
       __assoc__:

@@ -2,6 +2,7 @@ fieldLayouts:
   a2113871-ef7c-4978-81d9-cc9deb49e618:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,54 +27,74 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e396b989-e599-498d-9629-568335639723
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: dd4fcf15-6584-4f37-8317-ecaada78e196 # Extrait
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: bd1a1e00-69a4-417f-96d8-52baef7ffbf9
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: ad351d6e-c65e-4b6b-9468-e111f52b0269
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: fda86712-f00d-4a5f-8cf6-c1a307bd4b9b
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 51bcb494-49e4-43eb-ab36-68226d115ca5
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 07c0d544-d28a-449e-a643-936d89cb7a3a # Images
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: aace6b8a-2e05-4c32-a28c-8c9d4942443c
+            userCondition: null
             warning: null
             width: 100
         name: Medias
-        sortOrder: 2
+        uid: 0fae25b9-f817-49cb-873c-a51d2b9988fc
+        userCondition: null
 handle: animationTechniques
 hasTitleField: true
 name: 'Techniques d’animation'
 section: 1817d1f9-6682-4c22-b338-19654ae0c45c # Techniques d’animation
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

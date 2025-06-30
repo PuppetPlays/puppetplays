@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c # Characters
 handle: otherVersions
-instructions: ''
+instructions: null
 name: 'Autre(s) version(s) du même nom'
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs personnage(s) du même nom'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
   targetSiteId: null

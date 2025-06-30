@@ -2,16 +2,16 @@ columnSuffix: ifwdazux
 contentColumnType: text
 fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
 handle: biography
-instructions: ''
+instructions: null
 name: Biography
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '20'
-  multiline: '1'
+  initialRows: 20
+  multiline: true
   placeholder: null
   uiMode: normal
 translationKeyFormat: null

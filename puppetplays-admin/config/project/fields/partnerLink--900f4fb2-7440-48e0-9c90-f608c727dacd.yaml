@@ -6,8 +6,7 @@ instructions: 'Link to the partner''s website'
 name: 'Partner Link'
 searchable: false
 settings:
-  maxLength: '255'
-  placeholder: null
+  maxLength: 255
   types:
     - url
 translationKeyFormat: null

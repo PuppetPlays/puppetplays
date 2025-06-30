@@ -1,17 +1,18 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: f6c0a973-aaab-4aee-bbdc-c5f7fe02069a # IDs
 handle: doi
-instructions: ''
+instructions: null
 name: DOI
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: '1'
+  code: true
   columnType: null
-  initialRows: '4'
-  multiline: ''
-  placeholder: ''
+  initialRows: 4
+  multiline: false
+  placeholder: null
   uiMode: normal
 translationKeyFormat: null
 translationMethod: none

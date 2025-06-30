@@ -2,6 +2,7 @@ fieldLayouts:
   43ae3ef8-0740-49e6-8725-287f67c27567:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,8 +10,10 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
+            inputType: null
+            instructions: null
             label: 'Nom du fichier'
             max: null
             min: null
@@ -24,42 +27,54 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: ea538a81-f665-4f7e-ac92-25ce00563a9d
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 5258bc33-a2cb-4dd3-9a79-6a8db921d40c # Description
-            instructions: ''
+            instructions: null
             label: Légende
-            required: ''
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: f4bc38e2-a851-459f-8a08-e18e0c99c644
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: a2007d0c-252f-4367-8e53-da567f836922 #  Copyright
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: bc49bc6f-0765-471a-9867-40c74afa0a84
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: bce57552-4cce-4dbb-aa89-398015020fda # Alt
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 94b399d2-e6da-4229-9bd8-4f3b3c14ca94
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 49706b01-642a-4c91-a524-2bf00e1153b7
+        userCondition: null
 fs: images
 handle: images
-hasUrls: true
 name: Images
 sortOrder: 0
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-url: '@assetBaseUrl/images'
+transformFs: null
+transformSubpath: ''

@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: languages
-instructions: ''
+instructions: null
 name: Langue(s)
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner une ou plusieurs langue(s)'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   targetSiteId: null

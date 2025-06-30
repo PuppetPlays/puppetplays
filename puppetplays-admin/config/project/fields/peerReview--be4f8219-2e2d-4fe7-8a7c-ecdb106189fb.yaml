@@ -1,0 +1,14 @@
+columnSuffix: jgwiwcpz
+contentColumnType: boolean
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: peerReview
+instructions: null
+name: 'Peer review'
+searchable: false
+settings:
+  default: false
+  offLabel: 'No'
+  onLabel: 'Yes'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

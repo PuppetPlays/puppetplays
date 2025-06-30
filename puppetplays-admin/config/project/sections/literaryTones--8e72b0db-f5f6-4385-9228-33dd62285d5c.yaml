@@ -1,3 +1,4 @@
+defaultPlacement: end
 enableVersioning: false
 handle: literaryTones
 name: 'Registres littéraires'

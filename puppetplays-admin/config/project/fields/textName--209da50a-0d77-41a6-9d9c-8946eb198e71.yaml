@@ -1,17 +1,18 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: ba087b24-89e6-4a30-8ad7-d72a055d286c # Characters
 handle: textName
-instructions: ''
+instructions: null
 name: 'Nom du personnage dans le texte'
 searchable: true
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: ''
-  placeholder: ''
+  initialRows: 4
+  multiline: false
+  placeholder: null
   uiMode: normal
 translationKeyFormat: null
 translationMethod: none

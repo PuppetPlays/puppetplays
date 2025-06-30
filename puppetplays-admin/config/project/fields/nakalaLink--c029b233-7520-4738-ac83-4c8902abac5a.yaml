@@ -1,0 +1,14 @@
+columnSuffix: vcixcjbk
+contentColumnType: string(255)
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: nakalaLink
+instructions: null
+name: 'Nakala Link'
+searchable: false
+settings:
+  maxLength: 255
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

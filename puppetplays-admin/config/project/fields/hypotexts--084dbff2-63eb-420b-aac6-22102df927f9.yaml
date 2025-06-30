@@ -1,17 +1,20 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: hypotexts
-instructions: ''
+instructions: null
 name: Hypotexte(s)
 searchable: false
 settings:
   allowSelfRelations: false
+  branchLimit: null
   inputTemplate: _includes/forms/elementSelect
-  limit: '100'
   localizeRelations: false
-  selectionLabel: ''
+  maintainHierarchy: false
+  maxRelations: 100
+  minRelations: null
+  selectionLabel: null
   showSiteMenu: false
-  source: null
   sources:
     - 'section:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
     - 'section:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées

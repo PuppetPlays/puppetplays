@@ -1,19 +1,20 @@
+columnSuffix: null
 contentColumnType: integer(10)
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: actsCount
-instructions: ''
+instructions: null
 name: 'Nombre d’actes / de parties'
 searchable: false
 settings:
   decimals: 0
   defaultValue: null
   max: null
-  min: '1'
-  prefix: ''
-  previewCurrency: ''
+  min: 1
+  prefix: null
+  previewCurrency: null
   previewFormat: none
   size: null
-  suffix: ''
+  suffix: null
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Number

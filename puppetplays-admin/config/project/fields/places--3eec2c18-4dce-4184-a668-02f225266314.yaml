@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
 handle: places
-instructions: ''
+instructions: null
 name: Lieux
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs lieu(x)'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
     - 'section:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays

@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 172e5479-8928-4f74-b660-09467726142f # Educational Resources
+handle: contentBlock
+instructions: null
+name: ContentBlock
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_contentblock}}'
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

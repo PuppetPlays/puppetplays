@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: compositionPlace
-instructions: ''
+instructions: null
 name: 'Lieu d’écriture'
 searchable: true
 settings:
   allowSelfRelations: false
-  limit: '1'
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
   selectionLabel: 'Sélectionner un lieu'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
     - 'section:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays

@@ -3,52 +3,63 @@ fieldLayouts:
   d229b2d1-9794-4870-82b3-af27359473b1:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: dd98b4ac-7f07-42c8-84ba-2ef778802ee9 # research Title
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 215f24e7-77f5-4c90-9385-95bc620f9084
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 482ccda1-74c5-4555-8575-9f829fce5155 # research Content
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 94f56a46-9e95-4c49-a059-ee04c9f5f2e5
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: fe4f7b25-47ca-473c-a6a2-85d827124f50 # research Link
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: ac5045a1-2fa9-449a-b388-e7f99b8e4656
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 6dc8435c-b826-4743-93dc-3d5357485de8
+        userCondition: null
 fields:
   482ccda1-74c5-4555-8575-9f829fce5155: # research Content
     columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: researchContent
-    instructions: ''
+    instructions: null
     name: 'research Content'
     searchable: false
     settings:
       byteLimit: null
       charLimit: null
-      code: ''
+      code: false
       columnType: null
-      initialRows: '10'
-      multiline: '1'
+      initialRows: 10
+      multiline: true
       placeholder: null
       uiMode: normal
     translationKeyFormat: null
@@ -59,16 +70,16 @@ fields:
     contentColumnType: text
     fieldGroup: null
     handle: researchTitle
-    instructions: ''
+    instructions: null
     name: 'research Title'
     searchable: false
     settings:
       byteLimit: null
       charLimit: null
-      code: ''
+      code: false
       columnType: null
-      initialRows: '4'
-      multiline: ''
+      initialRows: 4
+      multiline: false
       placeholder: null
       uiMode: normal
     translationKeyFormat: null
@@ -79,12 +90,11 @@ fields:
     contentColumnType: string(255)
     fieldGroup: null
     handle: researchLink
-    instructions: ''
+    instructions: null
     name: 'research Link'
     searchable: false
     settings:
-      maxLength: '255'
-      placeholder: null
+      maxLength: 255
       types:
         - url
     translationKeyFormat: null
