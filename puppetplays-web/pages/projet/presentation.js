@@ -309,6 +309,20 @@ const ProjectPresentation = () => {
             }}
           />
         </section>
+
+        <div className={styles.divider} />
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            {t('presentation.acknowledgments.title')}
+          </h2>
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.acknowledgments.content'),
+            }}
+          />
+        </section>
       </div>
     </ProjectLayout>
   );
