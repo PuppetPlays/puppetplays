@@ -6,6 +6,11 @@ import {
   worksStateToGraphqlEntriesParams,
   worksStateToGraphqlQueryArgument,
 } from './filters';
+import {
+  fetchCollectionVideos,
+  NAKALA_COLLECTIONS,
+  getMetaValue,
+} from './nakala';
 
 export const getFetchAPIClient = (params, token) => {
   if (params?.variables?.locale && Array.isArray(params.variables.locale)) {
@@ -867,3 +872,167 @@ query GetAllWorksForMap($locale: [String], $search: String${worksStateToGraphqlQ
 }
 `;
 };
+
+export const getDiscoveryPathwayResourcesQuery = `
+${placeInfoFragment}
+${assetFragment}
+query GetDiscoveryPathwayResources($locale: [String]) {
+  # Random person
+  randomPerson: entries(section: "persons", site: $locale, relatedToEntries: {section: "works"}, limit: 10, orderBy: "RANDOM()") {
+    id,
+    slug,
+    title,
+    typeHandle,
+    ... on persons_persons_Entry { 
+      firstName,
+      lastName,
+      nickname,
+      usualName,
+      birthDate,
+      deathDate,
+      mainImage @transform(width: 400, height: 300, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+    },
+  }
+  
+  # Random work
+  randomWork: entries(section: "works", site: $locale, limit: 10, orderBy: "RANDOM()") {
+    id,
+    slug,
+    title,
+    ... on works_works_Entry {
+      subtitle,
+      mainImage @transform(width: 400, height: 300, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+      authors {
+        id,
+        title,
+        typeHandle,
+        ... on persons_persons_Entry { 
+          firstName,
+          lastName,
+          nickname,
+          usualName
+        }
+      },
+      mostRelevantDate,
+      compositionPlace {
+        ...placeInfo
+      },
+      abstract
+    }
+  }
+  
+  # Random animation technique
+  randomAnimationTechnique: entries(section: "animationTechniques", site: $locale, limit: 10, orderBy: "RANDOM()") {
+    id,
+    slug,
+    title,
+    ... on animationTechniques_animationTechniques_Entry {
+      excerpt,
+      mainImage @transform(width: 400, height: 300, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+    }
+  }
+}
+`;
+
+export async function getDiscoveryPathwayResources(locale) {
+  try {
+    const data = await fetchAPI(getDiscoveryPathwayResourcesQuery, {
+      variables: { locale },
+    });
+
+    // Prepare array of resources with type information
+    const resources = [];
+
+    // Add random person (first from the list)
+    if (data.randomPerson && data.randomPerson.length > 0) {
+      resources.push({
+        type: 'person',
+        data: data.randomPerson[0],
+      });
+    }
+
+    // Add random work (first from the list)
+    if (data.randomWork && data.randomWork.length > 0) {
+      resources.push({
+        type: 'work',
+        data: data.randomWork[0],
+      });
+    }
+
+    // Add random animation technique (first from the list)
+    if (
+      data.randomAnimationTechnique &&
+      data.randomAnimationTechnique.length > 0
+    ) {
+      resources.push({
+        type: 'animationTechnique',
+        data: data.randomAnimationTechnique[0],
+      });
+    }
+
+    // Fetch random video from Nakala
+    try {
+      // Use one of the available collections
+      const collections = Object.values(NAKALA_COLLECTIONS);
+      const randomCollectionId =
+        collections[Math.floor(Math.random() * collections.length)];
+
+      const videosData = await fetchCollectionVideos(randomCollectionId, {
+        page: 1,
+        limit: 50,
+      });
+
+      if (videosData && videosData.data && videosData.data.length > 0) {
+        // Get a random video from the collection
+        const randomIndex = Math.floor(Math.random() * videosData.data.length);
+        const randomVideo = videosData.data[randomIndex];
+
+        // Transform Nakala video data to match our component expectations
+        const videoResource = {
+          id: randomVideo.identifier,
+          title:
+            getMetaValue(
+              randomVideo.metas,
+              'http://nakala.fr/terms#title',
+              locale,
+            ) || 'Video sans titre',
+          description:
+            getMetaValue(
+              randomVideo.metas,
+              'http://purl.org/dc/terms/description',
+              locale,
+            ) || null,
+          thumbnail:
+            randomVideo.files?.find(file =>
+              file.extension?.toLowerCase().match(/(jpg|jpeg|png|gif)$/i),
+            ) || null,
+        };
+
+        resources.push({
+          type: 'video',
+          data: videoResource,
+        });
+      }
+    } catch (videoError) {
+      console.warn('Could not fetch random video from Nakala:', videoError);
+      // Continue without video - don't break the whole function
+    }
+
+    // Shuffle the resources array to randomize the order
+    for (let i = resources.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [resources[i], resources[j]] = [resources[j], resources[i]];
+    }
+
+    return resources;
+  } catch (error) {
+    console.error('Error fetching discovery pathway resources:', error);
+    return [];
+  }
+}

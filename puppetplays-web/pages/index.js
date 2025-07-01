@@ -4,6 +4,7 @@ import Card from 'components/Card';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
+import DiscoveryPathway from 'components/Home/DiscoveryPathway';
 import HtmlContent from 'components/HtmlContent';
 import Keywords, { Tag } from 'components/Keywords';
 import LanguageSelector from 'components/LanguageSelector';
@@ -21,6 +22,7 @@ import {
   getWorkByIdQuery,
   getFetchAPIClient,
   getPartnersQuery,
+  getDiscoveryPathwayResources,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { safeObject, safeArray } from 'lib/safeAccess';
@@ -124,6 +126,7 @@ export default function Home({
   work = null,
   keywords = [],
   partners = [],
+  discoveryPathwayResources = [],
 }) {
   console.log('Home', {
     animationTechnique,
@@ -131,6 +134,7 @@ export default function Home({
     work,
     keywords,
     partners,
+    discoveryPathwayResources,
   });
   const { t } = useTranslation('home');
   const { locale: _locale } = useRouter();
@@ -427,15 +431,19 @@ export default function Home({
               </Section>
 
               <Section
-                title={t('pulcinellaPathwayTitle')}
+                title={t('discoveryPathwayTitle')}
                 subtitle={t('pathway')}
-                isComingSoon
+                isComingSoon={discoveryPathwayResources.length === 0}
               >
-                <img
-                  src="/pathway-pulcinella.png"
-                  alt=""
-                  style={{ opacity: 0.5 }}
-                />
+                {discoveryPathwayResources.length > 0 ? (
+                  <DiscoveryPathway resources={discoveryPathwayResources} />
+                ) : (
+                  <img
+                    src="/pathway-pulcinella.png"
+                    alt=""
+                    style={{ opacity: 0.5 }}
+                  />
+                )}
               </Section>
             </div>
           </div>
@@ -509,6 +517,7 @@ Home.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.object),
   authors: PropTypes.arrayOf(PropTypes.object),
   partners: PropTypes.arrayOf(PropTypes.object),
+  discoveryPathwayResources: PropTypes.arrayOf(PropTypes.object),
 };
 
 export async function getServerSideProps({ locale }) {
@@ -524,12 +533,14 @@ export async function getServerSideProps({ locale }) {
       animationTechniquesResult,
       personEntriesResult,
       partnersResult,
+      discoveryPathwayResult,
     ] = await Promise.all([
       apiClient(getHomeQuery).catch(() => ({})),
       apiClient(getAllWorksKeywordsQuery).catch(() => ({})),
       apiClient(getAllAnimationTechniquesQuery).catch(() => ({})),
       apiClient(getAllAuthorsIdsQuery).catch(() => ({})),
       apiClient(getPartnersQuery).catch(() => ({})),
+      getDiscoveryPathwayResources(locale).catch(() => []),
     ]);
 
     // Apply null safety to the results
@@ -542,6 +553,9 @@ export async function getServerSideProps({ locale }) {
     const partnersEntries = safeArray(
       safeObject(partnersResult).partnerEntries,
     );
+    const discoveryPathwayResources = Array.isArray(discoveryPathwayResult)
+      ? discoveryPathwayResult
+      : [];
 
     // Safe random selections with null checks
     const homeWorks = safeArray(homeEntry.works);
@@ -603,6 +617,7 @@ export async function getServerSideProps({ locale }) {
         keywords: homeKeywords || [],
         authors: homePersonEntries || [],
         partners: partnersEntries || [],
+        discoveryPathwayResources: discoveryPathwayResources || [],
       },
     };
   } catch (error) {
@@ -616,6 +631,7 @@ export async function getServerSideProps({ locale }) {
         keywords: [],
         authors: [],
         partners: [],
+        discoveryPathwayResources: [],
       },
     };
   }
