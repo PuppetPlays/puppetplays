@@ -1,0 +1,94 @@
+fieldLayouts:
+  93d5c8b5-a8da-4905-9884-ff72919e5869:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: c2f9b47d-b47b-4bdb-b0cf-e1123ad938e8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e170dd2d-c858-4261-834a-9c2fee02cbd5 # Mots-clés
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 16d5b2ed-4900-448c-ad39-0a966c334b5b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 3818d9d6-d991-4158-b877-93470dd0452c
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: fd9e8303-0234-4a15-8590-8e5b6ea5f6b2 # ContentBlock
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 96048dd1-ea79-49f5-8d32-c96899ec6413
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: dbf07dec-0e16-4502-8504-98ce9890bfe8
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fe99fa91-782e-4729-963a-877bbdb2d0d3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Media
+        uid: e3603f65-eaae-49be-8084-a3be20aa4a3e
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: b7f1de9e-308c-4ccf-b8f1-db11ba23be95 # Educational Resource
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

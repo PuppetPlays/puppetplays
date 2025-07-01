@@ -1,4 +1,4 @@
-dateModified: 1751273919
+dateModified: 1751354960
 elementSources:
   craft\elements\Entry:
     -
@@ -301,8 +301,8 @@ meta:
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
     07c0d544-d28a-449e-a643-936d89cb7a3a: Images # Images
     07cc50ee-05e5-483d-8911-22552f44be92: 'Personnages du texte' # Personnages du texte
-    8a9d32f6-b194-40d5-b9b0-c4334cac1828: 'Résumé du projet' # Résumé du projet
     7f9a6927-247c-41f1-a41e-cb3ad362be0d: Template # Template
+    8a9d32f6-b194-40d5-b9b0-c4334cac1828: 'Résumé du projet' # Résumé du projet
     8bb29c67-1705-4166-95be-10680e4e36a9: 'Par défaut' # Par défaut
     8c8213c1-75f5-4c1c-bc23-96b213711e06: Formats # Formats
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale
@@ -324,6 +324,7 @@ meta:
     33d9d2ff-375a-4bd1-ab48-36cc03c360b6: 'Titre du Projet' # Titre du Projet
     34a701b5-35b7-44d7-95a8-3e83b22b2899: 'Full Name' # Full Name
     38c13b78-0b68-4bc2-8a3c-599601b61947: Partenaires # Partenaires
+    38d4696a-e6ab-4b35-b3c7-ca0b22385bd7: Default # Default
     040b562a-a40a-4667-84e7-0dc3ea1787ac: 'Édition moderne' # Édition moderne
     42a8e3c5-6dcf-483a-93e3-a0f462764cfc: Sous-titre # Sous-titre
     45df3231-3a21-4a0c-93ea-01b0f58c5582: 'Genre (indiqué par l’auteur)' # Genre (indiqué par l’auteur)
@@ -413,6 +414,7 @@ meta:
     b2df9a63-171c-49f1-b224-2b0def6e39b1: 'Partner Name' # Partner Name
     b3d3b5fa-565c-459c-b370-cc1dceca0750: Persons # Persons
     b3feeaa7-8778-465a-9010-dc86232c1fbb: Assets # Assets
+    b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Educational Resource
     b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
     b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
     b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
@@ -459,8 +461,8 @@ meta:
     e205ebe8-5557-4b7c-a43f-9cf548e90c8d: Pays # Pays
     e780c89d-1896-434f-b228-1af758a8ab24: Biography # Biography
     e2264f91-0ef8-4237-9334-9b9061b59c0e: Partners # Partners
-    e555024e-2651-4c00-9772-7c3b197dc24a: 'Projets de Recherche' # Projets de Recherche
     e5103a12-53c5-42ca-8479-15e3372fc73f: Templates # Templates
+    e555024e-2651-4c00-9772-7c3b197dc24a: 'Projets de Recherche' # Projets de Recherche
     e9587719-a8d4-42d6-97c2-f0259ec67922: 'Institutions de conservation' # Institutions de conservation
     ea500c41-2beb-4ed4-a12c-afca214004c7: Superviseur # Superviseur
     ec7faa37-6b19-44d2-95ec-2b752648c37d: Langues # Langues
