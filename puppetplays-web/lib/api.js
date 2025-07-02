@@ -278,7 +278,7 @@ export const buildSearchQuery = (search, _locale) => {
   // 1. Exact phrase (highest priority)
   // 2. Implicit AND with wildcards (CraftCMS searches all words in SAME field)
   // 3. Special handling for apostrophes in multi-word context
-  
+
   const strategies = [];
 
   // Strategy 1: Exact phrase search (highest priority)
@@ -290,11 +290,7 @@ export const buildSearchQuery = (search, _locale) => {
   // CraftCMS implicit AND ensures both words are in same field = precise!
   const wordsWithWildcards = words
     .map(word => {
-      if (word.includes("'")) {
-        // For apostrophes, preserve the word structure for implicit AND
-        return word;
-      }
-      // Add wildcards for partial matching
+      // Add wildcards for partial matching to ALL words, including those with apostrophes
       return `${word}*`;
     })
     .join(' ');
@@ -312,9 +308,9 @@ export const buildSearchQuery = (search, _locale) => {
         return `${cleanWord}*`;
       })
       .join(' ');
-    
+
     strategies.push(wordsWithoutApostrophes);
-    
+
     // Also add exact phrase without apostrophes
     const phraseWithoutApostrophes = normalizedSearch.replace(/'/g, '');
     strategies.push(`"${phraseWithoutApostrophes}"`);

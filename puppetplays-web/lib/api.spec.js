@@ -27,7 +27,7 @@ describe('buildSearchQuery', () => {
     test('handles different apostrophe types', () => {
       expect(buildSearchQuery("l'empio")).toBe("l'empio* OR lempio*");
       expect(buildSearchQuery("l'empio")).toBe("l'empio* OR lempio*");
-      expect(buildSearchQuery("l`empio")).toBe("l'empio* OR lempio*");
+      expect(buildSearchQuery('l`empio')).toBe("l'empio* OR lempio*");
     });
 
     test('trailing space is handled', () => {
@@ -63,7 +63,9 @@ describe('buildSearchQuery', () => {
     test('three words with apostrophes: progressive approach', () => {
       const result = buildSearchQuery("l'assemblée des poissardes");
       // IMPROVED: now includes apostrophe handling strategies for better matching
-      expect(result).toBe('"l\'assemblée des poissardes" OR l\'assemblée des* poissardes* OR lassemblée* des* poissardes* OR "lassemblée des poissardes"');
+      expect(result).toBe(
+        '"l\'assemblée des poissardes" OR l\'assemblée* des* poissardes* OR lassemblée* des* poissardes* OR "lassemblée des poissardes"',
+      );
     });
   });
 
@@ -120,7 +122,7 @@ describe('buildSearchQuery', () => {
       expect(result).toBe("l'empio* OR lempio*");
     });
 
-    test('assemblée should match L\'assemblée', () => {
+    test("assemblée should match L'assemblée", () => {
       const result = buildSearchQuery('assemblée');
       expect(result).toBe('assemblée*');
     });
@@ -128,14 +130,18 @@ describe('buildSearchQuery', () => {
     test('venus adonis triumph love: truly progressive approach', () => {
       const result = buildSearchQuery('venus adonis triumph love');
       // TRULY progressive: 4+ words = exact phrase + implicit AND only
-      expect(result).toBe('"venus adonis triumph love" OR venus* adonis* triumph* love*');
+      expect(result).toBe(
+        '"venus adonis triumph love" OR venus* adonis* triumph* love*',
+      );
     });
   });
 
   describe('edge cases', () => {
     test('multiple spaces are normalized', () => {
       // TRULY progressive: no individual word OR
-      expect(buildSearchQuery('word1    word2')).toBe('"word1 word2" OR word1* word2*');
+      expect(buildSearchQuery('word1    word2')).toBe(
+        '"word1 word2" OR word1* word2*',
+      );
     });
 
     test('single quoted phrase with apostrophe', () => {
@@ -144,10 +150,12 @@ describe('buildSearchQuery', () => {
     });
 
     test('truly progressive approach for long phrases', () => {
-      const result = buildSearchQuery('a very long search phrase with many words');
+      const result = buildSearchQuery(
+        'a very long search phrase with many words',
+      );
       // TRULY progressive: exact phrase + implicit AND only
       expect(result).toBe(
-        '"a very long search phrase with many words" OR a* very* long* search* phrase* with* many* words*'
+        '"a very long search phrase with many words" OR a* very* long* search* phrase* with* many* words*',
       );
     });
   });
