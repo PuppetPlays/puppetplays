@@ -39,16 +39,22 @@ const DiscoveryPathwayItem = ({ resource, type, index, isActive, onHover }) => {
   };
 
   const getResourceImage = () => {
-    if (resource.mainImage && resource.mainImage.length > 0) {
+    // CraftCMS images are returned as arrays, need to access first element
+    if (resource.mainImage && Array.isArray(resource.mainImage) && resource.mainImage.length > 0) {
       return resource.mainImage[0].url;
     }
-    if (resource.thumbnail && resource.thumbnail.length > 0) {
-      return resource.thumbnail[0].url;
+    
+    // For videos from Nakala, thumbnail might be an object with url property
+    if (type === 'video' && resource.thumbnail) {
+      if (resource.thumbnail.url) {
+        return resource.thumbnail.url;
+      }
+      // If thumbnail is an array (like CraftCMS)
+      if (Array.isArray(resource.thumbnail) && resource.thumbnail.length > 0) {
+        return resource.thumbnail[0].url;
+      }
     }
-    // Handle Nakala video thumbnails
-    if (type === 'video' && resource.thumbnail && resource.thumbnail.url) {
-      return resource.thumbnail.url;
-    }
+    
     // Fallback images based on type
     switch (type) {
       case 'person':

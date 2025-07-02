@@ -277,6 +277,7 @@ export const buildSearchQuery = (search, _locale) => {
   // ALL multi-word searches use the same strategy:
   // 1. Exact phrase (highest priority)
   // 2. Implicit AND with wildcards (CraftCMS searches all words in SAME field)
+  // 3. Special handling for apostrophes in multi-word context
   
   const strategies = [];
 
@@ -299,6 +300,25 @@ export const buildSearchQuery = (search, _locale) => {
     .join(' ');
 
   strategies.push(wordsWithWildcards);
+
+  // Strategy 3: Handle apostrophes in multi-word context
+  // If any word contains apostrophes, add variants without apostrophes
+  const hasApostrophes = words.some(word => word.includes("'"));
+  if (hasApostrophes) {
+    // Create version with apostrophes removed and wildcards added
+    const wordsWithoutApostrophes = words
+      .map(word => {
+        const cleanWord = word.replace(/'/g, '');
+        return `${cleanWord}*`;
+      })
+      .join(' ');
+    
+    strategies.push(wordsWithoutApostrophes);
+    
+    // Also add exact phrase without apostrophes
+    const phraseWithoutApostrophes = normalizedSearch.replace(/'/g, '');
+    strategies.push(`"${phraseWithoutApostrophes}"`);
+  }
 
   // NO individual word OR strategies for ANY multi-word search
   // This was causing the explosion of results
