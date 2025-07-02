@@ -62,8 +62,8 @@ describe('buildSearchQuery', () => {
 
     test('three words with apostrophes: progressive approach', () => {
       const result = buildSearchQuery("l'assemblée des poissardes");
-      // TRULY progressive: exact phrase + implicit AND only
-      expect(result).toBe('"l\'assemblée des poissardes" OR l\'assemblée des* poissardes*');
+      // IMPROVED: now includes apostrophe handling strategies for better matching
+      expect(result).toBe('"l\'assemblée des poissardes" OR l\'assemblée des* poissardes* OR lassemblée* des* poissardes* OR "lassemblée des poissardes"');
     });
   });
 
