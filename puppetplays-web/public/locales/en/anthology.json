@@ -1,0 +1,23 @@
+{
+  "title": "Anthology",
+  "metaDescription": "Anthology of digitized plays from the PuppetPlays project - Manuscripts and transcriptions of puppet plays",
+  "description": "Discover our collection of digitized plays with their transcriptions. Explore original manuscripts and their transcriptions side by side.",
+  "noPlays": "No plays",
+  "onePlay": "1 play",
+  "playsCount": "{{count}} plays",
+  "filterByCentury": "Filter by century...",
+  "selectLanguage": "Select language",
+  "downloadTranscription": "Download transcription",
+  "downloadPDF": "Download as PDF",
+  "digitalizedManuscript": "Digitized manuscript",
+  "transcription": "Transcription",
+  "loadingViewer": "Loading viewer...",
+  "loadingTranscription": "Loading transcription...",
+  "noTranscriptionAvailable": "No transcription available for this language.",
+  "noDigitalContentAvailable": "No digital content available for this play.",
+  "errorLoadingTranscription": "Error loading transcription.",
+  "pdfDownloadComingSoon": "PDF download will be available soon.",
+  "playNotFound": "Play not found",
+  "playNotFoundDescription": "The play you are looking for does not exist or an error occurred.",
+  "backToAnthology": "Back to anthology"
+} 

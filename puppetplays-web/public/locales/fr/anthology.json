@@ -1,0 +1,23 @@
+{
+  "title": "Anthologie",
+  "metaDescription": "Anthologie des pièces numérisées du projet PuppetPlays - Manuscrits et transcriptions de pièces pour marionnettes",
+  "description": "Découvrez notre collection de pièces numérisées avec leurs transcriptions. Explorez les manuscrits originaux et leurs transcriptions en parallèle.",
+  "noPlays": "Aucune pièce",
+  "onePlay": "1 pièce",
+  "playsCount": "{{count}} pièces",
+  "filterByCentury": "Filtrer par siècle...",
+  "selectLanguage": "Sélectionner la langue",
+  "downloadTranscription": "Télécharger la transcription",
+  "downloadPDF": "Télécharger en PDF",
+  "digitalizedManuscript": "Manuscrit numérisé",
+  "transcription": "Transcription",
+  "loadingViewer": "Chargement de la visionneuse...",
+  "loadingTranscription": "Chargement de la transcription...",
+  "noTranscriptionAvailable": "Aucune transcription disponible pour cette langue.",
+  "noDigitalContentAvailable": "Aucun contenu numérique disponible pour cette pièce.",
+  "errorLoadingTranscription": "Erreur lors du chargement de la transcription.",
+  "pdfDownloadComingSoon": "Le téléchargement PDF sera bientôt disponible.",
+  "playNotFound": "Pièce non trouvée",
+  "playNotFoundDescription": "La pièce que vous recherchez n'existe pas ou une erreur s'est produite.",
+  "backToAnthology": "Retour à l'anthologie"
+} 

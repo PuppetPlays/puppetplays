@@ -2,12 +2,37 @@ export async function fetchNakala(endpoint) {
   const baseUrl = 'https://api.nakala.fr';
 
   const url = `${baseUrl}${endpoint}`;
+  console.log(`🔍 [NAKALA DEBUG] Fetching: ${url}`);
+
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    console.log(
+      `📡 [NAKALA DEBUG] Response status: ${res.status} ${res.statusText}`,
+    );
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error(`❌ [NAKALA DEBUG] HTTP Error ${res.status}:`, errorText);
+      throw new Error(`HTTP ${res.status}: ${errorText}`);
+    }
+
+    const data = await res.json();
+    console.log(`✅ [NAKALA DEBUG] Success for ${endpoint}:`, {
+      dataType: Array.isArray(data) ? 'Array' : typeof data,
+      arrayLength: Array.isArray(data) ? data.length : 'N/A',
+      keys:
+        typeof data === 'object' && data !== null ? Object.keys(data) : 'N/A',
+      sampleData:
+        typeof data === 'object' && data !== null
+          ? Array.isArray(data)
+            ? data.slice(0, 2)
+            : data
+          : data,
+    });
+
+    return data;
   } catch (err) {
-    console.error('Erreur API Nakala:', err);
+    console.error(`💥 [NAKALA DEBUG] Error for ${endpoint}:`, err);
     throw err;
   }
 }
@@ -129,4 +154,45 @@ export async function fetchCollectionVideoCount(collectionId) {
 // Fonction helper pour obtenir les détails d'une donnée (vidéo)
 export async function fetchVideoData(videoId) {
   return fetchNakala(`/datas/${videoId}`);
+}
+
+/**
+ * Fetches collection data (similar to fetchCollectionVideos but more generic)
+ * @param {string} collectionId
+ * @param {Object} pagination
+ * @param {number} pagination.page - Page number (1-indexed)
+ * @param {number} pagination.limit - Number of items per page
+ * @returns {Promise<Object>} - Object containing data array, total, currentPage, and lastPage
+ */
+export const fetchCollectionData = async (
+  collectionId,
+  pagination = { page: 1, limit: 10 },
+) => {
+  try {
+    const { page, limit } = pagination;
+    const url = `/collections/${collectionId}/datas?${new URLSearchParams({
+      page,
+      limit,
+    })}`;
+
+    const response = await fetchNakala(url);
+    return response;
+  } catch (err) {
+    console.error(`Error fetching data for collection ${collectionId}:`, err);
+    return {
+      data: [],
+      total: 0,
+      currentPage: 1,
+      lastPage: 1,
+    };
+  }
+};
+
+/**
+ * Fetches a specific Nakala item by its identifier
+ * @param {string} itemId - The Nakala item identifier
+ * @returns {Promise<Object>} - The item data
+ */
+export async function fetchNakalaItem(itemId) {
+  return fetchNakala(`/datas/${itemId}`);
 }

@@ -440,9 +440,16 @@ function Work(props) {
 
         <Section
           title={t('common:translatedBy')}
-          show={translatedBy && Array.isArray(translatedBy) && translatedBy.length > 0 && !!translatedBy[0]?.fullName}
+          show={
+            translatedBy &&
+            Array.isArray(translatedBy) &&
+            translatedBy.length > 0 &&
+            !!translatedBy[0]?.fullName
+          }
         >
-          {translatedBy && Array.isArray(translatedBy) && translatedBy[0]?.fullName}
+          {translatedBy &&
+            Array.isArray(translatedBy) &&
+            translatedBy[0]?.fullName}
         </Section>
       </div>
     </article>
@@ -457,7 +464,7 @@ Work.propTypes = {
   translatedBy: PropTypes.arrayOf(
     PropTypes.shape({
       fullName: PropTypes.string,
-    })
+    }),
   ),
   title: PropTypes.string.isRequired,
   mainImage: PropTypes.array,
