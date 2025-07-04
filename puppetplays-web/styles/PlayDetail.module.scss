@@ -262,6 +262,195 @@
   }
 }
 
+.nakalaViewer {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+}
+
+.nakalaViewerFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: white;
+}
+
+// Side by side layout
+.sideBySideLayout {
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 200px);
+  min-height: 600px;
+  
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+}
+
+.transcriptionSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  
+  @media (max-width: 1024px) {
+    order: 2;
+  }
+}
+
+.viewerSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  
+  @media (max-width: 1024px) {
+    order: 1;
+  }
+}
+
+.transcriptionHeader,
+.viewerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.pageInfo,
+.pageIndicator {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.pageNavigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pageButton {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #0056b3;
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.transcriptionContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.pageTranscription {
+  line-height: 1.6;
+  font-size: 1rem;
+  
+  .speaker {
+    font-weight: bold;
+    color: #2c3e50;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stage-direction {
+    font-style: italic;
+    color: #7f8c8d;
+    display: block;
+    margin: 0.5rem 0;
+  }
+  
+  .verse-line {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .verse-group {
+    margin: 1rem 0;
+  }
+  
+  .speech {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+  }
+  
+  .section-head {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 1.5rem 0 1rem 0;
+  }
+  
+  .page-break {
+    margin: 2rem 0;
+    border: none;
+    border-top: 2px dashed #ccc;
+  }
+}
+
+.noTranscription,
+.noTranscriptionAvailable {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+}
+
+.transcriptionLoading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.nakalaViewer {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  min-height: 500px;
+}
+
+.nakalaViewerFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: white;
+  min-height: 500px;
+}
+
 // Responsive design
 @media (max-width: 1024px) {
   .mainContent {
