@@ -1,4 +1,4 @@
-dateModified: 1751899483
+dateModified: 1751900756
 elementSources:
   craft\elements\Entry:
     -
@@ -305,6 +305,7 @@ meta:
     7f9a6927-247c-41f1-a41e-cb3ad362be0d: Template # Template
     8a9d32f6-b194-40d5-b9b0-c4334cac1828: 'Résumé du projet' # Résumé du projet
     8a258b7d-1518-4112-85df-287c1f8c889f: Volume # Volume
+    8b494155-cca5-4c7f-baa3-292b2cf50351: 'Author Identifiers' # Author Identifiers
     8bb29c67-1705-4166-95be-10680e4e36a9: 'Par défaut' # Par défaut
     8c8213c1-75f5-4c1c-bc23-96b213711e06: Formats # Formats
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale

@@ -1,0 +1,60 @@
+fieldLayouts:
+  182f8e2d-8d44-4e0b-9c0d-de10d8130700:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 3df1d9d7-f431-4e77-8af6-67a22c501379 # Identifiant ARK
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0b33ff5e-8811-4f38-8f30-b05365cc786a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 91e5559d-8541-4d49-90fa-8f06aefe00b7 # Identifiant VIAF
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0201cae1-7283-4227-9407-8afa6aad8548
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f03405c5-53d6-4a5b-820a-1a1880a63524 # Identifiant IDREF
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b97b42bc-e120-4726-b62b-61990c08a857
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 240995cf-5c01-4d81-8338-b19a74e20d1a # Identifiant ISNI
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dc2fd8c4-a332-4d96-bd45-0cac499ca94c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Identifiers
+        uid: eb4a72d3-0c30-4802-936a-f00ed1144c50
+        userCondition: null
+handle: authorIdentifiers
+name: 'Author Identifiers'
+sortOrder: 3
