@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5b8835bb67b625ee9edeb5106c422a6",
+    "content-hash": "6fbca38e2d859090ac54dfe5d22117be",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
@@ -7033,6 +7033,72 @@
                 }
             ],
             "time": "2024-11-13T00:05:42+00:00"
+        },
+        {
+            "name": "verbb/super-table",
+            "version": "3.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verbb/super-table.git",
+                "reference": "ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a",
+                "reference": "ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^4.0.0",
+                "php": "^8.0.2",
+                "verbb/base": "^2.0.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Super Table",
+                "class": "verbb\\supertable\\SuperTable",
+                "handle": "super-table",
+                "description": "Super-charge your Craft workflow with Super Table. Use it to group fields together or build complex Matrix-in-Matrix solutions.",
+                "changelogUrl": "https://raw.githubusercontent.com/verbb/super-table/craft-4/CHANGELOG.md",
+                "documentationUrl": "https://github.com/verbb/super-table"
+            },
+            "autoload": {
+                "psr-4": {
+                    "verbb\\supertable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Verbb",
+                    "homepage": "https://verbb.io"
+                }
+            ],
+            "description": "Super-charge your content builders and create nested Matrix fields.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "super table"
+            ],
+            "support": {
+                "docs": "https://github.com/verbb/super-table",
+                "email": "support@verbb.io",
+                "issues": "https://github.com/verbb/super-table/issues?state=open",
+                "rss": "https://github.com/verbb/super-table/commits/v2.atom",
+                "source": "https://github.com/verbb/super-table"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/verbb",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-13T02:39:50+00:00"
         },
         {
             "name": "verbb/workflow",
