@@ -79,8 +79,20 @@ fieldLayouts:
           -
             elementCondition: null
             type: craft\fieldlayoutelements\HorizontalRule
-            uid: 586d65e3-190e-47a4-b981-4b3fdd1a37fb
+            uid: b4203563-5f48-443d-8744-0f9aa06422b6
             userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd # Auteur
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f70d90e4-ee47-478b-96f2-7ddbfb80b1bb
+            userCondition: null
+            warning: null
+            width: 100
           -
             elementCondition: null
             fieldUid: 69e0955a-5deb-490f-8b73-6e852e245f4c # Author and ORCID identifier
@@ -90,42 +102,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 13084771-29e2-429d-a272-635b7c8834b6
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 269fbeb7-8282-427c-b9ff-7d338ab1b8ef # Date
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: bb3c5a9b-02a7-49a8-8304-63a00e5c220d
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: 268ec30e-43a1-429e-8600-787a223ae0dc # Name of the editor / magazine  
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: d3d7dcd5-c13a-4f32-9c69-6edd5f63fe24
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            elementCondition: null
-            fieldUid: be4f8219-2e2d-4fe7-8a7c-ecdb106189fb # Peer review
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: f172d662-5545-4959-82aa-5cb7c9873f9e
             userCondition: null
             warning: null
             width: 100
@@ -143,6 +119,18 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
+            fieldUid: be4f8219-2e2d-4fe7-8a7c-ecdb106189fb # Peer review
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f172d662-5545-4959-82aa-5cb7c9873f9e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 93ef4b66-f901-4820-a676-5130b59adcb4 # License
             instructions: null
             label: null
@@ -150,6 +138,102 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 0619c6d7-0997-4c31-8fb6-08a2831641f2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: Book
+            type: craft\fieldlayoutelements\Heading
+            uid: fd04db1b-278b-4be1-aa35-5ac08b747910
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: e31e7ecb-d2c2-413b-a9aa-f6b7d45f5a89 # Book title
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d550db84-7901-4ecc-a7df-5bc5d30c2113
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            heading: Edition
+            type: craft\fieldlayoutelements\Heading
+            uid: 50450e22-f3c8-4e88-ac3b-1a0397cce788
+            userCondition: null
+          -
+            elementCondition: null
+            fieldUid: 268ec30e-43a1-429e-8600-787a223ae0dc # Name of the editor / magazine  
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d3d7dcd5-c13a-4f32-9c69-6edd5f63fe24
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: b2e52632-2de4-4bfa-acc7-3108249c6790 # Issn
+            instructions: null
+            label: ISSN
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b3ce8085-694a-4e8e-82f4-b42654f5051f
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: df947f02-658c-48b9-b53d-868af0bfc3e3 # Place of Edition
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c683d141-3de2-4800-9f04-861167df9201
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 269fbeb7-8282-427c-b9ff-7d338ab1b8ef # Date
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bb3c5a9b-02a7-49a8-8304-63a00e5c220d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 8a258b7d-1518-4112-85df-287c1f8c889f # Volume
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0c71e3bf-a90d-4015-bc16-4713c0290c15
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2d8643ae-5357-48a9-a90c-59e78c29508c # Nombre de pages
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7f2e9692-87d5-4524-9434-c0150f50f5e4
             userCondition: null
             warning: null
             width: 100

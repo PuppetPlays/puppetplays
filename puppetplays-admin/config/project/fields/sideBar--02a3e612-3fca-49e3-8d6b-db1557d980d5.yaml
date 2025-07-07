@@ -1,0 +1,30 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: e92fa83e-6e31-4d20-a993-c04e900f1bd9 # Technical Documentation
+handle: sideBar
+instructions: null
+name: 'Side bar'
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 173685933
+  columns:
+    __assoc__:
+      -
+        - 3130a680-11f2-4c70-9253-11a4384a363c
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_sidebar}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField
