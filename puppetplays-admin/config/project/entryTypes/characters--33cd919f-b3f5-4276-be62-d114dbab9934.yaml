@@ -2,6 +2,7 @@ fieldLayouts:
   dde1177f-2838-4270-a988-0bf638a22da1:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,8 +10,10 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
+            inputType: null
+            instructions: null
             label: 'Nom du personnage pour l’indexation'
             max: null
             min: null
@@ -24,41 +27,56 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: d2093f9e-d0fe-4e6c-aaa3-d16bf5e78801
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 8d9ba885-0f2b-4591-926e-73e3a6ecc23f # Image principale
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 24b6b5d7-c2e2-4744-8e18-388dc1b464a6
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: fa0087ff-5695-4bdc-8bf4-9650ee08cde6 # Notice
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: bb066660-e91c-4448-bd54-f190928dac10
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: f7587c45-1123-417a-9e51-c0a292fb22e8 # Autre(s) version(s) du même nom
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 87082301-c38c-4a3f-b0bf-7ada82d708e1
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: fdf43b12-9b4d-41b9-a5b4-1cdd94d68e3d
+        userCondition: null
 handle: characters
 hasTitleField: true
 name: Personnages
 section: bfd49b21-b009-43f4-bb18-fcb1b08f5bd5 # Nom du personnage pour l’indexation
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

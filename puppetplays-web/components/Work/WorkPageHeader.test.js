@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 
 import WorkPageHeader from './WorkPageHeader';
 
+// Mock process.env.NEXT_PUBLIC_API_URL
+process.env.NEXT_PUBLIC_API_URL = 'http://localhost:8080';
+
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }));
@@ -13,6 +16,7 @@ useRouter.mockImplementation(() => ({
   route: '/',
   asPath: '/',
   query: '',
+  locale: 'fr',
 }));
 
 // Mock pour next-i18next
@@ -54,7 +58,8 @@ test('renders the work page header', () => {
     />,
   );
 
-  const backButton = screen.getByRole('button');
+  const buttons = screen.getAllByRole('button');
+  const backButton = buttons[0]; // First button is the back button
   const content = screen.getByTestId('work-page-header-content');
 
   expect(backButton).toBeInTheDocument();
@@ -73,9 +78,28 @@ test('renders the work page header without a writing place', () => {
     />,
   );
 
-  const backButton = screen.getByRole('button');
+  const buttons = screen.getAllByRole('button');
+  const backButton = buttons[0]; // First button is the back button
   const content = screen.getByTestId('work-page-header-content');
 
   expect(backButton).toBeInTheDocument();
   expect(content).toHaveTextContent('My work - Raymond Poisson, Claude Garbut');
+});
+
+// Add test for PDF button
+test('renders the PDF download button', () => {
+  render(
+    <WorkPageHeader
+      id="102"
+      slug="my-work"
+      title="My work"
+      authors={authors}
+    />,
+  );
+
+  const buttons = screen.getAllByRole('button');
+  const pdfButton = buttons[buttons.length - 1]; // Last button is the PDF button
+
+  expect(pdfButton).toBeInTheDocument();
+  expect(pdfButton).toHaveTextContent('PDF');
 });

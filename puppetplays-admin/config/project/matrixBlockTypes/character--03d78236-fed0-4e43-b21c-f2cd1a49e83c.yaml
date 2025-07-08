@@ -3,43 +3,51 @@ fieldLayouts:
   6f0edc51-89f0-4fff-9495-83bf4ecd25de:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1 # Nom dans le texte
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 2943d2bd-d0ea-4e12-8857-97850604dc5a
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: fd390cb8-325d-419c-a64a-95714d698f94 # Personnage(s) pour l’indexation
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: e191f3de-033c-4b98-ad03-f3be08f2ce97
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: bb7027b0-c8b5-4cdc-bb54-be870d629460
+        userCondition: null
 fields:
   4d1dd542-4f61-4ce4-a1c8-2f969ecd3da1: # Nom dans le texte
     columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: nameInText
-    instructions: ''
+    instructions: null
     name: 'Nom dans le texte'
     searchable: true
     settings:
       byteLimit: null
       charLimit: null
-      code: ''
+      code: false
       columnType: null
-      initialRows: '4'
-      multiline: ''
+      initialRows: 4
+      multiline: false
       placeholder: null
       uiMode: normal
     translationKeyFormat: null
@@ -50,16 +58,18 @@ fields:
     contentColumnType: string
     fieldGroup: null
     handle: roles
-    instructions: ''
+    instructions: null
     name: 'Personnage(s) pour l’indexation'
     searchable: true
     settings:
       allowSelfRelations: false
-      limit: ''
+      branchLimit: null
       localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: null
+      minRelations: null
       selectionLabel: 'Sélectionner un ou plusieurs personnage(s) pour l’indexation'
       showSiteMenu: false
-      source: null
       sources:
         - 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
       targetSiteId: null

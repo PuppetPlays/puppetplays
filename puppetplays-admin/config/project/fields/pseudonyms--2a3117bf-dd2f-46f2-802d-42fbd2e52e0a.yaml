@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: b3d3b5fa-565c-459c-b370-cc1dceca0750 # Persons
 handle: pseudonyms
-instructions: ''
+instructions: null
 name: Pseudonyme
 searchable: false
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs pseudonyme(s)'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
   targetSiteId: null

@@ -6,9 +6,9 @@
   "ercLabel": "ERC - GA 835193",
   "releaseDate": "Ouverture prévue en 2022",
   "projectNews": "L'actualité du projet",
-  "projectNewsUrl": "https://puppetplays.eu/projet/communications",
+  "projectNewsUrl": "/projet/communications",
   "ourSiteLabel": "Notre site",
-  "ourSiteUrl": "https://puppetplays.eu/projet/presentation",
+  "ourSiteUrl": "/projet/presentation",
   "facebookLinkLabel": "Page Facebook PuppetPlays",
   "subscribeTitle": "Soyez informé de l'ouverture du site",
   "subscribeLabel": "Abonnez-vous à la newsletter mensuelle",
@@ -24,7 +24,7 @@
   "introText3": "Une première version de la plateforme numérique PuppetPlays sera accessible dans le courant de l'année 2022. Sa version complète sera publiée en 2024.",
   "introImageCaption": "Illustration : Christophe Loiseau et Matt Jackson",
   "theTeam": "L'équipe",
-  "theTeamUrl": "https://puppetplays.eu/projet/equipe",
+  "theTeamUrl": "/projet/equipe",
   "projectFinancedBy": "Ce projet est financé par le Programme de recherche et d'innovation Horizon 2020 de l'Union Européenne, dans le cadre du Grant Agreement ERC 835193",
   "ue": {
     "url": "https://europa.eu/european-union/index_fr",
@@ -58,7 +58,7 @@
     },
     "anthology": {
       "title": "L'anthologie",
-      "subtitle": "En préparation"
+      "subtitle": "Manuscrits et transcriptions"
     },
     "pathways": {
       "title": "Parcours découvertes"
@@ -93,6 +93,7 @@
     }
   },
   "pulcinellaPathwayTitle": "La figure de Pulcinella",
+  "discoveryPathwayTitle": "Parcours découverte",
   "pathway": "Parcours découverte",
   "animationTechniqueTitle": "Techniques d'animation",
   "animationTechniqueDescription": "Découvrez les différentes techniques utilisées pour manipuler les marionnettes au cours de l'histoire du théâtre de marionnettes européen. Cette section explore les approches artistiques et techniques qui donnent vie à ces personnages.",

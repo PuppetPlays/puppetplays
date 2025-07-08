@@ -2,16 +2,16 @@ columnSuffix: epvpwrkc
 contentColumnType: text
 fieldGroup: fd15fc2d-a3c9-4686-891d-700dd34684ec # Communications
 handle: excerptComunications
-instructions: ''
+instructions: null
 name: Extrait
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '2'
-  multiline: '1'
+  initialRows: 2
+  multiline: true
   placeholder: null
   uiMode: normal
 translationKeyFormat: null

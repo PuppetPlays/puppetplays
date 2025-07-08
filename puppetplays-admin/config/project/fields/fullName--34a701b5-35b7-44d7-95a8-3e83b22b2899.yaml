@@ -2,16 +2,16 @@ columnSuffix: cpxukpir
 contentColumnType: text
 fieldGroup: 25d7ddec-23cf-442f-9870-0085d484be5f # Team
 handle: fullName
-instructions: ''
+instructions: null
 name: 'Full Name'
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: ''
+  initialRows: 4
+  multiline: false
   placeholder: 'e.g., "Dr Jean Boutan"'
   uiMode: normal
 translationKeyFormat: null

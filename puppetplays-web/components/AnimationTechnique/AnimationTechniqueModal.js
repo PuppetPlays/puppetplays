@@ -24,15 +24,20 @@ function AnimationTechniqueModal() {
   const { t } = useTranslation();
   const router = useRouter();
   const [modalState, dispatch] = useModal();
-  const { id: animationTechniqueId } =
+  const meta =
     getMetaOfModalByType(modalState, modalTypes.animationTechnique) || {};
+  const animationTechniqueId = meta.id;
 
   const isOpen = isModalOfTypeOpen(modalState, modalTypes.animationTechnique);
-  const queryKey = isOpen
-    ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
-    : null;
 
-  const fetcher = async (query, locale, id) => {
+  const queryKey =
+    isOpen && animationTechniqueId
+      ? [getAnimationTechniqueByIdQuery, router.locale, animationTechniqueId]
+      : null;
+
+  const fetcher = async key => {
+    const [query, locale, id] = key;
+
     try {
       return await fetchAPI(query, {
         variables: {
@@ -50,7 +55,10 @@ function AnimationTechniqueModal() {
     error: techError,
     isLoading: techLoading,
     mutate: mutateTech,
-  } = useSafeData(queryKey, fetcher);
+  } = useSafeData(queryKey, fetcher, {
+    revalidateOnMount: true,
+    dedupingInterval: 0, // Disable deduping to force fresh fetch
+  });
 
   const {
     safeData: works,
@@ -58,10 +66,14 @@ function AnimationTechniqueModal() {
     isLoading: worksLoading,
     mutate: mutateWorks,
   } = useSafeData(
-    isOpen
+    isOpen && animationTechniqueId
       ? [getWorksOfAnimationTechniqueQuery, router.locale, animationTechniqueId]
       : null,
     fetcher,
+    {
+      revalidateOnMount: true,
+      dedupingInterval: 0, // Disable deduping to force fresh fetch
+    },
   );
 
   const handleCloseModal = useCallback(() => {

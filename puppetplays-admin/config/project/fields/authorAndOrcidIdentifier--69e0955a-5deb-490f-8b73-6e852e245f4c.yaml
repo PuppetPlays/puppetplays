@@ -1,0 +1,59 @@
+columnSuffix: ursgnmkf
+contentColumnType: text
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: authorAndOrcidIdentifier
+instructions: null
+name: 'Author and ORCID identifier'
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Author
+            -
+              - handle
+              - author
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - 'ORCID Identifier'
+            -
+              - handle
+              - orcidIdentifier
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - ''
+        -
+          - col2
+          - ''
+  maxRows: null
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table

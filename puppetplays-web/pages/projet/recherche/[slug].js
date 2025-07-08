@@ -98,11 +98,11 @@ const ResearchProjectDetail = () => {
   }
 
   const postdoc = project.postdoctorant?.[0];
-  
+
   // Fonction pour formater la date avec mois traduit
   const formatDateWithMonth = dateValue => {
     if (!dateValue) return null;
-    
+
     let date;
     try {
       if (typeof dateValue === 'string' && dateValue.includes('T')) {

@@ -387,7 +387,9 @@
     }
   }
 
-  h2, h3, h4 {
+  h2,
+  h3,
+  h4 {
     color: #01055b;
     margin: 1.5rem 0 0.75rem 0;
     font-weight: 600;
@@ -409,7 +411,8 @@
     font-size: 1.05rem;
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
 
@@ -446,11 +449,13 @@
     }
   }
 
-  em, i {
+  em,
+  i {
     font-style: italic;
   }
 
-  strong, b {
+  strong,
+  b {
     font-weight: 600;
     color: #01055b;
   }
@@ -466,4 +471,4 @@
   @media (min-width: 860px) {
     margin-bottom: 3rem;
   }
-} 
+}

@@ -2,6 +2,7 @@ fieldLayouts:
   4ea2a6d3-4a6a-45e3-ae57-faa48c4d18fd:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,41 +27,56 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3164e84b-f00e-4032-b46f-768fa0c93b98
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: b2df9a63-171c-49f1-b224-2b0def6e39b1 # Partner Name
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d4094f0e-3190-4e44-aff0-f4165548bef4
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 900f4fb2-7440-48e0-9c90-f608c727dacd # Partner Link
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 5ef312e4-752c-49e5-aa22-6475f2e3b98a
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: d4792cfa-74d7-4508-943f-6b8adeebbe22 # Partner Logo
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 15855db1-b270-4df0-a0eb-6048c428b50c
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: da38d1ab-f8f4-4d54-8ca6-f7fde728f3f7
+        userCondition: null
 handle: partners
 hasTitleField: true
 name: Partenaires
 section: 38c13b78-0b68-4bc2-8a3c-599601b61947 # Partenaires
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

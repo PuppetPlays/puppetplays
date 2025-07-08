@@ -2,16 +2,16 @@ columnSuffix: bpuztnyc
 contentColumnType: text
 fieldGroup: fd15fc2d-a3c9-4686-891d-700dd34684ec # Communications
 handle: authorsCommunications
-instructions: ''
+instructions: null
 name: Auteurs
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: ''
+  initialRows: 4
+  multiline: false
   placeholder: null
   uiMode: normal
 translationKeyFormat: null

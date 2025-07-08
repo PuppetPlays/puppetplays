@@ -81,6 +81,11 @@ function MainNav({ inverse = false }) {
               <a>{t('common:map')}</a>
             </Link>
           </li>,
+          <li key="anthologie">
+            <Link href="/anthologie" legacyBehavior>
+              <a>Anthologie</a>
+            </Link>
+          </li>,
           <li key="auteurs">
             <Link href="/auteurs" legacyBehavior>
               <a>{t('common:authors')}</a>

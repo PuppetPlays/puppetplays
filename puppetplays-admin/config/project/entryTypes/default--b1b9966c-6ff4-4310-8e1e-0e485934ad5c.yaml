@@ -1,0 +1,89 @@
+fieldLayouts:
+  2dd433ca-1eee-43b0-9145-ca988f970ae6:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 605d1d61-1445-468d-a8e9-64045b9243ef
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 4915ebd0-388e-4fa0-80f8-5f6d0ecd4cfd # Introduction
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2bf8e172-36a4-411f-b369-822693c384cb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 841f5d9e-21e0-484d-a75c-3ad4551dfc77
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 1d2753a1-8983-43bc-8b38-d220072c06e9 # Sheet
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: fb5cac5b-2f0f-4891-977b-5839d73d7c5c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: f1b6940c-8411-4de5-88b1-c35222525582 # sheetTable
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bf12bcf8-d1e6-4110-ac04-998d72241e3b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Sheet
+        uid: 167645dc-b659-4a68-a61f-92fef340f8f0
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 335a9c82-6d01-484d-9dde-3ae312bcd46a # Technical Documentation Entry
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

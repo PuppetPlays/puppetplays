@@ -2,6 +2,7 @@ fieldLayouts:
   14fe4e50-b876-4f67-99a7-0c4f2ead859b:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,8 +10,10 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
+            inputType: null
+            instructions: null
             label: Nom
             max: null
             min: null
@@ -24,41 +27,56 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 09fe96c0-5fe8-4677-bf5e-69d8f712260e
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 157ddd75-0868-4e2b-ba35-028ae3c8ae42 # Pays
-            instructions: ''
-            label: ''
-            required: '1'
+            instructions: null
+            label: null
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 251f9bbd-4480-4e30-8ac5-24bb57a77ed3
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 69ee7666-95f0-4e8f-bf8b-09d970d7b777 # Latitude
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: dbaba994-2795-4462-84da-afca8ba81928
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 07a590cd-d68b-4af3-96b5-4b6f46cebe31 # Longitude
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 4fa6e563-9553-494f-b0e9-33afc7bf0757
+            userCondition: null
             warning: null
             width: 50
         name: Contenu
-        sortOrder: 1
+        uid: 43e24097-37f1-4c30-86fb-b653d2076c7c
+        userCondition: null
 handle: places
 hasTitleField: true
 name: Lieux
 section: 6591dcc5-c98b-41db-91e2-1b3dcd8eb31b # Lieux
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

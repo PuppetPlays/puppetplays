@@ -2,6 +2,7 @@ fieldLayouts:
   6a132b4a-0d79-43c7-b88a-d092ab1f99b9:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,32 +27,44 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3f681270-d895-479d-970d-2627db2590a6
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 2f49338c-c754-4002-a81e-9ab9ace8270a # Member Name
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: a3928c25-e2e4-4d4b-a90d-5443a5c09de6
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 76e227d6-6d74-4402-b9ef-b62e7898ede0 # Affiliation
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: cea078e3-bb5e-40ad-ab3c-92ae2e8cfe0e
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: d5d6fb14-c3ad-4fa2-b191-1dc7bc1cd1bc
+        userCondition: null
 handle: scientificCommittee
 hasTitleField: true
 name: 'Comite scientifique'
 section: f875c77d-f70a-4b8e-a854-a5a1a0ad1348 # Comite scientifique
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

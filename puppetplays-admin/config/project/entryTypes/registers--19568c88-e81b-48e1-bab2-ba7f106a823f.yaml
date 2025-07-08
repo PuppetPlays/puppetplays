@@ -2,6 +2,7 @@ fieldLayouts:
   43ce7bae-184c-46d5-9831-f9a128ec0c93:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,14 +27,20 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 7b235531-a9e5-49de-8495-14130b01d2b0
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: 6a991589-b6b1-4fa2-b30e-454682b03c14
+        userCondition: null
 handle: registers
 hasTitleField: true
 name: Registres
 section: 8e72b0db-f5f6-4385-9228-33dd62285d5c # Registres littéraires
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

@@ -2,6 +2,7 @@ fieldLayouts:
   dfbbb2bd-5b37-4cda-8466-7f3b67b32235:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,14 +27,20 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 4999c7b4-d58d-4c36-b977-3c968ca99a77
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: aa70c226-267e-4cbe-9c1f-c1cc90d40b3a
+        userCondition: null
 handle: theatricalTechniques
 hasTitleField: true
 name: 'Procédés théâtraux'
 section: ccd48638-f531-4032-a057-8af4f24cd187 # Procédés théâtraux
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

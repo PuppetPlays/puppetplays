@@ -52,13 +52,14 @@
   "closeNote": "Close the overview",
   "expandNote": "Open the overview",
   "writtenBy": "Written by",
+  "translatedBy": "Translated by",
   "alias": "aka",
   "language": "Language",
   "languageWithColon": "Language:",
   "languageWithColon_other": "Languages:",
   "genre": "Genre (as defined by the author)",
   "literaryTones": "Literary tones",
-  "animationTechniques": "Animations techniques",
+  "animationTechniques": "Animation techniques",
   "animationTechnique": "Animation technique",
   "keywords": "Key-words",
   "theatricalTechniques": "Theatrical techniques",
@@ -179,6 +180,7 @@
   "flatplan": "Flatplan",
   "discoveryPaths": "Discovery paths",
   "loading": "Loading...",
+  "mapLoadingMessage": "Loading map...",
   "error": {
     "title": "Error",
     "message": "An error occurred while rendering this component.",
@@ -217,5 +219,6 @@
   "previousPage": "Previous page",
   "nextPage": "Next page",
   "page": "Page {{page}}",
-  "image": "Image"
+  "image": "Image",
+  "accessibility": "Accessibility"
 }

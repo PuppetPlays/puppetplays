@@ -3,50 +3,58 @@ fieldLayouts:
   aaf137d1-4374-42bf-8154-dca46bd1703f:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 980b265a-4482-43da-940c-1d595933f6db # Langue
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: faa51afd-da00-46db-bd0b-1fa53de7d129
+            userCondition: null
             warning: null
             width: 25
           -
+            elementCondition: null
             fieldUid: 80e9ab34-aa2b-44e3-9798-dadda7e7a772 # Références bibliographiques
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: b3b88fd9-89b5-4647-8e0c-f819d66945bd
+            userCondition: null
             warning: null
             width: 75
         name: Content
-        sortOrder: 1
+        uid: ab730dc9-e76f-40c5-82c5-c679e1ebd9dd
+        userCondition: null
 fields:
   80e9ab34-aa2b-44e3-9798-dadda7e7a772: # Références bibliographiques
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: bibliographicRecord
-    instructions: ''
+    instructions: null
     name: 'Références bibliographiques'
     searchable: true
     settings:
       availableTransforms: '*'
       availableVolumes: '*'
-      cleanupHtml: true
       columnType: text
       configSelectionMode: choose
       defaultTransform: ''
       manualConfig: ''
-      purifierConfig: ''
-      purifyHtml: '1'
+      purifierConfig: null
+      purifyHtml: true
       redactorConfig: Simple.json
-      removeEmptyTags: '1'
-      removeInlineStyles: '1'
-      removeNbsp: '1'
-      showHtmlButtonForNonAdmins: ''
+      removeEmptyTags: true
+      removeInlineStyles: true
+      removeNbsp: true
+      showHtmlButtonForNonAdmins: false
       showUnpermittedFiles: false
       showUnpermittedVolumes: false
       uiMode: normal
@@ -54,19 +62,22 @@ fields:
     translationMethod: none
     type: craft\redactor\Field
   980b265a-4482-43da-940c-1d595933f6db: # Langue
+    columnSuffix: null
     contentColumnType: string
     fieldGroup: null
     handle: translationLanguage
-    instructions: ''
+    instructions: null
     name: Langue
     searchable: false
     settings:
       allowSelfRelations: false
-      limit: '1'
+      branchLimit: null
       localizeRelations: false
+      maintainHierarchy: false
+      maxRelations: 1
+      minRelations: null
       selectionLabel: 'Sélectionner une langue'
       showSiteMenu: true
-      source: null
       sources:
         - 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
       targetSiteId: null

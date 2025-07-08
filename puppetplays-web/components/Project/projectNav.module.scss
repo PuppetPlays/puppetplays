@@ -2,6 +2,31 @@
   width: 100%;
   border-bottom: 1px solid rgba(1, 5, 91, 0.1);
   position: relative;
+
+  @media (max-width: 768px) and (min-width: 481px) {
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 1px;
+      width: 40px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        white 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &.hasScroll::after {
+      opacity: 1;
+    }
+  }
 }
 
 .navTitleContainer {
@@ -37,6 +62,42 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
+  @media (max-width: 768px) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(1, 5, 91, 0.2);
+      border-radius: 3px;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(1, 5, 91, 0.2) transparent;
+
+    padding-left: 1rem;
+    padding-right: 3rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 0.75rem;
+    padding-right: 2.5rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
 }
 
 .navItem {
@@ -44,6 +105,16 @@
 
   &:last-child {
     margin-right: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 auto;
+    margin-right: 1.5rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    margin-right: 1.25rem;
   }
 }
 
@@ -56,6 +127,16 @@
   text-decoration: none;
   position: relative;
   transition: all 0.2s ease;
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 0.125rem;
+    font-size: 0.875rem;
+  }
 
   &:hover {
     color: #01055b;
@@ -78,29 +159,242 @@
   display: block;
 }
 
-@media (max-width: 768px) {
-  .navList {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
+.hasScroll {
+  @media (max-width: 768px) {
+    .navList {
+      box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
 
-    &::-webkit-scrollbar {
-      display: none;
+// Mobile navigation styles
+.mobileNav {
+  display: none;
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
+}
+
+.mobileNavToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #01055b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: #fafbfc;
+    border-color: #d1d5db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(1, 5, 91, 0.15);
+    border-color: rgba(1, 5, 91, 0.3);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.currentSection {
+  flex: 1;
+  text-align: left;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.chevron {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #6b7280;
+
+  &.chevronUp {
+    transform: rotate(180deg);
+  }
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.menuIconBar {
+  width: 100%;
+  height: 2px;
+  background-color: #6b7280;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  left: 0;
+
+  &:nth-child(1) {
+    top: 4px;
+  }
+
+  &:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:nth-child(3) {
+    bottom: 4px;
+  }
+
+  &.open {
+    &:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
     }
 
-    scrollbar-width: none;
+    &:nth-child(2) {
+      opacity: 0;
+      transform: translateY(-50%) scale(0);
+    }
+
+    &:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+  }
+}
+
+.mobileBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99;
+  animation: fadeIn 0.2s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.mobileDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 6px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  overflow: hidden;
+  animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 1rem 1.25rem;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.925rem;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+
+  &:last-child {
+    border-bottom: none;
   }
 
-  .navItem {
-    flex: 0 0 auto;
-    margin-right: 1.5rem;
-    white-space: nowrap;
+  &:hover {
+    background: #f9fafb;
+    color: #01055b;
+    padding-left: 1.5rem;
   }
 
-  .navLink {
-    padding: 0.5rem 0;
-    font-size: 0.9rem;
+  &:active {
+    background: #f3f4f6;
+  }
+
+  &.active {
+    background: #f0f4ff;
+    color: #01055b;
+    font-weight: 500;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #01055b;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #01055b;
+    }
+  }
+}
+
+// Hide regular nav on very small screens
+@media (max-width: 480px) {
+  .nav {
+    display: none;
+  }
+}
+
+// Ensure nav is visible on larger screens
+@media (min-width: 481px) {
+  .mobileNav {
+    display: none;
+  }
+
+  .nav {
+    display: block;
   }
 }

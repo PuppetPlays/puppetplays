@@ -1,0 +1,46 @@
+columnSuffix: xmnwqoqe
+contentColumnType: string(25)
+fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
+handle: scientificCategory
+instructions: null
+name: 'Scientific Category'
+searchable: false
+settings:
+  columnType: null
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Didier Plassard’s monography'
+        -
+          - value
+          - didierPlassardsMonography
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Peer-reviewed publications'
+        -
+          - value
+          - peerReviewedPublications
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - PhDs
+        -
+          - value
+          - phds
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

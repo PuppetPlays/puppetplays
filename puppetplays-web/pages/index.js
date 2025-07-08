@@ -1,6 +1,7 @@
 import BirthDeathDates from 'components/BirthDeathDates';
 import ButtonLink from 'components/ButtonLink';
 import Card from 'components/Card';
+import DiscoveryPathway from 'components/Home/DiscoveryPathway';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
@@ -21,6 +22,7 @@ import {
   getWorkByIdQuery,
   getFetchAPIClient,
   getPartnersQuery,
+  getDiscoveryPathwayResources,
 } from 'lib/api';
 import { getAllAnimationTechniquesQuery } from 'lib/filtersApi';
 import { safeObject, safeArray } from 'lib/safeAccess';
@@ -38,16 +40,16 @@ import clip from 'text-clipper';
 
 const PARTNERS = [
   {
-    name: 'rir',
-    link: 'https://rirra21.www.univ-montp3.fr/',
-    logo: '/logo-rir.svg',
-    alt: 'RIR',
-  },
-  {
     name: 'upvm',
     link: 'https://www.univ-montp3.fr/',
     logo: '/logo-upvm.svg',
     alt: 'UPVM',
+  },
+  {
+    name: 'rir',
+    link: 'https://rirra21.www.univ-montp3.fr/',
+    logo: '/logo-rir.svg',
+    alt: 'RIR',
   },
 ];
 const PUBLICATIONS = ['pulcinella', 'drama', 'roberto'];
@@ -124,6 +126,7 @@ export default function Home({
   work = null,
   keywords = [],
   partners = [],
+  discoveryPathwayResources = [],
 }) {
   console.log('Home', {
     animationTechnique,
@@ -131,6 +134,7 @@ export default function Home({
     work,
     keywords,
     partners,
+    discoveryPathwayResources,
   });
   const { t } = useTranslation('home');
   const { locale: _locale } = useRouter();
@@ -217,6 +221,7 @@ export default function Home({
                       title={t('exploreBy.anthology.title')}
                       thumbnailUrl="/anthology-thumbnail.jpg"
                       description={t('exploreBy.anthology.subtitle')}
+                      to="/anthologie"
                     />
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
@@ -427,15 +432,19 @@ export default function Home({
               </Section>
 
               <Section
-                title={t('pulcinellaPathwayTitle')}
+                title={t('discoveryPathwayTitle')}
                 subtitle={t('pathway')}
-                isComingSoon
+                isComingSoon={discoveryPathwayResources.length === 0}
               >
-                <img
-                  src="/pathway-pulcinella.png"
-                  alt=""
-                  style={{ opacity: 0.5 }}
-                />
+                {discoveryPathwayResources.length > 0 ? (
+                  <DiscoveryPathway resources={discoveryPathwayResources} />
+                ) : (
+                  <img
+                    src="/pathway-pulcinella.png"
+                    alt=""
+                    style={{ opacity: 0.5 }}
+                  />
+                )}
               </Section>
             </div>
           </div>
@@ -458,19 +467,11 @@ export default function Home({
                 <NewsletterForm />
 
                 <div className={styles.introContentLinks}>
-                  <Link
-                    href={t('ourSiteUrl')}
-                    rel="noopener noreferrer"
-                    className={styles.buttonLink}
-                  >
+                  <Link href={t('ourSiteUrl')} className={styles.buttonLink}>
                     {t('common:knowMore')}
                   </Link>
-                  <Link href={t('theTeamUrl')} rel="noopener noreferrer">
-                    {t('theTeam')}
-                  </Link>
-                  <Link href={t('projectNewsUrl')} rel="noopener noreferrer">
-                    {t('projectNews')}
-                  </Link>
+                  <Link href={t('theTeamUrl')}>{t('theTeam')}</Link>
+                  <Link href={t('projectNewsUrl')}>{t('projectNews')}</Link>
                   <Link
                     href="https://tact.demarre-shs.fr/project/41"
                     target="_blank"
@@ -481,6 +482,7 @@ export default function Home({
                   <Link href="mailto:puppetplays@univ-montp3.fr">
                     {t('common:contactUs')}
                   </Link>
+                  <Link href="/accessibilite">{t('common:accessibility')}</Link>
                   <Link
                     href="https://www.facebook.com/ERCPuppetPlays"
                     target="_blank"
@@ -516,6 +518,7 @@ Home.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.object),
   authors: PropTypes.arrayOf(PropTypes.object),
   partners: PropTypes.arrayOf(PropTypes.object),
+  discoveryPathwayResources: PropTypes.arrayOf(PropTypes.object),
 };
 
 export async function getServerSideProps({ locale }) {
@@ -531,12 +534,14 @@ export async function getServerSideProps({ locale }) {
       animationTechniquesResult,
       personEntriesResult,
       partnersResult,
+      discoveryPathwayResult,
     ] = await Promise.all([
       apiClient(getHomeQuery).catch(() => ({})),
       apiClient(getAllWorksKeywordsQuery).catch(() => ({})),
       apiClient(getAllAnimationTechniquesQuery).catch(() => ({})),
       apiClient(getAllAuthorsIdsQuery).catch(() => ({})),
       apiClient(getPartnersQuery).catch(() => ({})),
+      getDiscoveryPathwayResources(locale).catch(() => []),
     ]);
 
     // Apply null safety to the results
@@ -549,6 +554,9 @@ export async function getServerSideProps({ locale }) {
     const partnersEntries = safeArray(
       safeObject(partnersResult).partnerEntries,
     );
+    const discoveryPathwayResources = Array.isArray(discoveryPathwayResult)
+      ? discoveryPathwayResult
+      : [];
 
     // Safe random selections with null checks
     const homeWorks = safeArray(homeEntry.works);
@@ -610,6 +618,7 @@ export async function getServerSideProps({ locale }) {
         keywords: homeKeywords || [],
         authors: homePersonEntries || [],
         partners: partnersEntries || [],
+        discoveryPathwayResources: discoveryPathwayResources || [],
       },
     };
   } catch (error) {
@@ -623,6 +632,7 @@ export async function getServerSideProps({ locale }) {
         keywords: [],
         authors: [],
         partners: [],
+        discoveryPathwayResources: [],
       },
     };
   }

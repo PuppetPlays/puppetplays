@@ -2,6 +2,7 @@ fieldLayouts:
   be2b10c6-9aa3-4d97-8e0d-0226ebe776d9:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,23 +27,32 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e13ac1fe-6b2a-4a03-ba95-f9232ef3e850
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: c39eea87-c2d5-4632-bcb0-f6e737f34e0f # Lieu
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 35b066ef-c2d4-47a6-94bb-ea642d5be77e
+            userCondition: null
             warning: null
             width: 100
         name: Contenu
-        sortOrder: 1
+        uid: d372db63-0ed2-4720-b79c-b4cc058b75be
+        userCondition: null
 handle: conservationInstitutions
 hasTitleField: true
 name: 'Institutions de conservation'
 section: 492cc09a-052e-40d6-a33b-7ca74a831805 # Institutions de conservation
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

@@ -1,0 +1,78 @@
+columnSuffix: imvuolix
+contentColumnType: text
+fieldGroup: e92fa83e-6e31-4d20-a993-c04e900f1bd9 # Technical Documentation
+handle: sheetTable
+instructions: null
+name: Sheet
+searchable: false
+settings:
+  addRowLabel: 'Add a row'
+  columnType: text
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Dublin element'
+            -
+              - handle
+              - dublinElement
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Database field'
+            -
+              - handle
+              - databaseField
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Comment
+            -
+              - handle
+              - comment
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+  defaults:
+    -
+      __assoc__:
+        -
+          - col1
+          - ''
+        -
+          - col2
+          - ''
+        -
+          - col3
+          - ''
+  maxRows: null
+  minRows: null
+  staticRows: false
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Table

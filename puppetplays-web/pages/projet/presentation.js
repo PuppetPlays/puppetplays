@@ -8,16 +8,16 @@ import styles from 'styles/ProjectPresentation.module.scss';
 
 const PARTNERS = [
   {
-    name: 'rir',
-    link: 'https://rirra21.www.univ-montp3.fr/',
-    logo: '/logo-rir.svg',
-    alt: 'RIR',
-  },
-  {
     name: 'upvm',
     link: 'https://www.univ-montp3.fr/',
     logo: '/logo-upvm.svg',
     alt: 'UPVM',
+  },
+  {
+    name: 'rir',
+    link: 'https://rirra21.www.univ-montp3.fr/',
+    logo: '/logo-rir.svg',
+    alt: 'RIR',
   },
 ];
 
@@ -306,6 +306,20 @@ const ProjectPresentation = () => {
             className={styles.paragraph}
             dangerouslySetInnerHTML={{
               __html: t('presentation.centralHypothesis.paragraph5'),
+            }}
+          />
+        </section>
+
+        <div className={styles.divider} />
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            {t('presentation.acknowledgments.title')}
+          </h2>
+          <p
+            className={styles.paragraph}
+            dangerouslySetInnerHTML={{
+              __html: t('presentation.acknowledgments.content'),
             }}
           />
         </section>

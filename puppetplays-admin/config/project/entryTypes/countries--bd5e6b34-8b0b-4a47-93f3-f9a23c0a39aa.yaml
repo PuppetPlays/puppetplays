@@ -2,6 +2,7 @@ fieldLayouts:
   b912ca9b-aaa6-4852-aecb-af091f26610d:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,7 +10,9 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
+            inputType: null
             instructions: null
             label: null
             max: null
@@ -24,32 +27,44 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 14998134-bee9-48c6-adb7-30c6a2e8e979
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 69ee7666-95f0-4e8f-bf8b-09d970d7b777 # Latitude
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: c8102397-ece8-458a-84f4-d4ca28b344b5
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 07a590cd-d68b-4af3-96b5-4b6f46cebe31 # Longitude
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 8157a9b0-7e21-459e-b4ab-54a54ec5ed64
+            userCondition: null
             warning: null
             width: 50
         name: Contenu
-        sortOrder: 1
+        uid: 17be1ff9-0dfb-4f88-983a-c981fea6e924
+        userCondition: null
 handle: countries
 hasTitleField: true
 name: Pays
 section: e205ebe8-5557-4b7c-a43f-9cf548e90c8d # Pays
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

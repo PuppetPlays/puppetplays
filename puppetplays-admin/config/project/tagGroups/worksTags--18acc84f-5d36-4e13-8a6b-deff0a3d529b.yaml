@@ -1,2 +1,38 @@
+fieldLayouts:
+  91b77935-40e8-4e7d-afb8-37c44d70d2c8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: 56b15265-41f8-44d7-8a98-b60d0d3bbe57
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a07afcbc-c608-4d50-8f8c-84753f1225e5
+        userCondition: null
 handle: worksTags
 name: 'Mots-clé des œuvres'

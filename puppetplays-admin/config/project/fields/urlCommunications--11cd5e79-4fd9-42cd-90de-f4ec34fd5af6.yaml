@@ -2,12 +2,11 @@ columnSuffix: plqaxyaa
 contentColumnType: string(255)
 fieldGroup: fd15fc2d-a3c9-4686-891d-700dd34684ec # Communications
 handle: urlCommunications
-instructions: ''
+instructions: null
 name: 'URL externe'
 searchable: false
 settings:
-  maxLength: '255'
-  placeholder: null
+  maxLength: 255
   types:
     - url
 translationKeyFormat: null

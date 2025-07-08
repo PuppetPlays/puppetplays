@@ -1,0 +1,42 @@
+fieldLayouts:
+  f93549a5-94e2-4516-bab0-e69d440873e8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: ef8d4e80-f33b-47e1-ac44-4d84fbcfaf7e # Logo
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 79737130-69c8-474e-95f8-ecbb653cce79
+            userCondition: null
+            warning: null
+            width: 100
+        name: Logos
+        uid: c8942780-4bfd-427a-b7ae-969b81ba9928
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 51e2c8ee-6134-4ae2-aaab-a10183295f34 # Footer Text
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3c5e6b41-c242-4708-a2b8-e7408ed79eb1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Footer
+        uid: d8407bb3-97d3-4c26-9ac3-1d064e906bdd
+        userCondition: null
+handle: templates
+name: Templates
+sortOrder: 1

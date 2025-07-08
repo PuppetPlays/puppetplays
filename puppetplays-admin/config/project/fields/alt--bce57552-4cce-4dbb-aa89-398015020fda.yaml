@@ -1,16 +1,17 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: b3feeaa7-8778-465a-9010-dc86232c1fbb # Assets
 handle: alt
-instructions: ''
+instructions: null
 name: Alt
 searchable: false
 settings:
   byteLimit: null
   charLimit: null
-  code: ''
+  code: false
   columnType: null
-  initialRows: '4'
-  multiline: ''
+  initialRows: 4
+  multiline: false
   placeholder: 'Texte alternatif de l’image'
   uiMode: normal
 translationKeyFormat: null

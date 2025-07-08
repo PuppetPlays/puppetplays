@@ -2,6 +2,7 @@ fieldLayouts:
   c5d08ce4-576e-43c7-9e90-1f9464179233:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,9 +10,11 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
-            instructions: ''
-            label: ''
+            inputType: null
+            instructions: null
+            label: null
             max: null
             min: null
             name: null
@@ -24,32 +27,44 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 670195fd-e6d7-4de5-97b3-0d9b304d0fab
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 209da50a-0d77-41a6-9d9c-8946eb198e71 # Nom du personnage dans le texte
-            instructions: ''
-            label: ''
-            required: ''
+            instructions: null
+            label: null
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 417ec747-ba27-4536-a73c-773b26b3756a
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: 65cde714-d150-4ea5-9f9a-da868a716343 # Nom du personnage pour l’indexation
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 0eb4af53-d156-410e-af26-139128f5c872
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 4f8660f4-d3dd-4862-85a0-0592faa73f86
+        userCondition: null
 handle: originalsCharacters
 hasTitleField: false
 name: 'Personnages originaux'
 section: 53b06a2d-abbf-4ee4-b770-ca48f26e094e # Nom du personnage dans le texte
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
 sortOrder: 1
 titleFormat: '{% include ''_formats/characters-title'' %}'
 titleTranslationKeyFormat: null

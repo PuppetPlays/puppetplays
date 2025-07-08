@@ -1,16 +1,19 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: literaryTones
-instructions: ''
+instructions: null
 name: 'Registre(s) littéraire(s)'
 searchable: true
 settings:
   allowSelfRelations: false
-  limit: ''
+  branchLimit: null
   localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
   selectionLabel: 'Sélectionner un ou plusieurs registre(s)'
   showSiteMenu: true
-  source: null
   sources:
     - 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
   targetSiteId: null

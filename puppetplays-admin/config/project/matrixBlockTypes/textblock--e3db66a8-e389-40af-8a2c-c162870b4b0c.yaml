@@ -1,0 +1,87 @@
+field: fd9e8303-0234-4a15-8590-8e5b6ea5f6b2 # ContentBlock
+fieldLayouts:
+  f3037dec-cd18-4805-b9a3-58e832815a8b:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 0dbfad61-7739-4a74-a607-ee23b79417f0 # Title
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ede4a928-3793-4a85-97b4-3613df6b1a26
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: e82b0181-d508-4fde-814e-fca660e3913f # Description
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9c196dd8-dae3-496b-bd34-6da3ff0fc2cb
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a9124c19-6935-4706-a529-5ed54a58951e
+        userCondition: null
+fields:
+  0dbfad61-7739-4a74-a607-ee23b79417f0: # Title
+    columnSuffix: zjvanoog
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentTitle
+    instructions: null
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\PlainText
+  e82b0181-d508-4fde-814e-fca660e3913f: # Description
+    columnSuffix: rtkchxre
+    contentColumnType: text
+    fieldGroup: null
+    handle: contentDescription
+    instructions: null
+    name: Description
+    searchable: false
+    settings:
+      availableTransforms: ''
+      availableVolumes:
+        - ef2dfdac-243c-4f75-8385-ee787d2e7765 # Images
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: null
+      purifyHtml: true
+      redactorConfig: null
+      removeEmptyTags: false
+      removeInlineStyles: false
+      removeNbsp: false
+      showHtmlButtonForNonAdmins: false
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\redactor\Field
+handle: textblock
+name: TextBlock
+sortOrder: 1
