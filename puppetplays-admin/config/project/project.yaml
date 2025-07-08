@@ -1,4 +1,4 @@
-dateModified: 1751973947
+dateModified: 1751976435
 elementSources:
   craft\elements\Entry:
     -
@@ -311,7 +311,6 @@ meta:
     8d9ba885-0f2b-4591-926e-73e3a6ecc23f: 'Image principale' # Image principale
     8e095ccd-7ed1-4c9b-99e1-b98480a0e9df: Compagnies # Compagnies
     8e72b0db-f5f6-4385-9228-33dd62285d5c: 'Registres littéraires' # Registres littéraires
-    8e456e10-c890-4e34-ac4f-40d8af77250b: test # test
     8ee13776-b19b-43b8-ac93-6a411f27e342: 'Pays/Régions Étudiés' # Pays/Régions Étudiés
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
