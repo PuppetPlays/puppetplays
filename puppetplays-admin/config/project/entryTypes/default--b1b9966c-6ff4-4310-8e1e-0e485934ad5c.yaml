@@ -61,6 +61,18 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
+          -
+            elementCondition: null
+            fieldUid: f1b6940c-8411-4de5-88b1-c35222525582 # sheetTable
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bf12bcf8-d1e6-4110-ac04-998d72241e3b
+            userCondition: null
+            warning: null
+            width: 100
         name: Sheet
         uid: 167645dc-b659-4a68-a61f-92fef340f8f0
         userCondition: null

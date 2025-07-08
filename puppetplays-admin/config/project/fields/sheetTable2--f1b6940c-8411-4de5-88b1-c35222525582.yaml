@@ -1,9 +1,9 @@
-columnSuffix: ursgnmkf
+columnSuffix: uabnbcte
 contentColumnType: text
-fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
-handle: authorAndOrcidIdentifier
+fieldGroup: ffcbd130-d01a-46e8-be41-572fa13bf2fb # Commons
+handle: sheetTable2
 instructions: null
-name: 'Author and ORCID identifier'
+name: sheetTable
 searchable: false
 settings:
   addRowLabel: 'Add a row'
@@ -16,10 +16,10 @@ settings:
           __assoc__:
             -
               - heading
-              - Author
+              - 'First Column'
             -
               - handle
-              - author
+              - firstColumn
             -
               - width
               - ''
@@ -32,10 +32,26 @@ settings:
           __assoc__:
             -
               - heading
-              - 'ORCID Identifier'
+              - 'Second Column'
             -
               - handle
-              - orcidIdentifier
+              - secondColumn
+            -
+              - width
+              - ''
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Third Column'
+            -
+              - handle
+              - thirdColumn
             -
               - width
               - ''
@@ -50,6 +66,9 @@ settings:
           - ''
         -
           - col2
+          - ''
+        -
+          - col3
           - ''
   maxRows: null
   minRows: null
