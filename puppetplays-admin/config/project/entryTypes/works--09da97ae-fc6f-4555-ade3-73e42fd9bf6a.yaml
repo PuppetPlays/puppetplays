@@ -693,6 +693,18 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: ebffa1e4-82e1-4c92-af1d-03d79ae0a0a7 # Anthology
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 897c9b2e-cb31-46a3-8cbb-8bbaa770d155
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
             fieldUid: 2634dd0c-e6eb-4be4-88a7-c3b674e71c36 # Pdf du document scanné
             instructions: null
             label: null
