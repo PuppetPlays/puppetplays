@@ -1,4 +1,4 @@
-dateModified: 1751976435
+dateModified: 1752063658
 elementSources:
   craft\elements\Entry:
     -
@@ -336,6 +336,7 @@ meta:
     53b06a2d-abbf-4ee4-b770-ca48f26e094e: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
     54aa53d7-846e-4221-bffd-56ad27828429: 'Projets de Recherche' # Projets de Recherche
     63ea829e-b0e4-4021-8ab5-1b0f095d3daf: Personnes # Personnes
+    65ca866f-f4e9-47fb-b8fa-e4fd33caccae: Default # Default
     65cde714-d150-4ea5-9f9a-da868a716343: 'Nom du personnage pour l’indexation' # Nom du personnage pour l’indexation
     69e0955a-5deb-490f-8b73-6e852e245f4c: 'Author and ORCID identifier' # Author and ORCID identifier
     69ee7666-95f0-4e8f-bf8b-09d970d7b777: Latitude # Latitude
@@ -443,6 +444,7 @@ meta:
     c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
     c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
     c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
+    c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
     cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
     ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
     cd80ffd8-f562-4ec0-952b-ce1fa2377c9a: 'Technical Documentation' # Technical Documentation
@@ -458,6 +460,7 @@ meta:
     dd4fcf15-6584-4f37-8317-ecaada78e196: Extrait # Extrait
     dd98b4ac-7f07-42c8-84ba-2ef778802ee9: 'research Title' # research Title
     df947f02-658c-48b9-b53d-868af0bfc3e3: 'Place of Edition' # Place of Edition
+    e056440b-0094-44b3-96bb-653465f3e300: Anthology # Anthology
     e0954bb8-d8bb-4fbb-b5e7-944b482e521e: Personnes # Personnes
     e2d5c38e-3607-4630-bddf-0875190aa133: 'Œuvres corrélées' # Œuvres corrélées
     e3db66a8-e389-40af-8a2c-c162870b4b0c: TextBlock # TextBlock
@@ -477,6 +480,7 @@ meta:
     e555024e-2651-4c00-9772-7c3b197dc24a: 'Projets de Recherche' # Projets de Recherche
     e9587719-a8d4-42d6-97c2-f0259ec67922: 'Institutions de conservation' # Institutions de conservation
     ea500c41-2beb-4ed4-a12c-afca214004c7: Superviseur # Superviseur
+    ebffa1e4-82e1-4c92-af1d-03d79ae0a0a7: Anthology # Anthology
     ec7faa37-6b19-44d2-95ec-2b752648c37d: Langues # Langues
     ef2dfdac-243c-4f75-8385-ee787d2e7765: Images # Images
     ef8d4e80-f33b-47e1-ac44-4d84fbcfaf7e: Logo # Logo
