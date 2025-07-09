@@ -6,13 +6,13 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 02a3e612-3fca-49e3-8d6b-db1557d980d5 # Side bar
+            fieldUid: 4b4d08ca-b6dc-474c-a42e-d262395e7c89 # Sidebar
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: cf05df43-deb5-493b-b3c3-3d5183087a7a
+            uid: 270ab8ba-2309-450d-b044-2c26ab114e68
             userCondition: null
             warning: null
             width: 100

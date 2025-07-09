@@ -1,4 +1,4 @@
-dateModified: 1752063658
+dateModified: 1752071979
 elementSources:
   craft\elements\Entry:
     -
@@ -283,6 +283,7 @@ meta:
     3df1d9d7-f431-4e77-8af6-67a22c501379: 'Identifiant ARK' # Identifiant ARK
     3eec2c18-4dce-4184-a668-02f225266314: Lieux # Lieux
     3fea7d7b-8c14-4919-8016-7d214ca2314b: 'Thème principal' # Thème principal
+    4b4d08ca-b6dc-474c-a42e-d262395e7c89: Sidebar # Sidebar
     04bf26e9-d404-4a4d-904c-ef7b4d1863dc: Authors # Authors
     4c0cbfe4-a284-49a1-9bab-3fe7bdbf1f21: Communications # Communications
     4cda444a-a132-4409-8e1e-5205e6a53896: 'Puppetplays IT' # Puppetplays IT
@@ -302,6 +303,7 @@ meta:
     07a590cd-d68b-4af3-96b5-4b6f46cebe31: Longitude # Longitude
     07c0d544-d28a-449e-a643-936d89cb7a3a: Images # Images
     07cc50ee-05e5-483d-8911-22552f44be92: 'Personnages du texte' # Personnages du texte
+    7ee9c2cc-f031-47dd-aaba-fba785d19872: 'Side bar title' # Side bar title
     7f9a6927-247c-41f1-a41e-cb3ad362be0d: Template # Template
     8a9d32f6-b194-40d5-b9b0-c4334cac1828: 'Résumé du projet' # Résumé du projet
     8a258b7d-1518-4112-85df-287c1f8c889f: Volume # Volume
@@ -315,7 +317,9 @@ meta:
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
     9e670e52-0ab0-4dc1-a6e1-adc8efea5c13: 'Notice biographique' # Notice biographique
+    9f07dfcb-c4e6-4e3d-9896-d9b8d9f1f58c: 'Sidebar Content' # Sidebar Content
     11cd5e79-4fd9-42cd-90de-f4ec34fd5af6: 'URL externe' # URL externe
+    14b1c2fd-ceec-4644-acbc-4287004046e9: 'Sidebar Element' # Sidebar Element
     18acc84f-5d36-4e13-8a6b-deff0a3d529b: 'Mots-clé des œuvres' # Mots-clé des œuvres
     22b828fc-b5e2-42a0-9050-446047f73230: Formats # Formats
     23c8664d-0988-47dc-96c4-e3887b436569: Prénom # Prénom
@@ -452,6 +456,7 @@ meta:
     cfaaf21a-8fd0-4ce6-adcc-eba9f6c787a8: 'Autre(s) titre(s)' # Autre(s) titre(s)
     cfc8c93d-134d-4d7f-84dd-31c7c229e699: 'Date d’écriture (max)' # Date d’écriture (max)
     d6cea31a-a6ff-4852-ac46-f527110ee9d4: Pages # Pages
+    d8b3ebb8-f5f1-43aa-84c2-6a9473651f20: 'Sidebar Elements' # Sidebar Elements
     d64e0372-dae1-4fc6-8e60-9fba1d23cf2d: Image # Image
     d4792cfa-74d7-4508-943f-6b8adeebbe22: 'Partner Logo' # Partner Logo
     d602197a-ca5a-473a-961c-bf792880b11f: 'Scientific Committee' # Scientific Committee

@@ -1,0 +1,21 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: e92fa83e-6e31-4d20-a993-c04e900f1bd9 # Technical Documentation
+handle: sidebar
+instructions: null
+name: Sidebar
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 1605293643
+  contentTable: '{{%stc_sidebar_1}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: null
+translationKeyFormat: null
+translationMethod: none
+type: verbb\supertable\fields\SuperTableField
