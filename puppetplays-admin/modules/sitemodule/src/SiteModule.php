@@ -141,6 +141,7 @@ class SiteModule extends Module
                 $event->rules['auth/user'] = 'sitemodule/auth';
                 $event->rules['newsletter/subscribe'] = 'sitemodule/newsletter/subscribe';
                 $event->rules['api/pdf/<entryId:\d+>/<language:[a-z]{2}>'] = 'sitemodule/pdf/generate';
+                $event->rules['oai-pmh'] = 'sitemodule/oai';
             }
         );
 

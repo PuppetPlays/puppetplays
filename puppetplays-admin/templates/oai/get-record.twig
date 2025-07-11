@@ -1,0 +1,24 @@
+{% extends "oai/_layout.twig" %}
+
+{% block content %}
+	<GetRecord>
+		<record>
+			<header>
+				<identifier>{{ record.oaiIdentifier }}</identifier>
+				<datestamp>{{ record.dateUpdated.format('Y-m-d\\TH:i:s\\Z') }}</datestamp>
+				<setSpec>{{ record.section.handle }}</setSpec>
+			</header>
+			<metadata>
+				<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+					<dc:identifier>{{ record.url }}</dc:identifier>
+					<dc:title>{{ record.title }}</dc:title>
+					<dc:creator>{{ record.creator }}</dc:creator>
+					<dc:date>{{ record.dateCreated.format('Y-m-d') }}</dc:date>
+					<dc:description>{{ record.description }}</dc:description>
+					<dc:language>{{ record.language }}</dc:language>
+					<dc:type>{{ record.type }}</dc:type>
+				</oai_dc:dc>
+			</metadata>
+		</record>
+	</GetRecord>
+{% endblock %}
