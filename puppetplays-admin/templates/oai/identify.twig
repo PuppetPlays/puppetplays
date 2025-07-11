@@ -1,0 +1,13 @@
+{% extends "oai/_layout.twig" %}
+
+{% block content %}
+	<Identify>
+		<repositoryName>{{ repositoryName }}</repositoryName>
+		<baseURL>{{ baseUrl }}</baseURL>
+		<protocolVersion>2.0</protocolVersion>
+		<adminEmail>{{ adminEmail }}</adminEmail>
+		<earliestDatestamp>{{ earliestDatestamp }}</earliestDatestamp>
+		<deletedRecord>no</deletedRecord>
+		<granularity>YYYY-MM-DDThh:mm:ssZ</granularity>
+	</Identify>
+{% endblock %}
