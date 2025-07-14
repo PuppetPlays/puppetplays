@@ -1,4 +1,5 @@
 import Layout from 'components/Layout';
+import Footer from 'components/Footer';
 import { useFormattedTranslation } from 'hooks/useFormattedTranslation';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -80,6 +81,8 @@ const AccessibilityPage = () => {
           </p>
         </section>
       </div>
+      
+      <Footer />
     </Layout>
   );
 };
@@ -87,7 +90,7 @@ const AccessibilityPage = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'accessibility'])),
+      ...(await serverSideTranslations(locale, ['common', 'accessibility', 'home'])),
     },
   };
 }

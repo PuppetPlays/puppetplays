@@ -161,13 +161,13 @@
   justify-content: center;
   height: 100%;
   color: var(--color-text-secondary);
-  
+
   svg {
     width: 64px;
     height: 64px;
     margin-bottom: 1rem;
   }
-  
+
   p {
     font-style: italic;
   }
@@ -269,7 +269,7 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #f9f9f9;
-  
+
   @media (max-width: 768px) {
     height: 400px;
   }
@@ -288,7 +288,7 @@
   gap: 2rem;
   height: calc(100vh - 200px);
   min-height: 600px;
-  
+
   @media (max-width: 1024px) {
     flex-direction: column;
     height: auto;
@@ -301,7 +301,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  
+
   @media (max-width: 1024px) {
     order: 2;
   }
@@ -312,7 +312,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  
+
   @media (max-width: 1024px) {
     order: 1;
   }
@@ -373,7 +373,7 @@
 .pageTranscription {
   line-height: 1.6;
   font-size: 1rem;
-  
+
   .speaker {
     font-weight: bold;
     color: #2c3e50;
@@ -381,37 +381,37 @@
     margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .stage-direction {
     font-style: italic;
     color: #7f8c8d;
     display: block;
     margin: 0.5rem 0;
   }
-  
+
   .verse-line {
     margin-left: 1rem;
     margin-bottom: 0.25rem;
   }
-  
+
   .verse-group {
     margin: 1rem 0;
   }
-  
+
   .speech {
     margin: 1rem 0;
     padding: 0.5rem;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 4px;
   }
-  
+
   .section-head {
     font-size: 1.2rem;
     font-weight: bold;
     color: #2c3e50;
     margin: 1.5rem 0 1rem 0;
   }
-  
+
   .page-break {
     margin: 2rem 0;
     border: none;
@@ -528,4 +528,4 @@
   .transcriptionContent {
     max-height: 300px;
   }
-} 
+}

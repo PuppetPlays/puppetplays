@@ -958,9 +958,11 @@ query GetDiscoveryPathwayResources($locale: [String]) {
 
 export async function getDiscoveryPathwayResources(locale) {
   try {
-    const data = await fetchAPI(getDiscoveryPathwayResourcesQuery, {
+    const apiClient = getFetchAPIClient({
       variables: { locale },
     });
+
+    const data = await apiClient(getDiscoveryPathwayResourcesQuery);
 
     // Prepare array of resources with type information
     const resources = [];
@@ -1051,4 +1053,87 @@ export async function getDiscoveryPathwayResources(locale) {
     console.error('Error fetching discovery pathway resources:', error);
     return [];
   }
+}
+
+// Scientific Publications queries
+export const getScientificPublicationsQuery = `
+query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
+  entries(section: "scientificPublications", site: $locale, offset: $offset, limit: $limit, orderBy: "date DESC") {
+    id,
+    slug,
+    title,
+    dateCreated,
+    dateUpdated,
+    ... on scientificPublications_default_Entry {
+      authorAndOrcidIdentifier,
+      scientificCategory,
+      belongsToConference,
+      conferenceGroup,
+      date,
+      editorName,
+      peerReview,
+      languages {
+        title
+      },
+      license,
+      doi,
+      halCvLink,
+      nakalaLink
+    }
+  }
+  entryCount(section: "scientificPublications", site: $locale)
+}
+`;
+
+export const getScientificPublicationByIdQuery = `
+query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "scientificPublications", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    dateCreated,
+    dateUpdated,
+    ... on scientificPublications_default_Entry {
+      authorAndOrcidIdentifier,
+      scientificCategory,
+      belongsToConference,
+      conferenceGroup,
+      date,
+      editorName,
+      peerReview,
+      languages {
+        title
+      },
+      license,
+      doi,
+      halCvLink,
+      nakalaLink
+    }
+  }
+}
+`;
+
+export async function getAllScientificPublications(
+  locale,
+  offset = 0,
+  limit = 50,
+) {
+  const data = await fetchAPI(getScientificPublicationsQuery, {
+    variables: {
+      locale,
+      offset,
+      limit,
+    },
+  });
+  return data;
+}
+
+export async function getScientificPublicationById(id, locale) {
+  const data = await fetchAPI(getScientificPublicationByIdQuery, {
+    variables: {
+      locale,
+      id,
+    },
+  });
+  return data;
 }

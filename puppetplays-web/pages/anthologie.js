@@ -1,4 +1,5 @@
 import FilterSelect from 'components/FilterSelect';
+import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
 import Pagination from 'components/Pagination';
@@ -181,6 +182,7 @@ const AnthologyPage = ({ initialPlaysData, error }) => {
             message={t('common:error.loadingData', { error: error })}
           />
         </div>
+        <Footer />
       </Layout>
     );
   }
@@ -330,6 +332,8 @@ const AnthologyPage = ({ initialPlaysData, error }) => {
           />
         )}
       </div>
+      
+      <Footer />
     </Layout>
   );
 };
@@ -383,7 +387,7 @@ export async function getStaticProps({ locale }) {
 
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'anthology'])),
+        ...(await serverSideTranslations(locale, ['common', 'anthology', 'home'])),
         initialPlaysData: playsData,
         error: null,
       },
@@ -393,7 +397,7 @@ export async function getStaticProps({ locale }) {
     console.error('Error fetching anthology data:', error);
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'anthology'])),
+        ...(await serverSideTranslations(locale, ['common', 'anthology', 'home'])),
         initialPlaysData: [],
         error: error.message || error.toString(),
       },

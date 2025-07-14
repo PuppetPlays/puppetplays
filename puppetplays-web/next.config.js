@@ -19,8 +19,40 @@ module.exports = {
         port: '7443',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'hal.science',
+        pathname: '/**',
+      },
     ],
     dangerouslyAllowSVG: true,
     unoptimized: true,
+  },
+  // Configuration des headers CORS pour l'API proxy
+  async headers() {
+    return [
+      {
+        // Appliquer les headers CORS aux routes API proxy
+        source: '/api/hal-proxy/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, HEAD, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
+          },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'cross-origin',
+          },
+        ],
+      },
+    ];
   },
 };
