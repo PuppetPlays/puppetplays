@@ -1085,6 +1085,19 @@ query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
 }
 `;
 
+// Version simplifiée pour diagnostic
+export const getScientificPublicationsQueryDebug = `
+query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
+  entries(section: "scientificPublications", site: $locale, offset: $offset, limit: $limit) {
+    id,
+    slug,
+    title,
+    dateCreated
+  }
+  entryCount(section: "scientificPublications", site: $locale)
+}
+`;
+
 export const getScientificPublicationByIdQuery = `
 query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
   entry(section: "scientificPublications", site: $locale, id: $id) {
@@ -1118,14 +1131,41 @@ export async function getAllScientificPublications(
   offset = 0,
   limit = 50,
 ) {
-  const data = await fetchAPI(getScientificPublicationsQuery, {
-    variables: {
-      locale,
-      offset,
-      limit,
-    },
-  });
-  return data;
+  try {
+    // Tenter d'abord la requête complète
+    const data = await fetchAPI(getScientificPublicationsQuery, {
+      variables: {
+        locale,
+        offset,
+        limit,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error('Full query failed, trying simplified version:', error);
+
+    try {
+      // Fallback vers la requête simplifiée
+      const data = await fetchAPI(getScientificPublicationsQueryDebug, {
+        variables: {
+          locale,
+          offset,
+          limit,
+        },
+      });
+      return data;
+    } catch (debugError) {
+      console.error('Debug query also failed:', debugError);
+
+      // Retourner une structure vide pour éviter le crash
+      return {
+        data: {
+          entries: [],
+          entryCount: 0,
+        },
+      };
+    }
+  }
 }
 
 export async function getScientificPublicationById(id, locale) {
