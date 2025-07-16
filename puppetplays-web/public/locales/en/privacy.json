@@ -1,0 +1,41 @@
+{
+  "title": "Privacy Policy",
+  "metaDescription": "Privacy policy and personal data protection for the PuppetPlays website - GDPR information and contact details",
+  "pageTitle": "Privacy Policy",
+  "dataProcessing": {
+    "title": "Processing of Personal Data",
+    "content": "The information collected on this form is recorded in a computerized file by the University of Montpellier Paul-Valéry – route de Mende – 34199 Montpellier Cedex 5 for the organization of scientific events and their dissemination on our web platform and social networks, the creation of user accounts on the database for writing notices and the dissemination of the editor's name for each notice on our web platform."
+  },
+  "dataController": {
+    "title": "Data Controller",
+    "content": "The data controller for personal data processing is Ms. Anne FRAÏSSE, President of UMPV – route de Mende – Building L « Les Guilhem » 34199 Montpellier Cedex 5."
+  },
+  "legalBasis": {
+    "title": "Legal Basis for Processing",
+    "content": "The legal basis for processing is the performance of a task carried out in the public interest under Article 6(e) of the GDPR."
+  },
+  "dataRecipients": {
+    "title": "Data Recipients",
+    "content": "The collected data will only be communicated to the following recipients: IT development providers for user account creation, the public for broadcasting scientific event recordings, and the names of editors for each notice."
+  },
+  "dataRetention": {
+    "title": "Data Retention",
+    "content": "Data will be retained for the entire duration of the project and up to 10 years after the project ends for data collected on scientific event broadcasting authorizations."
+  },
+  "userRights": {
+    "title": "Your Rights",
+    "content": "You can access your personal data, rectify it, request its deletion, or exercise your right to limit the processing of your data.",
+    "opposition": "You also have the possibility to object to the processing of your personal data based on Article 21 of the GDPR.",
+    "moreInfo": "You are invited to consult the website <a href=\"https://www.cnil.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.cnil.fr/</a> for more information about your rights."
+  },
+  "exerciseRights": {
+    "title": "Exercising Your Rights",
+    "content": "To exercise these rights or for any other questions about the processing of your personal data, contact our data protection officer directly:",
+    "contact": "dpo@univ-montp3.fr"
+  },
+  "complaints": {
+    "title": "Complaints",
+    "content": "If you believe - after contacting our services - that your \"data protection and privacy\" rights are not respected, you can file a complaint with the French National Commission on Informatics and Liberty (CNIL) – 3, place de Fontenoy - TSA 80715 – 75334 Paris Cedex 07.",
+    "phone": "Tel: 01.53.73.22.22"
+  }
+} 

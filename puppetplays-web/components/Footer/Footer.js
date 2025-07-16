@@ -49,6 +49,9 @@ const Footer = () => {
               <Link href="/accessibilite">
                 {getTranslation('common:accessibility', 'Accessibilité')}
               </Link>
+              <Link href="/confidentialite">
+                {getTranslation('common:privacy', 'Politique de confidentialité')}
+              </Link>
               <Link
                 href="https://www.facebook.com/ERCPuppetPlays"
                 target="_blank"
