@@ -1,0 +1,449 @@
+// Publication Detail page styles
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 80vh;
+
+  @media (max-width: 768px) {
+    padding: 24px 16px;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 32px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
+}
+
+.breadcrumbLink {
+  color: #01055b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #f8d04e;
+    text-decoration: underline;
+  }
+}
+
+// Main layout - Two columns
+.publicationLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+
+  @media (max-width: 1200px) {
+    gap: 32px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+// Left Column - Metadata Section
+.metadataSection {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.publicationHeader {
+  padding: 32px;
+  background: linear-gradient(135deg, #01055b 0%, #000340 100%);
+  color: white;
+
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+.publicationTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 16px 0;
+  color: white;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+}
+
+.publicationMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.metaBadge {
+  background: rgba(248, 208, 78, 0.2);
+  color: #f8d04e;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(248, 208, 78, 0.3);
+}
+
+.metaDate {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.metadataContent {
+  padding: 32px;
+
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
+}
+
+// Metadata list
+.metadataList {
+  margin: 0 0 32px 0;
+}
+
+.metadataRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.metadataLabel {
+  font-weight: 600;
+  color: #01055b;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.metadataValue {
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.metadataLink {
+  color: #01055b;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    color: #f8d04e;
+    text-decoration: underline;
+  }
+}
+
+// External links section
+.externalLinks {
+  margin-bottom: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.linksTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #01055b;
+  margin: 0 0 16px 0;
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.externalLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #01055b;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #01055b;
+    color: white;
+    border-color: #01055b;
+    transform: translateY(-1px);
+  }
+}
+
+.linkIcon {
+  font-size: 1.2rem;
+}
+
+// Abstract section
+.abstractSection {
+  padding-top: 24px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.abstractTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #01055b;
+  margin: 0 0 16px 0;
+}
+
+.abstractContent {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+
+  p {
+    margin: 0 0 12px 0;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Right Column - PDF Viewer Section
+.pdfSection {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+
+  @media (max-width: 768px) {
+    position: static;
+  }
+}
+
+.pdfViewer {
+  height: 100%;
+  min-height: 600px;
+
+  @media (max-width: 768px) {
+    min-height: 500px;
+  }
+}
+
+.pdfHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e1e5e9;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+}
+
+.pdfTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #01055b;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.pdfActions {
+  display: flex;
+  gap: 8px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.pdfButton {
+  padding: 8px 16px;
+  background: transparent;
+  color: #01055b;
+  border: 1px solid #01055b;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #01055b;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 16px;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+.pdfFrame {
+  position: relative;
+  height: 700px;
+  background: #f5f5f5;
+
+  @media (max-width: 768px) {
+    height: 500px;
+  }
+}
+
+.pdfIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+}
+
+// Loading states
+.pdfLoading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #666;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #01055b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Error states
+.pdfError {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #666;
+  padding: 20px;
+
+  h4 {
+    color: #01055b;
+    margin: 8px 0 12px;
+  }
+
+  p {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+  }
+}
+
+.errorIcon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+// PDF placeholder (when no PDF available)
+.pdfPlaceholder {
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+}
+
+.placeholderContent {
+  text-align: center;
+  color: #666;
+  padding: 40px;
+
+  h3 {
+    color: #01055b;
+    margin: 16px 0 8px;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .container {
+    padding: 16px 12px;
+  }
+
+  .publicationLayout {
+    gap: 16px;
+  }
+
+  .metadataSection,
+  .pdfSection {
+    border-radius: 8px;
+  }
+
+  .publicationHeader {
+    padding: 20px;
+  }
+
+  .metadataContent {
+    padding: 20px;
+  }
+
+  .metadataRow {
+    padding: 8px 0;
+  }
+
+  .pdfHeader {
+    padding: 16px 20px;
+  }
+} 

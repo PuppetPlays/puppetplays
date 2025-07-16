@@ -264,7 +264,7 @@ const ProjectPresentation = () => {
                   kind="captions"
                   src="/videos/captions.vtt"
                   srcLang={locale}
-                  label={t('common:accessibility.captions')}
+                  label={t('videoDetail.captions')}
                 />
               </video>
             </div>

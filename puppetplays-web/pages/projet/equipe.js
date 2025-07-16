@@ -190,7 +190,12 @@ const TeamPage = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'project', 'team'])),
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'project',
+        'team',
+        'home',
+      ])),
     },
   };
 }

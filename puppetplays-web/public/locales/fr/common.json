@@ -148,7 +148,9 @@
     "filterByTag": "Filtrer par tag...",
     "tags": "Tags",
     "sortBy": "Trier par",
-    "category": "Catégorie"
+    "category": "Catégorie",
+    "language": "Langue",
+    "century": "Siècle"
   },
   "imageCopyright": "Crédits : ",
   "works": "Œuvres",
@@ -215,5 +217,18 @@
   "nextPage": "Page suivante",
   "page": "Page {{page}}",
   "image": "Image",
-  "accessibility": "Accessibilité"
+  "accessibility": "Accessibilité",
+  "yes": "Oui",
+  "no": "Non",
+  "retry": "Réessayer",
+  "loading": "Chargement...",
+  "error": "Erreur",
+  "errors": {
+    "network": "Erreur de connexion réseau",
+    "validation": "Données invalides",
+    "api": "Erreur de l'API",
+    "timeout": "Délai d'attente dépassé",
+    "permission": "Accès refusé",
+    "unknown": "Erreur inconnue"
+  }
 }

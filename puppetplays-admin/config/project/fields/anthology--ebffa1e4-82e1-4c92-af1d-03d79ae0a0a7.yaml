@@ -1,0 +1,24 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
+handle: anthology
+instructions: null
+name: Anthology
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: null
+  showSiteMenu: false
+  sources:
+    - 'section:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

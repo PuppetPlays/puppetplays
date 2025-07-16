@@ -1,0 +1,118 @@
+field: 9f07dfcb-c4e6-4e3d-9896-d9b8d9f1f58c # Sidebar Content
+fieldLayouts:
+  51ec76d0-576f-4e19-ad01-7afc62615299:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 7ee9c2cc-f031-47dd-aaba-fba785d19872 # Side bar title
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2462ae93-7af6-4b7f-bf36-6b7ee96266b1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: d8b3ebb8-f5f1-43aa-84c2-6a9473651f20 # Sidebar Elements
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 537eb706-66b9-4ece-a1bb-0431ea1a6658
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: aadc28c8-5272-4335-a76c-8ee3f8b0f249
+        userCondition: null
+fields:
+  7ee9c2cc-f031-47dd-aaba-fba785d19872: # Side bar title
+    columnSuffix: csytfkze
+    contentColumnType: text
+    fieldGroup: null
+    handle: sideBarTitle
+    instructions: null
+    name: 'Side bar title'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  d8b3ebb8-f5f1-43aa-84c2-6a9473651f20: # Sidebar Elements
+    columnSuffix: tfdjbqpj
+    contentColumnType: text
+    fieldGroup: null
+    handle: sidebarElements
+    instructions: null
+    name: 'Sidebar Elements'
+    searchable: false
+    settings:
+      addRowLabel: 'Add a row'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Anchor
+                -
+                  - handle
+                  - anchor
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - ''
+            -
+              - col2
+              - ''
+      maxRows: null
+      minRows: null
+      staticRows: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+handle: sidebarElement
+name: 'Sidebar Element'
+sortOrder: 1

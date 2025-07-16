@@ -1,0 +1,12 @@
+{% extends "oai/_layout.twig" %}
+
+{% block content %}
+	<ListSets>
+		{% for set in sets %}
+			<set>
+				<setSpec>{{ set.setSpec }}</setSpec>
+				<setName>{{ set.setName }}</setName>
+			</set>
+		{% endfor %}
+	</ListSets>
+{% endblock %}

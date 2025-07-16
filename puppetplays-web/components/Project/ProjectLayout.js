@@ -1,3 +1,4 @@
+import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -33,6 +34,7 @@ const ProjectLayout = ({
           {!hideNav && <ProjectNav currentPath={router.pathname} />}
           <main className={styles.content}>{children}</main>
         </div>
+        <Footer />
       </div>
     </Layout>
   );

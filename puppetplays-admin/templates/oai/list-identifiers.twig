@@ -1,0 +1,13 @@
+{% extends "oai/_layout.twig" %}
+
+{% block content %}
+	<ListIdentifiers>
+		{% for entry in entries %}
+			<header>
+				<identifier>{{ entry.oaiIdentifier }}</identifier>
+				<datestamp>{{ entry.dateUpdated.format('Y-m-d\\TH:i:s\\Z') }}</datestamp>
+				<setSpec>{{ entry.section.handle }}</setSpec>
+			</header>
+		{% endfor %}
+	</ListIdentifiers>
+{% endblock %}

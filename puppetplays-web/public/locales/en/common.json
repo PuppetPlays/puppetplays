@@ -147,7 +147,9 @@
     "filterByTag": "Filter by tag...",
     "tags": "Tags",
     "sortBy": "Sort by",
-    "category": "Category"
+    "category": "Category",
+    "language": "Language",
+    "century": "Century"
   },
   "imageCopyright": "Copyright: ",
   "works": "Works",
@@ -220,5 +222,18 @@
   "nextPage": "Next page",
   "page": "Page {{page}}",
   "image": "Image",
-  "accessibility": "Accessibility"
+  "accessibility": "Accessibility",
+  "yes": "Yes",
+  "no": "No",
+  "retry": "Retry",
+  "loading": "Loading...",
+  "error": "Error",
+  "errors": {
+    "network": "Network connection error",
+    "validation": "Invalid data",
+    "api": "API error",
+    "timeout": "Request timeout",
+    "permission": "Access denied",
+    "unknown": "Unknown error"
+  }
 }
