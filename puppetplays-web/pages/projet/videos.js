@@ -670,7 +670,11 @@ export async function getStaticProps({ locale }) {
 
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         initialCollectionsData,
         error: null,
       },
@@ -681,7 +685,11 @@ export async function getStaticProps({ locale }) {
     const errorMessage = error.message || error.toString();
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         initialCollectionsData: [],
         error: errorMessage,
       },

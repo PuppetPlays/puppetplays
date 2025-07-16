@@ -31,17 +31,17 @@ app
 
       try {
         const { url: halUrl } = req.query;
-        
+
         if (!halUrl) {
           return res.status(400).json({
             error: 'Paramètre url requis',
-            usage: '/api/hal-proxy?url=https://hal.science/hal-XXXXX/document'
+            usage: '/api/hal-proxy?url=https://hal.science/hal-XXXXX/document',
           });
         }
 
         if (!halUrl.includes('hal.science') || !halUrl.includes('hal-')) {
           return res.status(400).json({
-            error: 'URL HAL invalide'
+            error: 'URL HAL invalide',
           });
         }
 
@@ -50,33 +50,33 @@ app
         const halResponse = await fetch(halUrl, {
           method: 'GET',
           headers: {
-            'User-Agent': 'PuppetPlays-Proxy/1.0'
-          }
+            'User-Agent': 'PuppetPlays-Proxy/1.0',
+          },
         });
 
         if (!halResponse.ok) {
           console.error('HAL error:', halResponse.status);
           return res.status(halResponse.status).json({
-            error: 'Document HAL introuvable'
+            error: 'Document HAL introuvable',
           });
         }
 
-        const contentType = halResponse.headers.get('content-type') || 'application/pdf';
-        
+        const contentType =
+          halResponse.headers.get('content-type') || 'application/pdf';
+
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Content-Type', contentType);
         res.setHeader('Cache-Control', 'public, max-age=3600');
 
         const buffer = await halResponse.arrayBuffer();
         console.log('HAL Proxy Express: success', buffer.byteLength, 'bytes');
-        
-        return res.send(Buffer.from(buffer));
 
+        return res.send(Buffer.from(buffer));
       } catch (error) {
         console.error('HAL Proxy Express error:', error);
         return res.status(500).json({
           error: 'Erreur proxy HAL Express',
-          message: error.message
+          message: error.message,
         });
       }
     });

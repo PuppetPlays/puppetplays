@@ -1065,12 +1065,20 @@ query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
     dateCreated,
     dateUpdated,
     ... on scientificPublications_default_Entry {
-      authorAndOrcidIdentifier,
+      authorAndOrcidIdentifier {
+        author,
+        orcidIdentifier
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
       date,
       editorName,
+      bookTitle,
+      issn,
+      placeOfEdition,
+      volume,
+      pagesCount,
       peerReview,
       languages {
         title
@@ -1107,12 +1115,20 @@ query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
     dateCreated,
     dateUpdated,
     ... on scientificPublications_default_Entry {
-      authorAndOrcidIdentifier,
+      authorAndOrcidIdentifier {
+        author,
+        orcidIdentifier
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
       date,
       editorName,
+      bookTitle,
+      issn,
+      placeOfEdition,
+      volume,
+      pagesCount,
       peerReview,
       languages {
         title

@@ -1,41 +1,135 @@
-import { useState, useEffect, useCallback, useMemo, memo } from 'react';
+import useErrorHandler, { ERROR_TYPES } from 'hooks/useErrorHandler';
+import useHalMetadata from 'hooks/useHalMetadata';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
-import useHalMetadata from 'hooks/useHalMetadata';
-import useErrorHandler, { ERROR_TYPES } from 'hooks/useErrorHandler';
+import { useState, useEffect, useCallback, useMemo, memo } from 'react';
+
 import styles from './PDFViewer.module.scss';
+
+/**
+ * Icônes SVG professionnelles
+ */
+const DownloadIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
+
+const AlertIcon = () => (
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+    <line x1="12" y1="9" x2="12" y2="13" />
+    <line x1="12" y1="17" x2="12.01" y2="17" />
+  </svg>
+);
+
+const RefreshIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="23 4 23 10 17 10" />
+    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+  </svg>
+);
+
+const DocumentIcon = () => (
+  <svg
+    width="64"
+    height="64"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+    <line x1="16" y1="13" x2="8" y2="13" />
+    <line x1="16" y1="17" x2="8" y2="17" />
+    <polyline points="10 9 9 9 8 9" />
+  </svg>
+);
 
 /**
  * Composant pour afficher les boutons d'action du PDF
  */
-const PDFActions = memo(({ halUrl, title, onDownload, onOpenHal, disabled = false }) => {
-  const { t } = useTranslation(['project', 'common']);
+const PDFActions = memo(
+  ({ halUrl, title, onDownload, onOpenHal, disabled = false }) => {
+    const { t } = useTranslation(['project', 'common']);
 
-  return (
-    <div className={styles.controls}>
-      <button 
-        onClick={onDownload}
-        disabled={disabled}
-        className={styles.downloadButton}
-        title={t('project:publication.downloadPdf')}
-        aria-label={t('project:publication.downloadPdf')}
-      >
-        📥 {t('project:publication.download')}
-      </button>
+    return (
+      <div className={styles.controls}>
+        <button
+          onClick={onDownload}
+          disabled={disabled}
+          className={styles.downloadButton}
+          title={t('project:publication.downloadPdf')}
+          aria-label={t('project:publication.downloadPdf')}
+        >
+          <DownloadIcon />
+          <span>{t('project:publication.download')}</span>
+        </button>
 
-      <a 
-        href={halUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.halButton}
-        title={t('project:publication.openInHal')}
-        aria-label={t('project:publication.openInHal')}
-      >
-        🔗 HAL
-      </a>
-    </div>
-  );
-});
+        <a
+          href={halUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.halButton}
+          title={t('project:publication.openInHal')}
+          aria-label={t('project:publication.openInHal')}
+        >
+          <ExternalLinkIcon />
+          <span>HAL</span>
+        </a>
+      </div>
+    );
+  },
+);
 
 PDFActions.displayName = 'PDFActions';
 PDFActions.propTypes = {
@@ -43,7 +137,7 @@ PDFActions.propTypes = {
   title: PropTypes.string,
   onDownload: PropTypes.func.isRequired,
   onOpenHal: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 /**
@@ -51,10 +145,12 @@ PDFActions.propTypes = {
  */
 const LoadingState = memo(({ message }) => {
   const { t } = useTranslation('project');
-  
+
   return (
     <div className={styles.loading} role="status" aria-live="polite">
-      <div className={styles.spinner} aria-hidden="true"></div>
+      <div className={styles.spinnerContainer}>
+        <div className={styles.spinner} aria-hidden="true" />
+      </div>
       <p>{message || t('project:publication.loadingPdf')}</p>
     </div>
   );
@@ -62,7 +158,7 @@ const LoadingState = memo(({ message }) => {
 
 LoadingState.displayName = 'LoadingState';
 LoadingState.propTypes = {
-  message: PropTypes.string
+  message: PropTypes.string,
 };
 
 /**
@@ -73,30 +169,36 @@ const ErrorState = memo(({ error, onRetry, halUrl }) => {
 
   return (
     <div className={styles.error} role="alert">
-      <div className={styles.icon} aria-hidden="true">⚠️</div>
+      <div className={styles.iconContainer} aria-hidden="true">
+        <AlertIcon />
+      </div>
       <h3>{t('project:publication.pdfError')}</h3>
       <p>{error?.message || t('project:publication.pdfErrorMessage')}</p>
-      
+
       <div className={styles.errorActions}>
         {error?.canRetry && onRetry && (
-          <button 
+          <button
             onClick={onRetry}
             className={styles.retryButton}
             aria-label={t('common:retry')}
           >
-            🔄 {t('common:retry')} ({error.retryCount}/{error.maxRetries})
+            <RefreshIcon />
+            <span>
+              {t('common:retry')} ({error.retryCount}/{error.maxRetries})
+            </span>
           </button>
         )}
-        
+
         {halUrl && (
-          <a 
-            href={halUrl} 
-            target="_blank" 
+          <a
+            href={halUrl}
+            target="_blank"
             rel="noopener noreferrer"
             className={styles.externalLink}
             aria-label={t('project:publication.openInHal')}
           >
-            {t('project:publication.openInHal')}
+            <span>{t('project:publication.openInHal')}</span>
+            <ExternalLinkIcon />
           </a>
         )}
       </div>
@@ -110,10 +212,10 @@ ErrorState.propTypes = {
     message: PropTypes.string,
     canRetry: PropTypes.bool,
     retryCount: PropTypes.number,
-    maxRetries: PropTypes.number
+    maxRetries: PropTypes.number,
   }),
   onRetry: PropTypes.func,
-  halUrl: PropTypes.string
+  halUrl: PropTypes.string,
 };
 
 /**
@@ -121,10 +223,12 @@ ErrorState.propTypes = {
  */
 const NoDocumentState = memo(() => {
   const { t } = useTranslation('project');
-  
+
   return (
     <div className={styles.noDocument}>
-      <div className={styles.icon} aria-hidden="true">📄</div>
+      <div className={styles.iconContainer} aria-hidden="true">
+        <DocumentIcon />
+      </div>
       <p>{t('project:scientificPublications.pdfNotAvailable')}</p>
     </div>
   );
@@ -137,7 +241,7 @@ NoDocumentState.displayName = 'NoDocumentState';
  */
 const HalMetadataDisplay = memo(({ metadata, isLoading, error }) => {
   const { t } = useTranslation('project');
-  
+
   if (isLoading) {
     return (
       <div className={styles.metadataLoading}>
@@ -145,11 +249,11 @@ const HalMetadataDisplay = memo(({ metadata, isLoading, error }) => {
       </div>
     );
   }
-  
+
   if (error || !metadata) {
     return null; // Échec silencieux pour les métadonnées enrichies
   }
-  
+
   return (
     <div className={styles.halMetadata}>
       <h4>{t('project:hal.enrichedMetadata')}</h4>
@@ -189,53 +293,59 @@ HalMetadataDisplay.displayName = 'HalMetadataDisplay';
 HalMetadataDisplay.propTypes = {
   metadata: PropTypes.object,
   isLoading: PropTypes.bool,
-  error: PropTypes.string
+  error: PropTypes.string,
 };
 
 /**
  * Composant principal PDFViewer refactorisé
  * Affiche des PDFs HAL avec gestion d'erreurs robuste et métadonnées enrichies
  */
-const PDFViewer = ({ 
-  halUrl, 
+const PDFViewer = ({
+  halUrl,
   title = '',
   className = '',
   height = '600px',
   showControls = true,
   showDownloadButton = true,
   showHalMetadata = false,
-  enableMetadataFallback = true
+  enableMetadataFallback = true,
 }) => {
   const { t } = useTranslation(['project', 'common']);
-  
+
   // États locaux
   const [isIframeLoading, setIsIframeLoading] = useState(true);
   const [iframeError, setIframeError] = useState(null);
-  
+
   // Hooks personnalisés
   const errorHandler = useErrorHandler({
     maxRetries: 2,
-    retryDelay: 1500
+    retryDelay: 1500,
   });
-  
+
   const halMetadata = useHalMetadata(halUrl, {
     autoFetch: showHalMetadata,
-    retryCount: 1
+    retryCount: 1,
   });
 
   // Validation de l'URL HAL
   const isValidHalUrl = useMemo(() => {
     if (!halUrl) return false;
-    
+
     try {
       const url = new URL(halUrl);
       // Accepter les domaines HAL connus
-      const validDomains = ['hal.science', 'hal.archives-ouvertes.fr', 'hal.inria.fr'];
-      const isValidDomain = validDomains.some(domain => url.hostname.includes(domain));
-      
+      const validDomains = [
+        'hal.science',
+        'hal.archives-ouvertes.fr',
+        'hal.inria.fr',
+      ];
+      const isValidDomain = validDomains.some(domain =>
+        url.hostname.includes(domain),
+      );
+
       // Vérifier la présence d'un identifiant HAL dans l'URL
       const hasHalId = /hal-[\w\d]+/i.test(halUrl);
-      
+
       return isValidDomain && hasHalId;
     } catch {
       return false;
@@ -267,7 +377,7 @@ const PDFViewer = ({
   const handleIframeError = useCallback(() => {
     const error = new Error('Impossible de charger le document PDF');
     error.type = ERROR_TYPES.PDF_LOAD;
-    
+
     setIsIframeLoading(false);
     setIframeError(error);
     errorHandler.handleError(error, 'PDF iframe loading');
@@ -275,7 +385,7 @@ const PDFViewer = ({
 
   const handleDownload = useCallback(() => {
     if (!viewerUrl) return;
-    
+
     try {
       const link = document.createElement('a');
       link.href = viewerUrl;
@@ -295,9 +405,11 @@ const PDFViewer = ({
       await errorHandler.retryWithDelay(() => {
         setIsIframeLoading(true);
         setIframeError(null);
-        
+
         // Re-déclencher le chargement de l'iframe
-        const iframe = document.querySelector(`iframe[title="${displayTitle}"]`);
+        const iframe = document.querySelector(
+          `iframe[title="${displayTitle}"]`,
+        );
         if (iframe) {
           const currentSrc = iframe.src;
           iframe.src = '';
@@ -332,15 +444,12 @@ const PDFViewer = ({
   if (!isValidHalUrl) {
     const validationError = {
       message: t('project:errors.invalidHalUrl'),
-      canRetry: false
+      canRetry: false,
     };
-    
+
     return (
       <div className={`${styles.pdfViewer} ${className}`}>
-        <ErrorState 
-          error={validationError} 
-          halUrl={halUrl}
-        />
+        <ErrorState error={validationError} halUrl={halUrl} />
       </div>
     );
   }
@@ -353,16 +462,16 @@ const PDFViewer = ({
           <div className={styles.titleSection}>
             <h3 className={styles.title}>{displayTitle}</h3>
             {showHalMetadata && (
-              <HalMetadataDisplay 
+              <HalMetadataDisplay
                 metadata={halMetadata}
                 isLoading={halMetadata.isLoading}
                 error={halMetadata.error}
               />
             )}
           </div>
-          
+
           {(showDownloadButton || halUrl) && (
-            <PDFActions 
+            <PDFActions
               halUrl={halUrl}
               title={displayTitle}
               onDownload={handleDownload}
@@ -379,7 +488,7 @@ const PDFViewer = ({
 
       {/* État d'erreur */}
       {(errorHandler.hasError || iframeError) && (
-        <ErrorState 
+        <ErrorState
           error={errorHandler.displayError}
           onRetry={errorHandler.isRetryable ? handleRetry : null}
           halUrl={halUrl}
@@ -392,9 +501,9 @@ const PDFViewer = ({
           src={`${viewerUrl}#toolbar=1&navpanes=1&scrollbar=1&view=FitH`}
           title={displayTitle}
           className={styles.iframe}
-          style={{ 
+          style={{
             height: showControls ? 'calc(100% - 80px)' : '100%',
-            display: isIframeLoading ? 'none' : 'block'
+            display: isIframeLoading ? 'none' : 'block',
           }}
           onLoad={handleIframeLoad}
           onError={handleIframeError}
@@ -408,9 +517,9 @@ const PDFViewer = ({
       <div className={styles.footer}>
         <small>
           {t('project:publication.pdfNote')}{' '}
-          <a 
-            href={halUrl} 
-            target="_blank" 
+          <a
+            href={halUrl}
+            target="_blank"
             rel="noopener noreferrer"
             className={styles.halLink}
           >
@@ -418,7 +527,8 @@ const PDFViewer = ({
           </a>
           {halMetadata.hasMetadata && (
             <span className={styles.metadataIndicator}>
-              {' • '}{t('project:hal.metadataEnriched')}
+              {' • '}
+              {t('project:hal.metadataEnriched')}
             </span>
           )}
         </small>
@@ -436,7 +546,7 @@ PDFViewer.propTypes = {
   showControls: PropTypes.bool,
   showDownloadButton: PropTypes.bool,
   showHalMetadata: PropTypes.bool,
-  enableMetadataFallback: PropTypes.bool
+  enableMetadataFallback: PropTypes.bool,
 };
 
 // Valeurs par défaut
@@ -447,7 +557,7 @@ PDFViewer.defaultProps = {
   showControls: true,
   showDownloadButton: true,
   showHalMetadata: false,
-  enableMetadataFallback: true
+  enableMetadataFallback: true,
 };
 
-export default memo(PDFViewer); 
+export default memo(PDFViewer);

@@ -473,7 +473,11 @@ export async function getServerSideProps({ params, query, locale }) {
 
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         videoData,
         relatedVideos,
         error: null,
@@ -484,7 +488,11 @@ export async function getServerSideProps({ params, query, locale }) {
     // Return generic error keys
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         videoData: null,
         relatedVideos: [],
         error: {

@@ -332,7 +332,7 @@ const AnthologyPage = ({ initialPlaysData, error }) => {
           />
         )}
       </div>
-      
+
       <Footer />
     </Layout>
   );
@@ -387,7 +387,11 @@ export async function getStaticProps({ locale }) {
 
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'anthology', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'anthology',
+          'home',
+        ])),
         initialPlaysData: playsData,
         error: null,
       },
@@ -397,7 +401,11 @@ export async function getStaticProps({ locale }) {
     console.error('Error fetching anthology data:', error);
     return {
       props: {
-        ...(await serverSideTranslations(locale, ['common', 'anthology', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'anthology',
+          'home',
+        ])),
         initialPlaysData: [],
         error: error.message || error.toString(),
       },

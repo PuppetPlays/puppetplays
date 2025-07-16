@@ -1,5 +1,5 @@
-import Layout from 'components/Layout';
 import Footer from 'components/Footer';
+import Layout from 'components/Layout';
 import { useFormattedTranslation } from 'hooks/useFormattedTranslation';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -43,9 +43,7 @@ const PrivacyPage = () => {
           <h2 className={styles.sectionTitle}>
             {t('privacy:legalBasis.title')}
           </h2>
-          <p className={styles.paragraph}>
-            {t('privacy:legalBasis.content')}
-          </p>
+          <p className={styles.paragraph}>{t('privacy:legalBasis.content')}</p>
         </section>
 
         <section className={styles.section}>
@@ -70,9 +68,7 @@ const PrivacyPage = () => {
           <h2 className={styles.sectionTitle}>
             {t('privacy:userRights.title')}
           </h2>
-          <p className={styles.paragraph}>
-            {t('privacy:userRights.content')}
-          </p>
+          <p className={styles.paragraph}>{t('privacy:userRights.content')}</p>
           <p className={styles.paragraph}>
             {t('privacy:userRights.opposition')}
           </p>
@@ -102,15 +98,13 @@ const PrivacyPage = () => {
           <h2 className={styles.sectionTitle}>
             {t('privacy:complaints.title')}
           </h2>
-          <p className={styles.paragraph}>
-            {t('privacy:complaints.content')}
-          </p>
+          <p className={styles.paragraph}>{t('privacy:complaints.content')}</p>
           <p className={styles.paragraph}>
             <strong>{t('privacy:complaints.phone')}</strong>
           </p>
         </section>
       </div>
-      
+
       <Footer />
     </Layout>
   );
@@ -124,4 +118,4 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export default PrivacyPage; 
+export default PrivacyPage;

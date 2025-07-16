@@ -1,6 +1,7 @@
+import NewsletterForm from 'components/NewsletterForm';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import NewsletterForm from 'components/NewsletterForm';
+
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -24,16 +25,21 @@ const Footer = () => {
             <NewsletterForm />
 
             <div className={styles.introContentLinks}>
-              <Link 
-                href={getTranslation('home:ourSiteUrl', '/projet/presentation')} 
+              <Link
+                href={getTranslation('home:ourSiteUrl', '/projet/presentation')}
                 className={styles.buttonLink}
               >
                 {getTranslation('common:knowMore', 'En savoir plus')}
               </Link>
               <Link href={getTranslation('home:theTeamUrl', '/projet/equipe')}>
-                {getTranslation('home:theTeam', 'L\'équipe')}
+                {getTranslation('home:theTeam', "L'équipe")}
               </Link>
-              <Link href={getTranslation('home:projectNewsUrl', '/projet/communications')}>
+              <Link
+                href={getTranslation(
+                  'home:projectNewsUrl',
+                  '/projet/communications',
+                )}
+              >
                 {getTranslation('home:projectNews', 'Actualités')}
               </Link>
               <Link
@@ -50,7 +56,10 @@ const Footer = () => {
                 {getTranslation('common:accessibility', 'Accessibilité')}
               </Link>
               <Link href="/confidentialite">
-                {getTranslation('common:privacy', 'Politique de confidentialité')}
+                {getTranslation(
+                  'common:privacy',
+                  'Politique de confidentialité',
+                )}
               </Link>
               <Link
                 href="https://www.facebook.com/ERCPuppetPlays"
@@ -79,4 +88,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

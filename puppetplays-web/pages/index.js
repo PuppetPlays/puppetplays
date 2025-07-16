@@ -1,11 +1,11 @@
 import BirthDeathDates from 'components/BirthDeathDates';
 import ButtonLink from 'components/ButtonLink';
 import Card from 'components/Card';
+import Footer from 'components/Footer';
 import DiscoveryPathway from 'components/Home/DiscoveryPathway';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
-import Footer from 'components/Footer';
 import HtmlContent from 'components/HtmlContent';
 import Keywords, { Tag } from 'components/Keywords';
 import LanguageSelector from 'components/LanguageSelector';
