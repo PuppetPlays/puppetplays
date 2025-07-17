@@ -147,7 +147,13 @@
     "noOptions": "No option",
     "filterByTag": "Filter by tag...",
     "tags": "Tags",
-    "sortBy": "Sort by",
+    "sortBy": {
+      "label": "Sort by",
+      "titleAsc": "Title (A-Z)",
+      "titleDesc": "Title (Z-A)",
+      "dateAsc": "Date (ascending)",
+      "dateDesc": "Date (descending)"
+    },
     "category": "Category",
     "language": "Language",
     "century": "Century"
@@ -229,7 +235,16 @@
   "no": "No",
   "retry": "Retry",
   "loading": "Loading...",
-  "error": "Error",
+  "error": {
+    "title": "Error",
+    "loadingData": "Error loading data",
+    "dataNotFound": "Data not found", 
+    "noResultsFound": "No results found"
+  },
+  "clearAll": "Clear all",
+  "contentNotAvailable": "Content not available",
+  "results": "{{count}} result",
+  "results_plural": "{{count}} results",
   "errors": {
     "network": "Network connection error",
     "validation": "Invalid data",

@@ -129,14 +129,6 @@ export default function Home({
   partners = [],
   discoveryPathwayResources = [],
 }) {
-  console.log('Home', {
-    animationTechnique,
-    authors,
-    work,
-    keywords,
-    partners,
-    discoveryPathwayResources,
-  });
   const { t } = useTranslation('home');
   const { locale: _locale } = useRouter();
   const workLinkRef = useRef(null);
@@ -222,6 +214,7 @@ export default function Home({
                       title={t('exploreBy.anthology.title')}
                       thumbnailUrl="/anthology-thumbnail.jpg"
                       description={t('exploreBy.anthology.subtitle')}
+                      to="/anthologie"
                     />
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
