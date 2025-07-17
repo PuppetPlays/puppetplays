@@ -71,6 +71,7 @@ const WorkPage = ({ initialData }) => {
             writingPlace={initialData?.writingPlace || ''}
             hasMedia={(initialData?.mediasCount || 0) > 0}
             hasDocument={(initialData?.scannedDocumentPagesCount || 0) > 0}
+            anthology={initialData?.anthology}
             onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>

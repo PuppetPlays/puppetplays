@@ -133,6 +133,7 @@
     "formatsPlaceholder": "Audio, Dactilographié…",
     "relatedToTags": "Mots-clé",
     "relatedToTagsPlaceholder": "Mots-clés",
+    "keywords": "Mots-clés",
     "publicDomain": "Domaine public",
     "gender": "Sexe",
     "genderPlaceholder": "Genre",
@@ -240,6 +241,7 @@
   "contentNotAvailable": "Contenu non disponible",
   "results": "{{count}} résultat",
   "results_plural": "{{count}} résultats",
+  "anthology": "Anthologie",
   "errors": {
     "network": "Erreur de connexion réseau",
     "validation": "Données invalides",
@@ -247,5 +249,24 @@
     "timeout": "Délai d'attente dépassé",
     "permission": "Accès refusé",
     "unknown": "Erreur inconnue"
+  },
+  "educationalResources": {
+    "title": "Ressources pédagogiques",
+    "metaDescription": "Découvrez nos ressources pédagogiques sur le théâtre de marionnettes - Matériel éducatif et guides pédagogiques",
+    "pageDescription": "Cette section propose des ressources pédagogiques développées dans le cadre du projet PuppetPlays. Vous y trouverez des matériaux éducatifs, des guides d'activités et des contenus adaptés pour l'enseignement du théâtre de marionnettes.",
+    "sidebarTitle": "Explorer les ressources",
+    "noResourcesFound": "Aucune ressource trouvée",
+    "resourceNotFound": "Ressource non trouvée",
+    "resourceNotFoundDescription": "La ressource demandée n'a pas pu être trouvée.",
+    "backToResources": "Retour aux ressources",
+    "exploreIntro": "Explorez nos ressources pédagogiques sur le théâtre de marionnettes.",
+    "oneResource": "1 ressource",
+    "resourceCount": "{{count}} ressources",
+    "loadingResources": "Chargement des ressources...",
+    "sidebar": {
+      "allResources": "Toutes les ressources",
+      "byCategory": "Par catégorie",
+      "byKeyword": "Par mot-clé"
+    }
   }
 }

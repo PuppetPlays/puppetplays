@@ -1,4 +1,3 @@
-import Button from 'components/Button';
 import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
@@ -55,21 +54,9 @@ const getAnthologyBySlugQuery = `
 
 const AnthologyDetailPage = ({ anthologyData, error }) => {
   const { t } = useTranslation(['common', 'anthology']);
-  const [currentPage, setCurrentPage] = useState(1);
   const [nakalaViewerUrl, setNakalaViewerUrl] = useState('');
 
   useEffect(() => {
-    if (
-      anthologyData &&
-      anthologyData.imageFiles &&
-      anthologyData.imageFiles.length > 0
-    ) {
-      // Use the first image file for the viewer by default
-      updateViewerForPage(1);
-    }
-  }, [anthologyData]);
-
-  const updateViewerForPage = pageNumber => {
     if (
       anthologyData &&
       anthologyData.nakalaIdentifier &&
@@ -83,19 +70,8 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         },
       );
       setNakalaViewerUrl(viewerUrl);
-      setCurrentPage(pageNumber);
     }
-  };
-
-  const handlePageChange = pageNumber => {
-    updateViewerForPage(pageNumber);
-  };
-
-  const downloadPDF = async () => {
-    // This would require a PDF generation service or library
-    // For now, we'll show a placeholder
-    alert(t('anthology:pdfDownloadComingSoon'));
-  };
+  }, [anthologyData]);
 
   if (error) {
     return (
@@ -203,40 +179,13 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 <h2 className={styles.sectionTitle}>
                   {t('anthology:digitalizedDocument')}
                 </h2>
-                <div className={styles.viewerControls}>
-                  <div className={styles.pageNavigation}>
-                    <button
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      disabled={currentPage <= 1}
-                      className={styles.navButton}
-                    >
-                      ← {t('anthology:previousPage')}
-                    </button>
-                    <span className={styles.pageIndicator}>
-                      {currentPage} / 8
-                    </span>
-                    <button
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      disabled={currentPage >= 8}
-                      className={styles.navButton}
-                    >
-                      {t('anthology:nextPage')} →
-                    </button>
-                  </div>
-
-                  <div className={styles.downloadButtons}>
-                    <Button onClick={downloadPDF} variant="secondary">
-                      {t('anthology:downloadPDF')}
-                    </Button>
-                  </div>
-                </div>
               </div>
 
               {nakalaViewerUrl ? (
                 <div className={styles.viewerContainer}>
                   <iframe
                     src={nakalaViewerUrl}
-                    title={`${t('anthology:digitalizedDocument')} - ${t('anthology:page')} ${currentPage}`}
+                    title={t('anthology:digitalizedDocument')}
                     className={styles.viewerFrame}
                     allowFullScreen
                   />

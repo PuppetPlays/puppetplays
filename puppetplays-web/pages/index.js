@@ -219,6 +219,8 @@ export default function Home({
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
                       thumbnailUrl="/pathways-thumbnail.jpg"
+                      description={t('exploreBy.pathways.subtitle')}
+                      to="/ressources-pedagogiques"
                     />
                     <EntryPointCard
                       title={t('exploreBy.publications.title')}
@@ -245,9 +247,9 @@ export default function Home({
 
           <div className={styles.content}>
             <div className={styles.contentInner}>
-              <Section title={t('accessToIntregralWorks')} isComingSoon>
+              {/* <Section title={t('accessToIntregralWorks')} isComingSoon>
                 <img src="/home-integral-works.jpg" alt="" />
-              </Section>
+              </Section> */}
 
               <Section isComingSoon={!animationTechnique}>
                 <SplitLayout
@@ -411,7 +413,7 @@ export default function Home({
                 </Section>
               )}
 
-              <Section title={t('ourPublications')}>
+              {/* <Section title={t('ourPublications')}>
                 <ul className={styles.publications}>
                   {PUBLICATIONS &&
                     Array.isArray(PUBLICATIONS) &&
@@ -424,7 +426,7 @@ export default function Home({
                       />
                     ))}
                 </ul>
-              </Section>
+              </Section> */}
 
               <Section
                 title={t('discoveryPathwayTitle')}

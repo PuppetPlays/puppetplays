@@ -40,7 +40,7 @@ const Footer = () => {
                   '/projet/communications',
                 )}
               >
-                {getTranslation('home:projectNews', 'Actualités')}
+                {getTranslation('home:projectNews', "L'actualité du projet")}
               </Link>
               <Link
                 href="https://tact.demarre-shs.fr/project/41"

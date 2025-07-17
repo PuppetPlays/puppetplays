@@ -132,6 +132,7 @@
     "formatsPlaceholder": "Audio, Touch typed…",
     "relatedToTags": "Keywords",
     "relatedToTagsPlaceholder": "Key-words",
+    "keywords": "Keywords",
     "publicDomain": "Public domain",
     "gender": "Gender",
     "genderPlaceholder": "Gender",
@@ -245,6 +246,7 @@
   "contentNotAvailable": "Content not available",
   "results": "{{count}} result",
   "results_plural": "{{count}} results",
+  "anthology": "Anthology",
   "errors": {
     "network": "Network connection error",
     "validation": "Invalid data",
@@ -252,5 +254,24 @@
     "timeout": "Request timeout",
     "permission": "Access denied",
     "unknown": "Unknown error"
+  },
+  "educationalResources": {
+    "title": "Educational resources",
+    "metaDescription": "Discover our educational resources on puppet theatre - Educational materials and teaching guides",
+    "pageDescription": "This section offers educational resources developed as part of the PuppetPlays project. You will find educational materials, activity guides and content adapted for teaching puppet theatre.",
+    "sidebarTitle": "Explore resources",
+    "noResourcesFound": "No resources found",
+    "resourceNotFound": "Resource not found",
+    "resourceNotFoundDescription": "The requested resource could not be found.",
+    "backToResources": "Back to resources",
+    "exploreIntro": "Explore our educational resources on puppet theatre.",
+    "oneResource": "1 resource",
+    "resourceCount": "{{count}} resources",
+    "loadingResources": "Loading resources...",
+    "sidebar": {
+      "allResources": "All resources",
+      "byCategory": "By category",
+      "byKeyword": "By keyword"
+    }
   }
 }

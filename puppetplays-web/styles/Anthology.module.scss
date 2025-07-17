@@ -1,12 +1,17 @@
 .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0.5rem 0; /* Padding seulement en haut/bas */
   padding-bottom: 2rem; /* Add bottom padding for footer space */
 
   @media (min-width: 768px) {
-    padding: 1.5rem;
+    padding: 0.5rem 0; /* Padding seulement en haut/bas sur desktop */
     padding-bottom: 3rem; /* More space on larger screens */
+  }
+
+  @media (min-width: 1024px) {
+    padding-bottom: 3rem;
   }
 }
 

@@ -68,6 +68,18 @@ const PdfDownloadIcon = () => {
   );
 };
 
+const AnthologyIcon = () => {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 8a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM4 11a1 1 0 100 2h12a1 1 0 100-2H4zM3 16a1 1 0 011-1h8a1 1 0 110 2H4a1 1 0 01-1-1z"
+      />
+    </svg>
+  );
+};
+
 const WorkPageHeader = ({
   id = null,
   slug = null,
@@ -76,6 +88,7 @@ const WorkPageHeader = ({
   compositionPlace = [],
   hasMedia = false,
   hasDocument = false,
+  anthology = null,
   onOpenDocument = null,
 }) => {
   const router = useRouter();
@@ -150,6 +163,15 @@ const WorkPageHeader = ({
               {t('common:medias')}
             </ButtonLink>
           )}
+          {anthology && (
+            <ButtonLink
+              icon={<AnthologyIcon fillRule="evenodd" />}
+              href={`/anthologie/${anthology.slug}`}
+              inverse={true}
+            >
+              {t('common:anthology')}
+            </ButtonLink>
+          )}
           {hasDocument && (
             <Button
               icon={<OriginalWorkIcon fillRule="evenodd" />}
@@ -182,6 +204,7 @@ WorkPageHeader.propTypes = {
   compositionPlace: PropTypes.arrayOf(PropTypes.object),
   hasMedia: PropTypes.bool,
   hasDocument: PropTypes.bool,
+  anthology: PropTypes.object,
   isDocumentOpen: PropTypes.bool,
   onOpenDocument: PropTypes.func.isRequired,
 };

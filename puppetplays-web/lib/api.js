@@ -351,14 +351,7 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
     title,
-    writtenBy: author {
-      firstName,
-      lastName
-          },
     ... on works_works_Entry {
-      translatedBy {
-        fullName
-      },
       doi,
       viafId,
       arkId,
@@ -516,7 +509,12 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       publicDomain,
       additionalLicenseInformation,
       mediasCount: _count(field: "medias")
-      scannedDocumentPagesCount: _count(field: "scannedDocumentPages")
+      scannedDocumentPagesCount: _count(field: "scannedDocumentPages"),
+      anthology {
+        id,
+        slug,
+        title
+      }
     }
   }
 }`;
@@ -529,6 +527,11 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
     title,
     ... on works_works_Entry {
       scannedDocumentPagesCount: _count(field: "scannedDocumentPages"),
+      anthology {
+        id,
+        slug,
+        title
+      },
       medias @transform(width: 600) {
         id,
         url,
@@ -1052,6 +1055,83 @@ export async function getDiscoveryPathwayResources(locale) {
   } catch (error) {
     console.error('Error fetching discovery pathway resources:', error);
     return [];
+  }
+}
+
+// Educational Resources queries
+export const getAllEducationalResourcesQuery = `
+${assetFragment}
+query GetAllEducationalResources($locale: [String]) {
+  entries(section: "educationalResourceEntry", site: $locale, orderBy: "title") {
+    id,
+    slug,
+    title,
+    ... on educationalResourceEntry_default_Entry {
+      keywords {
+        id,
+        title
+      },
+      mainImage @transform(width: 400, height: 300, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+      contentBlock {
+        ... on contentBlock_textblock_BlockType {
+          contentTitle,
+          contentDescription
+        }
+      }
+    }
+  }
+}
+`;
+
+export const getEducationalResourceByIdQuery = `
+${assetFragment}
+query GetEducationalResourceById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "educationalResourceEntry", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on educationalResourceEntry_default_Entry {
+      keywords {
+        id,
+        title
+      },
+      mainImage @transform(width: 800, height: 600, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+      contentBlock {
+        ... on contentBlock_textblock_BlockType {
+          contentTitle,
+          contentDescription
+        }
+      }
+    }
+  }
+}
+`;
+
+export async function getAllEducationalResources(locale) {
+  try {
+    const data = await fetchAPI(getAllEducationalResourcesQuery, {
+      variables: { locale },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error fetching educational resources:', error);
+    return { entries: [] };
+  }
+}
+
+export async function getEducationalResourceById(locale, id) {
+  try {
+    const data = await fetchAPI(getEducationalResourceByIdQuery, {
+      variables: { locale, id },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error fetching educational resource:', error);
+    return { entry: null };
   }
 }
 

@@ -58,7 +58,9 @@
 
 .map {
   position: relative;
-  height: 100%;
+  height: 100vh; /* Hauteur définie moins espace pour header/footer */
+  min-height: 600px; /* Hauteur minimum pour garantir l'affichage */
+  width: 100%;
 
   > button {
     position: absolute;

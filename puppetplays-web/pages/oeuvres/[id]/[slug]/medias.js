@@ -86,6 +86,7 @@ function MediasPage({ initialData }) {
             writingPlace={initialData?.writingPlace || ''}
             hasMedia
             hasDocument={(initialData?.scannedDocumentPagesCount || 0) > 0}
+            anthology={initialData?.anthology}
             onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>
