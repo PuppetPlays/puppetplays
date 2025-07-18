@@ -68,15 +68,23 @@ const PublicationDetailPage = ({ publication, error }) => {
 
   // Helper function to construct PDF URL from HAL CV Link
   const constructHalPdfUrl = halCvLink => {
-    if (!halCvLink) return null;
+    console.log('🔍 [DEBUG] Constructing HAL PDF URL from:', halCvLink);
+
+    if (!halCvLink) {
+      console.log('🔍 [DEBUG] No HAL CV Link provided');
+      return null;
+    }
 
     // If it already ends with /document, use as is
     if (halCvLink.endsWith('/document')) {
+      console.log('🔍 [DEBUG] URL already ends with /document:', halCvLink);
       return halCvLink;
     }
 
     // Add /document to the end of the HAL link
-    return `${halCvLink}/document`;
+    const finalUrl = `${halCvLink}/document`;
+    console.log('🔍 [DEBUG] Final HAL PDF URL:', finalUrl);
+    return finalUrl;
   };
 
   // Obtenir les identifiants ORCID
@@ -101,6 +109,8 @@ const PublicationDetailPage = ({ publication, error }) => {
 
   // Use real data from CraftCMS
   const pdfUrl = constructHalPdfUrl(publication.halCvLink);
+  console.log('🔍 [DEBUG] Final pdfUrl to be used in PDFViewer:', pdfUrl);
+  console.log('🔍 [DEBUG] publication.halCvLink:', publication.halCvLink);
   const authorsList = getOrcidIdentifiers(publication.authorAndOrcidIdentifier);
   const doi = publication.doi;
   const publisher = publication.editorName;

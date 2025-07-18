@@ -2,7 +2,7 @@ import useErrorHandler, { ERROR_TYPES } from 'hooks/useErrorHandler';
 import useHalMetadata from 'hooks/useHalMetadata';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
-import { useState, useEffect, useCallback, useMemo, memo } from 'react';
+import { useState, useEffect, useCallback, useMemo, memo, useRef } from 'react';
 
 import styles from './PDFViewer.module.scss';
 
@@ -315,6 +315,7 @@ const PDFViewer = ({
   // États locaux
   const [isIframeLoading, setIsIframeLoading] = useState(true);
   const [iframeError, setIframeError] = useState(null);
+  const loadingTimeoutRef = useRef(null);
 
   // Hooks personnalisés
   const errorHandler = useErrorHandler({
@@ -329,7 +330,12 @@ const PDFViewer = ({
 
   // Validation de l'URL HAL
   const isValidHalUrl = useMemo(() => {
-    if (!halUrl) return false;
+    if (!halUrl) {
+      console.log('🔍 [DEBUG PDFViewer] No HAL URL provided');
+      return false;
+    }
+
+    console.log('🔍 [DEBUG PDFViewer] Validating HAL URL:', halUrl);
 
     try {
       const url = new URL(halUrl);
@@ -346,8 +352,18 @@ const PDFViewer = ({
       // Vérifier la présence d'un identifiant HAL dans l'URL
       const hasHalId = /hal-[\w\d]+/i.test(halUrl);
 
-      return isValidDomain && hasHalId;
-    } catch {
+      console.log(
+        '🔍 [DEBUG PDFViewer] Domain valid:',
+        isValidDomain,
+        'HAL ID found:',
+        hasHalId,
+      );
+      const isValid = isValidDomain && hasHalId;
+      console.log('🔍 [DEBUG PDFViewer] URL is valid:', isValid);
+
+      return isValid;
+    } catch (error) {
+      console.log('🔍 [DEBUG PDFViewer] URL validation error:', error);
       return false;
     }
   }, [halUrl]);
@@ -367,14 +383,60 @@ const PDFViewer = ({
     return t('project:scientificPublications.documentPdf');
   }, [title, halMetadata.displayData, enableMetadataFallback, t]);
 
-  // Gestionnaires d'événements
+  // Réinitialisation lors du changement d'URL
+  useEffect(() => {
+    if (halUrl) {
+      setIsIframeLoading(true);
+      setIframeError(null);
+      errorHandler.clearError();
+
+      // Nettoyer le timeout précédent
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+
+      // Timeout de 15 secondes pour éviter le loading infini
+      const timeoutId = setTimeout(() => {
+        console.warn('PDF loading timeout - forcing stop');
+        setIsIframeLoading(false);
+        setIframeError(
+          new Error(
+            'Le document PDF met trop de temps à charger. Vérifiez votre connexion internet.',
+          ),
+        );
+      }, 15000);
+
+      loadingTimeoutRef.current = timeoutId;
+    }
+
+    // Cleanup function
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+    };
+  }, [halUrl, errorHandler.clearError]);
+
+  // Gestionnaires d'événements améliorés
   const handleIframeLoad = useCallback(() => {
+    // Nettoyer le timeout si l'iframe se charge avec succès
+    if (loadingTimeoutRef.current) {
+      clearTimeout(loadingTimeoutRef.current);
+      loadingTimeoutRef.current = null;
+    }
+
     setIsIframeLoading(false);
     setIframeError(null);
     errorHandler.clearError();
   }, [errorHandler.clearError]);
 
   const handleIframeError = useCallback(() => {
+    // Nettoyer le timeout en cas d'erreur
+    if (loadingTimeoutRef.current) {
+      clearTimeout(loadingTimeoutRef.current);
+      loadingTimeoutRef.current = null;
+    }
+
     const error = new Error('Impossible de charger le document PDF');
     error.type = ERROR_TYPES.PDF_LOAD;
 
@@ -422,15 +484,6 @@ const PDFViewer = ({
       console.error('Retry failed:', error);
     }
   }, [errorHandler.retryWithDelay, displayTitle]);
-
-  // Réinitialisation lors du changement d'URL
-  useEffect(() => {
-    if (halUrl) {
-      setIsIframeLoading(true);
-      setIframeError(null);
-      errorHandler.clearError();
-    }
-  }, [halUrl, errorHandler.clearError]);
 
   // Rendu conditionnel
   if (!halUrl) {

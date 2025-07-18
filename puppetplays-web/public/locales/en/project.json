@@ -316,7 +316,7 @@
       "volume": "Volume", 
       "pages": "Pages",
       "issn": "ISSN",
-      "doi": "DOI",
+    "doi": "DOI",
       "placeOfEdition": "Place of publication",
       "in": "Book title",
       "languages": "Languages",

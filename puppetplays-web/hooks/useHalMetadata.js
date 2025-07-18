@@ -140,9 +140,18 @@ const useHalMetadata = (halUrl, options = {}) => {
         return;
       }
 
-      if (state.isLoading && !force) {
-        return; // Éviter les appels multiples
-      }
+      // Éviter les appels multiples en vérifiant l'état actuel
+      setState(prev => {
+        if (prev.isLoading && !force) {
+          return prev; // Pas de changement si déjà en cours de chargement
+        }
+        return {
+          ...prev,
+          isLoading: true,
+          error: null,
+          isSuccess: false,
+        };
+      });
 
       const halId = extractHalId(halUrl);
       if (!halId) {
@@ -163,13 +172,6 @@ const useHalMetadata = (halUrl, options = {}) => {
         }));
         return;
       }
-
-      setState(prev => ({
-        ...prev,
-        isLoading: true,
-        error: null,
-        isSuccess: false,
-      }));
 
       try {
         const response = await fetchWithRetry(apiUrl);
@@ -211,7 +213,7 @@ const useHalMetadata = (halUrl, options = {}) => {
       buildApiUrl,
       fetchWithRetry,
       transformMetadata,
-      state.isLoading,
+      // Retiré state.isLoading des dépendances pour éviter la boucle infinie
     ],
   );
 
@@ -229,10 +231,10 @@ const useHalMetadata = (halUrl, options = {}) => {
 
   // Récupération automatique au montage si autoFetch est activé
   useEffect(() => {
-    if (autoFetch && halUrl) {
+    if (autoFetch && halUrl && !state.isLoading && !state.isSuccess) {
       fetchMetadata();
     }
-  }, [halUrl, autoFetch, fetchMetadata]);
+  }, [halUrl, autoFetch]); // Supprimé fetchMetadata des dépendances pour éviter les re-renders
 
   return {
     // État

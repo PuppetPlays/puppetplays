@@ -11,17 +11,30 @@ async function fetchNakala(endpoint) {
   const url = `${NAKALA_BASE_URL}${endpoint}`;
 
   try {
+    console.log(`🌐 Making request to: ${url}`);
     const response = await fetch(url);
+
+    console.log(
+      `📊 Response status: ${response.status} ${response.statusText}`,
+    );
+    console.log(
+      `📋 Response headers:`,
+      Object.fromEntries(response.headers.entries()),
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(`❌ HTTP Error ${response.status}:`, errorText);
       throw new Error(`HTTP Error ${response.status}: ${errorText}`);
     }
 
     const data = await response.json();
+    console.log(`✅ Successfully parsed JSON response`);
+    console.log(`📦 Response data keys:`, Object.keys(data));
+
     return data;
   } catch (err) {
-    console.error(`Error for ${endpoint}:`, err);
+    console.error(`💥 Error for ${endpoint}:`, err);
     throw err;
   }
 }
@@ -188,9 +201,22 @@ export async function fetchNakalaItem(itemId) {
   const endpoint = `/datas/${itemId}`;
 
   try {
-    return await fetchNakala(endpoint);
+    console.log(`🔍 Fetching Nakala item: ${itemId}`);
+    console.log(`📡 Endpoint: ${NAKALA_BASE_URL}${endpoint}`);
+
+    const result = await fetchNakala(endpoint);
+
+    console.log(`✅ Successfully fetched Nakala item ${itemId}`);
+    console.log(`📄 Response structure:`, Object.keys(result));
+    console.log(
+      `📁 Files count:`,
+      result.files ? result.files.length : 'No files property',
+    );
+
+    return result;
   } catch (error) {
-    console.error(`Failed to fetch item ${itemId}:`, error.message);
+    console.error(`❌ Failed to fetch item ${itemId}:`, error.message);
+    console.error(`📍 Full error:`, error);
     throw new Error(`Failed to fetch Nakala item ${itemId}: ${error.message}`);
   }
 }

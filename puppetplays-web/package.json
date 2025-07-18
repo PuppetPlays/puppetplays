@@ -94,7 +94,9 @@
     "react-paginate": "^8.3.0",
     "react-select": "^5.10.1",
     "swr": "^2.3.3",
-    "text-clipper": "^2.2.0"
+    "text-clipper": "^2.2.0",
+    "xml2js": "^0.6.2",
+    "xmldom": "^0.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
