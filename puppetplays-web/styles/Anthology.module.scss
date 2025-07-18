@@ -360,13 +360,17 @@
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: var(--color-bg-depth-1);
+    background: var(--color-brand);
+    color: white;
     border-color: var(--color-brand);
+    transform: translateY(-1px);
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    background: var(--color-bg-depth-1);
+    color: var(--color-text-inactive);
   }
 }
 
@@ -420,6 +424,55 @@
   padding: 1rem;
   background: var(--color-bg-depth-1);
   border-bottom: 1px solid var(--color-border);
+  gap: 1rem;
+  flex-wrap: nowrap; // Force single line layout
+}
+
+// === TRANSCRIPTION NAVIGATION CONTROLS ===
+.transcriptionNavigation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; // Reduced gap for tighter layout
+  justify-content: center;
+  flex-shrink: 0; // Prevent shrinking
+}
+
+.transcriptionNavButton {
+  background: var(--color-bg-depth-1);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.4rem 0.6rem; // Reduced padding for shorter text
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px; // Reduced min-width for shorter text
+
+  &:hover:not(:disabled) {
+    background: var(--color-brand);
+    color: white;
+    border-color: var(--color-brand);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--color-bg-depth-1);
+    color: var(--color-text-inactive);
+  }
+}
+
+.transcriptionPageIndicator {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0.4rem 0.8rem;
+  background: var(--color-bg-depth-2);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
 }
 
 .sectionTitle {
@@ -427,6 +480,7 @@
   font-weight: 600;
   color: var(--color-text);
   margin: 0;
+  flex-shrink: 0; // Prevent title from shrinking
 }
 
 .comingSoon {
@@ -627,6 +681,28 @@
     text-align: justify;
     hyphens: auto;
     word-break: break-word;
+  }
+
+  // === DÉCORS ELEMENTS ===
+  .decor {
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    background: rgba(var(--color-secondary-rgb, 139, 69, 19), 0.08);
+    border: 1px solid rgba(var(--color-secondary-rgb, 139, 69, 19), 0.2);
+    border-left: 4px solid var(--color-secondary, #8b4513);
+    border-radius: 8px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-secondary, #8b4513);
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    
+    &::before {
+      content: '🎭';
+      margin-right: 0.5rem;
+      font-style: normal;
+    }
   }
 
   // === VERSES/SONGS (Chansons) ===
