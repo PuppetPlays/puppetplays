@@ -4,7 +4,7 @@
   "mainNav": {
     "presentation": "Project Presentation",
     "team": "Team",
-    "videos": "Video Resources",
+    "videos": "Videos",
     "communications": "Communication"
   },
   "researchProjects": "Research Projects",
@@ -147,7 +147,7 @@
   },
   "videos": {
     "titleUnavailable": "Title unavailable",
-    "exploreIntro": "Explore our collection of videos on puppet theatre",
+    "exploreIntro": "Explore our collection of puppet theatre videos",
     "oneCollection": "1 collection",
     "noCollections": "No collections",
     "collectionCount": "{{count}} collection",
@@ -157,13 +157,13 @@
     "video_plural": "videos",
     "videoCount": "{{count}} video",
     "videoCount_plural": "{{count}} videos",
-    "oneVideoTotal": "1 video in total",
+    "oneVideoTotal": "1 video total",
     "noVideos": "No videos",
-    "videosTotal": "{{count}} videos in total",
+    "videosTotal": "{{count}} videos total",
     "totalVideoCount": "{{count}} video in total",
     "totalVideoCount_plural": "{{count}} videos in total",
     "loadingVideos": "Loading videos...",
-    "metaDescription": "Video collections on puppet theatre - PuppetPlays Project"
+    "metaDescription": "Puppet theatre video collections - PuppetPlays Project"
   },
   "videoDetail": {
     "notFoundTitle": "Video Not Found",
@@ -274,7 +274,7 @@
   "scientificPublications": {
     "title": "Scientific Publications",
     "metaDescription": "Explore our scientific publications and academic research",
-    "pageDescription": "This page brings together all the scientific publications produced as part of the PuppetPlays project. You will find Didier Plassard's monograph, peer-reviewed articles, doctoral theses, conference proceedings, contributions to Cahiers Élisabéthains as well as other academic publications. Click on the title of each publication to access its detailed page with the complete PDF.",
+    "pageDescription": "This page brings together all the scientific publications produced as part of the PuppetPlays project.",
     "clickToRead": "Click here to read the publication",
     "noPublicationsFound": "No publications found",
     "publicationNotFound": "Publication not found",
@@ -288,12 +288,12 @@
     "year": "Year",
     "categories": {
       "all": "All categories",
-      "peerReviewedPublications": "Peer-reviewed publications",
-      "didierPlassardsMonography": "Didier Plassard's monography",
-      "phds": "PhDs",
-      "conferenceProceedings": "Conference proceedings",
+      "peerReviewedPublications": "Peer-reviewed Publications",
+      "didierPlassardsMonography": "Didier Plassard's Monography",
+      "phds": "PhD Theses",
+      "conferenceProceedings": "Conference Proceedings",
       "cahiersElizabethains": "Cahiers Élisabéthains",
-      "nonPeerReviewed": "Non peer-reviewed publications",
+      "nonPeerReviewed": "Non-peer-reviewed Publications",
       "communications": "Communications",
       "chaptersInBooks": "Book chapters",
       "books": "Books",
@@ -313,10 +313,10 @@
       "publicationDate": "Publication date",
       "editor": "Publisher/Magazine",
       "journal": "Journal",
-      "volume": "Volume", 
+      "volume": "Volume",
       "pages": "Pages",
       "issn": "ISSN",
-    "doi": "DOI",
+      "doi": "DOI",
       "placeOfEdition": "Place of publication",
       "in": "Book title",
       "languages": "Languages",
@@ -330,7 +330,7 @@
     "editor": "Publisher/Magazine",
     "journal": "Journal",
     "volume": "Volume",
-    "pages": "Pages", 
+    "pages": "Pages",
     "issn": "ISSN",
     "doi": "DOI",
     "placeOfEdition": "Place of publication",
@@ -356,7 +356,8 @@
     "pageOf": "Page {{current}} of {{total}}",
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
-    "resetZoom": "Reset zoom"
+    "resetZoom": "Reset zoom",
+    "noPdfAvailableDesc": "Scientific publications no pdf available desc"
   },
   "hal": {
     "loadingMetadata": "Loading HAL metadata...",
@@ -370,12 +371,15 @@
   },
   "publication": {
     "noPdfAvailable": "No PDF available",
-    "pdfError": "PDF loading error",
-    "pdfErrorMessage": "Unable to load the document. Please try opening the document directly on HAL.",
-    "openInHal": "Open on HAL",
+    "pdfError": "PDF Loading Error",
+    "pdfErrorMessage": "Unable to load document. Please try opening the document directly on HAL.",
+    "openInHal": "Open in HAL",
     "downloadPdf": "Download PDF",
     "download": "Download",
     "loadingPdf": "Loading PDF...",
-    "pdfNote": "Document hosted on"
+    "pdfNote": "Document hosted on",
+    "open": "Open",
+    "loadingNote": "Loading may take a few seconds...",
+    "viewerNote": "Viewing via"
   }
-} 
+}

@@ -103,5 +103,17 @@
   "discoveryPathwayTitle": "Discovery Pathway",
   "pathway": "Discover and learn",
   "animationTechniqueTitle": "Animation Techniques",
-  "animationTechniqueDescription": "Discover the different techniques used to manipulate puppets and marionettes throughout the history of European puppet theater. This section explores the artistic and technical approaches that give life to these characters."
+  "animationTechniqueDescription": "Discover the different techniques used to manipulate puppets and marionettes throughout the history of European puppet theater. This section explores the artistic and technical approaches that give life to these characters.",
+  "contentNotAvailable": "Content not available",
+  "authorsSectionComingSoon": "Authors section coming soon",
+  "present": "Present",
+  "viewOrcid": "View orcid",
+  "viewCV": "View c v",
+  "viewProfile": "View profile",
+  "close": "Close",
+  "researchProjects": "Research projects",
+  "viewProject": "View project",
+  "partnersNote": "Partners note",
+  "layer": "Layer",
+  "mapLoadingMessage": "Map loading message"
 }

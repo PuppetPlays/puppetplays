@@ -103,5 +103,17 @@
   "search": {
     "placeholder": "Rechercher...",
     "button": "Rechercher"
-  }
+  },
+  "contentNotAvailable": "Contenu non disponible",
+  "authorsSectionComingSoon": "Section auteurs bientôt disponible",
+  "present": "Present",
+  "viewOrcid": "View orcid",
+  "viewCV": "View c v",
+  "viewProfile": "View profile",
+  "close": "Fermer",
+  "researchProjects": "Research projects",
+  "viewProject": "View project",
+  "partnersNote": "Partners note",
+  "layer": "Layer",
+  "mapLoadingMessage": "Map loading message"
 }

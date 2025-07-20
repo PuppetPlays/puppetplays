@@ -4,7 +4,7 @@
   "mainNav": {
     "presentation": "Présentation du projet",
     "team": "L'équipe",
-    "videos": "Ressources vidéos",
+    "videos": "Vidéos",
     "communications": "Communication"
   },
   "researchProjects": "Travaux de recherche",
@@ -275,7 +275,7 @@
   "scientificPublications": {
     "title": "Publications scientifiques",
     "metaDescription": "Explorez nos publications scientifiques et recherches académiques",
-    "pageDescription": "Cette page rassemble l'ensemble des publications scientifiques produites dans le cadre du projet PuppetPlays. Vous y trouverez la monographie de Didier Plassard, les articles à comité de lecture, les thèses de doctorat, les actes de colloques, les contributions aux Cahiers Élisabéthains ainsi que d'autres publications académiques. Cliquez sur le titre de chaque publication pour accéder à sa page détaillée avec le PDF complet.",
+    "pageDescription": "Cette page rassemble l'ensemble des publications scientifiques produites dans le cadre du projet PuppetPlays.",
     "clickToRead": "Cliquez ici pour lire la publication",
     "noPublicationsFound": "Aucune publication trouvée",
     "publicationNotFound": "Publication non trouvée",
@@ -304,20 +304,20 @@
     },
     "conferences": {
       "conference1": "Conférence 1",
-      "conference2": "Conférence 2", 
+      "conference2": "Conférence 2",
       "conference3": "Conférence 3"
     },
     "fields": {
       "title": "Titre",
       "authors": "Auteurs",
       "category": "Catégorie",
-      "publicationDate": "Date de publication", 
+      "publicationDate": "Date de publication",
       "editor": "Éditeur/Magazine",
       "journal": "Revue",
       "volume": "Volume",
       "pages": "Pages",
       "issn": "ISSN",
-    "doi": "DOI",
+      "doi": "DOI",
       "placeOfEdition": "Lieu d'édition",
       "in": "Titre du livre",
       "languages": "Langues",
@@ -329,7 +329,7 @@
     "category": "Catégorie",
     "publicationDate": "Date de publication",
     "editor": "Éditeur/Magazine",
-    "journal": "Revue", 
+    "journal": "Revue",
     "volume": "Volume",
     "pages": "Pages",
     "issn": "ISSN",
@@ -355,11 +355,12 @@
     "loadingPdf": "Chargement du PDF en cours...",
     "pdfNote": "Document hébergé sur",
     "previousPage": "Page précédente",
-    "nextPage": "Page suivante", 
+    "nextPage": "Page suivante",
     "pageOf": "Page {{current}} sur {{total}}",
     "zoomIn": "Agrandir",
     "zoomOut": "Réduire",
-    "resetZoom": "Réinitialiser le zoom"
+    "resetZoom": "Réinitialiser le zoom",
+    "noPdfAvailableDesc": "Scientific publications no pdf available desc"
   },
   "hal": {
     "loadingMetadata": "Chargement des métadonnées HAL...",
@@ -392,6 +393,7 @@
     "usingAlternativeViewer": "Utilisation du viewer alternatif",
     "pdfCannotBeDisplayed": "Le PDF ne peut pas être affiché dans votre navigateur",
     "viewerNote": "Visualisation via",
-    "loadingNote": "Le chargement peut prendre quelques secondes..."
+    "loadingNote": "Le chargement peut prendre quelques secondes...",
+    "open": "Ouvrir"
   }
-} 
+}
