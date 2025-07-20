@@ -3,9 +3,8 @@ import { useTranslation } from 'next-i18next';
 
 import styles from './PDFViewer.module.scss';
 
-// Charger le composant PDFViewerReact uniquement côté client
-// pour éviter les erreurs SSR avec pdfjs
-const PDFViewerReact = dynamic(() => import('./PDFViewerReact'), {
+// Charger le composant PDFViewerEmbed uniquement côté client
+const PDFViewerEmbed = dynamic(() => import('./PDFViewerEmbed'), {
   ssr: false,
   loading: () => {
     const LoadingComponent = () => {
@@ -25,4 +24,4 @@ const PDFViewerReact = dynamic(() => import('./PDFViewerReact'), {
   },
 });
 
-export default PDFViewerReact; 
+export default PDFViewerEmbed; 

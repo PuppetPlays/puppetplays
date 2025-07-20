@@ -360,7 +360,7 @@ const PublicationDetailPage = ({ publication, error }) => {
                 <div className={styles.externalLinksGrid}>
                   {pdfUrl && (
                     <a
-                      href={pdfUrl}
+                      href={publication.halCvLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.externalLinkItem}

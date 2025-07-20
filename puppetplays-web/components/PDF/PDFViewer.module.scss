@@ -1,216 +1,159 @@
-// Variables for consistency
-$primary-color: #1a1b45; // var(--color-text)
-$secondary-color: #595b78; // var(--color-text-subtle)
-$accent-color: #f8d04e;
-$brand-color: #2037b1; // var(--color-brand)
-$brand-light: #2d4df6; // var(--color-brand-light)
-$border-color: #d9d9e0; // var(--color-border)
-$background-color: #f7f7f9; // var(--color-bg-depth-1)
-$background-secondary: #f0f0f3; // var(--color-bg-depth-2)
-$error-color: #d32f2f;
-$success-color: #2e7d32;
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
-$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-$transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+// Variables - Utiliser les variables CSS du projet
+$shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
 
+// Main container
 .pdfViewer {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: $shadow-light;
   display: flex;
   flex-direction: column;
-  background: white;
-  border-radius: 12px;
-  box-shadow: $shadow-lg;
   overflow: hidden;
   position: relative;
-  height: 100%;
-  max-height: 100vh;
-  border: 1px solid $border-color;
+  width: 100%;
 }
 
+// Header section
 .header {
+  align-items: center;
+  background-color: var(--color-brand);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background: $brand-color;
-  border-bottom: 1px solid rgba(white, 0.2);
-  flex-shrink: 0;
-  gap: 1.5rem;
-
-  .title {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: white;
-    letter-spacing: -0.025em;
-    flex: 1;
-  }
+  padding: 1rem 1.5rem;
+  min-height: 60px;
 
   .titleSection {
     flex: 1;
-    min-width: 200px;
+  }
+
+  .title {
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
   }
 
   .controls {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
-  }
-
-  .downloadButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: white;
-    color: $brand-color;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
-    white-space: nowrap;
-    text-decoration: none;
-    letter-spacing: 0.025em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    svg {
-      transition: transform 0.2s ease;
-    }
-
-    &:hover:not(:disabled) {
-      background: white;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
+    
+    a {
+      align-items: center;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      
       svg {
-        transform: translateY(2px);
+        flex-shrink: 0;
       }
     }
 
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
+    .halButton {
+      background-color: #fff;
+      color: var(--color-brand);
+      border: 2px solid #fff;
 
-    &:active:not(:disabled) {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  .halButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.625rem 1.25rem;
-    background: rgba(white, 0.15);
-    color: white;
-    border: 2px solid white;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
-    white-space: nowrap;
-    text-decoration: none;
-    letter-spacing: 0.025em;
-
-    &:hover {
-      background: rgba(white, 0.25);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active {
-      transform: translateY(0);
-      background: rgba(white, 0.2);
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      background: transparent;
-      border-color: rgba(white, 0.4);
-      color: rgba(white, 0.6);
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-1px);
+        box-shadow: $shadow-medium;
+      }
     }
   }
 }
 
+// PDF container
+.pdfContainer {
+  background-color: var(--color-bg-depth-1);
+  flex: 1;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
 // Loading state
-.loading {
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.95);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
-  color: $secondary-color;
+  z-index: 10;
+}
+
+.loading {
   text-align: center;
-  flex: 1;
+  padding: 2rem;
 
   .spinnerContainer {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .spinner {
-    width: 100%;
-    height: 100%;
-    border: 3px solid rgba($brand-color, 0.1);
-    border-top-color: $brand-color;
+    animation: spin 1s linear infinite;
+    border: 3px solid var(--color-border);
     border-radius: 50%;
-    animation: spin 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    border-top: 3px solid var(--color-brand);
+    height: 40px;
+    margin: 0 auto;
+    width: 40px;
   }
 
   p {
-    margin: 0;
-    font-size: 0.9375rem;
-    color: $secondary-color;
-    letter-spacing: 0.01em;
+    color: var(--color-text);
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  small {
+    color: var(--color-text-subtle);
+    font-size: 0.875rem;
   }
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 // Error state
-.error {
+.errorState {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 3rem;
   text-align: center;
-  flex: 1;
+  height: 100%;
 
-  .iconContainer {
-    margin-bottom: 1.5rem;
-    color: $error-color;
-    opacity: 0.9;
+  svg {
+    color: var(--color-error);
+    margin-bottom: 1rem;
   }
 
   h3 {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: $primary-color;
-    letter-spacing: -0.025em;
+    color: var(--color-text);
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
   }
 
   p {
-    margin: 0 0 2rem 0;
-    color: $secondary-color;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    max-width: 450px;
+    color: var(--color-text-subtle);
+    margin: 0 0 2rem;
+    max-width: 400px;
   }
 
   .errorActions {
@@ -218,203 +161,93 @@ $transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-  }
 
-  .retryButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: transparent;
-    color: $brand-color;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: $transition;
-    letter-spacing: 0.025em;
-
-    svg {
-      transition: transform 0.3s ease;
-    }
-
-    &:hover {
-      border-color: $brand-color;
-      background: rgba($brand-color, 0.04);
+    a {
+      align-items: center;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-weight: 500;
 
       svg {
-        transform: rotate(180deg);
+        flex-shrink: 0;
       }
     }
-  }
 
-  .externalLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    background: $error-color;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: $transition;
-    font-size: 0.875rem;
-    letter-spacing: 0.025em;
+    .primaryButton {
+      background-color: var(--color-brand);
+      color: white;
 
-    &:hover {
-      background: darken($error-color, 10%);
-      transform: translateY(-1px);
-      box-shadow: $shadow-md;
+      &:hover {
+        background-color: var(--color-brand-light);
+        box-shadow: $shadow-medium;
+      }
     }
   }
 }
 
 // No document state
 .noDocument {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 3rem;
   text-align: center;
-  flex: 1;
+  min-height: 400px;
 
-  .iconContainer {
-    margin-bottom: 1.5rem;
-    color: lighten($secondary-color, 20%);
+  svg {
+    color: var(--color-text-subtle);
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
   }
 
   p {
+    color: var(--color-text-subtle);
     margin: 0;
-    font-size: 0.9375rem;
-    color: $secondary-color;
-    font-style: normal;
-    letter-spacing: 0.01em;
+    max-width: 400px;
   }
-}
-
-// HAL Metadata
-.halMetadata {
-  margin-top: 1rem;
-  padding: 1.25rem;
-  background: $background-secondary;
-  border-radius: 8px;
-  border-left: 3px solid $brand-color;
-
-  h4 {
-    margin: 0 0 1rem 0;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: $primary-color;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  dl {
-    margin: 0;
-    display: grid;
-    grid-template-columns: minmax(120px, auto) 1fr;
-    gap: 0.5rem 1rem;
-    font-size: 0.875rem;
-
-    dt {
-      font-weight: 500;
-      color: $secondary-color;
-      white-space: nowrap;
-    }
-
-    dd {
-      margin: 0;
-      color: $primary-color;
-      word-break: break-word;
-    }
-  }
-}
-
-.metadataLoading {
-  margin-top: 1rem;
-  padding: 0.875rem;
-  background: $background-secondary;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 0.8125rem;
-  color: $secondary-color;
-  font-style: normal;
-}
-
-.metadataIndicator {
-  color: rgba(white, 0.8);
-  font-weight: 500;
 }
 
 // Footer
 .footer {
-  padding: 1rem 2rem;
-  background: $brand-color;
-  border-top: 1px solid rgba(white, 0.2);
-  text-align: center;
-  flex-shrink: 0;
+  background-color: var(--color-brand);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
 
-  small {
-    color: rgba(white, 0.9);
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-  }
+  .footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 
-  .halLink {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: $transition;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: $accent-color;
-      transition: width 0.3s ease;
+    small {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.75rem;
     }
 
-    &:hover {
-      color: $accent-color;
+    .halLink {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
 
-      &::after {
-        width: 100%;
+      &:hover {
+        text-decoration: underline;
       }
     }
-  }
-}
 
-// PDF iframe
-.iframe {
-  width: 100%;
-  border: none;
-  flex: 1;
-  min-height: 400px;
-  background: $background-color;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      $border-color,
-      transparent
-    );
+    .viewerNote {
+      opacity: 0.7;
+    }
   }
 }
 
@@ -423,8 +256,7 @@ $transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #f5f5f5;
-  border-radius: 8px;
+  background-color: var(--color-bg-depth-1);
   
   // Override des styles par défaut de react-pdf-viewer
   :global {
@@ -433,196 +265,72 @@ $transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .rpv-core__inner-pages {
-      background-color: #f5f5f5;
+      background-color: var(--color-bg-depth-1);
     }
     
     // Toolbar styles
     .rpv-toolbar {
       background-color: #fff;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid var(--color-border);
     }
     
     // Sidebar styles
     .rpv-default-layout__sidebar {
-      background-color: #fafafa;
-      border-right: 1px solid #e0e0e0;
+      background-color: var(--color-bg-depth-2);
+      border-right: 1px solid var(--color-border);
     }
     
     // Loading spinner
     .rpv-core__spinner {
-      border-color: #3f51b5 transparent transparent transparent;
+      border-color: var(--color-brand) transparent transparent transparent;
     }
   }
+}
+
+// Iframe styles
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: var(--color-bg-depth-1);
 }
 
 // Responsive design
 @media (max-width: 768px) {
   .header {
-    padding: 1.25rem 1.5rem;
     flex-direction: column;
     gap: 1rem;
-    align-items: stretch;
+    padding: 1rem;
 
-    .title {
-      font-size: 1.125rem;
+    .titleSection {
+      width: 100%;
+      text-align: center;
     }
 
     .controls {
+      width: 100%;
       justify-content: center;
-      gap: 0.625rem;
     }
-
-    .downloadButton,
-    .halButton {
-      font-size: 0.8125rem;
-      padding: 0.5rem 1rem;
-    }
-  }
-
-  .iframe {
-    min-height: 350px;
-  }
-
-  .loading,
-  .error,
-  .noDocument {
-    padding: 3rem 1.5rem;
   }
 
   .footer {
-    padding: 0.875rem 1.5rem;
+    .footerContent {
+      flex-direction: column;
+      text-align: center;
+    }
   }
-}
 
-@media (max-width: 480px) {
-  .header {
-    .controls {
+  .errorState {
+    padding: 2rem 1rem;
+
+    .errorActions {
       flex-direction: column;
       width: 100%;
-      gap: 0.5rem;
-    }
 
-    .downloadButton,
-    .halButton {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-
-  .iframe {
-    min-height: 300px;
-  }
-}
-
-// Dark mode support
-@media (prefers-color-scheme: dark) {
-  .pdfViewer {
-    background: #1e1e1e;
-    border-color: #333;
-
-    .header,
-    .footer {
-      background: darken($brand-color, 20%);
-      border-color: rgba(white, 0.15);
-    }
-
-    .title {
-      color: white;
-    }
-
-    .downloadButton {
-      background: $brand-color;
-      color: white;
-
-      &:hover:not(:disabled) {
-        background: $brand-light;
+      a {
+        width: 100%;
+        justify-content: center;
       }
     }
-
-    .halButton {
-      color: white;
-      border-color: white;
-      background: rgba(white, 0.15);
-
-      &:hover {
-        background: rgba(white, 0.25);
-      }
-    }
-
-    .loading,
-    .noDocument {
-      color: #999;
-    }
-
-    .error {
-      h3 {
-        color: #f5f5f5;
-      }
-
-      p {
-        color: #999;
-      }
-
-      .retryButton {
-        color: $brand-light;
-        border-color: #444;
-
-        &:hover {
-          border-color: $brand-light;
-          background: rgba($brand-light, 0.1);
-        }
-      }
-    }
-
-    .halMetadata {
-      background: #252525;
-      border-left-color: $brand-light;
-
-      h4 {
-        color: #f5f5f5;
-      }
-
-      dt {
-        color: #999;
-      }
-
-      dd {
-        color: #f5f5f5;
-      }
-    }
-
-    .footer {
-      small {
-        color: rgba(white, 0.8);
-      }
-
-      .halLink {
-        color: white;
-
-        &:hover {
-          color: $accent-color;
-        }
-      }
-    }
-
-    .iframe {
-      background: #121212;
-    }
-  }
-}
-
-// Smooth entry animation
-.pdfViewer {
-  animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

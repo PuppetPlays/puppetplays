@@ -348,8 +348,10 @@
     "noPdfAvailable": "PDF non disponible",
     "documentPdf": "Document PDF",
     "openInHal": "Ouvrir sur HAL",
+    "open": "Ouvrir",
     "downloadPdf": "Télécharger le PDF",
     "download": "Télécharger",
+    "downloading": "Téléchargement...",
     "loadingPdf": "Chargement du PDF en cours...",
     "pdfNote": "Document hébergé sur",
     "previousPage": "Page précédente",
@@ -371,11 +373,13 @@
   },
   "publication": {
     "noPdfAvailable": "Aucun PDF disponible",
+    "noPdfAvailableDesc": "Ce document n'a pas de PDF associé.",
     "pdfError": "Erreur de chargement PDF",
     "pdfErrorMessage": "Impossible de charger le document. Veuillez essayer d'ouvrir le document directement sur HAL.",
     "openInHal": "Ouvrir sur HAL",
     "downloadPdf": "Télécharger le PDF",
     "download": "Télécharger",
+    "downloading": "Téléchargement...",
     "loadingPdf": "Chargement du PDF en cours...",
     "pdfNote": "Document hébergé sur",
     "previousPage": "Page précédente",
@@ -386,6 +390,8 @@
     "resetZoom": "Réinitialiser le zoom",
     "pdfNotAvailable": "Aucun document PDF disponible",
     "usingAlternativeViewer": "Utilisation du viewer alternatif",
-    "pdfCannotBeDisplayed": "Le PDF ne peut pas être affiché dans votre navigateur"
+    "pdfCannotBeDisplayed": "Le PDF ne peut pas être affiché dans votre navigateur",
+    "viewerNote": "Visualisation via",
+    "loadingNote": "Le chargement peut prendre quelques secondes..."
   }
 } 
