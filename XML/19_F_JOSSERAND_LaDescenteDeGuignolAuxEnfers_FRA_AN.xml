@@ -1,0 +1,1231 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/255237/la-descente-de-guignol-aux-enfers">La
+          Descente de Guignol aux Enfers</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="PM">Pierre Massinon</name>
+          <resp ref="stagiaire">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="etu"> Pauline Vincent (Master 1), Andréa Pieron (Master 1), Fanny Mahler
+            (Master 1), Alice Fradet (Master 1), Eloïse Adam (Master 1), Emilie Bitonti (Master 1),
+            Gerardo Gerduno Rios (Master 1), Leïla Jacob (Master 1), Mathilde Hanser (Master 1),
+            Nicolas Kernel (Master 1), Perrine Bras (Master 1), Romane Gutsch (Master 1), Amélie
+            Duprey (Master 2), Déborah Lesueur (Master 2), Delphine Bailon (Master 2), Enora Benon
+            (Master 2), Laura Henry (Master 2), Laurence Jaillet (Master 2), Léa Tisserand (Master
+            2), Marie Undreiner (Master 2), Noémie Bohler (Master 2), Estelle Legoix (Master 2) </name>
+          <resp>Transcription by the students of Paul Robert's master's course at the Université de
+            Haute-Alsace</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor>Archives nationales - Pierrefitte-sur-Seine, France</distributor>
+        <availability status="free">
+          <licence>Public domain</licence>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>A man who has lost his wife goes to the Underworld to bring her back</note>
+        <note>In 1866 and 1867, Victor-Napoléon Vuillerme-Dunand and Laurent Josserand moved to
+          Paris to perform the Guignol repertory from Lyon in a café. To do so, they had to have the
+          manuscripts of the plays approved by censorship authorities. This collection includes
+          thirty-five plays and is kept in the French National Archives. Most of the plays belong to
+          the traditional repertory created by Laurent Mourguet and his successors, but it is not
+          the case of Descente de Guignol aux Enfers, of which no manuscript is known. The topic of
+          the trip to the Underworld (the katabasis of classical mythology heroes) is a fairly
+          common theme in puppet plays. Topical characters (Pluto, Proserpina, Charon, Cerberus) and
+          geography are taken up here, but they are used in a way that twists the story into a
+          heroicomical adventure. A matrimonial plot is added here. It takes up the story of Orpheus
+          and Eurydice very loosely, as Guignol goes down to the underworld to bring his wife back.
+          All these elements are presented on the farcical mode and draw on both misogynistic views
+          on marriage and consideration of the good food which guides Guignol and his accomplices.
+          During the last scene, the feast held by Pluto is spoiled by the flames of the underworld.
+          At this moment, Guignol and Madelon flee on a flying dragon – a farcically spectacular
+          ending.</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Archives nationales</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 30</p>
+                <p>Number of acts in the original document: 5</p>
+                <p>Format of the original document: Manuscript</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">La Descente de Guignol aux Enfers</title>
+          <date>1866</date>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fra">French</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/521/glove-puppets"
+            >Glove-puppet</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Burlesque</term>
+          <term>Mock-heroic</term>
+          <term>Farcical</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Popular speech</term>
+          <term>Dinner scene</term>
+          <term>Dream</term>
+          <term>Apparition of a genius</term>
+          <term>Domestic scene</term>
+          <term>Avista</term>
+          <term>Flying machine</term>
+        </keywords>
+        <keywords source="genre">
+          <term>Pièce en cinq tableaux</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Wedding</term>
+          <term>Descent into hell</term>
+          <term>Resurrection</term>
+          <term>Glutton</term>
+          <term>Boat trip</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of
+            the original texts. The transcriptions therefore include spelling and grammatical
+            corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the
+            text without being marked. Cuts for performance purposes have not been adopted in the
+            transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become
+            incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been
+            corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant Agreement
+          835193) under Horizon 2020. The PuppetPlays project aims to re-evaluate the contribution
+          of the puppets repertoire to the construction of European cultural identity. Its main
+          goals is to collect a corpus of representative plays from Western Europe (Germany,
+          Austria, Belgium, Spain, France, Great Britain, Italy, Netherlands, Portugal, Switzerland)
+          between the 17th and the 21th century. It also tries to identify the characteristics of
+          puppet dramaturgy and their variations depending on eras, cultural spheres, producing
+          conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal
+          investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref
+            target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons
+            Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA) </ref> licence.
+          This license enables reusers to distribute, remix, adapt, and build upon the material in
+          any medium or format for non-commercial purposes only, and only so long as attribution is
+          given to the creator. If you remix, adapt, or build upon the material, you must license
+          the modified material under identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2024-04-01" who="#etu">Text transcribed for Paul Robert's course at the Université de
+        Haute-Alsace</change>
+      <change when-iso="2024-07-01" who="#PM">Text encoding</change>
+      <change when-iso="2025-03-24" who="#MSK">TEI Header created from a JSON extraction of the
+        PuppetPlays' database.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="001" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_001.jpg"/>
+      <docAuthor>
+        <persName>Laurent Josserand</persName>
+      </docAuthor>
+      <pb n="002" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_002.jpg"/>
+      <docTitle>
+        <titlePart type="main">La Descente de Guignol aux Enfers</titlePart>
+        <titlePart type="sub">Pièce en cinq tableaux</titlePart>
+      </docTitle>
+      <docDate>1866</docDate>
+      <castList>
+        <head type="personnage">Personnages</head>
+        <castItem>
+          <role>Durand, </role>
+          <roleDesc>notaire</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Vincent, </role>
+          <roleDesc>rentier</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Guignol, </role>
+          <roleDesc>son domestique</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Gnafron, </role>
+          <roleDesc>concierge</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Louison, </role>
+          <roleDesc>sa fille</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Le Génie du bien</role>
+        </castItem>
+        <castItem>
+          <role>Pluton</role>
+        </castItem>
+        <castItem>
+          <role>Proserpine</role>
+        </castItem>
+        <castItem>
+          <role>Un Diablotin</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <div type="2">
+        <head type="tableau" n="1">Tableau I</head>
+        <stage type="saut">Un salon</stage>
+        <div type="3">
+          <head type="scene" n="1">Scène 1</head>
+          <listPerson>
+            <personGrp>
+              <name>Durand, </name>
+              <name>Vincent</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Durand</speaker>
+            <stage type="pers">(riant)</stage>
+            <p>Ah ah ah, mon cher ami, il y a vraiment de quoi rire.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Pourrais-tu me dire pourquoi depuis un quart d'heure, tu te permets de me rire au nez
+              ?</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>C'est facile, si j'ai bonne mémoire, tu as cinquante-six ans.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Bien sonnés, mon ami.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Tu me fais venir avec un contrat de mariage et tu me demandes pourquoi je ris !</p>
+          </sp>
+          <pb n="003" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_003.jpg"/>
+          <sp>
+            <speaker>Vincent</speaker>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Alors je ne t'en veux plus et je vais te tirer d'embarras.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Tu seras bien bon.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Tu connais Guignol, mon domestique ?</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>C'est un zélé serviteur.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Tu sais aussi qu'il a perdu sa femme il y a environ trois mois. Eh bien mon ami
+              malgré que c'était le ménage le plus désuni du monde, il la regrette.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>D'après ce que j'ai entendu dire, ils se relevaient dans la nuit pour recommencer
+              leur tintamarre.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Oui mon ami. Et bien, il regrette sa femme à tel point qu'il a résolu de descendre
+              aux Enfers pour aller la chercher.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Sapristi, quel amour !</p>
+            <pb n="004" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_004.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Voici ce que j'ai résolu de faire pour l'empêcher d'exécuter son projet. Tu connais
+              le papa Gnafron, mon concierge ?</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Oui, je le connais.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Tu sais qu'il a une charmante fille, la petite Louison ?</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Charmante et belle enfant.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Eh bien, je veux marier Guignol à Louison, je leur donne six mille francs de dot et
+              par ce fait, j'ai à mon service deux bons serviteurs et j'arrache Guignol à ses folles
+              idées.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Parfait mon ami, on ne peut penser plus juste.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Il est venu une lettre au papa Gnafron, pour Guignol. Je suis d'avis que ce dernier,
+              sitôt qu'il l'aura lue, s'empressera de répondre à mes ordres. Ah ! justement voici le
+              père Gnafron.</p>
+          </sp>
+          <pb n="005" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_005.jpg"/>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>Les mêmes, </name>
+              <name>Gnafron</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <stage type="pers">(entrant)</stage>
+            <p>Peut-on entrer messieurs ?</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Entrez, monsieur Gnafron.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Salusque messieurs, salusque.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Avez-vous trouvé Guignol ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui m'sieur, et c'est pas sans peine. Ah ! je vous promets que j'ai couru, enfin
+              après m'être arrêté chez tous les marchands de vin que j'ai rencontré sur mon passage,
+              j'ai fini par le découvrir dans un établissement de bouillon. Il était en société avec
+              une belle côte de boeuf et une demi-douzaine de flûtes, fallait voir comme il jouait
+              de la clarinette en faisant fonctionner les mâchoires masticales pour avaler son
+              boeuf. Je lui ai demandé pourquoi il mangeait avec tant de courage, il m'a répondu qu'il voulait se laisser mourir de faim et que, par conséquent, il avait besoin de fortifier son courage. Moi que je
+              suis pas fier, je me suis mis en face de lui et j'ai cassé la croûte pour lui tenir
+              compagnie. Quand j'ai eu avalé une douzaine de portions et bu autant de litres, je lui
+              ai remis votre lettre, aussitôt qu'il eu lu, il a dit et ben puisque le maitre le
+              veut, j'irai.</p>
+          </sp>
+          <pb n="006" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_006.jpg"/>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Alors il se rend à mes désirs.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui m'sieur, il arrive. Y'a ma fille que le pousse avec une épingle à cheveux.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Diable, il ne doit pas être enchanté de sa future.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Ah m'sieur, ça ne lui fait rien, il en a l'habitude.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>Allons bien tant mieux.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>Les mêmes, </name>
+              <name>Louison, </name>
+              <name>Guignol</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <stage type="pers">(entrant)</stage>
+            <p>Mais allons donc, monsieur Guignol, vous vous faites bien tant prier.</p>
+          </sp>
+          <pb n="007" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_007.jpg"/>
+          <sp>
+            <speaker>Vincent</speaker>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Allons que diable, avance donc Guignol et abandonne le chagrin.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(pleurant)</stage>
+            <p>Voilà bourgeois, ois, ... ois, ...</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Ne te désole pas, tu vas épouser Louison et je te donne six mille francs de dot. Tu
+              n'es pas bien à plaindre.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je ne dis pas, mais elle ne vaudra jamais ma Madelon.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Pourquoi ça monsieur Guignol ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Parce qu'avec la Madelon, on se chapotait le bec depuis le matin jusqu'au soir. Elle
+              me mordait, elle me gratignait, ça soufflait de tous temps.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Oh, si il n'y a que ça pour vous faire plaisir, je vous mordrai jusqu'au sang, je
+              vous égratignerai bien fort,<pb n="008"
+                facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_008.jpg"/> je vous coudrai
+              même dans un drap si vous le trouvez nécessaire.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Non c'est inutile, une parfaite union est plus propice à contribuer au bonheur.
+              Durand, passe devant et va disposer ton contrat. Monsieur Gnafron et vous Louison,
+              amenez Guignol. <stage type="corps">(Durand et Vincent sortent.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Allons viens ma pauvre vieille, t'as six mille francs, t'en as ben de chopines
+              là-dedans, allons, viens. <stage type="corps">(Il le prend par un bras, Louison le
+                prend par l'autre.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ah ! nom d'un rat : je ressemble bien au boeuf gras qu'on mène à la boucherie. <stage
+                type="corps">(Ils rentrent tous les trois.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          
+          <listPerson>
+            <personGrp>
+              <name>Les mêmes</name>
+            </personGrp>
+          </listPerson>
+          <stage type="saut">Dans la coulisse</stage>
+          <sp>
+            <speaker>Le notaire</speaker>
+            <p>Monsieur Gnafron, comme père de la jeune fille, à vous à signer le premier.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Voila m'sieur, André François Joseph Charlemagne Gnafron, cordonnier z'en vieux.</p>
+          </sp>
+          <pb n="009" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_009.jpg"/>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Vous avez donc besoin de mettre cordonnier z'en vieux ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Chacun ses titres, fille. Ça ne nuit pas.</p>
+          </sp>
+          <sp>
+            <speaker>Le notaire</speaker>
+            <p>Mademoiselle Louison, c'est à vous.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <stage type="pers">(très vite)</stage>
+            <p>Ah! Enfin, y'a assez longtemps que je cours après un homme. C'est pas trop tôt que
+              j'en attrape un. Louison Madeleine Gnafron, voilà.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ouye, elle va m'avaler.</p>
+          </sp>
+          <sp>
+            <speaker>Le notaire</speaker>
+            <p>À vous monsieur Guignol.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>C'est z'à moi.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui ma vieille, allons, signe à côté de mes titres.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Donne-moi la plumasse.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Tiens, voilà la griffe.</p>
+            <pb n="010" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_010.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>C'est là ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui. Allons, fais pas le difficile.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="6">Scène 6</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(se sauvant)</stage>
+            <p>Non, non je ne signerai pas.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="7">Scène 7</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <stage type="pers">(entrant)</stage>
+            <p>Ah ! quel affront pour mon front de Gnafron, s'en aller au moment où on allait se
+              mettre à table.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="8">Scène 8</head>
+          <listPerson>
+            <personGrp>
+              <name>[Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <stage type="pers">(pleurant)</stage>
+            <p>Me voilà encore sans mari.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="9">Scène 9</head>
+          <listPerson>
+            <personGrp>
+              <name>Gnafron, </name>
+              <name>Louison, </name>
+              <name>Vincent, </name>
+              <name>Durand</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Nous avons eu tort, nous aurions dû fermer les portes, comme cela il ne serait pas
+              parti. Mais, monsieur Gnafron, courez après Guignol, tâchez de le ramener, et une fois
+              là nous prendrons nos précautions.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui monsieur. <stage type="corps">(à Louison)</stage> Allons fille, courge si te veux
+              te marier.</p>
+            <pb n="011" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_011.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Oui mon papa. <stage type="corps">(Ils sortent.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="10">Scène 10</head>
+          <listPerson>
+            <personGrp>
+              <name>Vincent, </name>
+              <name>Durand</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Pour toi mon ami je te garde toute la journée ; car Guignol peut revenir d'un instant
+              à l'autre.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>J'accepte mon ami, seulement je te ferai observer que je suis à jeun.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Qu'à cela ne tienne, j'ai un chapon du Mans qui n'est pas entier, mais dont tu
+              tireras pied ou aile et l'arrosant de chambertin, le temps semblera moins long.</p>
+          </sp>
+          <sp>
+            <speaker>Durand</speaker>
+            <p>J'accepte mon ami, d'autant plus que le Chambertain est mon vin de prédilection.</p>
+          </sp>
+          <sp>
+            <speaker>Vincent</speaker>
+            <p>Tant mieux, alors suis moi.</p>
+          </sp>
+          <div type="5">
+            <head type="div5">Fin du premier tableau</head>
+          </div>
+        </div>
+      </div>
+      <div type="2">
+        <pb n="012" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_012.jpg"/>
+        <head type="tableau" n="2">Tableau II</head>
+        <stage type="saut">La forêt</stage>
+        <div type="3">
+          <head type="scene" n="1">Scène 1</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(seul)</stage>
+            <p>Voilà bientôt huit jours que je marche, pour arriver dans cet endroit où on m'a dit
+              que je trouverai un monsieur qui pourra m'enseigner la route pour descendre aux Enfers
+              pour y chercher ma pauvre Madelon. Ouf, je n'en peux plus de fatigue, les jambes
+              refusent le service, le ventre est creux, je vas prendre un instant de repos à cette
+              place. <stage type="corps">(Il se couche.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>Le génie du bien</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Le génie </speaker>
+            <stage type="pers">(Paraissant. Flammes et tonnerre.)</stage>
+            <p>Dors ! Pharfadet, sors des entrailles de la Terre, j'endors le mortel, fais qu'il
+              puisse voir et entendre. Va. <stage type="corps">(Un serpent parait et passe sur le
+                corps de Guignol et rentre dans la terre.)</stage> Humble mortel, tu veux descendre
+              aux Enfers pour y chercher ta femme, je vais te la montrer telle qu'elle est, dans ton
+              sommeil tu vas la voir. Madelon, suivie de Garganfa, paraissez !</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>le Génie du bien, </name>
+              <name>Madelon, </name>
+              <name>un Diablotin</name>
+            </personGrp>
+          </listPerson>
+          <stage type="saut">Madelon parait, suivie du diablotin qui tient son voile. Elle
+            disparaît.</stage>
+          <pb n="013" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_013.jpg"/>
+          <sp>
+            <speaker>Le Génie</speaker>
+            <p>Maintenant que tu l'as vue, si tu es toujours dans les mêmes intentions... Appelle !
+              Je viendrai. <stage type="corps">(Il disparait, flammes.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(se réveillant)</stage>
+            <p>Oh ! nom d'un rat, je ne me trompe pas, je viens de voir ma femme, elle était suivie
+              par le Diable, et puis y'avait un grand monsieur qui m'a dit de l'appeler. Oh
+              monsieur, qui que vous soyez, apparaissez que je puisse vous parlassasser.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>le Génie</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Le Génie </speaker>
+            <stage type="pers">(paraissant)</stage>
+            <p>Tu m'as appelé, mortel, me voici.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(à part)</stage>
+            <p>Oh nom d'un rat, il ressemble à un tambour-major. Oui monsieur, on m'a dit que vous
+              m'enseigneriez la route pour descendre aux Enfers pour y chercher ma femme.</p>
+          </sp>
+          <sp>
+            <speaker>Le génie</speaker>
+            <p>Je connais tes projets, Guignol. Tu veux descendre aux Enfers, tu sais pas tous les
+              dangers que tu cours ; car la route est périlleuse, tu as d'abord cinq fleuves à traverser.</p>
+          </sp>
+          <pb n="015" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_015.jpg"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Qu'est-ce que ça me fait, je suis de Lyon et je nage comme un poisson, je fais mes
+              agotiaux.</p>
+          </sp>
+          <sp>
+            <speaker>Le génie</speaker>
+            <p>Tu as d'abord le Styx, dont les eaux sont noires et amères, tu as le Cocyte, dont les
+              lames sont de feu, le Phlégéthon, fleuve nourri par les larmes des damnés.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Il paraît qu'ils pleurent bien.</p>
+          </sp>
+          <sp>
+            <speaker>Le génie</speaker>
+            <p>Le Léthé, celui-là c'est le plus terrible de tous, c'est le fleuve de l'oubli. Tu as
+              encore l'Acheron qui fait trois fois le tour des Enfers.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ça me fait rien, faut que j'y aille.</p>
+          </sp>
+          <sp>
+            <speaker>Le génie</speaker>
+            <p>Tu es bien décidé ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oui m'sieur.</p>
+          </sp>
+          <sp>
+            <speaker>Le génie</speaker>
+            <p>Je vais te remettre entre les mains d'un de mes fidèles. Monsieur Caron !</p>
+          </sp>
+          <pb n="016" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_016.jpg"/>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Qui t'amène en ces lieux, mortel ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Vous avez ben dû reconnaître ma diligence.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Oui c'est vrai, j'ai reconnu un serviteur du Génie du bien.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oui monsieur, c'est ça. Est-ce pas vous qui êtes monsieur Careau ?</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Caron, tel est mon nom.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Et ben monsieur Caron, je viens vous trouver pour que vous me passiez dans le
+              bateau.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Pour quoi faire ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Pour aller trouver monsieur Pluton, pour qui me rende ma chatte, mon astre luisant,
+              ma tourterelle, ma colombe quoi.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Je ne comprends pas, mortel.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ma femme, ma douce.</p>
+            <pb n="016" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_016.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Comment la nommes-tu?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Madelon, morte d'une indigestion de melon, le jour de l'Ascension, à Lyon.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Madelon, attends mortel, je vais consulter mon livre rouge et je te dirai si ta femme
+              est parmi nous. <stage type="corps">(Il sort à droite.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Madame Guignol</speaker>
+            <stage type="pers">(seul)</stage>
+            <p>Je parie que je tiens un ancien patissier, qu'il a dû faire des brioches dans son
+              temps, il est vieux.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>Caron</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Caron </speaker>
+            <stage type="pers">(en colère)</stage>
+            <p>Malheureux, tu ne sais pas quel rang occupe ta femme aux Enfers ? C'est la suivante de la Reine Proserpine, et le seigneur Pluton ne déplaira pas à son épouse pour satisfaire ton caprice.</p>
+          </sp>
+          <pb n="017" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_017.jpg"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Si il ne me la donne pas, je lui cogne le bec à ce gône-là.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Ne parle pas ainsi, mortel, tu paierais cher ta témérité. Suis mon conseil, renonce à
+              ton projet et retourne sur terre.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Si vous ne me passez pas, je nage.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Tu es donc bien décidé ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oui, monsieur Careau.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Je dois t'annoncer que je ne puis te conduire que jusqu'à la porte des Enfers, et elle est gardée par le fameux chien Cerbère, être indomptable à sept têtes.</p>
+          </sp>
+          <pb n="018" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_018.jpg"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Sept têtes, j'ai ce qui faut, j'ai justement dans ma poche une petite flûte et un
+              quart de fromage de gruyère, je découpe ça en sept trocs, j'en mets un morceau dans
+              chaque bec et je passe.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>J'admire ton courage, mortel. Tu seras satisfait, l'Achéron sur ses eaux comblera
+              tous tes souhaits. Viens, suis-moi. <stage type="corps">(Il sort.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(le suivant)</stage>
+            <p>Je vous suivasse, monsieur.</p>
+            <stage type="saut">On voit passer une barque dans laquelle se trouvent Caron et
+              Guignol.</stage>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          <listPerson>
+            <personGrp>
+              <name>Les mêmes</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Dites donc monsieur Caron, est-ce que la rivière est bien profonde ?</p>
+            <pb n="019" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_019.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Elle est sans fond.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Y a-t-il bien de poissons ?</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Ils n'y pourraient pas vivre.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Combien donc que vous prenez pour traverser dans votre barque ?</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Une obole pour les morts, rien pour les vivants.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>À ce prix-là, vous aurez ma pratique.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Prends garde, nous gagnons les courants.</p>
+            <stage type="saut">La barque disparait avec rapidité.</stage></sp>
+          
+          <div type="5">
+            <head type="div5">Fin du 2ème tableau</head>
+          </div>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="3">Tableau III</head>
+        <head type="nameT">Les voûtes de l'Enfer</head>
+        <div type="3">
+          <head type="scene" n="1">Scène 1</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>Caron</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Où sommes-nous donc ici ?</p>
+            <pb n="020" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_020.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Nous sommes dans l'antichambre du seigneur Pluton, je vais le prévenir de ton
+              arrivée, aies soin de lui plaire. <stage type="corps">(Il sort.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(seul)</stage>
+            <p>Saprelotte qu'y fait chaud, celui que fournit le charbon doit leur avoir une fameuse
+              pratique. Je voudrais bien connaitre le maçon qu'a bâti tout ça. Hein, qu'est-ce que
+              j'entends ?</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>Guignol, </name>
+              <name>Pluton, </name>
+              <name>Caron</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Pluton</speaker>
+            <stage type="pers">(entrant)</stage>
+            <p>Quel est l'audacieux qui dans ces lieux ose porter ses pas et qui devant le trépas ne
+              frémit pas ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Pas plus qu'un anchois.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <stage type="pers">(continuant)</stage>
+            <p>Que l'effroi et la terreur s'emparent de son cœur, aux affreux hurlements de Cerbère,
+              écumant et rugissant.</p>
+            <pb n="021" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_021.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Rantamplan tambour battant.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Caron, expliquez-moi la présence de ce mortel dans mon empire.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Ce mortel vient ici pour y chercher sa femme.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Et comment la nomme-t-on ?</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>C'est Madelon, la suivante de la Reine.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Mortel, ton voyage est inutile, jamais la Reine ne consentira à se défaire de sa
+              suivante.</p>
+          </sp>
+          <sp>
+            <speaker>Caron</speaker>
+            <p>Seigneur Pluton, n'oubliez pas que ce mortel est protégé par le Génie du bien.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Merci Caron. Mortel, je veux faire quelque chose pour toi, mais avant je veux consulter la Reine. Caron, allez dire à la Reine que je désire lui parler, ensuite vous retournerez à votre [poste] et une autre fois, je vous défends de passer des mortels dans votre barque, allez.</p>
+          </sp>
+          <pb n="022" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_022.jpg"/>
+          <sp>
+            <speaker>Caron</speaker>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>Pluton, </name>
+              <name>Guignol</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Vous m'avez fait demander, seigneur Pluton, me voici.</p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Oui, grande Reine, pour vous présenter le premier mortel qui ait osé pénétrer
+              jusqu'aux Enfers.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <stage type="pers">(apercevant Guignol)</stage>
+            <p>Que vois-je ! Un mortel ici, que veut-il et que vient-il chercher ?</p>
+            <pb n="023" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_023.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Il vient chercher sa femme.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <stage type="pers">(étonnée)</stage>
+            <p>Sa femme ? <stage type="corps">(à Guignol.)</stage> Tu l'aimes donc, car tu as bravé
+              bien des dangers.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Que ne braverait-on pour le plus bel ouvrage de la nature ?</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Très bien, et... ta femme quelle est-elle ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>C'est Madelon votre suivante, grande Reine.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Madelon, j'en suis fâchée pour toi mortel, c'est la plus méchante de toutes les
+              femmes et je ne te la céderai pas.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <stage type="pers">(à Pluton)</stage>
+            <p>Parlez-lui donc un peu pour moi, monsieur Pluton.</p>
+            <pb n="024" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_024.jpg"/>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Grande Reine, j'ai promis de lui être utile. Je vous en prie, je vous en supplie,
+              rendez-lui sa femme.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Puisque tel est votre bon plaisir, Pluton, j'y consens à une condition ; dans un
+              instant tu vas voir ta femme. Si elle consent à te suivre de bon gré, nous te la
+              céderons, sinon elle restera éternellement parmi nous.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oui, grande Reine. <stage type="corps">(à part)</stage> Quand elle sera là, faudra
+              ben qu'elle marche.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Madelon, paraissez.</p>
+          </sp>
+          <sp>
+            <speaker>Madelon </speaker>
+            <stage type="pers">(paraissant)</stage>
+            <p>Me voici, Reine, seigneur Pluton. <stage type="corps">(Apercevant Guignol.)</stage>
+              Comment c'est toi, en croirais-je mes yeux, mais oui je te reconnais, gredin,
+              canaille, j'étais donc pas assez malheureuse là-haut sans que tu viennes me relancer
+              jusqu'ici. Je suis tellement furieuse que pour un rien je t'arracherais un œil. <stage
+                type="corps">(Elle veut battre Guignol, qui se défend.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p> Arrêtez ! Devant la Reine...</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Devant le Roi...</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Oh grande Reine, faut pas faire attention, c'était toujours comme ça qu'on
+                s'abordait.<pb n="025"
+                facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_025.jpg"/>
+            </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Madelon, votre mari a bravé bien des dangers pour venir vous chercher, vous avez cinq
+              minutes pour réfléchir, ou vous resterez avec nous, ou vous suivrez votre époux.</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Cinq minutes, c'est pas long. <stage type="corps">(à Guignol)</stage> Oh comme ça,
+              t'es venu me chercher ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Pardine, j'ai bien deviné que te t'ennuyais sans moi, et puis j'ai fait un héritage
+              de la tante Monnerot. Elle m'a laissé de sucre, de café, d'eau-de-vie et
+              d'absinthe.</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Vraiment, eh bien je vas réfléchir.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Allez Madelon.</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Oui, Reine. <stage type="corps">(Elle sort.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <stage type="pers">(à Guignol)</stage>
+            <p>Comme tu ne pourrais te retourner sur Terre aussi facilement que tu es venu, je vais
+              te donner un dragon volant. Dragon volant, parais. <stage type="corps">(Un dragon
+                volant parait.)</stage> Rends-toi à la porte des Enfers, tu y attendras deux
+                mortels<pb n="026" facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_026.jpg"
+              /> que tu conduiras sur terre. Va !... Guignol. Eh bien mortel, es-tu content de moi
+              ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oui monsieur, vous êtes un bon diable.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <stage type="pers">(à Guignol)</stage>
+            <p>Voici ta femme, tu vas connaitre sa décision.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          <listPerson>
+            <personGrp>
+              <name>Les mêmes, </name>
+              <name>Madelon</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Reine, Seigneur Pluton, j'ai pensé au passé et je l'ai reraimé.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Te me suivasses ?</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Je partasse.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Embrassons-nous. <stage type="corps">(Ils s'embrassent.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Guignol, et vous aussi<pb n="027"
+                facs="19_F_JOSSERAND_LaDescenteDeGuignolAuxEnfers_FRA_AN_027.jpg"/> Madelon, vous
+              allez quitter ces lieux. Si vous avez le malheur d'y revenir, vous y seriez brûlés
+              éternellement. Mais avant que vous partiez, je veux vous offrir un grand festin.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Une chicaison, ça me botte.</p>
+          </sp>
+          <sp>
+            <speaker>Madelon</speaker>
+            <p>Oui, tu vas voir. </p>
+          </sp>
+          <sp>
+            <speaker>Pluton</speaker>
+            <p>Qu'on allume les fourneaux. <stage type="corps">(Le changement de décor a lieu, et
+                l'on voit paraitre l'Enfer. Guignol et Madelon se sauvent avec frayeur.)</stage> Grande Reine,
+              demain vous aurez une autre suivante, rentrons dans notre palais. </p>
+          </sp>
+          <div type="5">
+            <head type="div5">Le rideau baisse. Fin</head>
+          </div>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

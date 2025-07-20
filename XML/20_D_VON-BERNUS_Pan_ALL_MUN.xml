@@ -1,0 +1,1795 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/128276/pan">Pan</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="JB">Jean Boutan</name>
+          <name xml:id="AM">Anaïs Malfatti</name>
+          <resp>Transcription and edition</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor/>
+        <availability status="restricted">
+          <p>null</p>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>Two young girls looking for love go see a witch</note>
+        <note>When Alexander von Bernus opened his shadow theatre in 1907 in the artistic
+          neighbourhood of Schwabing in Munich, he wished to present a new form of art, which he
+          explicitly connected with the Romantic tradition. This new form of art would be different
+          from the shows of the Chat Noir cabaret in Paris and make better use of the immaterial
+          quality of shadows to venture into the realms of the soul and of dreams. Mysticism
+          pervaded the intellectual and artistic circles of Munich at the beginning of the 20th
+          century, and it had something to do with this project too, since it aimed at “the most
+          metaphysical union of image, poetry and music”. Pan is one of the most refined plays of
+          the Schwabinger Schattenspiele repertoire, and has been congratulated by orientalist and
+          shadow theatre historian Georg Jacob, who applauded its poetry. The play draws inspiration
+          from ancient peasant traditions that celebrated the magical powers of nature on the day of
+          the summer solstice.</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository/>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 44</p>
+                <p>Number of acts in the original document: 4</p>
+                <p>Format of the original document: Printed</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">Pan</title>
+          <title type="sub">Romantisches Schattenspiel</title>
+          <date>1907</date>
+          <author>
+            <persName>Bernus Alexander von</persName>
+            <idno type="IDREF">134862937</idno>
+          </author>
+
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="de">German</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/2440/théâtre-dombres"
+            >Shadow theatre</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Lyrical</term>
+          <term>Fantasy</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Metamorphosis</term>
+          <term>Apparition</term>
+          <term>Instrumental tune</term>
+        </keywords>
+        <keywords source="genre">
+          <term>Romantisches Schattenspiel</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Feast of Saint John</term>
+          <term>Romanticism</term>
+          <term>Love</term>
+          <term>Paganism</term>
+          <term>Nature</term>
+          <term>Night</term>
+          <term>Sorcery</term>
+          <term>Magic</term>
+          <term>Flowers</term>
+          <term>Lust</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of
+            the original texts. The transcriptions therefore include spelling and grammatical
+            corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the
+            text without being marked. Cuts for performance purposes have not been adopted in the
+            transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become
+            incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been
+            corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant Agreement
+          835193) under Horizon 2020. The PuppetPlays project aims to re-evaluate the contribution
+          of the puppets repertoire to the construction of European cultural identity. Its main
+          goals is to collect a corpus of representative plays from Western Europe (Germany,
+          Austria, Belgium, Spain, France, Great Britain, Italy, Netherlands, Portugal, Switzerland)
+          between the 17th and the 21th century. It also tries to identify the characteristics of
+          puppet dramaturgy and their variations depending on eras, cultural spheres, producing
+          conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal
+          investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref
+            target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons
+            Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA) </ref> licence.
+          This license enables reusers to distribute, remix, adapt, and build upon the material in
+          any medium or format for non-commercial purposes only, and only so long as attribution is
+          given to the creator. If you remix, adapt, or build upon the material, you must license
+          the modified material under identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2025-04-29" who="#MSK">TEI Header created from a JSON extraction of the
+        PuppetPlays' database.</change>
+      <change when-iso="2025-04-10" who="#AM">Correction of the previous transcription according to
+        the project's modernisation rules.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="3" facs="20_D_VON-BERNUS_Pan_ALL_MUN_003.jpg"/>
+      <docAuthor>
+        <persName>Alexander von Bernus</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">Pan</titlePart>
+        <titlePart type="sub">Ein romantisches Schattenspiel von Alexander von Bernus</titlePart>
+      </docTitle>
+      <docDate>1907</docDate>
+      <pb n="4" facs="20_D_VON-BERNUS_Pan_ALL_MUN_004.jpg"/>
+      <castList>
+        <head type="personnage">Figurenliste</head>
+        <!-- la plupart des types utilisés le sont pour la mise en css derrière-->
+        <castItem>
+          <role>Pan</role>
+        </castItem>
+        <castItem>
+          <role>Eine Dryas</role>
+        </castItem>
+        <castItem>
+          <role>Eine Nymphe</role>
+        </castItem>
+        <castItem>
+          <role>Blumenseelen</role>
+        </castItem>
+        <castItem>
+          <role>Der Feuergeist</role>
+        </castItem>
+        <castItem>
+          <role>Die Here</role>
+        </castItem>
+        <castItem>
+          <role>Ein Predigtamtskandidat</role>
+        </castItem>
+        <castItem>
+          <role>Eine Pfarrerstochter</role>
+        </castItem>
+        <castItem>
+          <role>Zwei Mädchen</role>
+        </castItem>
+        <castItem>
+          <role>Ein Vogel</role>
+        </castItem>
+        <castItem>
+          <role>Ein zweiter Vogel</role>
+        </castItem>
+        <castItem>
+          <role>Ein Fischer</role>
+        </castItem>
+        <castItem>
+          <role>Ein Fisch</role>
+        </castItem>
+        <castItem>
+          <role>Ein Prinz</role>
+        </castItem>
+        <castItem>
+          <role>Ein Jäger</role>
+        </castItem>
+        <castItem>
+          <role>Ein Fuchs</role>
+        </castItem>
+        <castItem>
+          <role>Ein Heuwagen</role>
+        </castItem>
+        <castItem>
+          <role>Ein Fuhrmann</role>
+        </castItem>
+        <castItem>
+          <role>Bursche une Dirnen</role>
+        </castItem>
+        <castItem>
+          <role>Ein kleiner Knabe</role>
+        </castItem>
+        <castItem>
+          <role>Ein kleines Mädchen</role>
+        </castItem>
+        <castItem>
+          <role>Eine junge Nonne</role>
+        </castItem>
+        <castItem>
+          <role>Ein Kater</role>
+        </castItem>
+        <castItem>
+          <role>Irrlichter</role>
+        </castItem>
+        <castItem>
+          <role>Der Moormann</role>
+        </castItem>
+        <castItem>
+          <role>Ein Maulwurf</role>
+        </castItem>
+        <castItem>
+          <role>Erster Bursche</role>
+        </castItem>
+        <castItem>
+          <role>Zweiter Bursche</role>
+        </castItem>
+        <castItem>
+          <role>Der Dichter</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <pb n="5" facs="20_D_VON-BERNUS_Pan_ALL_MUN_005.jpg"/>
+      <div type="3">
+        <head type="scene" n="1">Erste Szene</head>
+        <listPerson>
+          <personGrp>
+            <name>[Pan, </name>
+            <name>die Here, </name>
+            <name>ein Predigtamtskandidat, </name>
+            <name>eine Pfarrerstochter, </name>
+            <name>ein Vogel, </name>
+            <name>ein Mädchen, </name>
+            <name>ein Altere, </name>
+            <name>eine Jüngere]</name>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Morgengrauen. Rechts ein Baum, darunter eine Moosbank Links Bach und
+          Blumen. Der Boden ist mit dichtem seinem Gras bewachsen. Pan steigt auf.</stage>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Röte dich Johannistag!</l>
+            <l> Bereite die Feier</l>
+            <l> und löse den Schleier,</l>
+            <l>der auf dem Unsichtbaren lag.</l>
+            <l>enthülle Bach und Blume und Baum,</l>
+            <l>erfülle dem Wachen im Flug den Traum</l>
+            <l> zeige freier</l>
+            <l> das Sein im Schein,</l>
+            <l>schlage den Funken aus dem Stein,</l>
+            <l>bis die mondliche Mitternacht</l>
+            <l>alle Flammen erlöschen macht.</l>
+          </lg>
+          <pb n="6" facs="20_D_VON-BERNUS_Pan_ALL_MUN_006.jpg"/>
+          <stage type="saut">Er blast auf der Flöte, der Tag rötet sich. Aus dem Bach steigt eine
+            Nymphe. Aus dem Baum hebt sich eine Dryas. Den Blumenfelchen entschweben Blumenseelen.
+            Alle tragen menschenähnliche Gestalt nach unten verschwimmend und wirken
+            schemenhaft.</stage>
+        </sp>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Gehet und wehet dem Frühwind gesellt,</l>
+            <l>mehret und kläret die Seele der Welt,</l>
+            <l>doch wächst der Abend den Bergwald hinan,</l>
+            <l>fliehet zurück in den eigenen Bann,</l>
+            <l>zeitliche Enge, die sonst um euch war,</l>
+            <l>hemme euch wieder auf aber ein Fahr!</l>
+          </lg>
+          <stage type="saut">Die Geister zerstreuen sich. Pan schlägt mit seinem Stab auf Einen Stein.
+            Der Feuergeist springt hervor.</stage></sp>
+        
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Schüre und zünde in jeglichem Gau</l>
+            <l>freudige Feuer dem nächtlichen Blau!</l>
+            <stage>(Der Feuergeist entweicht.)</stage>
+            <l>Nun ist der Tag schon schwül und licht.</l>
+            <l>Ich will ihn mit glühen Düften tränken</l>
+            <l>und will eine Sehnsucht in ihn senken,</l>
+            <l>die alte süßen Früchte bricht.<stage type="corps"> (Er schwingt seinen Stab, die
+                Farbe der Luft wird golden. Ein altes Weib kommt.)</stage>
+            </l>
+            <pb n="7" facs="20_D_VON-BERNUS_Pan_ALL_MUN_007.jpg"/>
+            <l>Beim Bock! wen seh ich? Die häßliche schiefe</l>
+            <l>Here — na Alte, aus der Tiefe</l>
+            <l>eures verwitterten morschen Baus</l>
+            <l>macht ihr auch wohl nur heute heraus?</l>
+            <l>Sucht ihr auch einen Liebsten, he?</l>
+            <l>Vielleicht den Sumpfmann von übern See?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Brauchts nicht, dazu ist mein Kater gut,</l>
+            <l>der mir die gleichen Dienste tut.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Ein Kater ist kein übler Geschmack —</l>
+            <l>Was habt ihr da in euerm Sack?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l> Ich suche Kräuter</l>
+            <l> um sie mit dem Euter</l>
+            <l>einer trächtigen Kuh zu verbrauen,</l>
+            <pb n="8" facs="20_D_VON-BERNUS_Pan_ALL_MUN_008.jpg"/>
+            <l>damit die feinen Jüngferlein</l>
+            <l>vor meiner Hütte heute Nacht geheim</l>
+            <l>ihren künftigen Bräutigam schauen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Dicht auch ein Liebeskraut hinein.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Werd's schon besorgen hi hi hi hi... <stage type="corps">(Ab.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Und süße Glut durchglühe sie!</l>
+            <l>Dort kommen zwei des Wegs daher,</l>
+            <l>fürwahr, so ledern lang und leer</l>
+            <l>und trocken, dass dich die Knochen reiben.</l>
+            <l>Doch selbst dieses dürre Gebein</l>
+            <l>soll heute grünen und säftig sein</l>
+            <l>und dem Leben eine Knospe treiben.</l>
+            <l>Aber mich wird kein Auge sehen,</l>
+            <l>ehe nicht Alle in Blüte stehen.<stage type="corps"> (Er versinkt.)</stage>
+            </l>
+          </lg>
+          <pb n="9" facs="20_D_VON-BERNUS_Pan_ALL_MUN_009.jpg"/>
+          <stage type="saut">Es kommen der Predigtamtskandidat und die Pfarrerstochter.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Predigtamtskandidat</speaker>
+          <p>Wie erquickend der Morgen ist! Wir einem dabei das Herz aufgeht!</p>
+        </sp>
+        <sp>
+          <speaker>Die Pfarrerstochter</speaker>
+          <p>Ach ja!</p>
+        </sp>
+        <sp>
+          <speaker>Der Predigtamtskandidat</speaker>
+          <p>Es ist, als habe die Natur besonders festlich sich geschmückt, weit heute Johannistag.
+            Die Kreatur hat gewssermaßen ihrer Fesseln sich entledigt. Nachts werden dann die Feuer
+            angesteckt und bei Musik und Tanz kreist der Becher. Es ist sozusagen eine romantische
+            Nacht, ein Überbleibsel des germanischen Heidentums, etwa den panischen Festen der Alten
+            vergleichbar. Hier ist es, wo Klassik und Romantik sich vermählen.</p>
+        </sp>
+        <sp>
+          <speaker>Die Pfarrerstochter</speaker>
+          <p>Das klingt wie ein Gedicht! O es muss doch schön sein, sich einmal so ganz in den
+            nächtlichen Taumel zu stürzen.</p>
+        </sp>
+        <pb n="10" facs="20_D_VON-BERNUS_Pan_ALL_MUN_010.jpg"/>
+        <sp>
+          <speaker>Der Predigtamtskandidat</speaker>
+          <p>Wir wollen das Fest nicht wie die rohe und ungebildete Menge feiern. Ach einen Ruß!
+              <stage type="corps"> (Küßt sie.)</stage>
+          </p>
+        </sp>
+        <sp>
+          <speaker>Die Pfarrerstochter</speaker>
+          <lg>
+            <l>O nicht, nicht, wenn uns jemand sähe!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Predigtamtskandidat</speaker>
+          <lg>
+            <l>Dort drüben ist eine versteckte Laubhütte, komm!<stage type="corps"> (Zieht sie mit
+                fort.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Ein Vogel</speaker>
+          <stage type="pers"> (kommt geflogen, setzt sich auf den Baum, fingt und lockt)</stage>
+          <lg>
+            <l> Ziküt ziküt</l>
+            <l> süß Lieb, süß Lieb</l>
+            <l> o zieh zu mir</l>
+            <l> o flieh zu mir</l>
+            <l> ins Grüne hier</l>
+            <l> ins Kühle hier.</l>
+            <l> ziküt ziküt</l>
+            <l> süß Lieb, süß Lieb!</l>
+          </lg>
+          <stage type="saut">Ein Mädchen kommt gegangen.</stage>
+          <pb n="11" facs="20_D_VON-BERNUS_Pan_ALL_MUN_011.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Das Mädchen</speaker>
+          <lg>
+            <l>Das ist einmal ein schöner Platz.</l>
+            <l>Und über mir im Baume singt</l>
+            <l>ein Vogel, dass es weithin klingt.</l>
+            <l>Du Vöglein rufst wohl deinen Schatz?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Vogel</speaker>
+          <lg>
+            <l>Ziküt ziküt!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Das Mädchen</speaker>
+          <lg>
+            <l> Ja lock nur zu!</l>
+            <l>Hätt' ich's doch auch so gut wie du,</l>
+            <l>ein Lieb wie du und rief und wüsst</l>
+            <l>wie's tut. wenn man sich liebt und küßt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Vogel</speaker>
+          <lg>
+            <l> Ziküt ziküt!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Das Mädchen</speaker>
+          <lg>
+            <l>Wie ist es ringsum so still</l>
+            <l>und wie warm der Tag wird — hier will</l>
+            <l>ich ein wenig ruhen und träumen,</l>
+            <l>ich habe ja nichts zu versäumen.</l>
+          </lg>
+          <pb n="12" facs="20_D_VON-BERNUS_Pan_ALL_MUN_012.jpg"/>
+          <stage type="saut">Sie legt sich die Moosbank unter dem Baum und schläft ein. Ein Schäfer
+            mit seiner Herde zieht vorüber.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Vogel</speaker>
+          <stage type="pers"> (lockt)</stage>
+          <lg>
+            <l> Ziküt ziküt!</l>
+            <l> Süß Lieb, süß Lieb!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Ein zweiter Vogel</speaker>
+          <stage type="pers"> (kommt geflogen. Er singt)</stage>
+          <lg>
+            <l> Tifliet tifliet</l>
+            <l> mich rief dein Lied</l>
+            <l> flieg mit ins Ried</l>
+            <l> flieg tief ins Ried</l>
+            <l> tifliet tifliet!</l>
+          </lg>
+          <stage type="saut">Sie fliegen zusammen fort. Das Mädchen erwacht und sieht sich sinnend
+            um.</stage>
+        </sp>
+        <sp>
+          <speaker>Das Mädchen</speaker>
+          <lg>
+            <l>Wo bin ich? Ich will gehen!</l>
+            <l>Doch ach wohin? woher?</l>
+            <l>Was ist mit mir geschehen?</l>
+            <l>Ich sehne mich so sehr.</l>
+            <l>Ich war so sanft entschlafen,</l>
+            <l>ein Vogel sang im Baum,</l>
+            <l>von Wald und frommen Schafen</l>
+            <l>war grün und weiß mein Traum.</l>
+            <pb n="13" facs="20_D_VON-BERNUS_Pan_ALL_MUN_013.jpg"/>
+            <l>Und nun? Was hat die Glieder</l>
+            <l>so müde mir gemacht?</l>
+            <l>Ich sinne hin und wider</l>
+            <l>wie ich so weh erwacht.</l>
+          </lg>
+          <stage type="saut">Ein zweites etwas älteres Mädchen kommt hinzu und schreckt sie.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Husch Husch, verliebte Drossel!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>O —</l>
+            <l>ach du bist's — was erschreckst du mich?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Ich weckte dich</l>
+            <l>blos aus deinen Träumen, du bist ja verliebt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ach wo!</l>
+            <l>Mir ist nur mit einmal so seltsam, so.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Das ist es gerade, Närrchen, es gibt</l>
+            <l>kein besseres Zeichen — wie heißt er denn?</l>
+          </lg>
+        </sp>
+        <pb n="14" facs="20_D_VON-BERNUS_Pan_ALL_MUN_014.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Aber ich habe doch keinen!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Und wenn,</l>
+            <l>dann bist du verliebt, weil du keinen hast.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ich weiß nicht, ach ich glaube es fast!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Bist du wohl auch heimlich zu wissen begierig</l>
+            <l>wie er aussehen wird, dein Bräutigam?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Wie? Wäre das möglich?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Ist nicht so schwierig,</l>
+            <l>so hör mich und folge aufmerksam:</l>
+            <l>Tief tief im Walde am See vorüber</l>
+            <l>dem Teufelsberge gegenüber,</l>
+            <pb n="15" facs="20_D_VON-BERNUS_Pan_ALL_MUN_015.jpg"/>
+            <l>wo die Johannisfeuer flammen,</l>
+            <l>steht eine Hütte, darinnen haust</l>
+            <l>mit Katzen und Eulen und Kröten zusammen</l>
+            <l>eine Hexe so alt, so alt, dass dir graust.</l>
+            <l>Wenn wir die Nacht uns zu ihr trauen,</l>
+            <l>lässt sie uns von fern dem Bräutigam schauen,</l>
+            <l>der kommt und geht und spricht kein Wort.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ach nein, ich fürcht mich — warst du schon dort?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Ich? nein — der Wald ist zu schwarz und weit,</l>
+            <l>mir graute, wären wir nicht zu zweit.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Und wie hast du denn alles erfahren,</l>
+            <l>wenn du nicht dort warst?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Vor vielen Jahren</l>
+            <l>war meine Muhme drüben und sah</l>
+            <l>ihren späteren Mann leibhaftig nah.</l>
+          </lg>
+        </sp>
+        <pb n="16" facs="20_D_VON-BERNUS_Pan_ALL_MUN_016.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Und hat nichts Arges sich zugetragen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Nein gar nichts....</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>So könnten wir's doch wohl wagen.</l>
+            <l>Nur ist das schon lange her, vielleicht</l>
+            <l>ist die Here tot...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>O die stirbt nie!</l>
+            <l>Ich weiß, auch Andere sahen sie</l>
+            <l>und sagen, dass sie einem Käuzchen gleicht.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Mir ist's noch, immer ein wenig bang —</l>
+            <l>und wenn's wer merkte...</l>
+          </lg>
+        </sp>
+        <pb n="17" facs="20_D_VON-BERNUS_Pan_ALL_MUN_017.jpg"/>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Komm säume nicht lang,</l>
+            <l>wir wollen eilen, dass wir beizeiten</l>
+            <l>alles zum Abend vorbereiten.</l>
+            <stage type="corps">(Sie bricht eine Blume.)</stage>
+            <l>Welch schöne Blume, die muss ich pflücken,</l>
+            <l>um mich für den Bräutigam zu schmücken!</l>
+          </lg>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="2">Zweite Szene</head>
+        <listPerson>
+          <personGrp>
+            <name>[Ein Fischer, </name>
+            <name>ein Fisch, </name>
+            <name>ein Jäger, </name>
+            <name>ein Fuhrmann, </name>
+            <name>eine Bursche, </name>
+            <name>eine Dirnen, </name>
+            <name>ein kleines Mädchen, </name>
+            <name>ein Bub, </name>
+            <name>eine junge Nonne, </name>
+            <name>eine Jüngere, </name>
+            <name>ein Altere, </name>
+            <name>ein Käuzchen]</name>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Seegegend. Rechts und links Bäume. Vorne führt ein Weg vorüber, Ein
+          Fischer steht am See und angelt.</stage>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Fischlein Fischlein beiße an!</l>
+            <l>Seh dich in der Tiefe lungern,</l>
+            <l>spielst und sonnst dich, dann und wann</l>
+            <l>schnellst du hoch — komm beiße an,</l>
+            <l>Fischlein, bin ein armer Mann,</l>
+            <l>fang ich nichts, so muss ich hungern.</l>
+            <l>Lustig, schon schwimmt einer her:</l>
+            <l>Fischlein schnappe nach der Angel! —</l>
+            <l>So ists recht — nun ist kein Mangel —</l>
+            <l>hupa ufa, der ist schwer!</l>
+            <pb n="18" facs="20_D_VON-BERNUS_Pan_ALL_MUN_018.jpg"/>
+            <l>Wie der glänzt, man sollte meinen</l>
+            <l>er sei ganz von Gold — ich will</l>
+            <l>ihn gleich von der Angel lösen. —<stage type="corps"> (Bückt sich.)</stage>
+            </l>
+            <l>Wahrlich so sah ich noch keinen,</l>
+            <l>zapple nicht, so halt doch still!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fisch</speaker>
+          <lg>
+            <l>Fischer tu mir nichts zum Bösen,</l>
+            <l>wirf mich wieder in die Flut,</l>
+            <l>tötest du mich, ist's nicht gut,</l>
+            <l>bitte bitte lass mich leben!</l>
+            <l>Und zum Dank sei dir für einen</l>
+            <l>einen Wunsch Gewähr gegeben.</l>
+            <l>Fischer wirf mich in die Flut!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Es geschehn noch immer Wunder,</l>
+            <l>einen Fisch, der wirklich spricht,</l>
+            <l>sah ich meinen Lebtag nicht —</l>
+            <l>scheint ein Goldbutt oder Flunder.</l>
+            <l>Bist du ein verwunschner Prinz?</l>
+          </lg>
+        </sp>
+        <pb n="19" facs="20_D_VON-BERNUS_Pan_ALL_MUN_019.jpg"/>
+        <sp>
+          <speaker>Der Fisch</speaker>
+          <lg>
+            <l>Fischer du hast recht, ich bin's.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Kann ich dich erlösen, sag?</l>
+            <l>Heute ist doch Johannistag!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fisch</speaker>
+          <lg>
+            <l>Wirf mich wieder in den See,</l>
+            <l>tue einen Wunsch dabei.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Nun so wünsche ich: fei frei!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fisch</speaker>
+          <lg>
+            <l>Wirf mich in die Flut und geh!</l>
+            <l>Bis du heimkommst bin ich's schon</l>
+            <l>und du findest deinen Lohn.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <stage type="pers"> (wirft den Fisch ins Wasser — im Fortgehen)</stage>
+          <lg>
+            <l>Glaub es nicht, bis ich es seh'!</l>
+          </lg>
+          <pb n="20" facs="20_D_VON-BERNUS_Pan_ALL_MUN_020.jpg"/>
+          <stage type="saut">Ein Jäger kommt dem Fischer entgegen.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Grüß euch Fischer!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Jäger</speaker>
+          <stage type="pers"> (erstaunt)</stage>
+          <lg>
+            <l>Grüß euch Fischer!</l>
+            <l>Was ist für ein zauberischer</l>
+            <l>Wandel mit euch vorgegangen?</l>
+            <l>Euer Meid ist ja von Seide,</l>
+            <l>Korb und Angelrute beide</l>
+            <l>sind von schwerem Gold — ihr habt</l>
+            <l>wohl den Wassermann gefangen,</l>
+            <l>der euch solcherart begabt,</l>
+            <l>ihn nur wieder freizulassen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <lg>
+            <l>Wie? Was sagt ihr? Seide, Gold? <stage type="corps"> (Sich beschauend.)</stage>
+            </l>
+            <l>Wahrlich, noch, kann ich's nicht fassen!</l>
+            <l>Bin jetzt reich, so guten Sold</l>
+            <l>lob ich mir — der Fisch er war</l>
+            <l>doch ein Prinz...</l>
+          </lg>
+        </sp>
+        <pb n="21" facs="20_D_VON-BERNUS_Pan_ALL_MUN_021.jpg"/>
+        <sp>
+          <speaker>Der Jäger</speaker>
+          <lg>
+            <l>Was redet ihr?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Fischer</speaker>
+          <stage type="pers"> (hastig)</stage>
+          <lg>
+            <l>Nichts — ein andermal — nicht hier,</l>
+            <l>sag's euch morgen ...<stage type="corps"> (Ab.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Jäger</speaker>
+          <lg>
+            <l>Wie ihr wollt!</l>
+            <l>Sonderbar, sehr sonderbar ...<stage type="corps"> (Ab.)</stage>
+            </l>
+          </lg>
+          <stage type="saut">Hochbeladen schwankt ein Heuwagen vorüber. Obenauf liegen Zwei. Hinterher
+            Bursche und Dirnen mit Sense und Reden auf dem Rücken, sie singen. Der Fuhrmann vorne
+            treibt die Pferde an.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Fuhrmann</speaker>
+          <lg>
+            <l> Hüh hott hüh</l>
+            <l> zieh Rapp zieh!</l>
+            <l> Hüh hüh hott</l>
+            <l> Rapp zieh flott!</l>
+          </lg>
+          <stage type="saut">Die Zwei auf dem Wagen heftig umschlungen.</stage>
+          <pb n="22" facs="20_D_VON-BERNUS_Pan_ALL_MUN_022.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Sie</speaker>
+          <lg>
+            <l> Wie weich, sich's hier liegt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Er</speaker>
+          <lg>
+            <l> Wie das hebt und wiegt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Sie</speaker>
+          <lg>
+            <l> Morgen wird wieder gemäht,</l>
+            <l> da kommen der Kunz und die Räth</l>
+            <l> an die Reihe oben zu sitzen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Er</speaker>
+          <lg>
+            <l> Die beten auch kein Gebet...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Sie</speaker>
+          <lg>
+            <l> Und wir müssen laufen und schwitzen.</l>
+          </lg>
+          <stage type="saut">Die Bursche und Dirnen hinterher singend.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Bursche</speaker>
+          <lg>
+            <l> Eine Here hatt einen Knaben gefangen</l>
+            <l> juch he!</l>
+          </lg>
+        </sp>
+        <pb n="23" facs="20_D_VON-BERNUS_Pan_ALL_MUN_023.jpg"/>
+        <sp>
+          <speaker>Die Dirnen</speaker>
+          <lg>
+            <l> Sie band ihn fest mit giftigen Schlangen</l>
+            <l> o weh!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Bursche</speaker>
+          <lg>
+            <l> Die fraßen im Stück für Stück, o Graus</l>
+            <l> juch he!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Dirnen</speaker>
+          <lg>
+            <l> Das Herz aus dem mitten Leib heraus</l>
+            <l> o weh!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Bursche</speaker>
+          <lg>
+            <l> Drauf ließ die Here ihn wieder laufen</l>
+            <l> juchhe!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Dirnen</speaker>
+          <lg>
+            <l> Er musst sich ein Spatzenherze kaufen</l>
+            <l> o weh!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Bursche</speaker>
+          <lg>
+            <l> Da wurde er lustig ja wie ein Spatz</l>
+            <l> juch he!</l>
+          </lg>
+        </sp>
+        <pb n="24" facs="20_D_VON-BERNUS_Pan_ALL_MUN_024.jpg"/>
+        <sp>
+          <speaker>Die Dirnen</speaker>
+          <lg>
+            <l>Das freute sich als er heim kam sein Schatz</l>
+            <l>o weh!</l>
+          </lg>
+          <stage type="saut">Sie ziehen vorüber. Zwei Kinder, ein Bub und ein kleines Mädchen kommen,
+            sie tragen Reisig.</stage>
+        </sp>
+        <sp>
+          <speaker>Das kleine Mädchen</speaker>
+          <lg>
+            <l>Ich bin so müde, das Reisigbündel drückt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Bub</speaker>
+          <lg>
+            <l>Bald sind wir daheim — siehst du dort den Rauch?</l>
+            <l>das ist unsere Hütte — zum Abendbrot essen wir auch</l>
+            <l>die Heidelbeeren, die wir gepflückt,</l>
+            <l>und eh wir zu Bette gehen, wollen wir spielen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Das kleine Mädchen</speaker>
+          <lg>
+            <l>Nicht spielen, du sollst mir was erzählen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Bub</speaker>
+          <lg>
+            <l>Hör, etwas tät ich schon lange gern:</l>
+            <l>wir wollen zusammen die Sterne zählen.</l>
+          </lg>
+        </sp>
+        <pb n="25" facs="20_D_VON-BERNUS_Pan_ALL_MUN_025.jpg"/>
+        <sp>
+          <speaker>Das kleine Mädchen</speaker>
+          <lg>
+            <l>Ach die vielen vielen!</l>
+            <l>Wir würden nicht fertig bis es tagt,</l>
+            <l>denn weißt du was die Mutter sagt:</l>
+            <l>Wenn ein Kindlein geboren wird nah oder fern</l>
+            <l>so kommt immer ein neuer Stern,</l>
+            <l>und stirbt ein Mensch wo's auch mag sein,</l>
+            <l>so fällt ein Stern ins Meer hinein.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Bub</speaker>
+          <lg>
+            <l>Ja einmal sah ich einen fliegen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Das kleine Mädchen</speaker>
+          <lg>
+            <l>Du, können wir nicht ein Kindlein kriegen?</l>
+            <l>Ich würd ihm ein weiches Bettlein machen</l>
+            <l>und ein warmes Decklein aus Flaum und Moos,</l>
+            <l>und würd es wiegen und bei ihn wachen...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Bub</speaker>
+          <lg>
+            <l>Wir? Aber wir sind ja noch nicht groß!</l>
+          </lg>
+        </sp>
+        <pb n="26" facs="20_D_VON-BERNUS_Pan_ALL_MUN_026.jpg"/>
+        <sp>
+          <speaker>Das kleine Mädchen</speaker>
+          <lg>
+            <l>Das ist wohl noch lang — sieh die Sonne geht schlafen,</l>
+            <l>komm jetzt, sonst tut uns die Mutter strafen.<stage type="corps"> (Beide ab.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Eine junge Nonne</speaker>
+          <stage type="pers"> (kommt gegangen und singt)</stage>
+          <lg>
+            <l> O Jesus, süßer Bräutigam,</l>
+            <l> o sieh von deines Kreuzes Stamm</l>
+            <l> wie sehr ich um dich leide,</l>
+            <l> mein weißes Kamm, mein weiches Lamm,</l>
+            <l> o komm auf meine Weide!</l>
+          </lg>
+          <lg>
+            <l> Da stehen Rosen rot und weiß,</l>
+            <l> die hegte ich für dich mit Fleiß,</l>
+            <l> auch gelbe Königskerzen,</l>
+            <l> sie blühen hoch, sie glühen heiß,</l>
+            <l> wie du in meinem Herzen.</l>
+          </lg>
+          <lg>
+            <l> O Jesus, süßer Jesus komm,</l>
+            <l> ich harre deiner froh und fromm,</l>
+            <l> lass nicht umsonst mich warten!</l>
+            <l> O sieh die Sonne schon verglomm</l>
+            <l> wohl über meinem Garten.<stage type="corps"> (Sie geht vorüber.)</stage>
+            </l>
+          </lg>
+          <pb n="27" facs="20_D_VON-BERNUS_Pan_ALL_MUN_027.jpg"/>
+          <stage type="saut">Inbessen hat der Abend sich leicht gerötet. Die beiden Mädchen kommen,
+            sie geben zur Here. Sie haben die Haare offen und sind im bloßen Hemd. Die Aeltere trägt
+            die in der Frühe gepflückte Blume an der Brust.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Da sind wir am See, vom Rand des Gehegs</l>
+            <l>haben wir noch eine Stunde Wegs.</l>
+            <l>Wenn mich jemand sähe so wie ich hier bin,</l>
+            <l>ich wüsste vor Scham nicht mehr wohin</l>
+            <l>Möcht wissen, was es der Here frommt,</l>
+            <l>dass man in solchem Aufzug kommt.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Das ist wohl wunderlich, doch nun,</l>
+            <l>da es so Brauch ist, muss mans tun.</l>
+            <l>Am Ende lockt es den Liebsten mehr,</l>
+            <l>wenn er uns sieht so wie wir sind.</l>
+            <l>Und wer uns begegnet von ungefähr,</l>
+            <l>vor dem verstecken wir uns geschwind.</l>
+            <l>Die Anderen im Vorübergehen</l>
+            <l>sahen uns ja doch auch nicht stehen.</l>
+          </lg>
+        </sp>
+        <pb n="28" facs="20_D_VON-BERNUS_Pan_ALL_MUN_028.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ach, könnt ich wie du über alles lachen!</l>
+            <l>Was wird nur die Here für Augen machen?</l>
+            <l>Ich trau mich nicht, dur musst mit ihr sprechen,</l>
+            <l part="I">hörst du?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Das wird mir den Hals nicht brechen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ich trage ein Amulet von Korallen,</l>
+            <l>das niemals seine Kraft verliert.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Wie findest du dass mich die Blume ziert?</l>
+            <l>Sie war am Bach die schönste von allen,</l>
+            <l>Ich möchte dem Liebsten wohl gefallen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ich denke fast ängstlich an den meinen —</l>
+            <l>vielleicht will keiner mir erscheinen.</l>
+          </lg>
+        </sp>
+        <pb n="29" facs="20_D_VON-BERNUS_Pan_ALL_MUN_029.jpg"/>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Du bist ein Närrchen — weißt du: ich hätte</l>
+            <l>gern einen Prinz mit goldener Kette</l>
+            <l>und einem edelsteinernen Strauß.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>So hoch begehre ich nicht hinaus.</l>
+          </lg>
+          <stage type="saut">Zu der Entfernung schreit.</stage>
+        </sp>
+        <sp>
+          <speaker>Ein Käuzchen</speaker>
+          <lg>
+            <l>Komm mit! Komm mit!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Wie das Käuzchen krächzt,</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Echo</speaker>
+          <lg>
+            <l>Ich nicht! Ich nicht!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Und das Echo ächzt.</l>
+            <l>Wir müssen eilen, es dunkelt bald.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Wär's nur nicht so finster in dem Wald!<stage type="corps"> (Beide ab.)</stage>
+            </l>
+          </lg>
+          <pb n="30" facs="20_D_VON-BERNUS_Pan_ALL_MUN_030.jpg"/>
+          <stage type="saut">Die Szene bleibt eine Zeitlang leer. Dann hebt sich im tiefen Abendrot am
+            letzten Rande des Sees ein Schloß empor. Es tönt eine süße geheimnisvolle Musik. Der
+            Fisch, Der auf den Wunsch des Füchers wieder seine menschliche Gestalt bekam, entsteigt
+            dem Wasser — ein reich geschmückter Prinz reitet vorüber. Die Musik verklingt.</stage>
+        </sp>
+         </div>
+      <div type="3">
+        <head type="scene" n="3">Dritte Szene</head>
+        <listPerson>
+          <personGrp>
+            <name>[Die Here, </name>
+            <name>ein Moormann, </name>
+            <name>eine Irrlichter, </name>
+            <name>ein Altere, </name>
+            <name>eine Jüngere, </name>
+            <name>ein Mädchen]</name>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Eine Waldlichtung. Um Mitternacht. Links unter Bäumen die Hütte der Here.
+          Die Fenster sind rot erhellt. Rechts dichter Wald, im Hintergrunde rechts sieht man den
+          Teufelsberg ansteigen. Auf dem Dach der Hütte sitzt ein Rater und schreit. </stage>
+        <sp>
+          <speaker>Die Here</speaker>
+          <stage type="pers"> (herausschauend ruft)</stage>
+          <lg>
+            <l>Na ich komme schon Meister Murr!</l>
+            <l>Hast ja heute ein Geschnurr und Geknurr,</l>
+            <l>dass du mein Herz im Leibe Kirrst,</l>
+            <l>gleich bin ich bei dir auf dem First.</l>
+          </lg>
+          <stage type="saut">Sie verschwindet. Gleich darauf erscheint eine Katze auf dem Dach, Die
+            sich zu dem Rater gesellt. Die Musik drückt das Rosen und Schnurren der beiden aus, das
+            sich steigert, heftiger und bestiger bis zur kreischenden Ekstase — hier verlieren sich
+            die beiden Tiere nach der entgegengesetzten Seite des Dachs. Plötzlich wird es still. —
+            kurz danach zucken Irrlichter her. Es folgt ihnen holpernd und stolpernd der
+            Moormann.</stage>
+          <pb n="31" facs="20_D_VON-BERNUS_Pan_ALL_MUN_031.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Der Moormann</speaker>
+          <lg>
+            <l>Nicht so flüchtig, nicht so unstät herüber und hinüber,</l>
+            <l>bald flimmert ihr heller, bald glimmert ihr trüber,</l>
+            <l>springt nicht immer zickzack so vom feuchten zum feuchten,</l>
+            <l>bleibt mir auf dem Wege, mich zu führen, mir zu leuchten.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Irrlichter</speaker>
+          <lg>
+            <l> Hin und her</l>
+            <l> schwirren wir,</l>
+            <l> irren wir</l>
+            <l> kreuz und quer.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Moormann</speaker>
+          <lg>
+            <l>Ihr verteufeltes Gelichter, missachtet ihr mein Schelten?</l>
+            <l>Wenn wir wieder erst im Moor sind, so sollt ihr mir's entgelten<stage type="corps">
+                (Er klopft an die Türe der Hütte.)</stage>
+            </l>
+            <l>He macht auf! He seid ihr zu Haus?</l>
+          </lg>
+          <lg>
+            <l> Werte Muhme</l>
+            <l> zarte Blume</l>
+            <l> es ist Einer draus,</l>
+            <l> der will um euch freien —</l>
+          </lg>
+          <pb n="32" facs="20_D_VON-BERNUS_Pan_ALL_MUN_032.jpg"/>
+          <lg>
+            <stage type="corps"> (Da keine Antwort erfolgt, polternd:)</stage>
+            <l>He runzeliche Alte, komm heraus aus deiner Höhle!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <stage type="pers"> (zornig mit dem Kopf herausfahrend)</stage>
+          <lg>
+            <l>Hol dich der Satan mit deinem Schreien</l>
+            <l>krummer triefender Schlammtölpel! Gröhle</l>
+            <l>in deinem Tümpel bei Kröten und Fröschen,</l>
+            <l>hier aber pack dich, sonst tu ich zuvor</l>
+            <l>dir noch die windigen Irrewische löschen,</l>
+            <l>findest dann nimmer zurück in dein Moor.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Moormann</speaker>
+          <lg>
+            <l>Nah ich geh' schon alte Here, lass dein Kreischen und dein Fluchen!</l>
+            <l>Doch bedarfst du einmal meiner, kannst du lange nach mir suchen.<stage type="corps">
+                (Stapft ab, ihm nachrufend)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Ich deiner bedürfen? Hi dass ich nicht platze!</l>
+            <l>Wohl gar noch zum Liebsten — du Sumpfalb, du Fratze!</l>
+          </lg>
+          <stage type="saut">Sie zieht den Kopf zurück. Bald darauf kommen die beiden Mädchen. Sie
+            halten sich an der Hand gefasst, voran die Aeltere, ihr folgt furchtsam die
+            Jüngere.</stage>
+          <pb n="33" facs="20_D_VON-BERNUS_Pan_ALL_MUN_033.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Da ist die Hütte.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ach wären wir lieber</l>
+            <l>zu Hause geblieben, mich fröstelts wie Fieber.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Mich auch, doch das kommt nur: wir sind nicht gewohnt</l>
+            <l>im Hemde zu wandern im vollen Mond,</l>
+            <l>das zieht in die Glieder und macht sie erschauern.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Siehst du nicht was Schwarzes am Boden kauern?</l>
+            <l>Es regt sich, bewegt sich — schnell lass uns flüchten,</l>
+            <l>ich hört oft' von Geistern und bösen Gezüchten,</l>
+            <l>bei einen verderben…<stage type="corps"> (Es taucht etwas Dunkles vor ihnen
+                auf.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>So bleib doch und wart!</l>
+            <l>Es ist blos ein Maulwurf, er gräbt und er scharrt.</l>
+          </lg>
+        </sp>
+        <pb n="34" facs="20_D_VON-BERNUS_Pan_ALL_MUN_034.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ja jetzt seh ich's auch, wie er rudert und spült.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Schon hat er sich tief im die Erde gewühlt. —</l>
+            <l>Nun weiter! Die Hexe scheint Kräuter zu kochen,</l>
+            <l>denn bläulicher Rauch steigt....</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Du musst aber pochen.</l>
+          </lg>
+          <stage type="saut">Die Mädchen treten einige Schritte näher zur Hütte. Da geht die Türe auf
+            und die Here humpelt heraus. Die Mädchen fahren erschrocken zurück.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Hi hi schöne Jüngferleins, grüß grüß euch! Und beide</l>
+            <l>so furchtsam? Es thut euch ja keins was zu leide.</l>
+            <l>Weiße Glieder, keines Linnen und offene Haare,</l>
+            <l>die Jüngste zählt noch nicht sechzehn Jahre —</l>
+            <l>Ihr wollt wohl den Liebsten sehn, hab ich's erraten?</l>
+            <l>Zahlt zahlt mir erst einen blanken Dukaten!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Dukaten? ...</l>
+          </lg>
+        </sp>
+        <pb n="35" facs="20_D_VON-BERNUS_Pan_ALL_MUN_035.jpg"/>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Na dann einen harten Taler!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Einen Taler? wir haben nichts...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Hi hi bei so schmaler</l>
+            <l>Belohnung da ist es ein schwieriger Fall,</l>
+            <l>da kommt er nicht gern — doch seid ihr hübsch drall</l>
+            <l>und rosig, ich will euch den Liebsten schon zeigen,</l>
+            <l>nur müsst ihr geloben, darüber zu schweigen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l> Das tun wir...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l> Von uns soll kein Mensch etwas hören.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>So sagt, wobei könnt ihr Verschwiegenheit schwören?</l>
+          </lg>
+        </sp>
+        <pb n="36" facs="20_D_VON-BERNUS_Pan_ALL_MUN_036.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Bei unserer Seele.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Hat hier nichts zu schaffen,</l>
+            <l>ist ein unsicher Ding, die lasst für die Pfaffen.</l>
+            <l>Schwört mir bei euerem heiß weißen Leib,</l>
+            <l>der hat mir hier einen gewissern Verbleib,</l>
+            <l>und sprecht mir laut nach jede einzeln die Worte:</l>
+            <l>Ich schwöre, von dem, was ich am diesem Orte</l>
+            <l>erfahre und höre und ich bis ich sterbe</l>
+            <l>zu schweigen, auf dass mir der Leib nicht verderbe!</l>
+          </lg>
+          <stage type="saut">Die Mädchen wiederholen die Worte der Here.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Nun tut wie ich sage: der Kreis ist gezogen,</l>
+            <l>ihr stehet schon ohne zu wissen im Bogen.</l>
+            <l>Was immer geschehn mag um euch, überschreitet</l>
+            <l>ihn nicht, es ist euch sonst Unheil bereitet.</l>
+          </lg>
+          <stage type="saut">Die Here beginnt die Ceremonie mit beschwörenden Zeichen. Der Himmel
+            verfinstert sich. Bläuliche Lichter zucken blitzhaft auf. Wieder hart sich die Nacht. Eine
+            ferne rätselhafte Musik wird hörbar.</stage>
+        </sp>
+        <sp>
+          <speaker>Diese verklingt und die Here </speaker>
+          <stage type="pers"> (spricht halb singend in feierlichem Ton:)</stage>
+          <pb n="37" facs="20_D_VON-BERNUS_Pan_ALL_MUN_037.jpg"/>
+          <lg>
+            <l> Die Nacht griff dem Tag ans Herz und riß</l>
+            <l> es ihm aus und warfs in die Finsternis.</l>
+            <l> Die weckt und wirkt</l>
+            <l> was das Licht verbirgt.</l>
+            <l> Die Nacht</l>
+            <l> gab Bann und Macht.</l>
+            <l> Hell ist dunkel und dunkel ist hell —</l>
+            <l> Ich fühle, Einer ist zur Stell:</l>
+            <l> Jüngferlein du, zerbrich deinen Kamm,</l>
+            <l> rufe dreimal den Bräutigam!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Ich rufe dich, rufe dich, rufe dich, Trautgesell!</l>
+          </lg>
+          <stage type="saut">Der Gerufene erscheint im Hintergrunde plötzlich, geisterhaft doch klar
+            umrissen. Er trägt die Züge und Gestalt des Fischers, nur ist er reich gekleidet und
+            geschmückt. Er steht regungslos. Auch die Mädchen sehen starr auf die Erscheinung.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Halt ihn nicht länger bei dir an,</l>
+            <l>hebe die Hand, das löst den Bann.</l>
+          </lg>
+          <stage type="saut">Das Mädchen befolgt die Weisung. Im gleichen Augenblicke ist das Bild
+            verschwunden.</stage>
+          <pb n="38" facs="20_D_VON-BERNUS_Pan_ALL_MUN_038.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <stage type="pers"> (in der Beschwörung fortfahrend)</stage>
+          <lg>
+            <l>Aber ins Dunkel</l>
+            <l>fällt ein Gefunkel.</l>
+            <l> Die Zeit</l>
+            <l> trägt ein buntscheckig Kleid.</l>
+          </lg>
+          <lg>
+            <l>Nah ist fern und fern ist nah —</l>
+            <l>Ich fühle, der Zweite ist nun da:</l>
+            <l>Jüngferlein, dir bist am der Reih,</l>
+            <l>zerbrich deinen Kamm und ruf ihn herbei.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ich rufe, ich rufe, ich rufe den, der mich freit!</l>
+          </lg>
+          <stage type="saut">Das Spiegelbild des Prinzen erscheint, genau wie er zuvor am See
+            vorüberzog. Auch er bleibt regungslos und die Mädchen starren, staunen.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Löse ihn, halt ihn nicht länger fest,</l>
+            <l>weil ihn sonst nie der Traum verlässt.</l>
+          </lg>
+          <stage type="saut">Das Mädchen hebt die Hand, die Erscheinung ist fort. Die Here beschließt
+            die Ceremonie mit geheimnisvollen Zeichen.</stage>
+          <pb n="39" facs="20_D_VON-BERNUS_Pan_ALL_MUN_039.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Nun ist des Kreises Kraft erlahmt,</l>
+            <l>ihr mögt wieder hingehn woher ihr kamt! </l>
+            <l>Hi hi und seid ihr auch hübsch zufrieden?</l>
+            <l>Jeder ist ein schöner Mann beschieden.</l>
+            <l>Die Junge kriegt gar einen vornehmen Herrn,</l>
+            <l>so einen wollt ich wohl selber gern.</l>
+            <l>Hi hi jetzt gebt nur, am Berge glühen</l>
+            <l>schon die Johannisfeuer und sprühen.</l>
+            <l>Ihr habt ein gutes Stück Wegs zu wandern,</l>
+            <l>eilt, dass ihr noch heimkommt vor den Andern.</l>
+            <l>Hi hi an der Hütte vorbei und gerade</l>
+            <l>dahinter links auf dem nächsten Pfade</l>
+            <l>zum See — so könnt ihr euch nicht verlaufen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Mädchen</speaker>
+          <lg>
+            <l>Wir danken...<stage type="corps"> (Ab.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Here</speaker>
+          <lg>
+            <l>Da kann ich mir nichts für kaufen,</l>
+            <l>ist auch nicht nötig — lebt wohl!</l>
+            <l>für sich ihr Bänschen!</l>
+            <l>bis morgen verliert ihr eure Kränzchen!</l>
+          </lg>
+        </sp>
+      </div>
+      <div type="3">
+        <pb n="40" facs="20_D_VON-BERNUS_Pan_ALL_MUN_040.jpg"/>
+        <head type="scene" n="4">Vierte Szene</head>
+        <listPerson>
+          <personGrp>
+            <name>[Eine Dryas, </name>
+            <name>eine Nymphe, </name>
+            <name>Blumenseelen, </name>
+            <name>Bursche, </name>
+            <name>ein Jäger, </name>
+            <name>ein Altere, </name>
+            <name>eine Jüngere, </name>
+            <name>ein Dichter, </name>
+            <name>Pan]</name>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Das gleiche Bild wie bei der ersten Szene, doch Nachmitternacht und
+          sinkender Vollmond. Die Dryas, die Nymphe und die Blumenseelen kehren in ihren Baum
+          zurück.</stage>
+        <sp>
+          <speaker>Die Dryas</speaker>
+          <lg>
+            <l>Zurück in den Baum!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Nymphe</speaker>
+          <lg>
+            <l>Zurück in den Bach!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Blumenseelen</speaker>
+          <lg>
+            <l>Zurück in die Blumen hundertfach!</l>
+          </lg>
+        </sp>
+        
+        <sp>
+          <speaker/>
+          <stage type="saut">Sie gehen in Baum und Bach und Blumen unter. Nur die eine Blumenseele,
+            deren Blume das Mädchen in der Frühe brach, findet ihren Leib zerstört, irrt und
+            klagt:</stage>
+          <lg>
+            <l>O weh! Meine Blume ist fort — was tun?</l>
+            <l>Wer brach sie? Wer stahl sie? Wo find ich sie nun?</l>
+            <l>Ich muss sie stets juchen und suchen — o wehe!</l>
+            <l>Weil ich nur mit ihr verduste, vergehe!</l>
+          </lg>
+          <stage type="saut">Sie irrt weiter. Zwei Bursche kommen.</stage>
+          <pb n="41" facs="20_D_VON-BERNUS_Pan_ALL_MUN_041.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Der Erste</speaker>
+          <lg>
+            <l>Sie können noch nicht vorüber sein,</l>
+            <l>sie haben blos diesen einen Weg,</l>
+            <l>es führt übern Bach kein andrer Steg —</l>
+            <l>Hörst du, die Jüngere ist mein.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Zweite</speaker>
+          <lg>
+            <l>Mir ist's um die Aeltere allein,</l>
+            <l>eine Kuh ist mir lieber als ein Kalb.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Erste</speaker>
+          <lg>
+            <l>Aber so zart ist sie nicht halb.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Zweite</speaker>
+          <lg>
+            <l>Da brauchen wir uns nicht drüber zanken.</l>
+            <l>Und die Mädchen werden e uns schon danken,</l>
+            <l>wenn wir uns erbarmen und die Glut</l>
+            <l>der Here kühlen in ihrem Blut.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Erste</speaker>
+          <lg>
+            <l>Dass wir die sahen, das heiß ich Glück.</l>
+          </lg>
+        </sp>
+        <pb n="42" facs="20_D_VON-BERNUS_Pan_ALL_MUN_042.jpg"/>
+        <sp>
+          <speaker>Der Zweite</speaker>
+          <lg>
+            <l>Sie müssen gleich folgen, komm schnell noch das Stück</l>
+            <l>bis an die Böschung — die süßen Dinger,</l>
+            <l>dort laufen sie uns von selbst in die Finger.<stage type="corps"> (Ab.)</stage>
+            </l>
+          </lg>
+          <stage type="saut">Ein Fuchs kommt vorüber, bleibt auf der andern Seite stehen und dreht den
+            Kopf nach dem Jäger, der ihm gefolgt ist und auf ihn anlegt. Der Jäger drückt los, aber
+            der Schuß versagt. Der Fuchs geht unbekümmert weiter.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Jäger</speaker>
+          <lg>
+            <l>Verdammt, schon wieder versagt der Schuß!</l>
+            <l>Man muss</l>
+            <l>in der Johannisnacht nicht sagen,</l>
+            <l>man wird doch nichts nach Hause tragen,</l>
+            <l>denn da ist alles wie verhext,</l>
+            <l>wenn gar ein Schloß aus dem Boden wächst</l>
+            <l>wie drüben am See.</l>
+            <l>Das Tier, es sah mich an so weh</l>
+            <l>fast wie ein Mensch und so gescheit,</l>
+            <l>als wüsst es wohl es sei gefeit.</l>
+            <l>Ich fühl mich matt und ganz zerschlagen —</l>
+            <l>brächt ich mur auch mal eine Beute</l>
+            <l>zurück so wie der Fischer heute.<stage type="corps"> (Ab.)</stage>
+            </l>
+          </lg>
+          <pb n="43" facs="20_D_VON-BERNUS_Pan_ALL_MUN_043.jpg"/>
+          <stage type="saut">Die beiden Mädchen kommen.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Hier ist die Stelle, wo ich am Morgen</l>
+            <l>dich schreckte aus Sinnen und süßen Sorgen</l>
+            <l>und sieh, dem Fräulein ist bestimmt,</l>
+            <l>daß sie ein Prinz zur Prinzessin nimmt</l>
+            <l>Da muss man sich wohl vor dir beugen und neigen?</l>
+            <l>Da wirst du dich wohl recht Fürstlich zeigen?</l>
+            <l>In Sammt und Seide mit rauschender Schleppe</l>
+            <l>Schreitest du eine marmorne Treppe</l>
+            <l>zum Teich im Part, wo bei Flöten und Geigen</l>
+            <l>auf flimmernder Fläche ein Rahn sich schaukelt</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Willst du von dem Unsinn endlich schweigen!</l>
+            <l>Glaubst gar, was die Here uns vorgegaukelt!</l>
+            <l>Das ist doch alles blos Trug und Lüge.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Wüsst ich nur ob es der Fischer war,</l>
+            <l>der sich mir zeigte, Gestalt und Züge</l>
+            <l>glichen den seinen auf ein Haar,</l>
+            <l>aber sein Kleid war schwer und prächtig,</l>
+            <l>der Mond schien klar und mitternächtig.</l>
+          </lg>
+        </sp>
+        <pb n="44" facs="20_D_VON-BERNUS_Pan_ALL_MUN_044.jpg"/>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Ich fühl mich so seltsam und wunderlid,</l>
+            <l>wir die Here verliehen,</l>
+            <l>ich spüre im Körper ein heines Flichen</l>
+            <l>bis in die Fingersjpigen...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Und ich,</l>
+            <l>ich möchte den Ersten liebkosen und herzen</l>
+            <l>und küssen, dass mich die Lippen schmerzen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Mir ist, ein Feuer verzehre mich.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>Da sieh, die Blume ist welk — am Ort</l>
+            <l>wo ich sie pflückte, werf ich sie fort.<stage type="corps"> (Sie thut es.)</stage>
+            </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Jüngere</speaker>
+          <lg>
+            <l>Sie fiel in den Bach.</l>
+          </lg>
+        </sp>
+        <pb n="45" facs="20_D_VON-BERNUS_Pan_ALL_MUN_045.jpg"/>
+        <sp>
+          <speaker>Die Altere</speaker>
+          <lg>
+            <l>So lass sie nur fliehen,</l>
+            <l>sie wird von Fluren zu Fluren ziehen.</l>
+          </lg>
+          <stage type="saut">Die Mädchen gehen weiter. Die Blumenseele kehrt wieder.</stage>
+        </sp>
+        <sp>
+          <speaker>Die Blumenseele</speaker>
+          <lg>
+            <l>Mein Leib! Meine Blume! Ich wittre sie – schnelle</l>
+            <l>ihr nach und ich teile ihr Los in der Welle!</l>
+          </lg>
+          <stage type="saut">Sie wirft sich in den Bach. Der Dichter kommt.</stage>
+        </sp>
+        <sp>
+          <speaker>Der Dichter</speaker>
+          <lg>
+            <l>O laue Nacht! O blaue Nacht!</l>
+            <l>vom Silber deiner Bäume</l>
+            <l>nahm ich den Tau, der tönen macht,</l>
+            <l>dass ich im Dunkeln deine Pracht</l>
+            <l>zum Schattenspiel verträume.</l>
+          </lg>
+          <stage type="saut">Er geht vorüber. Für kurze Zeit bleibt die Szene leer. Dann steigt Pan
+            aus dem Boden auf.</stage>
+          <pb n="46" facs="20_D_VON-BERNUS_Pan_ALL_MUN_046.jpg"/>
+        </sp>
+        <sp>
+          <speaker>Pan</speaker>
+          <lg>
+            <l>Was ich im Grau der Frühe</l>
+            <l>aus tausend Tiefen rief,</l>
+            <l>dass es im sich erglühe,</l>
+            <l>verglomm nun und verlief</l>
+            <l>bis sich die Monde runden</l>
+            <l>zu aber einem Ring:</l>
+            <l>und wieder wird entbunden,</l>
+            <l>was sich in Formen fing.</l>
+            <l>Es geht ein Regen nieder</l>
+            <l>noch eh es Morgen wird,</l>
+            <l>ein wolkichtes Gefieder</l>
+            <l>hat sich ins Blau verirrt.</l>
+            <l>Was ich für kurz erhöhte,</l>
+            <l>ist klanglos wie zuvor,</l>
+            <l>und einzig meine Flöte</l>
+            <l>tönt immer fort im Rohr.</l>
+          </lg>
+          <stage type="saut">Er bläst auf der Flöte, während er langsam versinkt. Nachdem er schon
+            lange nicht mehr sichtbar ist, tönt noch das Flötenspiel.</stage>
+        </sp>
+        </div>
+      <div type="5">
+        <head type="div5">Vorhang</head>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

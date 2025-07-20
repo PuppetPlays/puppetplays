@@ -413,11 +413,11 @@ const processElement = element => {
         if (stage.parentNode === element) {
           const stageType = stage.getAttribute('type');
           directStages.push({
-            type: 'stage',
-            content: stage.textContent.trim(),
+          type: 'stage',
+          content: stage.textContent.trim(),
             stageType: stageType || 'general',
-          });
-        }
+        });
+      }
       }
       speechResults.push(...directStages);
 
@@ -636,7 +636,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
 
             console.log('🔍 [DEBUG IIIF] Image files found:', imageFiles.length);
             console.log('🔍 [DEBUG IIIF] Files:', imageFiles.map(f => f.name));
-            
+
             if (imageFiles.length > 0) {
               setTotalPages(imageFiles.length);
               setImageUrls(imageFiles); // Store the files for navigation
@@ -685,16 +685,16 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         
         // Build URL for the specific file
         const pageUrl = getNakalaEmbedUrl(
-          anthologyData.nakalaIdentifier,
+        anthologyData.nakalaIdentifier,
           currentFile.sha1,
-          {
-            buttons: true,
-          },
-        );
+        {
+          buttons: true,
+        },
+      );
 
         console.log('🔍 [DEBUG IIIF] Page URL:', pageUrl);
-        setNakalaViewerUrl(pageUrl);
-      }
+      setNakalaViewerUrl(pageUrl);
+    }
     }
   }, [currentPage, anthologyData, imageUrls]);
 

@@ -1,0 +1,1589 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/58300/le-voyage-de-guignol-dans-la-lune">Le Voyage de Guignol dans la Lune</title>
+        <respStmt>
+          <name xml:id="PM">Pierre Massinon</name>
+          <resp ref="stagiaire">Transcription and edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor>Musée Gadagne - Lyon, France</distributor>
+        <availability status="free">
+          <p>Public domain</p>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>A poor young man rises to fame in a distant land</note>
+        <note>&lt;p&gt;The manuscript was bought by Léopold Dor in 1927 and is now kept in the
+                    Musée des Arts de la Marionnette (Musées Gadagne) in Lyon, France. The cover page
+                    bears the date 1852-1854 and the name of Louis Josserand senior, but it is in fact a
+                    copy made in 1905 by puppeteer Joanny Durafour (1853-1938) which specifies that this
+                    was one of the most successful plays of the Théâtre Guignol on Rue Port-du-Temple.
+                    The copy points out several additions to the original text. For instance, the fourth
+                    tableau is introduced with the following lines: “This tableau is optional and was
+                    not featured in the original play. It was added by the brothers [Louis and Laurent]
+                    Josserand”. Another tableau – the seventh – was created by Durafour. It is entitled
+                    “La Lune à un mètre” (a metre away from the Moon) and was performed for the first
+                    time in Marseilles, during the summer season of 1903. Several passages in verse were
+                    added in 1889, when the last shows in Lyon were being played.&lt;/p&gt;</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Musée Gadagne</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 61</p>
+                <p>Number of acts in the original document: 8</p>
+                <p>Format of the original document: Manuscript</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">Le Voyage de Guignol dans la Lune</title>
+          <title type="alt">Guignol dans la Lune</title>
+          <date>1852-1854</date>
+          <author>
+            <persName>Josserand Claude Louis François (aka Louis Josserand père)</persName>
+            <idno type="IDREF">188286225</idno>
+          </author>
+          
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fra">French</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/521/glove-puppets">Glove-puppet</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Comical</term>
+          <term>Fantasy</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Monologue</term>
+          <term>Teichoscopy</term>
+          <term>Song</term>
+          <term>Off-stage voice</term>
+          <term>Letter</term>
+          <term>Ellipsis</term>
+          <term>Aside</term>
+          <term>Apotheosis</term>
+          <term>Versified passages</term>
+          <term>Final song</term>
+          <term>Flying machine</term>
+          <term>Word warping</term>
+        </keywords>
+        <keywords source="genre">
+          <term>Pièce féerique</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Moon</term>
+          <term>Gas balloon</term>
+          <term>Meals</term>
+          <term>Wine</term>
+          <term>Celebrity</term>
+          <term>Misery</term>
+          <term>Revolt</term>
+          <term>Lyon</term>
+          <term>Seduction</term>
+          <term>Scatology</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant
+        Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+        re-evaluate the contribution of the puppets repertoire to the construction of
+        European cultural identity. Its main goals is to collect a corpus of
+        representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+        France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+        17th and the 21th century. It also tries to identify the characteristics of
+        puppet dramaturgy and their variations depending on eras, cultural spheres,
+        producing conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal
+        investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+            Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+        </ref> licence. This license enables reusers to distribute, remix, adapt, and
+        build upon the material in any medium or format for non-commercial purposes
+        only, and only so long as attribution is given to the creator. If you remix,
+        adapt, or build upon the material, you must license the modified material under
+        identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2024-07-01" who="#PM">Text transcription and edition</change>
+      <change when-iso="2025-03-25" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="01" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_01.png"/><docAuthor>
+        <persName>Laurent Josserand</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">Guignol dans la Lune</titlePart>
+        <titlePart type="sub"> Grande pièce en huit tableaux </titlePart>
+      </docTitle>
+      <docDate>1869</docDate>
+      <castList>
+        <head type="personnage">Personnages</head>
+        <castItem>
+          <role>Guignol,</role>
+          <roleDesc> chiffonier </roleDesc>
+        </castItem>
+        <castItem>
+          <role>Gnafron,</role>
+          <roleDesc> savetier</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Le Bailli</role>
+        </castItem>
+        <castItem>
+          <role>Le Roi de la Lune</role>
+        </castItem>
+        <castItem>
+          <role>Baba,</role>
+          <roleDesc> son ministre</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Soldats de la Lune</role>
+        </castItem>
+        <castItem>
+          <role>Danseurs et danseuses </role>
+        </castItem>
+        <castItem>
+          <role>Un Aéronaute</role>
+        </castItem>
+        <castItem>
+          <role>La Reine de la Lune</role>
+        </castItem>
+        <castItem>
+          <role> Louison, </role>
+          <roleDesc>fille de Gnafron </roleDesc>
+        </castItem>
+      </castList>
+      <set>
+        <p>Décors : Place publique. Le départ des ballons. Le rustique. La neige.
+                Place publique. Le palais de la Lune. Salon. La Lune.</p>
+      </set>
+    </front>
+    <body>
+      <div type="2">
+        <pb n="02" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_02.png"/>
+        <head type="tableau" n="1">Tableau I</head>
+        <div type="3">
+          <head type="scene" n="1">Scène 1</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>Gnafron]</name>
+            </personGrp>
+          </listPerson>
+          <stage type="saut">Guignol, sa lanterne à la main et son mannequin sur le dos.
+                        Gnafron endormi.</stage>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Cré nom d'un chien, pas de chance ; six heures de balladage et le
+                            mannequin bat des flancs. C'est demain dimanche, après-demain lundi, et
+                            le gousset est vide. Que va penser de moi mademoiselle Louison ? Et dire
+                            qu'à présent, c'est si difficile de trouver quéque chose : les
+                            cuisinières sont d'une économie ! Les autres fois, il y avait une
+                            allemande, elle, bien chic, rien.</p>
+            <stage type="corps">(Il heurte Gnafron.)</stage>
+            <p>Tiens quéque c'est ça ? Ah grand Dieu ! C'est mon
+                            futur papa beau-père.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Louison, va voir quéqui ne frappe.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Il rêve qu'il est chez lui. </p>
+          </sp>
+          </sp>
+          <pb n="03" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_03.png"/>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Ah gredine ! Que t'as mal égalisé la paillasse. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oh ! hé ! Gnafron ! au levage ! Est-ce que tu attends le lever du soleil
+                            pour faire tirer ton portrait à la postographique dans ton appartement
+                            aéré ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Tiens, que signifie un gîte pareil ? Ah je vois ce que c'est, c'est un
+                            effet de la providence.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>De la providence ? </p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Eh oui, chifeurton de malheur, puisque j'ai rendu vingt-deux regrolages
+                            aux enfants trouvés dont le produit a passé à la caisse d'épargne.</p>
+          </sp>
+          </sp>
+          <pb n="04" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_04.png"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>T'es bien heureux toi de pouvoir mettre à la caisse d'épargne, tandis que
+                            moi j'ai pas un radis</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Tiens, c'est toi Chignol, je te prenais pour la Patte-à-Margot, l'enfant
+                            gâté de la [illisible]. Y a-t-il longtemps que t'es là ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>J'arrive, et depuis six heures de balladage, t'es ma première
+                            trouvaille.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Tu tombes mal, j'avons pas le sous et pourtant un goûte militaire me
+                            mettrait ben le nez au vent.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Et pas moyen de lui faire une honnêtetance, le cabriolet est vide et la
+                            poche bat des flancs. </p>
+          </sp>
+          </sp>
+          <pb n="05" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_05.png"/>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Quand on n'a pas le sou, on parle politique... Je te dirais que la
+                            tigresse de la barrière Montparnasse a mis les scellés sur son livre de
+                            crédit.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Cré nom d'un chien ! Moi qui comptais sur cette amphibie pour passer mon
+                            dimanche avec mon honorable Louison, ma future. Notre amour est capable
+                            de s'altérer.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Elle a peut-être des finances ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ah bien oui. Voilà cinq jours qu'elle fait grève.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>C'est souvent qu'elle se procure ce plaisir là. Si tu veux lui trouver
+                            des ampoules, c'est pas aux mains qu'y faut regarder.</p>
+          </sp>
+          </sp>
+          <pb n="06" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_06.png"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Tu conçois Gnafron qu'il [est] des êtres dans le monde qui n'ont pas été
+                            créés pour le travail et nous sommes tous les trois de ce nombre. C'est
+                            si bon de se soigner un peu.</p>
+            <stage type="corps">(Il s'appuie.)</stage>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oh la faignantise, quelle belle invention !... Mais dis donc j'y pense,
+                            si pour alléger ton mal-aise tu partais avec ce zarérionode qui, par la
+                            force de son ballon, doit aller jusqu'à la Lune. Si ça réussit, ta fortune
+                            est faite. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Ah, mais qu'est-ce que j'aperçois donc là-bas ! C'est l'affiche, le public est
+                            prévenu que celui qui sera assez z'hardi pour monter avec moi en
+                            ballon aura mille francs, cinq cent francs avant le départ et le reste en
+                            redescendant. Au diable le mannequin ! Suis-moi Gnafron ! Je deviens
+                            riche.</p>
+          </sp>
+          <pb n="07" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_07.png"/>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Et moi je vais rejoindre Louison ! Dis donc, vieux, tu me donneras tes cinq-cent francs, t'en as pas besoin là-haut.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je verrai ça. Au revoir Gnafron.</p>
+          </sp>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="2">Tableau II </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>Louison, </name>
+              <name>Gnafron</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Tar la ta ta ! Vous avez ben et beau faire, vous ne me convaincrez
+                            jamais que Guignol a raison.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oh toi, t'es trop difficile.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Je vous le demande quelle heure t'est-il ? Neuf heures, et vous le savez à
+                            huit au</p>
+          </sp>
+          <pb n="08" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_08.png"/>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>plus tard monsieur Guignol se présente un bouquet à la main me l'offrant très galamment pour un chiffeur, mais ce matin, rien. C'est parce que je lui ai déclaré mon ultimatum : votre métier ne me va pas, changez-en sinon pas de Louison.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Tu n'es pas ambitieuse, tu te contenterais volontiers d'un agent de change
+                            ou d'un banquier. Tiens, voilà Chignol.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>Gnafron, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Mademoiselle Louison, excusez-moi si je n'ai pas de bouquet, c'est que
+                            j'en ai pas trouvé. <stage type="corps">(à Gnafron)</stage> Est-elle
+                            bien en colère ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui, le torchon brûle.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p> Mademoiselle Louison, je sais que mon métier ne vous va pas.</p>
+          </sp>
+          </sp>
+          <pb n="09" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_09.png"/>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Je vous l'avouate, votre métier ne me plûtes pas.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Aussi, mademoiselle Louison, pour vous plaire, je partasse en ballon.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Vous partez en ballon. Ce trait-là vous élève à mes yeux. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Adieu, mademoiselle Louison, je ferai fortune ou je mourrai. </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Monsieur Guignol, ne mourattez pas, je sens une douce larme perler ma
+                            paupière.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Embrassez-vous, je vous bénis. Et l'argent ?</p>
+          </sp>
+          </sp>
+          <pb n="10" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_10.png"/>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Tiens en voilà la moitié. Adieu ! Pensez à moi.</p>
+            <stage type="corps">(Il sort.)</stage>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p> Mon père, voyez donc cette foule. <stage type="corps">(On crie vive
+                                Guignol.)</stage> Comme c'est flatteur pour moi. Vive Guignol ! Voyez
+                            donc mon père, le ballon ! Il gonfle. <stage type="corps">(On voit passer
+                                le ballon.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Adieu Chignol. Monsieur Balouffé, je vous le recommande. Dis donc vieux,
+                            si tu te laisses tomber, tâche que ce soit sur un de mes créanciers.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Mon père je m'évanouille, menez-moi chez le pharmacien. </p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Non chez le marchand de vin.</p>
+          </sp>
+        </div>
+      </div>
+      <pb n="11" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_11.png"/>
+      <div type="2">
+        <head type="tableau" n="3">Tableau III </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>C'est égal, j'ai joliment bien fait de m'évanouir, quelle sensation j'ai
+                            produite sur le public. Ah v'là mon père, c'est pas trop tôt.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Fille, quelle heure ? </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Trois heures de l'après-midi.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Je vas me recoucher.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Restez, nous avons à causer. Vous avez livré hier vingt-deux regrolages
+                            aux enfants trouvés, vous n'avez pas livré sans toucher ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Non fille, j'ai touché et j'ai dit tant pour <pb n="12" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_12.png"/>le boulanger, tant pour le boucher, tant pour le marchand de vin et tant pour ma Louison.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Ah, v'là qui est gentil.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oui mais le total fait, j'ai vu qu'y restait, alors j'ai changé d'algèbre,
+                            tant pour mon corgnolon, tant pour mon ventre, alors j'ai raflé tout.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Eh bien et moi ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>T'économiseras le reste. </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Merci. Dites donc père, et Guignol qu'est-ce que vous en pensez ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Je pense que si y peuvent monter jusqu'à la Lune, et que le pays soit bon,
+                            on pourrait ben y monter za l'assaut.</p>
+          </sp>
+          <pb n="13" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_13.png"/><sp>
+            <speaker>Louison</speaker>
+            <p>Comment, za l'assaut ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Eh oui, baloniquement.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Ah ben oui, mais si les habitants de la Lune allaient jeter des pierres
+                            et qui crèvent les ballons.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Y se tiendront sur leurs gardes avec les parachutes, et comme il y aura
+                            une garde arrière, ceux qui descendront remonteront avec pour donner
+                            l'assaut.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Si ça zarrive, je me mets cantinière pour rejoindre mon Guignol.</p>
+            <stage type="saut">On frappe.</stage></sp>
+          
+          <pb n="14" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_14.png"/><sp>
+            <speaker>Gnafron</speaker>
+            <p>Fille, va voir qui que c'est, si c'est un créancier, dis que j'y suis pas.
+                            Non, va plutôt me chercher le tire-pied.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Allez donc voir qui que c'est.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Le Bailli, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oh ! monsieur le Bailli, pardon t'excuse, monsieur le Bailli, donnez vous
+                            la peine d'entrer. Salue, fille.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>C'est bien, mes amis. Voici le motif qui m'amène. Est-il bien vrai que
+                            lorsque Guignol est parti, il vous a promis de vous donner de ses
+                            nouvelles ?</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Bien sûr, et v'là comment : y fera descendre un petit parachute ousqu'y
+                            aura une lettre d'attachée, celui <pb n="15" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_15.png"/>qui l'a trouvera un papier lui [disant] de la mettre à la poste et je la reçois.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Très bien mon enfant. Faites-moi un plaisir, sitôt que vous aurez une
+                            lettre de Guignol, venez me trouver au Café de la Perle, j'y suis
+                            toujours l'après diner. Tenez, prenez cette pièce de vingt francs, c'est
+                            pour vous donner de la mémoire. Je compte sur votre obligeance.</p>
+          </sp>
+          <sp>
+            <speaker>Tous deux</speaker>
+            <p>Merci monsieur le Bailli. Serviteur, monsieur le Bailli. <stage type="corps">(Il sort.)</stage>
+                        </p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Mon père, vous avez vingt francs. Je m'ennuie, allons à la barrière manger la
+                            choucroute [et] boire le petit bleu.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>T'es bien la fille de ton <pb n="16" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_16.png"/>père. Quand j'ai faim, t'as soif, quand j'ai soif, t'as faim. Allons viens, partons à la brasserie du maine.<stage type="corps">(Ils sortent en
+                                chantant.)</stage>
+                        </p>
+          </sp>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="4">Tableau IV </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>Balouffé]</name>
+            </personGrp>
+          </listPerson>
+          <stage type="saut">La neige. On voit des ours gravir la montagne, un navire est
+                        pris par les glaces qui fait la chasse aux ours.</stage>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Dites donc, monsieur Balouffé, sur quel pays sommes nous donc ? Y fait
+                            diablement froid.</p>
+          </sp>
+          <sp>
+            <speaker>Balouffé</speaker>
+            <p>Nous sommes au-dessus des mers glaciales.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Y me semble que j'aperçois du monde.</p>
+          </sp>
+          <sp>
+            <speaker>Balouffé</speaker>
+            <pb n="17" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_17.png"/><p>Ces endroits-là ne sont habités que par des ours blancs. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je crois distinguer un navire.</p>
+          </sp>
+          <sp>
+            <speaker>Balouffé</speaker>
+            <p>C'est juste, il est pris par les glaces, aussi a-t-il eu soin de faire
+                            ses provisions. Il y en a qui restent six ou huit mois avant de se
+                            débarrasser des glaces, cela dépend du temps.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Pourquoi donc que nous ne montons plus ? </p>
+          </sp>
+          <sp>
+            <speaker>Balouffé</speaker>
+            <p>C'est la mer qui nous retient mais en jetant du leste nous changerons de
+                            région. Vous le voyez, nous partons.</p>
+          </sp>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="5">Tableau V </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>[Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <pb n="18" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_18.png"/><p>Ah queue joie, queue satisfaction, nous avons enfin de ses nouvelles,
+                            quelle lettre mirobolante, stupéfiante !</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Louison, </name>
+              <name>Le Bailli]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>... Et altérante, fille ! </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Vous avez toujours soif. Il s'agit pas de ça, il faut aller vers monsieur
+                            le Bailli. </p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Justement, le voici. Nous allions vers vous, monsieur le Bailli. </p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>J’ai su que vous aviez des nouvelles et j'accours. </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Oui, monsieur le Bailli, je vais vous lire ça : </p>
+            <p>« Ma chère Louison et amie - comme c'est distingué - je vous dirais que nous avons passé par des chauds et des froids très dangereux. Ce qui m'a étonné, c'est les nuits glaciales où qu'il y a des ours blancs qui ne sont pas noirs du tout, et cela en très grand nombre (dont un navire). On n'a pas pu savoir de quelle nation leur faisait la chasse. Mais comme le froid n'était pas supportable, nous avons changé de direction en jetant du lest. Nous nous sommes trouvés sur la route du soleil où nous avons parfaitement vu et distingué que nous ne pouvions rien voir du tout tant la clarté de ses rayons nous frappait d'une manière à cuire. Dites donc père, ce serait pas agréable pour moi d'avoir un homme tout cuit ! Aussi, avons-nous craint un moment que cela ne mette le feu à notre ballon. Heureusement, l'air a changé de direction et nous ne savons pas comment le ballon s'est retrouvé puisqu'il est vrai dire que nous descendons sur la lune ou que monsieur Baloffé prétend que nous sommes à peu de distance. Sitôt arrivé, je te donnerai de plus grands détails. Patience, mes amis, je travaille pour nôtre bonheur. Je vous embrasse d'amitié,</p>
+            <pb n="19" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_19.png"/>
+            <p>Jean Guignol.</p>
+            <p>En plaine, hier, ce 11 janvier 1836, 11 heures du matin, parcourant la quatrième région d'air.</p>
+            <p>Voilà, monsieur le Bailli.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Merci mon enfant. Tenez, prenez cette pièce de dix francs. Venez à trois
+                            heures me trouver à mon café. Au revoir.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Au revoir, monsieur le Bailli, merci.</p> <stage type="saut">Il
+                                sort.</stage>
+          </sp>
+          <pb n="20" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_20.png"/>
+            <p>Jean Guignol.</p>
+            <p>En plaine, hier, ce 11 janvier 1836, 11 heures du matin, parcourant la quatrième région d'air.</p>
+            <p>Voilà, monsieur le Bailli.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Merci mon enfant. Tenez, prenez cette pièce de dix francs. Venez à trois
+                            heures me trouver à mon café. Au revoir.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Au revoir, monsieur le Bailli, merci.</p> <stage type="saut">Il
+                                sort.</stage>
+          </sp>
+          <pb n="21" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_21.png"/></div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="6">Tableau VI </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <stage type="saut">La Lune</stage>
+          <listPerson>
+            <personGrp>
+              <name>La Reine, </name>
+              <name>Le Roi</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ah sire quelles paroles, quelles expressions pourrais-je trouver pour
+                            vous remercier et vous persuader du plaisir que vous me faites en ce
+                            jour de la fête que vous me donnez pour l'anniversaire de ma naissance ?
+                        </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Mes prévenances ne sont rien auprès de vos brillants mérites, oh ma Reine
+                            ! </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Pour moi, votre majesté est toujours si bonne, si indulgente. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Vous êtes si belle, si bonne que tous mes sujets vous aiment.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Je suis votre exemple, <pb n="22" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_22.png"/></p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Voici notre ministre Baba, que nous veut-il ? </p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Grand Roi, grande Reine, tout est prêt pour la fête, on n'attend que vos
+                            ordres pour commencer.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>C'est bien Baba, donnez vos ordres, et que la fête commence. </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Et dites à mes fidèles que la Reine est satisfaite.</p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Oui grande Reine, que la fête commence. <stage type="corps">(danse)</stage> </p>
+          </sp>
+          
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ah sire, c'est charmant.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>J'aperçois Baba qui <pb n="23" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_23.png"/></p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Que nous [veut] notre ministre Baba ? </p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Baba, </name>
+              <name>La Reine, </name>
+              <name>Le Roi]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Baba</speaker>
+            <p> Ah sire ! On vient d'apercevoir de l'observatoire, à ce que nous avons
+                            pu voir par nos regards, un phénomène des plus extraordinaires, d'une
+                            forme ronde, et on a pu remarquer qu'il y avait quelque au-dessous qui
+                            bougeait... Qui bougeait. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>C'est bien, que l'on ne quitte pas l'observatoire et qu'on observe. Reine,
+                            voulez-vous assister à ce qui va se passer ? </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Oui sire, mais à une condition : c'est que notre ministre Baba donnera
+                            ses ordres, que l'on doublera la garde du palais et que nos vieux sujets
+                                <pb n="24" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_24.png"/></p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Volez, ministre Baba, volez. </p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Je vole, grand Roi. Je vole, grande Reine. <stage type="corps">(Il
+                                sort.)</stage></p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ah sire, la Reine doit-elle craindre pour vos jours ou peut-elle compter
+                            sur ses fidèles sujets ?</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Rassurez-vous ma Reine, nos vieux sujets veilleront sur nos personnes.
+                            Voici ce phénomène.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>La Reine, </name>
+              <name>Le Roi]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Laissez-moi. Ah ! pardon.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>De quel droit, par quelle puissance, viens-tu troubler notre royaume ?
+                        </p>
+          </sp>
+          <pb n="25" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_25.png"/><sp>
+            <speaker>La Reine</speaker>
+            <p>Réponds ! Ah sire, regardez, que cet être est vilain, il n'a pas
+                            d'aile.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Réponds, que viens-tu faire ici ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je répondrai à votre demande quand vous m'aurez dit à qui j'ai l'honneur
+                            de parler. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Je suis le Roi de ce globe.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Et moi, regarde, je suis la Reine.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Elle est bien canante la Reine ! Mon grand Roi, si je me trouve parmi
+                            vous, c'est l'effet du gaz.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Le gaz ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Aussi, si vous êtes bon envers moi, je pourrai vous faire donner le moyen
+                            de construire <pb n="26" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_26.png"/></p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Étais-tu seul dans ce gaz ballon ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non grand Roi, mais comme c'est moi qui, le premier, ai mis pied à terre,
+                            je suis tombé au pouvoir de vos gardes qui m'auraient tué sans doute
+                            s'ils n'avaient compris mon langage. Quand l'autre a vu cela, il s'est
+                            enlevé hors la portée des flèches de vos gardes qui l'en menaçaientt.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Que viens-tu faire ici ? </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Réponds, que viens-tu faire ici ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je répondrai à votre majesté quand elle m'aura dit ce qu'elle veut faire
+                            de moi.</p>
+          </sp>
+          <pb n="27" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_27.png"/><sp>
+            <speaker>Le Roi</speaker>
+            <p>Une curiosité de mon palais, puisque tu n'as pas d'aile.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Mon Roi, écoute, donne le moi, je le mettrai dans une grande cage et il me
+                            distraira. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non, non, je ne veux pas être mis en cage. Elle me prend pour un merle
+                            c'te gaillarde. </p>
+          </sp>
+          <sp>
+            <speaker>le Roi</speaker>
+            <p>Voudrais-tu faire contre nos volontés ? Tu ne crains pas de déplaire à la
+                            Reine ainsi qu'à moi ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non grand Roi, je ne peux pas plus consentir à être mis en cage qu'à
+                            perdre ma liberté. Je prendrai connaissance du produit de vos terres et
+                            s'il y a moyen, nous mettrons en rapport nos deux globes.</p>
+          </sp>
+          <pb n="28" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_28.png"/><sp>
+            <speaker>La Reine</speaker>
+            <p> Et quel globe habites-tu donc, petit mutin ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Nous l'appelons les cinq parties de monde.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Si le Roi et moi nous descendions sur votre terre, regarde, que penserait-on de nous ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>On vous prendrait pour des êtres du paradis.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Je te permets de m'embrasser la main. </p>
+            <p> Et y'en a-t-il parmi vous qui aient des ailes ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oh oui, nous avons des dindes, des oies, des canards.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ces dindes et ces oies sont-ils vos maîtres ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non grande Reine, nous les mangeons.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Vous nous mangez ? </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Sire, que l'on le fasse jeter dans un noir cachot pour le punir de sa
+                            voracité.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <pb n="29" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_29.png"/><p> C'est que ce genre d'animaux a été crée pour notre nourriture. Vous n'en
+                            avez donc pas, vous autres ? </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Ce que nous appelons animal n'a pas d'aile. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>C'est que chaque pays fournit différentes fermes, et si vous le voulez,
+                            plus tard, nous pourrons établir des télégraphes électriques. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Électrique, qu'est-ce que c'est que ça ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non, électruque.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Électroque, Reine. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Non tracque. Troc, trac, trique, grâce à cela nous pourrons mettre nos
+                            deux globes en rapport.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Nous acceptons.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>À une condition, c'est que tu ne nous quitteras pas.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Voici Baba l'air égaré, les <pb n="30" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_30.png"/>traits bouleversés, Baba que se passet-il ?</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>[Baba, </name>
+              <name>La Roi]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Ah sire, on croit apercevoir l'ennemi sur les hauteurs en très grand
+                            nombre.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Que l'on double la garde du palais, que chaque sujet prenne des armes !
+                            Allez, Baba ! 
+            </p><stage type="saut">Il sort.</stage>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>le Roi, </name>
+              <name>la Reine]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Est-ce que vous n'avez pour toute arme que vos flèches ?</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Cela n'est-il pas suffisant ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Si nous nous servions des nôtres, avec quatre hommes et un caporal nous
+                            batterions tout votre royaume.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Quelles sont donc les armes dont vous vous servez ?</p>
+          </sp>
+          <pb n="31" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_31.png"/><sp>
+            <speaker>Guignol</speaker>
+            <p>Il y en a de plusieurs calibres. Voici les plus petits qu'on appelle des
+                            pistolets. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Je ne connais pas ces armes-là, est-ce qu'elles peuvent donner la mort
+                            ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>À vingt-cinq pas. En voulez-vous la preuve ?</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p> Nous la voulons, nous la désirons. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p> Tiens ! Tu vois bien ce factionnaire, eh bien tue-le.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Oh non ! En France nous ne sommes pas méchants. Tenez, cette porte paraît
+                            bien épaisse.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Nos flèches ne [la] traverseraient <pb n="32" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_32.png"/></p>
+            <stage type="saut">Guignol tire son pistolet, les gardes disparaissent, le
+                            roi jette des cris affreux.</stage>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Regardez sire, cette porte est traversée. </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Je ne suis pas blessé... C'est vrai Reine, il y a un trou rond.</p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Écoutez sire ! Et vous aussi étranger. Depuis quelques temps des ennemis,
+                            des sujets insoumis dévastent notre royaume. Nous avons perdu bien des
+                            villes, bien des batailles. Grâce à ton arme, nos gardes ont fui, le Roi a
+                            eu peur, moi la Reine un instant j'ai tremblé. Pourrais-tu nous
+                            reprendre nos villes conquises, nous regagner nos batailles perdues ?
+                        </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Je vous le jure sur ma tête.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Nous te nommons général <pb n="33" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_33.png"/>en chef de toutes nos armées.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Général ! Quelle gloire pour mon pays.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="6">Scène 6</head>
+          <listPerson>
+            <personGrp>
+              <name>[Baba, </name>
+              <name>Le Roi, </name>
+              <name>Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Ah sire ! J'ai entendu un grand bruit et, comme le plus dévoué de vos
+                            sujets, j'accours. Aurait-on cherché à attenter à vos jours ? </p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Non Baba, inclinez-vous devant le général en chef de toutes nos armées.
+                        </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Sire, donnez vos ordres pour que l'on me conduise à l'observatoire. De
+                            là, je ferai signe à mon compagnon qui retournera sur Terre me chercher
+                            de la poudre et deux amis auxquels je tiens beaucoup. </p>
+          </sp>
+          <pb n="34" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_34.png"/><sp>
+            <speaker>Le Roi</speaker>
+            <p>Vous entendez Baba ? Obéissez lui comme à moi-même. </p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Venez, grand général. </p><stage type="corps">Ils sortent.</stage>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="7">Scène 7</head>
+          <listPerson>
+            <personGrp>
+              <name>[La Reine]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ah sire, pour nous la belle journée. Pour notre général, que la fête
+                            recommence et rentrons dans notre palais. </p>
+          </sp>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="7">Tableau VII </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>[Louison, </name>
+              <name>Gnafron]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Pauvre Guignol ! Voilà trois mois qu'il est parti et pas de nouvelles,
+                            c'est ma faute, pourvu qui y soit pas arrivé malheur. V'là mon père,
+                            toujours y chante.</p>
+          </sp>
+          <pb n="35" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_35.png"/><sp>
+            <speaker>Gnafron</speaker>
+            <p>Eh ben quoi, te v'là encore avec ton chagrin. Je te dis que bientôt nous en
+                            aurons. J'ai fait un bon rêve.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[Le Bailli, </name>
+              <name>Louison, </name>
+              <name>Gnafron]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Mes amis, mes amis ! Quelle nouvelle, j'en perds la tête, Guignol, votre
+                            ami...</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Mon Dieu, il est mort ? </p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Non, il est général du royaume de la Lune.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Je suis généralesque ! Quel bonheur.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Et moi généralosque.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Monsieur Balouffé vous emmène avec lui. Monsieur Gnafron, recommandez-moi <pb n="36" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_36.png"/>au général.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Soyez tranquille, je vous prends sous ma protection.</p>
+          </sp>
+          <sp>
+            <speaker>Le Bailli</speaker>
+            <p>Hâtez-vous. <stage type="corps">(Il sort.)</stage></p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Louison]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Fille, vite ! Où sont mes effets ?</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Vos effets, vous les avez sur le dos.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Mon linge, mes chemises.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Vous perdez la tête, vous n'avez rien ! Allons, partons pour la Lune.</p>
+          </sp>
+        </div>
+      </div>
+      <div type="2">
+        <head type="tableau" n="8">Tableau VIII </head>
+        <div type="3">
+          <head type="scene" n="1">[Scène 1]</head>
+          <listPerson>
+            <personGrp>
+              <name>[Baba]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Soldats, ne bougez pas. Il y a des sujets qui veulent faire rébellion.</p>
+            <stage type="corps">(Il sort.)</stage>
+          </sp>
+          <pb n="37" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_37.png"/>
+        </div>
+        <div type="3">
+          <head type="scene" n="2">Scène 2</head>
+          <listPerson>
+            <personGrp>
+              <name>[La Reine, </name>
+              <name>Le Roi]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Ah ! Sire, que notre général était beau sous les armes, et que de
+                            victoires il nous a remportées.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Il me tarde de voir le général. Voici Baba !</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="3">Scène 3</head>
+          <listPerson>
+            <personGrp>
+              <name>[La Reine, </name>
+              <name>Le Roi, </name>
+              <name>Baba]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Eh bien Baba, comment le général a-t-il passé la nuit ? </p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Votre vin de la dernière comète lui a procuré beaucoup d'agréments.</p>
+          </sp>
+          <pb n="38" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_38.png"/><sp>
+            <speaker>La Reine</speaker>
+            <p>Ministre Baba, dites au général que sa majesté le Roi [et] sa majesté la
+                            Reine l'attendent à son petit lever.</p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>J'y vais, grande Reine.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="4">Scène 4</head>
+          <listPerson>
+            <personGrp>
+              <name>[Guignol, </name>
+              <name>La Reine, </name>
+              <name>Le Roi, </name>
+              <name>Baba]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Guignol</speaker>
+            <lg type="vers">
+              <l>Soldats, ne bougez pas, j'aime pas qu'on se dérange</l>
+              <l>Et je veux vous donner, pour vous récompenser,</l>
+              <l>Une chopine et un quart de salé.</l>
+              <l>Mais si de notre Roi, on ternissait la gloire,</l>
+              <l>Je jure de vous mener tout droit à la victoire</l>
+              <l>Et quand viendra le moment qu'y faudra se cogner,</l>
+              <l>Je vous ferai voir à tous si je sais travailler. <stage type="corps">(salue)</stage></l>
+              <l> Grand Roi, grande Reine.</l>
+            </lg>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Général, comment avez[-vous] <pb n="39" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_39.png"/>passez la nuit ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Avec votre pensée, grande Reine.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Général, que désirez-vous pour votre grande victoire ?</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Pardon sire, mais je suis d'un département où on plante une certaine
+                            racine dont le jus fait du bien à l'estom'. Quand viendra le moment de
+                            votre Lune rousse, ne l'envoyez pas sur le Mâconnais s'il vous plait.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Je donnerai des ordres pour cela. Et votre famille ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Écoutasse Babasse que je te parlasse, va z'a l'observasse et regardasse si
+                            ceux que j'attendasse arrivassent.</p>
+          </sp>
+          <pb n="40" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_40.png"/><sp>
+            <speaker>Baba</speaker>
+            <p>Oui grand généralasse. Je volasse sur leurs traces et si je les trouvasse,
+                            je vous les amenasse. </p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="5">Scène 5</head>
+          <listPerson>
+            <personGrp>
+              <name>[La Reine, </name>
+              <name>Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>Général, dans un instant, vos parents, vos amis seront près de vous, vous
+                            feront-ils oublier votre Reine ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Jamais, grande Reine.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="6">Scène 6</head>
+          <listPerson>
+            <personGrp>
+              <name>[Le Roi, </name>
+              <name>Baba]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>Voici Baba.</p>
+          </sp>
+          <sp>
+            <speaker>Baba</speaker>
+            <p>Grand général, j'ai rencontrasse ceux que vous attendiassez et me suis
+                            empressé de vous les amenasser.</p>
+          </sp>
+          <pb n="41" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_41.png"/></div>
+        <div type="3">
+          <head type="scene" n="7">Scène 7</head>
+          <listPerson>
+            <personGrp>
+              <name>[Baba, </name>
+              <name>Louison, </name>
+              <name>La Reine, </name>
+              <name>Le Roi, </name>
+              <name>Guignol]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Général ! Ah ! est-ce vous ? Est-ce toi ? Est-ce lui ? </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Embrasse-moi. Salue la Reine.</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Bonjour, madame la Reine. Oh qu'elle canante, vous allez bien ? Moi aussi,
+                            merci, s'y vous plaît. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Salue le Roi. </p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p> Bonjour, monsieur le Roi, oh qu'il est laid ! Merci, s'y vous plaît. </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Et ton père ?</p>
+          </sp>
+          <sp>
+            <speaker>Louison</speaker>
+            <p>Il vient. Il est comme moi, <pb n="42" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_42.png"/>tout étonné.</p>
+          </sp>
+        </div>
+        <div type="3">
+          <head type="scene" n="8">Scène 8</head>
+          <listPerson>
+            <personGrp>
+              <name>[Gnafron, </name>
+              <name>Guignol, </name>
+              <name>Le Roi, </name>
+              <name>La Reine]</name>
+            </personGrp>
+          </listPerson>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Ah ! hé les enflés, où ça qu'est Guignol ? Ont-ils de drôles de tronche
+                            ces gones ! Guignol, viens que je t'embrasse, pauvre vieux.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Salue le Roi.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Salue, vieille Lune ! Oh ce gone, est-il vilain ! </p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Salue la Reine.</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p>Oh qu'elle est chenurette, salue canante, chenuse grenouillette.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Assez. Grand Roi, vous <pb n="43" facs="19_F_JOSSERAND_GuignolDansLaLune_FRA_AN_43.png"/>m'avez nommé général de vos troupes. Nommez, je vous prie, mon beau-père général de vos caves.</p>
+          </sp>
+          <sp>
+            <speaker>Le Roi</speaker>
+            <p>J'adhère. Vous entendez Baba ?</p>
+          </sp>
+          <sp>
+            <speaker>Gnafron</speaker>
+            <p> Merci grand Roi, vos bouteilles seront bouchées et débouchées
+                            surtout.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Grand Roi, mes amis auraient besoin de prendre quelque chose. </p>
+          </sp>
+          <sp>
+            <speaker>La Reine</speaker>
+            <p>On y a songé général, un banquet est préparé, on n'attend plus que notre
+                            présence.</p>
+          </sp>
+          <sp>
+            <speaker>Guignol</speaker>
+            <p>Merci, grande Reine.</p>
+          </sp>
+          <stage type="air">Couplet</stage>
+          <lg type="chant">
+            <l>Puisque je deviens général,</l>
+            <l>Des soldats du Roi de la Lune,</l>
+            <l>Pour moi, quel bonheur sans égal,</l>
+            <l>Il mène droit à la fortune.</l>
+            <l>Messieurs si vous êtes content,</l>
+            <l>Ne signalez pas ma défaite,</l>
+            <l>Applaudissez, venez souvent</l>
+            <l>Et ma fortune sera complète. <stage type="corps">(bis)</stage></l>
+          </lg>
+        </div>
+      </div>
+      <div type="5">
+        <head type="div5">FIN</head>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

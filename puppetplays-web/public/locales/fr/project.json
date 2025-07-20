@@ -383,6 +383,9 @@
     "pageOf": "Page {{current}} sur {{total}}",
     "zoomIn": "Agrandir",
     "zoomOut": "Réduire",
-    "resetZoom": "Réinitialiser le zoom"
+    "resetZoom": "Réinitialiser le zoom",
+    "pdfNotAvailable": "Aucun document PDF disponible",
+    "usingAlternativeViewer": "Utilisation du viewer alternatif",
+    "pdfCannotBeDisplayed": "Le PDF ne peut pas être affiché dans votre navigateur"
   }
 } 

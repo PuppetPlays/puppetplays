@@ -1,7 +1,7 @@
 import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
-import PDFViewer from 'components/PDF/PDFViewer';
+import PDFViewer from 'components/PDF/PDFViewerDynamic';
 import { getScientificPublicationById } from 'lib/api';
 import Head from 'next/head';
 import Link from 'next/link';

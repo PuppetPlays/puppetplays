@@ -1,0 +1,814 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/282587/la-foire-de-saint-cloud">La Foire de Saint-Cloud</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="PM">Pierre Massinon</name>
+          <resp ref="stagiaire">Transcription and edition</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor>Archives nationales - Pierrefitte-sur-Seine, France</distributor>
+        <availability status="free">
+          <p>public domain</p>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>The characters praise fertility</note>
+        <note>&lt;p&gt;The manuscript of the play is kept in the French National Archives
+                    (F/18/1328). This is the copy given to the police headquarters in Paris to be
+                    reviewed by preventive censorship authorities, which were re-established during the
+                    Second Empire. It bears a note signed by Mongobert, the director of the short-lived
+                    theatre &lt;em&gt;Spectacle des Fantoccini&lt;/em&gt; (1852-1854) on Boulevard
+                    Saint-Martin (Paris). In it, he explains that the play was approved for performance
+                    and played there.&lt;/p&gt;</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Archives nationales</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 22</p>
+                <p>Number of acts in the original document: 6</p>
+                <p>Format of the original document: </p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">La Foire de Saint-Cloud</title>
+          <date>1853</date>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fra">French</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/1217/marionnette-à-tringle-et-fils">Rod and string marionette</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term/>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Aria</term>
+          <term>Final song</term>
+          <term>Oration</term>
+          <term>Childbirth on stage</term>
+          <term>Dance</term>
+        </keywords>
+        <keywords source="genre">
+          <term>Folie-parade-vaudeville</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Fairground</term>
+          <term>Birth</term>
+          <term>Love</term>
+          <term>Show</term>
+          <term>Monster</term>
+          <term>Animal savant</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant
+        Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+        re-evaluate the contribution of the puppets repertoire to the construction of
+        European cultural identity. Its main goals is to collect a corpus of
+        representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+        France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+        17th and the 21th century. It also tries to identify the characteristics of
+        puppet dramaturgy and their variations depending on eras, cultural spheres,
+        producing conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal
+        investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+            Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+        </ref> licence. This license enables reusers to distribute, remix, adapt, and
+        build upon the material in any medium or format for non-commercial purposes
+        only, and only so long as attribution is given to the creator. If you remix,
+        adapt, or build upon the material, you must license the modified material under
+        identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2024-07-01" who="#PM">Text encoding and transcription</change>
+      <change when-iso="2025-03-24" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="02" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_02.jpg"/>
+      <docAuthor>
+        <persName>Pierre-Louis Belfort-Devaux</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">La Foire de Saint-Cloud</titlePart>
+        <titlePart type="sub">folie - parade - vaudeville</titlePart>
+      </docTitle>
+      <docDate>1853</docDate>
+      <pb n="03" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_03.jpg"/>
+      <castList>
+        <head type="personnage">Personnages</head>
+        <castItem>
+          <role>Cassandre</role>
+        </castItem>
+        <castItem>
+          <role>Arlequin</role>
+        </castItem>
+        <castItem>
+          <role>Paillasse</role>
+        </castItem>
+        <castItem>
+          <role>Jeannot</role>
+        </castItem>
+        <castItem>
+          <role>Une Jeunesse</role>
+        </castItem>
+        <castItem>
+          <role>Un Monsieur</role>
+        </castItem>
+        <castItem>
+          <role>Société, Promeneurs, Hommes et Femmes du peuple, Dames et Messieurs</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <div type="3">
+        <stage type="saut">La scène se passe à Saint-Cloud, un jour de foire.</stage>
+        <pb n="04" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_04.jpg"/>
+        <stage type="saut">Le théâtre représente la grande allée du parc de Saint-Cloud
+                    garnie de baraques et de spectacles forains.</stage>
+        <head type="scene" n="1">Scène 1</head>
+        <listPerson>
+          <personGrp>
+            <name>Paillasse, </name>
+            <name>Cassandre, </name>
+            <name>Jeannot, </name>
+            <name>Promeneurs, </name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Chœur</speaker>
+          <stage type="air"><label type="air">AIR</label> du Bouquet du Roi</stage>
+          <lg>
+            <l>Que Saint-Cloud s'réjouiss' soudain</l>
+            <l>En r'cevant la grand' nouvelle,</l>
+            <l>Nous allons donc revoir celle</l>
+            <l>Qui met tout le monde entrain ! </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <lg>
+            <l>Honneur à la Mèr' Gigogne !</l>
+            <l>Ell' vient distrair' les enfants,</l>
+            <l>Et pour la voir à la b'sogne,</l>
+            <l> Accourez, petits et grands !</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Chœur</speaker>
+          <lg>
+            <l>Que Saint-Cloud s'réjouiss' soudain</l>
+            <l>En r'cevant la grand' nouvelle,</l>
+            <l>Nous allons donc revoir celle</l>
+            <l>Qui met tout le monde entrain !</l>
+          </lg>
+        </sp>
+        <pb n="05" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_05.jpg"/>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <stage type="pers"> (aux promeneurs)</stage>
+          <p>Habitants de tous les quartiers et environs de la ville et du parc de
+                        Saint-Cloud... depuis un temps immémorial vous avez la foire toutes les
+                        années ; mais elle ne répond pas toujours à vos désirs et à vos besoins...
+                        Nous nous sommes empressés de chercher un remède pour en arrêter le cours
+                        désastreux.</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p> Et savez-vous ce qui depuis longtemps met obstacle à votre commerce de pain
+                        d'épice et de mirlitons, ce qui empêche la foule d'affluer aussi
+                        précipitamment dans votre parc ?... c'est le manque de gaité, c'est
+                        l'absence de tout plaisir réel, de toute joie véritable... Réjouissez-vous
+                        donc maintenant que la grande, l'illustre, la féconde Mère Gigogne va
+                        reparaitre enfin !... C'est aujourd'hui même qu'elle doit faire sa rentrée
+                        triomphale dans son bon parc de Saint-Cloud, entourée de toute sa famille...
+                        Qu'on se le dise !.. et que tous les pantins, Arlequins, Pierrots et
+                        Paillasses réunis soient à même de lui rendre les hommages dûs à son rang, à
+                        la suprématie de son esprit caustique et sympathique pour le public.</p>
+          <stage type="air"><label type="air">AIR</label> des Petits braconniers</stage>
+          <lg>
+            <l>Vite, que chacun s'empresse,</l>
+            <l>V'nez bourgeois, jobards et faquins !</l>
+            <pb n="06" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_06.jpg"/>
+            <l> Dans la foule qui se presse,</l>
+            <l> Combien j'vois d'nouveaux Arlequins,</l>
+            <l> De Paillass's et de vrais pantins !</l>
+            <l>L'un ici fait la parade </l>
+            <l>Pour séduire le chaland,</l>
+            <l>L'autre enlève la muscade</l>
+            <l>Et le mouchoir d'un passant.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Chœur</speaker>
+          <lg>
+            <l>Vite, que chacun s'empresse,</l>
+            <l>V'nez bourgeois, jobards et faquins !</l>
+            <l> Dans la foule qui se presse,</l>
+            <l> Combien j'vois d'nouveaux Arlequins,</l>
+            <l> De Paillass's et de vrais pantins !</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <stage type="pers"> (à Cassandre)</stage>
+          <p> Avant de donner une représentation de nos brillants exercices, ne
+                        ferions-nous pas mieux d'attendre l'arrivée de la Mère Gigogne ?</p>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p> Y songez-vous, monsieur Jeannot !... il faut au contraire nous dépêcher
+                        d'offrir notre premier spectacle, afin de n'avoir pas à supporter une
+                        concurrence redoutable ?... D'ailleurs que donnons-nous aujourd'hui ?<pb n="07" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_07.jpg"/> Les exercices du grand boeuf suisse qui danse sur la corde
+                        raide, sans balancier, ni plus ni moins que la célèbre madame Saqui, et qui
+                        fume son cigare avec autant d'intelligence et de plaisir qu'une personne
+                        vulgairement naturelle.</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="air"><label type="air">AIR :</label> Et voilà comme ça
+                        s'arrange.</stage>
+          <lg>
+            <l>Dans un monde aussi surprenant,</l>
+            <l> Les hommes sont moins que les bêtes,</l>
+            <l>Car bien plus qu'eux assurément</l>
+            <l>Ell's parvienn'nt à fair' des recettes.</l>
+            <l>Au risqu' de s'briser l'estomac,</l>
+            <l>Les hommes pourtant se révèlent...</l>
+            <l>Ils f'ront augmenter le tabac</l>
+            <l>Tant ils fum'nt cigare et tabac</l>
+            <l>Depuis que les bêtes s'en mêlent !</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p> C'est bien, c'est bien, monsieur Paillasse, n'attaquons pas trop le sexe
+                        masculin, genre noble sous tous les rapports... Occupons-nous seulement des
+                        bêtes, puisqu'en ce moment elles ont plus d'esprit <pb n="08" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_08.jpg"/> que les
+                        hommes... car si les bêtes l'emportent définitivement sur eux, ils seront
+                        assez raisonnables pour leur céder le pas tout-à-fait... ce qui s'est déjà
+                        vu en maintes circonstances... attention donc !</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Monsieur Cassandre, vous parlez comme un livre avant l'invention de
+                        l'imprimerie. </p>
+        </sp>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <p>Ce mot a été dit quelque part.</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Aussi m'empressé-je de le répéter.</p>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p> Mais à cette heure suprême il n'est point question des hommes... il s'agit
+                        de la Mère Gigogne dont l'excentricité maternelle est proverbiale... De
+                        cette Mère Gigogne qui... de cette Mère Gigogne que...</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Allons, voilà le Père Cassandre qui patauge ! </p>
+        </sp>
+        <pb n="09" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_09.jpg"/>
+      </div>
+      <div type="3">
+        <head type="scene" n="2">Scène 2</head>
+        <listPerson>
+          <personGrp>
+            <name>Les mêmes, </name>
+            <name>Arlequin</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <stage type="pers"> (accourant)</stage>
+          <p>Ah ! Sangodémi ! Qu'est-ce que je viens d'apprendre ? maman Gigogne arrive à
+                        Saint-Cloud ? vous avez songé sans doute à lui faire une réception digne de
+                        sa fécondité ? Ah ! Comme les mirlitons vont sauter !... Comme tous les
+                        badauds vont accourir ! Comme la grosse caisse va faire retentir l'air de
+                        ses sons harmonieux !... ce sera déchirant !... Il y a si longtemps qu'elle
+                        n'est venue nous trouver !.. Aussi depuis ma dernière entrevue avec elle,
+                        j'ai 48 soeurs et 75 frères de plus ... C'est toute une population. </p>
+          <stage type="air"><label type="air">AIR :</label> Un homme pour faire un
+                        tableau.</stage>
+          <lg>
+            <l> La Mèr' Gigogne dans sa bonté,</l>
+            <l>Est une femme sans pareilles,</l>
+            <l>Et sa famille, en vérité,</l>
+            <l> S'accroit comme un essaim d'abeilles !</l>
+            <l>On formerait deux régiments,</l>
+            <l> Nés de son hymen légitime, </l>
+            <l>Aussi tous les gouvenements </l>
+            <l>Devraient lui donner une prime.</l>
+          </lg>
+        </sp>
+        <pb n="10" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_10.jpg"/>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>Voyons, monsieur Arlequin, avec votre petit air malin et doucereux, vous
+                        faites des jeux de mots, des plaisanteries que j'apprécie quelquefois, mais
+                        qui ne sont pas de saison aujourd'hui, vu que les recettes ne sont pas à
+                        leur hauteur... Vous vous êtes habitué, il est vrai, au macaroni à
+                        l'italienne pour vivre dans vos voyages ; mais nous, nous n'avons jamais
+                        quitté la France où, faute d'argent, on doit se nourrir plus souvent de
+                        pommes de terre que de bifteck... malgré la diminution de la viande.</p>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <p>La viande est diminuée !</p>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>Dam' ! Ça se dit... <stage type="corps">(à part) </stage>mais ca ne s'aperçoit
+                        pas.</p>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <p>Ô Sangodémi ! Ce n'est donc pas comme les loyers... Mais où la Mère Gigogne
+                        va-t-elle se loger avec sa progéniture ? quel est l'hôtel assez vaste pour
+                        la recevoir ? </p>
+        </sp>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <p>N'avons-nous pas comme partout l'hôtel de l'Europe, ou plutôt l'hôtel de
+                        l'Univers qui est encore plus grand ?</p>
+        </sp>
+        <pb n="11" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_11.jpg"/>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>Point de calembours, je vous en prie, monsieur Jeannot ! La Mère Gigogne
+                        couchera à la belle étoile avec tous ses enfants. </p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>La belle étoile, entendez-vous, monsieur Arlequin ? La belle étoile ! C'est
+                        l'astre qui brille notamment sur les personnages de distinction... La Mère
+                        Gigogne doit avoir une étoile à elle... tout le monde d'ailleurs a la
+                        sienne... Il ne s'agit que de la chercher...</p>
+        </sp>
+        <sp>
+          <speaker>Jeannot</speaker>
+          <stage type="pers"> (achevant)</stage>
+          <p> Et de la trouver.. </p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="air"><label type="air">AIR :</label> Vaudeville de Turenne</stage>
+          <lg>
+            <l>Oui, c'est là-haut qu'est notre destinée...</l>
+            <l> Par une étoile ell' se dév'lloppe, hélas !</l>
+            <l>Et nous pouvons, au bout de la journée,</l>
+            <l> La voir pâlir selon notre embarras,</l>
+            <l>Ou bien la voir briller avec éclat.</l>
+            <l>Interroger là-d'ssus notre patrie...</l>
+            <l> Que de beaux jours son étoile a marqués !</l>
+            <l> Ah ! C'est qu'alors nos soldats attaqués</l>
+            <l> Avaient l'étoile du génie ! </l>
+          </lg>
+          <p>Mais nous entretenir d'étoile en ce moment, c'est vouloir admirer la lune en plein midi... Et la foire ne me fera jamais commettre de semblables bévues... ou toute autre inconséquence.</p>
+        </sp>
+        <pb n="12" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_12.jpg"/>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>Il est bien plus utile de se disposer à annoncer notre intéressant spectacle
+                        à l'aimable Société qui est impatiente de nous entendre... Allons, monsieur
+                        Paillasse, commencez votre parade avec Jeannot qui brûle aussi de dire
+                        quelques bêtises... En avant la musique !..</p>
+          <stage type="saut">Le tambour et la grosse caisse se font entendre. Tous les curieux
+            se rassemblent autour de la loge... Cassandre, Paillasse et Jeannot sont sur les
+            tréteaux du devant.</stage></sp>
+        
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Messieurs et mesdames, gargotiers, gardes-champêtres, et savants de toutes
+                        sortes que je respecte et vénère... Vous n'allez pas voir chez nous ce que
+                        vous avez vu partout... Non, messieurs... il faut d'abord vous prévenir que
+                        notre salle de spectacle est fraichement décorée, et que le gaz s'y trouve
+                        remplacé par le suif, afin d'éviter une explosion, souvent désagréable au
+                        public... Messieurs et dames de tout sexe, masculin et féminin, vous allez
+                        admirer un animal phénoménal !.. écoutez, classe errante, que je suppose intelligente et savante... écoutez... C'est un hanneton géant
+                        qui, sans être écossais, enlève un poids de cent livres avec ses cornes...
+                        Que les maris ne s'effraient pas ! Ce surprenant animal, surnommé, à si
+                        juste titre, l'hercule des hannetons, a fait l'admiration des principales
+                        cours étrangères de l'Europe, l'Asie, l'Afrique et l'Amérique... et
+                        dernièrement encore, l'Empereur de la Chine, qui n'est pas un pékin, le fit
+                        appeler dans son palais où il fut accueilli avec bonté !.. ce hanneton est
+                        le seul de son espèce... Il serait plus gros qu'un boeuf si le bœuf était
+                        moins gros que lui. </p>
+        </sp>
+        <pb n="13" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_13.jpg"/>
+        <sp>
+          <speaker>Le public</speaker>
+          <stage type="pers"> (riant et applaudisant)</stage>
+          <p> Ah ! Bravo ! Bravo ! </p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Entrez donc, messieurs et mesdames, vous verrez ce que vous n'avez jamais vu,
+                        car nous faisons voir tout ici... tout jusqu'aux punaises savantes qui n'ont
+                        pas besoin qu'on les appelle pour venir à vous... Celles-là ne travaillent
+                        que la nuit... Ce sera pour la grrrrande et brillante représentation du
+                        soir... Entrez, messieurs et mesdames, au son d'une musique harmonieuse qui
+                        va se faire entendre... Il sera exécuté différent solos de
+                        tambours entre les deux parties... entrez... ce spectacle extraordinaire
+                        dure trois minutes, et les entractes ne sont que d'un quart d'heure...
+                        Entrez ! Entrez ! </p>
+          <stage type="saut">La grosse caisse et le tambour font le plus grand bruit, et tous
+            les curieux entrent dans la baraque.</stage></sp>
+        
+        <pb n="14" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_14.jpg"/>
+      </div>
+      <div type="3">
+        <head type="scene" n="3">Scène 3</head>
+        <listPerson>
+          <personGrp>
+            <name>Arlequin, </name>
+            <name>une Jeunesse</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <stage type="pers"> (seul d'abord)</stage>
+          <p>Ah ! Comme tout ça va être beau et amusant!.. J'ai bien envie de m'en aller
+                        voir la foire ! <stage type="corps">(apercevant une jeune fille)</stage> Ah
+                        ! Sangodémi, la jolie personne ! <stage type="corps">(Il
+                            l'embrasse.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>La Jeunesse</speaker>
+          <p>Eh bien, monsieur, qu'est-ce que vous faites donc ? Est-ce qu'on embrasse
+                        comme cela dans le parc de Saint-Cloud ? Songez, monsieur, que je suis sage,
+                        et que la vertu a le droit de se promener partout. </p>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <p> Ah ! Sangodémi ! Mademoiselle, je voudrais vous courtiser pour le bon
+                        motif.</p>
+        </sp>
+        <pb n="15" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_15.jpg"/>
+        <sp>
+          <speaker>La Jeunesse</speaker>
+          <p>On a toujours un motif, monsieur... bon ou mauvais... et je ne suis pas venue
+                        ici pour donner matière à faire des cancans sur moi.</p>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <stage type="pers"> (avec résignation)</stage>
+          <p> C'est la foire seule qui vous attire... et je ne prétends pas vous retenir. </p>
+          <stage type="air"><label type="air">AIR</label> de Céline</stage>
+          <lg>
+            <l>Sangodémi, Madimiselle,</l>
+            <l> Ne redoutez plus mon ardeur,</l>
+            <l> Puisque vous résistez, cruelle.</l>
+            <l>Je vais me promener ailleurs.</l>
+            <l> Pour vous j'eusse fait un sacrifice...</l>
+            <l> Et j'allais presque sans façon,</l>
+            <l>Vous acheter du pain d'épice</l>
+            <l> Ou vous offrir un mirliton. </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>La Jeunesse</speaker>
+          <p> Du pain d'épice !.. Un mirliton ! C'est bien tentant ! Et puis il est gentil
+                        ce petit bonhomme... J'accepte, monsieur Arlequin ! </p>
+          <stage type="air"><label type="air">AIR</label> de la Femme du
+                        sous-préfet</stage>
+          <lg>
+            <l>Allons danser sur le gazon...</l>
+            <l>Entendez -vous, à chaque fête, </l>
+            <pb n="16" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_16.jpg"/>
+            <l>Le piston ou la clarinette </l>
+            <l>Changer de mesure et de ton ?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <lg>
+            <l>Eh ! Que nous fait, madimiselle</l>
+            <l>Un orchestre récalcitrant.</l>
+            <l> Lorsque mon cœur, en vous voyant,</l>
+            <l>S'allume comme une chandelle ?</l>
+            <l>Il brûle comme une chandelle. </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Ensemble</speaker>
+          <lg>
+            <l>Allons danser sur le gazon,</l>
+            <l> Entendez-vous, à chaque fête,</l>
+            <l>Le piston ou la clarinette</l>
+            <l> Changer de mesure ou de ton ? </l>
+          </lg>
+          <stage type="saut">Ils quittent la scène en courant.</stage></sp>
+        
+      </div>
+      <div type="3">
+        <head type="scene" n="4">Scène 4</head>
+        <listPerson>
+          <personGrp>
+            <name>Cassandre, </name>
+            <name>Paillasse, </name>
+            <name>Jeannot, </name>
+            <name>Curieux, </name>
+            <name>Promeneurs, </name>
+            <name>Les Spectateurs, </name>
+            <name>Un Monsieur</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Les Spectateurs</speaker>
+          <stage type="saut">Tous les spectateurs sortent de la baraque en criant après le
+                        directeur.</stage>
+          <p> C'est une abomination ! C'est voler notre argent !</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="pers"> (criant plus fort)</stage>
+          <p> Voyez, interrogez tout le monde... la satisfaction est peinte sur toutes les
+                        physionomies.</p>
+        </sp>
+        <pb n="17" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_17.jpg"/>
+        <sp>
+          <speaker>Paillasse</speaker>
+                        <stage type="corps">(Il fait aller le tambour et la grosse
+                        caisse.)</stage>
+        </sp>
+        <sp>
+          <speaker>Un Monsieur</speaker>
+          <p>Mais, monsieur, nous n'avons pas vu de hanneton... Je demande à voir
+                        l'hercule des hannetons... C'est une indignité de tromper ainsi le public !
+                    </p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>Messieurs, l'administration, reconnaissante des suffrages que vous ne cessez
+                        de lui accorder, est désolée de n'avoir pu vous faire connaitre l'hanneton
+                        travailleur... mais cet animal, poursuivi sans doute par ses créanciers, a
+                        probablement quitté la France et il s'est envolé.</p>
+        </sp>
+        <sp>
+          <speaker>Un Monsieur</speaker>
+          <p> Il fallait lui mettre un fil à la patte.</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <p>En voilà une bêtise !.. Je n'aurais pas trouvé celle-là !... Voyons,
+                        raisonnons un peu, monsieur... Comment voulez-vous qu'on attache un simple
+                        fil à la patte d'un hanneton assez fort, assez robuste pour soulever un
+                        poids de 100 livres ?.. il eût incontestablement brisé ses fers.</p>
+        </sp>
+        <sp>
+          <speaker>Les Curieux</speaker>
+          <p> Bravo ! Bravo ! Bravo ! <stage type="corps">(Le monsieur est hué par la
+                            foule.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="pers"> (continuant)</stage>
+          <p> Quant aux punaises, messieurs, elles ne manqueront pas leurs <pb n="18" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_18.jpg"/>
+                        piquants exercices ce soir... Vous pourrez en jouir toute la nuit. </p>
+          <stage type="saut">On entend l'air du Calife de Bagdad que l'orchestre joue en
+                        sourdine.</stage>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="5">Scène 5</head>
+        <listPerson>
+          <personGrp>
+            <name>Les mêmes, </name>
+            <name>Arlequin, </name>
+            <name>ensuite la Mère Gigogne</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <p> Place ! Place !... Voilà maman Gigogne qui arrive ! </p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="pers"> (appelant)</stage>
+          <p>Tout le monde sur le pont !.. et à nos rangs ! </p>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>La Mère Gigogne en personne !.. Ah! C'est elle que va ravigoter nos recettes
+                        ! </p>
+        </sp>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <p>La Mère Gigogne et sa nouvelle famille qu'elle va mettre au monde le plus
+                        décemment possible. </p>
+          <stage type="saut">La Mère Gigogne arrive suivie d'un nombreux cortège.</stage></sp>
+        
+        <sp>
+          <speaker>Chœur</speaker>
+          <stage type="air"><label type="air">AIR :</label> C'est ici le séjour des
+                        grâces.</stage>
+          <lg>
+            <l>La voilà la Mère des grâces</l>
+            <l>Qui laiss' l'amour un peu partout.</l>
+            <pb n="19" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_19.jpg"/>
+            <l>Prenez vite toutes les places</l>
+            <l> Pour l'admirer dans le parc de Saint-Cloud. </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>La Mère Gigogne</speaker>
+          <p>Mes enfants, combien je suis émue, étourdie des expressions banales que vous
+                        employez pour me recevoir... Je vous dirai que j'ai fait un voyage bien
+                        désagreable, et vos cris redoublent encore mon embêtement... au moment de
+                        l'apparition d'une nouvelle famille dont vous serez tous parrains, je
+                        l'espère... Vous savez, mes chers enfants, que la foire est pour beaucoup
+                        dans mon retour à Saint-Cloud... On tient à chaque fête, à me voir dans
+                        toute ma splendeur, dans toute ma magnificence, et ma splendeur, ma
+                        magnificence à moi, c'est la progéniture que vous attendez. </p>
+          <stage type="saut">La Mère Gigogne et les enfants apparaissent ainsi que cela se fait dans toutes le baraques de Polichinelle.</stage></sp>
+        
+        <sp>
+          <speaker>Chœur</speaker>
+          <stage type="air"><label type="air">AIR :</label> Ah ! le bel oiseau !</stage>
+          <lg>
+            <l>Les jolis, les beaux enfants,</l>
+            <pb n="20" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_20.jpg"/>
+            <l>Mon dieu, qu'ils sont étonnants</l>
+            <l>De v'nir au mond' tout-grouillants !</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <lg>
+            <l>Si leur voix, en se montrant,</l>
+            <l>Répondait à leur plumage,</l>
+            <l>Ce serait assurément </l>
+            <l>Un bien drôle de ramage ! </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Chœur</speaker>
+          <lg>
+            <l>Les jolis, les beaux enfants,</l>
+            <l>Mon dieu, qu'ils sont étonnants</l>
+            <l>De v'nir au mond' tout-grouillants !</l>
+          </lg>
+          <stage type="saut">La Mère Gigogne continue sa danse ordinaire et l'on applaudit
+                        en criant.</stage>
+          <p>Brava ! Brava ! Bravissima ! </p>
+        </sp>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <p>Mère Gigogne, nous vous proclamons plus que jamais la reine de la farce, la
+                        souveraine de tous les pantins, la régénératrice des plaisirs de la foire de
+                        Saint-Cloud. </p>
+        </sp>
+        <sp>
+          <speaker>Tout le monde</speaker>
+          <p>Vive la Mère Gigogne !</p>
+        </sp>
+        <pb n="21" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_21.jpg"/>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <stage type="pers"> (présentant sa future)</stage>
+          <p>À propos, Mère Gigogne, il nous manque quelque chose, à cette Jeunesse et à
+                        moi... c'est votre consentement... nous nous en serions bien passés... mais,
+                        puisque vous êtes là... </p>
+        </sp>
+        <sp>
+          <speaker>La Mère Gigogne</speaker>
+          <p>Il n'en coûte pas davantage... Approchez... <stage type="corps">(Elle bénit
+                            Arlequin et la Jeunesse.)</stage> C'est la seule dot que je puisse vous
+                        offrir... Je vous la donne... allez, et qu'à mon exemple on dise de vous
+                        dans quelques années : ils furent heureux et contents...</p>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <stage type="pers"> (achevant)</stage>
+          <p>Et eurent beaucoup d'enfants... vive la Mère Gigogne ! </p>
+        </sp>
+        <sp>
+          <speaker>Tout le monde</speaker>
+          <p>Vive la Mère Gigogne ! </p>
+        </sp>
+        <sp>
+          <speaker>Chœur</speaker>
+          <stage type="air"><label type="air">AIR :</label> Honneur à la musique !</stage>
+          <lg>
+            <l>Honneur à la folie,</l>
+            <l>Aux charges de tréteaux !</l>
+            <l> P't'êtr' que l'académie </l>
+            <l>Y trouv'rait de bons mots !</l>
+          </lg>
+          <pb n="22" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_22.jpg"/>
+        </sp>
+        <head type="scene">Vaudeville - ronde</head>
+        <stage type="air"><label type="air">AIR :</label> La Boulangère a des écus.</stage>
+        <sp>
+          <speaker>Cassandre</speaker>
+          <lg>
+            <l>La Mèr' Gigogne a des enfants</l>
+            <l>Qui ne lui coûtent guère,</l>
+            <l> Et lorsqu'ils sont à peine grands,</l>
+            <l> Ell' cherche à s'en défaire ;</l>
+            <l> Mais selon les événements,</l>
+            <l>Ils peuvent, quand ils ne sont plus enfants,</l>
+            <l> Partir tous pour la guerre.</l>
+            <stage type="corps">Danse et refrain</stage>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Paillasse</speaker>
+          <lg>
+            <l>La Mèr' Gigogne a des soldats</l>
+            <l> Dans sa famille entière,</l>
+            <l> Et quand ils trouvent le trépas,</l>
+            <l> Ça ne peut que lui plaire.</l>
+            <l>Ell' n'leur dit jamais au revoir. </l>
+            <l>Car elle en pond du matin au soir</l>
+            <l>Sans en faire l'inventaire</l>
+            <stage type="corps">Danse et refrain</stage>
+          </lg>
+        </sp>
+        <pb n="23" facs="19_F_BELFORT-DEVAUX_FoireDeStCloud_FR_AN_23.jpg"/>
+        <sp>
+          <speaker>Arlequin</speaker>
+          <lg>
+            <l>La Mèr' Gigogne est sans le sou</l>
+            <l>Voilà son ordinaire ;</l>
+            <l>Mais on la reçoit bien partout...</l>
+            <l>Elle est si populaire !</l>
+            <l> À table ell' vaut un grenadier,</l>
+            <l>Pour boire ell' n'se fait jamais prier,</l>
+            <l>À table ell' n'est pas fière.</l>
+            <stage type="corps">Danse et refrain</stage>
+          </lg>
+          
+        </sp>
+        <sp>
+          <speaker>La Mère Gigogne</speaker>
+          <stage type="pers"> (au public)</stage>
+          <lg>
+            <l> La Mèr' Gigogne, en ce moment</l>
+            <l> À vos bontés s'adresse...</l>
+            <l>Si, par un heureux dénouement,</l>
+            <l> Son sort vous intéresse ;</l>
+            <l> Et si l'public est bon enfant,</l>
+            <l> Si pour elle il se montre galant,</l>
+            <l> Applaudissez la pièce !</l>
+          </lg>
+        </sp>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

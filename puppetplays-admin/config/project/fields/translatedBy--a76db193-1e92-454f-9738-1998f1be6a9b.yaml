@@ -15,7 +15,7 @@ settings:
   selectionLabel: null
   showSiteMenu: true
   sources:
-    - 'group:c8c55cf1-a8a5-4356-b4eb-7984788d01b2' # Contributeurs
+    - 'group:c8c55cf1-a8a5-4356-b4eb-7984788d01b2'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null
