@@ -28,10 +28,10 @@ export function isValidHalUrl(url) {
 
   try {
     const parsedUrl = new URL(url);
-    
+
     // Vérifier le domaine
     const isValidDomain = HAL_DOMAINS.some(domain =>
-      parsedUrl.hostname.includes(domain)
+      parsedUrl.hostname.includes(domain),
     );
 
     // Vérifier la présence d'un identifiant HAL
@@ -60,10 +60,10 @@ export function getHalPdfUrl(halUrl) {
   if (isValidHalUrl(halUrl)) {
     // Retirer les paramètres de requête et fragments
     const cleanUrl = halUrl.split('?')[0].split('#')[0];
-    
+
     // Ajouter /document si ce n'est pas déjà présent
-    return cleanUrl.endsWith('/') 
-      ? `${cleanUrl}document` 
+    return cleanUrl.endsWith('/')
+      ? `${cleanUrl}document`
       : `${cleanUrl}/document`;
   }
 
@@ -75,7 +75,7 @@ export function getHalPdfUrl(halUrl) {
  */
 export const HAL_REQUEST_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (compatible; PuppetPlays/1.0)',
-  'Accept': 'application/pdf,text/html,application/xhtml+xml',
+  Accept: 'application/pdf,text/html,application/xhtml+xml',
   'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8',
 };
 
@@ -86,4 +86,4 @@ export const PDF_CACHE_OPTIONS = {
   maxAge: 3600, // 1 heure
   sMaxAge: 86400, // 24 heures pour le CDN
   staleWhileRevalidate: 604800, // 7 jours
-}; 
+};

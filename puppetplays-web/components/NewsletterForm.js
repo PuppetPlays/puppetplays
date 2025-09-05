@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './NewsletterForm.module.scss';
 
@@ -10,6 +10,12 @@ function NewsletterForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [isSubmitError, setIsSubmitError] = useState(false);
+  const [isClientSide, setIsClientSide] = useState(false);
+
+  // Fix hydration issues by ensuring client-side rendering
+  useEffect(() => {
+    setIsClientSide(true);
+  }, []);
 
   const handleFormSubmissionError = response => {
     if (!response.ok) {
@@ -50,6 +56,19 @@ function NewsletterForm() {
       });
   };
 
+  // Don't render until client-side to avoid hydration issues
+  if (!isClientSide) {
+    return (
+      <div className={styles.subscribeForm}>
+        <div className={styles.subscribeLabel}>{t('subscribeLabel')}</div>
+        <div className={styles.subscribeFormGroup}>
+          <div style={{ height: '40px', background: '#f0f0f0', borderRadius: '4px' }}></div>
+          <div style={{ height: '40px', background: '#f0f0f0', borderRadius: '4px', width: '100px' }}></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form
       className={styles.subscribeForm}
@@ -57,13 +76,14 @@ function NewsletterForm() {
       action={`${process.env.NEXT_PUBLIC_API_URL}/newsletter/subscribe`}
       method="POST"
     >
-      <label className={styles.subscribeLabel} htmlFor="email">
+      <label className={styles.subscribeLabel} htmlFor="newsletter-email">
         {t('subscribeLabel')}
       </label>
       <div className={styles.subscribeFormGroup}>
         <input
           name="email"
-          id="email"
+          id="newsletter-email"
+          type="email"
           required
           placeholder={t('emailPlaceholder')}
         />

@@ -24,4 +24,4 @@ const PDFViewerEmbed = dynamic(() => import('./PDFViewerEmbed'), {
   },
 });
 
-export default PDFViewerEmbed; 
+export default PDFViewerEmbed;

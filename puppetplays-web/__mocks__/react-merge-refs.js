@@ -3,7 +3,7 @@ module.exports = function mergeRefs(refs) {
     refs.forEach(ref => {
       if (typeof ref === 'function') {
         ref(value);
-      } else if (ref != null) {
+      } else if (ref !== null && ref !== undefined) {
         ref.current = value;
       }
     });

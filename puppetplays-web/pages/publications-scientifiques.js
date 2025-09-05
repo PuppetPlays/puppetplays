@@ -10,7 +10,7 @@ import { useMemo } from 'react';
 import styles from 'styles/ScientificPublications.module.scss';
 
 const PublicationItem = ({ publication }) => {
-  const { t } = useTranslation(['common', 'project']);
+  const { i18n } = useTranslation(['common', 'project']);
 
   // Early return if publication is not provided
   if (!publication) {
@@ -39,8 +39,43 @@ const PublicationItem = ({ publication }) => {
 
   const authors = formatAuthors(publication.authorAndOrcidIdentifier);
   const journal = publication.editorName;
+  const bookTitle = publication.bookTitle;
+  const bookAuthor = publication.bookAuthor; // Assuming this field exists
   const volume = publication.volume;
   const pages = publication.pagesCount;
+
+  // Get quotes based on locale
+  const quotes =
+    i18n.language === 'fr'
+      ? { open: '« ', close: ' »' }
+      : { open: '"', close: '"' };
+
+  // Format pages with padding (Pages 01 - 150 format)
+  const formatPages = pagesStr => {
+    if (!pagesStr) return '';
+
+    // Convert to string if it's not already
+    const pagesString = String(pagesStr);
+
+    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
+    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (rangeMatch) {
+      const startPage = parseInt(rangeMatch[1]);
+      const endPage = parseInt(rangeMatch[2]);
+      const paddedStart = startPage.toString().padStart(2, '0');
+      const paddedEnd = endPage.toString().padStart(2, '0');
+      return `Pages ${paddedStart} - ${paddedEnd}`;
+    }
+
+    // If it's just a number, assume it starts from page 1
+    const pageMatch = pagesString.match(/(\d+)/);
+    if (pageMatch) {
+      const pageCount = parseInt(pageMatch[1]);
+      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
+    }
+
+    return `Pages ${pagesString}`;
+  };
 
   return (
     <div className={styles.publicationItem}>
@@ -53,30 +88,40 @@ const PublicationItem = ({ publication }) => {
           }`}
           className={styles.titleLink}
         >
-          {publication.title}
-        </Link>
-        {authors && (
-          <span className={styles.authorsSuffix}>
-            {' '}
-            produits par <em>{authors}</em>
+          {authors && <span className={styles.authors}>{authors}, </span>}
+          <span className={styles.titleQuoted}>
+            {quotes.open}
+            {publication.title}
+            {quotes.close}
           </span>
-        )}
+          {(bookTitle || journal) && (
+            <span className={styles.inPublication}>
+              {' '}
+              dans {bookAuthor && `${bookAuthor}, `}
+              <em>{bookTitle || journal}</em>
+            </span>
+          )}
+        </Link>
       </h3>
 
       <div className={styles.publicationContent}>
-        {journal && (
+        {(journal || volume || pages) && (
           <p className={styles.publicationDetails}>
-            <span className={styles.journal}>
-              Publié dans <em>{journal}</em>
-            </span>
+            {journal && (
+              <span className={styles.publisher}>
+                Publié par <em>{journal}</em>
+              </span>
+            )}
             {volume && (
               <span className={styles.volume}>
-                {t('project:scientificPublications.volume')} {volume}
+                {journal ? ' ' : ''}
+                {volume}
               </span>
             )}
             {pages && (
               <span className={styles.pages}>
-                {pages} {t('project:scientificPublications.pages')}
+                {journal || volume ? ' ' : ''}
+                {formatPages(pages)}
               </span>
             )}
           </p>

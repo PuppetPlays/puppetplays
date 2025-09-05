@@ -413,11 +413,11 @@ const processElement = element => {
         if (stage.parentNode === element) {
           const stageType = stage.getAttribute('type');
           directStages.push({
-          type: 'stage',
-          content: stage.textContent.trim(),
+            type: 'stage',
+            content: stage.textContent.trim(),
             stageType: stageType || 'general',
-        });
-      }
+          });
+        }
       }
       speechResults.push(...directStages);
 
@@ -439,7 +439,7 @@ const processElement = element => {
         if (verseLines.length > 0) {
           speechResults.push({ type: 'verse', content: verseLines });
         }
-        
+
         // Also check for stage directions within the lg
         const stagesInLg = getElementsByTagName(lg, 'stage');
         for (const stage of stagesInLg) {
@@ -462,7 +462,9 @@ const processElement = element => {
       for (const line of lines) {
         verseLines.push(line.textContent.trim());
       }
-      return verseLines.length > 0 ? { type: 'verse', content: verseLines } : null;
+      return verseLines.length > 0
+        ? { type: 'verse', content: verseLines }
+        : null;
     }
 
     case 'p': {
@@ -489,7 +491,9 @@ const processElement = element => {
           characters.push(characterList.trim());
         }
       }
-      return characters.length > 0 ? { type: 'sceneCharacters', content: characters } : null;
+      return characters.length > 0
+        ? { type: 'sceneCharacters', content: characters }
+        : null;
     }
 
     default:
@@ -613,8 +617,14 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
 
         try {
           console.log('🔍 [DEBUG IIIF] Initializing viewer...');
-          console.log('🔍 [DEBUG IIIF] Nakala identifier:', anthologyData.nakalaIdentifier);
-          console.log('🔍 [DEBUG IIIF] File identifier:', anthologyData.nakalaFileIdentifier);
+          console.log(
+            '🔍 [DEBUG IIIF] Nakala identifier:',
+            anthologyData.nakalaIdentifier,
+          );
+          console.log(
+            '🔍 [DEBUG IIIF] File identifier:',
+            anthologyData.nakalaFileIdentifier,
+          );
 
           // Get basic viewer URL
           const baseViewerUrl = getNakalaEmbedUrl(
@@ -631,22 +641,30 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
           if (anthologyData.nakalaData && anthologyData.nakalaData.files) {
             // Filter and sort image files by name to get them in order
             const imageFiles = anthologyData.nakalaData.files
-              .filter(file => file.mime_type && file.mime_type.startsWith('image/'))
+              .filter(
+                file => file.mime_type && file.mime_type.startsWith('image/'),
+              )
               .sort((a, b) => a.name.localeCompare(b.name));
 
-            console.log('🔍 [DEBUG IIIF] Image files found:', imageFiles.length);
-            console.log('🔍 [DEBUG IIIF] Files:', imageFiles.map(f => f.name));
+            console.log(
+              '🔍 [DEBUG IIIF] Image files found:',
+              imageFiles.length,
+            );
+            console.log(
+              '🔍 [DEBUG IIIF] Files:',
+              imageFiles.map(f => f.name),
+            );
 
             if (imageFiles.length > 0) {
               setTotalPages(imageFiles.length);
               setImageUrls(imageFiles); // Store the files for navigation
-              
+
               // Set initial viewer URL to first file
               const firstFile = imageFiles[0];
               const firstFileUrl = getNakalaEmbedUrl(
                 anthologyData.nakalaIdentifier,
                 firstFile.sha1,
-                { buttons: true }
+                { buttons: true },
               );
               setNakalaViewerUrl(firstFileUrl);
             }
@@ -675,26 +693,26 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
       currentPage > 0
     ) {
       console.log('🔍 [DEBUG IIIF] Updating viewer for page:', currentPage);
-      
+
       // Get the file for the current page (0-indexed)
       const currentFile = imageUrls[currentPage - 1];
-      
+
       if (currentFile) {
         console.log('🔍 [DEBUG IIIF] Current file:', currentFile.name);
         console.log('🔍 [DEBUG IIIF] Current file SHA1:', currentFile.sha1);
-        
+
         // Build URL for the specific file
         const pageUrl = getNakalaEmbedUrl(
-        anthologyData.nakalaIdentifier,
+          anthologyData.nakalaIdentifier,
           currentFile.sha1,
-        {
-          buttons: true,
-        },
-      );
+          {
+            buttons: true,
+          },
+        );
 
         console.log('🔍 [DEBUG IIIF] Page URL:', pageUrl);
-      setNakalaViewerUrl(pageUrl);
-    }
+        setNakalaViewerUrl(pageUrl);
+      }
     }
   }, [currentPage, anthologyData, imageUrls]);
 
@@ -732,7 +750,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         console.log('🔍 [DEBUG] Fetching from URL:', transcriptionFile.url);
 
         let xmlText = '';
-        
+
         // Use the transcription file URL
         const response = await fetch(transcriptionFile.url);
 
@@ -780,7 +798,10 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
   // Navigation handlers
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      console.log('🔍 [DEBUG IIIF] Navigate to previous page:', currentPage - 1);
+      console.log(
+        '🔍 [DEBUG IIIF] Navigate to previous page:',
+        currentPage - 1,
+      );
       setCurrentPage(currentPage - 1);
     }
   };
@@ -960,7 +981,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                     allowFullScreen
                     key={`viewer-${nakalaViewerUrl}`} // Force reload when URL changes
                   />
-
                 </div>
               ) : (
                 <div className={styles.noViewer}>
@@ -979,7 +999,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 <h3 className={styles.sectionTitle}>
                   {t('anthology:transcription')}
                 </h3>
-                
+
                 {/* Transcription Navigation Controls */}
                 {transcriptionPages.length > 1 && (
                   <div className={styles.transcriptionNavigation}>
@@ -994,14 +1014,17 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                     </button>
 
                     <span className={styles.transcriptionPageIndicator}>
-                      Page {currentTranscriptionPage} / {transcriptionPages.length}
+                      Page {currentTranscriptionPage} /{' '}
+                      {transcriptionPages.length}
                     </span>
 
                     <button
                       type="button"
                       className={styles.transcriptionNavButton}
                       onClick={handleNextTranscriptionPage}
-                      disabled={currentTranscriptionPage >= transcriptionPages.length}
+                      disabled={
+                        currentTranscriptionPage >= transcriptionPages.length
+                      }
                       title="Page suivante"
                     >
                       Suiv ›
@@ -1111,9 +1134,15 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                   );
                                 } else if (item.type === 'sceneCharacters') {
                                   elements.push(
-                                    <div key={i} className={styles.sceneCharacters}>
+                                    <div
+                                      key={i}
+                                      className={styles.sceneCharacters}
+                                    >
                                       {item.content.map((chars, idx) => (
-                                        <p key={idx} className={styles.characterList}>
+                                        <p
+                                          key={idx}
+                                          className={styles.characterList}
+                                        >
                                           {chars}
                                         </p>
                                       ))}
@@ -1127,8 +1156,10 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                   );
                                 } else if (item.type === 'text') {
                                   // Check if this is a décors element
-                                  const isDecorElement = item.content.match(/^(Prologue|Tableau [IVX]+)\s*:/);
-                                  
+                                  const isDecorElement = item.content.match(
+                                    /^(Prologue|Tableau [IVX]+)\s*:/,
+                                  );
+
                                   if (isDecorElement) {
                                     elements.push(
                                       <p key={i} className={styles.decor}>

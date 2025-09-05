@@ -65,7 +65,7 @@ function MainNav({ inverse = false }) {
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        itemsCount={width < 480 ? 8 : 6}
+        itemsCount={width < 480 ? 9 : 7}
         renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
@@ -94,6 +94,11 @@ function MainNav({ inverse = false }) {
           <li key="techniques">
             <Link href="/techniques-d-animation" legacyBehavior>
               <a>{t('common:animationTechniques')}</a>
+            </Link>
+          </li>,
+          <li key="documentation">
+            <Link href="/documentation-technique" legacyBehavior>
+              <a>{t('common:technicalDocumentation.title')}</a>
             </Link>
           </li>,
           <li key="tact" className={styles.externalLink}>

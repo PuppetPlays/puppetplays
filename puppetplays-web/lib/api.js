@@ -1135,6 +1135,44 @@ export async function getEducationalResourceById(locale, id) {
   }
 }
 
+
+export const getTechnicalDocumentationByIdQuery = `
+query GetTechnicalDocumentationById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "technicalDocumentation", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on technicalDocumentation_default_Entry {
+      description,
+      content,
+      url,
+      fileUrl,
+      category {
+        id,
+        title
+      },
+      relatedDocuments {
+        id,
+        slug,
+        title
+      }
+    }
+  }
+}
+`;
+
+export async function getTechnicalDocumentationById(locale, id) {
+  try {
+    const data = await fetchAPI(getTechnicalDocumentationByIdQuery, {
+      variables: { locale, id },
+    });
+    return data.entry;
+  } catch (error) {
+    console.error('Error fetching technical documentation by id:', error);
+    return null;
+  }
+}
+
 // Scientific Publications queries
 export const getScientificPublicationsQuery = `
 query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
@@ -1272,4 +1310,166 @@ export async function getScientificPublicationById(id, locale) {
     },
   });
   return data;
+}
+
+// Technical Documentation Queries  
+const getTechnicalDocumentationQuery = `
+  query TechnicalDocumentation($locale: [String]) {
+    entries(section: "technicalDocumentationEntry", site: $locale) {
+      ... on technicalDocumentationEntry_default_Entry {
+        id
+        title
+        slug
+        url
+      }
+    }
+    globalSets(site: $locale) {
+      ... on technicalDocumentation_GlobalSet {
+        id
+        handle
+        sidebar {
+          ... on sidebar_BlockType {
+            id
+            sidebarContent {
+              ... on sidebarContent_sidebarElement_BlockType {
+                id
+                sideBarTitle
+                sidebarElements {
+                  col1
+                  label
+                  col2
+                  anchor
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function getAllTechnicalDocumentation(locale) {
+  try {
+    const data = await fetchAPI(getTechnicalDocumentationQuery, {
+      variables: {
+        locale,
+      },
+    });
+    
+    // Trouver le globalSet technicalDocumentation
+    const techDocGlobalSet = data?.globalSets?.find(gs => gs?.handle === 'technicalDocumentation');
+    
+    // Extraire et aplatir les éléments de la sidebar depuis sidebarContent
+    let sidebarItems = [];
+    if (techDocGlobalSet?.sidebar) {
+      techDocGlobalSet.sidebar.forEach(block => {
+        if (block?.sidebarContent) {
+          block.sidebarContent.forEach(contentBlock => {
+            // Process each sidebarElement row
+            if (contentBlock?.sidebarElements) {
+              contentBlock.sidebarElements.forEach(element => {
+                sidebarItems.push({
+                  id: `${contentBlock.id}-${element.col2}`,
+                  sidebarTitle: element.col1 || element.label || '',
+                  sidebarContent: contentBlock.sideBarTitle || '',
+                  sidebarLink: element.col2 || element.anchor || '',
+                  type: 'element',
+                  category: contentBlock.sideBarTitle
+                });
+              });
+            }
+          });
+        }
+      });
+    }
+    
+    return {
+      entries: data?.entries || [],
+      globalSets: {
+        technicalDocumentation: {
+          sidebar: sidebarItems
+        }
+      }
+    };
+  } catch (error) {
+    console.error('Error fetching technical documentation:', error);
+    return {
+      entries: [],
+      globalSets: {
+        technicalDocumentation: {
+          sidebar: []
+        }
+      }
+    };
+  }
+}
+
+export async function getTechnicalDocumentationEntry(id, slug, locale) {
+  const query = `
+    query TechnicalDocumentationEntry($id: [QueryArgument], $slug: [String], $locale: [String]) {
+      entry(id: $id, slug: $slug, section: "technicalDocumentationEntry", site: $locale) {
+        ... on technicalDocumentationEntry_default_Entry {
+          id
+          title
+          slug
+          url
+          introduction
+          sheetTable {
+            col1
+            col2
+            col3
+          }
+        }
+      }
+    }
+  `;
+  
+  try {
+    const data = await fetchAPI(query, {
+      variables: {
+        id,
+        slug,
+        locale,
+      },
+    });
+    return data?.entry || null;
+  } catch (error) {
+    console.error('Error fetching technical documentation entry:', error);
+    return null;
+  }
+}
+
+export async function getTechnicalDocumentationByAnchor(anchor, locale) {
+  // Si c'est un ID numérique
+  if (/^\d+$/.test(anchor)) {
+    return getTechnicalDocumentationEntry(anchor, null, locale);
+  }
+  
+  // Si c'est un slug, chercher par slug
+  const query = `
+    query TechnicalDocumentationBySlug($slug: [String], $locale: [String]) {
+      entries(section: "technicalDocumentationEntry", slug: $slug, site: $locale, limit: 1) {
+        ... on technicalDocumentationEntry_default_Entry {
+          id
+          title
+          slug
+          url
+        }
+      }
+    }
+  `;
+  
+  try {
+    const data = await fetchAPI(query, {
+      variables: {
+        slug: anchor,
+        locale,
+      },
+    });
+    return data?.entries?.[0] || null;
+  } catch (error) {
+    console.error('Error fetching technical documentation by anchor:', error);
+    return null;
+  }
 }

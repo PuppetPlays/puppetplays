@@ -431,25 +431,34 @@ function Work(props) {
           </div>
         </Section>
 
-        <Section
-          title={t('common:writtenBy')}
-          show={writtenBy && (!!writtenBy.firstName || !!writtenBy.lastName)}
-        >
-          {writtenBy?.firstName} {writtenBy?.lastName}
-        </Section>
-
+        {/* Translator field - will be displayed when translatedBy data is available from API */}
         <Section
           title={t('common:translatedBy')}
           show={
             translatedBy &&
             Array.isArray(translatedBy) &&
             translatedBy.length > 0 &&
-            !!translatedBy[0]?.fullName
+            (translatedBy[0]?.fullName ||
+              translatedBy[0]?.firstName ||
+              translatedBy[0]?.lastName)
           }
         >
           {translatedBy &&
             Array.isArray(translatedBy) &&
-            translatedBy[0]?.fullName}
+            translatedBy.map((translator, index) => (
+              <span key={translator?.id || index}>
+                {translator?.fullName ||
+                  `${translator?.firstName || ''} ${translator?.lastName || ''}`.trim()}
+                {index < translatedBy.length - 1 && ', '}
+              </span>
+            ))}
+        </Section>
+
+        <Section
+          title={t('common:writtenBy')}
+          show={writtenBy && (!!writtenBy.firstName || !!writtenBy.lastName)}
+        >
+          {writtenBy?.firstName} {writtenBy?.lastName}
         </Section>
       </div>
     </article>

@@ -128,8 +128,33 @@ const PublicationDetailPage = ({ publication, error }) => {
   const license = publication.license;
   const peerReview = publication.peerReview;
   const nakalaLink = publication.nakalaLink;
-  const belongsToConference = publication.belongsToConference;
-  const conferenceGroup = publication.conferenceGroup;
+
+  // Format pages with padding (Pages 01 - 150 format)
+  const formatPages = pagesStr => {
+    if (!pagesStr) return '';
+
+    // Convert to string if it's not already
+    const pagesString = String(pagesStr);
+
+    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
+    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (rangeMatch) {
+      const startPage = parseInt(rangeMatch[1]);
+      const endPage = parseInt(rangeMatch[2]);
+      const paddedStart = startPage.toString().padStart(2, '0');
+      const paddedEnd = endPage.toString().padStart(2, '0');
+      return `Pages ${paddedStart} - ${paddedEnd}`;
+    }
+
+    // If it's just a number, assume it starts from page 1
+    const pageMatch = pagesString.match(/(\d+)/);
+    if (pageMatch) {
+      const pageCount = parseInt(pageMatch[1]);
+      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
+    }
+
+    return `Pages ${pagesString}`;
+  };
 
   return (
     <Fragment>
@@ -234,7 +259,7 @@ const PublicationDetailPage = ({ publication, error }) => {
                         {t('project:scientificPublications.noPdfAvailable')}
                       </h3>
                       <p>
-                        Le document PDF n'est pas disponible pour cette
+                        Le document PDF n&apos;est pas disponible pour cette
                         publication.
                       </p>
                     </div>
@@ -246,18 +271,14 @@ const PublicationDetailPage = ({ publication, error }) => {
                   <div className={styles.volumePagesInfo}>
                     {volume && (
                       <div className={styles.infoItem}>
-                        <span className={styles.infoLabel}>
-                          {t('project:scientificPublications.volume')}:
-                        </span>
                         <span className={styles.infoValue}>{volume}</span>
                       </div>
                     )}
                     {pages && (
                       <div className={styles.infoItem}>
-                        <span className={styles.infoLabel}>
-                          {t('project:scientificPublications.pages')}:
+                        <span className={styles.infoValue}>
+                          {formatPages(pages)}
                         </span>
-                        <span className={styles.infoValue}>{pages}</span>
                       </div>
                     )}
                   </div>

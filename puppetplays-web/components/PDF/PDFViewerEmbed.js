@@ -7,7 +7,14 @@ import styles from './PDFViewer.module.scss';
 
 // Icônes SVG
 const ExternalLinkIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
     <polyline points="15 3 21 3 21 9" />
     <line x1="10" y1="14" x2="21" y2="3" />
@@ -15,7 +22,14 @@ const ExternalLinkIcon = () => (
 );
 
 const AlertIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+  <svg
+    width="48"
+    height="48"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="8" x2="12" y2="12" />
     <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -25,7 +39,7 @@ const AlertIcon = () => (
 /**
  * Extrait l'URL HAL de base en supprimant /document si présent
  */
-const getHalBaseUrl = (url) => {
+const getHalBaseUrl = url => {
   if (!url) return null;
   // Supprimer /document à la fin de l'URL si présent
   return url.replace(/\/document\/?$/, '');
@@ -51,7 +65,7 @@ const PDFViewerEmbed = ({
   // Utiliser Google Docs Viewer pour contourner CORS
   const viewerUrl = useMemo(() => {
     if (!halUrl) return null;
-    
+
     const pdfUrl = getHalPdfUrl(halUrl);
     // Google Docs Viewer peut charger des PDFs externes
     const encodedUrl = encodeURIComponent(pdfUrl);
@@ -63,12 +77,12 @@ const PDFViewerEmbed = ({
     if (viewerUrl) {
       setIsLoading(true);
       setHasError(false);
-      
+
       // Timeout pour détecter les erreurs de chargement
       const timeoutId = setTimeout(() => {
         setIsLoading(false);
       }, 5000); // 5 secondes pour charger
-      
+
       return () => clearTimeout(timeoutId);
     }
   }, [viewerUrl]);
@@ -102,7 +116,7 @@ const PDFViewerEmbed = ({
         <div className={styles.titleSection}>
           {title && <h3 className={styles.title}>{title}</h3>}
         </div>
-        
+
         <div className={styles.controls}>
           <a
             href={halUrl}
@@ -118,7 +132,10 @@ const PDFViewerEmbed = ({
       </div>
 
       {/* Container du viewer */}
-      <div className={styles.pdfContainer} style={{ height: 'calc(100% - 120px)' }}>
+      <div
+        className={styles.pdfContainer}
+        style={{ height: 'calc(100% - 120px)' }}
+      >
         {/* État de chargement */}
         {isLoading && (
           <div className={styles.loadingOverlay}>
@@ -205,4 +222,4 @@ PDFViewerEmbed.defaultProps = {
   height: '700px',
 };
 
-export default memo(PDFViewerEmbed); 
+export default memo(PDFViewerEmbed);
