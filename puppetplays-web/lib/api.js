@@ -1328,7 +1328,7 @@ export async function getScientificPublicationById(id, locale) {
   return data;
 }
 
-// Technical Documentation Queries
+// Technical Documentation Queries  
 const getTechnicalDocumentationQuery = `
   query TechnicalDocumentation($locale: [String]) {
     entries(section: "technicalDocumentationEntry", site: $locale) {
@@ -1345,13 +1345,18 @@ const getTechnicalDocumentationQuery = `
         id
         name
         handle
-        sidebarContent {
-          ... on sidebarContent_sidebarElement_BlockType {
+        sidebar {
+          ... on sidebar_BlockType {
             id
-            sideBarTitle
-            sidebarElements {
-              col1
-              col2
+            sidebarContent {
+              ... on sidebarContent_sidebarElement_BlockType {
+                id
+                sideBarTitle
+                sidebarElements {
+                  col1
+                  col2
+                }
+              }
             }
           }
         }
@@ -1393,20 +1398,73 @@ export async function getAllTechnicalDocumentation(locale) {
         '✅ [TechnicalDocumentation] GlobalSet found with correct type',
       );
 
-      if (techDocGlobalSet.sidebarContent) {
+      console.log('🔍 [TechnicalDocumentation] GlobalSet structure:', {
+        hasSidebar: !!techDocGlobalSet.sidebar,
+        sidebarLength: techDocGlobalSet.sidebar?.length || 0,
+        hasSidebarContent: !!techDocGlobalSet.sidebarContent,
+        allKeys: Object.keys(techDocGlobalSet)
+      });
+
+      // La structure est SuperTable (sidebar) -> Matrix (sidebarContent)
+      if (techDocGlobalSet.sidebar) {
         console.log(
-          '📦 [TechnicalDocumentation] Processing sidebarContent blocks:',
+          '📦 [TechnicalDocumentation] Processing sidebar SuperTable blocks:',
+          techDocGlobalSet.sidebar.length,
+        );
+
+        // sidebar est un array de blocs SuperTable
+        techDocGlobalSet.sidebar.forEach((sidebarBlock, blockIndex) => {
+          console.log(`  📌 SuperTable Block ${blockIndex}:`, {
+            hasId: !!sidebarBlock?.id,
+            hasSidebarContent: !!sidebarBlock?.sidebarContent,
+            sidebarContentLength: sidebarBlock?.sidebarContent?.length || 0,
+            blockKeys: Object.keys(sidebarBlock || {})
+          });
+
+          // Chaque bloc SuperTable contient un champ Matrix sidebarContent
+          if (sidebarBlock?.sidebarContent) {
+            sidebarBlock.sidebarContent.forEach((contentBlock, contentIndex) => {
+              console.log(`    📋 Matrix Block ${contentIndex}:`, {
+                hasTitle: !!contentBlock?.sideBarTitle,
+                title: contentBlock?.sideBarTitle,
+                elementsCount: contentBlock?.sidebarElements?.length || 0,
+                contentKeys: Object.keys(contentBlock || {})
+              });
+
+              // Process each sidebarElement row
+              if (contentBlock?.sidebarElements) {
+                contentBlock.sidebarElements.forEach((element, elemIndex) => {
+                  const item = {
+                    id: `${contentBlock.id || Math.random()}-${element.col2}`,
+                    sidebarTitle: element.col1 || '',
+                    sidebarContent: contentBlock.sideBarTitle || '',
+                    sidebarLink: element.col2 || '',
+                    type: 'element',
+                    category: contentBlock.sideBarTitle || 'Uncategorized',
+                  };
+                  console.log(`      → Element ${elemIndex}:`, {
+                    label: element.col1,
+                    anchor: element.col2,
+                  });
+                  sidebarItems.push(item);
+                });
+              }
+            });
+          }
+        });
+      } else if (techDocGlobalSet.sidebarContent) {
+        // Fallback: si c'est directement sidebarContent (ancienne structure)
+        console.log(
+          '📦 [TechnicalDocumentation] Processing direct sidebarContent blocks:',
           techDocGlobalSet.sidebarContent.length,
         );
 
-        // sidebarContent est un array de blocs Matrix
         techDocGlobalSet.sidebarContent.forEach((contentBlock, blockIndex) => {
           console.log(`  📌 Block ${blockIndex}:`, {
             hasTitle: !!contentBlock?.sideBarTitle,
             elementsCount: contentBlock?.sidebarElements?.length || 0,
           });
 
-          // Process each sidebarElement block
           if (contentBlock?.sidebarElements) {
             contentBlock.sidebarElements.forEach((element, elemIndex) => {
               const item = {
@@ -1427,7 +1485,7 @@ export async function getAllTechnicalDocumentation(locale) {
         });
       } else {
         console.warn(
-          '⚠️ [TechnicalDocumentation] GlobalSet found but no sidebarContent',
+          '⚠️ [TechnicalDocumentation] GlobalSet found but no sidebar or sidebarContent',
         );
       }
     } else if (!techDocGlobalSet) {
