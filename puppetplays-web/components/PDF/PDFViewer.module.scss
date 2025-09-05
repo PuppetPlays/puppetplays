@@ -38,7 +38,7 @@ $shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
   .controls {
     display: flex;
     gap: 0.75rem;
-    
+
     a {
       align-items: center;
       border-radius: 6px;
@@ -51,7 +51,7 @@ $shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
       font-weight: 500;
       border: none;
       cursor: pointer;
-      
+
       svg {
         flex-shrink: 0;
       }
@@ -125,8 +125,12 @@ $shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 // Error state
@@ -257,29 +261,29 @@ $shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
   width: 100%;
   overflow: hidden;
   background-color: var(--color-bg-depth-1);
-  
+
   // Override des styles par défaut de react-pdf-viewer
   :global {
     .rpv-core__viewer {
       height: 100% !important;
     }
-    
+
     .rpv-core__inner-pages {
       background-color: var(--color-bg-depth-1);
     }
-    
+
     // Toolbar styles
     .rpv-toolbar {
       background-color: #fff;
       border-bottom: 1px solid var(--color-border);
     }
-    
+
     // Sidebar styles
     .rpv-default-layout__sidebar {
       background-color: var(--color-bg-depth-2);
       border-right: 1px solid var(--color-border);
     }
-    
+
     // Loading spinner
     .rpv-core__spinner {
       border-color: var(--color-brand) transparent transparent transparent;

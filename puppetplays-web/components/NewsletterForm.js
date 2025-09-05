@@ -62,8 +62,21 @@ function NewsletterForm() {
       <div className={styles.subscribeForm}>
         <div className={styles.subscribeLabel}>{t('subscribeLabel')}</div>
         <div className={styles.subscribeFormGroup}>
-          <div style={{ height: '40px', background: '#f0f0f0', borderRadius: '4px' }}></div>
-          <div style={{ height: '40px', background: '#f0f0f0', borderRadius: '4px', width: '100px' }}></div>
+          <div
+            style={{
+              height: '40px',
+              background: '#f0f0f0',
+              borderRadius: '4px',
+            }}
+          />
+          <div
+            style={{
+              height: '40px',
+              background: '#f0f0f0',
+              borderRadius: '4px',
+              width: '100px',
+            }}
+          />
         </div>
       </div>
     );

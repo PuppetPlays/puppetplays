@@ -22,11 +22,12 @@ function TechnicalDocumentation({ initialData }) {
     let entryId = '';
     let entrySlug = '';
     const anchor = item.sidebarLink || '';
-    
+
     if (/^\d+$/.test(anchor)) {
       // Just an ID
       entryId = anchor;
-      entrySlug = item.sidebarTitle?.toLowerCase().replace(/\s+/g, '-') || 'entry';
+      entrySlug =
+        item.sidebarTitle?.toLowerCase().replace(/\s+/g, '-') || 'entry';
     } else if (anchor.includes('-')) {
       // Format: id-slug
       const parts = anchor.split('-');
@@ -41,7 +42,7 @@ function TechnicalDocumentation({ initialData }) {
       // Just a slug
       entrySlug = anchor;
     }
-    
+
     return {
       title: item.sidebarTitle || '',
       content: item.sidebarContent || '',
@@ -50,7 +51,7 @@ function TechnicalDocumentation({ initialData }) {
       entryId: entryId,
       entrySlug: entrySlug,
       category: item.category || item.sidebarContent || '',
-      id: item.id
+      id: item.id,
     };
   });
 
@@ -58,7 +59,9 @@ function TechnicalDocumentation({ initialData }) {
     <Fragment>
       <Layout>
         <Head>
-          <title>{t('common:technicalDocumentation.title')} | Puppetplays</title>
+          <title>
+            {t('common:technicalDocumentation.title')} | Puppetplays
+          </title>
           <meta
             name="description"
             content={t('common:technicalDocumentation.metaDescription')}
@@ -85,67 +88,82 @@ function TechnicalDocumentation({ initialData }) {
               </h2>
 
               {/* Sidebar Links from CMS grouped by category */}
-              {processedSidebarItems.length > 0 && (() => {
-                // Group items by category
-                const groupedItems = processedSidebarItems.reduce((acc, item) => {
-                  const category = item.category || t('common:technicalDocumentation.uncategorized');
-                  if (!acc[category]) {
-                    acc[category] = [];
-                  }
-                  acc[category].push(item);
-                  return acc;
-                }, {});
+              {processedSidebarItems.length > 0 &&
+                (() => {
+                  // Group items by category
+                  const groupedItems = processedSidebarItems.reduce(
+                    (acc, item) => {
+                      const category =
+                        item.category ||
+                        t('common:technicalDocumentation.uncategorized');
+                      if (!acc[category]) {
+                        acc[category] = [];
+                      }
+                      acc[category].push(item);
+                      return acc;
+                    },
+                    {},
+                  );
 
-                return Object.entries(groupedItems).map(([category, items]) => (
-                  <div key={category} className={styles.sidebarSection}>
-                    <h3 className={styles.sidebarCategoryTitle}>
-                      {category}
-                    </h3>
-                    <ul className={styles.sidebarList}>
-                      {items.map((item) => (
-                        <li key={item.id}>
-                          {item.link && item.link.startsWith('http') ? (
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`${styles.sidebarLink} ${activeItem === item.id ? styles.active : ''}`}
-                              onClick={() => setActiveItem(item.id)}
-                            >
-                              {item.title}
-                              <span className={styles.externalIcon}>↗</span>
-                            </a>
-                          ) : item.entryId ? (
-                            <Link
-                              href={`/documentation-technique/${item.entryId}/${item.entrySlug}`}
-                              className={`${styles.sidebarLink} ${activeItem === item.id ? styles.active : ''}`}
-                              onClick={() => setActiveItem(item.id)}
-                            >
-                              {item.title}
-                            </Link>
-                          ) : (
-                            <span className={styles.sidebarLink} style={{opacity: 0.6, cursor: 'not-allowed'}}>
-                              {item.title}
-                            </span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ));
-              })()}
-
+                  return Object.entries(groupedItems).map(
+                    ([category, items]) => (
+                      <div key={category} className={styles.sidebarSection}>
+                        <h3 className={styles.sidebarCategoryTitle}>
+                          {category}
+                        </h3>
+                        <ul className={styles.sidebarList}>
+                          {items.map(item => (
+                            <li key={item.id}>
+                              {item.link && item.link.startsWith('http') ? (
+                                <a
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`${styles.sidebarLink} ${activeItem === item.id ? styles.active : ''}`}
+                                  onClick={() => setActiveItem(item.id)}
+                                >
+                                  {item.title}
+                                  <span className={styles.externalIcon}>
+                                    ↗
+                                  </span>
+                                </a>
+                              ) : item.entryId ? (
+                                <Link
+                                  href={`/documentation-technique/${item.entryId}/${item.entrySlug}`}
+                                  className={`${styles.sidebarLink} ${activeItem === item.id ? styles.active : ''}`}
+                                  onClick={() => setActiveItem(item.id)}
+                                >
+                                  {item.title}
+                                </Link>
+                              ) : (
+                                <span
+                                  className={styles.sidebarLink}
+                                  style={{
+                                    opacity: 0.6,
+                                    cursor: 'not-allowed',
+                                  }}
+                                >
+                                  {item.title}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ),
+                  );
+                })()}
             </aside>
 
             {/* Main Content */}
             <main className={styles.mainContent}>
               <div className={styles.header}>
-                              <h1 className={styles.title}>
-                {t('common:technicalDocumentation.title')}
-              </h1>
-              <p className={styles.description}>
-                {t('common:technicalDocumentation.pageDescription')}
-              </p>
+                <h1 className={styles.title}>
+                  {t('common:technicalDocumentation.title')}
+                </h1>
+                <p className={styles.description}>
+                  {t('common:technicalDocumentation.pageDescription')}
+                </p>
               </div>
 
               {/* Content sections with anchors */}
@@ -169,16 +187,20 @@ TechnicalDocumentation.propTypes = {
 };
 
 export async function getServerSideProps({ locale }) {
-  console.log('🚀 [TechnicalDoc Page] Getting server-side props for locale:', locale);
-  
+  console.log(
+    '🚀 [TechnicalDoc Page] Getting server-side props for locale:',
+    locale,
+  );
+
   try {
     const data = await getAllTechnicalDocumentation(locale);
-    
+
     console.log('📦 [TechnicalDoc Page] Data fetched:', {
       hasData: !!data,
       entriesCount: data?.entries?.length || 0,
       hasSidebar: !!data?.globalSets?.technicalDocumentation?.sidebar,
-      sidebarItemsCount: data?.globalSets?.technicalDocumentation?.sidebar?.length || 0
+      sidebarItemsCount:
+        data?.globalSets?.technicalDocumentation?.sidebar?.length || 0,
     });
 
     return {
@@ -188,7 +210,10 @@ export async function getServerSideProps({ locale }) {
       },
     };
   } catch (error) {
-    console.error('❌ [TechnicalDoc Page] Error fetching technical documentation:', error.message);
+    console.error(
+      '❌ [TechnicalDoc Page] Error fetching technical documentation:',
+      error.message,
+    );
     console.error('Full page error:', error);
     return {
       props: {

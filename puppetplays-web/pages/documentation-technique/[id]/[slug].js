@@ -32,8 +32,11 @@ function TechnicalDocumentationDetail({ entry, error }) {
               <div className={styles.error}>
                 <h2>{t('error.documentNotFound')}</h2>
                 <p>{t('error.documentNotFoundDescription')}</p>
-                        <Link href="/documentation-technique" className={styles.backLink}>
-          ← {t('common:technicalDocumentation.backToList')}
+                <Link
+                  href="/documentation-technique"
+                  className={styles.backLink}
+                >
+                  ← {t('common:technicalDocumentation.backToList')}
                 </Link>
               </div>
             </div>
@@ -55,7 +58,7 @@ function TechnicalDocumentationDetail({ entry, error }) {
           <div className={styles.wrapper}>
             <div className={styles.container}>
               <div className={styles.loading}>
-                <div className={styles.spinner}></div>
+                <div className={styles.spinner} />
                 <p>{t('loading')}...</p>
               </div>
             </div>
@@ -70,17 +73,22 @@ function TechnicalDocumentationDetail({ entry, error }) {
   const renderContent = () => {
     // Use introduction as main content since it's a Redactor field
     const contentToRender = entry.introduction;
-    
+
     if (!contentToRender) return null;
-    
+
     // Introduction is a Redactor field, so it contains HTML
-    return <div className={styles.body} dangerouslySetInnerHTML={{ __html: contentToRender }} />;
+    return (
+      <div
+        className={styles.body}
+        dangerouslySetInnerHTML={{ __html: contentToRender }}
+      />
+    );
   };
-  
+
   // Render Sheet Table if present
   const renderSheetTable = () => {
     if (!entry.sheetTable || entry.sheetTable.length === 0) return null;
-    
+
     return (
       <div className={styles.tableContainer}>
         <table className={styles.table}>
@@ -109,10 +117,16 @@ function TechnicalDocumentationDetail({ entry, error }) {
     <Fragment>
       <Layout>
         <Head>
-          <title>{entry.title} | {t('common:technicalDocumentation.title')} | Puppetplays</title>
+          <title>
+            {entry.title} | {t('common:technicalDocumentation.title')} |
+            Puppetplays
+          </title>
           <meta
             name="description"
-            content={entry.description || t('common:technicalDocumentation.metaDescription')}
+            content={
+              entry.description ||
+              t('common:technicalDocumentation.metaDescription')
+            }
           />
         </Head>
 
@@ -124,13 +138,14 @@ function TechnicalDocumentationDetail({ entry, error }) {
                 {t('common:home')}
               </Link>
               <span className={styles.breadcrumbSeparator}>›</span>
-              <Link href="/documentation-technique" className={styles.breadcrumbLink}>
+              <Link
+                href="/documentation-technique"
+                className={styles.breadcrumbLink}
+              >
                 {t('common:technicalDocumentation.title')}
               </Link>
               <span className={styles.breadcrumbSeparator}>›</span>
-              <span className={styles.breadcrumbCurrent}>
-                {entry.title}
-              </span>
+              <span className={styles.breadcrumbCurrent}>{entry.title}</span>
             </nav>
 
             {/* Content */}
@@ -138,42 +153,60 @@ function TechnicalDocumentationDetail({ entry, error }) {
               {/* Header */}
               <header className={styles.header}>
                 <h1 className={styles.title}>{entry.title}</h1>
-                
+
                 {entry.subtitle && (
                   <p className={styles.subtitle}>{entry.subtitle}</p>
                 )}
-                
+
                 {/* Meta information */}
-                {(entry.author || entry.date || entry.version || entry.category) && (
+                {(entry.author ||
+                  entry.date ||
+                  entry.version ||
+                  entry.category) && (
                   <div className={styles.meta}>
                     {entry.author && (
                       <div className={styles.metaItem}>
-                        <span className={styles.metaLabel}>{t('common:technicalDocumentation.author')}</span>
+                        <span className={styles.metaLabel}>
+                          {t('common:technicalDocumentation.author')}
+                        </span>
                         <span className={styles.metaValue}>{entry.author}</span>
                       </div>
                     )}
                     {entry.date && (
                       <div className={styles.metaItem}>
-                        <span className={styles.metaLabel}>{t('common:technicalDocumentation.date')}</span>
+                        <span className={styles.metaLabel}>
+                          {t('common:technicalDocumentation.date')}
+                        </span>
                         <span className={styles.metaValue}>
-                          {new Date(entry.date).toLocaleDateString(router.locale, {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })}
+                          {new Date(entry.date).toLocaleDateString(
+                            router.locale,
+                            {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            },
+                          )}
                         </span>
                       </div>
                     )}
                     {entry.version && (
                       <div className={styles.metaItem}>
-                        <span className={styles.metaLabel}>{t('common:technicalDocumentation.version')}</span>
-                        <span className={styles.metaValue}>{entry.version}</span>
+                        <span className={styles.metaLabel}>
+                          {t('common:technicalDocumentation.version')}
+                        </span>
+                        <span className={styles.metaValue}>
+                          {entry.version}
+                        </span>
                       </div>
                     )}
                     {entry.category && (
                       <div className={styles.metaItem}>
-                        <span className={styles.metaLabel}>{t('common:technicalDocumentation.category')}</span>
-                        <span className={styles.metaValue}>{entry.category}</span>
+                        <span className={styles.metaLabel}>
+                          {t('common:technicalDocumentation.category')}
+                        </span>
+                        <span className={styles.metaValue}>
+                          {entry.category}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -182,7 +215,7 @@ function TechnicalDocumentationDetail({ entry, error }) {
 
               {/* Body content */}
               {renderContent()}
-              
+
               {/* Sheet Table if present */}
               {renderSheetTable()}
 
@@ -201,7 +234,10 @@ function TechnicalDocumentationDetail({ entry, error }) {
                   </span>
                 )}
 
-                <Link href="/documentation-technique" className={styles.backLink}>
+                <Link
+                  href="/documentation-technique"
+                  className={styles.backLink}
+                >
                   {t('common:technicalDocumentation.backToList')}
                 </Link>
 
@@ -235,7 +271,11 @@ TechnicalDocumentationDetail.propTypes = {
 
 export async function getServerSideProps({ params, locale }) {
   try {
-    const entry = await getTechnicalDocumentationEntry(params.id, params.slug, locale);
+    const entry = await getTechnicalDocumentationEntry(
+      params.id,
+      params.slug,
+      locale,
+    );
 
     if (!entry) {
       return {

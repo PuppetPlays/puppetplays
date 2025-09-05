@@ -34,12 +34,17 @@ const Footer = () => {
             {isClientSide && (
               <div className={styles.introContentLinks}>
                 <Link
-                  href={getTranslation('home:ourSiteUrl', '/projet/presentation')}
+                  href={getTranslation(
+                    'home:ourSiteUrl',
+                    '/projet/presentation',
+                  )}
                   className={styles.buttonLink}
                 >
                   {getTranslation('common:knowMore', 'En savoir plus')}
                 </Link>
-                <Link href={getTranslation('home:theTeamUrl', '/projet/equipe')}>
+                <Link
+                  href={getTranslation('home:theTeamUrl', '/projet/equipe')}
+                >
                   {getTranslation('home:theTeam', "L'équipe")}
                 </Link>
                 <Link

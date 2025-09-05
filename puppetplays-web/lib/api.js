@@ -68,14 +68,20 @@ export async function fetchAPI(query, { variables } = {}, token) {
 
     if (json.errors) {
       console.error('❌ GraphQL errors:', JSON.stringify(json.errors));
-      console.error('🔍 Full error details:', JSON.stringify(json.errors, null, 2));
+      console.error(
+        '🔍 Full error details:',
+        JSON.stringify(json.errors, null, 2),
+      );
       console.error('📝 Query that failed:', queryString);
       throw new Error(
         `GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`,
       );
     }
 
-    console.log('✅ GraphQL response data keys:', json.data ? Object.keys(json.data) : 'no data');
+    console.log(
+      '✅ GraphQL response data keys:',
+      json.data ? Object.keys(json.data) : 'no data',
+    );
     return json.data;
   } catch (error) {
     console.error('🔥 API fetch error:', error.message);
@@ -1146,7 +1152,6 @@ export async function getEducationalResourceById(locale, id) {
   }
 }
 
-
 export const getTechnicalDocumentationByIdQuery = `
 query GetTechnicalDocumentationById($locale: [String], $id: [QueryArgument]) {
   entry(section: "technicalDocumentation", site: $locale, id: $id) {
@@ -1323,7 +1328,7 @@ export async function getScientificPublicationById(id, locale) {
   return data;
 }
 
-// Technical Documentation Queries  
+// Technical Documentation Queries
 const getTechnicalDocumentationQuery = `
   query TechnicalDocumentation($locale: [String]) {
     entries(section: "technicalDocumentationEntry", site: $locale) {
@@ -1357,7 +1362,7 @@ const getTechnicalDocumentationQuery = `
 
 export async function getAllTechnicalDocumentation(locale) {
   console.log('📄 [TechnicalDocumentation] Starting fetch for locale:', locale);
-  
+
   try {
     console.log('📤 [TechnicalDocumentation] Sending GraphQL query...');
     const data = await fetchAPI(getTechnicalDocumentationQuery, {
@@ -1365,34 +1370,42 @@ export async function getAllTechnicalDocumentation(locale) {
         locale,
       },
     });
-    
+
     console.log('📥 [TechnicalDocumentation] Raw data received:', {
       hasEntries: !!data?.entries,
       entriesCount: data?.entries?.length || 0,
       hasGlobalSet: !!data?.globalSet,
-      globalSetType: data?.globalSet?.__typename || 'none'
+      globalSetType: data?.globalSet?.__typename || 'none',
     });
-    
+
     // Extraire et aplatir les éléments de la sidebar depuis sidebarContent
-    let sidebarItems = [];
-    
+    const sidebarItems = [];
+
     // Accès direct au globalSet (pas globalSets au pluriel)
     const techDocGlobalSet = data?.globalSet;
-    
+
     // Vérifier si le globalSet existe et a le bon type
-    if (techDocGlobalSet && techDocGlobalSet.__typename === 'technicalDocumentation_GlobalSet') {
-      console.log('✅ [TechnicalDocumentation] GlobalSet found with correct type');
-      
+    if (
+      techDocGlobalSet &&
+      techDocGlobalSet.__typename === 'technicalDocumentation_GlobalSet'
+    ) {
+      console.log(
+        '✅ [TechnicalDocumentation] GlobalSet found with correct type',
+      );
+
       if (techDocGlobalSet.sidebarContent) {
-        console.log('📦 [TechnicalDocumentation] Processing sidebarContent blocks:', techDocGlobalSet.sidebarContent.length);
-        
+        console.log(
+          '📦 [TechnicalDocumentation] Processing sidebarContent blocks:',
+          techDocGlobalSet.sidebarContent.length,
+        );
+
         // sidebarContent est un array de blocs Matrix
         techDocGlobalSet.sidebarContent.forEach((contentBlock, blockIndex) => {
           console.log(`  📌 Block ${blockIndex}:`, {
             hasTitle: !!contentBlock?.sideBarTitle,
-            elementsCount: contentBlock?.sidebarElements?.length || 0
+            elementsCount: contentBlock?.sidebarElements?.length || 0,
           });
-          
+
           // Process each sidebarElement block
           if (contentBlock?.sidebarElements) {
             contentBlock.sidebarElements.forEach((element, elemIndex) => {
@@ -1402,45 +1415,54 @@ export async function getAllTechnicalDocumentation(locale) {
                 sidebarContent: contentBlock.sideBarTitle || '',
                 sidebarLink: element.col2 || '',
                 type: 'element',
-                category: contentBlock.sideBarTitle || 'Uncategorized'
+                category: contentBlock.sideBarTitle || 'Uncategorized',
               };
               console.log(`    → Element ${elemIndex}:`, {
                 label: element.col1,
-                anchor: element.col2
+                anchor: element.col2,
               });
               sidebarItems.push(item);
             });
           }
         });
       } else {
-        console.warn('⚠️ [TechnicalDocumentation] GlobalSet found but no sidebarContent');
+        console.warn(
+          '⚠️ [TechnicalDocumentation] GlobalSet found but no sidebarContent',
+        );
       }
     } else if (!techDocGlobalSet) {
       // Si le globalSet n'existe pas du tout, créer des données mock pour éviter les erreurs
-      console.warn('⚠️ [TechnicalDocumentation] GlobalSet not found in Craft CMS');
+      console.warn(
+        '⚠️ [TechnicalDocumentation] GlobalSet not found in Craft CMS',
+      );
     } else {
-      console.warn('⚠️ [TechnicalDocumentation] GlobalSet found but wrong type:', techDocGlobalSet.__typename);
+      console.warn(
+        '⚠️ [TechnicalDocumentation] GlobalSet found but wrong type:',
+        techDocGlobalSet.__typename,
+      );
     }
-    
+
     console.log('✨ [TechnicalDocumentation] Final result:', {
       entriesCount: data?.entries?.length || 0,
-      sidebarItemsCount: sidebarItems.length
+      sidebarItemsCount: sidebarItems.length,
     });
-    
+
     return {
       entries: data?.entries || [],
       globalSets: {
         technicalDocumentation: {
-          sidebar: sidebarItems
-        }
-      }
+          sidebar: sidebarItems,
+        },
+      },
     };
   } catch (error) {
     console.error('❌ [TechnicalDocumentation] Error fetching:', error.message);
     console.error('Full error details:', error);
-    
+
     // Try a simpler query without the globalSet if the main query fails
-    console.log('🔄 [TechnicalDocumentation] Trying fallback query without globalSet...');
+    console.log(
+      '🔄 [TechnicalDocumentation] Trying fallback query without globalSet...',
+    );
     try {
       const simpleQuery = `
         query SimpleTechnicalDocumentation($locale: [String]) {
@@ -1454,42 +1476,49 @@ export async function getAllTechnicalDocumentation(locale) {
           }
         }
       `;
-      
+
       console.log('📤 [TechnicalDocumentation] Sending fallback query...');
       const simpleData = await fetchAPI(simpleQuery, {
         variables: { locale },
       });
-      
+
       console.log('✅ [TechnicalDocumentation] Fallback successful:', {
-        entriesCount: simpleData?.entries?.length || 0
+        entriesCount: simpleData?.entries?.length || 0,
       });
-      
+
       return {
         entries: simpleData?.entries || [],
         globalSets: {
           technicalDocumentation: {
-            sidebar: []
-          }
-        }
+            sidebar: [],
+          },
+        },
       };
     } catch (fallbackError) {
-      console.error('❌ [TechnicalDocumentation] Fallback query also failed:', fallbackError.message);
+      console.error(
+        '❌ [TechnicalDocumentation] Fallback query also failed:',
+        fallbackError.message,
+      );
       console.error('Fallback error details:', fallbackError);
       return {
         entries: [],
         globalSets: {
           technicalDocumentation: {
-            sidebar: []
-          }
-        }
+            sidebar: [],
+          },
+        },
       };
     }
   }
 }
 
 export async function getTechnicalDocumentationEntry(id, slug, locale) {
-  console.log('📖 [TechnicalDocEntry] Fetching entry with:', { id, slug, locale });
-  
+  console.log('📖 [TechnicalDocEntry] Fetching entry with:', {
+    id,
+    slug,
+    locale,
+  });
+
   const query = `
     query TechnicalDocumentationEntry($id: [QueryArgument], $slug: [String], $locale: [String]) {
       entry(id: $id, slug: $slug, section: "technicalDocumentationEntry", site: $locale) {
@@ -1508,7 +1537,7 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
       }
     }
   `;
-  
+
   try {
     console.log('📤 [TechnicalDocEntry] Sending query...');
     const data = await fetchAPI(query, {
@@ -1518,17 +1547,20 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
         locale,
       },
     });
-    
+
     console.log('📥 [TechnicalDocEntry] Response received:', {
       hasEntry: !!data?.entry,
       entryTitle: data?.entry?.title || 'none',
       hasIntroduction: !!data?.entry?.introduction,
-      sheetTableRows: data?.entry?.sheetTable?.length || 0
+      sheetTableRows: data?.entry?.sheetTable?.length || 0,
     });
-    
+
     return data?.entry || null;
   } catch (error) {
-    console.error('❌ [TechnicalDocEntry] Error fetching entry:', error.message);
+    console.error(
+      '❌ [TechnicalDocEntry] Error fetching entry:',
+      error.message,
+    );
     console.error('Entry error details:', error);
     return null;
   }
@@ -1539,7 +1571,7 @@ export async function getTechnicalDocumentationByAnchor(anchor, locale) {
   if (/^\d+$/.test(anchor)) {
     return getTechnicalDocumentationEntry(anchor, null, locale);
   }
-  
+
   // Si c'est un slug, chercher par slug
   const query = `
     query TechnicalDocumentationBySlug($slug: [String], $locale: [String]) {
@@ -1553,7 +1585,7 @@ export async function getTechnicalDocumentationByAnchor(anchor, locale) {
       }
     }
   `;
-  
+
   try {
     const data = await fetchAPI(query, {
       variables: {

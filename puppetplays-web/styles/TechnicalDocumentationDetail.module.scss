@@ -135,7 +135,7 @@
     font-weight: 600;
     color: #01055b;
     margin: 2rem 0 1rem;
-    
+
     &:first-child {
       margin-top: 0;
     }
@@ -159,7 +159,8 @@
     }
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin: 1.25rem 0;
     padding-left: 1.5rem;
 
@@ -176,7 +177,7 @@
     border-left: 3px solid #2037b1;
     font-style: italic;
     color: #595b78;
-    
+
     p {
       margin: 0;
       color: #595b78;
@@ -187,7 +188,7 @@
     color: #2037b1;
     text-decoration: underline;
     transition: all 0.2s ease;
-    
+
     &:hover {
       color: #595b78;
       text-decoration: underline;
@@ -209,7 +210,7 @@
     background: #f8f9fa;
     border-radius: 6px;
     overflow-x: auto;
-    
+
     code {
       background: none;
       padding: 0;
@@ -235,7 +236,7 @@
 
   thead {
     background: #f8f9fa;
-    
+
     th {
       padding: 0.75rem 1rem;
       text-align: left;
@@ -251,12 +252,12 @@
       &:hover {
         background: #f8f9fa;
       }
-      
+
       &:not(:last-child) td {
         border-bottom: 1px solid #e5e5e5;
       }
     }
-    
+
     td {
       padding: 0.75rem 1rem;
       color: #333;
@@ -302,7 +303,7 @@
     cursor: not-allowed;
     border-color: #e5e5e5;
     color: #8c8fa3;
-    
+
     &:hover {
       background: white;
       color: #8c8fa3;
@@ -317,7 +318,7 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  
+
   .spinner {
     width: 50px;
     height: 50px;
@@ -326,7 +327,7 @@
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
-  
+
   p {
     margin-top: 1.5rem;
     color: #595b78;
@@ -338,13 +339,13 @@
 .error {
   text-align: center;
   padding: 3rem;
-  
+
   h2 {
     font-size: 1.5rem;
     color: #01055b;
     margin-bottom: 0.75rem;
   }
-  
+
   p {
     font-size: 1rem;
     color: #595b78;
@@ -364,7 +365,7 @@
   background: #f0f7ff;
   border-radius: 6px;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background: #e3f0ff;
   }
