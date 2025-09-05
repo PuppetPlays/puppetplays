@@ -169,8 +169,17 @@ TechnicalDocumentation.propTypes = {
 };
 
 export async function getServerSideProps({ locale }) {
+  console.log('🚀 [TechnicalDoc Page] Getting server-side props for locale:', locale);
+  
   try {
     const data = await getAllTechnicalDocumentation(locale);
+    
+    console.log('📦 [TechnicalDoc Page] Data fetched:', {
+      hasData: !!data,
+      entriesCount: data?.entries?.length || 0,
+      hasSidebar: !!data?.globalSets?.technicalDocumentation?.sidebar,
+      sidebarItemsCount: data?.globalSets?.technicalDocumentation?.sidebar?.length || 0
+    });
 
     return {
       props: {
@@ -179,7 +188,8 @@ export async function getServerSideProps({ locale }) {
       },
     };
   } catch (error) {
-    console.error('Error fetching technical documentation:', error);
+    console.error('❌ [TechnicalDoc Page] Error fetching technical documentation:', error.message);
+    console.error('Full page error:', error);
     return {
       props: {
         ...(await serverSideTranslations(locale, ['common', 'home'])),
