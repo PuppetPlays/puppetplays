@@ -1,0 +1,41 @@
+// Mock pour Canvas - évite les erreurs dans les environnements CI
+// Canvas est une dépendance optionnelle de pdfjs-dist
+
+module.exports = {
+  createCanvas: jest.fn(() => ({
+    getContext: jest.fn(() => ({
+      fillRect: jest.fn(),
+      clearRect: jest.fn(),
+      getImageData: jest.fn(() => ({ data: [] })),
+      putImageData: jest.fn(),
+      createImageData: jest.fn(() => ({ data: [] })),
+      setTransform: jest.fn(),
+      drawImage: jest.fn(),
+      save: jest.fn(),
+      fillText: jest.fn(),
+      restore: jest.fn(),
+      beginPath: jest.fn(),
+      moveTo: jest.fn(),
+      lineTo: jest.fn(),
+      closePath: jest.fn(),
+      stroke: jest.fn(),
+      translate: jest.fn(),
+      scale: jest.fn(),
+      rotate: jest.fn(),
+      arc: jest.fn(),
+      fill: jest.fn(),
+      measureText: jest.fn(() => ({ width: 0 })),
+      transform: jest.fn(),
+      rect: jest.fn(),
+      clip: jest.fn(),
+    })),
+    width: 300,
+    height: 150,
+    toDataURL: jest.fn(() => 'data:image/png;base64,'),
+    toBuffer: jest.fn(() => Buffer.alloc(0)),
+  })),
+  loadImage: jest.fn(() => Promise.resolve({})),
+  registerFont: jest.fn(),
+  Image: jest.fn(),
+  ImageData: jest.fn(),
+};
