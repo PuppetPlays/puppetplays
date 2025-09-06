@@ -1536,6 +1536,9 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
     locale,
   });
 
+  // Si on a un ID, ignorer le slug car il peut être différent entre les environnements
+  const querySlug = id ? null : slug;
+
   const query = `
     query TechnicalDocumentationEntry($id: [QueryArgument], $slug: [String], $locale: [String]) {
       entry(id: $id, slug: $slug, section: "technicalDocumentationEntry", site: $locale) {
@@ -1560,7 +1563,7 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
     const data = await fetchAPI(query, {
       variables: {
         id,
-        slug,
+        slug: querySlug,
         locale,
       },
     });
