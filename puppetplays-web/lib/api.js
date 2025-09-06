@@ -1516,57 +1516,16 @@ export async function getAllTechnicalDocumentation(locale) {
   } catch (error) {
     console.error('❌ [TechnicalDocumentation] Error fetching:', error.message);
     console.error('Full error details:', error);
-
-    // Try a simpler query without the globalSet if the main query fails
-    console.log(
-      '🔄 [TechnicalDocumentation] Trying fallback query without globalSet...',
-    );
-    try {
-      const simpleQuery = `
-        query SimpleTechnicalDocumentation($locale: [String]) {
-          entries(section: "technicalDocumentationEntry", site: $locale, limit: 100) {
-            ... on technicalDocumentationEntry_default_Entry {
-              id
-              title
-              slug
-              url
-            }
-          }
-        }
-      `;
-
-      console.log('📤 [TechnicalDocumentation] Sending fallback query...');
-      const simpleData = await fetchAPI(simpleQuery, {
-        variables: { locale },
-      });
-
-      console.log('✅ [TechnicalDocumentation] Fallback successful:', {
-        entriesCount: simpleData?.entries?.length || 0,
-      });
-
-      return {
-        entries: simpleData?.entries || [],
-        globalSets: {
-          technicalDocumentation: {
-            sidebar: [],
-          },
+    
+    // Ne pas faire de fallback, juste retourner une structure vide
+    return {
+      entries: [],
+      globalSets: {
+        technicalDocumentation: {
+          sidebar: [],
         },
-      };
-    } catch (fallbackError) {
-      console.error(
-        '❌ [TechnicalDocumentation] Fallback query also failed:',
-        fallbackError.message,
-      );
-      console.error('Fallback error details:', fallbackError);
-      return {
-        entries: [],
-        globalSets: {
-          technicalDocumentation: {
-            sidebar: [],
-          },
-        },
-      };
-    }
+      },
+    };
   }
 }
 

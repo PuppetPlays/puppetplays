@@ -1,40 +1,60 @@
-field: e55193f5-c240-4e32-89a4-dc79ea9ba233
+field: 9f07dfcb-c4e6-4e3d-9896-d9b8d9f1f58c # Sidebar Content
 fieldLayouts:
-  e263f9dc-8213-4226-8245-37410d5895e2:
+  51ec76d0-576f-4e19-ad01-7afc62615299:
     tabs:
       -
         elementCondition: null
         elements:
           -
             elementCondition: null
-            fieldUid: cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e
+            fieldUid: 7ee9c2cc-f031-47dd-aaba-fba785d19872 # Side bar title
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 69e775a5-ac46-4310-957c-41f1ee50eb00
+            uid: 2462ae93-7af6-4b7f-bf36-6b7ee96266b1
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: 50293fbc-0526-44ba-8495-34a4f1b9cf41
+            fieldUid: d8b3ebb8-f5f1-43aa-84c2-6a9473651f20 # Sidebar Elements
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 82d42faf-0058-4ca0-98f0-6bb4e251fa0a
+            uid: 537eb706-66b9-4ece-a1bb-0431ea1a6658
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 8dee2c76-691c-4d67-a72b-6df926053487
+        uid: aadc28c8-5272-4335-a76c-8ee3f8b0f249
         userCondition: null
 fields:
-  50293fbc-0526-44ba-8495-34a4f1b9cf41:
-    columnSuffix: cvyayvly
+  7ee9c2cc-f031-47dd-aaba-fba785d19872: # Side bar title
+    columnSuffix: csytfkze
+    contentColumnType: text
+    fieldGroup: null
+    handle: sideBarTitle
+    instructions: null
+    name: 'Side bar title'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  d8b3ebb8-f5f1-43aa-84c2-6a9473651f20: # Sidebar Elements
+    columnSuffix: tfdjbqpj
     contentColumnType: text
     fieldGroup: null
     handle: sidebarElements
@@ -42,7 +62,7 @@ fields:
     name: 'Sidebar Elements'
     searchable: false
     settings:
-      addRowLabel: 'Ajouter une ligne'
+      addRowLabel: 'Add a row'
       columnType: text
       columns:
         __assoc__:
@@ -93,26 +113,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Table
-  cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e:
-    columnSuffix: zkvufalq
-    contentColumnType: text
-    fieldGroup: null
-    handle: sideBarTitle
-    instructions: null
-    name: 'Side Bar Title'
-    searchable: false
-    settings:
-      byteLimit: null
-      charLimit: null
-      code: false
-      columnType: null
-      initialRows: 4
-      multiline: false
-      placeholder: null
-      uiMode: normal
-    translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\PlainText
 handle: sidebarElement
 name: 'Sidebar Element'
 sortOrder: 1

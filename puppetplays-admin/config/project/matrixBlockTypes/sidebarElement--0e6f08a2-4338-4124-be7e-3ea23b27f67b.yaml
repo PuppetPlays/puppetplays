@@ -1,40 +1,40 @@
-field: e55193f5-c240-4e32-89a4-dc79ea9ba233
+field: 5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2 # Sidebar Content
 fieldLayouts:
-  e263f9dc-8213-4226-8245-37410d5895e2:
+  e2245638-0327-4e3a-909d-50562a0387e7:
     tabs:
       -
         elementCondition: null
         elements:
           -
             elementCondition: null
-            fieldUid: cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e
+            fieldUid: c8bb1b08-a449-497e-8b63-8d3d9474ebe5 # Side bar title
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 69e775a5-ac46-4310-957c-41f1ee50eb00
+            uid: a406e219-38b6-4626-862d-6ced87afb48d
             userCondition: null
             warning: null
             width: 100
           -
             elementCondition: null
-            fieldUid: 50293fbc-0526-44ba-8495-34a4f1b9cf41
+            fieldUid: a22c7c0c-6aad-4091-8758-2f5b600af921 # Sidebar Elements
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 82d42faf-0058-4ca0-98f0-6bb4e251fa0a
+            uid: 89da9937-11aa-41b5-a030-7a6ec9218f06
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 8dee2c76-691c-4d67-a72b-6df926053487
+        uid: f8780d52-851d-4e13-87eb-c95dddde286b
         userCondition: null
 fields:
-  50293fbc-0526-44ba-8495-34a4f1b9cf41:
-    columnSuffix: cvyayvly
+  a22c7c0c-6aad-4091-8758-2f5b600af921: # Sidebar Elements
+    columnSuffix: twhvhknl
     contentColumnType: text
     fieldGroup: null
     handle: sidebarElements
@@ -93,13 +93,13 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Table
-  cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e:
-    columnSuffix: zkvufalq
+  c8bb1b08-a449-497e-8b63-8d3d9474ebe5: # Side bar title
+    columnSuffix: etmzqjeu
     contentColumnType: text
     fieldGroup: null
     handle: sideBarTitle
     instructions: null
-    name: 'Side Bar Title'
+    name: 'Side bar title'
     searchable: false
     settings:
       byteLimit: null

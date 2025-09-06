@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1c8a7b995a33b097e02eed39d14fe06",
+    "content-hash": "0d63332e271ca234eff0b5037c9a9320",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
@@ -7099,16 +7099,16 @@
         },
         {
             "name": "verbb/super-table",
-            "version": "3.0.15",
+            "version": "3.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verbb/super-table.git",
-                "reference": "ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a"
+                "reference": "c65aeea29b6e5cb21460211d12aebaae1401ede4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verbb/super-table/zipball/ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a",
-                "reference": "ce8830aeb0cc5e8b5065d4e19925a60ddc3f3d4a",
+                "url": "https://api.github.com/repos/verbb/super-table/zipball/c65aeea29b6e5cb21460211d12aebaae1401ede4",
+                "reference": "c65aeea29b6e5cb21460211d12aebaae1401ede4",
                 "shasum": ""
             },
             "require": {
@@ -7161,7 +7161,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-13T02:39:50+00:00"
+            "time": "2025-07-18T09:59:47+00:00"
         },
         {
             "name": "verbb/workflow",

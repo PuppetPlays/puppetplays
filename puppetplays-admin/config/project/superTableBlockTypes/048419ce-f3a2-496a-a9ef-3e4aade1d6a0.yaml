@@ -1,28 +1,28 @@
-changedFieldIndicator: 1669593694
+changedFieldIndicator: 366806788
 field: 4b4d08ca-b6dc-474c-a42e-d262395e7c89 # Sidebar
 fieldLayouts:
-  05c63ea0-3457-494c-8410-f6cceb629e70:
+  9d3d495f-4c03-41da-a731-e4ef9f8611c2:
     tabs:
       -
         elementCondition: null
         elements:
           -
             elementCondition: null
-            fieldUid: e55193f5-c240-4e32-89a4-dc79ea9ba233
+            fieldUid: 5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2 # Sidebar Content
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 46ef9144-c5b1-47fd-83e7-a167031c1bae
+            uid: 2d5cd84b-740a-43c8-bef3-e3d8ad50cf07
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 9a81cd36-7b78-45e7-b5ba-0d98a54e344d
+        uid: e9f2c56f-abe4-428e-9ab7-2b815eb7bca3
         userCondition: null
 fields:
-  e55193f5-c240-4e32-89a4-dc79ea9ba233:
+  5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2: # Sidebar Content
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
@@ -31,7 +31,7 @@ fields:
     name: 'Sidebar Content'
     searchable: false
     settings:
-      contentTable: '{{%matrixcontent_sidebarcontent}}'
+      contentTable: '{{%matrixcontent_sidebarcontent_1}}'
       maxBlocks: null
       minBlocks: null
       propagationKeyFormat: null
