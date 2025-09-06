@@ -1,34 +1,15 @@
+import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
-import PDFViewer from 'components/PDF/PDFViewer';
+import PDFViewer from 'components/PDF/PDFViewerDynamic';
 import { getScientificPublicationById } from 'lib/api';
+import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 import styles from 'styles/PublicationDetail.module.scss';
-
-// Le composant PDFViewer est maintenant importé depuis components/PDF/PDFViewer
-// Il inclut le proxy HAL pour contourner les problèmes CORS
-
-const MetadataRow = ({ label, value, isLink = false, linkProps = {} }) => {
-  if (!value) return null;
-
-  return (
-    <div className={styles.metadataRow}>
-      <dt className={styles.metadataLabel}>{label}:</dt>
-      <dd className={styles.metadataValue}>
-        {isLink ? (
-          <a {...linkProps}>{value}</a>
-        ) : (
-          value
-        )}
-      </dd>
-    </div>
-  );
-};
 
 const PublicationDetailPage = ({ publication, error }) => {
   const { t } = useTranslation(['common', 'project']);
@@ -38,7 +19,9 @@ const PublicationDetailPage = ({ publication, error }) => {
     return (
       <Layout>
         <Head>
-          <title>{t('project:scientificPublications.title')} | Puppetplays</title>
+          <title>
+            {t('project:scientificPublications.title')} | Puppetplays
+          </title>
         </Head>
         <div className={styles.container}>
           <NoResults
@@ -55,175 +38,376 @@ const PublicationDetailPage = ({ publication, error }) => {
     return (
       <Layout>
         <Head>
-          <title>{t('project:scientificPublications.title')} | Puppetplays</title>
+          <title>
+            {t('project:scientificPublications.title')} | Puppetplays
+          </title>
         </Head>
         <div className={styles.container}>
           <NoResults
             icon="search"
             title={t('project:scientificPublications.publicationNotFound')}
-            message={t('project:scientificPublications.publicationNotFoundDesc')}
+            message={t(
+              'project:scientificPublications.publicationNotFoundDesc',
+            )}
           />
         </div>
       </Layout>
     );
   }
 
-  const formatDate = (dateString) => {
+  const formatDate = dateString => {
     if (!dateString) return '';
     try {
       const date = new Date(dateString);
       if (isNaN(date.getTime())) return '';
-      return date.toLocaleDateString(router.locale, {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
+      return date.getFullYear();
     } catch {
       return '';
     }
   };
 
   // Helper function to construct PDF URL from HAL CV Link
-  const constructHalPdfUrl = (halCvLink) => {
-    if (!halCvLink) return null;
-    
+  const constructHalPdfUrl = halCvLink => {
+    console.log('🔍 [DEBUG] Constructing HAL PDF URL from:', halCvLink);
+
+    if (!halCvLink) {
+      console.log('🔍 [DEBUG] No HAL CV Link provided');
+      return null;
+    }
+
     // If it already ends with /document, use as is
     if (halCvLink.endsWith('/document')) {
+      console.log('🔍 [DEBUG] URL already ends with /document:', halCvLink);
       return halCvLink;
     }
-    
+
     // Add /document to the end of the HAL link
-    return `${halCvLink}/document`;
+    const finalUrl = `${halCvLink}/document`;
+    console.log('🔍 [DEBUG] Final HAL PDF URL:', finalUrl);
+    return finalUrl;
+  };
+
+  // Obtenir les identifiants ORCID
+  const getOrcidIdentifiers = authorData => {
+    if (!authorData || !Array.isArray(authorData)) return [];
+    return authorData
+      .map(row => ({
+        author: row.author,
+        orcid: row.orcidIdentifier,
+      }))
+      .filter(item => item.author && item.author.trim());
+  };
+
+  // Obtenir la catégorie formatée
+  const getCategoryLabel = category => {
+    if (!category)
+      return t(
+        'project:scientificPublications.categories.peerReviewedPublications',
+      );
+    return t(`project:scientificPublications.categories.${category}`, category);
   };
 
   // Use real data from CraftCMS
   const pdfUrl = constructHalPdfUrl(publication.halCvLink);
-  const authors = publication.authorAndOrcidIdentifier;
+  console.log('🔍 [DEBUG] Final pdfUrl to be used in PDFViewer:', pdfUrl);
+  console.log('🔍 [DEBUG] publication.halCvLink:', publication.halCvLink);
+  const authorsList = getOrcidIdentifiers(publication.authorAndOrcidIdentifier);
   const doi = publication.doi;
   const publisher = publication.editorName;
-  const publicationDate = publication.date ? formatDate(publication.date) : null;
-  const createdDate = publication.dateCreated ? formatDate(publication.dateCreated) : null;
-  const year = publicationDate || createdDate;
-  const category = publication.scientificCategory;
+  const bookTitle = publication.bookTitle;
+  const volume = publication.volume;
+  const pages = publication.pagesCount;
+  const issn = publication.issn;
+  const placeOfEdition = publication.placeOfEdition;
+  const year =
+    publication.date ||
+    formatDate(publication.dateCreated) ||
+    formatDate(publication.dateUpdated);
+  const category = getCategoryLabel(publication.scientificCategory);
   const languages = publication.languages?.map(lang => lang.title).join(', ');
   const license = publication.license;
   const peerReview = publication.peerReview;
   const nakalaLink = publication.nakalaLink;
 
+  // Format pages with padding (Pages 01 - 150 format)
+  const formatPages = pagesStr => {
+    if (!pagesStr) return '';
+
+    // Convert to string if it's not already
+    const pagesString = String(pagesStr);
+
+    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
+    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (rangeMatch) {
+      const startPage = parseInt(rangeMatch[1]);
+      const endPage = parseInt(rangeMatch[2]);
+      const paddedStart = startPage.toString().padStart(2, '0');
+      const paddedEnd = endPage.toString().padStart(2, '0');
+      return `Pages ${paddedStart} - ${paddedEnd}`;
+    }
+
+    // If it's just a number, assume it starts from page 1
+    const pageMatch = pagesString.match(/(\d+)/);
+    if (pageMatch) {
+      const pageCount = parseInt(pageMatch[1]);
+      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
+    }
+
+    return `Pages ${pagesString}`;
+  };
+
   return (
-    <Layout>
-      <Head>
-        <title>{`${publication.title} | ${t('project:scientificPublications.title')} | Puppetplays`}</title>
-        <meta
-          name="description"
-          content={`${publication.title} - ${t('project:scientificPublications.metaDescription')}`}
-        />
-      </Head>
+    <Fragment>
+      <div className={styles.pageContainer}>
+        <Layout>
+          <Head>
+            <title>{`${publication.title} | ${t('project:scientificPublications.title')} | Puppetplays`}</title>
+            <meta
+              name="description"
+              content={`${publication.title} - ${t('project:scientificPublications.metaDescription')}`}
+            />
+          </Head>
 
-      <div className={styles.container}>
-        <div className={styles.breadcrumb}>
-          <Link href="/publications-scientifiques" className={styles.breadcrumbLink}>
-            ← {t('project:scientificPublications.backToList')}
-          </Link>
-        </div>
-
-        <div className={styles.publicationLayout}>
-          {/* Left Column - Metadata */}
-          <div className={styles.metadataSection}>
-            <header className={styles.publicationHeader}>
-              <h1 className={styles.publicationTitle}>{publication.title}</h1>
-              
-              <div className={styles.publicationMeta}>
-                <span className={styles.metaBadge}>
-                  {t('project:scientificPublications.categories.peerReviewedPublications')}
+          <div className={styles.container}>
+            {/* Breadcrumbs */}
+            <div className={styles.breadcrumbs}>
+              <Link href="/publications-scientifiques">
+                <span className={styles.breadcrumbItemText}>
+                  {t('project:scientificPublications.title')}
                 </span>
-                <span className={styles.metaDate}>
-                  {formatDate(publication.dateCreated)}
+              </Link>
+              <span className={styles.breadcrumbSeparator}>/</span>
+              <span className={styles.breadcrumbCurrent}>
+                <span className={styles.breadcrumbItemText}>
+                  {publication.title}
                 </span>
-              </div>
-            </header>
+              </span>
+            </div>
 
-            <div className={styles.metadataContent}>
-              <dl className={styles.metadataList}>
-                <MetadataRow
-                  label={t('project:scientificPublications.authors')}
-                  value={authors}
-                />
-                
-                <MetadataRow
-                  label={t('project:scientificPublications.publicationDate')}
-                  value={year}
-                />
+            {/* Publication Header */}
+            <div className={styles.publicationHeader}>
+              <h1 className={styles.publicationDetailTitle}>
+                {publication.title}
+              </h1>
 
-                <MetadataRow
-                  label={t('project:scientificPublications.editor')}
-                  value={publisher}
-                />
-
-                <MetadataRow
-                  label={t('project:scientificPublications.doi')}
-                  value={doi}
-                  isLink={true}
-                  linkProps={{
-                    href: `https://doi.org/${doi}`,
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
-                    className: styles.metadataLink
-                  }}
-                />
-
-                <MetadataRow
-                  label={t('project:scientificPublications.languages')}
-                  value={languages}
-                />
-
-                {license && (
-                  <MetadataRow
-                    label={t('project:scientificPublications.license')}
-                    value={license}
-                  />
+              {/* Essential Metadata */}
+              <div className={styles.essentialMetadata}>
+                {authorsList.length > 0 && (
+                  <div className={styles.metaItem}>
+                    <span className={styles.metaLabel}>
+                      {t('project:scientificPublications.authors')}:
+                    </span>
+                    <span className={styles.metaValue}>
+                      {authorsList.map((author, index) => (
+                        <span key={index}>
+                          {author.orcid ? (
+                            <a
+                              href={`https://orcid.org/${author.orcid}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={styles.authorLink}
+                            >
+                              {author.author}
+                            </a>
+                          ) : (
+                            author.author
+                          )}
+                          {index < authorsList.length - 1 && ', '}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
                 )}
-
-                {peerReview !== null && (
-                  <MetadataRow
-                    label={t('project:scientificPublications.peerReview')}
-                    value={peerReview ? t('common:yes') : t('common:no')}
-                  />
+                {year && (
+                  <div className={styles.metaItem}>
+                    <span className={styles.metaLabel}>
+                      {t('project:scientificPublications.publicationDate')}:
+                    </span>
+                    <span className={styles.metaValue}>{year}</span>
+                  </div>
                 )}
-
                 {category && (
-                  <MetadataRow
-                    label={t('project:scientificPublications.category')}
-                    value={category}
-                  />
+                  <div className={styles.metaItem}>
+                    <span className={styles.metaLabel}>
+                      {t('project:scientificPublications.category')}:
+                    </span>
+                    <span className={styles.categoryBadge}>{category}</span>
+                  </div>
                 )}
-              </dl>
+              </div>
+            </div>
 
-              <div className={styles.externalLinks}>
-                <h3 className={styles.linksTitle}>{t('project:scientificPublications.externalAccess')}</h3>
-                
-                <div className={styles.linksList}>
+            {/* Main Content Layout */}
+            <div className={styles.mainLayout}>
+              {/* PDF Viewer - Central Element */}
+              <div className={styles.pdfContainer}>
+                {pdfUrl ? (
+                  <PDFViewer
+                    halUrl={pdfUrl}
+                    title={publication.title}
+                    height="700px"
+                    showControls={true}
+                    showDownloadButton={true}
+                    showHalMetadata={true}
+                    enableMetadataFallback={true}
+                    className={styles.pdfViewer}
+                  />
+                ) : (
+                  <div className={styles.pdfViewerPlaceholder}>
+                    <div className={styles.placeholderContent}>
+                      <h3>
+                        {t('project:scientificPublications.noPdfAvailable')}
+                      </h3>
+                      <p>
+                        Le document PDF n&apos;est pas disponible pour cette
+                        publication.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Volume and Pages Information */}
+                {(volume || pages) && (
+                  <div className={styles.volumePagesInfo}>
+                    {volume && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.infoValue}>{volume}</span>
+                      </div>
+                    )}
+                    {pages && (
+                      <div className={styles.infoItem}>
+                        <span className={styles.infoValue}>
+                          {formatPages(pages)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Sidebar - Publication Details */}
+              <div className={styles.sidebar}>
+                {/* Publication Information */}
+                <div className={styles.sidebarBlock}>
+                  <h3 className={styles.sidebarTitle}>
+                    {t('project:scientificPublications.publicationDetails')}
+                  </h3>
+                  <div className={styles.detailsList}>
+                    {bookTitle && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.in')}
+                        </span>
+                        <span>{bookTitle}</span>
+                      </div>
+                    )}
+
+                    {publisher && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.editor')}
+                        </span>
+                        <span>{publisher}</span>
+                      </div>
+                    )}
+
+                    {issn && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.issn')}
+                        </span>
+                        <span>{issn}</span>
+                      </div>
+                    )}
+
+                    {placeOfEdition && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.placeOfEdition')}
+                        </span>
+                        <span>{placeOfEdition}</span>
+                      </div>
+                    )}
+
+                    {languages && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.languages')}
+                        </span>
+                        <span>{languages}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Academic Information */}
+                <div className={styles.sidebarBlock}>
+                  <h3 className={styles.sidebarTitle}>
+                    Informations académiques
+                  </h3>
+                  <div className={styles.detailsList}>
+                    {peerReview !== null && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.peerReview')}
+                        </span>
+                        <span
+                          className={`${styles.peerReviewBadge} ${peerReview ? styles.reviewed : styles.notReviewed}`}
+                        >
+                          {peerReview ? t('common:yes') : t('common:no')}
+                        </span>
+                      </div>
+                    )}
+
+                    {license && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>
+                          {t('project:scientificPublications.license')}
+                        </span>
+                        <span>{license}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* External Links */}
+            {(pdfUrl || doi || nakalaLink) && (
+              <div className={styles.externalLinksSection}>
+                <h2 className={styles.sectionTitle}>
+                  {t('project:scientificPublications.externalAccess')}
+                </h2>
+                <div className={styles.externalLinksGrid}>
                   {pdfUrl && (
                     <a
-                      href={pdfUrl}
+                      href={publication.halCvLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.externalLink}
+                      className={styles.externalLinkItem}
                     >
-                      <span className={styles.linkIcon}>🔗</span>
-                      {t('project:scientificPublications.readOnHal')}
+                      <div className={styles.linkTitle}>
+                        {t('project:scientificPublications.readOnHal')}
+                      </div>
+                      <div className={styles.linkDescription}>
+                        {t('project:scientificPublications.pdfNote')} HAL
+                      </div>
                     </a>
                   )}
-                  
+
                   {doi && (
                     <a
                       href={`https://doi.org/${doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.externalLink}
+                      className={styles.externalLinkItem}
                     >
-                      <span className={styles.linkIcon}>📄</span>
-                      {t('project:scientificPublications.accessViaDoi')}
+                      <div className={styles.linkTitle}>
+                        {t('project:scientificPublications.accessViaDoi')}
+                      </div>
+                      <div className={styles.linkDescription}>
+                        {t('project:scientificPublications.doiNote')}
+                      </div>
                     </a>
                   )}
 
@@ -232,33 +416,24 @@ const PublicationDetailPage = ({ publication, error }) => {
                       href={nakalaLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.externalLink}
+                      className={styles.externalLinkItem}
                     >
-                      <span className={styles.linkIcon}>🔗</span>
-                      {t('project:scientificPublications.accessViaNakala')}
+                      <div className={styles.linkTitle}>
+                        {t('project:scientificPublications.accessViaNakala')}
+                      </div>
+                      <div className={styles.linkDescription}>
+                        {t('project:scientificPublications.pdfNote')} Nakala
+                      </div>
                     </a>
                   )}
                 </div>
               </div>
-            </div>
+            )}
           </div>
-
-          {/* Right Column - PDF Viewer */}
-          <div className={styles.pdfSection}>
-            <PDFViewer 
-              halUrl={pdfUrl}
-              title={publication.title}
-              height="700px"
-              showControls={true}
-              showDownloadButton={true}
-              showHalMetadata={true}
-              enableMetadataFallback={true}
-              className={styles.pdfViewer}
-            />
-          </div>
-        </div>
+        </Layout>
+        <Footer />
       </div>
-    </Layout>
+    </Fragment>
   );
 };
 
@@ -267,7 +442,7 @@ export async function getStaticPaths({ locales }) {
   // Once GraphQL is configured, we'll fetch all publication IDs here
   return {
     paths: [],
-    fallback: 'blocking'
+    fallback: 'blocking',
   };
 }
 
@@ -276,7 +451,7 @@ export async function getStaticProps({ params, locale }) {
 
   try {
     const data = await getScientificPublicationById(id, locale);
-    
+
     if (!data?.entry) {
       return {
         notFound: true,
@@ -286,27 +461,35 @@ export async function getStaticProps({ params, locale }) {
     return {
       props: {
         publication: data.entry,
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         error: null,
       },
       revalidate: 3600, // Revalidate every hour
     };
   } catch (error) {
     console.error('Error fetching scientific publication:', error);
-    
+
     // For development, return mock data
     const mockPublication = {
       id: parseInt(id),
       slug,
       title: 'Publication de test - ' + slug,
       dateCreated: '2023-01-01',
-      dateUpdated: '2023-01-01'
+      dateUpdated: '2023-01-01',
     };
 
     return {
       props: {
         publication: mockPublication,
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         error: null,
       },
       revalidate: 60,
@@ -314,4 +497,4 @@ export async function getStaticProps({ params, locale }) {
   }
 }
 
-export default PublicationDetailPage; 
+export default PublicationDetailPage;

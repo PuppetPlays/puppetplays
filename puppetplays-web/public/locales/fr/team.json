@@ -19,25 +19,21 @@
   "projectDescription": "Description du projet",
   "bibliography": "Bibliographie",
   "relatedPublications": "Publications liées",
-  
   "teamMembers": {
     "title": "Membres de l'équipe",
     "description": "L'équipe de PuppetPlays réunit des spécialistes internationaux du théâtre de marionnettes, de l'histoire culturelle et des humanités numériques."
   },
-  
   "scientificCommittee": {
     "title": "Comité scientifique",
     "description": "Le conseil scientifique apporte son expertise et ses conseils au projet PuppetPlays, assurant la rigueur académique et la collaboration internationale."
   },
-  
   "partners": {
     "title": "Partenaires",
     "description": "Le projet PuppetPlays est rendu possible grâce au soutien de nos partenaires et institutions de financement."
   },
-  
   "acknowledgments": {
     "title": "Remerciements",
     "content": "Le projet PuppetPlays souhaite remercier chaleureusement tous les stagiaires et vacataires qui ont contribué à la réalisation de cette base de données par leur travail rigoureux et leur engagement : Ambrine Altruda, Talia Bernard, Salya Chafai-Nefnaf, Fiona Gazzaniga, Vagia Grounidou, Sofiia Hultiaieva, Orane Larue, Morgane Le Bots, Lynda Magne, Anaïs Malfatti, Pierre Massinon, Manon Nafraicheur, Elane Ouamrane, Shivam Pirmez, Aurora Lily Sabath, Galina Safarian, Youcef Tabti, Natacha Tell, Victorin Thillot, Noor Zenasni-Coplo."
   },
   "partnersNote": "Ce projet est financé par le Programme de recherche et d'innovation Horizon 2020 de l'Union Européenne, dans le cadre du Grant Agreement ERC 835193"
-} 
+}

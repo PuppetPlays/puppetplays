@@ -308,7 +308,12 @@ export async function getStaticPaths({ locales }) {
 export async function getStaticProps({ params, locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'project', 'team', 'home'])),
+      ...(await serverSideTranslations(locale, [
+        'common',
+        'project',
+        'team',
+        'home',
+      ])),
     },
     revalidate: 3600, // Revalidate every hour
   };

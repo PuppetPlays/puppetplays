@@ -1,0 +1,2045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title ref="https://puppetplays.eu/en/oeuvres/288731/la-case-de-la-sorcière">La Case de la sorcière</title>
+                <respStmt>
+                    <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+                    <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+                </respStmt>
+                <respStmt>
+                    <name xml:id="CN">Charlotte Nalin</name>
+                    <resp>Transcription and edition</resp>
+                </respStmt>
+                <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+                <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+                <funder>European Research Council - ERC</funder>
+            </titleStmt>
+            <publicationStmt>
+                <distributor>Musée Gadagne - Lyon, France</distributor>
+                <availability status="free">
+                    <licence>Public domain</licence>
+                </availability>
+                <idno type="DOI"/>
+            </publicationStmt>
+            <notesStmt>
+                <note>A man and his valet free a woman from an enchanter</note>
+                <note>The manuscript of the play is kept in the Fonds Léopold Dor in the Musée des
+                    Arts de la Marionnette-Musée Gadagne in Lyon. It was bought by Léopold Dor in 1927.
+                    A comment on the manuscript by its previous owner – Durafour – indicates: “Old play.
+                    Only one man, called Tertillon, performed it. He was specialised in Fééries
+                     and played them very well. He performed in Saint-Étienne, but he played for
+                    a long time at the Caveau de la Place des Célestins (Lyon).” The
+                    following indication is given on the last page: “Théâtre Guignol Lyonnais, Eugène
+                    Pierrot, theatre director. Lyon.”</note>
+            </notesStmt>
+            <sourceDesc>
+                <listPerson>
+                    <personGrp role="audience">
+                        <p>All audiences</p>
+                    </personGrp>
+                </listPerson>
+                <listBibl>
+                    <msDesc>
+                        <msIdentifier>
+                            <repository>Musée Gadagne</repository>
+                        </msIdentifier>
+                        <physDesc>
+                            <objectDesc>
+                                <p>Number of pages in the original document: 23</p>
+                                <p>Number of acts in the original document: 4</p>
+                                <p>Format of the original document: Manuscript</p>
+                            </objectDesc>
+                        </physDesc>
+                    </msDesc>
+                </listBibl>
+                <bibl>
+                    <title type="main">La Case de la sorcière</title>
+                    <date>Second half of the 19th century</date>
+                </bibl>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <langUsage>
+                <language ident="fra">French</language>
+            </langUsage>
+            <textClass>
+                <keywords source="animationTechniques">
+                    <term source="https://puppetplays.eu/en/techniques-d-animation/521/glove-puppets">Glove-puppet</term>
+                </keywords>
+                <keywords source="literaryTones">
+                    <term>Fantasy</term>
+                    <term>Comical</term>
+                </keywords>
+                <keywords source="theatricalTechniques">
+                    <term>Situation comedy</term>
+                    <term>Word warping</term>
+                    <term>Apparition of a wizard</term>
+                    <term>Magic spell</term>
+                    <term>Set that comes to life</term>
+                    <term>Slaps</term>
+                    <term>Change of age</term>
+                    <term>Invisible force</term>
+                </keywords>
+                <keywords source="genre">
+                    <term>Féerie en quatre tableaux précédée d'un Prologue</term>
+                </keywords>
+                <keywords source="keywords">
+                    <term>Love</term>
+                    <term>Magic</term>
+                    <term>Valet</term>
+                    <term>Kidnapping</term>
+                    <term>Test</term>
+                    <term>Portrait</term>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <encodingDesc>
+            <editorialDecl>
+                <normalization method="silent">
+                    <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+                    <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+                    <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+                    <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+                </normalization>
+                <punctuation marks="some">
+                    <p>Punctuation has been corrected according to modern rules.</p>
+                </punctuation>
+            </editorialDecl>
+            <projectDesc>
+                <p>Text collected during the PuppetPlays project funded by European Union (Grant
+                    Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+                    re-evaluate the contribution of the puppets repertoire to the construction of
+                    European cultural identity. Its main goals is to collect a corpus of
+                    representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+                    France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+                    17th and the 21th century. It also tries to identify the characteristics of
+                    puppet dramaturgy and their variations depending on eras, cultural spheres,
+                    producing conditions, and the aimed public.</p>
+                <p>This edition is the result of university research work, reviewed by the principal investigator.</p>
+                <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+                    Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+                </ref> licence. This license enables reusers to distribute, remix, adapt, and
+                    build upon the material in any medium or format for non-commercial purposes
+                    only, and only so long as attribution is given to the creator. If you remix,
+                    adapt, or build upon the material, you must license the modified material under
+                    identical terms. </p>
+            </projectDesc>
+        </encodingDesc>
+        <revisionDesc>
+            <change when-iso="2024-05-02" who="#CN">Text transcription and encoding</change>
+            <change when-iso="2025-03-24" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <front>
+            <pb n="01" facs=""/>
+            <docTitle>
+                <titlePart type="main">La Case de la Sorcière</titlePart>
+                <titlePart type="sub">Féerie en quatre tableaux précédée d'un prologue</titlePart>
+            </docTitle>
+            <docDate>Deuxième moitié du 19e siècle</docDate>
+          <!--  <docDate>Le 1er mai 1927</docDate>
+            <docAuthor><persName>M. Mongobert</persName></docAuthor> -->
+            <pb n="02" facs=""/>
+            <castList>
+                <head type="personnage">Personnages</head>
+                <castItem>
+                    <role>Merlin</role><roleDesc>, Génie</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Arthur</role><roleDesc>, Peintre</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Richepance</role><roleDesc>, Nécromancien</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Guignol</role><roleDesc>, Élève d'Arthur</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>[Marie]</role><roleDesc>, Amante d'Arthur</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>La Fée merveilleuse</role>
+                </castItem>
+            </castList>
+
+        </front>
+        <body>
+             <div type="2">
+              <!--   <stage type="saut">Levez-vous les amis, levez-vous. Le soleil est dans la plaine.
+                Levez-vous, les amis levez-vous. Le soleil entre chez vous.</stage> -->
+
+           
+                <head type="div5">[Prologue]</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>[Guignol, </name>
+                            <name>Arthur]</name>
+                        </personGrp>
+                    </listPerson>
+                    
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(seul)</stage>
+
+                        <p>Oh ! nom d’un rat, la bonne nuit que je viens de passer. Cela n'est pas
+                            étonnant, depuis que mon maître est amoureux, nous sommes toujours en
+                            course. Depuis huit jours, voilà la première nuit que je couche dans un
+                            lit à la frétille. Mon lit se compose de deux clins de pailles ; et
+                            grâce à un gône qui ne marquait pas trop bien, qui a enlevé la colombe
+                            de mon maître. Il tarde bien à venir. Si je mangeais pour prendre
+                            patience ? Tiens, c'est une idée. <stage type="corps">(Il va à un buffet qui se
+                                métamorphose.)</stage> Ah nom d’un rat, qu'est ce que ça veut dire ?
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Ça veut dire, mon cher Guignol, que je suis le plus malheureux des hommes,
+                            que celle que j'aime est au pouvoir d'un grand magicien et que
+                            maintenant je n'ai plus qu'à mourir. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Vous voulez mourir, et que deviendrai-je moi ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Sois tranquille mon pauvre Guignol, je ne te laisserais pas sur cette
+                            terre ingrate, tu mourras avec moi.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oui, monsieur, je le veux bien, à condition que nous mourions de
+                            vieillesse.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Va, tu ne seras jamais qu'un poltron. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>J’espère l'être fort longtemps. Je vais voir si je trouverai quelque
+                            chose à manger.</p>
+                        <stage type="corps">(Il sort.)</stage>
+                    </sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="2">Scène 2</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Arthur </name><stage type="listPerson">seul, puis</stage><name>  Marie </name><stage type="scene">en vieille</stage>
+                        </personGrp>
+                    </listPerson>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Plus d’espoir ! Oh Marie ! Au moment où tu allais être à moi pour
+                            toujours, tu m’es enlevée par ce misérable et je veux mourir. Non... je
+                            me vengerai de ce monstre, il a l'enfer pour lui, moi j'aurai mon bon
+                            génie. Allons Arthur, du courage, la lutte sera terrible, j’en sortirai
+                            vainqueur ou j'en mourrai. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Oui jeune homme, tu pourras sortir vainqueur, mais il te faudra beaucoup
+                            de courage, de persévérance. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Bonne femme, j’en aurai, mais pourvu que ce malheureux ne la fasse pas
+                            mourir. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Soit tranquille jeune homme, elle est à l’abri de sa fureur, il ne lui
+                            peut rien. C'est son amour pour toi qui l’a perdue. Malgré ça, elle a
+                            encore assez de pouvoir pour se garantir des maléfices de ce mauvais
+                            génie. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Puissiez-vous dire vrai, mais que pouvait-il avoir contre elle ? Me la
+                            ravir ainsi... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Je vais te le dire, il y a de cela deux-cents ans... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <stage type="pers">(étonné)</stage>
+
+                        <p>Deux-cents ans... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+                        <p> Ne m'interromps pas, jeune homme, je disais donc : deux-cents ans, le grand
+                            Merlin devint amoureux de la Fée aux anges. Elle, pour doubler son
+                            pouvoir, lui avait donné quelqu’espoir ; tant qu'elle est restée libre,
+                            il ne l'a pas chagrinée. Mais aussitôt qu'il sut qu'elle avait de
+                            l'amour pour toi, il l'a enlevée. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Mais qui êtes-vous donc pour savoir tout ça ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Peu t’importe. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <p> Mais où trouver ce Merlin ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+                        <p> Où le trouver ? Il doit donner une fête aujourd'hui. Prends cet anneau,
+                            tu pourras pénétrer chez lui sans qu’il te voie. Seulement pas
+                            d’imprudences, tu y verras celle que tu aimes. Tâche de te maintenir,
+                            sans cela tout est perdu. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Oh... merci... mille fois merci... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Adieu, à bientôt.</p>
+                        <stage type="corps">(Elle sort.)</stage>
+                    </sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="3">Scène 3</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Arthur, </name><stage type="listPerson">seul puis</stage>
+                            <name> Guignol</name>
+                        </personGrp>
+                    </listPerson>
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <p> Tout est mystère autour de moi. Deux-cents ans que Merlin est amoureux d'elle.
+                            Deux-cents ans, mais quel âge a-t-elle donc ? Je m'y perds ! Ah, bah ! Suivons
+                            notre destinée Guignol ! Guignol ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Me v’la not’ maître, j'étais en train de chercher à chiquer. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol, oublions tout ce qui nous est arrivé jusqu'à ce jour car c'est à
+                            en perdre la tête. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Si la mienne n'était pas bien attachée sur les épaules, je crois qu'il y
+                            a longtemps que je l’aurais perdue. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Je veux l’oublier, me remettre au travail. Allons, mes pinceaux chéris,
+                            vous allez faire de nouveaux chefs-d'œuvre. Guignol, à mon atelier !
+                                <stage type="corps">(Il sort.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(seul)</stage>
+
+                        <p>Oui, à votre atelier. Ah, ma pauvre tête, je crois qu'elle tourne. <stage
+                                type="corps">(Sa tête se met à tourner de plus en plus
+                                vite.)</stage> Ah, mon dieu, je crois qu'elle tourne pour tout de
+                            bon. Mais je prends des éblouissements. <stage type="corps">(Il sort en
+                                courant.)</stage>
+                        </p>
+                    </sp>
+                </div>
+            </div>
+            <div type="2">
+                <head type="tableau" n="1">Tableau I</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Arthur </name>
+                            <stage type="listPerson">puis</stage><name> Guignol</name>
+                        </personGrp>
+                    </listPerson>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Malgré moi j'y pense toujours. Oh ! Marie, maudit soit le jour où je t’ai
+                            rencontrée, tu as empoisonné ma vie. Où diable ce Merlin l'a-t-il
+                            transportée, car enfin, malgré toutes mes recherches, impossible de
+                            pouvoir la rencontrer. Allons, n’y pensons plus... et
+                            travaillons... Guignol ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Vouaaaa... la... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Apporte mes chevalets. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Tout de suite, monsieur. <stage type="corps">(Il sort.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>C'est égal, c'est plus fort que la volonté, car elle avait de l’amour
+                            pour moi. Elle m’aimait et moi je l'adorais. Allons Arthur, du courage,
+                            oublie cette folle passion ! Et dire qu’elle consentait à m’épouser, moi
+                            qui auprès d’elle ne suis qu’un petit ver de terre. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol </speaker>
+                        <stage type="pers">(apportant un chevalet où il y a un tableau)</stage>
+
+                        <p>Comment, cette jolie demoiselle épouserait un petit verre, pour moi je me
+                            contenterais de le boire. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Elle me l’avait juré. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Mais pour épouser, il faudrait au moins ne pas mourir de faim. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>C'est juste, et le courage commence à m’abandonner. Depuis 18 mois que
+                            nous nous donnons à tous les diables. <stage type="corps">(On frappe à la
+                                porte.)</stage> Entrez ! Va ouvrir, Guignol. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Donnez-vous la peine d'entrer. Tiens, personne. </p>
+                    
+                    <stage type="saut">Tandis qu'il est allé à la porte, Merlin a paru tout à coup
+                        au milieu de la scène.</stage></sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="2">Scène 2 </head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>Merlin</name>
+                        </personGrp>
+                    </listPerson>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Merci...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <stage type="pers">(surpris)</stage>
+
+                        <p>Tiens...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(surpris)</stage>
+
+                        <p>Ah ! Bah !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Mais comment vous trouvez-vous ici, Seigneur ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Mais très bien.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Pardon, on vous demande comment il se fait que...</p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Vous m'avez dit « entrez » je suis entré. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Par où ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <stage type="pers">(feignant de ne pas entendre)</stage>
+
+                        <p>Ce que je désire ? C'est simple et clair, je désire faire un joli cadeau
+                            à ma fiancée. Je veux lui donner quelque chose d'enivrant, de fascinant.
+                            J'ai cherché ce que je trouverais de plus adorable, je n'ai trouvé que
+                            mon... portrait. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(à part)</stage>
+
+                        <p>As-tu fini, vieux marabout ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Votre portrait.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Faites-le bien ressemblant, je le couvrirai d’or.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Tout entier ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Tout entier.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Alors Monsieur, on va vous faire en pied, sept fois gras comme nature, à
+                            cheval sur un éléphant. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Non je veux un portrait en buste, mais qui représente tous les charmes de
+                            ma personne.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Je me mets à l'œuvre. <stage type="corps">(Il commence à
+                                peindre.)</stage></p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(va prendre un chevalet)</stage>
+
+                        <p>Et moi aussi. 
+                        <stage type="corps">(Il se met à peindre.)</stage></p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Vous, prenez garde, je ne suis pas facile à attraper.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Bah, ce n'est pas le diable.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <stage type="pers">(riant)</stage>
+
+                        <p>Eh ! Eh ! Eh !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>C'est dit ! Vous aurez deux portraits : vous serez fait par mon maître et
+                            refait par moi.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Refais-moi, ça serait drôle.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Tournez-vous de ce côté, je vous prie.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Me voici, Raphaël.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Tournez-vous par ici...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <p>Me voilà jeune apelle.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Hein ! Comment qu’il m’appelle ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <p>Je t'appelle apelle, allez.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Nous y sommes. Mais ça n’est pas facile monsieur, parce qu'à première
+                            vue vous êtes laid, mais au détail vous perdez beaucoup. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Vous croyez ? <stage type="corps">(bas)</stage> Attends, je vais t'en
+                            donner, du détail.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Ah ! pardon, de quelle couleur sont vos dents ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Mes dents...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oui je vous tiens par la bouche et je veux vous mettre un peu de dents
+                            dedans.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>C'est juste, eh bien, regardez. </p><stage type="saut">Guignol regarde, il
+                            met sa main sur le portrait qui ouvre la bouche et lui mord la
+                            main.</stage>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oh ! la la ! Au secours, il me mord ! Veux-tu bien me lâcher ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Voyons, qu'as-tu à crier ? </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Le portrait qui m’a mordu.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Bah ! Tu es fou.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Il perd la tête. Vous perdez la tête, mon ami.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>C'est possible. <stage type="corps">(Il montre le poing au
+                                portrait.)</stage> Mais si ça t'arrive encore. <stage type="corps"
+                                >(Le portrait lui donne un soufflet.)</stage> Oh !... Il m’a frappé !
+                            Monsieur, j’ai fait un portrait frappant. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Allons, te tairas-tu malheureux ? Tu troubles l’inspiration de mon
+                            génie.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Sera-ce bientôt achevé ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Encore un coup de pinceau et vous êtes complet. Voilà qui est fait.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Voyons...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Un moment que je voie et que j’admire. <stage type="corps">(Il regarde le
+                                portrait fait par Arthur.)</stage> Oh, que c'est beau.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>C'est bon, remets ce portrait à monsieur.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(remet le portait sur le chevalet)</stage>
+                        <p> C'est juste, voilà. Ah ! Et le mien, tenez et admirez. <stage
+                                type="corps">(Il fait voir le portrait, ça se trouve [être] le
+                                sien.)</stage> Tiens, je me suis trompé et j'ai fait mon portrait en
+                            voulant faire le sien. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Ah ! C'est votre portrait. <stage type="corps">(Il se change en tête
+                                d'âne.)</stage></p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Eh oui, mon portrait, regardez, notre maître.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Une tête d'âne !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Une tête d'âne ? <stage type="corps">(Il regarde.)</stage> C'est vrai,
+                            jamais je n’ai vu pareille figure dans ma famille. Va-t-en au diable !
+                                <stage type="corps">(Le tableau s’enlève et disparaît.)</stage>
+                            Tiens, où est-il ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Au diable...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Qu’il y reste.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Comment trouvez-vous votre portrait ? </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Pas mal. <stage type="corps">(à Guignol)</stage> Jeune homme, mettez ce
+                            portrait dans le fond, que je le voie de loin.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(prend le portrait et le met contre le fond)</stage>
+                        <p>Voilà. <stage type="corps">(Le portrait disparaît et paraît sur la
+                                coulisse de droite.)</stage> Où est-il donc ? Ah, le voilà.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Donnez-le moi.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Attendez que je le décroche. <stage type="corps">(Il va pour le
+                                décrocher, il disparaît et reparaît sur la coulisse de
+                                gauche.)</stage> Tiens, il n’y est plus.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Voyez-le là !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Mais il était là.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Tu n'y vois pas.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Vous n'y voyez pas mon ami, vous avez la berlue.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>J’ai la breluque, ça se peut, mais là je le vois.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Vous croyez : alors, donnez-le moi.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Attendez ! <stage type="corps">(Il va pour le prendre, il disparaît et
+                                reparaît à l’autre coulisse.)</stage> Encore, oh je l’attraperai !
+                                <stage type="corps">(Il court, les changements se font plus
+                                vite.)</stage> Ah, nom d'un rat, je n'en peux plus ! J'étouffe ! Je
+                            ne peux pas l'attraper. Eh bien, Va-t’en au diable ! <stage type="corps"
+                                >(Le portrait disparaît et se retrouve dans les mains de
+                                Merlin.)</stage></p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Ça y est.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Comment trouvez-vous cette pureté de dessin, cette richesse de coloris et
+                            cette ressemblance ? C'est ça ?</p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p>Tiens, il l’a donc... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Oui, ce n’est pas mal, il est très joli. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Ce n'est pas la ressemblance qui l'embellit. Allons, voilà le moment de le
+                            couvrir d’or. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Maintenant monsieur, il s’agit en effet de le payer. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Pas en effet, en or. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Oui, le paiement. Voilà ma bourse. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Monsieur, je vous remercie. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Et moi, je n'ai que de truffe. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Toi, pour t’encourager, voilà un louis. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(saluant)</stage>
+
+                        <p>Monsieur je vous... du moins monseigneur, je vous remercie et croyez bien
+                            certainement, je ne sais plus ce que je bavarde. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>C'est bien, Guignol, c'est bien. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <stage type="pers">(à Guignol)</stage>
+
+                        <p>Mon ami, passe devant pour m'ouvrir la porte. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Monsieur, tout de suite. <stage type="corps">(Il sort, Arthur se
+                                retourne, Merlin disparaît.)</stage> Donnez-vous la peine de passer.
+                            Tiens, où est-il donc, n’tre maître, où est-il ?</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Qui ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Eh ben, ce Monsieur. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Il est sorti.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Sorti par où ?</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Par la porte sans doute.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Mais je l'aurai bien vu sortir.</p>
+                    </sp>
+
+                </div>
+            </div>
+            <div type="2">
+                <head type="tableau" n="2">Tableau II</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>[Merlin]</name>
+                        </personGrp>
+                    </listPerson>
+                    
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Maintenant, mon jeune amoureux, tu peux venir. J'ai brisé tout pouvoir que
+                            l’on aurait pu te donner par cette bourse qui ne peut que lui envoyer
+                            de mauvaises. Elle renferme d’aussi belles choses que la boîte de
+                            Pandore. Allons, c'est un homme de perdu ; il était mon rival. Ah belle
+                            fée aux anges, tu me préfères un simple mortel ? Elle l’oubliera et alors
+                            que mon bonheur est assuré. Allons, que la fête commence. </p><stage
+                                type="saut">Il descend, un nuage qui s’ouvre : on voit la fée aux
+                                anges endormie.</stage>
+
+                        <stage type="saut">Ballet</stage>
+                        <stage type="saut">Après le ballet, Arthur et Guignol arrivent. Il voit la Fée
+                            endormie, il va pour s'en approcher, le nuage se ferme et disparaît.</stage></sp>
+
+                    
+                </div>
+                <div type="3">
+                    <head type="scene" n="2">Scène 2</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Arthur, </name>
+                            <name>Guignol </name><stage type="listPerson">puis</stage>
+                            <name> Merlin</name>
+                        </personGrp>
+                    </listPerson>
+
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol mon ami, tu l'as vue, qu'elle est belle !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Moi, je n’ai rien vu du tout.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Comment ? Tu ne l'as pas vue, couchée là sur un nuage ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Je n’ai pas plus vu de nuage que de fille. <stage type="corps">(On entend
+                                donner un soufflet.)</stage> Celui-là, je ne l'ai pas vu mais je
+                            l’ai senti.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Senti quoi ? Ne vas-tu pas recommencer tes balivernes ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p>Je ne sais pas s'il y a de bras qui veine, mais je sais que je viens de
+                            recevoir un soufflet et le gône qui tape m’envoie ça premier minèro.
+                                <stage type="corps">(autre soufflet)</stage> Encore ! </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Mais si quelqu'un te frappait, on le verrait bien. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Mais la joue me cuit. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Silence Guignol, j’entends du bruit. </p>
+                    </sp>
+
+                </div>
+                <div type="3">
+                    <head type="scene" n="3">Scène 3</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>Merlin</name>
+                        </personGrp>
+                    </listPerson>
+                    <stage type="saut">Tonnerre, éclairs.</stage>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Qui est l’audacieux qui a osé venir dans mon empire ? Malheur à toi.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Notre maître, est-ce qu'il nous voit ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Non...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Voyons malheureux, que viens-tu faire ici ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>À qui donc qu'y parle ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Me répondras-tu ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Il est fou. À qui parlez-vous ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <p> À qui je parle ? Tu es seul ici, à qui veux-tu que je parle, si ce n’est
+                            à toi ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Vous vous trompez, vous ne devez pas me voir. N’est-ce pas mon maître,
+                            qu’y ne me voit pas ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Silence, Guignol...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Mais nom d'un rat, notre maître, ce gône-là est capable de me pétafiner
+                            !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>À ton tour, à qui parles-tu ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Ça ne te regarde pas.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Ah ! ne me regarde pas ? Tu vas faire un petit voyage aérien. Allons,
+                            qu'il parte ! <stage type="corps">(Guignol se trouve enlevé dans un pot
+                                de chambre, il crie et disparaît.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Pauvre Guignol, que vas-tu devenir ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Je suis tranquille maintenant.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Que va-t-il faire ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Marie, paraissez. <stage type="corps">(Marie paraît richement
+                                vêtue.)</stage></p>
+                    </sp>
+
+                </div>
+                <div type="3">
+                    <head type="scene" n="4">Scène 4</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>Marie</name>
+                        </personGrp>
+                    </listPerson>
+
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Que désirez-vous de moi ? Est-ce encore pour quelque fête ? Vous avez
+                            tort. De tout ce que vous pourrez faire, rien ne pourra éteindre cet
+                            amour qui me consume. Ainsi, croyez-moi, cessez de me persécuter. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Et moi, rien ne pourra me fléchir. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Elle me voit, j’en suis sûr ! Par quels moyens pourrais-je la sortir de
+                            ces lieux ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Oui, mais il lui reste un moyen de m'arracher à votre barbarie.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Un moyen ? Et lequel s'il vous plaît ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Merlin, tu as oublié la case de la sorcière.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <stage type="pers">(effrayé)</stage>
+
+                        <p>La case de la sorcière, dis-tu ? Quel est celui qui oserait y
+                            pénétrer ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Qui sait, l’amour fait faire des choses surnaturelles. Et crois-tu que si
+                            mon amant possesseur d'un talisman qui le rendrait invisible à tes yeux,
+                            et qu'il entende notre conversation, et surtout qu'il sache que la
+                            sorcière est ma marraine. Il pénètre jusqu'à elle et lui dit que tu me
+                            tiens prisonnière, elle ne viendrait pas à mon secours ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Oh ! Merci Marie, je te sauverai.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Oui, mais nul mortel ne peut entrer ici sans que je le sache. Ainsi, tu
+                            vois que j'ai peu à m'inquiéter de ce côté là. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Qui sait...</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>En attendant la belle, tu es ma prisonnière, rentrons.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Tu as déjà peur. Mais va, je serai vengée. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Dans vingt-quatre heures, il sera trop tard.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Dans vingt-quatre heures, j’aurai perdu mon pouvoir, mais ton épouse
+                            jamais. <stage type="corps">(Ils sortent.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Merci, ma bonne Marie, tu viens de me dire la marche que j’ai à suivre.
+                            Dusse-je périr, je te sauverai. Allons à la case de la sorcière. </p>
+                    </sp>
+
+                </div>
+            </div>
+            <div type="2">
+                <head type="tableau" n="3">Tableau III</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Richepance, </name>
+                            <name>Arthur, </name>
+                            <name>Guignol</name>
+                        </personGrp>
+                    </listPerson>
+
+                    <stage type="saut">En scène : une table avec un livre et deux
+                        chandeliers.</stage>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+
+
+                        <p>Il est déjà tard. Voilà ma table d'étude. Il faut absolument que je
+                            trouve sur ce grimoire, le moyen de prolonger ma vie de cent ans, après
+                            je chercherai à me rajeunir. Ah ! et mon fauteuil. <stage type="corps"
+                                >(Il va le chercher.)</stage> Voilà, maintenant étudions. <stage
+                                type="corps">(Il lit.)</stage> À minuit, entre quatre chemins, une
+                            poule noire. <stage type="corps">(Il parle.)</stage> Ce n’est pas ça, ah
+                            ! J'y suis. <stage type="corps">(Il lit)</stage> Pour prolonger sa vie,
+                            prendre un chat noir, deux vipères... <stage type="corps">(On
+                                frappe.)</stage> On a frappé ? Qui ose venir ici et à cette heure ?
+                            Allons voir... entrez. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Pardon monsieur, je désirerais parler à la sorcière.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oui mon vieux, nous voulons parler à la souricière.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Jeune homme, croyez ma vieille expérience. Il en est temps encore !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Je ne puis sortir d’ici sans avoir parlé à la sorcière. Ainsi brave
+                            homme, veuillez avoir la bonté de la prévenir qu'un jeune homme
+                            possesseur d'un talisman désire lui parler. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Allez mon vieux, nous attendons la vieille.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+                        <stage type="pers">(marmonnant en sortant)</stage>
+
+                        <p>Pauvre jeune homme.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol mon ami, je vais parler à cette grande sorcière, cette femme
+                            célèbre qui lit dans l’avenir.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Tant mieux, je me ferai dire ma bonne fortune. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Je te défends de lui en parler. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Eh bien c'est bon, on ne dira rien.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Jeune homme, il paraît que l'on sait déjà quelque chose concernant votre
+                            affaire, car elle m'a dit de vous faire entrer de suite. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Quel bonheur, bon vieillard. Introduisez-moi, je vous prie. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oui bon vieux, instruirez-nous de suite.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Tous les deux ça ne se peut pas. Monsieur oui, vous non ! </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol, tu m'attendras ici. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Ça m'est zegaux, seulement s'il y avait une petite goutte à relicher avec
+                            une croustillade.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Tout à l'heure, tout à l'heure ; venez mon ami.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Je vous suis. Guignol, attends moi-là, ne bouge pas. <stage type="corps"
+                                >(Ils sortent.)</stage></p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <stage type="pers">(seul)</stage>
+
+                        <p>Ils me laissent là tout seul, ce n'est pas trop gai tout de même. Voyons
+                            que je passe l’inspection : deux tableaux. C'est sans doute des
+                            portraits de famille. Un tableau noir, c'est pour marquer les quantièmes du
+                            mois. Ce n'est guère bien tapissé ici. Une table, un faut-z'oeil, deux
+                            chandeliers et un livre. Tout ça n’est pas le diable ! <stage
+                                type="corps">(On entend rire.)</stage> Qui donc rit par là ? Voyons,
+                            tâchons de nous distraire. <stage type="corps">(Il bâille, les deux
+                                tableaux aussi.)</stage> Tiens, ils bâillent. Eh ben ! Ils s’amusent
+                            bien. Voyons, que pourrais-je faire pour me dézen-noier ? Tiens, voilà
+                            ce tableau noir. Je vais dessiner, mais diable ! <stage type="corps">(On
+                                rit.)</stage> Qui donc qui rit par là ? Je ne vois personne. Voyons,
+                            que pourrais-je dessiner ? Ah ! Mon portrait en pied ce sera chenu. Je
+                            le leur laisserai en souvenir. Voilà justement un morceau de craie,
+                            c'est bien mon affaire. Je vais faire un pastel. <stage type="corps">(Il
+                                commence, il fait la tête, il se recule et admire.)</stage> C'est
+                            parfait. Je rencontrerais cette tête dans la rue, je lui dirais bonjour
+                            en croyant que c'est moi. Continuons. <stage type="corps">(Il dessine
+                                son portrait en pied.)</stage> Voilà qui est bien attrapé. <stage
+                                type="corps">(Il s’éloigne et admire.)</stage> La tête est trop
+                            penchée en avant, il la faudrait plus droite. <stage type="corps">(La
+                                tête se redresse.)</stage> Tiens, ça y est, bravo ! <stage
+                                type="corps">(Il se met à danser, le portait se met à
+                                danser.)</stage> Tiens tiens ! Mon portrait qui danse. <stage
+                                type="corps">(Toutes les fois que Guignol danse, le portrait aussi.
+                                Quand Guignol s’arrête, le portrait aussi.)</stage> Voilà qui est
+                            lassant ! Mais je crois que mon maître ne vient plus. Oh ! que le temps
+                            me dure. <stage type="corps">(On entend donner un soufflet.)</stage>
+                            Bon, j’en ai pas perdu une miette. Oh ! que le gredin a la main lourde.
+                                <stage type="corps">(autre soufflet)</stage> Encore ? Oh ! Mais
+                            faites attention, vous ne savez pas à qui vous avez affaire ! Je n’aime
+                            pas les niches. <stage type="corps">(L’écho répond liche.)</stage> Liche
+                            ? Il n’y a rien à licher. Qui donc se moque de moi, ici ? <stage
+                                type="corps">(L’écho : sie.)</stage> Oui tu me scies, je ne veux pas
+                            rester là. Je vais partir. <stage type="corps">(L’écho : tire.)</stage>
+                            Tire quoi ? Si je ne veux pas rester ! Car il paraît que pour me faire
+                            des farces, tout le monde s’entend. <stage type="corps">(L’écho :
+                                Satan.)</stage> Encore ? Oui, je veux m’en aller car pour rester il
+                            faudrait que j’y sois condamné. <stage type="corps">(L’écho :
+                                damné.)</stage> Damné ? Oh la la ! Voilà que je prend la chair de
+                            coq. Voyons, Guignol, ne faisons plus attention à tout ça. Voilà un
+                            livre, lisons. Je n'y vois pas, éclairons une chandelle. <stage
+                                type="corps">(Il allume une chandelle.)</stage> Ça y est, mais si
+                            j’éclairais l'autre, j’y verrais bien mieux. Il faut une allumoque
+                            chimique. Ça y est, lisons. <stage type="corps">(Il lit.)</stage> À
+                            minuit, entre quatre chemins. <stage type="corps">(Une chandelle
+                                s’éteint.)</stage> Tiens, la chandelle qui s’est éteindue, réclairons-la. 
+                           <stage type="corps">(Il allume la chandelle, l’autre
+                                s’éteint.)</stage> Tiens, à l’autre à présent. <stage type="corps"
+                                >(Il la rallume, ainsi de suite deux ou trois fois, il en reste
+                                [une] qui [est] allumée.)</stage> Et bien, tant pis pour elle, je
+                            lirais avec une. <stage type="corps">(Il lit, la chandelle
+                                monte.)</stage> Une poule noire. <stage type="corps">(Il
+                                parle.)</stage> Je crois qu'en effet, il fait noir. Elle est folle
+                            cette chandelle. <stage type="corps">(La chandelle redescend.)</stage>
+                            Mais que je suis donc bête, j’ai là un faut-z-oeil et je ne m’assois
+                            pas. <stage type="corps">(Il s’assied.)</stage> Là, ah que je suis bien.
+                            Il faut avouer que je suis un robuste feignant. Je crois que je
+                            m'endors. Tiens, c'est ça. Faisons un somme. <stage type="corps">(Il
+                                s’endort, le fauteuil et Guignol s'élèvent, la table aussi. Guignol
+                                s’éveille.)</stage> Je ne peux pas dormir tranquille, lisons. <stage
+                                type="corps">(Il lit.)</stage> Une poule. <stage type="corps">(Il
+                                parle.)</stage> Si elle était rôtie... <stage type="corps">(La table
+                                descend.)</stage> Hein ? Qu'est ce que ça veut dire ? Je suis pendu
+                            comme une cage à fromage ! Qui donc viendra me dépendre ? Au secours !
+                            Au secours ! Ah les gredins qui me font ces farces, si je les tenais !
+                                <stage type="corps">(Il sort un grand squelette du milieu de la
+                                table.)</stage> Ah ! nom d’un rat, qu'est ce que c'est ce ça !
+                            Veux-tu te sauver ! Hareng-saur, sors ou crains ma colère ! <stage
+                                type="corps">(Le squelette disparaît, la table aussi.)</stage> Il a
+                            filé. Il a bien fait. Ah ça, est-ce que je vais rester là longtemps ? Le
+                            temps commence à me durer. Ohé la boutique, il n’y a donc personne dans
+                            cette maudite baraque ? </p>
+                    </sp>
+                </div>
+
+                <div type="3">
+                    <head type="scene" n="2">Scène 2</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Guignol, </name>
+                            <name>Arthur</name>
+                        </personGrp>
+                    </listPerson>
+
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol mon ami, je suis sauvé et celle que j’aime aussi.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Tant mieux, moi je ne suis pas sauvé ! Je fais sécher, je suis enlevé
+                            !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Que diable fais-tu là-haut ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Je prends le frais.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Veux-tu descendre ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Je ne suis plus domestique, je suis suspendu. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Mais comment fais-tu pour te tenir là-haut ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Je me le demande depuis que j'y suis et si pouvez me le dire, vous me
+                            ferez plaisir. </p>
+                    </sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="3">Scène 3</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>Richepance</name>
+                        </personGrp>
+                    </listPerson>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Comment jeune homme ? Encore ici, qu’attendez-vous ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Il attend que j’aie fini mon ascension.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Voyez la position de mon pauvre domestique.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Oh ! oh ! il y a du Merlin là-dessous.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Du merlan, passez-le moi en gratin. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Allons mon ami, je vais vous délivrer.</p>
+                    
+
+                    <stage type="saut">Le fauteuil descend doucement jusqu'à moitié. Arrivé là, il
+                        descend tout d'un coup, Guignol crie.</stage></sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol mon ami, tu t’es fait du mal ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Au contraire, d’ailleurs c'est de la faute à celui qui m’avait perché là-haut
+                             ! Il ne m’avait pas donné de parachute. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Dites-moi mon ami, est-ce que vous n’avez pas une pièce d'or sur vous ?
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Oui monsieur, qu'un grand vilain m’a donné. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Donnez-la moi. <stage type="corps">(Guignol la donne.)</stage> Merci,
+                            cette pièce d’or est de Merlin. Voilà le motif de vos tribulations.
+                            Maintenant, partez, les bons amis, et que votre bon génie vous protège.
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Adieu, bon vieillard.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>La première fois que je vous rencontre, je vous paie pot, adieu mon
+                            vieux. <stage type="corps">(Ils sortent.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Richepance</speaker>
+
+                        <p>Partez, jeunes gens pleins d’amour et de bonheur, moi je reste, vieux fou
+                            que je suis. Je travaille un siècle pour trouver le moyen de vivre cent
+                            ans. <stage type="corps">(Il sort.)</stage>
+                        </p>
+                    </sp>
+                </div>
+            </div>
+            <div type="2">
+                <head type="tableau" n="4">Tableau IV</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Arthur, </name>
+                            <name>Guignol</name>
+                        </personGrp>
+                    </listPerson>
+
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Guignol, nous sommes arrivés au terme de notre voyage. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Eh ! Dire qu’en route nous n’avons pas seulement trouvé une gargotte pour
+                            nous garnir la paillasse. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>C'est ici que la sorcière m'a dit de me rendre, c'est ici que je dois
+                            retrouver celle que j’aime.</p> <stage type="saut">Le temps se couvre :
+                                tonnerre et éclairs, Merlin paraît.</stage>
+                        
+                    </sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="2">Scène 2</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>Merlin </name><stage type="listPerson">puis </stage>
+                            <name>Marie</name><stage type="listPerson"> en vieille</stage>
+                        </personGrp>
+                    </listPerson>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Jeune homme, je suis vaincu. Je me rends et vais faire venir votre belle
+                            fiancée. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Ah ! Merci, grand et noble génie, je n'en attendais pas moins de votre
+                            générosité. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+                        <stage type="pers">(riant)</stage>
+
+                        <p>Ah ! Ah ! Ah ! Ah !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Il me semble que j’ai déjà entendu ce rire.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Jeune et belle Marie, approchez.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+                        <stage type="pers">(en vieille)</stage>
+
+                        <p>Voilà Seigneur Merlin, que désirez-vous ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Eh bien ! Jeune amoureux, est-ce que vous ne dites rien à l'objet de
+                            votre flamme ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Marie, oh c'est impossible !</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>C'est de cette petite veille que mon maître est amoureux ? Elle a la
+                            figure comme une pomme cuite. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Embrassez-vous mes enfants. <stage type="corps">(Il rit.)</stage></p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Je n’aime pas l’entendre rire, ce gône-là.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Arthur, vous ne me reconnaissez pas, mon ami ? Au moins votre cœur devrait
+                            vous dire : c'est elle ! </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Elle a trop vieilli pour qu'on la reconnaisse. On dirait qu'y a cinquante ans
+                            qu'on l’a pas vue. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Mon cœur, Marie, ne lui faites aucun reproche. Mon cœur vous aime
+                            toujours. Ah ! Noble Merlin, je reconnais bien là ton ouvrage. Eh,
+                            malgré tout, je l’aime, entendez bien, je l’aime ! </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Et bien si tu l'aimes, épouse-la, je serai ton garçon d’honneur. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Arthur, mon ami. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Eh oui ! Merlin, malgré toi, malgré tout je la sauverai. Elle deviendra ma
+                            compagne. Je partagerai son sort et, à force de soins, j’espère qu'elle
+                            oubliera que c'est moi qui suis l’auteur qu'elle a perdu sa jeunesse et
+                            sa beauté. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Il empoigne cette vieille pastonade ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Merci mon ami, je n'en attendais pas moins de votre coeur et de votre
+                            générosité, mais moi je ne souffrirai pas que vous m'épousiez ! Ce
+                            serait un trop grand sacrifice. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Le fait est que ce n'est pas moi qui me chargerai de la commission. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Eh bien jeune homme, l’heure passe, bientôt il ne sera plus temps. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Allons, je désire, je veux même l’épouser. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Jeune homme, réfléchis bien qu'elle est vieille et laide. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+                        <p> Le fait est qu'elle n’est pas belle. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <stage type="pers">(s’approchant)</stage>
+                        <p> Madame, je vous prie de vouloir m’accepter pour époux. Soyez persuadée
+                            que je ferai mon possible pour faire votre bonheur. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Voilà qui est bien bavardé ! </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Je vous confie mon avenir. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Merci Marie... </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Eh bien, à la noce ! 
+                        </p><stage type="saut">Tonnerre, une gloire sort de la
+                            mer, reste au-dessus des flots. La Fée merveilleuse est assise au
+                            milieu.</stage>
+                    </sp>
+
+                </div>
+                <div type="3">
+                    <head type="scene" n="3">Scène 3</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Les mêmes, </name>
+                            <name>la Fée merveilleuse </name>
+                        </personGrp>
+                    </listPerson>
+
+
+
+                    <sp>
+                        <speaker>La Fée merveilleuse</speaker>
+                        <p> Arrêtez ! Merlin, tu as oublié la case de la sorcière. Ton pouvoir touche
+                            à son terme. Arthur, tu es un brave et digne jeune homme, fais le bonheur
+                            de ma filleule. Et toi Guignol, toutes les tribulations que tu as eues,
+                            tu les dois à Merlin qui t'avait donné une pièce d'or enchantée. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Ah, viens gredin, viens, tiens, la voilà ta pièce d'or, canaille ! <stage
+                                type="corps">(Il la lui jette après.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Merlin</speaker>
+
+                        <p>Malédiction, je suis perdu ! <stage type="corps">(Il disparaît,
+                                flamme.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+
+                        <p>Chère Marie, nous serons heureux. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Je suis bien laide. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Le fait est qu’elle est un peu ratatinée. </p>
+                    </sp>
+                    <sp>
+                        <speaker>La Fée merveilleuse</speaker>
+
+                        <p>Allons, il faut que je termine un ouvrage si bien commencé. Marie, Fée
+                            aux anges, reprends ta première forme. <stage type="corps">(Marie
+                                redevient jeune.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Arthur</speaker>
+                        <p> Ciel, il se pourrait ! </p>
+                    </sp>
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Eh bien, voilà une vieille qui est bien rajeunie.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Ma bonne marraine, que de reconnaissance ! </p>
+                    
+                    <stage type="saut">De chaque plan, il descend des groupes d'anges.</stage></sp>
+
+                    <sp>
+                        <speaker>Guignol</speaker>
+
+                        <p>Si tout ça ce sont ses enfants, elle a une nombreuse famille. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Marie</speaker>
+
+                        <p>Nous sommes bien heureux !</p>
+                    </sp>
+                </div>
+                <div type="5">
+                    <stage type="air">Couplet final</stage>
+                </div>
+                <div type="5">
+                    <stage type="air">Flammes de Bengale</stage>
+                </div>
+            </div>
+           
+
+        
+      <div type="1"> 
+        <head type="personnage">Décors :</head>
+        
+          <p>Prologue : une mansarde avec un buffet à gauche</p>
+        
+          <p>Tableau I : atelier de peinture </p>
+        
+          <p> Tableau II : chez Merlin, décor de féerie </p>
+        
+              <p> Tableau III : la case de la sorcière, deux tableaux au fond ou sur les coulisses, un tableau noir à droite</p>
+        
+                  <p>Tableau IV : pleine mer</p>
+      </div> 
+        </body>
+    </text>
+</TEI>
+
+            
+        

@@ -1,0 +1,8 @@
+# Fichiers temporaires générés par les scripts
+locales-backup/
+translation-check-logs/
+local-translation-test-logs/
+missing-translations/
+translation-audit-*.json
+translation-report-*.txt
+analyze-translations.sh 

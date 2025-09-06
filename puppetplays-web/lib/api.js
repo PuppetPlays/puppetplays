@@ -37,10 +37,11 @@ export async function fetchAPI(query, { variables } = {}, token) {
 
   try {
     console.log(
-      'Sending GraphQL query:',
+      '🔍 Sending GraphQL query:',
       queryString.substring(0, 100) + '...',
     );
-    console.log('Variables:', JSON.stringify(variables));
+    console.log('📊 Variables:', JSON.stringify(variables));
+    console.log('🌐 API URL:', apiUrl);
 
     const res = await fetch(apiUrl, {
       method: 'POST',
@@ -54,23 +55,39 @@ export async function fetchAPI(query, { variables } = {}, token) {
       }),
     });
 
+    console.log('📬 Response status:', res.status, res.statusText);
+
     if (!res.ok) {
-      console.error('Network response error:', res.status, res.statusText);
+      console.error('❌ Network response error:', res.status, res.statusText);
+      const errorText = await res.text();
+      console.error('🔴 Error body:', errorText);
       throw new Error(`API responded with status: ${res.status}`);
     }
 
     const json = await res.json();
 
     if (json.errors) {
-      console.error('GraphQL errors:', JSON.stringify(json.errors));
+      console.error('❌ GraphQL errors:', JSON.stringify(json.errors));
+      console.error(
+        '🔍 Full error details:',
+        JSON.stringify(json.errors, null, 2),
+      );
+      console.error('📝 Query that failed:', queryString);
       throw new Error(
         `GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`,
       );
     }
 
+    console.log(
+      '✅ GraphQL response data keys:',
+      json.data ? Object.keys(json.data) : 'no data',
+    );
     return json.data;
   } catch (error) {
-    console.error('API fetch error:', error.message);
+    console.error('🔥 API fetch error:', error.message);
+    console.error('🔥 Full error stack:', error.stack);
+    console.error('🔥 Failed query:', queryString);
+    console.error('🔥 Failed variables:', JSON.stringify(variables, null, 2));
     throw error;
   }
 }
@@ -351,14 +368,7 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
     title,
-    writtenBy: author {
-      firstName,
-      lastName
-          },
     ... on works_works_Entry {
-      translatedBy {
-        fullName
-      },
       doi,
       viafId,
       arkId,
@@ -516,7 +526,12 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       publicDomain,
       additionalLicenseInformation,
       mediasCount: _count(field: "medias")
-      scannedDocumentPagesCount: _count(field: "scannedDocumentPages")
+      scannedDocumentPagesCount: _count(field: "scannedDocumentPages"),
+      anthology {
+        id,
+        slug,
+        title
+      }
     }
   }
 }`;
@@ -529,6 +544,11 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
     title,
     ... on works_works_Entry {
       scannedDocumentPagesCount: _count(field: "scannedDocumentPages"),
+      anthology {
+        id,
+        slug,
+        title
+      },
       medias @transform(width: 600) {
         id,
         url,
@@ -1055,6 +1075,120 @@ export async function getDiscoveryPathwayResources(locale) {
   }
 }
 
+// Educational Resources queries
+export const getAllEducationalResourcesQuery = `
+${assetFragment}
+query GetAllEducationalResources($locale: [String]) {
+  entries(section: "educationalResourceEntry", site: $locale, orderBy: "title") {
+    id,
+    slug,
+    title,
+    ... on educationalResourceEntry_default_Entry {
+      keywords {
+        id,
+        title
+      },
+      mainImage @transform(width: 400, height: 300, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+      contentBlock {
+        ... on contentBlock_textblock_BlockType {
+          contentTitle,
+          contentDescription
+        }
+      }
+    }
+  }
+}
+`;
+
+export const getEducationalResourceByIdQuery = `
+${assetFragment}
+query GetEducationalResourceById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "educationalResourceEntry", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on educationalResourceEntry_default_Entry {
+      keywords {
+        id,
+        title
+      },
+      mainImage @transform(width: 800, height: 600, mode: "crop", position: "center-center") {
+        ...assetFragment
+      },
+      contentBlock {
+        ... on contentBlock_textblock_BlockType {
+          contentTitle,
+          contentDescription
+        }
+      }
+    }
+  }
+}
+`;
+
+export async function getAllEducationalResources(locale) {
+  try {
+    const data = await fetchAPI(getAllEducationalResourcesQuery, {
+      variables: { locale },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error fetching educational resources:', error);
+    return { entries: [] };
+  }
+}
+
+export async function getEducationalResourceById(locale, id) {
+  try {
+    const data = await fetchAPI(getEducationalResourceByIdQuery, {
+      variables: { locale, id },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error fetching educational resource:', error);
+    return { entry: null };
+  }
+}
+
+export const getTechnicalDocumentationByIdQuery = `
+query GetTechnicalDocumentationById($locale: [String], $id: [QueryArgument]) {
+  entry(section: "technicalDocumentation", site: $locale, id: $id) {
+    id,
+    slug,
+    title,
+    ... on technicalDocumentation_default_Entry {
+      description,
+      content,
+      url,
+      fileUrl,
+      category {
+        id,
+        title
+      },
+      relatedDocuments {
+        id,
+        slug,
+        title
+      }
+    }
+  }
+}
+`;
+
+export async function getTechnicalDocumentationById(locale, id) {
+  try {
+    const data = await fetchAPI(getTechnicalDocumentationByIdQuery, {
+      variables: { locale, id },
+    });
+    return data.entry;
+  } catch (error) {
+    console.error('Error fetching technical documentation by id:', error);
+    return null;
+  }
+}
+
 // Scientific Publications queries
 export const getScientificPublicationsQuery = `
 query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
@@ -1065,12 +1199,20 @@ query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
     dateCreated,
     dateUpdated,
     ... on scientificPublications_default_Entry {
-      authorAndOrcidIdentifier,
+      authorAndOrcidIdentifier {
+        author,
+        orcidIdentifier
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
       date,
       editorName,
+      bookTitle,
+      issn,
+      placeOfEdition,
+      volume,
+      pagesCount,
       peerReview,
       languages {
         title
@@ -1107,12 +1249,20 @@ query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
     dateCreated,
     dateUpdated,
     ... on scientificPublications_default_Entry {
-      authorAndOrcidIdentifier,
+      authorAndOrcidIdentifier {
+        author,
+        orcidIdentifier
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
       date,
       editorName,
+      bookTitle,
+      issn,
+      placeOfEdition,
+      volume,
+      pagesCount,
       peerReview,
       languages {
         title
@@ -1176,4 +1326,296 @@ export async function getScientificPublicationById(id, locale) {
     },
   });
   return data;
+}
+
+// Technical Documentation Queries  
+const getTechnicalDocumentationQuery = `
+  query TechnicalDocumentation($locale: [String]) {
+    entries(section: "technicalDocumentationEntry", site: $locale) {
+      ... on technicalDocumentationEntry_default_Entry {
+        id
+        title
+        slug
+        url
+      }
+    }
+    globalSet(handle: "technicalDocumentation", site: $locale) {
+      __typename
+      ... on technicalDocumentation_GlobalSet {
+        id
+        name
+        handle
+        sidebar {
+          ... on sidebar_BlockType {
+            id
+            sidebarContent {
+              ... on sidebarContent_sidebarElement_BlockType {
+                id
+                sideBarTitle
+                sidebarElements {
+                  col1
+                  col2
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function getAllTechnicalDocumentation(locale) {
+  console.log('📄 [TechnicalDocumentation] Starting fetch for locale:', locale);
+
+  try {
+    console.log('📤 [TechnicalDocumentation] Sending GraphQL query...');
+    const data = await fetchAPI(getTechnicalDocumentationQuery, {
+      variables: {
+        locale,
+      },
+    });
+
+    console.log('📥 [TechnicalDocumentation] Raw data received:', {
+      hasEntries: !!data?.entries,
+      entriesCount: data?.entries?.length || 0,
+      hasGlobalSet: !!data?.globalSet,
+      globalSetType: data?.globalSet?.__typename || 'none',
+    });
+
+    // Extraire et aplatir les éléments de la sidebar depuis sidebarContent
+    const sidebarItems = [];
+
+    // Accès direct au globalSet (pas globalSets au pluriel)
+    const techDocGlobalSet = data?.globalSet;
+
+    // Vérifier si le globalSet existe et a le bon type
+    if (
+      techDocGlobalSet &&
+      techDocGlobalSet.__typename === 'technicalDocumentation_GlobalSet'
+    ) {
+      console.log(
+        '✅ [TechnicalDocumentation] GlobalSet found with correct type',
+      );
+
+      console.log('🔍 [TechnicalDocumentation] GlobalSet structure:', {
+        hasSidebar: !!techDocGlobalSet.sidebar,
+        sidebarLength: techDocGlobalSet.sidebar?.length || 0,
+        hasSidebarContent: !!techDocGlobalSet.sidebarContent,
+        allKeys: Object.keys(techDocGlobalSet)
+      });
+
+      // La structure est SuperTable (sidebar) -> Matrix (sidebarContent)
+      if (techDocGlobalSet.sidebar) {
+        console.log(
+          '📦 [TechnicalDocumentation] Processing sidebar SuperTable blocks:',
+          techDocGlobalSet.sidebar.length,
+        );
+
+        // sidebar est un array de blocs SuperTable
+        techDocGlobalSet.sidebar.forEach((sidebarBlock, blockIndex) => {
+          console.log(`  📌 SuperTable Block ${blockIndex}:`, {
+            hasId: !!sidebarBlock?.id,
+            hasSidebarContent: !!sidebarBlock?.sidebarContent,
+            sidebarContentLength: sidebarBlock?.sidebarContent?.length || 0,
+            blockKeys: Object.keys(sidebarBlock || {})
+          });
+
+          // Chaque bloc SuperTable contient un champ Matrix sidebarContent
+          if (sidebarBlock?.sidebarContent) {
+            sidebarBlock.sidebarContent.forEach((contentBlock, contentIndex) => {
+              console.log(`    📋 Matrix Block ${contentIndex}:`, {
+                hasTitle: !!contentBlock?.sideBarTitle,
+                title: contentBlock?.sideBarTitle,
+                elementsCount: contentBlock?.sidebarElements?.length || 0,
+                contentKeys: Object.keys(contentBlock || {})
+              });
+
+              // Process each sidebarElement row
+              if (contentBlock?.sidebarElements) {
+                contentBlock.sidebarElements.forEach((element, elemIndex) => {
+                  const item = {
+                    id: `${contentBlock.id || Math.random()}-${element.col2}`,
+                    sidebarTitle: element.col1 || '',
+                    sidebarContent: contentBlock.sideBarTitle || '',
+                    sidebarLink: element.col2 || '',
+                    type: 'element',
+                    category: contentBlock.sideBarTitle || 'Uncategorized',
+                  };
+                  console.log(`      → Element ${elemIndex}:`, {
+                    label: element.col1,
+                    anchor: element.col2,
+                  });
+                  sidebarItems.push(item);
+                });
+              }
+            });
+          }
+        });
+      } else if (techDocGlobalSet.sidebarContent) {
+        // Fallback: si c'est directement sidebarContent (ancienne structure)
+        console.log(
+          '📦 [TechnicalDocumentation] Processing direct sidebarContent blocks:',
+          techDocGlobalSet.sidebarContent.length,
+        );
+
+        techDocGlobalSet.sidebarContent.forEach((contentBlock, blockIndex) => {
+          console.log(`  📌 Block ${blockIndex}:`, {
+            hasTitle: !!contentBlock?.sideBarTitle,
+            elementsCount: contentBlock?.sidebarElements?.length || 0,
+          });
+
+          if (contentBlock?.sidebarElements) {
+            contentBlock.sidebarElements.forEach((element, elemIndex) => {
+              const item = {
+                id: `${contentBlock.id || Math.random()}-${element.col2}`,
+                sidebarTitle: element.col1 || '',
+                sidebarContent: contentBlock.sideBarTitle || '',
+                sidebarLink: element.col2 || '',
+                type: 'element',
+                category: contentBlock.sideBarTitle || 'Uncategorized',
+              };
+              console.log(`    → Element ${elemIndex}:`, {
+                label: element.col1,
+                anchor: element.col2,
+              });
+              sidebarItems.push(item);
+            });
+          }
+        });
+      } else {
+        console.warn(
+          '⚠️ [TechnicalDocumentation] GlobalSet found but no sidebar or sidebarContent',
+        );
+      }
+    } else if (!techDocGlobalSet) {
+      // Si le globalSet n'existe pas du tout, créer des données mock pour éviter les erreurs
+      console.warn(
+        '⚠️ [TechnicalDocumentation] GlobalSet not found in Craft CMS',
+      );
+    } else {
+      console.warn(
+        '⚠️ [TechnicalDocumentation] GlobalSet found but wrong type:',
+        techDocGlobalSet.__typename,
+      );
+    }
+
+    console.log('✨ [TechnicalDocumentation] Final result:', {
+      entriesCount: data?.entries?.length || 0,
+      sidebarItemsCount: sidebarItems.length,
+    });
+
+    return {
+      entries: data?.entries || [],
+      globalSets: {
+        technicalDocumentation: {
+          sidebar: sidebarItems,
+        },
+      },
+    };
+  } catch (error) {
+    console.error('❌ [TechnicalDocumentation] Error fetching:', error.message);
+    console.error('Full error details:', error);
+    
+    // Ne pas faire de fallback, juste retourner une structure vide
+    return {
+      entries: [],
+      globalSets: {
+        technicalDocumentation: {
+          sidebar: [],
+        },
+      },
+    };
+  }
+}
+
+export async function getTechnicalDocumentationEntry(id, slug, locale) {
+  console.log('📖 [TechnicalDocEntry] Fetching entry with:', {
+    id,
+    slug,
+    locale,
+  });
+
+  // Si on a un ID, ignorer le slug car il peut être différent entre les environnements
+  const querySlug = id ? null : slug;
+
+  const query = `
+    query TechnicalDocumentationEntry($id: [QueryArgument], $slug: [String], $locale: [String]) {
+      entry(id: $id, slug: $slug, section: "technicalDocumentationEntry", site: $locale) {
+        ... on technicalDocumentationEntry_default_Entry {
+          id
+          title
+          slug
+          url
+          introduction
+          sheetTable {
+            col1
+            col2
+            col3
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    console.log('📤 [TechnicalDocEntry] Sending query...');
+    const data = await fetchAPI(query, {
+      variables: {
+        id,
+        slug: querySlug,
+        locale,
+      },
+    });
+
+    console.log('📥 [TechnicalDocEntry] Response received:', {
+      hasEntry: !!data?.entry,
+      entryTitle: data?.entry?.title || 'none',
+      hasIntroduction: !!data?.entry?.introduction,
+      sheetTableRows: data?.entry?.sheetTable?.length || 0,
+    });
+
+    return data?.entry || null;
+  } catch (error) {
+    console.error(
+      '❌ [TechnicalDocEntry] Error fetching entry:',
+      error.message,
+    );
+    console.error('Entry error details:', error);
+    return null;
+  }
+}
+
+export async function getTechnicalDocumentationByAnchor(anchor, locale) {
+  // Si c'est un ID numérique
+  if (/^\d+$/.test(anchor)) {
+    return getTechnicalDocumentationEntry(anchor, null, locale);
+  }
+
+  // Si c'est un slug, chercher par slug
+  const query = `
+    query TechnicalDocumentationBySlug($slug: [String], $locale: [String]) {
+      entries(section: "technicalDocumentationEntry", slug: $slug, site: $locale, limit: 1) {
+        ... on technicalDocumentationEntry_default_Entry {
+          id
+          title
+          slug
+          url
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await fetchAPI(query, {
+      variables: {
+        slug: anchor,
+        locale,
+      },
+    });
+    return data?.entries?.[0] || null;
+  } catch (error) {
+    console.error('Error fetching technical documentation by anchor:', error);
+    return null;
+  }
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
-  height: 100%;
+  min-height: 100vh; /* Use min-height instead of height for better flexibility */
 }
 
 .header {
@@ -14,8 +14,8 @@
   position: relative;
   display: flex;
   justify-content: stretch;
-  height: calc(100% - 80px);
   flex: 1 1 auto;
+  /* Remove fixed height calculation to allow natural flow */
 }
 
 .aside {

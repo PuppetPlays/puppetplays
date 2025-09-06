@@ -16,7 +16,7 @@ settings:
   showSiteMenu: true
   sources:
     - admins
-    - 'group:a5c71adc-184b-49c4-8e1a-d251540bf2b1' # Chercheurs
+    - 'group:a5c71adc-184b-49c4-8e1a-d251540bf2b1'
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

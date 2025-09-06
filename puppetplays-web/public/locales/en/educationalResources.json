@@ -1,0 +1,15 @@
+{
+  "title": "Educational resources title",
+  "metaDescription": "Educational resources meta description",
+  "sidebarTitle": "Educational resources sidebar title",
+  "sidebar": {
+    "allResources": "Educational resources sidebar all resources"
+  },
+  "pageDescription": "Educational resources page description",
+  "noResourcesFound": "Educational resources no resources found",
+  "exploreIntro": "Educational resources explore intro",
+  "loadingResources": "Educational resources loading resources",
+  "resourceNotFound": "Educational resources resource not found",
+  "resourceNotFoundDescription": "Educational resources resource not found description",
+  "backToResources": "Educational resources back to resources"
+}

@@ -1,0 +1,18 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "import/no-unresolved": "off",
+    "react/prop-types": "off",
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
+    "@next/next/no-img-element": "off",
+    "react/no-unknown-property": "off",
+    "eqeqeq": ["error", "always"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "."]
+      }
+    }
+  }
+}

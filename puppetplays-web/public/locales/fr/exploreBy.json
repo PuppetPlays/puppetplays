@@ -1,0 +1,21 @@
+{
+  "database": {
+    "title": "Explore by database title",
+    "subtitle": "Explore by database subtitle"
+  },
+  "anthology": {
+    "title": "Explore by anthology title",
+    "subtitle": "Explore by anthology subtitle"
+  },
+  "pathways": {
+    "title": "Explore by pathways title",
+    "subtitle": "Explore by pathways subtitle"
+  },
+  "publications": {
+    "title": "Explore by publications title",
+    "subtitle": "Explore by publications subtitle"
+  },
+  "project": {
+    "title": "Explore by project title"
+  }
+}

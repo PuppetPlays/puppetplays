@@ -7,7 +7,7 @@ name: Sidebar
 searchable: false
 settings:
   blockTypeFields: 0
-  changedFieldIndicator: 1605293643
+  changedFieldIndicator: 1368939802
   contentTable: '{{%stc_sidebar_1}}'
   fieldLayout: table
   maxRows: null

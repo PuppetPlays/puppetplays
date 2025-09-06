@@ -1,0 +1,754 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/327208/les-locataires">Les Locataires</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="PM">Pierre Massinon</name>
+          <resp>Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="etu"> Pauline Vincent (Master 1), Andréa Pieron (Master 1), Fanny Mahler (Master 1), Alice Fradet (Master 1), Eloïse Adam (Master 1),
+                  Emilie Bitonti (Master 1), Gerardo Gerduno Rios (Master 1), Leïla Jacob (Master 1), Mathilde Hanser (Master 1), Nicolas Kernel (Master 1),
+                  Perrine Bras (Master 1), Romane Gutsch (Master 1), Amélie Duprey (Master 2), Déborah Lesueur (Master 2), Delphine Bailon (Master 2),
+                  Enora Benon (Master 2), Laura Henry (Master 2), Laurence Jaillet (Master 2), Léa Tisserand (Master 2), Marie Undreiner (Master 2),
+                  Noémie Bohler (Master 2), Estelle Legoix (Master 2)</name>
+          <resp>Transcription by the students of Paul Robert's master's course at the Université de Haute-Alsace</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor>Archives nationales - Pierrefitte-sur-Seine, France</distributor>
+        <availability status="free">
+          <licence>Public domain</licence>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>The tenants of a building are at war</note>
+        <note>Les Locataires is a short one-act play performed in 1866 in a
+               café on 78 Rue Popincourt, Paris, by two Guignol puppeteers from Lyon –
+               Victor-Napoléon Vuillerme-Dunand and Laurent Josserand, who stayed in the capital in
+               1866 and 1867 to try their luck. The handwritten text is kept in the theatre
+               censorship archives in the French Archives Nationales.</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Archives nationales</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 8</p>
+                <p>Number of acts in the original document: 1</p>
+                <p>Format of the original document: Manuscript</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">Les Locataires</title>
+          <date>1866</date>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="fra">French</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/521/glove-puppets">Glove-puppet</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Comical</term>
+          <term>Farcical</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Story</term>
+          <term>Apparition</term>
+          <term>Argument</term>
+          <term>Fight</term>
+          <term>Blow-with-a-stick</term>
+        </keywords>
+        <keywords source="genre">
+          <term>null</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Neighbourhood</term>
+          <term>Joke</term>
+          <term>Revenge</term>
+          <term>Expulsion</term>
+          <term>Relocation</term>
+          <term>Arrest</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant
+        Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+        re-evaluate the contribution of the puppets repertoire to the construction of
+        European cultural identity. Its main goals is to collect a corpus of
+        representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+        France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+        17th and the 21th century. It also tries to identify the characteristics of
+        puppet dramaturgy and their variations depending on eras, cultural spheres,
+        producing conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal
+        investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+            Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+        </ref> licence. This license enables reusers to distribute, remix, adapt, and
+        build upon the material in any medium or format for non-commercial purposes
+        only, and only so long as attribution is given to the creator. If you remix,
+        adapt, or build upon the material, you must license the modified material under
+        identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2024-04-01" who="#etu">Text transcribed for Paul Robert's course at the Université de Haute-Alsace</change>
+      <change when-iso="2024-07-01" who="#PM">Text encoding</change>
+      <change when-iso="2025-03-24" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="01" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_001.jpg"/>
+      <pb n="03" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_003.jpg"/>
+      <docAuthor>
+        <persName>Laurent Josserand</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">Les Locataires</titlePart>
+        <titlePart type="sub">Pièce en un acte</titlePart>
+      </docTitle>
+      <docDate>1866</docDate>
+      <castList>
+        <head type="personnage">Personnages :</head>
+        <castItem>
+          <role>Dubost, </role>
+          <roleDesc>propriétaire</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Madame la Baronne, </role>
+          <roleDesc>locataire</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Le Chevalier, </role>
+          <roleDesc>idem</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Le Marquis, </role>
+          <roleDesc>idem</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Guignol, </role>
+          <roleDesc>idem</roleDesc>
+        </castItem>
+        <castItem>
+          <role>Monsieur le Bailli</role>
+        </castItem>
+        <castItem>
+          <role>Deux cavaliers</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <div type="3">
+        <head type="scene" n="1">Scène 1</head>
+        <listPerson>
+          <personGrp>
+            <name>La Baronne, </name>
+            <name>Le Marquis, </name>
+            <name>Le Chevalier</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>N'est-il pas vrai, messieurs, que comme moi, vous êtes outrés de la conduite de ce
+                  Guignol et qu'à l'instant même, nous allons porter plainte à monsieur Dubost,
+                  notre propriétaire ? </p>
+        </sp>
+        <sp>
+          <speaker>Marquis</speaker>
+          <p>Certainement, madame... Et je veux absolument que ce drôle quitte la maison. Ou
+                  bien, je l'abandonne !</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Je suis de votre avis, Marquis. Cette position n'est plus tenable, et il faut
+                  qu'aujourd'hui même, il déguerpisse et nous cède la place. Qu'en pensez-vous,
+                  chevalier ? </p>
+        </sp>
+        <sp>
+          <speaker>Le Chevalier</speaker>
+          <p> Je ne saurais avoir d'autres idées que la vôtre, madame.</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Cher Marquis, veuillez donc frapper chez monsieur Dubost, je vous prie.</p>
+        </sp>
+        <pb n="04" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_004.jpg"/>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <p>Comment madame, trop heureux de vous être agréable ! <stage type="corps">(Il
+                     frappe à droite.)</stage> Monsieur Dubost s'il vous plaît.</p>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="2">Scène 2</head>
+        <listPerson>
+          <personGrp>
+            <name>Les mêmes, </name>
+            <name>Dubost</name><stage type="listPerson"> propriétaire</stage>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Ils se saluent.</stage>
+        <sp>
+          <speaker>Le Propriétaire</speaker>
+          <p>Mes chers locataires, que me procure le plaisir de votre aimable visite ?</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Une chose bien fâcheuse pour nous. Nous venons porter plainte contre un locataire
+                  qui habite le même corps de logis que nous. Et quand vous saurez ce qu'il se
+                  permet envers nous, vous ne tarderez pas à nous rendre justice.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Ah ! grand Dieu ! Et que vous a-t-il fait ?</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Vous savez monsieur que je suis artiste, que l'art que j'exerce veut que je me
+                  couche tard et par conséquent, que je me lève de même. Ce matin, il pouvait être
+                  quatre heures à peu près, j'entends à ma porte un carillon épouvantable. J'envoie
+                  ma femme de chambre pour savoir qui se permettait de sonner à pareille heure. La
+                  malheureuse revient la figure ensanglantée, ce Guignol s'était permis d'attacher à mon cardon de sonnette un chat par la queue. Ma femme de chambre ne se doutant pas que ce quadrupède se trouvait ainsi pendu à ouvert brusquement la porte. L'animal lui a suaté au visage et la comme je vous l'ai dit tout à l'heure, la malheureuse est venue la figure ensanglantée.</p>
+        </sp>
+        <pb n="05" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_005.jpg"/>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <p>C'est le mot, ensanglantée.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Soyez tranquille madame, je vous promets justice. Et vous monsieur le Chevalier,
+                  auriez-vous aussi à vous plaindre de ce locataire ? </p>
+          <pb n="06" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_006.jpg"/></sp>
+        <sp>
+          <speaker>Le Chevalier</speaker>
+          <p>Oui monsieur, et je vais vous dire ce qu'il m'a fait : le jour commençait à peine
+                  à poindre lorsque j'entends crier dans les escaliers. Pensant qu'il était arrivé
+                  quelque accident, je voulais me porter au secours de mon semblable. Je sortis
+                  précipitament de chez moi. J'ai failli me casser les deux jambes car il y avait
+                  une ficelle tendue devant ma porte, j'ai sauté un étage tout entier, et sans ce
+                  cher Marquis je me brisais le crâne. </p>
+        </sp>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <p> C'est exact monsieur, sans moi il se tuait.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Et monsieur le Marquis, j'espère qu'il n'a aucun grief contre ce Guignol. </p>
+        </sp>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <p>Moi monsieur, c'est autre chose. Figurez vous que ce méchant s'est permis de
+                  clouer ma porte avec des pointes de six pouces, et d'écrire avec du blanc
+                  d'Espagne : fermé pour cause de décès. Il m'enterrait vivant !</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Madame et messieurs, je vous prie de m'accorder seulement trois mois et je vous
+                  promet qu'il sera parti. </p>
+        </sp>
+        <sp>
+          <speaker>Le Marquis </speaker>
+          <p>Trois mois ? Je déménage demain alors.</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Nous vous accordons de ving-quatre à quarante-huit heures, passé ce temps vous
+                  choisirez entre nous ou lui.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Mes chers locataires, je vous prie de croire que mon choix est tout fait.</p>
+        </sp>
+        <sp>
+          <speaker>La Baronne</speaker>
+          <p>Nous vous croyons cher monsieur Dubost. <stage type="corps">(Elle salue, prenant
+                     le bras du Chevalier.)</stage> Venez, Chevalier.</p>
+          <stage type="saut">Ils sortent.</stage>
+        </sp>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <stage type="pers"> (ne s'apercevant pas du départ de la Baronne)</stage>
+          <p>Vous devez comprendre, cher propriétaire, qu'en gardant ce locataire ce serait
+                  signer notre arrêt de mort.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Mais Marquis, vous êtes seul...</p>
+          <pb n="07" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_007.jpg"/></sp>
+        <sp>
+          <speaker>Le Marquis</speaker>
+          <stage type="pers"> (se retournant)</stage>
+          <p>Comment, ils sont partis ? <stage type="corps">(en courant)</stage> Chevalier,
+            attendez-moi. <stage type="corps">(Il sort.)</stage></p>
+          </sp>
+        
+      </div>
+      <div type="3">
+        <head type="scene" n="3">Scène 3</head>
+        <listPerson>
+          <personGrp>
+            <name>Dubost, </name><stage type="listPerson">puis</stage>
+            <name> Guignol</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Mais c'est que si je n'y prends garde, il est capable de me chasser ma brillante.
+                  D'un autre côté, je ne puis renvoyer ce monsieur Guignol, car il paie très bien sa
+                  location. J'y suis ! En faisant quelques sacrifices, je suis certain qu'il
+                  consentira à déménager. Frappons. <stage type="corps">(Il frappe.)</stage>
+                  Monsieur Guignol ?</p>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="4">Scène 4</head>
+        <listPerson>
+          <personGrp>
+            <name>[Guignol, </name>
+            <name>Dubost]</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Tiens c'est monsieur Dubost. Mais cependant, le terme pas encore à l'echoissante
+                  ?</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Monsieur Guignol, je ne viens pas pour chercher de l'argent, je veux vous adresser
+                  des reproches.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Des reproches à moi ? Et que t'y donc que j'ai fait ?</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Vous vous permettez de faire des farces aux locataires de ma maison.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>On m'en fait, j'en fais.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Écoutez monsieur Guignol, voici la proposition que j'ai à vous faire.</p>
+          <pb n="08" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_008.jpg"/></sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Voyons la proposition !</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Je vous offre un appartement de trois pièces dans ma maison, là en face, au
+                  deuxième, plus je vous fais grâce du terme qui va échoir dans quinze jours et d'un
+                  terme à venir.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>J'accepte. Dans combien de temps faut-il déménager ?</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Tout de suite.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Tout de suite, j'accepte, seulement je veux cent écus.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Cent écus ! Mais vous n'aurez rien.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Eh bien ne me dérangez plus, vieille ganache. <stage type="corps"> (Il
+                     rentre.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Diable il ne prend pas la chose comme je le l'aurais pensé, heureusement que j'ai
+                  monsieur le Bailli à dîner, je suis sûr qu'il me rendra service dans cette
+                  occasion.</p>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="5">Scène 5</head>
+        <listPerson>
+          <personGrp>
+            <name>Dubost, </name>
+            <name>le Bailli</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Dubost</speaker>
+          <stage type="pers"> (apercevant le Bailli qui va sonner chez lui)</stage>
+          <p>Te voilà cher ami.</p>
+          <pb n="09" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_009.jpg"/></sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (se retournant)</stage>
+          <p>Oh ! te voilà Dubost ! Tu vois que je ne sais pas me faire attendre. Nous allons
+                  aller prendre l'absinthe et nous nous mettrons à table.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Mais mon ami, c'est trop tôt. Il n'est que dix heures et le repas est pour
+                  midi.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>C'est juste.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Dis moi, cher ami, te souviens-tu que la semaine passée, dinant avec moi tu
+                  m'adressais des reproches ? Tu me disais que je t'employais jamais dans ton
+                  ministère.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>C'est vrai, tu n'as jamais fait appel à mon amitié.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Eh bien mon ami, aujourd'hui, j'ai besoin de toute ton autorité.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Je suis tout à toi.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>J'ai dans ma maison un locataire qui ne cesse de faire des farces à toutes les
+                  personnes qu'il rencontre. Il a attaché un chat par le superflu au cordon de
+                  sonnette de Madame la Baronne, il cloue les portes avec des pointes de six pouces
+                  et écrit dessus « fermé pour cause de décès », il tend des ficelles pour tomber les gens.</p>
+        </sp>
+        <pb n="10" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_010.jpg"/>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Très bien, la cause est superbe, il y a matière à procès.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Désireux de faire le moins de bruit possible, voici les propositions que je lui
+                  fais : je lui fais cadeau d'un terme, celui prochainement et d'un autre à venir,
+                  et je lui donne aux mêmes conditions un appartement de trois pièces dans ma propre
+                  maison.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Sans doute il accepte !</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Non pas, il veut cent écus.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Appelle-le, je vais lui parler.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <stage type="pers"> (appelant)</stage>
+          <p>Monsieur Guignol !</p>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="6">Scène 6</head>
+        <listPerson>
+          <personGrp>
+            <name>Les mêmes, </name>
+            <name>Guignol</name>
+          </personGrp>
+        </listPerson>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (sortant brusquement et donnant un coup de tête à Dubost)</stage>
+          <p> Présent. <stage type="corps">(apercevant le Bailli)</stage> Ouye, le Bailli.
+                     <stage type="corps">(Il le salue.)</stage> Monsieur le Bailli, j'ai bien
+                  l'honneur...</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>C'est très bien monsieur, très bien. Si je me présente devant vous, c'est pour
+                  vous adresser des reproches que nécessite votre conduite. Vous faites des farces
+                  intolérables aux locataires du même corps de bâtiment que vous habitez. Pourquoi avez-vous pendu un chat par le superflu ?</p>
+        </sp>
+        <pb n="11" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_011.jpg"/>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Par la cadenette, vous voulez dire. Et bien monsieur, j'ai pendu le chat parce que
+                  il m'avait chiqué un troc de lard.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Il est défendu de par la loi de se faire justice soi même, il fallait porter
+                  plainte.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Contre un chat ? Vous rigolez pauvre vieux.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Vous vous êtes permis encore de clouer les portes avec des pointes de six pouces
+                  et d'écrire dessus : « fermé pour cause de décès ».</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Pourquoi que ce vieux, chaque fois qu'y me rencontre, il me jette des corses
+                  d'orange sur la trompette ?</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Passons. Vous tendez des ficelles et vous faites tomber les gens.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Qui ? Le chevalier ? Pourquoi qu'en rentrant à trois heures du matin, il s'amuse à
+                  jouer du cor de chasse ? Ça fait que je peux pas dormir.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Dans le fait je vous comprends. Eh bien puisque votre proprietaire vous fait des propositions superbes, déménagez dans le plus bref délais et par ce fait, plus de plaintes ni d'un côté ni de l'autre.</p>
+        </sp>
+        <pb n="12" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_012.jpg"/>
+        <sp>
+          <speaker>Guignol</speaker>
+          <p>Je ne demande pas mieux, mais comme je ne veux pas démenager seul, je veux cent
+                  écus.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (à Dubost)</stage>
+          <p>Ne donne rien, mon ami.</p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Sois tranquille. <stage type="corps">(à Guignol)</stage> Vous n'aurez pas un
+                  sou.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (donnant un coup de tête à Dubost qui tombe sur le Bailli)</stage>
+          <p>Bien ! Attrape ça, toi. <stage type="corps"> (Il rentre.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Dubost</speaker>
+          <p>Mon ami, nous n'en tirerons rien, je vais faire mettre le couvert et toi, appelle
+                  tes cavaliers et fais pendre ce drôle, ce sera notre dessert. <stage type="corps">
+                     (Il rentre.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (appelant)</stage>
+          <p>À moi cavaliers, accourez à la voix de votre chef ! </p>
+        </sp>
+        <sp>
+          <speaker>Les cavaliers</speaker>
+          <p>Présent, monsieur le Bailli.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Allons, dépêchez-vous donc, vous n'êtes jamais là quand j'ai besoin de vous.</p>
+        </sp>
+        <pb n="13" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_013.jpg"/>
+        <sp>
+          <speaker>Premier Cavalier</speaker>
+          <p>Je nettoyais mon fusil, monsieur le Bailli.</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Et moi, je mangeais la gamelle, monsieur le Bailli. </p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p> La gamelle ou la soupe ?</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>La gamelle, monsieur le Bailli, vu que comme c'est vous qui êtes chargé de
+                  subvenir à nos besoins, le plus souvent quand on vous demande la portion, vous
+                  dites de se serrer les flancs avec la courroie du cheval parce que de trop manger,
+                  ça gêne à l'exercice.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Taisez-vous imbécile, ou je vous extirpe du tableau d'avancement. Cavaliers, votre
+                  chef vient d'être frappé.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (montrant sa tête au public)</stage>
+          <p>Pé pé pé.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (frappant le deuxième cavalier)</stage>
+          <p>Qu'est-ce que vous dites, vous? </p>
+        </sp>
+        <sp>
+          <speaker>Permier cavalier</speaker>
+          <p>Mais monsieur le Bailli, j'ai rien dit.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (en tournant vers le premier cavalier)</stage>
+          <p>Alors c'est vous, Lambert ?</p>
+          <pb n="14" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_014.jpg"/></sp>
+        <sp>
+          <speaker>1er cavalier </speaker>
+          <p>J'ai pas ouvert la bouche, monsieur le Bailli.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Continuez à parler toujours de la même manière ; cavaliers, il s'agit de mettre en
+                  état d'arrestation le nommé Guignol.</p>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (répétant)</stage>
+          <p>Nommé Guignol.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Taisez-vous cavaliers. Si toi ou l'autre vous proférez une seule parole, je vous
+                  fais coudre la langue avec vos moustaches.</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Moi je crains rien, j'en ai pas.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Silence ou je suspends vos appointements.</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Parbleu on ne touche jamais rien, ce sera pas difficile.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>De quoi vous plaignez-vous ? Puisque je vous ai promis de vous augmenter de
+                  quarante sous par mois ?</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Alors, on se tait.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Comme je le disais, cavaliers, il s'agit de l'arrêter, mais pour le prendre, il faut le trouver. Cherchons.</p>
+        </sp>
+        <pb n="15" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_015.jpg"/>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (donnant un coup de bâton au Bailli)</stage>
+          <p>C'est tout trouvé vieux. <stage type="corps"> (Il se cache.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Vous dites qu'il est tout trouvé, monsieur le Bailli.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Ah oui cavalier, il a trouvé ma tête.</p>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Tant mieux, monsieur le Bailli. C'est preuve que vous en avez une.</p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <p>Il faut employer la ruse. Cavalier, couchez-vous, ventre à terre, et sentons-nous
+                  car l'union fait la force.</p>
+          <stage type="saut">Ils se mettent sur le ventre, à la suite l'un de l'autre.</stage>
+        </sp>
+        <sp>
+          <speaker>Deuxième Cavalier</speaker>
+          <p>Je veux bien me coucher, mais à la condition que le camarade ne soufflera pas
+                  mot. <stage type="corps"> (Il se couche.)</stage></p>
+        </sp>
+        <sp>
+          <speaker>Le Bailli</speaker>
+          <stage type="pers"> (au premier cavalier)</stage>
+          <p>Vous entendez Lambert ? Ainsi taisez-vous.</p>
+        </sp>
+        <sp>
+          <speaker>Premier cavalier</speaker>
+          <p>Je n'ouvrirai pas la bouche, monsieur le Bailli.</p>
+          <pb n="16" facs="19_F_JOSSERAND_LesLocataires_FRA_AN_016.jpg"/></sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (en scène)</stage>
+          <p>Oh ces gars, ils roupillent un moment. </p>
+          <stage type="saut">Il met sa tête contre
+                     celle du Bailli et pousse, ce mouvement est répété par le Bailli [et] le premier cavalier
+                     de façon que le deuxième cavalier se trouve repoussé jusqu'au montant de la
+                     scène. L'apparition se répète quand ils arrivent à l'autre extrémité, Guignol
+                     sort et va chercher un bâton. Pendant ce temps, les cavaliers saisissent le
+                     Bailli, le prenant pour Guignol qui arrive armé de son bâton et frappe sur la
+                     mêlée, qui se disperse.</stage>
+        </sp>
+        <sp>
+          <speaker>Guignol</speaker>
+          <stage type="pers"> (seul)</stage>
+          <p>Ouf, les voilà filés tout de même, mais comme ils pourraient revenir plus
+            nombreux, rentrons chez nous.<stage type="corps"> (Il rentre.)</stage></p>
+          </sp>
+        
+        <div type="5"><head type="div5">Le rideau tombe.</head></div>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

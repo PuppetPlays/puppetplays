@@ -359,7 +359,11 @@ export async function getStaticProps({ locale }) {
       props: {
         initialCommunications: sortedCommunications,
         initialPressReviews: sortedPressReviews,
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
       },
       // Revalidation toutes les heures pour mettre à jour le contenu
       revalidate: 3600,

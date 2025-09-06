@@ -1,0 +1,3279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title ref="https://puppetplays.eu/en/oeuvres/317922/loiseau-bleu">L'Oiseau bleu</title>
+                <respStmt>
+                    <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+                    <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+                </respStmt>
+                <respStmt>
+                    <name xml:id="PM">Pierre Massinon</name>
+                    <resp>Transcription and edition</resp>
+                </respStmt>
+                <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+                <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+                <funder>European Research Council - ERC</funder>
+            </titleStmt>
+            <publicationStmt>
+                <distributor>Archives nationales - Pierrefitte-sur-Saine, France</distributor>
+                <availability status="free">
+                    <licence>Public domain</licence>
+                </availability>
+                
+                <idno type="DOI"/>
+            </publicationStmt>
+            <notesStmt>
+                <note>A Prince transformed into an animal manages to marry the woman he
+                    loves</note>
+                <note>The manuscript of the play was submitted to the Bureau des Ouvrages
+                    Dramatiques (a French office of censorship for theatrical works) in May 1853 by
+                    Mongobert – the director of "Spectacle Fantoccini", a small puppet theatre active
+                    between 1852 and 1854 on Boulevard du Temple in Paris (rue de Bondy, opposite the
+                    fountain known as the Château d'eau). In July 1853, the play was approved for
+                    performance. The text is kept in the French National Archives, in the "Archives de
+                    la Censure des "petits" théâtres parisiens" (Censorship Archives for "small"
+                    Parisian theatres, cote F/18/1328). No author is mentioned. Mongobert was the son of
+                    actor Gobert, who was famous for his performances in the role of Napoleon at the
+                    Théâtre de la Porte Saint-Martin. L'Oiseau bleu is
+                    an adaptation of a homonymous play by Marie-Catherine d'Aulnoy. It was made much
+                    simpler and substantial modifications were made to the original play. For instance,
+                    Truitonne and Florine are sisters here, and while the Enchanteur is their godfather,
+                    he also plans to marry Florine.</note>
+            </notesStmt>
+            <sourceDesc>
+                <listPerson>
+                    <personGrp role="audience">
+                        <p>Not specified</p>
+                    </personGrp>
+                </listPerson>
+                <listBibl>
+                    <msDesc>
+                        <msIdentifier>
+                            <repository>Archives nationales</repository>
+                        </msIdentifier>
+                        <physDesc>
+                            <objectDesc>
+                                <p>Number of pages in the original document: 58</p>
+                                <p>Number of acts in the original document: 7</p>
+                                <p>Format of the original document: Manuscript</p>
+                            </objectDesc>
+                        </physDesc>
+                    </msDesc>
+                </listBibl>
+                <bibl>
+                    <title type="main">L'Oiseau bleu</title>
+                    <date>1853</date>
+                </bibl>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <langUsage>
+                <language ident="fra">French</language>
+            </langUsage>
+            <textClass>
+                <keywords source="animationTechniques">
+                    <term source="https://puppetplays.eu/en/techniques-d-animation/2352/marionnettes-à-fils">String marionette</term>
+                </keywords>
+                <keywords source="literaryTones">
+                    <term>Fantasy</term>
+                    <term>Comical</term>
+                </keywords>
+                <keywords source="theatricalTechniques">
+                    <term>Misunderstanding</term>
+                    <term>Song</term>
+                    <term>Disguise</term>
+                    <term>Set that comes to life</term>
+                    <term>Situation comedy</term>
+                    <term>Off-stage voice</term>
+                    <term>Graveyard scene</term>
+                    <term>Dance</term>
+                    <term>Metamorphosis</term>
+                    <term>Flying machine</term>
+                    <term>Talking animal</term>
+                    <term>Entering with vehicle</term>
+                    <term>Letter</term>
+                    <term>Blow-with-a-stick</term>
+                    <term>Gunshot</term>
+                    <term>Apparition of a genius</term>
+                    <term>Final song</term>
+                </keywords>
+                <keywords source="genre">
+                    <term>Féerie en sept tableaux</term>
+                </keywords>
+                <keywords source="keywords">
+                    <term>Magic</term>
+                    <term>Enchantment</term>
+                    <term>Jealousy</term>
+                    <term>Love</term>
+                    <term>Treason</term>
+                    <term>Hunting</term>
+                    <term>Wedding</term>
+                </keywords>
+            </textClass>
+        </profileDesc>
+        <encodingDesc>
+            <editorialDecl>
+                <normalization method="silent">
+                    <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+                    <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+                    <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+                    <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+                </normalization>
+                <punctuation marks="some">
+                    <p>Punctuation has been corrected according to modern rules.</p>
+                </punctuation>
+            </editorialDecl>
+            <projectDesc>
+                <p>Text collected during the PuppetPlays project funded by European Union (Grant
+                    Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+                    re-evaluate the contribution of the puppets repertoire to the construction of
+                    European cultural identity. Its main goals is to collect a corpus of
+                    representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+                    France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+                    17th and the 21th century. It also tries to identify the characteristics of
+                    puppet dramaturgy and their variations depending on eras, cultural spheres,
+                    producing conditions, and the aimed public.</p>
+                <p>This edition is the result of university research work, reviewed by the principal investigator.</p>
+                <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+                    Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+                </ref> licence. This license enables reusers to distribute, remix, adapt, and
+                    build upon the material in any medium or format for non-commercial purposes
+                    only, and only so long as attribution is given to the creator. If you remix,
+                    adapt, or build upon the material, you must license the modified material under
+                    identical terms. </p>
+            </projectDesc>
+        </encodingDesc>
+        <revisionDesc>
+            <change when-iso="2024-07-01" who="#PM">Text transcription and encoding</change>
+            <change when-iso="2025-03-24" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <front>
+            <pb n="01" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_01.jpg"/>
+            <!-- <docAuthor><persName>M. Mongobert</persName></docAuthor>-->
+            <docTitle>
+                <titlePart type="main">L'Oiseau bleu</titlePart>
+                <titlePart type="sub">Féerie en 7 tableaux</titlePart>
+            </docTitle>
+            <docDate>1853</docDate>
+            <castList>
+                <head type="personnage">Personnages :</head>
+                <castItem>
+                    <role>Rotomago,</role>
+                    <roleDesc> enchanteur</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Truitonne</role>
+                    <roleDesc>, pupille de Rotomago</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Florine</role>
+                    <roleDesc>, pupille de Rotomago</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Le Prince Charmant</role>
+                </castItem>
+                <castItem>
+                    <role>Gilles</role>
+                    <roleDesc>, valet du Prince</roleDesc>
+                </castItem>
+                <castItem>
+                    <role>Un Petit Génie</role>
+                </castItem>
+                <castItem>
+                    <role>Un Seigneur</role>
+                </castItem>
+                <castItem>
+                    <role>Un Huissier</role>
+                </castItem>
+            </castList>
+        </front>
+        <body>
+            <pb n="02" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_02.jpg"/>
+            <div type="2">
+                <head type="tableau" n="1">Tableau I</head>
+                <div type="3">
+                    <head type="scene" n="1">Scène 1</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Truitonne, </name>
+                            <name>Florine</name>
+                        </personGrp>
+                    </listPerson>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Je veux avoir une explication avec vous, ma soeur.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Je vous écoute, Truitonne. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <stage type="pers"> (fâchée)</stage>
+                        <p>Truitonne, vous répétez toujours ce vilain nom que je n'aime pas.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>N'est-il pas le vôtre ?</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>C'est vrai, notre parrain, l'enchanteur Rotomago, me l'a donné le jour de
+                            ma naissance sans me consulter. On ne consulte jamais les enfants à qui
+                            on donne des noms, c'est très désagreable.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>On m'appelle Florine, moi, et je m'en contente. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <pb n="03" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_03.jpg"/>
+                        <p>Je vois bien. C'est très joli, Florine.</p>
+                    </sp>
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Si l'on pouvait changer de nom, je vous donnerais le mien.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <stage type="pers"> (vivement)</stage>
+                        <p> Je n'en veux pas, je suis habituée à présent à m'appeler comme cela, et
+                            cela m'embrouillerait si on me nommait autrement. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Eh bien, alors que voulez-vous, ma sœur ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Je veux, je veux que vous n'ayez pas avec moi cet air de douceur qui
+                            m'ennuie et qui me met en colère, parce que vous semblez faire la
+                            critique de mon cas. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Dame, je ne peux pas me cacher pour vous faire plaisir. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <stage type="pers"> (vivement)</stage>
+                        <p>Je veux être bonne, douce, avoir toutes les qualités que tout le monde
+                            dit que vous possédez, ce qui fait que l'on vous aime, et que l'on me
+                            déteste.</p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Cela vous serait très facile si vous le désiriez. Quand on vous habille,
+                            ne vous impatientez pas contre votre femme de chambre ; quand un pauvre
+                            vous demande l'aumône, donnez-lui et ne lui dites pas
+                            durement  « passez votre chemin » ; et l'on vous aimera. Ne soyez pas
+                            jalouse des avantages des autres et, puisque vous êtes princesse et
+                            riche, remerciez le ciel des dons qu'il vous a accordés, ne faites pas
+                            sentir le poids de votre supériorité à vos inférieurs, et l'on vous
+                            chérira. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Eh bien, je ne veux pas me donner tout ce mal-là pour qu'on m'aime, je
+                            veux crier après mes domestiques, je veux pincer mes femmes de chambre,
+                            battre mes animaux, chasser les mendiants, et que l'on dise de moi que
+                            je suis bonne et excellente. Le beau mérite que l'on vous chérisse si
+                            vous faites du bien, je veux faire du mal et que l'on m'aime tout de
+                            même.</p>
+                    </sp>
+
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Je vous assure ma sœur que c'est un mauvais moyen.</p>
+                    </sp>
+                </div>
+                <div type="3">
+                    <head type="scene" n="2">Scène 2</head>
+                    <listPerson>
+                        <personGrp>
+                            <name>Florine, </name>
+                            <name>Truitonne, </name>
+                            <name>Rotomago</name>
+                        </personGrp>
+                    </listPerson>
+
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Bonjour mes chères filleules. </p>
+                    </sp>
+
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p> Bonjour mon parrain.</p>
+                        <stage type="corps">(Elle l'embrasse.)</stage>
+                    </sp>
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <pb n="05" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_05.jpg"/>
+                        <p>Et toi tu ne m'embrasses pas, Truitonne ?</p>
+                    </sp>
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Non, je suis en colère !</p>
+                    </sp>
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Eh bien... Embrasse-moi avec colère. <stage type="corps">(Truitonne
+                                l'embrasse.)</stage>
+                        </p>
+                    </sp>
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Là. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Vous voilà grandes et belles, belles... toi Truitonne, on peut discuter
+                            cela, mais ça se dit quand les filles ont un certain âge, et qu'on veut
+                            les marier. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Les deux soeurs</speaker>
+                        <p>Nous marier ? </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Oui, vous avez des chances d'établissement, deux princesses, filles d'un
+                            roi et d'une reine, filleules d'un enchanteur, vous pouvez aspirer aux
+                            plus beaux partis.</p>
+                    </sp>
+
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Moi, mon parrain, je veux un bon mari, qui me rende heureuse, et dont je
+                            fasse le bonheur. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Tu auras cela, et toi ? </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Eh moi je veux un prince riche, puissant, brun, bien mis,
+                            doux, obéissant, et que je puisse faire enrager toute la journée.</p>
+                    </sp>
+<pb n="06" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_06.jpg"/>
+
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>J'ai ton affaire, le Prince Charmant va faire une entrée triomphale dans
+                            ce royaume, il a reçu vos deux portraits, il est probable que Truitonne
+                            l'ait séduit, et Florine aura comme dédommagement ma main, et le titre
+                            de mon épouse. </p>
+                    </sp>
+
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>C'est bien fait !</p>
+                    </sp>
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Comment, c'est bien fait ?...</p>
+                    </sp>
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Elle ne mérite que ça. </p>
+                    </sp>
+                    <sp>
+                        <speaker>Rotomago</speaker>
+                        <p>Truitonne, vous manquez d'égards et de goût. Et que pense Florine de
+                            cette proposition ? </p>
+                    </sp>
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Mon parrain, je vous respecte, je vous vénère, mais je ne veux pas me
+                            marier. </p>
+                    </sp>
+
+                    <sp>
+                        <speaker>Truitonne</speaker>
+                        <p>Avec vous... c'est possible. Mais si on lui proposait le Prince Charmant
+                            ?</p>
+                    </sp>
+
+
+                    <sp>
+                        <speaker>Florine</speaker>
+                        <p>Je le refuserais aussi. Il faudrait auparavant que je le
+                            connaisse, je désirerais savoir si nos caractères sympathisent. <stage
+                                type="corps">(On entend le son d'une trompette.)</stage></p>
+                    </sp>
+                    <pb n="07" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_07.jpg"/>
+
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Truitonne, </name>
+                                <name>Florine, </name>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Bonjour mes chères filleules. </p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p> Bonjour mon parrain. <stage type="corps">(Elle l'embrasse.)</stage></p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <pb n="08" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_08.jpg"/>
+                            <p>Et toi tu ne m'embrasses pas, Truitonne ?</p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Non, je suis en colère !</p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Eh bien... Embrasse-moi avec colère. <stage type="corps">(Truitonne
+                                    l'embrasse.)</stage>
+                            </p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Là. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Vous voilà grandes et belles, belles... toi Truitonne, on peut discuter
+                                cela, mais ça se dit quand les filles ont un certain âge, et qu'on veut
+                                les marier. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Les deux soeurs</speaker>
+                            <p>Nous marier ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Oui, vous avez des chances d'établissement, deux princesses, filles d'un
+                                roi et d'une reine, filleules d'un enchanteur, vous pouvez aspirer aux
+                                plus beaux partis.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Moi, mon parrain, je veux un bon mari, qui me rende heureuse, et dont je
+                                fasse le bonheur. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Tu auras cela, et toi ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Eh moi je veux un prince riche, puissant, brun, bien mis,
+                                doux, obéissant, et que je puisse faire enrager toute la journée.</p>
+                        </sp>
+    <pb n="09" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_09.jpg"/>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>J'ai ton affaire, le Prince Charmant va faire une entrée triomphale dans
+                                ce royaume, il a reçu vos deux portraits, il est probable que Truitonne
+                                l'ait séduit, et Florine aura comme dédommagement ma main, et le titre
+                                de mon épouse. </p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>C'est bien fait !</p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Comment, c'est bien fait ?...</p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Elle ne mérite que ça. </p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Truitonne, vous manquez d'égards et de goût. Et que pense Florine de
+                                cette proposition ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Mon parrain, je vous respecte, je vous vénère, mais je ne veux pas me
+                                marier. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Avec vous... c'est possible. Mais si on lui proposait le Prince Charmant
+                                ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Je le refuserais aussi. Il faudrait auparavant que je le
+                                connaisse, je désirerais savoir si nos caractères sympathisent. <stage
+                                    type="corps">(On entend le son d'une trompette.)</stage></p>
+                    </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>J'entends la voix du Prince, allez-vous apprêter à le recevoir d'une
+                                façon digne de son rang. </p>
+                            <stage type="air"><label type="air">AIR :</label> Travaillez
+                                mesdemoiselles.</stage>
+                            <lg>
+                                <l>Rendez vous à vos toilettes</l>
+                                <l>Et sans vous faire prier.</l>
+                                <l>On peut se montrer coquettes</l>
+                                <l>Quand on va se marier.</l>
+                                <l>Florine, il faudra ma bonne</l>
+                                <l>Te vêtir très simplement.</l>
+                                <l>Quant à toi grosse Truitonne</l>
+                                <l> Mets-toi magnifiquement.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Mais le Prince, en ne me voyant pas brave et bien mise, ne fera pas
+                                attention à moi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est ce que je veux.</p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Quel bonheur ! Je vais l'éclipser !</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Allez... Mesdemoiselles. <stage type="corps">(reprise)</stage></p>
+                            <lg>
+                                <l> Rendons-nous à nos toilettes. <stage type="corps">(etc.)</stage></l>
+                            </lg>
+                        </sp>
+                        <pb n="10" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_10.jpg"/>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <stage type="pers"> (seul)</stage>
+                            <p>Ah !... ah !... le jour de gloire est arrivé, tu vas triompher mon
+                                bonhomme, farceur d'enchanteur que je suis... Ce crapaud de destin...
+                                qui me tourmente depuis quinze siècles, ou vingt, je ne sais pas au
+                                juste. Ce savoyard de destin, dis-je, veut que dans un délai de huit
+                                jours, mes deux filleules soient mariées, sinon, je serai condamné à
+                                perdre mon pouvoir, à me voir plongé dans le néant, et à payer une
+                                amende de trente francs et soixante-cinq centimes, sans acompte : j'ai
+                                envoyé dans les Petites Affiches proposer la main d'une de mes pupilles,
+                                et j'épouse l'autre, la plus jolie. Ça n'est pas plus malin que cela.
+                                    <stage type="corps">(son de trompette)</stage> Encore la voix du
+                                Prince, il a le ton nasillard. Entrez. </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="4">Scène 4</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Monsieur Mago... S'il vous plait ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ce n'est pas ici, c'est peut être la porte en face. Ah ! non... Ah ! non
+                                ! C'est Roto que vous demandez ?</p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <pb n="11" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_11.jpg"/>
+                            <p>Monsieur Roto : c'est possible.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p> Monsieur Rotomago. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je disais bien, monsieur Mago. </p>
+                            <stage type="air"><label type="air">AIR :</label> Monsieur
+                                Polichinelle</stage>
+                            <lg>
+                                <l>Chacun m'appelle, imbécile,</l>
+                                <l> L'enchanteur Rotomago</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Je trouve ce nom difficile.</l>
+                                <l>Je n'peux pas le dir' tout d'go.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l>Dites monsieur Ro. </l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>C'est monsieur Ro.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l> Et monsieur To.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Et monsieur To.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l>Et monsieur Ma. </l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Et monsieur Ma.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l>Et monsieur Go.</l>
+                            </lg>
+                        </sp>
+                        <pb n="12" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_12.jpg"/>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l> C'est monsieur Rotomago.</l>
+                            </lg>
+                            <p>Ah ! le voilà ! </p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Oui Rotomago, le célèbre enchanteur. </p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! monsieur est enchanteur, ah ! Vous êtes un... ench !.... Qu'est-ce
+                                que c'est que ça ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est un particulier qui enchante tout le monde.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>J'en suis enchanté... Dites donc, je prendrais bien quelque chose. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Du nectar, de l'ambroisie, du lacryma Christi ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Cresti, non, j'aime mieux une chope. <stage type="corps">(Une grande
+                                    chope parait.)</stage> Ainsi, vous enchantez tout ce que vous
+                                voulez. <stage type="corps">(La chope exécute plusieurs
+                                    métamorphoses.)</stage> Mais, Seigneur Gogo, je ne vous ai pas
+                                encore dit ce que je suis venu faire ici, dans votre logis ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>En effet... </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je suis le serviteur du Prince des Îles Bleues, dans ce pays
+                                tout est bleu, toutes les rues s'appellent la rue Bleue. L'armée est
+                                composée de corps bleus, on n'y voit que des têtes bleues, ventre bleu,
+                                vertu bleu.</p>
+                        </sp>
+                        <pb n="13" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_13.jpg"/>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Je croyais que Gilles était ordinairement d'une entière blancheur.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Auparavant, j'étais homme de bureau. Maintenant je suis ambassadeur, je
+                                suis passé au bleu. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Je t'aimais mieux au blanc.</p>
+                            <stage type="air"><label type="air">AIR</label></stage>
+                            <lg>
+                                <l>Je suis très amateur du blanc,</l>
+                                <l>On tire au noir, on vise au blanc,</l>
+                                <l>Le noir est l'esclave du blanc</l>
+                                <l>Le crime est noir, l'innocent blanc.</l>
+                                <l>En Espagne on trouve du blanc</l>
+                                <l>Pour blanchir encore le fer-blanc</l>
+                                <l>En mettant du noir sur du blanc</l>
+                                <l>Comme on gâche du papier blanc.</l>
+                                <l>On va visiter le Mont Blanc,</l>
+                                <l>On respecte le cheveu blanc,</l>
+                                <l>Le bouquet virginal est blanc</l>
+                                <l> Et blanc bonnet vaut bonnet blanc.</l>
+                                <l> On aime, par goût pour le blanc,</l>
+                                <pb n="14" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_14.jpg"/>
+                                <l>Le blanc-seing ou bien le sein blanc.</l>
+                                <l>Au jaune d'oeuf il faut du blanc,</l>
+                                <l>Aux trois couleurs il faut du blanc.</l>
+                                <l>On s'enrichit d'un merle blanc,</l>
+                                <l>À moins qu'il ne fasse chou blanc.</l>
+                                <l>On mange du poulet au blanc</l>
+                                <l> Et l'on boit du vin blanc.</l>
+                            </lg>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah. Vous aimez le blanc ?</p>
+                            <stage type="air">Deuxième couplet</stage>
+                            <lg>
+                                <l>Mais moi qui suis du Pays Bleu</l>
+                                <l>Morbleu je défendrai le bleu.</l>
+                                <l> Rien n'est plus doux qu'un bel œil bleu,</l>
+                                <l>On s'amuse d'un conte bleu,</l>
+                                <l>En hiver pour n'être pas bleu,</l>
+                                <l> Prenez la peau d'un renard bleu.</l>
+                                <l> Le pauvre pense encore parbleu</l>
+                                <l>À l'homme au petit manteau bleu.</l>
+                                <l>On a besoin d'un cordon bleu,</l>
+                                <l>Au billard on se sert de bleu,</l>
+                                <l>On écrit en noir bien du bleu,</l>
+                                <l>Un merle blanc peut être bleu,</l>
+                                <l>On vante partout le bas bleu,</l>
+                                <l> On cherche le dahlia bleu.</l>
+                                <l>Quand il fait beau le ciel est bleu,</l>
+                                <l>L'uniforme français est bleu,</l>
+                                <pb n="15" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_15.jpg"/>
+                                <l>Au tricolore il faut du bleu,</l>
+                                <l>Le linge n'est pas blanc sans bleu,</l>
+                                <l> On mange le brochet au bleu,</l>
+                                <l> Et l'on boit du vin bleu.</l>
+                            </lg>
+                            <p>Passons à mon message. Je viens vous annoncer mon maître le Prince
+                                Charmant, qui a lu dans les Petites Affiches la proposition que vous
+                                faites de jeter à la tête du premier venu une de vos filleules, et nous
+                                accourons avec empressement pour l'épouser.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Je vais donner le coup d'oeil du maître à la fête que je vais faire
+                                exécuter devant le Prince Charmant. <stage type="corps">(Il
+                                    sort.)</stage></p>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="5">Scène 5</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <stage type="pers"> (seul)</stage>
+                            <p>Cet enchanteur est laid et peu aimable, ça se compense. Il est assez bien
+                                logé... Je suis sûr qu'il n'a pas cher de loyer, mais on l'augmentera,
+                                il est trop laid pour ne pas être augmenté ! </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="6">Scène 6</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Gilles, </name>
+                                <name>Truitonne, </name>
+                                <name>Florine</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Que vous êtes mal vêtue, pauvre Florine ! Ah ! voilà le Prince.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>J'ai dû obéir à mon tuteur mais je suis toute honteuse d'être si mal
+                                habillée. Mais devant ce Prince-là cela m'est égal.</p>
+                        </sp>
+                        <pb n="16" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_16.jpg"/>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! la vilaine défroque, parlez-moi de celle-ci. Voilà qui est chic,
+                                faisons-lui un compliment.</p>
+                            <stage type="air"><label type="air">AIR :</label> Au clair de la
+                                lune</stage>
+                            <lg>
+                                <l>Elle a l'air d'une lune</l>
+                                <l>Et près d'elle on sent</l>
+                                <l>L'amour qui s'allume</l>
+                                <l>Aller en croissant.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <lg>
+                                <l>Même par la rime</l>
+                                <l>Ce Prince un peu sot</l>
+                                <l> Entre nous s'exprime</l>
+                                <l>Comme un vrai Pierrot.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Ainsi donc Prince, vous me trouvez à votre goût ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Elle me prend pour le Prince, tant pis donnons-nous un genre. Ah ! belle
+                                Princesse, comment vous appelle-t-on ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Truitonne.</p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ce nom promet, il commence bien et ne finit pas mal.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p> Voilà un Prince aimable.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <pb n="17" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_17.jpg"/>
+                            <p>Cette Truitonne est connaisseuse. Mon maitre a tort d'avoir un valet si
+                                bien bâti, ça lui fait du tort. </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="7">Scène 7</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>Rotomago, </name>
+                                <name>Charmant</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Entrez, Prince séduisant, entrez. Ces demoiselles vous attendent avec
+                                impatience.</p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Comment, ce n'était pas celui-là ?</p>
+                        </sp>
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Que fais-tu là, maraud ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je préparais votre entrée. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>À la bonne heure, celui-ci est beaucoup mieux. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p> Je me suis laissé dire des compliments par un domestique. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Dame, quand le domestique est aimable.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Arrière, vassal !</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Et quelle est cette délicieuse personne ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <pb n="18" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_18.jpg"/>
+                            <p>Moi, Prince ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Non, cette jolie enfant qui se cache.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Une petite fille élevée par charité auprès de mes pupilles. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Mais...</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Silence, ou je vous change en grenouille. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Que la nature est bizarre de donner tant de perfections à une jeune fille
+                                obscure, tandis qu'elle en est si avare envers une fille de Roi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <stage type="pers"> (à Rotomago)</stage>
+                            <p>Le Prince ne fait guère attention à moi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Déploie tes talents, danse une gigue... Prince, observez les grâces de la
+                                ravissante Truitonne.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Truitonne, quel nom étrange.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je le trouve baroque, une truie et une tonne, c'est un nom où il y a de
+                                quoi boire et manger. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <pb n="19" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_19.jpg"/>
+                            <p>Cette jolie créature s'appelle ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Florine, mon Prince.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Florine, on aurait dû le deviner aux roses de son teint. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>J'aime assez Florine, mais elle est bien mal attifée</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Allons, danse une gigue devant le Prince Charmant.</p>
+                            <stage type="saut">Truitonne saute lourdement.</stage>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Elle danse comme une demoiselle de paveur, mais c'est gracieux. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Puisque nous sommes sur l'article de la danse, Prince, permettez-moi de
+                                vous offrir un petit divertissement assez coquet.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Voilà tout ce qu'il nous paie, j'aimerais mieux de la galette. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Prenons place, allons Prince asseyez-vous auprès de votre fiancée. Non,
+                                pas celle-ci, je ne sais pas pourquoi cette petite se permet de paraitre
+                                devant vous ainsi vêtue. Allez ma mie, allez à la cuisine.</p>
+                        </sp>
+
+                        <pb n="20" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_20.jpg"/>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Non pas, je serais désolé que l'on mortifiât cette belle enfant à cause
+                                de moi, j'aimerais mieux me retirer moi-même.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je vais lui prodiguer les charmes de ma conversation. <stage type="corps"
+                                    >(On s'assied, Gilles va pour s'assoir, le chaise disparait, il
+                                    tombe par terre.)</stage> Je croyais le fauteuil plus élevé ! Je me
+                                suis fait mal, encore du bleu de Prusse sur mon individu. <stage type="corps">(ici le ballet)</stage></p>
+                            
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>À présent Truitonne, fais-nous voir ta belle voix.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Elle va ouvrir un large bec.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Chante nous <stage type="corps">[Air]</stage> Quoi vous
+                                    ne me dites rien, mon ami, ce n'est pas bien ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Je ne me le rappelle pas. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <stage type="pers"> (écourtant)</stage>
+                            <p>Oh ! si, souvenez-vous en.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Elle veut se faire prier.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Allons, aimable Truitonne, chantez, cela nous fera plaisir.</p>
+                        </sp>
+                        <pb n="21" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_21.jpg"/>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oui chantez, je suis très connaisseur sur le chant. <stage type="corps"
+                                    >(Il baille.)</stage> La musique me fait un effet.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Puisque tout le monde le veut : quoi, <stage type="corps">(Elle
+                                    tousse.)</stage> quoi, quoi, quoi, ...</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Hein ? Quoi de plus joli que ce quoi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Quoi, quoi, quoi,.. quoi...</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>C'est l'air de la catacoua.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Nous vous tenons quitte du reste. Et cette jeune personne ne nous donnera
+                                pas un échantillon de ses talents ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Puisque le Prince l'ordonne. <stage type="corps">(Elle
+                                danse.)</stage></p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p> Ah ! que c'est joli, j'ai envie de l'inviter pour la première. </p>
+                        </sp>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Elle cherche à me faire du tort, je monterai une cabale contre elle. </p>
+                        </sp>
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Et la musique ne vous est pas étrangère ? </p>
+                        </sp>
+                        <pb n="22" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_22.jpg"/>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <stage type="air"><label type="air">AIR :</label> Partant pour la
+                                Syrie.</stage>
+                            <lg>
+                                <l>Une pauvre fillette</l>
+                                <l>Sans parents, sans amis,</l>
+                                <l>Se désolait seulette</l>
+                                <l> Et pleurait ses ennuis.</l>
+                                <l> Ainsi qu'une servante,</l>
+                                <l> Traitée en ce moment</l>
+                                <l> Qui la rendra charmante ?</l>
+                                <l>C'est un mari charmant.</l>
+                            </lg>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Oui, cela est vrai. <stage type="corps">(Il répète.)</stage></p>
+                            <lg>
+                                <l>Tu seras ma charmante,</l>
+                                <l>Je serais ton charmant.</l>
+                            </lg>
+
+                            <p> Seigneur Rotomago, voilà décidément celle que j'aime. Il y a sans doute
+                                quelque fourberie là-dessous, la véritable Princesse, c'est cette jolie
+                                enfant, et celle-ci doit être la chambrière.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Mademoiselle Truitonne doit être la marmitonne</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Insolent.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Drôle ! <stage type="corps">(On le bat.)</stage></p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <pb n="23" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_23.jpg"/>
+                            <p>Bon domestique, j'approuve ton dévouement, il aura sa récompense. 
+                            </p>
+                        </sp>
+                        <sp>
+                                <speaker>Une voix de Fée</speaker> <p>Prince Charmant, ton coeur
+                                t'a bien guidé, Florine est celle que tu dois aimer. <stage type="corps"
+                                    >(Ici, les costumes changent. Musique)</stage>
+                            </p>
+                        </sp>
+
+
+
+                        <sp>
+                            <speaker>Chœur</speaker>
+                            <lg>
+                                <stage type="air">(Les deux couplets chantés simultanément)</stage>
+                                <stage type="air">Couplet 1</stage>
+                                <l>C'est vraiment abominable</l>
+                                <l>C'est un méchant tour du diable</l>
+                                <l> Mais je veux avoir raison</l>
+                                <l> D'une telle trahison</l>
+                                <stage type="air">Couplet 2</stage>
+                                <l> Ah ! c'est vraiment admirable</l>
+                                <l>Ah ! merci fée adorable</l>
+                                <l> Bientôt nous aurons raison</l>
+                                <l> D'une lâche trahison.</l>
+                            </lg>
+                            <stage type="saut">Rotomago fait rentrer les pupilles d'un côté et le Prince
+                                sort de l'autre avec Gilles. Le théâtre change et représente un petit
+                                extérieur riche.</stage> </sp>
+
+
+                        
+                    </div>
+                </div>
+                <div type="2">
+                    <head type="tableau" n="2">Tableau II</head>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est dégoûtant, il y des fées d'une indiscrétion... Je faisais
+                                tranquillement mes petites affaires d'enchanteur honnête et modéré. Je
+                                suis enchanteur de père en fils : la maison Rotomago et compagnie,
+                                connue pour les transformations, machinations, et à juste prix..
+                                J'allais caser mes deux pupilles, sans cette maudite petite fée de deux
+                                sous ; ou plutôt dix centimes, qui vient se mêler de mes affaires. Eh !
+                                mais ça ne se passera pas ainsi, je vais combiner un plan... Voyons...
+                            </p>
+                        </sp>
+
+                        <pb n="24" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_24.jpg"/>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Avance ici... maraud. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Enchanteur Roto... pourquoi m'appelez-vous maraud, Mago ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Mon pouvoir me donne le droit de t'injurier. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p> Ah ! c'est différent, alors continuez. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p> Es-tu attaché à ton maître ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <stage type="pers"> (avec énergie)</stage>
+                            <p>À mon maître ! Mon bienfaiteur, mon père de lait ! Ah ! Dieu !... pas
+                                beaucoup. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ce sentiment t'honore. De sorte que pour une récompense, tu aiderais à le
+                                faire tomber dans un piège ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Par exemple ! Dans deux pièges si la récompense était bonne. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ce sentiment t'honore. Et l'on méconnait cette noble classe.
+                                Je te donne habit, veste, culotte, achetés à la confection, chez un
+                                prophète de mes amis qui a un palais de cristal, en outre une casquette
+                                de loutre ; un bonnet grec qui a servi à un Turc, et un caleçon de
+                                bain.</p>
+                        </sp>
+                        <pb n="25" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_25.jpg"/>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ce dernier article me décide, j'ai l'idée d'aller au bain cet été, vous
+                                me croirez si vous voulez, ce sera la première fois de ma vie que je me
+                                serai baigné. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Vous n'êtes pas soigneux, Gilles.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Mon éducation fut négligée et mon individu a été comme mon éducation,
+                                hélas ! Que faut-il faire pour mériter tant de faveurs ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Me vendre ton âme, devenir un instrument de trahison, en un mot raconter
+                                à ton maître une infâme blague.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oh !.. j'en suis. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Tu vas lui dire que tu es chargé par Florine de lui demander un moment
+                                d'entretien.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <pb n="26" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_26.jpg"/>
+                            <p> Vraiment ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est une ruse.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Gros malin d'enchanteur... va.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Truitonne la remplacera, il lui engagera sa foi.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Mais s'il trahit ses serments et sa foi ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Alors, malheur à lui, je lui flanquerai une perruque dont il se
+                                souviendra. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Et quand m'enverrez-vous mes effets ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Sitôt que tu auras commis ta petite trahison, tu viendras en recevoir le
+                                fruit. <stage type="corps">(à part)</stage> Et comme je n'aime pas les
+                                traîtres, monsieur Gilles recevra son châtiment pour avoir trahi son
+                                maître. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Adieu, aimable enchanteur.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Bonsoir, double Gilles. </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Gilles, </name>
+                                <name>Charmant</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <pb n="27" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_27.jpg"/>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Voilà le Prince qui arrive tout guilleret, commençons mon horrible
+                                guet-apens. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <stage type="air"><label type="air">AIR</label> Du Tra la la</stage>
+                            <lg>
+                                <l>Ah ! que l'on est heureux</l>
+                                <l> Quand on est amoureux.</l>
+                                <l>L'amour change en bonheur</l>
+                                <l>Le plus triste malheur,</l>
+                                <l>On aime le loto,</l>
+                                <l> Le vilain semble beau.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Alors Gilles qu'on dit laid</l>
+                                <l>Très joli vous parait.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Ensemble</speaker>
+                            <stage type="pers"> (dansent joyeusement)</stage>
+                            <lg>
+                                <l>Sur l'air du tra la la...</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! mon cher maître, que vous avez raison de vous réjouir, car la gente
+                                Florine m'a dit qu'elle voulait causer avec vous.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Ô bonheur inespéré, et où, et quand, quand ?...</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Quand, quand ? tout de suite, et où ? ici, quand il ne fera plus clair.
+                                La nuit, tous les Princes sont gris. Allons toucher le prix de mon
+                                forfait. <stage type="corps">(Il sort.)</stage>
+                            </p>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="4">Scène 4</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Charmant</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <stage type="pers"> (seul)</stage>
+                            <pb n="28" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_28.jpg"/>
+                            <p>Eh ! perfide enchanteur, tu voulais m'affubler de ton horrible Truitonne,
+                                mais le bon génie qui me protège veille sur moi, il m'éclaire. <stage
+                                    type="corps">(Le théâtre s'obscurcit.)</stage> On n'y voit goutte,
+                                c'est le vrai moment. <stage type="corps">(musique)</stage> J'entends
+                                trotiller, c'est mon amante. </p>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="5">Scène 5</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Charmant, </name>
+                                <name>Truitonne</name>
+                            </personGrp>
+                        </listPerson>
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Est-ce fait ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Fait ? Ah, fait...</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Ah ! Prince, vous devez me trouver bien chose de venir vous parler ainsi à
+                                la brune.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Bien chose, elle s'exprime cocassement, c'est l'obscurité qui l'empêche
+                                de voir clair à ce qu'elle dit. N'importe, engageons-lui ma foi..
+                                Florine, Florine, chère Florine, Voulez-vous accepter un amour éternel ?
+                                C'est une bagatelle. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Cet anneau est un gage...</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>C'est le premier gage touché par votre main, je vous en donnerai d'autres
+                                plus tard... je vous donnerai une magnifique corbeille.</p>
+                        </sp>
+                        <pb n="29" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_29.jpg"/>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>De friandises. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Elle est portée sur la bouche, n'importe, mes moyens me permettent de la
+                                nourrir convenablement.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>J'aime beaucoup le pain d'épice.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Je n'en suis pas fou, mais je vous permettrai cette consommation,
+                                modérément pourtant. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Et des pruneaux.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Oui, oui, mais si nous parlions d'autres chose que de comestibles, de
+                                votre rivale par exemple, dont je souhaite à tout prix éviter
+                                l'alliance. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Elle est bien tenace.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p> Et moi bien entêté, et c'est vous seule que j'épouserai. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p> Et ma sœur ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Que Satan s'en empare s'il le veut.</p>
+                        </sp>
+                        <pb n="30" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_30.jpg"/>
+                        <sp>
+                            <speaker>La voix de Rotomago</speaker>
+                            <p> Que tes vœux soient exaucés ! </p>
+                            <stage type="saut">Le théâtre s'éclaire. On voit un petit diable emporter
+                                Florine qui crie.</stage></sp>
+                        
+                        <sp>
+                            <speaker>[Florine]</speaker>
+                            <p> Prince, au secours ! </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="6">Scène 6</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Charmant, </name>
+                                <name>Truitonne, </name>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Truitonne ! J'aurais dû la deviner à son langage gastronomique. </p>
+                        </sp>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Allons mes enfants, je vous bénis, je vous unis, vlan vlan. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Retire-toi imposteur, ou redoute ma colère.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Petit croquet, je ne ferai qu'une bouchée de toi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Ne m'approche pas, ou je te passe mon pied au travers du corps, rends-moi
+                                Florine. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Florine n'existe plus, tu l'as toi-même envoyée au diable.. Il y avait
+                                encore une place, elle est partie. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p> Je la disputerai à ce puissant persécuteur.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Va la demander au cimetière... où elle est déjà installée.
+                            </p>
+                        </sp>
+                        <pb n="31" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_31.jpg"/>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Eh bien oui, j'irai... que diable il y a eu erreur, on peut bien faire
+                                des réclamations.. Il n'est pas encore quatre heures, les bureaux ne
+                                sont pas fermés... J'y cours...</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Et Truitonne que tu abandonnes ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Je vais la proposer à Belzébuth pour remplacer Florine. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Je ne veux pas... na !</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <stage type="air"><label type="air">AIR :</label> Rendez-moi etc.</stage>
+                            <lg>
+                                <l>Je veux revoir Florine oui-dà,</l>
+                                <l>Je veux revoir Florine,</l>
+                                <l>Quand même je devrais pour cela</l>
+                                <l>Prendre une carabine.</l>
+                                <l>Dans le cimetière de ce pas</l>
+                                <l>Je me rends à l'instant parce...</l>
+                                <l> Que je prétends ici n'être pas</l>
+                                <l>Le dindon de la farce.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Ah ! mon parrain.. il s'en va...</p>
+                        </sp>
+
+                        <pb n="32" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_32.jpg"/>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ne crie pas, ne fais pas de girie, je suis là... Ne fais pas de manière,
+                                ça n'avance à rien... où... </p>
+                            <stage type="saut">Musique</stage>
+                        </sp>
+                    </div>
+                </div>
+
+                <div type="3">
+                    <head type="tableau" n="3">Tableau III</head>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+                        <stage type="saut">Le cimetière. Musique effrayante.</stage>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>En voilà une canaille que ce Rotomago... Je fais mon infamie à mon
+                                maître... ça marche tout seul... Il gobe ça. Je vais demander mon
+                                salaire... De quel sale air parles-tu me dit cet atroce nécromancien...
+                                Ce que vous avez promis... ma garde-robe... Tu me demandes la garde-robe
+                                ?.. Non.. Pas ça... Ah ! tes frasques ? Oui, tu vas tourner à gauche...
+                                puis à droite.. puis à gauche... tu tourneras ensuite à droite...
+                                toujours à droite et j'arrive ici... chez messieurs les trépassés.
+                                    <stage type="corps">(Un fantôme se lève.)</stage> Ah !... qu'est-ce
+                                que ce grand pâle ?... <stage type="corps">(Un autre vient. Plusieurs
+                                    apparitions se montrent.)</stage> La vilaine société... je veux m'en
+                                aller d'ici... Ah ! voilà mon maître ... Il a l'air au désespoir. </p>
+                        </sp>
+                    </div>
+                    <div type="3">
+
+                        <head type="scene" n="2">Scène 2</head>
+                        <pb n="33" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_33.jpg"/>
+                        <listPerson>
+                            <personGrp>
+                                <name>Gilles, </name>
+                                <name>Charmant</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <lg>
+                                <l>Quel désespoir...</l>
+                                <l>Où trouverai-je ma Florine ?</l>
+                                <l>Quel désespoir !</l>
+                                <l>J'en pleurerais matin et soir.</l>
+                            </lg>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Il a mauvaise mine.</l>
+                                <l>Je suis très ennuyé</l>
+                                <l>D'l'avoir perdu Florine</l>
+                                <l>Et de n'être pas gagé.</l>
+                            </lg>
+                        </sp>
+                        <sp>
+                            <speaker>Tous deux</speaker>
+                            <lg>
+                                <l>Quel désespoir.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Ah ! c'est toi Gilles ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Hélas, c'est un serviteur coupable qui se repent. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Crarmant</speaker>
+                            <p> Approche, si je n'étais pas si affligé je te châtierais. Voilà tout ce
+                                que je peux faire pour toi, pour le moment, mais tu n'y perdras rien.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ça se trouvera avec autre chose.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Ah ! voilà le domicile actuel de ma bien aimée, son nom y
+                                est inscrit, Gilles, va frapper à la porte.</p>
+                        </sp>
+                        <pb n="34" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_34.jpg"/>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Monsieur, il y a ici de biens vilains concierges, encore plus
+                                désagréables que ceux des vivants. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Je t'ordonne de n'avoir pas peur, je ne te paie pas pour avoir peur.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Allons, c'est juste. <stage type="corps">(Il va au tombeau.)</stage>
+                                Mademoiselle Florine s'il vous plait. <stage type="corps">(Le tombeau
+                                    s'ouvre et Florine parait.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Prince, on te trompe, Florine n'est pas morte, elle existe encore pour
+                                t'aimer. <stage type="corps">(Elle disparait.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Petite bonne femme vit encore ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Gilles, faisons ici une vie de voleurs pour qu'on nous la rende, cognons
+                                partout, cassons tout. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! monsieur, nous nous ferons une mauvaise affaire, nous y laisserons nos
+                                os.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Tant pis, je suis exaspéré. </p>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>les mêmes, </name>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <pb n="35" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_35.jpg"/>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Tout ce bacchanal est ridicule, Prince. Il n'y a pas à dire, mon bel
+                                ami, il faut épouser Truitonne comme tu t'y es engagé.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p> On s'était f... moqué de moi, allez vous promener.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Oh ! tu nous jettes en l'air.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p> Parfaitement.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est toi qui iras... va faire l'oiseau auprès de ta belle à présent, je
+                                te mets en pénitence pour sept ans, au chenevis et à l'eau. </p>
+                            <stage type="saut">Le Prince se change en oiseau bleu.</stage> </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l>Prince bleu,</l>
+                                <l>Vole vole. <stage type="corps">(bis)</stage></l>
+                                <l>Je te donne ma parole,</l>
+                                <l> Petit Prince de bricole,</l>
+                                <l> Si tu me piques un jeu,</l>
+                                <l>Tu resteras oiseau bleu. </l>
+                                <l>Vole, vole. <stage type="corps">(bis)</stage></l>
+                            </lg>
+                            <p> Et toi Gilles j'ai bien envie de te changer en canard.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oh ! non je crains l'eau et je n'aime pas les navets, et puis je ferai
+                                tout ce que vous voudrez. Puisque mon maître s'en va à tire
+                                d'ailes, je ne peux pas le suivre, moi qui ai toujours été un valet sans
+                                zèle.</p>
+                        </sp>
+                        <pb n="36" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_36.jpg"/>
+
+                    </div>
+                </div>
+                <div type="2">
+                    <head type="tableau" n="4">Tableau IV</head>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine</name>
+                            </personGrp>
+                        </listPerson>
+
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <stage type="pers"> (seule, intérieur rustique)</stage>
+                            <p>Je n'ai fait que changer de tombeau, hélas ! Quand finiront mes peines ?
+                                D'abord le diable en m'emportant me fit mal, il m'avait cogné le bout du
+                                coude, et cela m'avait répondu dans le petit doigt, et quand j'ai voulu
+                                me plaindre il m'a dit que c'était bien fait... Et puis quand je me suis
+                                échappée du tombeau où l'on m'avait mise provisoirement pour me punir,
+                                on m'a enfermée dans cette tour où je pleure toute la journée en pensant
+                                au Prince Charmant, et en m'affligeant parce que je ne sais pas ce qu'il
+                                est devenu. </p>
+                            <stage type="air"><label type="air">AIR :</label> Dans cette tour
+                                obscure</stage>
+                            <lg>
+                                <l>Dans cette tour horrible</l>
+                                <l>Sans cesse je gémis.</l>
+                                <l> Si j'avais des amis</l>
+                                <l> Dont le cœur fût sensible,</l>
+                                <l>Ils me retireraient d'ici.</l>
+                                <l>Hélas il n'en est pas ainsi.</l>
+                                <l>Comme une pénitente</l>
+                                <l>Qu'on veut faire pâtir,</l>
+                                <pb n="37" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_37.jpg"/>
+                                <l>Dans ces lieux on me plante</l>
+                                <l>Hélas pour reverdir.</l>
+                            </lg>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Silence... prisonnière !</p>
+                        </sp>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>On ne peut pas chanter pour se distraire à présent ?</p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Non.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Tiens, c'est Gilles. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oui.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Vous n'êtes donc plus valet de votre maître ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Non. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Et vous êtes mon geôlier ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oui.</p>
+                        </sp>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Oh ! le vilain métier.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <pb n="38" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_38.jpg"/>
+                            <p>Vous êtes encore bonne là, princesse infortunée. Si vous croyez que c'est
+                                facile à avoir, une place !</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Votre maître vous a chassé. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Le pauvre jeune homme, hélas !</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Il est mort ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <stage type="pers"> (à part)</stage>
+                            <p> N'oublions pas les recommandations de ce gredin d'enchanteur. <stage
+                                    type="corps">(haut)</stage> La douleur de vous avoir perdue,
+                                princesse... et douze babas qu'il a mangé tout chauds ont terminé sa
+                                glorieuse carrière. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Pauvre Prince ! Ah ! ah !... et c'est pour moi. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Bah ! Bah ! les babas y ont bien été pour quelque chose. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Je le pleurerai toute ma vie.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Épousez Rotomago... Ah ! j'avoue que c'est une rude corvée... Je suis son
+                                salarié, son suborné, je lui suis dévoué, mais sacrelotte, c'est un
+                                épouvantable cadet. Comme coeur par exemple, je le regarde comme une
+                                rocaille, voilà pourquoi je vous conseille de devenir sa femme.</p>
+                        </sp>
+
+                        <pb n="39" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_39.jpg"/>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p> J'aime mieux rester en prison.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>J'avais promis de sa part de tâcher de vous séduire en vous disant
+                                beaucoup de bien de lui... Je dois m'acquitter de cette tâche. Voyons, il
+                                a un nez en pied de marmite, j'en conviens. Mais ces nez-là redeviennent
+                                à la mode. Il est tordu et louche, les gens marqués d'un bé remportent
+                                ordinairement des prix au Conservatoire. Il est bourgeonné, rouge,
+                                quinteux, grognon, stupide, enfin il a tant de défauts qu'on ne peut pas
+                                en distinguer un seul, j'espère que vous devez être séduite. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Tout ce que l'on pourra m'en dire ne changera rien à mes résolutions.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Allons, voilà votre pitance, du pain sec et un pot d'eau. <stage
+                                    type="corps">(Il met cela sur la table.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Merci, Gilles. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Sa résignation me touche et m'attendrit, je le sens. Je n'étais pas fait
+                                pour être geôlier. Ah ! soif des richesses, tu me conduis là.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <pb n="40" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_40.jpg"/>
+                            <stage type="saut">Elle va pour s'approcher de la table, le pot se change
+                                en une bouteille et le pain en brioche.</stage>
+                            <p>Une brioche ! </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>
+                                <stage type="corps">(S'approche.)</stage> Du vin muscat, si c'est comme
+                                cela que je fais mon état, je ne risque rien. Retirons-lui ces douceurs,
+                                consommons-les nous-même. <stage type="corps">(Il s'approche. Cela se
+                                    change en chauve-souris et autres trucs.)</stage> Si je savais quel
+                                est le gamin qui me fait ces polissonneries là ! Je me retire, je vais
+                                vous enfermer à triples verrous. Et ce soir je vous apporterai de
+                                l'autre pain et de l'autre eau. Ah ! non, non, non, je n'étais pas fait
+                                pour être geôlier. <stage type="corps">(Il sort.)</stage></p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <stage type="pers"> (seule)</stage>
+                            <p><stage type="corps">(Elle va à la fenêtre.)</stage> Pauvre Prince mort de
+                                chagrin et d'indigestion, ça a dû le faire bien souffrir. Rotomago, lui,
+                                ne mourrait pas ainsi, rien ne le chagrine, et il mangerait trente
+                                gigots sans s'incommoder. Qu'a-t'il fait pour être ainsi favorisé par la
+                                nature ? Pour calmer mon chagrin, regardons dans la campagne... Que
+                                vois-je sur cet arbre ? Un bel oiseau, couleur d'azur ! Eh ! les jolies
+                                pattes, le beau bec, et comme ses yeux sont expressifs ! Il me regarde
+                                d'une façon qui me rend toute honteuse. <stage type="corps">(Elle se
+                                    retire.)</stage> Il a l'air bien triste parce que je me
+                                retire, il se déplume, il va se faire mal. S'il se crevait un œil avec
+                                son bec, j'en serais inconsolable. Disons-lui quelques mots
+                                gracieux.</p>
+                            <pb n="41" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_41.jpg"/>
+                            <stage type="air"><label type="air">AIR</label></stage>
+                            <lg>
+                                <l>Oiseau bleu, oiseau charmant,</l>
+                                <l>Vole, vole à ma parole,</l>
+                                <l>Oiseau bleu couleur du temps,</l>
+                                <l>Viens, vole à moi promptement.</l>
+                                <l>Il s'approche, ah ! quel bonheur,</l>
+                                <l> Il grimpe sur la fenêtre.</l>
+                                <l> Ne l'effrayons pas de peur</l>
+                                <l>De le faire disparaitre.</l>
+                                <l>Oiseau etc. etc.</l>
+                            </lg>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="4">Scène 4</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine, </name>
+                                <name>L'Oiseau bleu</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <stage type="saut">Florine va à la fenêtre et la ferme, l'Oiseau entre et
+                            voltige partout.</stage>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Il n'est pas farouche, Petit... petit... Venez embrasser maitresse. Mais
+                                c'est qu'il vient. As-tu déjeuné Jacquet ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p> Oui, oui, oui...</p>
+                        </sp>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Il a déjeuné, quel dommage, je l'aurais invité à prendre quelque chose.
+                                Je ne sais pas pourquoi, la présence de cet oiseau me trouble et
+                                m'agite. </p>
+                            <pb n="42" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_42.jpg"/> <stage type="saut">[L'oiseau] pousse un soupir.</stage>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Il soupire, cœur qui soupire. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>N'a pas ce qu'il désire.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Il parle... Ah ! mon Dieu, je connais cette voix, elle ressemble à celle
+                                du Prince Charmant.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>C'est la sienne. Oui, ma chère Florine, je suis le malheureux Prince.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Comme il est changé !</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>C'est l'impitoyable Rotomago qui m'a joué ce tour-là, parce que je n'ai
+                                pas voulu épouser Truitonne, car j'ai fait fi d'elle, pour vous rester
+                                fidèle. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Oh ! Prince je vous saurai gré de cette condescendance. Si je sors de
+                                cette prison, je vous achèterai un superbe perchoir doré, vous ne me
+                                quitterez pas. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Cela me flatterait, ô ma bien aimée, mais j'aimerais mieux redevenir
+                                homme, ça m'est plus commode. </p>
+                        </sp>
+                        <pb n="43" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_43.jpg"/>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Qu'est-ce que cela fait, ne pourrions-nous faire tout de même un bon
+                                ménage ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Tant d'innocence me charme, mais je dois vous désabuser. Il y aurait trop
+                                d'inconvénients à ce qu'un simple oiseau épousât une jeune fille,
+                                rarement on a vu de telles unions tourner bien. Léda épousa un cygne,
+                                c'est vrai, on m'a appris cela au collège Stanislas où je fus élevé,
+                                mais les enfants qui naquirent d'eux furent de grands désagréments. Je
+                                redeviendrai Prince, je le sens dans mon cœur. J'ai su échapper à mille
+                                pièges qu'on a tendus sous mes pattes, les gluaux, les filets, j'ai tout
+                                évité. Je ne suis venu à vous avec tant de confiance que parce que je
+                                connaissais vos sentiments, votre bonté, je savais que vous étiez
+                                incapable de faire le moindre mal aux animaux, à plus forte raison quand
+                                cet animal est l'amant le plus dévoué. </p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p> Oh ! Prince, que vous me jugez bien. <stage type="corps">(En dehors on
+                                    tire les verrous.)</stage> Dieu, c'est Gilles qui est maintenant mon
+                                geôlier.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <pb n="44" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_44.jpg"/>
+                            <p>Ce drôle-là fait donc tous les métiers. Oh ! je vais le faire périr sous
+                                le bâton, que n'ai-je une canne ! </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>En voici une, mais qu'en feriez-vous ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je ne le frapperai pas de bec mort. <stage type="corps">(Il prend la
+                                    canne dans son bec.)</stage>
+                            </p>
+                        </sp>
+
+
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="5">Scène 5</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>L'Oiseau bleu ici, entré avec effraction ! Rotomago va me croire de
+                                connivence avec lui.</p>
+                        </sp>
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Ah ! drôle ! Ah ! fripon ! Tu es devenu geôlier de celle que j'aime, je
+                                vais te frapper les épaules. <stage type="corps">(Il le frappe et le
+                                    poursuit.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! mon Prince, ah ! Oiseau ! Ah ! ah ! prenez garde, si je vous
+                                attrape, je vous tordrai le cou. </p>
+                        </sp>
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Tu oserais me manquer ainsi de respect ? </p>
+                        </sp>
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oh ! mais oui... Ah ! mais oui, je vous plume et je vous fricasse avec
+                                tous les égards dûs à votre rang et à votre intéressante infortune. </p>
+                        </sp>
+
+                        <pb n="45" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_45.jpg"/>
+
+                        <sp>
+                            <speaker> L'Oiseau</speaker>
+                            <stage type="pers"> (mélancoliquement)</stage>
+                            <p>Hélas ! voilà bien les flatteurs ! Quand on a perdu sa puissance, ce sont
+                                vos plus cruels ennemis. Adieu Florine, je rentre dans mon nid, mais de
+                                là je veille sur vous.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Je vais appeler l'Enchanteur Rotomago pour vous mettre en cage, et
+                                pourtant je ne suis pas fait pour être geôlier... Seigneur Rotomago,
+                                arrêtez cet Oiseau, justement la fenêtre est fermée. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Et c'est moi qui ai commis cette imprudence... </p>
+                        </sp>
+
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="6">Scène 6</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>Rotomago</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Cet oiseau est d'une effronterie, ma parole d'honneur. Je ne sais quel
+                                parti prendre à son égard... En chasse, en chasse !</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p><stage type="corps">(Fait un trou dans la vitre et se sauve.)</stage>
+                                Vous repasserez une autre fois. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Dieu il s'est blessé, il s'est entré du verre dans la patte </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Il s'est fait mal. Je suis très affligé de le trahir, après tout, c'était
+                                un bon maître. Si je savais son adresse, je lui porterais
+                                du taffetas d'Angleterre.</p>
+                        </sp>
+                        <pb n="46" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_46.jpg"/>
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Florine va déménager, elle va monter d'un étage. Je la crois plus en
+                                sûreté dans le donjon.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Vous lasserez-vous de me persécuter ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Mais du tout, ce n'est pas fatiguant de persécuter. J'ai persécuté
+                                énormément de monde, et je ne suis pas las. Allons, qu'on fasse son
+                                paquet et nous, prenons des fusils et allons à la recherche de cet
+                                oiseau de mauvais augure. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oh ! moi je suis très maladroit, je ne veux pas le viser, alors je suis
+                                capable de l'attraper. </p>
+                        </sp>
+                        <stage type="air">Musique de chasse</stage>
+                    </div>
+                </div>
+                <div type="2">
+                    <head type="tableau" n="5">Tableau V</head>
+
+                    <stage type="saut">Le théâtre représente une tour et un arbre. Campagne.</stage>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Truitonne, </name>
+                                <name>Rotomago, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <lg>
+                                <l>Allons, mettons-nous en campagne.</l>
+                                <l>Oiseau bleu, gare au mousqueton</l>
+                                <l>Ton, ton, ton, ton taine, ton, ton, </l>
+                                <pb n="47" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_47.jpg"/>
+                                <l> Fusses-tu sur une montagne</l>
+                                <l>Va, je ferai baisser ton</l>
+                                <l>Ton ton ton tin taine.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <lg>
+                                <l>Cet Oiseau bleu qui fut mon maître,</l>
+                                <l>M'a donné des coups de bâton,</l>
+                                <l>Ton ton. </l>
+                                <l>Mais moi je veux le prendre en traître</l>
+                                <l>Avec ce fusil à piston,</l>
+                                <l>Ton ton. etc.</l>
+                            </lg>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Moi, je ne veux pas qu'on lui fasse trop de mal, je ne veux pas qu'on le
+                                tue tout à fait. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Mon fusil est chargé avec du sel, c'est un tonique. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Mais je veux l'épouser, le garder toujours avec moi.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Écoute, si ce généreux Prince succombe dans cette lutte acharnée, je le
+                                ferai empailler. Tu le mettras sur la commode. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Avec des yeux d'émail.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Des yeux qui remueront, et un petit soufflet dans les pattes 
+                                qui fera... hou ! hou ! Quand on appuiera dessus.</p>
+                        </sp>
+                        <pb n="48" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_48.jpg"/>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Ça sera à peu près comme s'il était vivant.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p> À peu de chose près. Recommençons nos chants bruyants et joyeux. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Oh ! je n'étais pas né pour être meurtrier.<stage type="corps"> (Ils
+                                    sortent en chantant ton ton.)</stage>
+                            </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine</name>
+                            </personGrp>
+                        </listPerson>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <stage type="pers"> (à la fenêtre)</stage>
+                            <p> Mon pauvre Oiseau bleu, où est-il ? Je voudrais le soigner. S'il pouvait
+                                prendre un bain de pattes... J'ai déchiré mon mouchoir pour lui faire
+                                de la charpie, et puis avec ce fichu il mettra son ergot en
+                                écharpe... Où est-il ?... </p>
+                            <lg><l>Oiseau bleu couleur du temps,</l> <l>Viens, vole à moi
+                                promptement.</l> </lg>
+                        </sp>
+                    </div>
+
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Florine, </name>
+                                <name>L'Oiseau</name>
+                            </personGrp>
+                        </listPerson>
+                        <stage type="saut">L'arbre s'entrouvre.</stage>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je suis là, je me porte mieux. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Quel bonheur, j'étais bien inquiète de vous. J'aurais envoyé savoir des
+                                nouvelles, mais je n'ai pas de bonne en ce moment-ci comme
+                                vous savez. </p>
+                        </sp>
+                        <pb n="49" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_49.jpg"/>
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je vous sais gré de l'intention... J'ai passé une bonne nuit, je ne suis
+                                pas trop mal dans ce nid. Comme Prince, ça ne me suffirait pas, mais
+                                comme Oiseau je n'ai pas trop à me plaindre. </p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Et vous ressentez-vous de votre lutte ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Non une simple égratignure. Quand j'étais à la tête de mon royaume et que
+                                je faisais la guerre, j'en ai vu bien d'autres.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>C'est égal, je veux que vous veniez là sur ma fenêtre pour me rassurer.
+                                    <stage type="corps">(L'Oiseau vole.)</stage> Là, vous voyez bien, vous
+                                boitez en volant. Mon Dieu, que je suis à plaindre. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Votre douleur me touche, on vous a donc changée de prison.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Oh ! mon Dieu oui... C'est bien laid ici, je voulais que Rotomago me fît
+                                mettre du papier, il m'a cruellement refusé. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Il est bien propriétaire. Mais vous ne resterez pas 
+                                longtemps dans cette horrible tanière. Je me suis arraché une plume,
+                                j'ai prié un écrivain public de me la tailler et j'ai écrit à mon grand
+                                Sénéchal de mettre en marche une armée de cent mille hommes pour vous
+                                délivrer. J'espère que ça ne tardera pas. Entendez-vous le tambour, je
+                                crois que c'est l'avant-garde. Non, c'est un bourdon qui chante en faux
+                                bourdon. Il vient de ce côté, il a une lettre... c'est un facteur. Au
+                                Prince Charmant, c'est pour moi, bourdon. <stage type="corps">(Le
+                                    Bourdon grogne.)</stage> Hein, dix centimes, il ne pouvait pas
+                                l'affranchir ? Dans ma position, je n'ai pas d'argent sur moi. Auriez-vous
+                                la bonté, chère Florine, de m'avancer cette somme ? <stage
+                                    type="corps">(Il paie.)</stage> Que vois-je ? Mes états sont
+                                attaqués de toute part. Sans ma présence, tout est perdu, que faire
+                                ?</p>
+                        </sp>
+
+                        <pb n="50" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_50.jpg"/>
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Ce que l'honneur vous commande.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Mais partir, aller devant mes sujets dans ce plumage ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Si votre ramage se rapporte à votre plumage, vous pourrez ranimer leur
+                                courage.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'oiseau</speaker>
+                            <p>Je vous obéis. Adieu Florine, pense à moi toujours. </p>
+                            <stage type="saut">Il s'envole. Un coup de fusil part. Il tombe par
+                                terre.</stage></sp>
+                        
+
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <pb n="51" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_51.jpg"/>
+                            <p>Il est tué ! Je m'évanouis. <stage type="corps">(Elle disparait.)</stage>
+                            </p>
+                        </sp>
+
+                    </div>
+
+                    <div type="3">
+                        <head type="scene" n="4">Scène 4</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>C'est à moi le gibier.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Non c'est à moi, c'est lui mon maître. <stage type="corps">(à
+                                    part)</stage> Il vit encore, il n'est que salé, c'est moi qui l'ai
+                                touché. <stage type="corps">(haut)</stage> Il est mort ! </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ma foi, je n'en suis pas fâché... C'est peut-être un peu cruel, mais il me
+                                donnait trop de tintouin, Gilles, montre-toi bon serviteur, charge
+                                toi des obsèques de cet illustre monarque. Envoie partout des billets de
+                                faire-part, je vais voir à m'arranger pour le faire embaumer à bon
+                                marché. </p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ce pauvre maître, il n'est qu'évanoui, le sel l'a effleuré. Je vais lui
+                                en faire respirer, d'ailleurs le sel conserve, nous le conserverons.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je respire, qui est là ?</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Moi, votre sauveur, votre restaurateur.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Bon valet, bon valet, mais la gloire m'appelle, mets-moi dans ta
+                                carnassière, et transporte moi dans mon royaume. </p>     
+                        </sp>
+                        <pb n="52" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_52.jpg"/>
+                       <sp> <speaker>Une voix de fée</speaker> <p>C'est inutile, je vais te fournir un
+                        wagon 1ère classe.</p></sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Être mystérieux, je ne te remercie pas, je te voue une reconnaissance
+                                presqu'éternelle. </p>
+                            <stage type="saut">Musique. Un petit wagon féerique parait.</stage></sp>
+
+                        
+
+                    </div>
+                </div>
+
+                <div type="2">
+                    <head type="tableau" n="4">Tableau VI</head>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Un Seigneur, </name>
+                                <name>Un autre Seigneur, </name>
+                                <name>Un Huissier</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <stage type="saut">Salon riche</stage>
+
+
+                        <sp>
+                            <speaker>Un Seigneur</speaker>
+                            <p>L'absence du roi se prolonge.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Un autre</speaker>
+                            <p>Probablement parce qu'il ne vient pas encore.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Un autre</speaker>
+                            <p>Cette remarque est judicieuse. Je demande qu'elle soit consignée au
+                                procès verbal.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Un Huissier</speaker>
+                            <p>Un oiseau demande à entrer.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Le premier Seigneur</speaker>
+                            <p>C'est très désagréable, on nous dérange dans un moment comme celui-ci.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Un autre</speaker>
+                            <pb n="53" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_53.jpg"/>
+                            <p>Il est de notre devoir dans la situation grave où nous sommes, d'écouter
+                                toutes les observations, de prendre tout les renseignements. Huissier,
+                                quel est ce volatile ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Huissier</speaker>
+                            <p>Je ne connais pas cet oiseau-là, mais il a un air fier, un maintien
+                                assuré.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Un Seigneur</speaker>
+                            <p>Qu'il entre. </p>
+                        </sp>
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>L'Oiseau</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <stage type="saut">L'Oiseau va se percher sur le trône.</stage>
+
+
+                        <sp>
+                            <speaker>Le 1er Seigneur</speaker>
+                            <p> Allez vous percher autre part, messire Oiseau, c'est la place de notre
+                                souverain. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <lg>
+                                <l>C'est la mienne,</l>
+                                <l>C'est moi qui suis le roi.</l>
+                                <l>Je viens en personne</l><l> Ici sauver ma couronne.</l>
+                                <l>Oui sur ma foi,</l>
+                                <l> Amis c'est moi</l>
+                                <l> Qui viens encore, viens imposer ma loi,</l>
+                                <l>C'est moi</l><l> Qui suis le roi.</l>
+                            </lg>
+                        </sp>
+                        <pb n="54" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_54.jpg"/>
+
+                        <sp>
+                            <speaker>Un Seigneur</speaker>
+                            <p>Cruelle perplexité, c'est bien la voix de notre Roi, quoique qu'un peu
+                                plus flutée, mais si peu reconnaissable. Avez-vous des papiers sur vous
+                                ? </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je n'ai pas de poche. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Un Seigneur</speaker>
+                            <p>C'est très embarrassant.</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Laissez-moi me mettre à la tête de mes troupes, vous me reconnaitrez à
+                                mon courage.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Un Seigneur</speaker>
+                            <p>Un oiseau à la tête d'une armée !</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <lg>
+                                <l>Cela vous parait fort étrange </l>
+                                <l>Mais il faut qu'il en soit ainsi,</l>
+                                <l>Et tant pis si je vous dérange</l>
+                                <l> Mais je prétends régner ici.</l>
+                                <l>Oui, l'Oiseau bleu</l>
+                                <l>Saura morbleu</l>
+                                <l>Marcher au feu,</l>
+                                <l> Le premier ventre bleu.</l>
+                                <l>Il peut avec</l>
+                                <l>Ongles et bec</l>
+                                <l>Aux ennemis commander le respect.</l>
+                                <pb n="55" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_55.jpg"/>
+                                <l> Messeigneurs, lisez donc l'histoire</l>
+                                <l>Et vous verrez plus d'un oiseau</l>
+                                <l>Placé sur le haut du drapeau</l>
+                                <l> Conduire à la victoire.</l>
+                            </lg>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Tous</speaker>
+                            <lg><l>Sire, montez sur le drapeau.</l> <l>Courons à la victoire.</l> </lg>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="3">Scène 3</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>Gilles</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p> Je vous annonce le père rabat-joie, le féroce Rotomago. Il a forcé la
+                                consigne, je lui ai dit on ne passe pas, il m'a prouvé que si. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Le Seigneur</speaker>
+                            <p>Qu'il soit introduit. </p>
+                        </sp>
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="4">Scène 4</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago, </name>
+                                <name>Truitonne</name>
+                            </personGrp>
+                        </listPerson>
+
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Oiseau royal, ton courage et ta persévérance m'ont touché, Je veux bien
+                                te rendre ta forme première, quoique tu ne sois réellement pas mal comme
+                                cela ! Mais enfin, c'est gênant pour faire un plan de campagne. Je te
+                                rends ta forme, dis-je, à condition que tu épouseras la petite... C'est
+                                réellement ridicule de faire tant de façons que cela.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <pb n="56" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_56.jpg"/>
+                            <p>C'est vrai, je suis bien gentille pourtant.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Il faut le dire très vite. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>L'Oiseau</speaker>
+                            <p>Je devrais refuser, mais le bonheur de mes sujets l'exige... Je me
+                                sacrifie. <stage type="corps">(Il redevient Prince.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Tous</speaker>
+                            <p>Vive le Roi Charmant ! </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ah ! mon roi, décidément vous êtes plus présentable comme ça. <stage
+                                    type="corps">(Il l'essuie.)</stage> Vous êtes encore plein de plumes.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Qu'on célèbre à l'instant les noces de ces deux amoureux.</p>
+                            <stage type="saut">Musique</stage></sp>
+                        
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p> Adieu donc, ma chère Florine. </p>
+                        </sp>
+                    </div>
+                </div>
+
+                <div type="2">
+                    <head type="tableau" n="5">Dernier Tableau</head>
+                    <stage type="saut">Le théâtre se change en un grand palais.</stage>
+                    <div type="3">
+                        <head type="scene" n="1">Scène 1</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Rotomago, </name>
+                                <name>Truitonne, </name>
+                                <name>Gilles, </name>
+                                <name>Charmant, </name>
+                                <name>Seigneurs</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker/>
+                            <stage type="saut">Chants</stage>
+                            <lg>
+                                <l>Chantons le mariage,</l>
+                                <l>Notre Prince Charmant </l>
+                                <pb n="57" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_57.jpg"/>
+                                <l>Dans les liens s'engage</l>
+                                <l>Par un pur dévouement.</l>
+                            </lg>
+                            <stage type="saut">Ici on entend une détonation. Un petit nuage amène Florine et
+                                le Petit Génie.</stage></sp>
+                        
+
+                    </div>
+                    <div type="3">
+                        <head type="scene" n="2">Scène 2</head>
+                        <listPerson>
+                            <personGrp>
+                                <name>Les mêmes, </name>
+                                <name>Le Génie, </name>
+                                <name>Florine</name>
+                            </personGrp>
+                        </listPerson>
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Malgré la métamorphose Prince Charmant, moi qui suis ton génie, je ne
+                                t'ai pas abandonné. Je viens de renverser tous tes ennemis. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Encore ce petit imbécile de Génie. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Je viens combattre le pouvoir de Rotomago et accomplir ton mariage avec
+                                Florine que j'ai délivrée. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Rotomago</speaker>
+                            <p>Ah ! ça, mais je porterai mes plaintes, j'attaquerai ce Génie en dommage
+                                et intérêts.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Rotomago, tu es dans de mauvaises affaires, ta puissance dont tu as
+                                abusé t'est retirée... Et toi [qui] transformes si bien les autres, tu vas
+                                devenir un animal. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Ça ne le changera pas.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Rotemago</speaker>
+                            <pb n="58" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_58.jpg"/>
+                            <p>Ai-je le droit de chasser au moins ? Je veux être un animal carnassier,
+                                féroce et indomptable par les Carters et Van Amburg. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Tu deviendras coq dinde, c'est l'animal qu'on n'a jamais pu réduire à la
+                                raison. <stage type="corps">(Il devient un dindon.)</stage></p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Bravo... Ah ! bravo.. Je demande à le truffer, ou à le mettre en daube.
+                                    <stage type="corps">(Le dindon le poursuit.)</stage> Ah ! je ne te
+                                crains plus... Sois gentil et je te donnerais du nanan. <stage
+                                    type="corps">(à part)</stage> Je le flatte, mais au moment où il ne
+                                s'y attendra pas, je le mets à la broche.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Si Truitonne veut devenir bonne fille, elle embellira et je lui donnerai
+                                un bon mari. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Embellissez-moi aussi et j'épouse Truitonne, ou plutôt laissez-nous laids
+                                tous les deux, ça ne nous déparera ni l'un ni l'autre. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <p>Ma chère Florine, m'aimez-vous mieux ainsi ?</p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Florine</speaker>
+                            <p>Prince, vous me rendrez justice que je ne vous ai pas dédaigné, même quand
+                                vous n'étiez que l'Oiseau bleu.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Charmant</speaker>
+                            <pb n="59" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_59.jpg"/>
+                            <p> Gilles, pour te récompenser des services que tu ne m'as jamais rendus, je
+                                te nomme grand officier de bouche.</p>
+                        </sp>
+
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Ah ! bien, alors je l'épouse, au moins nous mangerons de bonnes choses.
+                            </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <stage type="pers">(à Truitonne)</stage>
+                            <p>À la première occasion je ferai rôtir vôtre tuteur. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Truitonne</speaker>
+                            <p>Il doit être trop dur. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Gilles</speaker>
+                            <p>Nous l'attendrirons. </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Le Génie</speaker>
+                            <p>Je te quitte en apparence Prince, mais tant que tu te conduiras bien, ton
+                                Génie sera près de toi ! </p>
+                        </sp>
+
+                        <sp>
+                            <speaker>Chœur</speaker>
+                            <lg>
+                                <l> Chantons ce mariage,</l>
+                                <l>Au moins en ce moment,</l>
+                                <l>L'hymen qui les engage</l>
+                                <l>Est plus heureux vraiment.</l>
+                                <stage type="corps">Couplet</stage></lg>
+                            </sp>
+
+                        
+                        <sp>
+                            <speaker>L'Oiseau bleu</speaker>
+                            <stage type="air"><label type="air">AIR :</label> J'en guette un
+                                petit</stage>
+                            <lg>
+                                <l>Chaque couleur a dit on son emblème</l>
+                                <l>Le gris est pâle et le vert plein d'espoir,</l>
+                                <l>Le jaune est laid, a peu d'attrait quand même</l>
+                                <l> Et le blanc par trop blême.</l>
+                                <pb n="60" facs="19_F_MONTGOBERT_LOiseauBleu_FR_AN_60.jpg"/>
+                                <l>Nous ne voulons ce soir rien voir en noir</l>
+                                <l> En ce moment quand le public dispose</l>
+                                <l>Nous ne formons qu'un désir, un seul voeu,</l>
+                                <l> C'est de trouver avec notre Oiseau bleu</l>
+                                <l>Un avenir couleur de rose.</l>
+                            </lg>
+                        </sp>
+                        <div type="6">
+                            <head type="div6">Fin</head>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </text>
+</TEI>
+
+            
+        

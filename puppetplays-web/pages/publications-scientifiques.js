@@ -1,131 +1,166 @@
+import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
 import { getAllScientificPublications } from 'lib/api';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useState, useMemo } from 'react';
-import Head from 'next/head';
+import { useMemo } from 'react';
 import styles from 'styles/ScientificPublications.module.scss';
 
-const PublicationCard = ({ publication }) => {
-  const { t } = useTranslation(['common', 'project']);
+const PublicationItem = ({ publication }) => {
+  const { i18n } = useTranslation(['common', 'project']);
 
-  const formatDate = (dateString) => {
+  // Early return if publication is not provided
+  if (!publication) {
+    return null;
+  }
+
+  const formatDate = dateString => {
     if (!dateString) return '';
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return '';
     return date.getFullYear();
   };
 
-  const year = formatDate(publication.dateCreated || publication.dateUpdated);
+  const year =
+    publication.date ||
+    formatDate(publication.dateCreated || publication.dateUpdated);
+
+  // Format authors from Table field
+  const formatAuthors = authorData => {
+    if (!authorData || !Array.isArray(authorData)) return '';
+    return authorData
+      .map(row => row.author)
+      .filter(author => author && author.trim())
+      .join(', ');
+  };
+
+  const authors = formatAuthors(publication.authorAndOrcidIdentifier);
+  const journal = publication.editorName;
+  const bookTitle = publication.bookTitle;
+  const bookAuthor = publication.bookAuthor; // Assuming this field exists
+  const volume = publication.volume;
+  const pages = publication.pagesCount;
+
+  // Get quotes based on locale
+  const quotes =
+    i18n.language === 'fr'
+      ? { open: '« ', close: ' »' }
+      : { open: '"', close: '"' };
+
+  // Format pages with padding (Pages 01 - 150 format)
+  const formatPages = pagesStr => {
+    if (!pagesStr) return '';
+
+    // Convert to string if it's not already
+    const pagesString = String(pagesStr);
+
+    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
+    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (rangeMatch) {
+      const startPage = parseInt(rangeMatch[1]);
+      const endPage = parseInt(rangeMatch[2]);
+      const paddedStart = startPage.toString().padStart(2, '0');
+      const paddedEnd = endPage.toString().padStart(2, '0');
+      return `Pages ${paddedStart} - ${paddedEnd}`;
+    }
+
+    // If it's just a number, assume it starts from page 1
+    const pageMatch = pagesString.match(/(\d+)/);
+    if (pageMatch) {
+      const pageCount = parseInt(pageMatch[1]);
+      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
+    }
+
+    return `Pages ${pagesString}`;
+  };
 
   return (
-    <div className={styles.publicationCard}>
-      <div className={styles.publicationHeader}>
-        <div className={styles.publicationMeta}>
-          {year && <span className={styles.year}>{year}</span>}
-        </div>
-      </div>
+    <div className={styles.publicationItem}>
+      {year && <div className={styles.publicationDate}>{year}</div>}
 
       <h3 className={styles.publicationTitle}>
         <Link
-          href={`/publications-scientifiques/${publication.id}/${publication.slug || 'details'}`}
+          href={`/publications-scientifiques/${publication.id}/${
+            publication.slug || 'details'
+          }`}
           className={styles.titleLink}
         >
-          {publication.title}
+          {authors && <span className={styles.authors}>{authors}, </span>}
+          <span className={styles.titleQuoted}>
+            {quotes.open}
+            {publication.title}
+            {quotes.close}
+          </span>
+          {(bookTitle || journal) && (
+            <span className={styles.inPublication}>
+              {' '}
+              dans {bookAuthor && `${bookAuthor}, `}
+              <em>{bookTitle || journal}</em>
+            </span>
+          )}
         </Link>
       </h3>
 
-      <div className={styles.publicationDetails}>
-        <p>{t('project:scientificPublications.loadingPublications')}...</p>
-      </div>
-
-      <div className={styles.publicationActions}>
-        <Link
-          href={`/publications-scientifiques/${publication.id}/${publication.slug || 'details'}`}
-          className={styles.secondaryButton}
-        >
-          {t('common:readMore')}
-        </Link>
+      <div className={styles.publicationContent}>
+        {(journal || volume || pages) && (
+          <p className={styles.publicationDetails}>
+            {journal && (
+              <span className={styles.publisher}>
+                Publié par <em>{journal}</em>
+              </span>
+            )}
+            {volume && (
+              <span className={styles.volume}>
+                {journal ? ' ' : ''}
+                {volume}
+              </span>
+            )}
+            {pages && (
+              <span className={styles.pages}>
+                {journal || volume ? ' ' : ''}
+                {formatPages(pages)}
+              </span>
+            )}
+          </p>
+        )}
       </div>
     </div>
   );
 };
 
-const PublicationSection = ({ title, publications, isExpanded, onToggle }) => {
-  const { t } = useTranslation(['common', 'project']);
-
+const PublicationSection = ({ title, publications }) => {
   if (!publications || publications.length === 0) {
     return null;
   }
 
   return (
-    <div className={styles.publicationSection}>
-      <button
-        className={styles.sectionHeader}
-        onClick={onToggle}
-        aria-expanded={isExpanded}
-      >
-        <h2 className={styles.sectionTitle}>{title}</h2>
-        <div className={styles.sectionMeta}>
-          <span className={styles.publicationCount}>
-            {t('project:scientificPublications.publicationCount', { count: publications.length })}
-          </span>
-          <span className={`${styles.toggleIcon} ${isExpanded ? styles.expanded : ''}`}>
-            ▼
-          </span>
-        </div>
-      </button>
-
-      {isExpanded && (
-        <div className={styles.publicationGrid}>
-          {publications.map(publication => (
-            <PublicationCard key={publication.id} publication={publication} />
-          ))}
-        </div>
-      )}
-    </div>
+    <section className={styles.section}>
+      <h2 className={styles.sectionTitle}>{title}</h2>
+      <div className={styles.publicationsList}>
+        {publications.map(publication => (
+          <PublicationItem key={publication.id} publication={publication} />
+        ))}
+      </div>
+    </section>
   );
 };
 
 const ScientificPublicationsPage = ({ initialPublications, error }) => {
   const { t } = useTranslation(['common', 'project']);
-  const [searchTerms, setSearchTerms] = useState('');
-  const [expandedSections, setExpandedSections] = useState({
-    didierPlassardsMonography: true,
-    peerReviewedPublications: true,
-    phds: true,
-    conferenceProceedings: true,
-    nonPeerReviewed: true,
-  });
 
-  const toggleSection = (sectionKey) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [sectionKey]: !prev[sectionKey],
-    }));
-  };
-
-  const filteredAndGroupedPublications = useMemo(() => {
+  const groupedPublications = useMemo(() => {
     if (!initialPublications || initialPublications.length === 0) {
       return {};
     }
 
-    let filtered = initialPublications;
+    // Group by scientific category
+    const grouped = initialPublications.reduce((acc, publication) => {
+      const category =
+        publication.scientificCategory || 'peerReviewedPublications';
 
-    // Apply search filter
-    if (searchTerms.trim()) {
-      const searchLower = searchTerms.toLowerCase();
-      filtered = filtered.filter(pub =>
-        pub.title?.toLowerCase().includes(searchLower)
-      );
-    }
-
-    // For now, group all publications under one category until we get the GraphQL schema working
-    const grouped = filtered.reduce((acc, publication) => {
-      const category = 'peerReviewedPublications'; // Default category for now
-      
       if (!acc[category]) {
         acc[category] = [];
       }
@@ -136,26 +171,22 @@ const ScientificPublicationsPage = ({ initialPublications, error }) => {
     // Sort each group by date (most recent first)
     Object.keys(grouped).forEach(category => {
       grouped[category].sort((a, b) => {
-        const dateA = new Date(a.dateCreated || a.dateUpdated);
-        const dateB = new Date(b.dateCreated || b.dateUpdated);
+        const dateA = new Date(a.date || a.dateCreated || a.dateUpdated);
+        const dateB = new Date(b.date || b.dateCreated || b.dateUpdated);
         return dateB - dateA;
       });
     });
 
     return grouped;
-  }, [initialPublications, searchTerms]);
-
-  const totalPublications = useMemo(() => {
-    return Object.values(filteredAndGroupedPublications).reduce(
-      (total, pubs) => total + pubs.length, 0
-    );
-  }, [filteredAndGroupedPublications]);
+  }, [initialPublications]);
 
   if (error) {
     return (
       <Layout>
         <Head>
-          <title>{t('project:scientificPublications.title')} | Puppetplays</title>
+          <title>
+            {t('project:scientificPublications.title')} | Puppetplays
+          </title>
           <meta
             name="description"
             content={t('project:scientificPublications.metaDescription')}
@@ -187,78 +218,115 @@ const ScientificPublicationsPage = ({ initialPublications, error }) => {
           <h1 className={styles.title}>
             {t('project:scientificPublications.title')}
           </h1>
-          <p className={styles.subtitle}>
-            {t('project:scientificPublications.subtitle')}
+          <p className={styles.description}>
+            {t('project:scientificPublications.pageDescription')}
           </p>
         </header>
 
-        <div className={styles.controls}>
-          <div className={styles.searchContainer}>
-            <input
-              type="text"
-              placeholder={t('project:scientificPublications.filters.searchPlaceholder')}
-              value={searchTerms}
-              onChange={(e) => setSearchTerms(e.target.value)}
-              className={styles.searchInput}
+        {Object.keys(groupedPublications).length === 0 ? (
+          <NoResults
+            icon="search"
+            title={t('project:scientificPublications.noPublicationsFound')}
+          />
+        ) : (
+          <>
+            {/* Didier Plassard's monography */}
+            <PublicationSection
+              title={t(
+                'project:scientificPublications.categories.didierPlassardsMonography',
+              )}
+              publications={groupedPublications.didierPlassardsMonography}
             />
-          </div>
 
-          {totalPublications > 0 && (
-            <div className={styles.resultsCount}>
-              {t('project:scientificPublications.totalPublicationCount', { count: totalPublications })}
-            </div>
-          )}
-        </div>
-
-        <div className={styles.divider} />
-
-        <div className={styles.publicationsContainer}>
-          {totalPublications === 0 ? (
-            <NoResults
-              icon="search"
-              title={t('project:scientificPublications.noPublicationsFound')}
-              message={searchTerms ? t('common:tryAnotherSearch') : ''}
+            {/* Peer-reviewed publications */}
+            <PublicationSection
+              title={t(
+                'project:scientificPublications.categories.peerReviewedPublications',
+              )}
+              publications={groupedPublications.peerReviewedPublications}
             />
-          ) : (
-            <>
-              <PublicationSection
-                title={t('project:scientificPublications.categories.didierPlassardsMonography')}
-                publications={filteredAndGroupedPublications.didierPlassardsMonography}
-                isExpanded={expandedSections.didierPlassardsMonography}
-                onToggle={() => toggleSection('didierPlassardsMonography')}
-              />
 
-              <PublicationSection
-                title={t('project:scientificPublications.categories.peerReviewedPublications')}
-                publications={filteredAndGroupedPublications.peerReviewedPublications}
-                isExpanded={expandedSections.peerReviewedPublications}
-                onToggle={() => toggleSection('peerReviewedPublications')}
-              />
+            {/* PhDs */}
+            <PublicationSection
+              title={t('project:scientificPublications.categories.phds')}
+              publications={groupedPublications.phds}
+            />
 
-              <PublicationSection
-                title={t('project:scientificPublications.categories.phds')}
-                publications={filteredAndGroupedPublications.phds}
-                isExpanded={expandedSections.phds}
-                onToggle={() => toggleSection('phds')}
-              />
+            {/* Conference proceedings */}
+            {groupedPublications.conferenceProceedings && (
+              <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>
+                  {t(
+                    'project:scientificPublications.categories.conferenceProceedings',
+                  )}
+                </h2>
 
-              <PublicationSection
-                title={t('project:scientificPublications.categories.conferenceProceedings')}
-                publications={filteredAndGroupedPublications.conferenceProceedings}
-                isExpanded={expandedSections.conferenceProceedings}
-                onToggle={() => toggleSection('conferenceProceedings')}
-              />
+                {/* Conference 1 */}
+                <h3 className={styles.subsectionTitle}>
+                  {t('project:scientificPublications.conferences.conference1')}
+                </h3>
+                <div className={styles.publicationsList}>
+                  {groupedPublications.conferenceProceedings
+                    .filter(pub => pub.conferenceGroup === '1')
+                    .map(publication => (
+                      <PublicationItem
+                        key={publication.id}
+                        publication={publication}
+                      />
+                    ))}
+                </div>
 
-              <PublicationSection
-                title={t('project:scientificPublications.categories.nonPeerReviewed')}
-                publications={filteredAndGroupedPublications.nonPeerReviewed}
-                isExpanded={expandedSections.nonPeerReviewed}
-                onToggle={() => toggleSection('nonPeerReviewed')}
-              />
-            </>
-          )}
-        </div>
+                {/* Conference 2 */}
+                <h3 className={styles.subsectionTitle}>
+                  {t('project:scientificPublications.conferences.conference2')}
+                </h3>
+                <div className={styles.publicationsList}>
+                  {groupedPublications.conferenceProceedings
+                    .filter(pub => pub.conferenceGroup === '2')
+                    .map(publication => (
+                      <PublicationItem
+                        key={publication.id}
+                        publication={publication}
+                      />
+                    ))}
+                </div>
+
+                {/* Conference 3 */}
+                <h3 className={styles.subsectionTitle}>
+                  {t('project:scientificPublications.conferences.conference3')}
+                </h3>
+                <div className={styles.publicationsList}>
+                  {groupedPublications.conferenceProceedings
+                    .filter(pub => pub.conferenceGroup === '3')
+                    .map(publication => (
+                      <PublicationItem
+                        key={publication.id}
+                        publication={publication}
+                      />
+                    ))}
+                </div>
+              </section>
+            )}
+
+            {/* Cahiers Élisabéthains */}
+            <PublicationSection
+              title={t(
+                'project:scientificPublications.categories.cahiersElizabethains',
+              )}
+              publications={groupedPublications.cahiersElizabethains}
+            />
+
+            {/* Non peer-reviewed publications */}
+            <PublicationSection
+              title={t(
+                'project:scientificPublications.categories.nonPeerReviewed',
+              )}
+              publications={groupedPublications.nonPeerReviewed}
+            />
+          </>
+        )}
       </div>
+      <Footer />
     </Layout>
   );
 };
@@ -276,7 +344,11 @@ export async function getStaticProps({ locale }) {
     return {
       props: {
         initialPublications: sortedPublications,
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         error: null,
       },
       revalidate: 3600, // Revalidate every hour
@@ -286,7 +358,11 @@ export async function getStaticProps({ locale }) {
     return {
       props: {
         initialPublications: [],
-        ...(await serverSideTranslations(locale, ['common', 'project', 'home'])),
+        ...(await serverSideTranslations(locale, [
+          'common',
+          'project',
+          'home',
+        ])),
         error: error.message || error.toString(),
       },
       revalidate: 60, // Try again more frequently on error
@@ -294,4 +370,4 @@ export async function getStaticProps({ locale }) {
   }
 }
 
-export default ScientificPublicationsPage; 
+export default ScientificPublicationsPage;

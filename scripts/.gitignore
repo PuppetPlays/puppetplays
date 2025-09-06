@@ -1,5 +1,0 @@
-# Database sync sensitive and temporary files
-.env
-temp_db_sync/
-*.sql
-*.sql.gz 

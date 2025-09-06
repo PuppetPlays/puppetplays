@@ -1,0 +1,118 @@
+field: 5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2 # Sidebar Content
+fieldLayouts:
+  e2245638-0327-4e3a-909d-50562a0387e7:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: c8bb1b08-a449-497e-8b63-8d3d9474ebe5 # Side bar title
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a406e219-38b6-4626-862d-6ced87afb48d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a22c7c0c-6aad-4091-8758-2f5b600af921 # Sidebar Elements
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 89da9937-11aa-41b5-a030-7a6ec9218f06
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: f8780d52-851d-4e13-87eb-c95dddde286b
+        userCondition: null
+fields:
+  a22c7c0c-6aad-4091-8758-2f5b600af921: # Sidebar Elements
+    columnSuffix: twhvhknl
+    contentColumnType: text
+    fieldGroup: null
+    handle: sidebarElements
+    instructions: null
+    name: 'Sidebar Elements'
+    searchable: false
+    settings:
+      addRowLabel: 'Ajouter une ligne'
+      columnType: text
+      columns:
+        __assoc__:
+          -
+            - col1
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Label
+                -
+                  - handle
+                  - label
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+          -
+            - col2
+            -
+              __assoc__:
+                -
+                  - heading
+                  - Anchor
+                -
+                  - handle
+                  - anchor
+                -
+                  - width
+                  - ''
+                -
+                  - type
+                  - singleline
+      defaults:
+        -
+          __assoc__:
+            -
+              - col1
+              - ''
+            -
+              - col2
+              - ''
+      maxRows: null
+      minRows: null
+      staticRows: false
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Table
+  c8bb1b08-a449-497e-8b63-8d3d9474ebe5: # Side bar title
+    columnSuffix: etmzqjeu
+    contentColumnType: text
+    fieldGroup: null
+    handle: sideBarTitle
+    instructions: null
+    name: 'Side bar title'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: sidebarElement
+name: 'Sidebar Element'
+sortOrder: 1

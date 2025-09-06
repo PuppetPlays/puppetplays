@@ -1,0 +1,275 @@
+// Technical Documentation - Style professionnel et épuré
+.wrapper {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+  background: #f8f9fa;
+}
+
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 2rem 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 0;
+    font-size: 0.85rem;
+  }
+}
+
+.breadcrumbLink {
+  color: #2037b1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #01055b;
+    text-decoration: underline;
+  }
+}
+
+.breadcrumbSeparator {
+  color: #8c8fa3;
+  margin: 0 0.25rem;
+}
+
+.breadcrumbCurrent {
+  color: #595b78;
+  font-weight: 500;
+}
+
+// Container principal
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+// Sidebar
+.sidebar {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+
+  @media (max-width: 768px) {
+    position: static;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #01055b;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #2037b1;
+}
+
+.sidebarSection {
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sidebarCategoryTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #595b78;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  text-align: left;
+  color: #2037b1; // Bleu par défaut
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not([style*='cursor: not-allowed']) {
+    background: #f0f7ff;
+    color: #595b78; // Gris au hover
+    border-color: #e3f0ff;
+  }
+
+  &.active {
+    background: #2037b1;
+    color: white;
+    font-weight: 500;
+  }
+
+  // Style pour les liens désactivés
+  &[style*='cursor: not-allowed'] {
+    opacity: 0.5;
+
+    &:hover {
+      background: transparent;
+      color: #2037b1; // Reste bleu pour les liens désactivés
+    }
+  }
+}
+
+.externalIcon {
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+}
+
+// Contenu principal
+.mainContent {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #01055b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.description {
+  font-size: 1.05rem;
+  color: #595b78;
+  line-height: 1.6;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// Section de contenu
+.contentSections {
+  margin-top: 2rem;
+}
+
+.introSection {
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #2037b1;
+
+  p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Cards de documentation (pour future utilisation)
+.documentationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.documentCard {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    border-color: #2037b1;
+  }
+}
+
+// Animations simples
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar,
+.mainContent {
+  animation: fadeIn 0.3s ease-out;
+}

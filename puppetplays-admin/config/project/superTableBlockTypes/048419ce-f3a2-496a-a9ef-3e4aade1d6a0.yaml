@@ -1,0 +1,41 @@
+changedFieldIndicator: 366806788
+field: 4b4d08ca-b6dc-474c-a42e-d262395e7c89 # Sidebar
+fieldLayouts:
+  9d3d495f-4c03-41da-a731-e4ef9f8611c2:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2 # Sidebar Content
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2d5cd84b-740a-43c8-bef3-e3d8ad50cf07
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: e9f2c56f-abe4-428e-9ab7-2b815eb7bca3
+        userCondition: null
+fields:
+  5c01b7ce-ce7f-4f71-ad3a-15b65d87f3b2: # Sidebar Content
+    columnSuffix: null
+    contentColumnType: string
+    fieldGroup: null
+    handle: sidebarContent
+    instructions: null
+    name: 'Sidebar Content'
+    searchable: false
+    settings:
+      contentTable: '{{%matrixcontent_sidebarcontent_1}}'
+      maxBlocks: null
+      minBlocks: null
+      propagationKeyFormat: null
+      propagationMethod: all
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Matrix

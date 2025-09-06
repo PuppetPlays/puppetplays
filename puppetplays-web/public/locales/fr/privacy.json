@@ -1,0 +1,41 @@
+{
+  "title": "Politique de confidentialité",
+  "metaDescription": "Politique de confidentialité et protection des données personnelles du site PuppetPlays - Informations RGPD et moyens de contact",
+  "pageTitle": "Politique de confidentialité",
+  "dataProcessing": {
+    "title": "Traitement des données à caractère personnel",
+    "content": "Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par l'université de Montpellier Paul-Valéry – route de Mende – 34199 Montpellier Cedex 5 pour l'organisation d'événements scientifiques et leur diffusion sur notre plateforme web et nos réseaux sociaux, la création de comptes usagers sur la base de données pour la rédaction des notices et la diffusion du nom du rédacteur de chaque notice sur notre plateforme web."
+  },
+  "dataController": {
+    "title": "Responsable du traitement",
+    "content": "La responsable du traitement des données à caractère personnel est Mme Anne FRAÏSSE, Présidente de l'UMPV – route de Mende – Bâtiment L « Les Guilhem » 34199 Montpellier Cédex 5."
+  },
+  "legalBasis": {
+    "title": "Base légale du traitement",
+    "content": "La base légale du traitement est l'exécution d'une mission d'intérêt public en vertu de l'article 6. e) du RGPD."
+  },
+  "dataRecipients": {
+    "title": "Destinataires des données",
+    "content": "Les données collectées seront communiquées aux seuls destinataires suivants : les prestataires de développement informatique pour la création des comptes usagers, le monde pour la diffusion des captations des événements scientifiques et les noms des rédacteurs de chaque notice."
+  },
+  "dataRetention": {
+    "title": "Conservation des données",
+    "content": "Les données seront conservées pendant toute la durée du projet et jusqu'à 10 ans après la fin du projet pour les données collectées sur des autorisations de diffusion des événements scientifiques."
+  },
+  "userRights": {
+    "title": "Vos droits",
+    "content": "Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données.",
+    "opposition": "Vous avez également la possibilité de vous opposer au traitement de vos données à caractère personnel sur la base de l'article 21 du RGPD.",
+    "moreInfo": "Vous êtes invités à consulter le site <a href=\"https://www.cnil.fr/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.cnil.fr/</a> pour plus d'informations sur vos droits."
+  },
+  "exerciseRights": {
+    "title": "Exercer vos droits",
+    "content": "Pour exercer ces droits ou pour toutes autres questions sur le traitement de vos données personnelles, contactez directement notre délégué à la protection des données :",
+    "contact": "dpo@univ-montp3.fr"
+  },
+  "complaints": {
+    "title": "Réclamations",
+    "content": "Si vous estimez - après avoir sollicité nos services - que vos droits « informatique et libertés » ne sont pas respectés, vous pouvez introduire une réclamation auprès de la Commission nationale de l'informatique et des libertés (CNIL) – 3, place de Fontenoy - TSA 80715 – 75334 Paris Cédex 07.",
+    "phone": "Tél : 01.53.73.22.22"
+  }
+}

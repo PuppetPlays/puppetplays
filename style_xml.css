@@ -1,0 +1,360 @@
+teiHeader{
+    font-family: Calibri, sans-serif;
+	color:black;
+	padding:40px;
+	margin:20px;
+	page-break-after:always;
+    display: block;
+}
+
+teiHeader respStmt, teiHeader principal, teiHeader sponsor, teiHeader funder, teiHeader note, teiHeader fdistributor, teiHeader availability{
+    display: block;
+}
+
+teiHeader p{
+    text-align:left;
+    padding-left: 0%;
+}
+
+teiHeader fileDesc titleStmt title{
+    font-size:24px;
+	font-weight:bold;
+	text-align:center;
+    display: block;
+}
+
+/* (re)NAMING THE FIELDS IN THE TEIHEADER FOR A BETTER VISUAL */ 
+
+teiHeader::before {
+  content: "Cette visualisation du TEI Header n'est pas la version finale.";
+  font-size: 24px;
+}
+
+
+respStmt name::before {
+  content: "Contributor: ";
+  font-weight: bold;
+}
+
+principal::before {
+  content: "Principal investigator: ";
+  font-weight: bold;
+}
+
+sponsor::before {
+  content: "Editor: ";
+  font-weight: bold;
+}
+
+funder::before {
+  content: "Funder: ";
+  font-weight: bold;
+}
+
+principal::before {
+  content: "Principal investigator: ";
+  font-weight: bold;
+}
+
+availability p::before {
+  content: "Licence: ";
+  font-weight: bold;
+}
+
+notesStmt::before {
+  content: "Summary: ";
+  font-weight: bold;
+}
+
+repository::before {
+  content: "Original kept at the: ";
+  font-weight: bold;
+}
+
+
+/* TEXT GENERICS */
+
+text {
+    font-family: Calibri, sans-serif;
+    margin: 2cm;
+    color:black;
+}
+
+/* FRONT ELEMENT */ 
+
+titlePart {
+    font-size:22pt;
+    font-weight:bold;
+    padding:10px;
+    text-align:center;
+    line-height:30pt;
+    display: block;
+}
+
+docAuthor {
+    font-size:18pt;
+    font-weight:bold;
+    padding:10px;
+    text-align:center;
+    line-height:30pt;
+    display: block;
+}
+
+docDate {
+    font-size:18pt;
+    font-weight:bold;
+    padding:10px;
+    text-align:center;
+    display: block;
+}
+
+docEdition {
+    padding:5px;
+    font-weight: bold;
+    font-size:12pt;
+    text-align:center;
+    line-height: 1.5;
+    display: block;
+}
+
+castList {
+    color: black; 
+    padding: 5px; 
+}
+
+head[type="personnage"] {
+    font-size:12pt;
+    font-weight:bold;
+    text-align:left;
+    padding-left:20pt;
+    line-height:25pt;
+    display: block;
+}
+
+castItem   {
+    font-size:12pt;
+    font-weight:bold;
+    text-align:left;
+    padding-left:20pt;
+    display: block;
+}
+
+set p{
+font-size:12pt;
+    font-style:italic;
+    text-align:left;
+    padding-left:20pt;
+    display: block;
+}
+
+/* BODY */ 
+
+
+head[type="titre"]{
+    font-size:20pt;
+    font-weight:bold;
+    text-align:center;
+    display: block;
+    line-height:35pt; 
+}
+
+head[type="acte"]{
+    font-size:25pt;
+    font-weight:bold;
+    text-align:center;
+    margin-top: 40px;
+    margin-bottom:10px;
+    padding:5pt;
+    display: block;
+    line-height:35pt; 
+}
+
+head[type="tableau"]{
+    font-size:17pt;
+    font-weight:bold;
+    text-align:center;
+    margin-top:15pt;
+    Margin-bottom:20pt;
+    display: block;
+    line-height:25pt; 
+}
+
+head[type="scene"]{
+    font-size:15pt;
+    font-weight:bold;
+    text-align:center;
+    display: block;
+    margin-top: 30px;
+    line-height:25pt; 
+}
+
+head[type="name"]{
+    font-size:16pt;
+    font-weight:bold;
+    text-align:center;
+    display: block;
+    line-height:25pt; 
+}
+
+head[type="nameA"]{
+    font-size:16pt;
+    font-weight:bold;
+    text-align:center;
+    margin-top: 5px;
+    margin-bottom:20px;
+    padding:5pt;
+    display: block;
+    line-height:25pt; 
+}
+
+head[type="nameT"]{
+    font-size:15pt;
+    font-weight:bold;
+    text-align:center;
+    margin-top:5pt;
+    margin-bottom:5pt;
+    display: block;
+    line-height:25pt; 
+}
+
+head[type="nameS"]{
+    font-size:14pt;
+    font-weight:bold;
+    text-align:center;
+    margin-top:5pt;
+    margin-bottom:5pt;
+    display: block;
+    line-height:25pt; 
+}
+
+head[type="sous-scène"]{
+    font-size:14pt;
+    font-weight:bold;
+    text-align:center;
+    margin-bottom:5pt;
+    display: block;
+    line-height:20pt;
+}
+
+head[type="div5"] {
+    font-size:12pt;
+    font-style:italic;
+    text-align:center;
+    display: block;
+    line-height:50pt;
+}
+
+listPerson { /* allows the name and the stage next to it to be centered */
+    display: block;
+    text-align: center;
+}
+
+listPerson personGrp name {
+    color: black;
+    padding: 1px;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-top:5pt;
+    display: inline;
+}
+
+stage[type="listPerson"] {
+display: inline;
+font-style: italic;
+}
+
+sp {  /* allows the speaker and the stage next to it to be centered */
+    display: block;
+  text-align: center;
+    font-size: 12pt;
+    margin-top: 2px;
+    padding:5pt;
+}
+
+speaker {
+    font-weight:bold;
+    font-size:13pt;
+    font-variant-caps:small-caps;
+    text-align:center;
+    display: inline;
+}
+
+speaker, stage[type="pers"] {
+    text-align: center;
+    display:inline;
+}
+
+
+stage[type="pers"] {
+    font-style:italic;
+    font-weight:normal;
+    font-variant-caps:normal;
+    text-align:center;
+    display: inline;
+}
+
+div sp > stage[type="saut"] {
+    font-style: italic;
+    text-align:left;
+    box-sizing: border-box;
+    padding-left:20pt;
+    padding-right:20pt;
+    display: block;
+}
+
+stage[type="air"] {
+    font-style: italic;
+    text-align:center;
+    box-sizing: border-box;
+    padding-left:20pt;
+    padding-right:20pt;
+    display: block;
+}
+div > stage {
+    font-style: italic;
+    text-align:center;
+    box-sizing: border-box;
+    padding-left:20pt;
+    padding-right:20pt;
+    display: block;
+}
+
+label[type="air"] {
+    font-style: normal;
+    text-align:center;
+    box-sizing: border-box;
+
+}
+
+stage[type="corps"] {
+    font-style: italic;
+}
+
+p {
+    padding:5px;
+    font-style:normal;
+    text-align:justify;
+    padding-left:20pt;
+    padding-right:20pt;
+    display: block;
+}
+
+l {
+    font-style:normal;
+    display: block;
+}
+
+lg{
+    padding:5px;
+   }
+
+said{
+    padding:5px;
+    font-style:normal;
+    text-align:left;
+    display: block;
+}
+
+foreign{
+    font-style:italic;
+}

@@ -1,96 +1,40 @@
-export async function fetchNakala(endpoint) {
-  const baseUrl = 'https://api.nakala.fr';
+// Nakala API base URL and helper functions
 
-  const url = `${baseUrl}${endpoint}`;
-  console.log(`🔍 [NAKALA DEBUG] Fetching: ${url}`);
+const NAKALA_BASE_URL = 'https://api.nakala.fr';
+
+/**
+ * Makes a request to the Nakala API with debugging
+ * @param {string} endpoint - The API endpoint (starting with /)
+ * @returns {Promise<any>} - The JSON response
+ */
+async function fetchNakala(endpoint) {
+  const url = `${NAKALA_BASE_URL}${endpoint}`;
 
   try {
-    const res = await fetch(url);
+    console.log(`🌐 Making request to: ${url}`);
+    const response = await fetch(url);
+
     console.log(
-      `📡 [NAKALA DEBUG] Response status: ${res.status} ${res.statusText}`,
+      `📊 Response status: ${response.status} ${response.statusText}`,
+    );
+    console.log(
+      `📋 Response headers:`,
+      Object.fromEntries(response.headers.entries()),
     );
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      console.error(`❌ [NAKALA DEBUG] HTTP Error ${res.status}:`, errorText);
-      throw new Error(`HTTP ${res.status}: ${errorText}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ HTTP Error ${response.status}:`, errorText);
+      throw new Error(`HTTP Error ${response.status}: ${errorText}`);
     }
 
-    const data = await res.json();
-    console.log(`✅ [NAKALA DEBUG] Success for ${endpoint}:`, {
-      dataType: Array.isArray(data) ? 'Array' : typeof data,
-      arrayLength: Array.isArray(data) ? data.length : 'N/A',
-      keys:
-        typeof data === 'object' && data !== null ? Object.keys(data) : 'N/A',
-      sampleData:
-        typeof data === 'object' && data !== null
-          ? Array.isArray(data)
-            ? data.slice(0, 2)
-            : data
-          : data,
-    });
-
-    // Debug détaillé pour les files et metas si présents
-    if (data && typeof data === 'object' && !Array.isArray(data)) {
-      if (data.files && Array.isArray(data.files)) {
-        console.log(`📁 [NAKALA DEBUG] Files details for ${endpoint}:`, {
-          filesCount: data.files.length,
-          fileTypes: data.files.map(file => ({
-            name: file.name,
-            extension: file.extension,
-            mimetype: file.mimetype,
-            size: file.size,
-            sha1: file.sha1?.substring(0, 8) + '...' || 'N/A',
-          })),
-          sampleFiles: data.files.slice(0, 3),
-        });
-      }
-
-      if (data.metas && Array.isArray(data.metas)) {
-        console.log(`🏷️ [NAKALA DEBUG] Metas details for ${endpoint}:`, {
-          metasCount: data.metas.length,
-          metaProperties: data.metas.map(meta => ({
-            propertyUri: meta.propertyUri,
-            value:
-              typeof meta.value === 'string'
-                ? meta.value.length > 100
-                  ? meta.value.substring(0, 100) + '...'
-                  : meta.value
-                : meta.value,
-            lang: meta.lang || 'N/A',
-            type: typeof meta.value,
-          })),
-          sampleMetas: data.metas.slice(0, 5),
-        });
-      }
-    }
-
-    // Debug pour les collections de données
-    if (Array.isArray(data) && data.length > 0 && data[0].metas) {
-      console.log(
-        `📚 [NAKALA DEBUG] Collection items sample for ${endpoint}:`,
-        {
-          itemsCount: data.length,
-          sampleItemMetas: data.slice(0, 2).map(item => ({
-            identifier: item.identifier,
-            metasCount: item.metas?.length || 0,
-            filesCount: item.files?.length || 0,
-            mainMetas:
-              item.metas?.slice(0, 3).map(meta => ({
-                property: meta.propertyUri,
-                value:
-                  typeof meta.value === 'string' && meta.value.length > 50
-                    ? meta.value.substring(0, 50) + '...'
-                    : meta.value,
-              })) || [],
-          })),
-        },
-      );
-    }
+    const data = await response.json();
+    console.log(`✅ Successfully parsed JSON response`);
+    console.log(`📦 Response data keys:`, Object.keys(data));
 
     return data;
   } catch (err) {
-    console.error(`💥 [NAKALA DEBUG] Error for ${endpoint}:`, err);
+    console.error(`💥 Error for ${endpoint}:`, err);
     throw err;
   }
 }
@@ -211,7 +155,7 @@ export async function fetchCollectionVideoCount(collectionId) {
 
 // Fonction helper pour obtenir les détails d'une donnée (vidéo)
 export async function fetchVideoData(videoId) {
-  return fetchNakala(`/datas/${videoId}`);
+  return fetchNakala(`/data/${videoId}`);
 }
 
 /**
@@ -248,16 +192,38 @@ export const fetchCollectionData = async (
 
 /**
  * Fetches a specific Nakala item by its identifier
- * @param {string} itemId - The Nakala item identifier
+ * @param {string} itemId - The Nakala item identifier (full DOI format like "10.34847/nkl.xxxxxxxx")
  * @returns {Promise<Object>} - The item data
  */
 export async function fetchNakalaItem(itemId) {
-  return fetchNakala(`/datas/${itemId}`);
+  // For Nakala, the proper endpoint is /datas/{identifier}
+  // Example: https://api.nakala.fr/datas/10.34847/nkl.xxxxxxxx
+  const endpoint = `/datas/${itemId}`;
+
+  try {
+    console.log(`🔍 Fetching Nakala item: ${itemId}`);
+    console.log(`📡 Endpoint: ${NAKALA_BASE_URL}${endpoint}`);
+
+    const result = await fetchNakala(endpoint);
+
+    console.log(`✅ Successfully fetched Nakala item ${itemId}`);
+    console.log(`📄 Response structure:`, Object.keys(result));
+    console.log(
+      `📁 Files count:`,
+      result.files ? result.files.length : 'No files property',
+    );
+
+    return result;
+  } catch (error) {
+    console.error(`❌ Failed to fetch item ${itemId}:`, error.message);
+    console.error(`📍 Full error:`, error);
+    throw new Error(`Failed to fetch Nakala item ${itemId}: ${error.message}`);
+  }
 }
 
 /**
- * Generates the URL for the Nakala embed viewer
- * @param {string} identifier - The Nakala item identifier
+ * Generates the URL for the Nakala embed viewer (IIIF viewer)
+ * @param {string} identifier - The Nakala item identifier (full DOI format)
  * @param {string} fileIdentifier - The file SHA1 identifier
  * @param {Object} options - Additional options for the viewer
  * @param {boolean} options.buttons - Show viewer buttons (default: true)
@@ -266,14 +232,22 @@ export async function fetchNakalaItem(itemId) {
 export function getNakalaEmbedUrl(identifier, fileIdentifier, options = {}) {
   const { buttons = true } = options;
   const baseUrl = 'https://api.nakala.fr/embed';
-  const params = new URLSearchParams();
 
+  // Build URL: /embed/{identifier}/{fileIdentifier}
+  let url = `${baseUrl}/${encodeURIComponent(identifier)}/${fileIdentifier}`;
+
+  // Add query parameters
+  const params = new URLSearchParams();
   if (buttons) {
     params.append('buttons', 'true');
   }
 
   const queryString = params.toString();
-  return `${baseUrl}/${encodeURIComponent(identifier)}/${fileIdentifier}${queryString ? `?${queryString}` : ''}`;
+  if (queryString) {
+    url += `?${queryString}`;
+  }
+
+  return url;
 }
 
 /**
@@ -288,12 +262,12 @@ export async function fetchTranscriptionXML(identifier, title) {
   // Try different approaches to get the XML file
   const possibleUrls = [
     // Approach 1: Direct file access with title
-    `https://api.nakala.fr/datas/${encodeURIComponent(identifier)}/${title}.xml`,
+    `https://api.nakala.fr/data/${encodeURIComponent(identifier)}/${title}.xml`,
 
     // Approach 2: Try with common XML patterns
-    `https://api.nakala.fr/datas/${encodeURIComponent(identifier)}/${title}_transcription.xml`,
-    `https://api.nakala.fr/datas/${encodeURIComponent(identifier)}/${title}_ENG.xml`,
-    `https://api.nakala.fr/datas/${encodeURIComponent(identifier)}/${title}_FR.xml`,
+    `https://api.nakala.fr/data/${encodeURIComponent(identifier)}/${title}_transcription.xml`,
+    `https://api.nakala.fr/data/${encodeURIComponent(identifier)}/${title}_ENG.xml`,
+    `https://api.nakala.fr/data/${encodeURIComponent(identifier)}/${title}_FR.xml`,
 
     // Approach 3: Try with files endpoint
     `https://api.nakala.fr/files/${title}.xml`,
@@ -301,7 +275,6 @@ export async function fetchTranscriptionXML(identifier, title) {
 
   for (const url of possibleUrls) {
     try {
-      console.log(`🔍 [TRANSCRIPTION] Trying URL: ${url}`);
       const response = await fetch(url);
 
       if (response.ok) {
@@ -313,21 +286,13 @@ export async function fetchTranscriptionXML(identifier, title) {
           content.includes('<TEI') ||
           content.includes('<text>')
         ) {
-          console.log(`✅ [TRANSCRIPTION] Found XML at: ${url}`);
           return content;
         }
       }
-
-      console.log(
-        `❌ [TRANSCRIPTION] Failed for: ${url} (Status: ${response.status})`,
-      );
     } catch (error) {
-      console.log(`💥 [TRANSCRIPTION] Error for: ${url}`, error.message);
+      // Continue trying other URLs
     }
   }
 
-  console.log(
-    `🚫 [TRANSCRIPTION] No XML transcription found for: ${identifier}`,
-  );
   return null;
 }

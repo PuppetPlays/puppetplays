@@ -1,0 +1,808 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/230715/wolfdietrich-und-die-rauhe-els">Wolfdietrich und die Rauhe Els</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="JB">Jean Boutan, </name>
+          <name xml:id="AM">Anaïs Malfatti</name>
+          <resp>Transcription and edition</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor/>
+        <availability status="restricted">
+          <p>null</p>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>A young knight is punished for having dismissed an ugly woman</note>
+        <note>When Alexander von Bernus opened his shadow theatre in 1907 in the artistic
+          neighbourhood of Schwabing in Munich, he wished to present a new form of art, which
+          he explicitly connected with the Romantic tradition. This new form of art would be
+          different from the shows of the Chat Noir cabaret in Paris and make better use of
+          the immaterial quality of shadows to venture into the realms of the soul and of
+          dreams. Mysticism pervaded the intellectual and artistic circles of Munich at the
+          beginning of the 20th century, and it had something to do with this project too,
+          since it aimed at “the most metaphysical union of image, poetry and music”. Karl Wolfskehl is one of the co-founders of the Schwabinger
+          Schattenspiele, for which he wrote three plays. Wolfdietrich und die
+          Rauhe Els features in the inauguration program of the theatre. Wolfskehl’s
+          plays differ from the oneiric plays of Alexander von Bernus in their themes (most
+          notably the relation between genders) and a darker and more violent atmosphere. The
+          three plays are rewritings of Nordic myths or oriental tales. In the wake of the
+          influential tradition of philology in German universities and of the new dynamic of
+          scientific orientalism at the beginning of the century, Karl Wolfskehl was, above
+          all, interested in those tales as a scholar and a bibliophile. To write
+          Wolfdietrich und die Rauhe Els, he drew on the old Germanic legends,
+          a selection of which had been published in Munich by Richard von Khalil (in 1906).
+          This collection summarises different versions of the legend of Wolfdietrich.
+          Wolfskehl’s play focuses on the chapter entitled « Wolfdietrich und Siegeminne » in
+          which the young knight meets a monstrous mermaid. Instead of the divine intervention
+          that saves the knight in Richard von Kralik’s version, Karl Wolfskehl uses a moral
+          cause: the mermaid’s sudden leniency is caused by the remorse of the knight, who
+          recognises his mistreatment of women. Thwarted love, obsession,
+          and transformation are expressed in Rolf von Hoerschelmann’s sceneries, where vines,
+          brambles, and roots adorn and surround the scenic space, in a way that is as
+          aesthetic as it is worrying.</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Münchner Stadtmuseum - Munich, Allemagne</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 18</p>
+                <p>Number of acts in the original document: 3</p>
+                <p>Format of the original document: Printed</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">Wolfdietrich und die Rauhe Els</title>
+          <date>1907</date>
+          <author>
+            <persName>Wolfskehl Karl</persName>
+            <idno type="IDREF">029582474</idno>
+          </author>
+          
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="de">German</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/2440/théâtre-dombres">Shadow theatre</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Fantasy</term>
+          <term>Didactic</term>
+          <term>Pathetic</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Apparition of a monster</term>
+          <term>Magic spell</term>
+          <term>Monologue</term>
+          <term>Ellipsis</term>
+          <term>Aria</term>
+          <term>Wandering</term>
+          <term>Metamorphosis</term>
+        </keywords>
+        <keywords source="genre">
+          <term>null</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Initiation tests</term>
+          <term>Hero</term>
+          <term>Fountain of Youth</term>
+          <term>Courtly love</term>
+          <term>Ugliness</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant
+          Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+          re-evaluate the contribution of the puppets repertoire to the construction of
+          European cultural identity. Its main goals is to collect a corpus of
+          representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+          France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+          17th and the 21th century. It also tries to identify the characteristics of
+          puppet dramaturgy and their variations depending on eras, cultural spheres,
+          producing conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+          Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+        </ref> licence. This license enables reusers to distribute, remix, adapt, and
+          build upon the material in any medium or format for non-commercial purposes
+          only, and only so long as attribution is given to the creator. If you remix,
+          adapt, or build upon the material, you must license the modified material under
+          identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2025-04-29" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+      <change when-iso="2025-04-14" who="#AM">Correction of the previous transcription according to the project's modernisation rules.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="2" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_002.jpg"/>
+      <pb n="3" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_003.jpg"/>
+      <docAuthor>
+        <persName>Karl Wolfskehl</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">Wolfdietrich und die Rauhe Els von Karl Wolfskehl</titlePart>
+      </docTitle>
+      <docDate>1907</docDate>
+      <pb n="4" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_004.jpg"/>
+      <castList>
+        <head type="personnage">[Figuren</head>
+        <castItem>
+          <role>Wolfdietrich</role>
+        </castItem>
+        <castItem>
+          <role>Die Rauhe Els</role>
+        </castItem>
+        <castItem>
+          <role>Stimme des Wolfdietrich</role>
+        </castItem>
+        <castItem>
+          <role>Wolksstimmen</role>
+        </castItem>
+        <castItem>
+          <role>Finer]</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <div type="3">
+        <pb n="4" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_004.jpg"/>
+        <head type="scene" n="1">Szene 1</head>
+        <listPerson>
+          <personGrp>
+            <name>[Wolfdietrich, </name>
+            <name>die Rauhe Els]</name>
+          </personGrp>
+        </listPerson>
+        <stage type="saut">Wolfdietrich im Wald zu Pferd.</stage>
+
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Wie war der Tag voll herrlich, bunter Taten!</l>
+            <l>Hielt ich nach meiner seigen Lehrer Raten</l>
+            <l>fletschte der Saule Rieje noch die Zähne —</l>
+            <l>die schlug ich ein... rauft ihm die Zottelmähne,</l>
+            <l>Schon halb verendet wollt er nochmals müden</l>
+            <l>da sprach mein Schwert das wusst ihn flink zu Duden;</l>
+            <l>mein braves Schwert — dich halt ich wohl in Ehren,</l>
+            <l>du hiebst schon meinen an aus taufend Sperren —</l>
+            <l>ein Wunder — heil und unverlegt heraus;</l>
+            <l>dem Vater Half zum Sieg bei jedem Strauß,</l>
+            <l>nun bist du teuer mir — nichts auf der Welt</l>
+            <l>ist dir blitzblanke Klinge gleich gestellt.</l>
+            <l>Dir und dem lieben Rößlein — mit euch beiden</l>
+            <pb n="5" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_005.jpg"/>
+            <l>wollt ich gern Bann — Fährnis und Hunger leiden</l>
+            <l>vor unserer dreie Schnelle Kraft und Feuer</l>
+            <l>besteht sein Mitter und sein Ungeheuer</l>
+            <l>gelt „Rieslein" anders kam als du gedacht.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <stage type="pers"> (kommt)</stage>
+          <lg>
+            <l>Du schöner Knab — schlaf bei mir heute Nacht!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Recht... meiner Treu — schon wollt ich sagen: gern.</l>
+            <l>Kein Ritter bricht sein Wort. Dank meinem Stern</l>
+            <l>Dass ich erst aufsah: garstig Runzehvesen</l>
+            <l>aus welchem Kehricht hast dich aufgelesen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Frag nicht — schau nicht — geh mit...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Eh das geschicht</l>
+            <l>erlebt die Welt, dass Herr Wolfdiertrich flicht!</l>
+            <l>Mit Frauen ist ja nicht erlaubt zu streiten,</l>
+            <l>mir bleibt nichts übrig als davon zu reiten!</l>
+          </lg>
+        </sp>
+        <pb n="6" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_006.jpg"/>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Ist das der Frauendienst den du geschworen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Jetzt Bettel schweig und lag mich ungeschoren;</l>
+            <l>glaubst weil du drein schaust wie die schwere Rot</l>
+            <l>ich müsste süttern dich mit meinem Brot? —</l>
+            <l>Das spar ich andern — laß die Strafe frei,</l>
+            <l>will vorbei. Zu feinem Pferd</l>
+            <l>was zauderst, nagst am Zaun</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Bitte sei</l>
+            <l>heilig Gebot dir!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Doch nicht Herenbrunst</l>
+            <l>zum letzten Male...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Fürchte meine Kunst!</l>
+          </lg>
+        </sp>
+        <pb n="7" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_007.jpg"/>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Fürcht du den Riesenvändger</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Lieg im Staub <stage type="corps">(Wolfdiertrich fällt vom Pferd.)</stage>
+                  </l>
+            <l>wie sich mein Stab hebt! Raschle dürres Laub</l>
+            <l>jahrlang in Schlaf ihn und dein Roß dein Schwert</l>
+            <l>nehm ich dir Knaben der sich mir verwehrt!...</l>
+            <l>Dass ich Herrin bin von Wolf und Wind</l>
+            <l>dass die Wesen im Wald mir gegeben sind,</l>
+            <l>dass ich fundig der Kraft bin von Wässern und Erzen,</l>
+            <l>das kühlt nicht den Brand, das dämpft nicht die Schmerzen.</l>
+            <l>Du ich mit dem Sturzbach vom Felsen springe,</l>
+            <l>mit dem Sturm die Wetter zusammen singe,</l>
+            <l>all meine Künste hieß ich gehn,</l>
+            <l>wollt einer mir gut ins Auge jehn.</l>
+            <l>Run muss ich wieder auf sieben Jahr</l>
+            <l>in meinen Turm... ob das der letzte war?</l>
+          </lg>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="2">Szene 2</head>
+        <stage type="saut">Wald wie bei I. Wolfdietrich erwachend.</stage>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Ich weiß nicht — ich bin wach, tu doch nicht wachen</l>
+            <pb n="8" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_008.jpg"/>
+            <l>so schwer und wirr und wolkig drückts mein Haupt.</l>
+            <l>Musst ich nicht über eine Here laden?</l>
+            <l>Mär dämmert so etwas... bin ich verstaubt!</l>
+            <l>Und ganz voll welker Blätter! Wie die kleben!</l>
+            <l>Wie wird mir schwer vom Boden mich zu heben.</l>
+            <l>Säß ich im Sattel schon — wo ist mein Tier?</l>
+            <l>Das grast doch immer nah zur Seite mir.</l>
+            <l>Hier Springo — hier. Wie rauh mein Rufen hallt.</l>
+            <l>Fremd klingt die eigne Stimme... kalt ist es — kalt!</l>
+            <l>Ich schlief zu lang... gewiß hat sichs verlaufen.</l>
+            <l>Mir war doch grad als hört ichs deutlich schnausen...</l>
+            <l>So gehn — den Flüchtling suchen — denn wir beide</l>
+            <l>du Schwert und ich... weh mir — keer ist die Scheide!</l>
+            <l>In meinem Schlaf — was ist mit mir geschehn.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <stage type="pers"> (kommend)</stage>
+          <lg>
+            <l>Wir haben und — dünkt mir — schon sonst gesehn</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Die Here! Gott sei gnädig mit mir Armen!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Wilst du dich heute meines Flehns erbarmen?</l>
+            <l>Ritter ich knie vor dir... ich will nicht drohn</l>
+            <pb n="9" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_009.jpg"/>
+            <l>leicht zwäng ich dich in schimpflich niedern Frohn</l>
+            <l>und bitte und bitte: Hör mich: Aus freiem Willen</l>
+            <l>sollst du dich neigend mein Verlangen stillen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Du Ungetüm</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Merkst nur die garstge Haut.</l>
+            <l>Fühlst nur nicht weiter ?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Was mein Auge Schaut,</l>
+            <l>das ist ganz fürchterlich</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Und meine Worte</l>
+            <l>sind ohne Süßigkeit?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Die Höllenpforte</l>
+            <l>aus der sie strömen machte Engel wüsst.</l>
+          </lg>
+        </sp>
+        <pb n="10" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_010.jpg"/>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Du hast scheint mir noch nicht genug gebüßt!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Ach ich vergaß ja, dass ich arm und bloß</l>
+            <l>du tückisch Tier — du raubst mir Schwert und Roß!</l>
+            <l>Hab ich drum vielen Helden obgesiegt,</l>
+            <l>dass mich ein widrig Weibsbild unterkriegt?</l>
+            <l>Was wilst du noch von mir? nimm auch mein Blut,</l>
+            <l>ich bin nichts mehr — würg mich — der Tod wär gut</l>
+            <l>zu enden solche Schmach.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Dürft ich auch töten</l>
+            <l>mir wärs zu schlecht. Hilf mir aus meinen Nöten</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Ich will nicht!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Du, besinn dich:</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Nie und nie mehr!</l>
+          </lg>
+        </sp>
+        <pb n="11" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_011.jpg"/>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Also vergeh der blöden Augen Schimmer.</l>
+            <l>Als blinder Narr durchbettle Steppe und Stadt!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <stage type="pers"> (gebückt, stolpernd)</stage>
+          <lg>
+            <l>Heut wird’s früh Nacht — obs gewittert hat?</l>
+            <l>War ich wo? Ach ich irgendwohin?</l>
+            <l>Kann einer mir sagen — wer ich bin?<stage type="corps"> (Halbsingend.)</stage>
+                  </l>
+            <l>„Es war einmal ein Wolfdiertrich</l>
+            <l>des Roß ließ alle hinter sich</l>
+            <l>das Schwert war schmeidig und blank geweckt</l>
+            <l>hat wen es wollt auf den Grund gestreckt.“</l>
+            <l>War der? — Still mit den Lügenmären,</l>
+            <l>blind bin ich und krumm und starre vor Schwären.<stage type="corps"> (Er tappt ab.)</stage>
+                  </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Fahr hin... und war das zweite Mal!</l>
+            <l>Dass ich ihn fand zu seiner — meiner Qual:</l>
+            <l>man weiß ich erst — wie schön der Junge war,</l>
+            <pb n="12" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_012.jpg"/>
+            <l>als ich zuerst ihn sah vor manchem Jahr,</l>
+            <l>da war er nur der mich erlösen sollt,</l>
+            <l>Sonst war mir jeder recht. Nun aber rollt</l>
+            <l>das Blut mir heiß. Wie er so ganz verstört</l>
+            <l>wie ein arm Kindlein sucht was ihm gehört</l>
+            <l>und dann halb trotzig und halb verzagt</l>
+            <l>sich mir Flenden wiederum versagt:</l>
+            <l>nun sönnt ich einen Andern nimmer frein</l>
+            <l>und der muss immer mir verloren sein,</l>
+            <l>Nun ist mein Hoffen tot — endet mein Suchen,</l>
+            <l>mein Mund verlernt das Bitten und das Fluchen,</l>
+            <l>Bor meinem Turm am Brunnenrund</l>
+            <l>erwart ich nun die letzte — letzte Stund.</l>
+          </lg>
+        </sp>
+      </div>
+      <div type="3">
+        <head type="scene" n="3">Szene 3</head>
+        <stage type="saut">Die Rauhe Els sitzt da; hinter ihr Brunnen mit hoher Brüstung dahinter Turm
+                    und Wimpel.</stage>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Der Quell verschläft im Brummen seine Kraft.</l>
+            <l>Das Banner auf dem Turm hängt schlaff am Schaft.</l>
+            <l>Wen wollt es flattern auch? Die Herrin wartet</l>
+            <l>auf Keinen dem zum Willkomm man standartet.</l>
+            <l>Der Ungerufne tritt ins ungeschmückte Haus.</l>
+            <l>Wie in den Festsaal... käm er... wär es aus!</l>
+          </lg>
+        </sp>
+        <pb n="13" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_013.jpg"/>
+        <sp>
+          <speaker>Stimme des Wolfdietrich</speaker>
+          <lg>
+            <l>Es war einmal ein Wolfdiertrich,</l>
+            <l>des Roß ließ alle hinter sich</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Singt wer?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolksstimmen</speaker>
+          <lg>
+            <l>Back dich Narr!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <stage type="pers"> (von ein paar hereinragenden Armen mit Knütteln usw. auf die Szene gejagt)</stage>
+          <lg>
+            <l>Warum tut ihr mir weh?</l>
+            <l>Ist das denn bös, dass ich nicht seh?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Finer</speaker>
+          <lg>
+            <l>Leierst immer dasselbe!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <stage type="pers"> (ganz auf der Szene)</stage>
+          <lg>
+            <l>Darum schlagt ihr mich armen Mann</l>
+            <l>giebt's denn wen der zwei Lieder kann?</l>
+            <pb n="14" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_014.jpg"/>
+            <l>Ein Lied einem jeden das Leben wird,</l>
+            <l>das mit ihm wächst und weint und verdirbt,</l>
+            <l>wisst ihr es besser?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Ich weiß es anders nicht!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Wer spricht mir grade ins Gesicht?</l>
+            <l>Luft du mir auch weh?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Ich tat dir weh</l>
+            <l>doch mehr noch mir!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>In Flocken fällt der Schnee.</l>
+            <l>Es rieselt und rischelt — oder ist's Laub!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Dass er hier her fand!</l>
+          </lg>
+        </sp>
+        <pb n="15" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_015.jpg"/>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Wer wagte den Raub?</l>
+            <l>Ich war doch jung — ich war doch stark.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Das dritte Mat — mir bebt das Mark.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Ich sah doch den Wald voll Ritter und Riesen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Heilige Stunde sei gepriesen!</l>
+            <l>Nun mag der liebe Thor Wunder schaun...</l>
+            <l>dientest nie mehr den schönen Frauen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Was fragst du den Bettler — den räudigen Hund</l>
+            <l>was sprach ich — ich weiß nichts! Sei stille mein Mund.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <stage type="pers"> (rufend und dann in den Born springend)</stage>
+          <lg>
+            <l>Dientest nie? Setzt geschehs! Alle Schleier reißen.</l>
+            <l>Ich steig in den Born; laß das Licht dir gleißen!</l>
+          </lg>
+        </sp>
+        <pb n="16" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_016.jpg"/>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Was brennt mich im Gesicht!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <stage type="pers"> (taucht schön und jung auf)</stage>
+          <lg>
+            <l>Ich steig aus dem Born!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Vom Steingeländer tritt es lieblich nieder!</l>
+            <l>Ich seh — ich seh! D Antlitz! Bracht der Glieder!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Du siehst und die du siehst fragt: willst du mich!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Schau ich den Tag leibhaft?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Ich fragte: sprich!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Mehr als mein Leben... ich Narr der vergißt</l>
+            <l>dass er ein armseliger Landfahrer ist.</l>
+            <pb n="17" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_017.jpg"/>
+            <l>Vor Schmach ward ich blind und werde sehend aus Hohn</l>
+            <l>wär ich nie dir Schützerin Nacht entflohn</l>
+            <l>ich zwiefach Verworfner!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Aufgeschaut!</l>
+            <l>Ich war die Here — ich bin deine Braut!</l>
+            <l>Der junge Fürst wollt sich zur Herr nicht bequemen</l>
+            <l>nun muss die Prinzessin den Bettler nehmen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Mir schwirrt der Kopf!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Hättst du mich gleich erhört</l>
+            <l>so ständest du nicht hier zerlumpt und betört;</l>
+            <l>nur wer es in den Arm nahm, konnte Lösen</l>
+            <l>das Zauberungetüm vom Fluch des Bösen.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Hätt ich's getan!</l>
+          </lg>
+        </sp>
+        <pb n="18" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_018.jpg"/>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Wie schrecktest du zurück</l>
+            <l>doch dreimal trafft mich! Unbegreislich, Glück,</l>
+            <l>das brach den Zauber — durftest zwiefach sehn.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Nun laß den Bettler seiner Wege gehn!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Noch spröd?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Hab ich gleich all mein Heil verspielt</l>
+            <l>Schande hat nie noch auf mich recht gezielt.</l>
+            <l>Wär deiner wert ich — o wie wollt ich werben,</l>
+            <l>so aber eil ich bittern Tod zu erben.</l>
+          </lg>
+        </sp>
+        <stage type="saut">Springt auf die Brüstung.</stage>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Tu es lieber Thor!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <stage type="pers"> (springt hinab)</stage>
+          <lg>
+            <l>Nimm mich du tieser Quell,</l>
+            <pb n="19" facs="20_D_WOLFSKEHL_WoldietrichUndDieRauhe_ALL_MUN_019.jpg"/>
+            <l>emporgetaucht, jugendlich wie in 1:</l>
+            <l>weh wie geschieht mir? Untertauch ich schnell,</l>
+            <l>und strudelnd treib ich auf wie leichter Flaum.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Blick in den Brunnenspiegel</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Trügt ein Traum?</l>
+            <l>Ich seh Wolfdiertrich mit dem Schwert.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Dank Wunderborn</l>
+            <l>der den Geliebten mir hat neu geborn</l>
+            <l>du hast gesühnt. — Vergeh nun Wunderkraft,</l>
+            <l>sein Zauber sei als den die Liebe schafft.</l>
+            <l>Hörst Ritter wiehern dein getreues Roß...</l>
+          </lg>
+        </sp>
+        <stage type="saut">Dar Roß erscheint am Rand der Szene.</stage>
+        <sp>
+          <speaker>Wolfdietrich</speaker>
+          <lg>
+            <l>Dein bin ich Frau!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Die Rauhe Els</speaker>
+          <lg>
+            <l>Geleit uns auf dein Schloß!</l>
+          </lg>
+        </sp>
+      </div>
+      <div type="5">
+        <head type="div5">Vorhang</head>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

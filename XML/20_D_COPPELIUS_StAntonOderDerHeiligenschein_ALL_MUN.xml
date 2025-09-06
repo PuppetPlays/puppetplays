@@ -1,0 +1,888 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="schema.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-stylesheet href="style_xml.css" type="text/css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title ref="https://puppetplays.eu/en/oeuvres/134148/st-anton-oder-der-heiligenschein">St. Anton oder der Heiligenschein</title>
+        <respStmt>
+          <name xml:id="MSK">Maxine Schoehuys-Kreiss</name>
+          <resp ref="maxine.schoehuys-kreiss@univ-montp3.fr">Edition</resp>
+        </respStmt>
+        <respStmt>
+          <name xml:id="JB">Jean Boutan</name>
+          <name xml:id="AM">Anaïs Malfatti</name>
+          <resp>Transcription and edition</resp>
+        </respStmt>
+        <principal ref="didier.plassard@univ-montp3.fr" xml:id="DP">Didier Plassard</principal>
+        <sponsor>PuppetPlays project (ERC GA 835193)</sponsor>
+        <funder>European Research Council - ERC</funder>
+      </titleStmt>
+      <publicationStmt>
+        <distributor/>
+        <availability status="restricted">
+          <p>null</p>
+        </availability>
+        <idno type="DOI"/>
+      </publicationStmt>
+      <notesStmt>
+        <note>A man goes through the ordeals meant for another man</note>
+        <note>When Alexander von Bernus opened his shadow theatre in 1907 in the artistic
+          neighbourhood of Schwabing in Munich, he wished to present a new form of art, which
+          he explicitly connected with the Romantic tradition. This new form of art would be
+          different from the shows of the Chat Noir cabaret in Paris and make better use of
+          the immaterial quality of shadows to venture into the realms of the soul and of
+          dreams. Mysticism pervaded the intellectual and artistic circles of Munich at the
+          beginning of the 20th century, and it had something to do with this project too,
+          since it aimed at “the most metaphysical union of image, poetry and music”. 
+          The sources used by Coppelius (alias Alexander von Bernus) to write
+          St. Anton oder der Heiligenschein are difficult to identify. If the
+          basic outline is similar to that of the versions for puppets played during the 19th
+          century, the absence of the pig, and of the council in Hell that traditionally opens
+          the play significantly sets it apart. And yet, contrary to La Tentation de
+          saint Antoine (The Temptation of Saint Anthony) played in the Théâtre du
+          Chat Noir and which was based on Flaubert’s text, Alexander von Bernus’s text sticks
+          to a more popular style and introduces the character of Hanswurst, impetuous and
+          ill-mannered. The plot also develops around a comical misunderstanding that defeats
+          the final celebration of the hermit’s devotion. In the light of
+          the artistic ambitions of the Schwabinger Schattenspiele, this rewriting of
+          La Tentation (The Temptation), which removes its intellectual and
+          pictorial sources, may come as a surprise. It could be partly explained by the wish
+          to be set apart from the productions of the Chat Noir and to keep an ambiguous - if
+          not hedonist - moral.</note>
+      </notesStmt>
+      <sourceDesc>
+        <listPerson>
+          <personGrp role="audience">
+            <p>Not specified</p>
+          </personGrp>
+        </listPerson>
+        <listBibl>
+          <msDesc>
+            <msIdentifier>
+              <repository>Münchner Stadtmuseum - Munich, Allemagne</repository>
+            </msIdentifier>
+            <physDesc>
+              <objectDesc>
+                <p>Number of pages in the original document: 18</p>
+                <p>Number of acts in the original document: 1</p>
+                <p>Format of the original document: Printed</p>
+              </objectDesc>
+            </physDesc>
+          </msDesc>
+        </listBibl>
+        <bibl>
+          <title type="main">St. Anton oder der Heiligenschein</title>
+          <date>1908</date>
+          <author>
+            <persName>Bernus Alexander von</persName>
+            <idno type="IDREF">134862937</idno>
+          </author>
+          
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="de">German</language>
+      </langUsage>
+      <textClass>
+        <keywords source="animationTechniques">
+          <term source="https://puppetplays.eu/en/techniques-d-animation/2440/théâtre-dombres">Shadow theatre</term>
+        </keywords>
+        <keywords source="literaryTones">
+          <term>Comical</term>
+          <term>Religious</term>
+          <term>Pathetic</term>
+        </keywords>
+        <keywords source="theatricalTechniques">
+          <term>Misunderstanding</term>
+          <term>Apparition</term>
+          <term>Metamorphosis</term>
+          <term>Metatheatre</term>
+          <term>Monologue</term>
+        </keywords>
+        <keywords source="genre">
+          <term>Ein Hanswurstspiel</term>
+        </keywords>
+        <keywords source="keywords">
+          <term>Capital sin</term>
+          <term>Piety</term>
+          <term>Hermit</term>
+          <term>Storm</term>
+          <term>Descent into hell</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <normalization method="silent">
+          <p>The semi-diplomatic norms applied are intended to guide and facilitate the reading of the original texts. The transcriptions therefore include spelling and grammatical corrections according to current standards.</p>
+          <p>The author's orthographic and grammatical corrections have been integrated into the text without being marked. Cuts for performance purposes have not been adopted in the transcription.</p>
+          <p>Syntax has been modernised where it is naturally incorrect or has become incomprehensible today. Additions are limited and indicated by square brackets.</p>
+          <p>The copyist's obvious errors (scene numbers, character attributions, etc.) have been corrected. The list of characters could also be corrected.</p>
+        </normalization>
+        <punctuation marks="some">
+          <p>Punctuation has been corrected according to modern rules.</p>
+        </punctuation>
+      </editorialDecl>
+      <projectDesc>
+        <p>Text collected during the PuppetPlays project funded by European Union (Grant
+          Agreement 835193) under Horizon 2020. The PuppetPlays project aims to
+          re-evaluate the contribution of the puppets repertoire to the construction of
+          European cultural identity. Its main goals is to collect a corpus of
+          representative plays from Western Europe (Germany, Austria, Belgium, Spain,
+          France, Great Britain, Italy, Netherlands, Portugal, Switzerland) between the
+          17th and the 21th century. It also tries to identify the characteristics of
+          puppet dramaturgy and their variations depending on eras, cultural spheres,
+          producing conditions, and the aimed public.</p>
+        <p>This edition is the result of university research work, reviewed by the principal investigator.</p>
+        <p>This transcription and the editorial work are distributed under the <ref target="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative
+          Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA)
+        </ref> licence. This license enables reusers to distribute, remix, adapt, and
+          build upon the material in any medium or format for non-commercial purposes
+          only, and only so long as attribution is given to the creator. If you remix,
+          adapt, or build upon the material, you must license the modified material under
+          identical terms. </p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when-iso="2025-04-29" who="#MSK">TEI Header created from a JSON extraction of the PuppetPlays' database.</change>
+      <change when-iso="2025-04-08" who="#AM">Correction of the previous transcription according to the project's modernisation rules.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <pb n="3" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_003.jpg"/>
+      <docAuthor>
+        <persName>Alexander von Bernus</persName>
+      </docAuthor>
+      <docTitle>
+        <titlePart type="main">St. Anton oder der Heiligenschein</titlePart>
+        <titlePart type="sub">Ein Hanswustspiel von Coppelius</titlePart>
+      </docTitle>
+      <docEdition>Munich, Verlag der Schwabinger Schattenspiele</docEdition>
+      <docDate>1908</docDate>
+      <pb n="4" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_004.jpg"/>
+      <castList>
+        <head type="personnage">Figurenliste</head>
+        <castItem>
+          <role>Antonius</role>
+        </castItem>
+        <castItem>
+          <role>Hanswurst</role>
+        </castItem>
+        <castItem>
+          <role>Beelzebub Höllenfürst</role>
+        </castItem>
+        <castItem>
+          <role>Hurliburli, ein Höllengeist</role>
+        </castItem>
+        <castItem>
+          <role>Unmäßigkeits-Trägheits-Geiz-Neid-Zorn-Hochmuts-Wollust-Teufel</role>
+        </castItem>
+        <castItem>
+          <role>Ein Engel</role>
+        </castItem>
+      </castList>
+    </front>
+    <body>
+      <pb n="5" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_005.jpg"/>
+      <div type="3">
+        <stage type="saut">Höhle des Antonius. Kruzifix, Totenschädel, sonst kahl und schmucklos.
+                    Antonius ganz zerschlagen.</stage>
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Gott sei Dank, der Morgen graut!</l>
+            <l>Hu mir schaudert noch die Haut,</l>
+            <l>fürchterlich wie diese Nacht.</l>
+            <l>Hab ich keine noch durchwacht</l>
+            <l>Seit ich in der Wüste Hause:</l>
+            <l>ein Gesause und Gebrause,</l>
+            <l>Donner krachten, Blitze sprühten</l>
+            <l>bis ins Innre meiner Höhle</l>
+            <l>und ein teuflisches Gegröhle</l>
+            <l>überheulte noch das Wüten</l>
+            <l>der Natur und der entsetzen</l>
+            <l>wilden Tiere, der gehetzten.</l>
+            <l>Wohl bei jeden Donnerschlag</l>
+            <l>glaubte ich, der jüngste Tag</l>
+            <l>bräche über mich herein</l>
+            <l>und es regne Stein und Bein.</l>
+            <l>Was das all bedeuten mochte?</l>
+            <l>Droht ein Unheil? Oder kochte</l>
+            <l>brodelte die Hölle über?</l>
+            <l>Gott sei Dank, es ging vorüber,</l>
+            <l>alles dämmert wieder klar,</l>
+            <l>und ich laufe kaum Gefahr,</l>
+            <l>wenn ich erst ein wenig bete</l>
+            <l>und dann im das Freie trete,</l>
+            <l>um mich etwas umzusehn,</l>
+            <l>was da draußen wohl geschehen.</l>
+          </lg>
+          <stage type="saut">Kniet nieder, betet, Dann ab.</stage></sp>
+        
+        <pb n="6" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_006.jpg"/>
+        <sp>
+          <speaker>Bellzebub der Höllenfürst</speaker>
+          <stage type="pers"> (erscheint)</stage>
+          <lg>
+            <l>Hui der Teufel ist am Ort!</l>
+            <l>— War das nicht gut eingeführt? —</l>
+            <l>Neugier trieb den Toren fort.</l>
+            <l>Doch nun rasch den Brei gerührt,</l>
+            <l>während er noch kocht und dampft.</l>
+            <l>Pfui wie mich das Kreuz dort Krampft!</l>
+            <l>Aber kehrt von seinem Gange</l>
+            <l>erst der fromme Uhu beim,</l>
+            <l>lass den Narren ich so lange</l>
+            <l>kirren, locken auf den Leim,</l>
+            <pb n="7" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_007.jpg"/>
+            <l>bis er meiner Rumst erliegt</l>
+            <l>und dann stracks zur Hölle fliegt. </l>
+            <l>Hurliburli, Schneller Geist,</l>
+            <l>her zu mir, wo du auch seist!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <stage type="pers"> (erscheint)</stage>
+          <lg>
+            <l>Psch! Du riesest mich zu dir.</l>
+            <l>Meister, was befiehlst du mir?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Bellzebub</speaker>
+          <lg>
+            <l>Fort! Erscheine schneller noch!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <stage type="pers"> (verschwindet)</stage>
+          <lg>
+            <l part="I">Psch!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Bellzebub</speaker>
+          <lg>
+            <l part="M">Her!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <stage type="pers"> (erscheint)</stage>
+          <lg>
+            <l part="M">Psch!</l>
+          </lg>
+        </sp>
+        <pb n="8" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_008.jpg"/>
+        <sp>
+          <speaker>Bellzebub</speaker>
+          <lg>
+            <l part="F">In diesem Loch</l>
+            <l>haust der heilige Anton.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <lg>
+            <l>Meister, von dem hört ich schon,</l>
+            <l>doch der trotzt auch deinem Grimm.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Bellzebub</speaker>
+          <lg>
+            <l>Schweig, du Tölpel, und vernimm:</l>
+            <l>Der da droben hat erlaubt,</l>
+            <l>— lang hab ich ihn drum geschraubt —</l>
+            <l>dass ich seinen frömmsten Knecht</l>
+            <l>aus dem menschlichen Geschlecht,</l>
+            <l>St. Anton, mit List und scharf</l>
+            <l>in Versuchung führen darf,</l>
+            <l>auf und ab und kreuz und quer,</l>
+            <l>aber einmal nur, nicht mehr.</l>
+            <l>Wenn er Strauchelt, wenn er fällt,</l>
+            <l>hui so ist er mein, doch hält</l>
+            <l>er den Anfechtungen stand</l>
+            <l>mit der Bibel im der Hand,</l>
+            <l>so verliere und verfehle</l>
+            <l>Ich auf ewig seine Seele. </l>
+            <pb n="9" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_009.jpg"/>
+            <l>Hurliburli, schneller Geist,</l>
+            <l>du bist nun belehrt und weißt,</l>
+            <l>was zu tun ist: lauern, harren</l>
+            <l>sollst du auf den frommen Narren,</l>
+            <l>kehrt er bald erschöpft zurücke,</l>
+            <l>so umgarne ihn mit Tücke,</l>
+            <l>jage alle sieben Sünden</l>
+            <l>dem Verwirrten auf den Hals,</l>
+            <l>jede einzeln — allenfalls</l>
+            <l>dürfen sie sich auch verbünden,</l>
+            <l>lass nicht ab, bis du ihn kriegst,</l>
+            <l>wehe dir, wenn du erliegst.</l>
+            <l>Fürchte meinen Pferdehuf,</l>
+            <l>heute gilt es Ruhm und Ruf!</l>
+            <l>Doch du wirst Belohnung finden,</l>
+            <l>glückt dirs, ihn zu überwinden.</l>
+            <l>Hui dann blitze, donnre, packe</l>
+            <l>ihn an seiner härnen Jacke</l>
+            <l>und mit einem jähen Riß</l>
+            <l>wirf ihn in die Finsternis,</l>
+            <l>Hurliburli, schneller Geist,</l>
+            <l>tue, was dein Herr dich heißt!<stage type="corps"> (Versinkt.)</stage>
+                  </l>
+          </lg>
+        </sp>
+        <pb n="10" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_010.jpg"/>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <stage type="pers"> (allein)</stage>
+          <lg>
+            <l>Hol mich Gott! Ich bin rabiat</l>
+            <l>und da schert mich kein Plagiat!</l>
+            <l>Alles geht mir heute schief:</l>
+            <l>Als der Meister mich berief,</l>
+            <l>hol mich Gott! Da saß ich gerade</l>
+            <l>mit der schönsten Teufelin</l>
+            <l>tête à tête im Flammenbade,</l>
+            <l>doch ich fahre wieder bin</l>
+            <l>und genieße noch die Frist,</l>
+            <l>bis der Tropf zu Hause ist.</l>
+            <l>Darn verführe ich den Wisch.</l>
+            <l>Aber nun zur Süßen — psch!<stage type="corps"> (Versinkt.)</stage>
+                  </l>
+          </lg>
+          <stage type="saut">Nach einiger zeit kommt der.</stage></sp>
+       
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Ach du barmherziger Gott und Vater!</l>
+            <l>In was für einen brüchigen Krater</l>
+            <l>hat mich Fortuna nun gestoßen?</l>
+            <l>Hu mir schlottern noch Bein und Hosen!</l>
+            <pb n="11" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_011.jpg"/>
+            <l>Wie michs die Nacht gebeutelt hat!</l>
+            <l>Bin noch ganz zerschlagen und matt.</l>
+            <l>Auf der Wanderschaft gestern Abend,</l>
+            <l>mich in die Wüste verloren habend,</l>
+            <l>überschauerte schwarz und bitter</l>
+            <l>mich ein verteufeltes Ungewitter,</l>
+            <l>riß mich und Schmiss mich hin und wider</l>
+            <l>und zerbläute mir Steiß und Glieder.</l>
+            <l>Endlich hatt ich halb tot und zerschunden</l>
+            <l>einen Unterschlupf gefunden,</l>
+            <l>aber plötzlich war es der Rachen</l>
+            <l>eines ungeheuren Drachen,</l>
+            <l>der mich hinunterzuschlingen drohte.</l>
+            <l>Dann bin ich scheinbar in Ohnmacht gefallen</l>
+            <l>Und ich hört es nur manchmal knallen —</l>
+            <l>Als ich zu mir kam, lag ich im Rote —</l>
+            <l>So bin ich lange wie leblos gelegen,</l>
+            <l>wagte nicht, mich zu rühren und regen,</l>
+            <l>Da allmählich begann es zu tagen</l>
+            <l>und mir heulte vor Hunger der Magen.</l>
+            <l>Schließlich rafft ich mich auf und gebrochen</l>
+            <l>bin ich bis in diese Höhle gekrochen.</l>
+            <l>Scheint hier ein frommer Klausner zu hausen,</l>
+            <l>denn ich merke: schon muss ich mich lausen.</l>
+            <pb n="12" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_012.jpg"/>
+            <l>Aber zu fressen ist nirgend nichts!</l>
+            <l>Wäre doch besser das Kruzifix</l>
+            <l>dort eine Bratwurst mit kraut und hier</l>
+            <l>der verlotterte Schädel voll Bier!<stage type="corps"> (Spricht pathetisch.)</stage>
+                  </l>
+            <l>Armer Hanswurst, wirst sterben müssen,</l>
+            <l>von des Lebens Lust und Genüssen</l>
+            <l>Abschied nehmen — der Tod grinst hohl.</l>
+            <l>Armer Hanswurst! — O Welt, leb wohl!</l>
+          </lg>
+          <stage type="saut">Hier erscheint der Unmäßigkeits-Teufel. Er ist furchtbar dick und trägt eine
+            Wurstkrone und Schinkenschmuck, mit ihm zugleich taucht ein üppig gedeckter
+            Tisch auf.</stage></sp>
+        
+        <sp>
+          <speaker>Der Unmäßigkeits-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, dich zu entlasten</l>
+            <l>von dem jahrelangen Fasten,</l>
+            <l>schickt mein Herr, um dich besorgt,</l>
+            <l>der dir gerne hilft und borgt,</l>
+            <l>hier den Tisch durch mich herauf —</l>
+            <l>greife zu und friß und sauf!</l>
+          </lg>
+        </sp>
+        <pb n="13" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_013.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (sich drüber machend)</stage>
+          <lg>
+            <l>Treffen will ich, dass nichts mehr bleibt,</l>
+            <l>bei mir belobt, Freund, wie du beleibt,</l>
+            <l>und empfiehl mich deinem Herrn!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Unmäßigkeits-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, das tu ich gern!<stage type="corps"> (Versinkt.)</stage>
+                  </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (allein, fressend)</stage>
+          <lg>
+            <l>Dieser Fettwanst verwechselte mich</l>
+            <l>zweifellos mit dem Höhlerich —</l>
+            <l>voß! Da lasse ich mich nicht lumpen,</l>
+            <l>will mich voll bis zum Kragen pumpen. <stage type="corps"> (Frißt unmäßig, sich manchmal unterbrechend.)</stage>
+                  </l>
+            <l>Puh wie der aussah, der feiste Kloß!</l>
+            <l>War um ein Haar so dick wie groß.</l>
+            <l>Sonderbarliches Abenteuer!</l>
+            <l>Mir war der Kerl nicht ganz geheuer,</l>
+            <pb n="14" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_014.jpg"/>
+            <l>wie er den Weg durch den Boden genommen,</l>
+            <l>weiß der Satan, wohin er gekommen!</l>
+            <l>Aber das Fressen nimmt gar nicht ab,</l>
+            <l>uff ich platze — der Bund wird mir knapp!</l>
+            <l>Möchte jetzt ruhen, doch nirgendwo</l>
+            <l>seh ich ein Lager, nicht einmal Stroh,</l>
+            <l>Schicksal, du hast mich vom Tode gerettet,</l>
+            <l>warum hast du mich nun nicht auch</l>
+            <l>weicher als wie auf Steine gebettet</l>
+            <l>mit einem pumpevollen Bauch?</l>
+          </lg>
+          <stage type="saut">Der Tragheits-Teufel erscheint. Er trägt eine Nacht-Mütze, Schlafrock und
+            Pantoffel und ist ganz mit Kiffen bedeckt. Mit ihm zugleich taucht ein Kanapee
+            auf.</stage></sp>
+        
+        <sp>
+          <speaker>Der Trägheits-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, mein Meister schickt</l>
+            <l>dir, nachdem du dich erquickt,</l>
+            <l>hier durch mich dies kanapee —</l>
+            <l part="I">Schlaf und fleze dich...</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (sich darauf fallen lassend)</stage>
+          <lg>
+            <l part="F">Juhce!</l>
+            <pb n="15" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_015.jpg"/>
+            <l><stage type="corps"> (Herablassend.)</stage>Sei mir bedankt, du bepolsterte Masse,</l>
+            <l>Sag deinem Herrn, dass ich grüßen lasse.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Trägheits-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, das will ich tun!<stage type="corps"> (Versinkt.)</stage>
+                  </l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (allein)</stage>
+          <lg>
+            <l>Ich verdaue und schlafe nun.</l>
+            <l>Votz dich, auch der mit all seinen Rissen</l>
+            <l>kam nicht und ging nicht durch die Kulissen,</l>
+            <l>sondern er fuhr durch den Boden im Nu —</l>
+            <l>und noch das Kanapee dazu!</l>
+            <l part="I">Doch was schert mich der Plumpsack?</l>
+            <l part="F">Gähnt uu!</l>
+            <l>Nur wer sein Meister ist, möchte ich, wissen,</l>
+            <l>ein gar freundlicher Herr, wie mir scheint,</l>
+            <l>wenn er auch eigentlich mich nicht meint!</l>
+          </lg>
+          <stage type="saut">Es kommen als Pilger-gekleidet zusammen der Geiz-Reid-Hochmut und
+            Zorn-Teufel. In Gestalt und Ausdruck ragen sie jedoch durchaus den Charakter
+            ihres Wesens.</stage></sp>
+        
+        <pb n="16" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_016.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Ha wer stört mich? Potz Pest und Fluch!</l>
+            <l>Na da kommt ja ein sauberer Besuch!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Geiz-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, sich, vier verirrte</l>
+            <l>Pilger bitten dich: bewirte</l>
+            <l>Stärke uns mit Speis und Trank,</l>
+            <l>denn wir sind erschöpft und krank!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Lumpengesindel, auch nicht einen Tropfen,</l>
+            <l>nicht einen Fetzen! Wollt ihr euch stopfen,</l>
+            <l>saufet Wasser und fresset Dreck,</l>
+            <l>aber hier schert euch schleunig weg!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Reid-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, sei mild, erboße</l>
+            <l>dich nicht über uns und stoße</l>
+            <l>uns nicht in den Hungertod,</l>
+            <l>gib uns Bier und Wurst und Brod!</l>
+          </lg>
+        </sp>
+        <pb n="17" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_017.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Tag dich der Satan! Du Lümmel, du gelber!</l>
+            <l>Was ich besitze, das fresse ich selber.</l>
+            <l>Bin ich denn da, dass ich andere mäste?</l>
+            <l>Trollt euch! Ich brauche, ich will keine Gäste!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Hochmuts-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, altedelblütig</l>
+            <l>sind wir, die du rauh und wütig</l>
+            <l>fort aus deinem Loche jagst</l>
+            <l>und noch zu beschimpfen wagt!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Was? Du miserabler Genoß</l>
+            <l>schmähst mich in meinem eigenen Schloß?</l>
+            <l>Bettelvolk seid ihr! Jetzt packt euch geschwinde,</l>
+            <l>oder ich rufe nach meinem Gesinde!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Zorn-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann, so rufe, schreie!</l>
+            <l>doch ich wette eins zu dreie,</l>
+            <l>keiner folgt auf den Befehl,</l>
+            <l>nicht ein Hund, selbst kein Kameel!</l>
+          </lg>
+        </sp>
+        <pb n="18" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_018.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (wütend sich aufrichtend)</stage>
+          <lg>
+            <l>Kreuz, Christen, Juden, Heiden und Mohren</l>
+            <l>Rotziger Kerl, ich reiß dir die Ohren</l>
+            <l>aus und haue sie dir ums Gefräss!</l>
+            <l>Potz Schinken, Blutwurst, Kraut und Käs!</l>
+          </lg>
+          <stage type="saut">Die vier Teufel versinken plötzlich.</stage></sp>
+        
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (allein, verwundert)</stage>
+          <lg>
+            <l>Na es geht wunderlich, zu hier zu Lande!</l>
+            <l>Plötzlich verschwindet dicht vor mir die Bande</l>
+            <l>wie die zwei ersten, nur beinah noch schneller.</l>
+            <l>In denn da unterirdisch ein Keller?</l>
+            <l>Wie ich mich vorhin doch aufgeregt habe,</l>
+            <l>dass ich nun ganz um die freundliche Gabe</l>
+            <l>friedlichen Schlafes gebracht bin — es bollert</l>
+            <l>mir noch das Herz in dem Busen und kollert!</l>
+            <l>Aber ich glaub, durch ein weibliches Wesen</l>
+            <l>würde ich leicht von dem Übel genesen,</l>
+            <l>doch kaum verläuft solch holdseliges Bildnis</l>
+            <l>sich hier allein in die lausige Wildnis.</l>
+          </lg>
+          <pb n="19" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_019.jpg"/>
+          <stage type="saut">Der Wollust-Teufel kommt herein in Gestalt eines überaus üppigen nackten
+            Weibes.</stage></sp>
+        
+        <sp>
+          <speaker>Der Wollust-Teufel</speaker>
+          <lg>
+            <l>Heilger Mann! da sind ich ihn,</l>
+            <l>der im Traume mir erschien,</l>
+            <l>fromm und stark, verschämt und lieb,</l>
+            <l>dass es mich durch Wüsten trieb,</l>
+            <l>ihn zu suchen! — meine Luft,</l>
+            <l>nimm mich nackt an deine Brust!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>In meine Arme, du herziger Käfer!</l>
+            <l>Du spiele Hirtin und ich spiele Schäfer</l>
+            <l>mit meinem Stabe — ich tobe, ich rase!</l>
+            <l>In dieser Öde welch fette Dase!</l>
+            <l>Komm auf das Kanapee, sieh mich im Fieber!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Der Wollust-Teufel</speaker>
+          <lg>
+            <l>Nicht so wild, du Süßer, Lieber!</l>
+          </lg>
+        </sp>
+        <pb n="20" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_020.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <stage type="pers"> (sie zum Kanapee ziehend)</stage>
+          <lg>
+            <l>Komm, o du angenehm wohlige Völle!<stage type="corps"> (Blitz und Donnerschlag. Hanswurst entsetzt.)</stage>
+                  </l>
+            <l>Weh mir! Ich brenne! Zu Hilfe! Die Hölle!</l>
+          </lg>
+          <stage type="saut">Der Wollust-Teufel, Tisch und Kanapee versinken. Hanswurst liegt auf dem
+            Boden. In roter Glut erscheint Hurliburli und packt ihn.</stage></sp>
+        
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <lg>
+            <l>Psch! Du heilger Mann, verfallen</l>
+            <l>bist du meinen Teufelskrallen</l>
+            <l>und dein Beten ist verloren,</l>
+            <l>braten musst du, rösten, schmoren!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Halt, einen Augenblick nur — Sie erlauben!</l>
+            <l part="I">bitte, ich bin es ja gar nicht.....</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hurliburli</speaker>
+          <lg>
+            <l part="F">Glauben</l>
+            <l>mach das andre! Psch! Und fort!</l>
+          </lg>
+        </sp>
+        <pb n="21" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_021.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Wehe mir! Hilfe! Ich komm nicht zu Wort!<stage type="corps"> (Verünken.)</stage>
+                  </l>
+          </lg>
+          <stage type="saut">Nach einer kurzen Weile kehrt Antonius zurück.</stage></sp>
+        
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>So, da bin ich. Etwas lang</l>
+            <l>währte heute mein Morgengang,</l>
+            <l>weil es mich zu schaun bewog.</l>
+            <l>Was sich in der Nacht vollzog</l>
+            <l>aber alles ist beim alten,</l>
+            <l>nur der Steinsitz ward gespalten</l>
+            <l>im Klosett und sieht, o Graus!</l>
+            <l>Wie ein Teufelsrachen aus.</l>
+            <l>Sonst trägt ringsum die Natur</l>
+            <l>Vater, einzig deine Spur.</l>
+            <l>Ja wer auf den Herrn vertraut,</l>
+            <l>der hat nicht auf Sand gebaut!</l>
+            <l>Doch was riecht hier so verdächtig?</l>
+            <l>Kaum mehr bin ich meiner mächtig!</l>
+            <pb n="22" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_022.jpg"/>
+            <l>Es benimmt mir schier den Odem —</l>
+            <l>haben Pech- und Schwefel-Brodem,</l>
+            <l>alle Dünste, faul und gährend,</l>
+            <l>sich denn hier entladen, während</l>
+            <l>ich, im Freien mich erging?</l>
+            <l>Doch ich acht auch dies gering!</l>
+            <l>Gott ist stark und ich bin fromm ...</l>
+          </lg>
+          <stage type="saut">Gepolter, Donner, Feuer. — Hanswurst fährt aus dem Boden.</stage></sp>
+        
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Au weh! Nur langsam! Blatz! Ich komm!</l>
+          </lg>
+          <stage type="saut">Hanswurst kommt gerade vor Anton zu sitzen.</stage></sp>
+        
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Na was kommt denn da gefahren?</l>
+            <l>Einer mit verfengten Haaren,</l>
+            <l>der nach Angst und brenzlich riecht</l>
+            <l>und auf allen Vieren kriecht.</l>
+            <l>Bist du eine Höllenbrut</l>
+            <l>oder Mensch aus Fleisch und Blut?</l>
+          </lg>
+        </sp>
+        <pb n="23" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_023.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Mensch bin ich, Esel! dein christlicher Bruder!</l>
+            <l>Doch so ein Teufel, ein tölpisches Luder,</l>
+            <l>hat mich verwechselt mit dir — und zuletzt</l>
+            <l>psch! mit sich fort in die Hölle gehetzt.</l>
+            <l>Warest du eher zurückgefehrt, Tropf,</l>
+            <l>hätte er dich Schon am grindigen Schopf! —</l>
+            <l>Mich zu behalten, war ihm nicht erlaubt,</l>
+            <l>weil ich zu fromm bin, und dann überhaupt</l>
+            <l>hat meine Stunde auch noch nicht geschlagen,</l>
+            <l>darum konnte er mich nicht vertragen</l>
+            <l>und — psch! — entsandte mich wieder nach oben!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Guter Gott, dich muss ich loben,</l>
+            <l>dass du liebreich mich beschützt</l>
+            <l>und den Fremdling hier benützt,</l>
+            <l>mich zu schirmen gegen Schuld —</l>
+            <l>ach wie groß ist deine Huld! —</l>
+            <l>Aber tu mir nunmehr kund,</l>
+            <l>Fremdling, wie's im Höllenschlund</l>
+            <l>Aussieht, wem du da begegnet,</l>
+            <l>und ob's wirklich nie dort regnet!</l>
+          </lg>
+        </sp>
+        <pb n="24" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_024.jpg"/>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Dazu bin ich dir gut genug,</l>
+            <l>Heuschreckenfresser! — So hör: es schlug</l>
+            <l>mich gleich tausend Millionen Meilen</l>
+            <l>in die Erde. Ich sah zuweilen</l>
+            <l>schaudernd im Klüfte mit Drachen und Riesen,</l>
+            <l>die nach mir Felsen und Feuer bliesen,</l>
+            <l>ringsherum Brodeln und Donner und Blitz.</l>
+            <l>Hui und in einem einzigen Flitz</l>
+            <l>fuhr ich so bis vor den fürstlichen Stuhl</l>
+            <l>Beelzebubs mitten im Höllenpfuhl.</l>
+            <l>Mich daselbst umzusehn, hatt ich nicht Muße,</l>
+            <l>denn kaum gewahrt er mich, stieß mit dem Fuße</l>
+            <l>er seinen Tronsessel um und im Grimme</l>
+            <l>schrie er und tobt er mit schrecklicher Stimme:</l>
+            <l>Esel, der Falsche ists, was schert mich der? —</l>
+            <l>Hui und so saufte ich wieder hierher!</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Fremdling, Abenteuerliches</l>
+            <l>und ganz Ungeheuerliches</l>
+            <l>hast du heut, wie kaum ein Zweiter,</l>
+            <l>durchgelebt — nun ziehe heiter</l>
+            <pb n="25" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_025.jpg"/>
+            <l>deines Wegs, mein frommer Sohn!</l>
+            <l>Alles findet seinen Lohn.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Nun denn, so gib ihn mir, kropfiger Knauser!</l>
+            <l>Meinst du vertrottelter Höhlenbehauser</l>
+            <l>Etwa, ich ließe mich brötzeln und backen,</l>
+            <l>deinethalb, um mich dann einfach zu packen?</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Fremdling, gar nichts nenn ich mein,</l>
+            <l>als dies härne Kleid allein,</l>
+            <l>das ich ohne Unterlage</l>
+            <l>vierzig Jahr am Leibe trage.</l>
+            <l>Willst du es, wohlan so löse</l>
+            <l>es, enthülle meine Blöße.</l>
+          </lg>
+        </sp>
+        <sp>
+          <speaker>Hanswurst</speaker>
+          <lg>
+            <l>Nein! Nein! Behalt es! Ich geh schon, ich geh!</l>
+            <l>Fehlte bloß, dass ich auch das noch besteh! —</l>
+            <l>Vaterland freu dich — lang war ich versenkt,</l>
+            <l>der Hanswurst ist dir wiedergeschenkt!<stage type="corps"> (Ab)</stage>
+                  </l>
+          </lg>
+          <pb n="26" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_026.jpg"/>
+          <stage type="saut">Antonius allein.</stage></sp>
+        
+        <sp>
+          <speaker>Antonius</speaker>
+          <lg>
+            <l>Gott geleite deine Wege,</l>
+            <l>du absonderlicher Kauz! —</l>
+            <l>Wie das alles kam! Mir grauts,</l>
+            <l>wenn ich bei mir überlege,</l>
+            <l>dass ich selber fast dem Spiel</l>
+            <l>teufelischer List verfiel. —</l>
+            <l>Doch nun ist es mir, als kläre</l>
+            <l>helle sich die Atmosphäre —</l>
+            <l>Träume ich? — mir dünkt sogar,</l>
+            <l>dass sie nie so lauter war,</l>
+            <l>und in meine Höhle brichts</l>
+            <l>wie ein Strahl geweihten Lichts!</l>
+            <l>Wer tritt zu mir her? Ein Engel?</l>
+            <l>Ist's ein holder Blütenstengel,</l>
+            <l>den er in der Hand hält, oder... ?</l>
+            <l>Welch ein himmlisches Geloder!</l>
+          </lg>
+          <stage type="saut">Ein Engel tritt ein, in der erhobenen Hand einen Heiligenschein, den er
+            während des folgenden Antonius aussetzt.</stage></sp>
+        
+        <pb n="27" facs="20_D_COPPELIUS_StAntonOderDerHeiligenschein_ALL_MUN_027.jpg"/>
+        <sp>
+          <speaker>Der Engel</speaker>
+          <lg>
+            <l>Neige dich, du frommer Alter,</l>
+            <l>der du manchen würdigen Psalter</l>
+            <l>deinem Herrn und Heiland sangst</l>
+            <l>und nach seinem Gruß verlangst —</l>
+            <l>Sieh: Gott sendet dir, dieweil</l>
+            <l>du heut die Versuchung heil</l>
+            <l>überstanden halt und rein,</l>
+            <l>hier den kleinen Heiligenschein,</l>
+            <l>denn der große mir der Lilie</l>
+            <l>bleibt der eigenen Familie.</l>
+            <l>Setz ihm auf und trag ihn stets,</l>
+            <l>wie der Linke seinen Fez,</l>
+            <l>jetzt auf Erden, einst da droben,</l>
+            <l>wo wir all den Vater loben.</l>
+            <l>Für das Wunder, das geschah,</l>
+            <l>preise Gott — Halleluja!</l>
+          </lg>
+          <stage type="saut">Antonius ist andachtsvoll ins Knie gesunken der Engel geht wie er gekommen.
+            Antonius verbleibt in derselben Stellung. Kameel, Giraffe, Vogel Strauß und
+            andere Wüstentiere nahen und dienen ihm.</stage></sp>
+        
+      </div>
+      <div type="5">
+        <head type="div5">Vorhang</head>
+      </div>
+    </body>
+  </text>
+</TEI>
+
+            
+        

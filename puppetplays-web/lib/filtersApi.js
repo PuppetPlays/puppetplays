@@ -54,8 +54,10 @@ query GetAllPlaces($locale: [String]) {
   entries(section: ["places", "countries"], site: $locale, orderBy: "title", relatedToEntries: { section: "${relatedToSection}" }) {
     id,
     title,
+    typeHandle,
     ... on places_places_Entry {
       country {
+        id,
         title
       }
     }

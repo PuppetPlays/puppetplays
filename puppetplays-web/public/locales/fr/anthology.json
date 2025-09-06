@@ -34,5 +34,16 @@
   "loadingViewer": "Chargement de la visionneuse...",
   "page": "Page",
   "previousPage": "Page précédente",
-  "nextPage": "Page suivante"
-} 
+  "nextPage": "Page suivante",
+  "anthologyNotFound": "Anthologie introuvable",
+  "anthologyNotFoundDescription": "L'anthologie demandée n'a pas pu être trouvée.",
+  "digitalizedDocument": "Document numérisé",
+  "compiler": "Compilateur",
+  "transcriber": "Transcripteur",
+  "license": "Licence",
+  "nakalaDescription": "Description",
+  "nakalaCreator": "Créateur",
+  "nakalaYear": "Année de création",
+  "nakalaMetadata": "Métadonnées du document",
+  "sourceInformation": "Informations sur la source"
+}

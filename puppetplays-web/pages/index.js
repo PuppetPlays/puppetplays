@@ -1,11 +1,11 @@
 import BirthDeathDates from 'components/BirthDeathDates';
 import ButtonLink from 'components/ButtonLink';
 import Card from 'components/Card';
+import Footer from 'components/Footer';
 import DiscoveryPathway from 'components/Home/DiscoveryPathway';
 import EntryPointCard from 'components/Home/EntryPointCard';
 import Section from 'components/Home/Section';
 import SplitLayout from 'components/Home/SplitLayout';
-import Footer from 'components/Footer';
 import HtmlContent from 'components/HtmlContent';
 import Keywords, { Tag } from 'components/Keywords';
 import LanguageSelector from 'components/LanguageSelector';
@@ -129,14 +129,6 @@ export default function Home({
   partners = [],
   discoveryPathwayResources = [],
 }) {
-  console.log('Home', {
-    animationTechnique,
-    authors,
-    work,
-    keywords,
-    partners,
-    discoveryPathwayResources,
-  });
   const { t } = useTranslation('home');
   const { locale: _locale } = useRouter();
   const workLinkRef = useRef(null);
@@ -222,10 +214,13 @@ export default function Home({
                       title={t('exploreBy.anthology.title')}
                       thumbnailUrl="/anthology-thumbnail.jpg"
                       description={t('exploreBy.anthology.subtitle')}
+                      to="/anthologie"
                     />
                     <EntryPointCard
                       title={t('exploreBy.pathways.title')}
                       thumbnailUrl="/pathways-thumbnail.jpg"
+                      description={t('exploreBy.pathways.subtitle')}
+                      to="/ressources-pedagogiques"
                     />
                     <EntryPointCard
                       title={t('exploreBy.publications.title')}
@@ -252,9 +247,9 @@ export default function Home({
 
           <div className={styles.content}>
             <div className={styles.contentInner}>
-              <Section title={t('accessToIntregralWorks')} isComingSoon>
+              {/* <Section title={t('accessToIntregralWorks')} isComingSoon>
                 <img src="/home-integral-works.jpg" alt="" />
-              </Section>
+              </Section> */}
 
               <Section isComingSoon={!animationTechnique}>
                 <SplitLayout
@@ -418,7 +413,7 @@ export default function Home({
                 </Section>
               )}
 
-              <Section title={t('ourPublications')}>
+              {/* <Section title={t('ourPublications')}>
                 <ul className={styles.publications}>
                   {PUBLICATIONS &&
                     Array.isArray(PUBLICATIONS) &&
@@ -431,7 +426,7 @@ export default function Home({
                       />
                     ))}
                 </ul>
-              </Section>
+              </Section> */}
 
               <Section
                 title={t('discoveryPathwayTitle')}

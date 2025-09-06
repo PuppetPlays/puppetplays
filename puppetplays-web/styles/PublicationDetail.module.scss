@@ -1,449 +1,547 @@
-// Publication Detail page styles
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  min-height: 80vh;
+/* Publication Detail Page - Elegant Professional Design */
 
-  @media (max-width: 768px) {
-    padding: 24px 16px;
-  }
-}
-
-.breadcrumb {
-  margin-bottom: 32px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 24px;
-  }
-}
-
-.breadcrumbLink {
-  color: #01055b;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #f8d04e;
-    text-decoration: underline;
-  }
-}
-
-// Main layout - Two columns
-.publicationLayout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-
-  @media (max-width: 1200px) {
-    gap: 32px;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-// Left Column - Metadata Section
-.metadataSection {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.publicationHeader {
-  padding: 32px;
-  background: linear-gradient(135deg, #01055b 0%, #000340 100%);
-  color: white;
-
-  @media (max-width: 768px) {
-    padding: 24px;
-  }
-}
-
-.publicationTitle {
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.3;
-  margin: 0 0 16px 0;
-  color: white;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 12px;
-  }
-}
-
-.publicationMeta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-}
-
-.metaBadge {
-  background: rgba(248, 208, 78, 0.2);
-  color: #f8d04e;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(248, 208, 78, 0.3);
-}
-
-.metaDate {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
-.metadataContent {
-  padding: 32px;
-
-  @media (max-width: 768px) {
-    padding: 24px;
-  }
-}
-
-// Metadata list
-.metadataList {
-  margin: 0 0 32px 0;
-}
-
-.metadataRow {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 16px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-.metadataLabel {
-  font-weight: 600;
-  color: #01055b;
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.metadataValue {
-  margin: 0;
-  color: #333;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.metadataLink {
-  color: #01055b;
-  text-decoration: none;
-  font-weight: 500;
-
-  &:hover {
-    color: #f8d04e;
-    text-decoration: underline;
-  }
-}
-
-// External links section
-.externalLinks {
-  margin-bottom: 32px;
-  padding-top: 24px;
-  border-top: 2px solid #f0f0f0;
-}
-
-.linksTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #01055b;
-  margin: 0 0 16px 0;
-}
-
-.linksList {
+.pageContainer {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  min-height: 100vh;
 }
 
-.externalLink {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #f8f9fa;
-  border: 1px solid #e1e5e9;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #01055b;
-  font-weight: 500;
-  transition: all 0.2s ease;
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 0 3rem;
+  flex: 1;
 
-  &:hover {
-    background: #01055b;
-    color: white;
-    border-color: #01055b;
-    transform: translateY(-1px);
+  @media (min-width: 768px) {
+    padding: 3rem 1rem 3rem;
   }
 }
 
-.linkIcon {
-  font-size: 1.2rem;
-}
+/* Breadcrumbs - VideoPage Style */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  overflow: hidden;
+  max-width: 100%;
 
-// Abstract section
-.abstractSection {
-  padding-top: 24px;
-  border-top: 2px solid #f0f0f0;
-}
+  a {
+    text-decoration: none;
+    white-space: nowrap;
+    min-width: 0;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    color: var(--color-brand);
+    transition: color 0.2s ease;
 
-.abstractTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #01055b;
-  margin: 0 0 16px 0;
-}
-
-.abstractContent {
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
-
-  p {
-    margin: 0 0 12px 0;
-    
-    &:last-child {
-      margin-bottom: 0;
+    &:hover {
+      color: var(--color-brand-light);
+      text-decoration: underline;
     }
   }
 }
 
-// Right Column - PDF Viewer Section
-.pdfSection {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.breadcrumbItemText {
+  display: block;
   overflow: hidden;
-  height: fit-content;
-  position: sticky;
-  top: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 250px;
 
-  @media (max-width: 768px) {
-    position: static;
+  @media (min-width: 480px) {
+    max-width: 350px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 450px;
   }
 }
 
-.pdfViewer {
-  height: 100%;
-  min-height: 600px;
-
-  @media (max-width: 768px) {
-    min-height: 500px;
-  }
+.breadcrumbSeparator {
+  color: #999;
+  flex-shrink: 0;
+  padding: 0 0.125rem;
 }
 
-.pdfHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e1e5e9;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
-  }
+.breadcrumbCurrent {
+  font-weight: 500;
+  color: #444;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
 }
 
-.pdfTitle {
-  font-size: 1.1rem;
+/* Publication Header */
+.publicationHeader {
+  margin-bottom: 2rem;
+}
+
+.publicationDetailTitle {
+  font-size: 1.35rem;
   font-weight: 600;
   color: #01055b;
-  margin: 0;
+  margin-bottom: 1rem;
+  line-height: 1.3;
 
-  @media (max-width: 768px) {
-    text-align: center;
+  @media (min-width: 640px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
-.pdfActions {
+/* Publication Metadata - VideoPage Style */
+.essentialMetadata {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 
-  @media (max-width: 768px) {
-    justify-content: center;
+.metaItem {
+  font-size: 0.9rem;
+  color: #444;
+  padding-right: 1rem;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 1px;
+    background-color: #ddd;
   }
 }
 
-.pdfButton {
-  padding: 8px 16px;
-  background: transparent;
-  color: #01055b;
-  border: 1px solid #01055b;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.85rem;
+.metaLabel {
   font-weight: 500;
+  color: #666;
+  margin-right: 0.25rem;
+}
+
+.metaValue {
+  color: #444;
+}
+
+.authorLink {
+  color: var(--color-brand);
+  text-decoration: none;
   transition: all 0.2s ease;
 
   &:hover {
-    background: #01055b;
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-    padding: 10px 16px;
-    flex: 1;
-    text-align: center;
+    color: var(--color-brand-light);
+    text-decoration: underline;
   }
 }
 
-.pdfFrame {
-  position: relative;
+.categoryBadge {
+  background-color: var(--color-brand);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Main Layout */
+.mainLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}
+
+.pdfContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Volume and Pages Info */
+.volumePagesInfo {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e5e5;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.infoItem {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: #666;
+}
+
+.infoValue {
+  color: #444;
+}
+
+/* PDF Viewer Container - VideoPage Card Style */
+.pdfViewer {
+  width: 100%;
   height: 700px;
-  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: white;
 
   @media (max-width: 768px) {
     height: 500px;
   }
 }
 
-.pdfIframe {
+.pdfViewerPlaceholder {
   width: 100%;
-  height: 100%;
-  border: none;
-  background: white;
-}
-
-// Loading states
-.pdfLoading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #666;
-}
-
-.loadingSpinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #01055b;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 16px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-// Error states
-.pdfError {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #666;
-  padding: 20px;
-
-  h4 {
-    color: #01055b;
-    margin: 8px 0 12px;
-  }
-
-  p {
-    margin: 0 0 16px;
-    font-size: 0.9rem;
-  }
-}
-
-.errorIcon {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-// PDF placeholder (when no PDF available)
-.pdfPlaceholder {
-  height: 700px;
+  height: 500px;
+  background-color: rgba(1, 5, 91, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
-  @media (max-width: 768px) {
-    height: 400px;
+  @media (min-width: 768px) {
+    height: 700px;
   }
 }
 
 .placeholderContent {
   text-align: center;
   color: #666;
-  padding: 40px;
+  padding: 2rem;
 
   h3 {
-    color: #01055b;
-    margin: 16px 0 8px;
     font-size: 1.2rem;
+    font-weight: 600;
+    color: #01055b;
+    margin-bottom: 0.5rem;
   }
 
   p {
-    margin: 0;
     font-size: 0.9rem;
+    color: #777;
     line-height: 1.5;
   }
 }
 
-.placeholderIcon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-  opacity: 0.5;
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: 1200px) {
+    flex: 0 0 380px;
+    position: sticky;
+    top: 2rem;
+    align-self: flex-start;
+  }
 }
 
-// Responsive adjustments
-@media (max-width: 480px) {
+/* Sidebar Blocks - VideoPage Card Style */
+.sidebarBlock {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.sidebarTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #01055b;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #f8d04e;
+  }
+}
+
+/* Authors List */
+.authorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.authorItem {
+  padding: 0.75rem;
+  background-color: rgba(1, 5, 91, 0.02);
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(1, 5, 91, 0.05);
+  }
+}
+
+.authorName {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.orcidLink {
+  color: var(--color-brand);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-brand-light);
+    text-decoration: underline;
+  }
+}
+
+/* Details List */
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.detailLabel {
+  font-weight: 500;
+  color: #666;
+  font-size: 0.85rem;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.linkInline {
+  color: var(--color-brand);
+  text-decoration: none;
+  font-size: 0.85rem;
+  word-break: break-all;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-brand-light);
+    text-decoration: underline;
+  }
+}
+
+/* Badges */
+.peerReviewBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  &.reviewed {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #059669;
+  }
+
+  &.notReviewed {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+  }
+}
+
+/* External Links Section */
+.externalLinksSection {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #01055b;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #f8d04e;
+  }
+}
+
+/* External Links Grid - VideoPage Style */
+.externalLinksGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.externalLinkItem {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-brand);
+  }
+}
+
+.linkTitle {
+  font-weight: 600;
+  color: #01055b;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.linkDescription {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Loading and Error States */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .container {
-    padding: 16px 12px;
+    padding: 0 1rem;
   }
 
-  .publicationLayout {
-    gap: 16px;
+  .publicationDetailTitle {
+    font-size: 1.25rem;
   }
 
-  .metadataSection,
-  .pdfSection {
-    border-radius: 8px;
+  .essentialMetadata {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .metaItem {
+      padding-right: 0;
+
+      &:not(:last-child)::after {
+        display: none;
+      }
+    }
   }
 
-  .publicationHeader {
-    padding: 20px;
+  .mainLayout {
+    gap: 1.5rem;
   }
 
-  .metadataContent {
-    padding: 20px;
+  .sidebarBlock {
+    padding: 1rem;
   }
 
-  .metadataRow {
-    padding: 8px 0;
+  .externalLinksGrid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .pdfHeader {
-    padding: 16px 20px;
-  }
-} 
+/* Focus states for accessibility */
+.externalLinkItem:focus,
+.orcidLink:focus,
+.linkInline:focus {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* Footer Wrapper */
+.footerWrapper {
+  margin-top: 5rem;
+  width: 100%;
+  clear: both;
+}

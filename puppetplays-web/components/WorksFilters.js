@@ -53,9 +53,33 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
   };
   const getPlacesOptions = () => {
     apiClient(getAllPlacesQuery('works')).then(places => {
+      // Format places to include country name for cities
+      const formattedPlaces = places.entries.map(place => {
+        if (place.typeHandle === 'places' && place.country) {
+          // It's a city, add country name for clarity
+          return {
+            ...place,
+            title: `${place.title} (${place.country.title})`,
+          };
+        }
+        // It's a country or a place without country
+        return place;
+      });
+
+      // Sort to have countries first, then cities
+      const sortedPlaces = formattedPlaces.sort((a, b) => {
+        // Countries first
+        if (a.typeHandle === 'countries' && b.typeHandle !== 'countries')
+          return -1;
+        if (b.typeHandle === 'countries' && a.typeHandle !== 'countries')
+          return 1;
+        // Then alphabetical
+        return a.title.localeCompare(b.title);
+      });
+
       setFiltersOptions({
         ...filtersOptions,
-        places: places.entries,
+        places: sortedPlaces,
       });
     });
   };

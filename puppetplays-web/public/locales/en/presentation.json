@@ -1,0 +1,42 @@
+{
+  "title": "Presentation title",
+  "description": {
+    "intro": "Presentation description intro",
+    "goals": {
+      "title": "Presentation description goals title",
+      "goal1": "Presentation description goals goal1",
+      "goal2": "Presentation description goals goal2",
+      "goal3": "Presentation description goals goal3"
+    },
+    "contributions": {
+      "title": "Presentation description contributions title",
+      "contribution1": "Presentation description contributions contribution1",
+      "contribution2": "Presentation description contributions contribution2",
+      "contribution3": "Presentation description contributions contribution3"
+    },
+    "access": "Presentation description access"
+  },
+  "heroImage": {
+    "alt": "Presentation hero image alt"
+  },
+  "chronology": {
+    "title": "Presentation chronology title",
+    "events": "Presentation chronology events"
+  },
+  "video": {
+    "title": "Presentation video title",
+    "caption": "Presentation video caption"
+  },
+  "centralHypothesis": {
+    "title": "Presentation central hypothesis title",
+    "paragraph1": "Presentation central hypothesis paragraph1",
+    "paragraph2": "Presentation central hypothesis paragraph2",
+    "paragraph3": "Presentation central hypothesis paragraph3",
+    "paragraph4": "Presentation central hypothesis paragraph4",
+    "paragraph5": "Presentation central hypothesis paragraph5"
+  },
+  "acknowledgments": {
+    "title": "Presentation acknowledgments title",
+    "content": "Presentation acknowledgments content"
+  }
+}
