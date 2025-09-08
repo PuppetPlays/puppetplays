@@ -295,5 +295,9 @@
     "category": "Catégorie",
     "noPrevious": "Pas de document précédent",
     "noNext": "Pas de document suivant"
-  }
+  },
+  "noResultsFound": "No results found for your search criteria. Try adjusting your filters or search terms.",
+  "noImageAvailable": "No images available for this item.",
+  "noVideoAvailable": "No videos available for this item.",
+  "noAudioAvailable": "No audio recordings available for this item."
 }

@@ -1,6 +1,7 @@
 import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
+import TranscriptionPDFDownload from 'components/TranscriptionPDFDownload';
 import { fetchAPI } from 'lib/api';
 import { fetchNakalaItem, getNakalaEmbedUrl, getMetaValue } from 'lib/nakala';
 import Head from 'next/head';
@@ -996,9 +997,17 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
             {/* Transcription Section - Sidebar */}
             <div className={styles.transcriptionSection}>
               <div className={styles.transcriptionHeader}>
-                <h3 className={styles.sectionTitle}>
-                  {t('anthology:transcription')}
-                </h3>
+                <div className={styles.transcriptionTitleRow}>
+                  <h3 className={styles.sectionTitle}>
+                    {t('anthology:transcription')}
+                  </h3>
+                  <TranscriptionPDFDownload
+                    transcriptionPages={transcriptionPages}
+                    title={anthologyData.title}
+                    anthologyTitle={anthologyData.title}
+                    currentPage={currentTranscriptionPage}
+                  />
+                </div>
 
                 {/* Transcription Navigation Controls */}
                 {transcriptionPages.length > 1 && (

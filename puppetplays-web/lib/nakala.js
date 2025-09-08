@@ -155,7 +155,7 @@ export async function fetchCollectionVideoCount(collectionId) {
 
 // Fonction helper pour obtenir les détails d'une donnée (vidéo)
 export async function fetchVideoData(videoId) {
-  return fetchNakala(`/data/${videoId}`);
+  return fetchNakala(`/datas/${videoId}`);
 }
 
 /**

@@ -531,6 +531,13 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
         id,
         slug,
         title
+      },
+      translatedBy {
+        id,
+        fullName,
+        firstName,
+        lastName,
+        email
       }
     }
   }

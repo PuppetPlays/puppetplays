@@ -483,6 +483,14 @@
   flex-shrink: 0; // Prevent title from shrinking
 }
 
+.transcriptionTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
 .comingSoon {
   background: var(--color-brand);
   color: white;

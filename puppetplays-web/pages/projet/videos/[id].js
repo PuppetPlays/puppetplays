@@ -122,7 +122,11 @@ const VideoDetailPage = ({ videoData, relatedVideos, error }) => {
               <span className={styles.videoMetaLabel}>
                 {t('common:dateLabel')}
               </span>
-              {new Date(date).toLocaleDateString()}
+              {new Date(date).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+              })}
             </div>
           )}
           {duration && duration !== '-' && (
@@ -272,7 +276,11 @@ const VideoDetailPage = ({ videoData, relatedVideos, error }) => {
                     </h3>
                     {relatedVideo.date && (
                       <p className={styles.relatedVideoDate}>
-                        {new Date(relatedVideo.date).toLocaleDateString()}
+                        {new Date(relatedVideo.date).toLocaleDateString('fr-FR', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit'
+                        })}
                       </p>
                     )}
                   </div>
@@ -406,9 +414,9 @@ export async function getServerSideProps({ params, query, locale }) {
         [],
       // Extract first creator as author
       author:
-        getMetaValues(rawVideoData.metas, 'http://nakala.fr/terms#creator').map(
-          c => c.fullName,
-        )[0] || null,
+        getMetaValues(rawVideoData.metas, 'http://nakala.fr/terms#creator')
+          .filter(c => c && c.fullName) // Filter out null values and objects without fullName
+          .map(c => c.fullName)[0] || null,
       // Views are not available
       collectionId: collectionId,
       collectionTitle: collectionTitle,

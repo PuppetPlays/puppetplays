@@ -55,15 +55,30 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
     apiClient(getAllPlacesQuery('works')).then(places => {
       // Format places to include country name for cities
       const formattedPlaces = places.entries.map(place => {
-        if (place.typeHandle === 'places' && place.country) {
+        // Clean title from any existing "(undefined)" or similar patterns
+        const cleanTitle = place.title.replace(/\s*\(undefined\)\s*$/i, '').trim();
+        
+        if (place.typeHandle === 'places') {
           // It's a city, add country name for clarity
-          return {
-            ...place,
-            title: `${place.title} (${place.country.title})`,
-          };
+          if (place.country && place.country.title) {
+            // Has a valid country
+            return {
+              ...place,
+              title: `${cleanTitle} (${place.country.title})`,
+            };
+          } else {
+            // City without country or with undefined country
+            return {
+              ...place,
+              title: cleanTitle, // Keep clean title without parentheses
+            };
+          }
         }
-        // It's a country or a place without country
-        return place;
+        // It's a country or other type
+        return {
+          ...place,
+          title: cleanTitle,
+        };
       });
 
       // Sort to have countries first, then cities
