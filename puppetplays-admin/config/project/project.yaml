@@ -1,4 +1,4 @@
-dateModified: 1757186875
+dateModified: 1757325780
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -144,6 +144,7 @@ meta:
     28340a2e-58f9-44f0-92dd-eb54581b97a0: 'Date d’édition (min)' # Date d’édition (min)
     37720b4b-f4c6-42b4-8400-af5f71b3e072: Sounds # Sounds
     41896b43-8bdf-40cd-b579-6b1796d66147: Compilateur # Compilateur
+    50293fbc-0526-44ba-8495-34a4f1b9cf41: 'Sidebar Elements' # Sidebar Elements
     55099d79-979a-4b39-9c2b-a1500480e690: 'Lien vers l''article' # Lien vers l'article
     57929aa1-be57-43a8-9388-00000ad5e135: 'Scientific Category' # Scientific Category
     59986aab-e6c1-4cdf-a062-8db833d2b327: 'Puppetplays EN' # Puppetplays EN
@@ -163,6 +164,7 @@ meta:
     a91b45bb-9cf2-4282-8145-7f8a006d801b: Traductions # Traductions
     a457d850-4cd2-457c-9827-969f730ec77c: 'Nom traduit' # Nom traduit
     a2007d0c-252f-4367-8e53-da567f836922: ' Copyright' #  Copyright
+    a5482d3a-c7a3-4acf-bad2-e271c2097293: 'Sidebar Element' # Sidebar Element
     a63454cc-f4ca-4c63-a17f-8772cff10def: 'Date d’écriture (pour l’affichage)' # Date d’écriture (pour l’affichage)
     a95459b0-9778-477e-ac36-580e1a77e951: puppetplays # puppetplays
     a3824935-81c5-4d05-85cb-a7b326914bd4: Extrait # Extrait
@@ -199,6 +201,7 @@ meta:
     c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
     c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
     c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
+    cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e: 'Side Bar Title' # Side Bar Title
     cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
     ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
     cd80ffd8-f562-4ec0-952b-ce1fa2377c9a: 'Technical Documentation' # Technical Documentation
@@ -232,6 +235,7 @@ meta:
     e780c89d-1896-434f-b228-1af758a8ab24: Biography # Biography
     e2264f91-0ef8-4237-9334-9b9061b59c0e: Partners # Partners
     e5103a12-53c5-42ca-8479-15e3372fc73f: Templates # Templates
+    e55193f5-c240-4e32-89a4-dc79ea9ba233: 'Sidebar Content' # Sidebar Content
     e555024e-2651-4c00-9772-7c3b197dc24a: 'Projets de Recherche' # Projets de Recherche
     e9587719-a8d4-42d6-97c2-f0259ec67922: 'Institutions de conservation' # Institutions de conservation
     ea500c41-2beb-4ed4-a12c-afca214004c7: Superviseur # Superviseur
@@ -263,6 +267,10 @@ meta:
     fe4f7b25-47ca-473c-a6a2-85d827124f50: 'research Link' # research Link
     ffcbd130-d01a-46e8-be41-572fa13bf2fb: Commons # Commons
 plugins:
+  document-helpers:
+    edition: lite
+    enabled: true
+    schemaVersion: 2.3.2
   preparse-field:
     edition: standard
     enabled: true
