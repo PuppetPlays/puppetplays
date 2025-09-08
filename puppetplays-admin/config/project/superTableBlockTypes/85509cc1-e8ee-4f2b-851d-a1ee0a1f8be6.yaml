@@ -8,7 +8,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: e55193f5-c240-4e32-89a4-dc79ea9ba233
+            fieldUid: e55193f5-c240-4e32-89a4-dc79ea9ba233 # Sidebar Content
             instructions: null
             label: null
             required: false
@@ -22,7 +22,7 @@ fieldLayouts:
         uid: 9a81cd36-7b78-45e7-b5ba-0d98a54e344d
         userCondition: null
 fields:
-  e55193f5-c240-4e32-89a4-dc79ea9ba233:
+  e55193f5-c240-4e32-89a4-dc79ea9ba233: # Sidebar Content
     columnSuffix: null
     contentColumnType: string
     fieldGroup: null
