@@ -6,15 +6,15 @@ instructions: null
 name: 'Contenu riche'
 searchable: false
 settings:
-  availableTransforms: '*'
-  availableVolumes: '*'
+  availableTransforms: ''
+  availableVolumes: ''
   columnType: text
   configSelectionMode: choose
   defaultTransform: ''
   manualConfig: ''
   purifierConfig: null
   purifyHtml: true
-  redactorConfig: Complex.json
+  redactorConfig: null
   removeEmptyTags: true
   removeInlineStyles: true
   removeNbsp: true
