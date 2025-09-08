@@ -53,6 +53,8 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
   };
   const getPlacesOptions = () => {
     apiClient(getAllPlacesQuery('works')).then(places => {
+      console.log('Raw places data:', places.entries);
+      
       // Format places to include country name for cities
       const formattedPlaces = places.entries.map(place => {
         // Clean title from any existing "(undefined)" or similar patterns
@@ -62,12 +64,14 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
           // It's a city, add country name for clarity
           if (place.country && place.country.title) {
             // Has a valid country
+            console.log(`Formatting city: ${cleanTitle} -> ${cleanTitle} (${place.country.title})`);
             return {
               ...place,
               title: `${cleanTitle} (${place.country.title})`,
             };
           } else {
             // City without country or with undefined country
+            console.log(`City without country: ${cleanTitle}`, place.country);
             return {
               ...place,
               title: cleanTitle, // Keep clean title without parentheses
@@ -92,6 +96,7 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
         return a.title.localeCompare(b.title);
       });
 
+      console.log('Final formatted places:', sortedPlaces);
       setFiltersOptions({
         ...filtersOptions,
         places: sortedPlaces,

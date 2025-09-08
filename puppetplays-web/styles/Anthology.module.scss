@@ -483,14 +483,6 @@
   flex-shrink: 0; // Prevent title from shrinking
 }
 
-.transcriptionTitleRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
 .comingSoon {
   background: var(--color-brand);
   color: white;
@@ -520,6 +512,7 @@
 
 // Styles pour le contenu de transcription scrollable
 .transcriptionContent {
+  position: relative; // Pour le positionnement du bouton PDF
   height: 70vh; // Même hauteur que le viewer
   min-height: 500px;
   overflow-y: auto;

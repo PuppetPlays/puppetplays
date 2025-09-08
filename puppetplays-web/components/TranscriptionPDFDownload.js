@@ -6,14 +6,13 @@ import PropTypes from 'prop-types';
 import styles from './TranscriptionPDFDownload.module.scss';
 
 /**
- * Composant pour télécharger une transcription en PDF
- * Utilise jsPDF pour générer le PDF côté client
+ * Composant pour télécharger une transcription complète en PDF
+ * Utilise jsPDF pour générer le PDF côté client avec toutes les pages
  */
 const TranscriptionPDFDownload = ({ 
   transcriptionPages = [], 
   title = 'Transcription',
-  anthologyTitle = '',
-  currentPage = null 
+  anthologyTitle = ''
 }) => {
   const { t } = useTranslation(['anthology', 'common']);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -111,25 +110,67 @@ const TranscriptionPDFDownload = ({
       // Configuration des polices et marges
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
-      const marginLeft = 20;
-      const marginRight = 20;
-      const marginTop = 25;
-      const marginBottom = 20;
+      const marginLeft = 25;
+      const marginRight = 25;
+      const marginTop = 30;
+      const marginBottom = 25;
       const contentWidth = pageWidth - marginLeft - marginRight;
       let currentY = marginTop;
 
-      // Ajouter le titre principal
+      // En-tête professionnel avec couleurs du projet
+      // Bande bleue en haut
+      pdf.setFillColor(30, 58, 138); // Bleu du projet
+      pdf.rect(0, 0, pageWidth, 40, 'F');
+      
+      // Logo/Titre du projet
+      pdf.setFontSize(24);
+      pdf.setFont(undefined, 'bold');
+      pdf.setTextColor(255, 255, 255); // Blanc
+      pdf.text('PuppetPlays', marginLeft, 20);
+      
+      // Titre du document
+      pdf.setFontSize(14);
+      pdf.setFont(undefined, 'normal');
+      pdf.setTextColor(255, 255, 255); // Blanc
+      const mainTitle = anthologyTitle || title;
+      const shortTitle = mainTitle.length > 50 ? mainTitle.substring(0, 47) + '...' : mainTitle;
+      pdf.text(shortTitle, marginLeft, 30);
+      
+      // Date de génération
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      const today = new Date().toLocaleDateString('fr-FR', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      pdf.text(today, pageWidth - marginRight - 40, 30);
+      
+      currentY = 55;
+      
+      // Titre complet du document
       pdf.setFontSize(18);
       pdf.setFont(undefined, 'bold');
-      const mainTitle = anthologyTitle || title;
+      pdf.setTextColor(30, 58, 138); // Bleu
       const titleLines = pdf.splitTextToSize(mainTitle, contentWidth);
       pdf.text(titleLines, marginLeft, currentY);
       currentY += titleLines.length * 8 + 5;
-
-      // Ajouter une ligne de séparation
+      
+      // Sous-titre
+      pdf.setFontSize(12);
+      pdf.setFont(undefined, 'italic');
+      pdf.setTextColor(107, 114, 128); // Gris
+      pdf.text('Transcription complète du manuscrit', marginLeft, currentY);
+      currentY += 10;
+      
+      // Ligne de séparation
+      pdf.setDrawColor(220, 220, 220); // Gris clair
       pdf.setLineWidth(0.5);
       pdf.line(marginLeft, currentY, pageWidth - marginRight, currentY);
       currentY += 10;
+
+      // Remettre la couleur du texte en noir pour le contenu
+      pdf.setTextColor(0, 0, 0);
 
       // Styles pour différents types de contenu
       const styles = {
@@ -148,10 +189,8 @@ const TranscriptionPDFDownload = ({
         spacing: { fontSize: 11, fontStyle: 'normal', spacing: 3 }
       };
 
-      // Traiter toutes les pages ou seulement la page courante
-      const pagesToProcess = currentPage 
-        ? transcriptionPages.filter(p => p.pageNumber === currentPage)
-        : transcriptionPages;
+      // Traiter TOUTES les pages de transcription
+      const pagesToProcess = transcriptionPages;
 
       // Parcourir toutes les pages de transcription
       pagesToProcess.forEach((page, pageIndex) => {
@@ -160,11 +199,13 @@ const TranscriptionPDFDownload = ({
           currentY = marginTop;
         }
 
-        // Ajouter le numéro de page de la transcription
-        pdf.setFontSize(10);
-        pdf.setFont(undefined, 'normal');
+        // Ajouter le numéro de page de la transcription avec style
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'bold');
+        pdf.setTextColor(30, 58, 138); // Bleu du projet
         pdf.text(`Page ${page.pageNumber}`, marginLeft, currentY);
-        currentY += 8;
+        pdf.setTextColor(0, 0, 0); // Remettre en noir
+        currentY += 12;
 
         // Formater et ajouter le contenu
         const formattedContent = formatContentForPDF(page.content);
@@ -196,17 +237,34 @@ const TranscriptionPDFDownload = ({
         });
       });
 
-      // Ajouter les numéros de page en bas
+      // Ajouter les numéros de page et pied de page
       const totalPages = pdf.internal.getNumberOfPages();
       for (let i = 1; i <= totalPages; i++) {
         pdf.setPage(i);
-        pdf.setFontSize(9);
+        
+        // Pied de page avec bande bleue
+        pdf.setFillColor(245, 245, 245); // Gris très clair
+        pdf.rect(0, pageHeight - 20, pageWidth, 20, 'F');
+        
+        // Ligne de séparation
+        pdf.setDrawColor(30, 58, 138); // Bleu
+        pdf.setLineWidth(1);
+        pdf.line(0, pageHeight - 20, pageWidth, pageHeight - 20);
+        
+        // Texte "PuppetPlays" à gauche
+        pdf.setFontSize(8);
         pdf.setFont(undefined, 'normal');
+        pdf.setTextColor(107, 114, 128); // Gris
+        pdf.text('PuppetPlays - Transcription', marginLeft, pageHeight - 10);
+        
+        // Numéro de page à droite
+        pdf.setFontSize(9);
+        pdf.setFont(undefined, 'bold');
+        pdf.setTextColor(30, 58, 138); // Bleu
         pdf.text(
-          `${i} / ${totalPages}`,
-          pageWidth / 2,
-          pageHeight - 10,
-          { align: 'center' }
+          `Page ${i} / ${totalPages}`,
+          pageWidth - marginRight - 20,
+          pageHeight - 10
         );
       }
 
@@ -220,7 +278,7 @@ const TranscriptionPDFDownload = ({
     } finally {
       setIsGenerating(false);
     }
-  }, [transcriptionPages, title, anthologyTitle, currentPage, formatContentForPDF, t]);
+  }, [transcriptionPages, title, anthologyTitle, formatContentForPDF, t]);
 
   // Si pas de transcription, ne pas afficher le bouton
   if (!transcriptionPages || transcriptionPages.length === 0) {
@@ -232,21 +290,29 @@ const TranscriptionPDFDownload = ({
       className={`${styles.downloadButton} ${isGenerating ? styles.generating : ''}`}
       onClick={generatePDF}
       disabled={isGenerating}
-      title={currentPage 
-        ? t('anthology:downloadCurrentPagePDF') 
-        : t('anthology:downloadFullPDF')}
+      title={t('anthology:downloadFullPDF')}
     >
       {isGenerating ? (
         <>
-          <span className={styles.loadingIcon}>⏳</span>
-          {t('anthology:generatingPDF')}
+          <svg 
+            className={styles.loadingIcon}
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2"
+          >
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+          </svg>
+          <span>{t('anthology:generatingPDF')}</span>
         </>
       ) : (
         <>
           <svg 
             className={styles.downloadIcon}
-            width="16" 
-            height="16" 
+            width="18" 
+            height="18" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
@@ -256,9 +322,7 @@ const TranscriptionPDFDownload = ({
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          {currentPage 
-            ? t('anthology:downloadPagePDF')
-            : t('anthology:downloadPDF')}
+          <span>Download as PDF</span>
         </>
       )}
     </button>
@@ -273,8 +337,7 @@ TranscriptionPDFDownload.propTypes = {
     })
   ),
   title: PropTypes.string,
-  anthologyTitle: PropTypes.string,
-  currentPage: PropTypes.number
+  anthologyTitle: PropTypes.string
 };
 
 export default TranscriptionPDFDownload;

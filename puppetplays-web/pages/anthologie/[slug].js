@@ -997,17 +997,9 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
             {/* Transcription Section - Sidebar */}
             <div className={styles.transcriptionSection}>
               <div className={styles.transcriptionHeader}>
-                <div className={styles.transcriptionTitleRow}>
-                  <h3 className={styles.sectionTitle}>
-                    {t('anthology:transcription')}
-                  </h3>
-                  <TranscriptionPDFDownload
-                    transcriptionPages={transcriptionPages}
-                    title={anthologyData.title}
-                    anthologyTitle={anthologyData.title}
-                    currentPage={currentTranscriptionPage}
-                  />
-                </div>
+                <h3 className={styles.sectionTitle}>
+                  {t('anthology:transcription')}
+                </h3>
 
                 {/* Transcription Navigation Controls */}
                 {transcriptionPages.length > 1 && (
@@ -1048,6 +1040,11 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 </div>
               ) : transcriptionPages.length > 0 ? (
                 <div className={styles.transcriptionContent}>
+                  <TranscriptionPDFDownload
+                    transcriptionPages={transcriptionPages}
+                    title={anthologyData.title}
+                    anthologyTitle={anthologyData.title}
+                  />
                   {(() => {
                     const currentPageData = transcriptionPages.find(
                       page => page.pageNumber === currentTranscriptionPage,
