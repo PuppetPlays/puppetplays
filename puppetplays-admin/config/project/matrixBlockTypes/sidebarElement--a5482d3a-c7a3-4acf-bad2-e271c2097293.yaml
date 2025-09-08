@@ -1,4 +1,4 @@
-field: e55193f5-c240-4e32-89a4-dc79ea9ba233
+field: e55193f5-c240-4e32-89a4-dc79ea9ba233 # Sidebar Content
 fieldLayouts:
   e263f9dc-8213-4226-8245-37410d5895e2:
     tabs:
@@ -7,7 +7,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e
+            fieldUid: cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e # Side Bar Title
             instructions: null
             label: null
             required: false
@@ -19,7 +19,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 50293fbc-0526-44ba-8495-34a4f1b9cf41
+            fieldUid: 50293fbc-0526-44ba-8495-34a4f1b9cf41 # Sidebar Elements
             instructions: null
             label: null
             required: false
@@ -33,7 +33,7 @@ fieldLayouts:
         uid: 8dee2c76-691c-4d67-a72b-6df926053487
         userCondition: null
 fields:
-  50293fbc-0526-44ba-8495-34a4f1b9cf41:
+  50293fbc-0526-44ba-8495-34a4f1b9cf41: # Sidebar Elements
     columnSuffix: cvyayvly
     contentColumnType: text
     fieldGroup: null
@@ -93,7 +93,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\Table
-  cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e:
+  cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e: # Side Bar Title
     columnSuffix: zkvufalq
     contentColumnType: text
     fieldGroup: null
