@@ -15,7 +15,7 @@ puppetplays/
 └── puppetplays-deploy/    # Deployment scripts and configurations
 ```
 
-### Main Components
+### Main Components:
 
 1. **Public Website** (`puppetplays-web`):
    - Built with NextJS (React)
