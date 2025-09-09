@@ -76,5 +76,5 @@ name: Sounds
 sortOrder: 2
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: null
+transformFs: ''
 transformSubpath: ''

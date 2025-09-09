@@ -76,5 +76,5 @@ name: Videos
 sortOrder: 1
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: null
+transformFs: ''
 transformSubpath: ''
