@@ -56,14 +56,25 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            attribute: alt
+            class: null
+            cols: null
+            disabled: false
             elementCondition: null
-            fieldUid: bce57552-4cce-4dbb-aa89-398015020fda # Alt
+            id: null
             instructions: null
             label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
             required: false
+            rows: null
             tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 94b399d2-e6da-4229-9bd8-4f3b3c14ca94
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 5e36e5a5-26a0-4a32-a197-73e088e17497
             userCondition: null
             warning: null
             width: 100
@@ -76,5 +87,5 @@ name: Images
 sortOrder: 0
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
-transformFs: null
+transformFs: ''
 transformSubpath: ''
