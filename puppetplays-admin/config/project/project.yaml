@@ -1,8 +1,30 @@
-dateModified: 1757352020
+dateModified: 1757438933
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/static/images'
+    type: craft\fs\Local
+    url: '@web/static/images'
+  sounds:
+    hasUrls: true
+    name: Sounds
+    settings:
+      path: '@webroot/static/sounds'
+    type: craft\fs\Local
+    url: '@web/static/sounds'
+  videos:
+    hasUrls: true
+    name: Videos
+    settings:
+      path: '@webroot/static/videos'
+    type: craft\fs\Local
+    url: '@web/static/videos'
 meta:
   __names__:
     0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6: Equipe # Equipe

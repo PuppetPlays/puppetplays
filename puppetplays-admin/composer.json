@@ -2,7 +2,7 @@
   "require": {
     "besteadfast/craft-preparse-field": "^2.1.2",
     "cooltronicpl/document-helpers": "^3.0.0",
-    "craftcms/cms": "^4.16.3",
+    "craftcms/cms": "^4.16.13",
     "craftcms/element-api": "^4.2.0",
     "craftcms/redactor": "^3.1.0",
     "doublesecretagency/craft-cpcss": "2.6.0",

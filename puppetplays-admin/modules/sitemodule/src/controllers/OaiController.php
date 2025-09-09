@@ -272,7 +272,7 @@ class OaiController extends Controller
         } else {
             $this->response->data = $this->renderTemplate('oai/error', array_merge($commonVars, [
                 'errorCode' => 'badVerb',
-                'errorMessage' => 'Verb not implemented yet',
+                'errorMessage' => 'Verb not available',
                 'requestParams' => [],
             ]));
         }
