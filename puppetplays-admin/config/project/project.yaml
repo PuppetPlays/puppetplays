@@ -1,4 +1,4 @@
-dateModified: 1757438933
+dateModified: 1757441296
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -182,7 +182,7 @@ meta:
     a22c7c0c-6aad-4091-8758-2f5b600af921: 'Sidebar Elements' # Sidebar Elements
     a36b8a5f-17c5-46c5-8d97-43a29656c564: 'Date de mort' # Date de mort
     a47eb338-13e7-427d-a6a9-9854d7ecf096: Format # Format
-    a76db193-1e92-454f-9738-1998f1be6a9b: 'Traduit par' # Traduit par
+    a76db193-1e92-454f-9738-1998f1be6a9b: 'Traduction de la notice' # Traduction de la notice
     a91b45bb-9cf2-4282-8145-7f8a006d801b: Traductions # Traductions
     a457d850-4cd2-457c-9827-969f730ec77c: 'Nom traduit' # Nom traduit
     a2007d0c-252f-4367-8e53-da567f836922: ' Copyright' #  Copyright
@@ -717,7 +717,7 @@ project:
       a5c71adc-184b-49c4-8e1a-d251540bf2b1: Chercheurs
       a36b8a5f-17c5-46c5-8d97-43a29656c564: 'Date de mort' # Date de mort
       a47eb338-13e7-427d-a6a9-9854d7ecf096: Format # Format
-      a76db193-1e92-454f-9738-1998f1be6a9b: 'Traduit par' # Traduit par
+      a76db193-1e92-454f-9738-1998f1be6a9b: 'Traduit par' # Traduction de la notice
       a91b45bb-9cf2-4282-8145-7f8a006d801b: Traductions # Traductions
       a457d850-4cd2-457c-9827-969f730ec77c: 'Nom traduit' # Nom traduit
       a2007d0c-252f-4367-8e53-da567f836922: ' Copyright' #  Copyright
