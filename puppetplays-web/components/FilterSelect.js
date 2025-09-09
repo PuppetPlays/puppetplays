@@ -21,6 +21,7 @@ function FilterSelect({
   onFocus = noop,
   inverse = true,
   isDisabled = false,
+  label,
 }) {
   // État pour suivre si le composant est monté (côté client)
   const [isMounted, setIsMounted] = useState(false);
@@ -47,7 +48,7 @@ function FilterSelect({
         id={`aria-label-of-${name}`}
         htmlFor={`select-input-of-${name}`}
       >
-        {t(`common:filters.${name}`)}
+        {label ?? t(`common:filters.${name}`)}
       </FilterLabel>
 
       {/* Ne rendre le Select que côté client */}
@@ -99,6 +100,7 @@ FilterSelect.propTypes = {
   isSearchable: PropTypes.bool,
   inverse: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 export default FilterSelect;

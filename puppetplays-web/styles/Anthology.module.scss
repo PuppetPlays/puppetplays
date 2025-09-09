@@ -512,6 +512,7 @@
 
 // Styles pour le contenu de transcription scrollable
 .transcriptionContent {
+  position: relative; // Pour le positionnement du bouton PDF
   height: 70vh; // Même hauteur que le viewer
   min-height: 500px;
   overflow-y: auto;

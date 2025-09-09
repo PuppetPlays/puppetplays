@@ -17,7 +17,8 @@
     "video": {
       "title": "Project video presentation",
       "caption": "Discover our research program through this video",
-      "placeholder": "Video presentation coming soon"
+      "placeholder": "Video presentation coming soon",
+      "url": "[TODO: https://nakala.fr/10.34847/nkl.5e38866d]"
     },
     "description": {
       "intro": "PuppetPlays is a research programme on plays for puppets and marionettes, directed by Didier Plassard, professor of Theatre Studies, supported by the Université de Montpellier Paul-Valéry. Laureate of the \"Advanced Grant\" call for projects of the European Research Council (ERC) in 2018, it was funded by the European Union for six years (October 2019 – September 2025).",
@@ -357,7 +358,9 @@
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
     "resetZoom": "Reset zoom",
-    "noPdfAvailableDesc": "Scientific publications no pdf available desc"
+    "noPdfAvailableDesc": "Scientific publications no pdf available desc",
+    "open": "Open",
+    "downloading": "Downloading..."
   },
   "hal": {
     "loadingMetadata": "Loading HAL metadata...",
@@ -380,6 +383,17 @@
     "pdfNote": "Document hosted on",
     "open": "Open",
     "loadingNote": "Loading may take a few seconds...",
-    "viewerNote": "Viewing via"
+    "viewerNote": "Viewing via",
+    "noPdfAvailableDesc": "This document has no associated PDF.",
+    "downloading": "Downloading...",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "pageOf": "Page {{current}} of {{total}}",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "resetZoom": "Reset zoom",
+    "pdfNotAvailable": "No PDF document available",
+    "usingAlternativeViewer": "Using alternative viewer",
+    "pdfCannotBeDisplayed": "The PDF cannot be displayed in your browser"
   }
 }

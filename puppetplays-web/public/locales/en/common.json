@@ -10,7 +10,7 @@
       "description": "Discover puppet theatre authors"
     },
     "animationTechniques": {
-      "description": "Explore the different animation techniques used in puppet theatre"
+      "description": "techniques"
     },
     "discoveryPaths": {
       "description": "Explore our thematic discovery paths"
@@ -44,7 +44,7 @@
   },
   "accessibility": "Accessibility",
   "noData": "No data",
-  "navMenu": "Navigation menu",
+  "navMenu": "menu",
   "menu": "Menu",
   "year": "Year",
   "backToHome": "Back to home",
@@ -81,7 +81,7 @@
   "otherTitles": "Other titles",
   "hypotexts": "Hypotexts",
   "firstPerformance": "First performance",
-  "publications": "Publications",
+  "publications": "publications",
   "publication": "Publication",
   "publicationsAndTranslations": "Publications and translations",
   "conservationPlace": "Conservation place",
@@ -299,5 +299,22 @@
     "category": "Category",
     "noPrevious": "No previous document",
     "noNext": "No next document"
-  }
+  },
+  "marionnettes": "puppets",
+  "marionnette": "puppet",
+  "théâtre": "theatre",
+  "répertoires": "repertoires",
+  "dramaturgie": "dramaturgy",
+  "chargement": "loading",
+  "téléchargement": "downloading",
+  "suivant": "next",
+  "précédent": "previous",
+  "fermer": "close",
+  "ouvrir": "open",
+  "voir": "view",
+  "afficher": "show",
+  "filtrer": "filter",
+  "trier": "sort",
+  "rechercher": "search",
+  "erreur": "error"
 }

@@ -1,6 +1,7 @@
 import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
+import TranscriptionPDFDownload from 'components/TranscriptionPDFDownload';
 import { fetchAPI } from 'lib/api';
 import { fetchNakalaItem, getNakalaEmbedUrl, getMetaValue } from 'lib/nakala';
 import Head from 'next/head';
@@ -1039,6 +1040,11 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 </div>
               ) : transcriptionPages.length > 0 ? (
                 <div className={styles.transcriptionContent}>
+                  <TranscriptionPDFDownload
+                    transcriptionPages={transcriptionPages}
+                    title={anthologyData.title}
+                    anthologyTitle={anthologyData.title}
+                  />
                   {(() => {
                     const currentPageData = transcriptionPages.find(
                       page => page.pageNumber === currentTranscriptionPage,

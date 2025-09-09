@@ -428,6 +428,7 @@ export default function Home({
                 </ul>
               </Section> */}
 
+              {/* Discovery Pathway section hidden per request
               <Section
                 title={t('discoveryPathwayTitle')}
                 subtitle={t('pathway')}
@@ -443,6 +444,7 @@ export default function Home({
                   />
                 )}
               </Section>
+              */}
             </div>
           </div>
 

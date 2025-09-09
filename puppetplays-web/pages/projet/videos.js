@@ -39,6 +39,15 @@ const VideosPage = ({ initialCollectionsData, error }) => {
   const VIDEOS_PER_PAGE = 10;
   const COLLECTIONS_PER_PAGE = 10;
 
+  const resetToCollectionsList = useCallback(() => {
+    setSelectedCollection(null);
+    setCollectionVideos([]);
+    setSelectedCollectionTotalVideos(0);
+    setCurrentPage(0);
+    setFilters({ tags: [], sortBy: 'date' });
+    setSearchTerms('');
+  }, []);
+
   const fetchAndSetVideos = useCallback(
     async (collectionId, currentPage = 0) => {
       setIsLoadingVideos(true);
@@ -130,10 +139,7 @@ const VideosPage = ({ initialCollectionsData, error }) => {
         url === '/projet/videos' ||
         (url.startsWith('/projet/videos?') && !url.includes('collection='))
       ) {
-        setSelectedCollection(null);
-        setCollectionVideos([]);
-        setSelectedCollectionTotalVideos(0);
-        setCurrentPage(0);
+        resetToCollectionsList();
       }
     };
 
@@ -148,6 +154,7 @@ const VideosPage = ({ initialCollectionsData, error }) => {
     selectedCollection,
     initialCollectionsData,
     fetchAndSetVideos,
+    resetToCollectionsList,
   ]);
 
   // Effet additionnel pour recharger les vidéos lorsque la langue change
@@ -215,7 +222,7 @@ const VideosPage = ({ initialCollectionsData, error }) => {
           currentPage * VIDEOS_PER_PAGE,
           (currentPage + 1) * VIDEOS_PER_PAGE,
         )
-      : collectionVideos;
+      : filteredAndSortedVideos;
 
   const handleCollectionClick = useCallback(
     async collection => {
@@ -368,7 +375,11 @@ const VideosPage = ({ initialCollectionsData, error }) => {
                     <div className={styles.videoInfo}>
                       <h3 className={styles.videoTitle}>{collection.title}</h3>
                       <p className={styles.videoDate}>
-                        {new Date(collection.date).toLocaleDateString()}
+                        {new Date(collection.date).toLocaleDateString('fr-FR', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })}
                       </p>
                       <p className={styles.videoDescription}>
                         {collection.description ||
@@ -403,11 +414,17 @@ const VideosPage = ({ initialCollectionsData, error }) => {
       return (
         <>
           <div className={styles.breadcrumbs}>
-            <Link href="/projet/videos">
+            <button
+              onClick={() => {
+                resetToCollectionsList();
+                router.push('/projet/videos', undefined, { shallow: true });
+              }}
+              className={styles.breadcrumbButton}
+            >
               <span className={styles.breadcrumbItemText}>
                 {t('project:mainNav.videos')}
               </span>
-            </Link>
+            </button>
             <span className={styles.breadcrumbSeparator}>/</span>
             <span className={styles.breadcrumbCurrent}>
               <span className={styles.breadcrumbItemText}>
@@ -494,13 +511,14 @@ const VideosPage = ({ initialCollectionsData, error }) => {
                 <FilterSelect
                   inverse={false}
                   name="sortBy"
+                  label={t('common:filters.sortBy.label')}
                   value={[
-                    { id: 'date', title: t('common:date') },
-                    { id: 'title', title: t('common:title') },
+                    { id: 'date', title: t('common:filters.sortBy.dateDesc') },
+                    { id: 'title', title: t('common:filters.sortBy.titleAsc') },
                   ].find(o => o.id === filters.sortBy)}
                   options={[
-                    { id: 'date', title: t('common:date') },
-                    { id: 'title', title: t('common:title') },
+                    { id: 'date', title: t('common:filters.sortBy.dateDesc') },
+                    { id: 'title', title: t('common:filters.sortBy.titleAsc') },
                   ]}
                   isMulti={false}
                   isClearable={false}
@@ -566,7 +584,11 @@ const VideosPage = ({ initialCollectionsData, error }) => {
                     <div className={styles.videoInfo}>
                       <h3 className={styles.videoTitle}>{video.title}</h3>
                       <p className={styles.videoDate}>
-                        {new Date(video.date).toLocaleDateString()}
+                        {new Date(video.date).toLocaleDateString('fr-FR', {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })}
                       </p>
                       <p className={styles.videoDescription}>
                         {video.description}
