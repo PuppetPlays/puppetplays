@@ -43,7 +43,9 @@
       "^react-accessible-dropdown-menu-hook$": "<rootDir>/__mocks__/react-accessible-dropdown-menu-hook.js",
       "^@floating-ui/react$": "<rootDir>/__mocks__/@floating-ui/react.js",
       "^next-i18next$": "<rootDir>/__mocks__/next-i18next.js",
-      "^canvas$": "<rootDir>/__mocks__/canvas.js"
+      "^canvas$": "<rootDir>/__mocks__/canvas.js",
+      "^pdfjs-dist$": "<rootDir>/__mocks__/pdfjs-dist.js",
+      "^html2canvas$": "<rootDir>/__mocks__/html2canvas.js"
     },
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": [
