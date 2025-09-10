@@ -1,5 +1,5 @@
 columnSuffix: xmnwqoqe
-contentColumnType: string(25)
+contentColumnType: string(33)
 fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
 handle: scientificCategory
 instructions: null
@@ -12,10 +12,10 @@ settings:
       __assoc__:
         -
           - label
-          - 'Didier Plassard’s monography'
+          - Livres
         -
           - value
-          - didierPlassardsMonography
+          - livres
         -
           - default
           - ''
@@ -38,6 +38,17 @@ settings:
         -
           - value
           - phds
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Publications non revues par les paires'
+        -
+          - value
+          - publicationsNonRevuesParLesPaires
         -
           - default
           - ''
