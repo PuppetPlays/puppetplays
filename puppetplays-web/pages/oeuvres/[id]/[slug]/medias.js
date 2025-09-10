@@ -19,6 +19,17 @@ function MediasPage({ initialData }) {
   const { t } = useTranslation('common');
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
 
+  // Fonction utilitaire pour nettoyer les données d'anthology
+  const cleanAnthologyData = (anthology) => {
+    if (!anthology || !anthology.slug || 
+        anthology.slug === 'undefined' || 
+        anthology.slug === null || 
+        anthology.slug.trim() === '') {
+      return null;
+    }
+    return anthology;
+  };
+
   // Vérifie si les données initiales sont complètes
   const hasAllRequiredData =
     initialData && initialData.id && initialData.title && initialData.medias;
@@ -86,7 +97,7 @@ function MediasPage({ initialData }) {
             writingPlace={initialData?.writingPlace || ''}
             hasMedia
             hasDocument={(initialData?.scannedDocumentPagesCount || 0) > 0}
-            anthology={initialData?.anthology}
+            anthology={cleanAnthologyData(initialData?.anthology)}
             onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>

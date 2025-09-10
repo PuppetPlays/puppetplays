@@ -163,7 +163,11 @@ const WorkPageHeader = ({
               {t('common:medias')}
             </ButtonLink>
           )}
-          {anthology && anthology.slug && anthology.slug !== 'undefined' && (
+          {anthology && 
+           anthology.slug && 
+           anthology.slug !== 'undefined' && 
+           anthology.slug !== null && 
+           anthology.slug.trim() !== '' && (
             <ButtonLink
               icon={<AnthologyIcon fillRule="evenodd" />}
               href={`/anthologie/${anthology.slug}`}

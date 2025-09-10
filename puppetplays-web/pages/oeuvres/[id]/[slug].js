@@ -15,6 +15,17 @@ const WorkPage = ({ initialData }) => {
   const [isDocumentOpen, setIsDocumentOpen] = useState(false);
   const { t } = useTranslation();
 
+  // Fonction utilitaire pour nettoyer les données d'anthology
+  const cleanAnthologyData = (anthology) => {
+    if (!anthology || !anthology.slug || 
+        anthology.slug === 'undefined' || 
+        anthology.slug === null || 
+        anthology.slug.trim() === '') {
+      return null;
+    }
+    return anthology;
+  };
+
   // Vérifie si les données initiales sont complètes
   const hasAllRequiredData = initialData && initialData.id && initialData.title;
 
@@ -71,7 +82,7 @@ const WorkPage = ({ initialData }) => {
             writingPlace={initialData?.writingPlace || ''}
             hasMedia={(initialData?.mediasCount || 0) > 0}
             hasDocument={(initialData?.scannedDocumentPagesCount || 0) > 0}
-            anthology={initialData?.anthology}
+            anthology={cleanAnthologyData(initialData?.anthology)}
             onOpenDocument={() => setIsDocumentOpen(true)}
           />
         </div>
