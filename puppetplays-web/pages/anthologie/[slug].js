@@ -111,14 +111,24 @@ const parseXMLTranscription = xmlContent => {
 const extractAllContentElements = xmlDoc => {
   const contentElements = [];
 
-  // Get the body or text element (skip header) using getElementsByTagName
+  // Get both front and body elements using getElementsByTagName
+  const fronts = getElementsByTagName(xmlDoc, 'front');
   const bodies = getElementsByTagName(xmlDoc, 'body');
   const texts = getElementsByTagName(xmlDoc, 'text');
-  const body =
-    bodies.length > 0 ? bodies[0] : texts.length > 0 ? texts[0] : null;
+  
+  // Process front first, then body
+  const elementsToProcess = [];
+  if (fronts.length > 0) {
+    elementsToProcess.push(fronts[0]);
+  }
+  if (bodies.length > 0) {
+    elementsToProcess.push(bodies[0]);
+  } else if (texts.length > 0) {
+    elementsToProcess.push(texts[0]);
+  }
 
-  if (!body) {
-    console.error('No body or text element found');
+  if (elementsToProcess.length === 0) {
+    console.error('No front, body or text element found');
     return [];
   }
 
@@ -162,7 +172,9 @@ const extractAllContentElements = xmlDoc => {
     const shouldTraverseChildren =
       !node.tagName ||
       !isContentElement(node) ||
-      node.tagName.toLowerCase() === 'div';
+      node.tagName.toLowerCase() === 'div' ||
+      node.tagName.toLowerCase() === 'front' ||
+      node.tagName.toLowerCase() === 'body';
 
     if (shouldTraverseChildren && node.childNodes) {
       for (let i = 0; i < node.childNodes.length; i++) {
@@ -171,7 +183,11 @@ const extractAllContentElements = xmlDoc => {
     }
   }
 
-  traverse(body);
+  // Process all elements (front and body)
+  elementsToProcess.forEach(element => {
+    traverse(element);
+  });
+  
   return contentElements;
 };
 
@@ -183,6 +199,8 @@ const isContentElement = element => {
     'docauthor',
     'doctitle',
     'docdate',
+    'docedition',
+    'titlepage',
     'head',
     'castlist',
     'set',
@@ -191,6 +209,9 @@ const isContentElement = element => {
     'lg',
     'p',
     'div',
+    'listperson',
+    'front',
+    'body'
   ];
 
   return contentTags.includes(element.tagName.toLowerCase());
@@ -380,10 +401,12 @@ const processElement = element => {
     }
 
     case 'stage': {
-      // Only process standalone stage directions, not those nested in paragraphs
-      if (element.parentNode.tagName.toLowerCase() === 'p') {
+      // Only process standalone stage directions, not those nested in paragraphs or sp elements
+      const parentTag = element.parentNode.tagName.toLowerCase();
+      if (parentTag === 'p') {
         return null; // Will be handled by the paragraph
       }
+      // Always process stage directions that are direct children of sp or other elements
       const stageType = element.getAttribute('type');
       return {
         type: 'stage',
@@ -486,7 +509,7 @@ const processElement = element => {
           characterList += name.textContent.trim() + ' ';
         }
         for (const stage of stages) {
-          characterList += stage.textContent.trim() + ' ';
+          characterList += '(' + stage.textContent.trim() + ') ';
         }
         if (characterList) {
           characters.push(characterList.trim());
@@ -495,6 +518,11 @@ const processElement = element => {
       return characters.length > 0
         ? { type: 'sceneCharacters', content: characters }
         : null;
+    }
+
+    case 'titlepage': {
+      // Handle titlepage elements from front
+      return { type: 'titlepage', content: element.textContent.trim() };
     }
 
     default:
@@ -511,8 +539,9 @@ const processParagramWithStage = paragraph => {
 
   for (const node of childNodes) {
     if (node.nodeType === 3) {
-      // Text node
-      currentText += node.textContent;
+      // Text node - normalize whitespace and remove excessive line breaks
+      const normalizedText = node.textContent.replace(/\s+/g, ' ');
+      currentText += normalizedText;
     } else if (node.nodeType === 1) {
       // Element node
       if (node.tagName.toLowerCase() === 'stage') {
@@ -529,8 +558,9 @@ const processParagramWithStage = paragraph => {
           stageType: stageType || 'general',
         });
       } else {
-        // Other elements, just add their text
-        currentText += node.textContent;
+        // Other elements, just add their text (normalized)
+        const normalizedText = node.textContent.replace(/\s+/g, ' ');
+        currentText += normalizedText;
       }
     }
   }
@@ -1015,8 +1045,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                     </button>
 
                     <span className={styles.transcriptionPageIndicator}>
-                      Page {currentTranscriptionPage} /{' '}
-                      {transcriptionPages.length}
+                      {currentTranscriptionPage} / {transcriptionPages.length}
                     </span>
 
                     <button
@@ -1034,17 +1063,21 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 )}
               </div>
 
+              {/* PDF Download Button - Fixed position */}
+              {transcriptionPages.length > 0 && (
+                <TranscriptionPDFDownload
+                  transcriptionPages={transcriptionPages}
+                  title={anthologyData.title}
+                  anthologyTitle={anthologyData.title}
+                />
+              )}
+
               {isLoadingTranscription ? (
                 <div className={styles.transcriptionLoading}>
                   <p>Chargement de la transcription...</p>
                 </div>
               ) : transcriptionPages.length > 0 ? (
                 <div className={styles.transcriptionContent}>
-                  <TranscriptionPDFDownload
-                    transcriptionPages={transcriptionPages}
-                    title={anthologyData.title}
-                    anthologyTitle={anthologyData.title}
-                  />
                   {(() => {
                     const currentPageData = transcriptionPages.find(
                       page => page.pageNumber === currentTranscriptionPage,

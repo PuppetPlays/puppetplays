@@ -407,6 +407,7 @@
 
 // Transcription Section
 .transcriptionSection {
+  position: relative; // Pour le positionnement du bouton PDF
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -512,7 +513,6 @@
 
 // Styles pour le contenu de transcription scrollable
 .transcriptionContent {
-  position: relative; // Pour le positionnement du bouton PDF
   height: 70vh; // Même hauteur que le viewer
   min-height: 500px;
   overflow-y: auto;

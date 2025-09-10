@@ -1,4 +1,3 @@
-import NewsletterForm from 'components/NewsletterForm';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
@@ -29,8 +28,6 @@ const Footer = () => {
       <section className={styles.intro}>
         <div className={styles.footerInner}>
           <div className={styles.introContent}>
-            {isClientSide && <NewsletterForm />}
-
             {isClientSide && (
               <div className={styles.introContentLinks}>
                 <Link
