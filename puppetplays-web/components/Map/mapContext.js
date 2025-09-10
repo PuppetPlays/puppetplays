@@ -74,17 +74,38 @@ export function MapProvider({
   }, [center, map]);
 
   useEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-      map.updateSize();
-    });
+    // Vérifier si ResizeObserver est supporté
+    if (!window.ResizeObserver || !map) {
+      return;
+    }
 
-    if (map) {
-      resizeObserver.observe(document.querySelector('.filters-bar'));
+    let resizeObserver;
+
+    try {
+      resizeObserver = new ResizeObserver(() => {
+        if (map) {
+          map.updateSize();
+        }
+      });
+
+      const filtersBar = document.querySelector('.filters-bar');
+      if (filtersBar) {
+        resizeObserver.observe(filtersBar);
+      }
+    } catch (error) {
+      console.warn('ResizeObserver error:', error);
     }
 
     return function cleanup() {
-      if (document.querySelector('.filters-bar')) {
-        resizeObserver.unobserve(document.querySelector('.filters-bar'));
+      if (resizeObserver) {
+        try {
+          const filtersBar = document.querySelector('.filters-bar');
+          if (filtersBar) {
+            resizeObserver.unobserve(filtersBar);
+          }
+        } catch (error) {
+          console.warn('ResizeObserver cleanup error:', error);
+        }
       }
     };
   }, [map]);

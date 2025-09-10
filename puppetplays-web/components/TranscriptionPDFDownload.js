@@ -18,6 +18,25 @@ const TranscriptionPDFDownload = ({
   const [isGenerating, setIsGenerating] = useState(false);
 
   /**
+   * Nettoie et normalise le texte en supprimant les retours à la ligne indésirables
+   * et en préservant l'espacement correct
+   */
+  const cleanText = useCallback((text) => {
+    if (!text) return '';
+    
+    return text
+      .replace(/\r\n/g, '\n') // Normalise les retours à la ligne Windows
+      .replace(/\r/g, '\n') // Normalise les retours à la ligne Mac
+      .replace(/\n\s+/g, ' ') // Remplace retour à la ligne + espaces par un seul espace
+      .replace(/\s+\n/g, ' ') // Remplace espaces + retour à la ligne par un seul espace
+      .replace(/\n/g, ' ') // Remplace tous les retours à la ligne restants par des espaces
+      .replace(/\s{2,}/g, ' ') // Remplace les espaces multiples par un seul espace
+      .replace(/([.!?])\s*([A-ZÀ-Ÿ])/g, '$1 $2') // Assure un espace après la ponctuation
+      .replace(/([,;:])\s*/g, '$1 ') // Assure un espace après les virgules, points-virgules, deux-points
+      .trim(); // Supprime les espaces en début et fin
+  }, []);
+
+  /**
    * Convertit le contenu de transcription en texte formaté pour le PDF
    */
   const formatContentForPDF = useCallback((content) => {
@@ -26,67 +45,84 @@ const TranscriptionPDFDownload = ({
     content.forEach(item => {
       switch (item.type) {
         case 'author':
-          lines.push({ text: item.content, style: 'author' });
+          lines.push({ text: cleanText(item.content), style: 'author' });
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'title':
-          lines.push({ text: item.content, style: 'title' });
+          lines.push({ text: cleanText(item.content), style: 'title' });
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'subtitle':
-          lines.push({ text: item.content, style: 'subtitle' });
+          lines.push({ text: cleanText(item.content), style: 'subtitle' });
           break;
         case 'date':
-          lines.push({ text: item.content, style: 'date' });
+          lines.push({ text: cleanText(item.content), style: 'date' });
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'heading':
           lines.push({ text: '', style: 'spacing' });
-          lines.push({ text: item.content, style: 'heading' });
+          lines.push({ text: cleanText(item.content), style: 'heading' });
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'sceneHeading':
           lines.push({ text: '', style: 'spacing' });
-          lines.push({ text: item.content, style: 'sceneHeading' });
+          lines.push({ text: cleanText(item.content), style: 'sceneHeading' });
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'speaker':
           lines.push({ text: '', style: 'spacing' });
-          lines.push({ text: item.content, style: 'speaker' });
+          lines.push({ text: cleanText(item.content), style: 'speaker' });
+          break;
+        case 'text':
+          lines.push({ text: cleanText(item.content), style: 'dialogue' });
           break;
         case 'dialogue':
           if (Array.isArray(item.content)) {
             item.content.forEach(line => {
-              lines.push({ text: line, style: 'dialogue' });
+              lines.push({ text: cleanText(line), style: 'dialogue' });
             });
           } else {
-            lines.push({ text: item.content, style: 'dialogue' });
+            lines.push({ text: cleanText(item.content), style: 'dialogue' });
           }
           break;
         case 'stage':
-          lines.push({ text: `[${item.content}]`, style: 'stage' });
+          lines.push({ text: `[${cleanText(item.content)}]`, style: 'stage' });
           break;
         case 'castList':
           if (Array.isArray(item.content)) {
             item.content.forEach(role => {
-              lines.push({ text: role.fullText || role, style: 'cast' });
+              const roleText = role.fullText || role;
+              lines.push({ text: cleanText(roleText), style: 'cast' });
             });
           }
           lines.push({ text: '', style: 'spacing' });
           break;
         case 'sceneCharacters':
-          lines.push({ text: item.content, style: 'sceneCharacters' });
+          if (Array.isArray(item.content)) {
+            item.content.forEach(chars => {
+              lines.push({ text: cleanText(chars), style: 'sceneCharacters' });
+            });
+          } else {
+            lines.push({ text: cleanText(item.content), style: 'sceneCharacters' });
+          }
           lines.push({ text: '', style: 'spacing' });
+          break;
+        case 'verse':
+          if (Array.isArray(item.content)) {
+            item.content.forEach(line => {
+              lines.push({ text: cleanText(line), style: 'verse' });
+            });
+          }
           break;
         default:
           if (item.content) {
-            lines.push({ text: item.content, style: 'normal' });
+            lines.push({ text: cleanText(item.content), style: 'normal' });
           }
       }
     });
 
     return lines;
-  }, []);
+  }, [cleanText]);
 
   /**
    * Génère et télécharge le PDF
@@ -172,21 +208,23 @@ const TranscriptionPDFDownload = ({
       // Remettre la couleur du texte en noir pour le contenu
       pdf.setTextColor(0, 0, 0);
 
-      // Styles pour différents types de contenu
+      // Styles pour différents types de contenu avec espacement optimisé
       const styles = {
-        author: { fontSize: 14, fontStyle: 'bold', spacing: 6 },
-        title: { fontSize: 16, fontStyle: 'bold', spacing: 7 },
-        subtitle: { fontSize: 13, fontStyle: 'italic', spacing: 5 },
-        date: { fontSize: 11, fontStyle: 'normal', spacing: 4 },
-        heading: { fontSize: 14, fontStyle: 'bold', spacing: 6 },
-        sceneHeading: { fontSize: 13, fontStyle: 'bold', spacing: 6 },
-        speaker: { fontSize: 12, fontStyle: 'bold', spacing: 4 },
-        dialogue: { fontSize: 11, fontStyle: 'normal', spacing: 4 },
-        stage: { fontSize: 10, fontStyle: 'italic', spacing: 4 },
-        cast: { fontSize: 11, fontStyle: 'normal', spacing: 4 },
-        sceneCharacters: { fontSize: 11, fontStyle: 'italic', spacing: 4 },
-        normal: { fontSize: 11, fontStyle: 'normal', spacing: 4 },
-        spacing: { fontSize: 11, fontStyle: 'normal', spacing: 3 }
+        author: { fontSize: 14, fontStyle: 'bold', spacing: 7, extraSpacing: 2 },
+        title: { fontSize: 16, fontStyle: 'bold', spacing: 8, extraSpacing: 3 },
+        subtitle: { fontSize: 13, fontStyle: 'italic', spacing: 6, extraSpacing: 2 },
+        date: { fontSize: 11, fontStyle: 'normal', spacing: 5, extraSpacing: 1 },
+        heading: { fontSize: 14, fontStyle: 'bold', spacing: 7, extraSpacing: 2 },
+        sceneHeading: { fontSize: 13, fontStyle: 'bold', spacing: 7, extraSpacing: 2 },
+        speaker: { fontSize: 12, fontStyle: 'bold', spacing: 5, extraSpacing: 1 },
+        text: { fontSize: 11, fontStyle: 'normal', spacing: 5, extraSpacing: 0 },
+        dialogue: { fontSize: 11, fontStyle: 'normal', spacing: 5, extraSpacing: 0 },
+        stage: { fontSize: 10, fontStyle: 'italic', spacing: 4, extraSpacing: 1 },
+        cast: { fontSize: 11, fontStyle: 'normal', spacing: 4, extraSpacing: 0 },
+        sceneCharacters: { fontSize: 11, fontStyle: 'italic', spacing: 4, extraSpacing: 1 },
+        verse: { fontSize: 11, fontStyle: 'normal', spacing: 4, extraSpacing: 0 },
+        normal: { fontSize: 11, fontStyle: 'normal', spacing: 5, extraSpacing: 0 },
+        spacing: { fontSize: 11, fontStyle: 'normal', spacing: 3, extraSpacing: 0 }
       };
 
       // Traiter TOUTES les pages de transcription
@@ -210,11 +248,12 @@ const TranscriptionPDFDownload = ({
         // Formater et ajouter le contenu
         const formattedContent = formatContentForPDF(page.content);
 
-        formattedContent.forEach(line => {
+        formattedContent.forEach((line, index) => {
           const style = styles[line.style] || styles.normal;
+          const nextLine = formattedContent[index + 1];
           
           // Vérifier si on a besoin d'une nouvelle page
-          if (currentY + style.spacing > pageHeight - marginBottom) {
+          if (currentY + style.spacing + (style.extraSpacing || 0) > pageHeight - marginBottom) {
             pdf.addPage();
             currentY = marginTop;
           }
@@ -223,13 +262,30 @@ const TranscriptionPDFDownload = ({
           pdf.setFontSize(style.fontSize);
           pdf.setFont(undefined, style.fontStyle);
 
-          // Diviser le texte si nécessaire
-          const textLines = pdf.splitTextToSize(line.text, contentWidth);
-          
-          // Ajouter le texte
+          // Diviser le texte si nécessaire et gérer les mots coupés
           if (line.text) {
+            const textLines = pdf.splitTextToSize(line.text, contentWidth);
+            
+            // Ajouter le texte
             pdf.text(textLines, marginLeft, currentY);
             currentY += textLines.length * style.spacing;
+            
+            // Ajouter un espacement supplémentaire selon le type
+            if (style.extraSpacing) {
+              currentY += style.extraSpacing;
+            }
+            
+            // Ajouter un espacement supplémentaire entre différents types d'éléments
+            if (nextLine && nextLine.style !== line.style) {
+              // Espacement réduit entre différents types (speaker -> dialogue, stage -> speaker, etc.)
+              if ((line.style === 'speaker' && nextLine.style === 'text') ||
+                  (line.style === 'speaker' && nextLine.style === 'dialogue') ||
+                  (line.style === 'stage' && nextLine.style === 'speaker') ||
+                  (line.style === 'text' && nextLine.style === 'speaker') ||
+                  (line.style === 'dialogue' && nextLine.style === 'speaker')) {
+                currentY += 1; // Réduit de 2 à 1
+              }
+            }
           } else {
             // Ligne vide pour l'espacement
             currentY += style.spacing;
@@ -296,8 +352,8 @@ const TranscriptionPDFDownload = ({
         <>
           <svg 
             className={styles.loadingIcon}
-            width="18" 
-            height="18" 
+            width="14" 
+            height="14" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
@@ -311,8 +367,8 @@ const TranscriptionPDFDownload = ({
         <>
           <svg 
             className={styles.downloadIcon}
-            width="18" 
-            height="18" 
+            width="14" 
+            height="14" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
@@ -322,7 +378,7 @@ const TranscriptionPDFDownload = ({
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          <span>Download as PDF</span>
+          <span>PDF</span>
         </>
       )}
     </button>
