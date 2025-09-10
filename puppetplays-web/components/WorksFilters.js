@@ -62,12 +62,13 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
         
         if (place.typeHandle === 'places') {
           // It's a city, add country name for clarity
-          if (place.country && place.country.title) {
-            // Has a valid country
-            console.log(`Formatting city: ${cleanTitle} -> ${cleanTitle} (${place.country.title})`);
+          if (place.country && Array.isArray(place.country) && place.country.length > 0 && place.country[0].title) {
+            // Has a valid country (country is an array)
+            const countryTitle = place.country[0].title;
+            console.log(`Formatting city: ${cleanTitle} -> ${cleanTitle} (${countryTitle})`);
             return {
               ...place,
-              title: `${cleanTitle} (${place.country.title})`,
+              title: `${cleanTitle} (${countryTitle})`,
             };
           } else {
             // City without country or with undefined country

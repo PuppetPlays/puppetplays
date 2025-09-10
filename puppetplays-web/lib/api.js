@@ -531,18 +531,13 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
         id,
         slug,
         title,
+        uri,
         ... on anthology_default_Entry {
           id,
           slug,
-          title
+          title,
+          uri
         }
-      },
-      translatedBy {
-        id,
-        fullName,
-        firstName,
-        lastName,
-        email
       }
     }
   }
@@ -560,10 +555,12 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
         id,
         slug,
         title,
+        uri,
         ... on anthology_default_Entry {
           id,
           slug,
-          title
+          title,
+          uri
         }
       },
       medias @transform(width: 600) {

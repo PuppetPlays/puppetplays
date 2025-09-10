@@ -17,7 +17,23 @@ const WorkPage = ({ initialData }) => {
 
   // Fonction utilitaire pour nettoyer les données d'anthology
   const cleanAnthologyData = (anthology) => {
-    if (!anthology || !anthology.slug || 
+    if (!anthology) return null;
+    
+    // L'anthology est retournée comme un array par GraphQL
+    if (Array.isArray(anthology)) {
+      if (anthology.length === 0) return null;
+      const firstAnthology = anthology[0];
+      if (!firstAnthology || !firstAnthology.slug || 
+          firstAnthology.slug === 'undefined' || 
+          firstAnthology.slug === null || 
+          firstAnthology.slug.trim() === '') {
+        return null;
+      }
+      return firstAnthology;
+    }
+    
+    // Fallback pour le format object (au cas où)
+    if (!anthology.slug || 
         anthology.slug === 'undefined' || 
         anthology.slug === null || 
         anthology.slug.trim() === '') {
