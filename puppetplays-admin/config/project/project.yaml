@@ -1,4 +1,4 @@
-dateModified: 1757665171
+dateModified: 1757672550
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -192,6 +192,7 @@ meta:
     a3824935-81c5-4d05-85cb-a7b326914bd4: Extrait # Extrait
     a5261331-a813-4df9-ab61-a125b7713179: Genre # Genre
     a6880810-a754-4a93-9fd2-5803e60ad519: Role # Role
+    ac46ca41-b163-42b3-95de-99e7dd9c3cc1: 'Traduction de la notice (GraphQL)' # Traduction de la notice (GraphQL)
     afb33e8b-94e9-457a-87c1-3b2a96e3c804: 'Metteur en scène' # Metteur en scène
     b1b9966c-6ff4-4310-8e1e-0e485934ad5c: Default # Default
     b2df9a63-171c-49f1-b224-2b0def6e39b1: 'Partner Name' # Partner Name
@@ -293,6 +294,10 @@ plugins:
     edition: lite
     enabled: true
     schemaVersion: 2.3.2
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   preparse-field:
     edition: standard
     enabled: true

@@ -1,0 +1,19 @@
+columnSuffix: goabjcie
+contentColumnType: text
+fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
+handle: translatedByGraphql
+instructions: 'Temporary field for GraphQL queries. Fill both this field and "Traduction de la notice" field with the same translator name until Users field issue is resolved.'
+name: 'Traduction de la notice (GraphQL)'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
