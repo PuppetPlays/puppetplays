@@ -5,18 +5,6 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            elementCondition: null
-            fieldUid: a0e3040f-b6ff-451e-b773-78d5b27c60c1
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 08595bed-049b-412c-bf8b-ff679c43e5ec
-            userCondition: null
-            warning: null
-            width: 100
-          -
             autocapitalize: true
             autocomplete: false
             autocorrect: true
@@ -51,10 +39,22 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: af2225e6-8397-4e66-83e9-d0675a898331
+            uid: 52e63d67-ca04-419a-9267-6f4f1c46e7eb
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            elementCondition: null
+            fieldUid: ac46ca41-b163-42b3-95de-99e7dd9c3cc1 # Traduction de la notice (GraphQL)
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7d950920-f8b0-46f7-aa03-c6961fb032db
+            userCondition: null
+            warning: null
+            width: 50
           -
             elementCondition: null
             fieldUid: 461b2661-d7d4-4998-8e56-f8ed7dacfb2f # Titre traduit
