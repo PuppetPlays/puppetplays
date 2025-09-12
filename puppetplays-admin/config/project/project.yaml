@@ -1,4 +1,4 @@
-dateModified: 1757680096
+dateModified: 1757688612
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -961,7 +961,7 @@ project:
     schemaVersion: 4.15.0.0
     timeZone: Europe/Paris
 system:
-  edition: solo
+  edition: pro
   live: true
   name: 'Puppetplays Ddev'
   schemaVersion: 4.15.0.0
