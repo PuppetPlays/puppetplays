@@ -6,6 +6,24 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
+            fieldUid: 0b896042-a247-495e-b771-7e9cd19c2bd0 # Craft Documentation
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 785d6c9a-cae2-48de-971d-84b0725e5d8b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Documents
+        uid: 503af660-73c8-4f61-894d-d606f7775a0e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
             fieldUid: 4b4d08ca-b6dc-474c-a42e-d262395e7c89 # Sidebar
             instructions: null
             label: null
@@ -16,7 +34,7 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
-        name: 'Side bar'
+        name: 'Front End - Side bar'
         uid: d118879f-7c2b-44b7-813a-c53d5d241f1e
         userCondition: null
 handle: technicalDocumentation
