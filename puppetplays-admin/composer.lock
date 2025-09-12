@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "035b22fa84ea518a057b25d9c63b737f",
+    "content-hash": "0d63332e271ca234eff0b5037c9a9320",
     "packages": [
         {
             "name": "besteadfast/craft-preparse-field",
