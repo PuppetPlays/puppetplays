@@ -83,7 +83,7 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 2dd7c17a-3ef4-4aaf-a784-62648f6632fd # Auteur
             instructions: null
-            label: 'Autor obra'
+            label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
