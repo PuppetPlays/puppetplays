@@ -1,4 +1,4 @@
-dateModified: 1757671991
+dateModified: 1757672550
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -294,6 +294,10 @@ plugins:
     edition: lite
     enabled: true
     schemaVersion: 2.3.2
+  element-api:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   preparse-field:
     edition: standard
     enabled: true
