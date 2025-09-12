@@ -45,8 +45,8 @@ scope:
   - 'sections.e205ebe8-5557-4b7c-a43f-9cf548e90c8d:read' # Pays
   - 'entrytypes.bd5e6b34-8b0b-4a47-93f3-f9a23c0a39aa:read' # Pays
   - 'sections.63ea829e-b0e4-4021-8ab5-1b0f095d3daf:read' # Personnes
-  - 'entrytypes.e0954bb8-d8bb-4fbb-b5e7-944b482e521e:read' # Personnes
   - 'entrytypes.8e095ccd-7ed1-4c9b-99e1-b98480a0e9df:read' # Compagnies
+  - 'entrytypes.e0954bb8-d8bb-4fbb-b5e7-944b482e521e:read' # Personnes
   - 'sections.ccd48638-f531-4032-a057-8af4f24cd187:read' # Procédés théâtraux
   - 'entrytypes.5e83af75-a401-46c6-918f-f56ab78ad797:read' # Procédés théâtraux
   - 'sections.e555024e-2651-4c00-9772-7c3b197dc24a:read' # Projets de Recherche

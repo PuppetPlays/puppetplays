@@ -5,6 +5,18 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            elementCondition: null
+            fieldUid: a0e3040f-b6ff-451e-b773-78d5b27c60c1
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 08595bed-049b-412c-bf8b-ff679c43e5ec
+            userCondition: null
+            warning: null
+            width: 100
+          -
             autocapitalize: true
             autocomplete: false
             autocorrect: true
