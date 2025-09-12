@@ -1,4 +1,4 @@
-dateModified: 1757672550
+dateModified: 1757680096
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -28,6 +28,7 @@ fs:
 meta:
   __names__:
     0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6: Equipe # Equipe
+    0b896042-a247-495e-b771-7e9cd19c2bd0: 'Craft Documentation' # Craft Documentation
     0dbfad61-7739-4a74-a607-ee23b79417f0: Title # Title
     0e6f08a2-4338-4124-be7e-3ea23b27f67b: 'Sidebar Element' # Sidebar Element
     0efb8d7c-638f-4652-b952-44092a5657f1: 'Nombre d’actes / de parties' # Nombre d’actes / de parties
