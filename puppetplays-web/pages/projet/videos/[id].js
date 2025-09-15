@@ -125,7 +125,7 @@ const VideoDetailPage = ({ videoData, relatedVideos, error }) => {
               {new Date(date).toLocaleDateString('fr-FR', {
                 year: 'numeric',
                 month: '2-digit',
-                day: '2-digit'
+                day: '2-digit',
               })}
             </div>
           )}
@@ -276,11 +276,14 @@ const VideoDetailPage = ({ videoData, relatedVideos, error }) => {
                     </h3>
                     {relatedVideo.date && (
                       <p className={styles.relatedVideoDate}>
-                        {new Date(relatedVideo.date).toLocaleDateString('fr-FR', {
-                          year: 'numeric',
-                          month: '2-digit',
-                          day: '2-digit'
-                        })}
+                        {new Date(relatedVideo.date).toLocaleDateString(
+                          'fr-FR',
+                          {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                          },
+                        )}
                       </p>
                     )}
                   </div>

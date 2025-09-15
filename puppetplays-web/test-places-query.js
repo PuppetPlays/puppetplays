@@ -18,13 +18,17 @@ async function testPlacesQuery() {
   `;
 
   try {
-    const response = await axios.post('https://admin.staging.puppetplays.eu/graphql', {
-      query
-    }, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
+    const response = await axios.post(
+      'https://admin.staging.puppetplays.eu/graphql',
+      {
+        query,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
 
     // Afficher uniquement les 5 premiers résultats
     const entries = response.data.data.entries.slice(0, 5);

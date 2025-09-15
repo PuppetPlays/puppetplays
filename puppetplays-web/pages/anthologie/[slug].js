@@ -115,7 +115,7 @@ const extractAllContentElements = xmlDoc => {
   const fronts = getElementsByTagName(xmlDoc, 'front');
   const bodies = getElementsByTagName(xmlDoc, 'body');
   const texts = getElementsByTagName(xmlDoc, 'text');
-  
+
   // Process front first, then body
   const elementsToProcess = [];
   if (fronts.length > 0) {
@@ -187,7 +187,7 @@ const extractAllContentElements = xmlDoc => {
   elementsToProcess.forEach(element => {
     traverse(element);
   });
-  
+
   return contentElements;
 };
 
@@ -211,7 +211,7 @@ const isContentElement = element => {
     'div',
     'listperson',
     'front',
-    'body'
+    'body',
   ];
 
   return contentTags.includes(element.tagName.toLowerCase());

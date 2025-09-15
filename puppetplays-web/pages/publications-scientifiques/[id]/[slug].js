@@ -68,22 +68,17 @@ const PublicationDetailPage = ({ publication, error }) => {
 
   // Helper function to construct PDF URL from HAL CV Link
   const constructHalPdfUrl = halCvLink => {
-    console.log('🔍 [DEBUG] Constructing HAL PDF URL from:', halCvLink);
-
     if (!halCvLink) {
-      console.log('🔍 [DEBUG] No HAL CV Link provided');
       return null;
     }
 
     // If it already ends with /document, use as is
     if (halCvLink.endsWith('/document')) {
-      console.log('🔍 [DEBUG] URL already ends with /document:', halCvLink);
       return halCvLink;
     }
 
     // Add /document to the end of the HAL link
     const finalUrl = `${halCvLink}/document`;
-    console.log('🔍 [DEBUG] Final HAL PDF URL:', finalUrl);
     return finalUrl;
   };
 
@@ -107,16 +102,28 @@ const PublicationDetailPage = ({ publication, error }) => {
     return t(`project:scientificPublications.categories.${category}`, category);
   };
 
+  // Format book editors
+  const formatBookEditors = editorsData => {
+    if (!editorsData || !Array.isArray(editorsData)) return '';
+    return editorsData
+      .map(editor => {
+        if (editor.firstName && editor.lastName) {
+          return `${editor.firstName} ${editor.lastName}`;
+        }
+        return editor.title || '';
+      })
+      .filter(name => name.trim())
+      .join(', ');
+  };
+
   // Use real data from CraftCMS
   const pdfUrl = constructHalPdfUrl(publication.halCvLink);
-  console.log('🔍 [DEBUG] Final pdfUrl to be used in PDFViewer:', pdfUrl);
-  console.log('🔍 [DEBUG] publication.halCvLink:', publication.halCvLink);
   const authorsList = getOrcidIdentifiers(publication.authorAndOrcidIdentifier);
   const doi = publication.doi;
   const publisher = publication.editorName;
   const bookTitle = publication.bookTitle;
   const volume = publication.volume;
-  const pages = publication.pagesCount;
+  const pages = publication.pages;
   const issn = publication.issn;
   const placeOfEdition = publication.placeOfEdition;
   const year =
@@ -128,33 +135,7 @@ const PublicationDetailPage = ({ publication, error }) => {
   const license = publication.license;
   const peerReview = publication.peerReview;
   const nakalaLink = publication.nakalaLink;
-
-  // Format pages with padding (Pages 01 - 150 format)
-  const formatPages = pagesStr => {
-    if (!pagesStr) return '';
-
-    // Convert to string if it's not already
-    const pagesString = String(pagesStr);
-
-    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
-    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
-    if (rangeMatch) {
-      const startPage = parseInt(rangeMatch[1]);
-      const endPage = parseInt(rangeMatch[2]);
-      const paddedStart = startPage.toString().padStart(2, '0');
-      const paddedEnd = endPage.toString().padStart(2, '0');
-      return `Pages ${paddedStart} - ${paddedEnd}`;
-    }
-
-    // If it's just a number, assume it starts from page 1
-    const pageMatch = pagesString.match(/(\d+)/);
-    if (pageMatch) {
-      const pageCount = parseInt(pageMatch[1]);
-      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
-    }
-
-    return `Pages ${pagesString}`;
-  };
+  const bookEditors = formatBookEditors(publication.authors);
 
   return (
     <Fragment>
@@ -276,9 +257,7 @@ const PublicationDetailPage = ({ publication, error }) => {
                     )}
                     {pages && (
                       <div className={styles.infoItem}>
-                        <span className={styles.infoValue}>
-                          {formatPages(pages)}
-                        </span>
+                        <span className={styles.infoValue}>{pages}</span>
                       </div>
                     )}
                   </div>
@@ -293,6 +272,13 @@ const PublicationDetailPage = ({ publication, error }) => {
                     {t('project:scientificPublications.publicationDetails')}
                   </h3>
                   <div className={styles.detailsList}>
+                    {bookEditors && (
+                      <div className={styles.detailItem}>
+                        <span className={styles.detailLabel}>Direction</span>
+                        <span>{bookEditors}</span>
+                      </div>
+                    )}
+
                     {bookTitle && (
                       <div className={styles.detailItem}>
                         <span className={styles.detailLabel}>

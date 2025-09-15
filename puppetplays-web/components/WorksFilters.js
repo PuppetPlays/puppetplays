@@ -54,18 +54,27 @@ function WorksFilters({ filters = {}, onChange = null, onClearAll = null }) {
   const getPlacesOptions = () => {
     apiClient(getAllPlacesQuery('works')).then(places => {
       console.log('Raw places data:', places.entries);
-      
+
       // Format places to include country name for cities
       const formattedPlaces = places.entries.map(place => {
         // Clean title from any existing "(undefined)" or similar patterns
-        const cleanTitle = place.title.replace(/\s*\(undefined\)\s*$/i, '').trim();
-        
+        const cleanTitle = place.title
+          .replace(/\s*\(undefined\)\s*$/i, '')
+          .trim();
+
         if (place.typeHandle === 'places') {
           // It's a city, add country name for clarity
-          if (place.country && Array.isArray(place.country) && place.country.length > 0 && place.country[0].title) {
+          if (
+            place.country &&
+            Array.isArray(place.country) &&
+            place.country.length > 0 &&
+            place.country[0].title
+          ) {
             // Has a valid country (country is an array)
             const countryTitle = place.country[0].title;
-            console.log(`Formatting city: ${cleanTitle} -> ${cleanTitle} (${countryTitle})`);
+            console.log(
+              `Formatting city: ${cleanTitle} -> ${cleanTitle} (${countryTitle})`,
+            );
             return {
               ...place,
               title: `${cleanTitle} (${countryTitle})`,

@@ -272,6 +272,7 @@
   "video": "Vidéo",
   "noWorksForAuthor": "Aucune œuvre pour cet auteur",
   "noWorksForTechnique": "Aucune œuvre pour cette technique",
+  "navigationHelp": "Aide à la navigation",
   "technicalDocumentation": {
     "title": "Documentation technique",
     "metaDescription": "Documentation technique et ressources pour le projet PuppetPlays",

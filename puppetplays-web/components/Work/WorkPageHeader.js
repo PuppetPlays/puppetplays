@@ -163,19 +163,19 @@ const WorkPageHeader = ({
               {t('common:medias')}
             </ButtonLink>
           )}
-          {anthology && 
-           anthology.slug && 
-           anthology.slug !== 'undefined' && 
-           anthology.slug !== null && 
-           anthology.slug.trim() !== '' && (
-            <ButtonLink
-              icon={<AnthologyIcon fillRule="evenodd" />}
-              href={`/anthologie/${anthology.slug}`}
-              inverse={true}
-            >
-              {t('common:anthology')}
-            </ButtonLink>
-          )}
+          {anthology &&
+            anthology.slug &&
+            anthology.slug !== 'undefined' &&
+            anthology.slug !== null &&
+            anthology.slug.trim() !== '' && (
+              <ButtonLink
+                icon={<AnthologyIcon fillRule="evenodd" />}
+                href={`/anthologie/${anthology.slug}`}
+                inverse={true}
+              >
+                {t('common:anthology')}
+              </ButtonLink>
+            )}
           {hasDocument && (
             <Button
               icon={<OriginalWorkIcon fillRule="evenodd" />}

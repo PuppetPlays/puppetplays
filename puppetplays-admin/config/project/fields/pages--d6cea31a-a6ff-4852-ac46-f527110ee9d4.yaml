@@ -1,20 +1,19 @@
 columnSuffix: ardjlpbm
-contentColumnType: integer(10)
+contentColumnType: text
 fieldGroup: 0393d570-559e-46dc-ad27-8e37f3a63d40 # Scientific Publications
 handle: pages
 instructions: null
 name: Pages
 searchable: false
 settings:
-  decimals: 0
-  defaultValue: null
-  max: null
-  min: 0
-  prefix: null
-  previewCurrency: null
-  previewFormat: decimal
-  size: null
-  suffix: null
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
 translationKeyFormat: null
 translationMethod: none
-type: craft\fields\Number
+type: craft\fields\PlainText

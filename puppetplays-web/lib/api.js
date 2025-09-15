@@ -374,6 +374,7 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       arkId,
       slug,
       translatedTitle,
+      translatedByGraphql,
       subtitle,
       genre,
       mainImage @transform(width: 520, position: "center-center") {
@@ -1217,6 +1218,17 @@ query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
         author,
         orcidIdentifier
       },
+      authors {
+        id,
+        title,
+        typeHandle,
+        ... on persons_persons_Entry { 
+          firstName,
+          lastName,
+          nickname,
+          usualName
+        }
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
@@ -1226,7 +1238,7 @@ query GetScientificPublications($locale: [String], $offset: Int, $limit: Int) {
       issn,
       placeOfEdition,
       volume,
-      pagesCount,
+      pages,
       peerReview,
       languages {
         title
@@ -1267,6 +1279,17 @@ query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
         author,
         orcidIdentifier
       },
+      authors {
+        id,
+        title,
+        typeHandle,
+        ... on persons_persons_Entry { 
+          firstName,
+          lastName,
+          nickname,
+          usualName
+        }
+      },
       scientificCategory,
       belongsToConference,
       conferenceGroup,
@@ -1276,7 +1299,7 @@ query GetScientificPublicationById($locale: [String], $id: [QueryArgument]) {
       issn,
       placeOfEdition,
       volume,
-      pagesCount,
+      pages,
       peerReview,
       languages {
         title
@@ -1342,7 +1365,7 @@ export async function getScientificPublicationById(id, locale) {
   return data;
 }
 
-// Technical Documentation Queries  
+// Technical Documentation Queries
 const getTechnicalDocumentationQuery = `
   query TechnicalDocumentation($locale: [String]) {
     entries(section: "technicalDocumentationEntry", site: $locale) {
@@ -1416,7 +1439,7 @@ export async function getAllTechnicalDocumentation(locale) {
         hasSidebar: !!techDocGlobalSet.sidebar,
         sidebarLength: techDocGlobalSet.sidebar?.length || 0,
         hasSidebarContent: !!techDocGlobalSet.sidebarContent,
-        allKeys: Object.keys(techDocGlobalSet)
+        allKeys: Object.keys(techDocGlobalSet),
       });
 
       // La structure est SuperTable (sidebar) -> Matrix (sidebarContent)
@@ -1432,38 +1455,40 @@ export async function getAllTechnicalDocumentation(locale) {
             hasId: !!sidebarBlock?.id,
             hasSidebarContent: !!sidebarBlock?.sidebarContent,
             sidebarContentLength: sidebarBlock?.sidebarContent?.length || 0,
-            blockKeys: Object.keys(sidebarBlock || {})
+            blockKeys: Object.keys(sidebarBlock || {}),
           });
 
           // Chaque bloc SuperTable contient un champ Matrix sidebarContent
           if (sidebarBlock?.sidebarContent) {
-            sidebarBlock.sidebarContent.forEach((contentBlock, contentIndex) => {
-              console.log(`    📋 Matrix Block ${contentIndex}:`, {
-                hasTitle: !!contentBlock?.sideBarTitle,
-                title: contentBlock?.sideBarTitle,
-                elementsCount: contentBlock?.sidebarElements?.length || 0,
-                contentKeys: Object.keys(contentBlock || {})
-              });
-
-              // Process each sidebarElement row
-              if (contentBlock?.sidebarElements) {
-                contentBlock.sidebarElements.forEach((element, elemIndex) => {
-                  const item = {
-                    id: `${contentBlock.id || Math.random()}-${element.col2}`,
-                    sidebarTitle: element.col1 || '',
-                    sidebarContent: contentBlock.sideBarTitle || '',
-                    sidebarLink: element.col2 || '',
-                    type: 'element',
-                    category: contentBlock.sideBarTitle || 'Uncategorized',
-                  };
-                  console.log(`      → Element ${elemIndex}:`, {
-                    label: element.col1,
-                    anchor: element.col2,
-                  });
-                  sidebarItems.push(item);
+            sidebarBlock.sidebarContent.forEach(
+              (contentBlock, contentIndex) => {
+                console.log(`    📋 Matrix Block ${contentIndex}:`, {
+                  hasTitle: !!contentBlock?.sideBarTitle,
+                  title: contentBlock?.sideBarTitle,
+                  elementsCount: contentBlock?.sidebarElements?.length || 0,
+                  contentKeys: Object.keys(contentBlock || {}),
                 });
-              }
-            });
+
+                // Process each sidebarElement row
+                if (contentBlock?.sidebarElements) {
+                  contentBlock.sidebarElements.forEach((element, elemIndex) => {
+                    const item = {
+                      id: `${contentBlock.id || Math.random()}-${element.col2}`,
+                      sidebarTitle: element.col1 || '',
+                      sidebarContent: contentBlock.sideBarTitle || '',
+                      sidebarLink: element.col2 || '',
+                      type: 'element',
+                      category: contentBlock.sideBarTitle || 'Uncategorized',
+                    };
+                    console.log(`      → Element ${elemIndex}:`, {
+                      label: element.col1,
+                      anchor: element.col2,
+                    });
+                    sidebarItems.push(item);
+                  });
+                }
+              },
+            );
           }
         });
       } else if (techDocGlobalSet.sidebarContent) {
@@ -1530,7 +1555,7 @@ export async function getAllTechnicalDocumentation(locale) {
   } catch (error) {
     console.error('❌ [TechnicalDocumentation] Error fetching:', error.message);
     console.error('Full error details:', error);
-    
+
     // Ne pas faire de fallback, juste retourner une structure vide
     return {
       entries: [],
@@ -1540,6 +1565,34 @@ export async function getAllTechnicalDocumentation(locale) {
         },
       },
     };
+  }
+}
+
+// Navigation Help Query
+const getNavigationHelpQuery = `
+  query GetNavigationHelp($locale: [String]) {
+    globalSet(handle: "technicalDocumentation", site: $locale) {
+      ... on technicalDocumentation_GlobalSet {
+        craftDocs {
+          url
+          title
+          filename
+        }
+      }
+    }
+  }
+`;
+
+export async function getNavigationHelp(locale) {
+  try {
+    const data = await fetchAPI(getNavigationHelpQuery, {
+      variables: { locale },
+    });
+
+    return data?.globalSet?.craftDocs?.[0] || null;
+  } catch (error) {
+    console.error('Error fetching navigation help:', error);
+    return null;
   }
 }
 

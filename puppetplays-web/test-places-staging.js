@@ -21,7 +21,7 @@ query GetAllPlaces($locale: [String]) {
 
 const data = JSON.stringify({
   query: query,
-  variables: { locale: "fr" }
+  variables: { locale: 'fr' },
 });
 
 const options = {
@@ -31,14 +31,14 @@ const options = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Content-Length': data.length
-  }
+    'Content-Length': data.length,
+  },
 };
 
-const req = https.request(options, (res) => {
+const req = https.request(options, res => {
   let responseData = '';
 
-  res.on('data', (chunk) => {
+  res.on('data', chunk => {
     responseData += chunk;
   });
 
@@ -48,39 +48,48 @@ const req = https.request(options, (res) => {
       if (response.data && response.data.entries) {
         console.log('=== PLACES DATA FROM STAGING ===');
         console.log(`Total places found: ${response.data.entries.length}`);
-        
+
         // Afficher les premiers 10 lieux
         response.data.entries.slice(0, 10).forEach((place, index) => {
           console.log(`\n${index + 1}. ${place.title}`);
           console.log(`   - ID: ${place.id}`);
           console.log(`   - Type: ${place.typeHandle}`);
           if (place.country) {
-            console.log(`   - Country: ${place.country.title} (ID: ${place.country.id})`);
+            console.log(
+              `   - Country: ${place.country.title} (ID: ${place.country.id})`,
+            );
           } else {
             console.log(`   - Country: null`);
           }
         });
-        
+
         // Statistiques
-        const cities = response.data.entries.filter(p => p.typeHandle === 'places');
-        const countries = response.data.entries.filter(p => p.typeHandle === 'countries');
-        const citiesWithCountry = cities.filter(p => p.country && p.country.title);
-        const citiesWithoutCountry = cities.filter(p => !p.country || !p.country.title);
-        
+        const cities = response.data.entries.filter(
+          p => p.typeHandle === 'places',
+        );
+        const countries = response.data.entries.filter(
+          p => p.typeHandle === 'countries',
+        );
+        const citiesWithCountry = cities.filter(
+          p => p.country && p.country.title,
+        );
+        const citiesWithoutCountry = cities.filter(
+          p => !p.country || !p.country.title,
+        );
+
         console.log('\n=== STATISTICS ===');
         console.log(`Total entries: ${response.data.entries.length}`);
         console.log(`Countries: ${countries.length}`);
         console.log(`Cities: ${cities.length}`);
         console.log(`Cities with country: ${citiesWithCountry.length}`);
         console.log(`Cities without country: ${citiesWithoutCountry.length}`);
-        
+
         if (citiesWithoutCountry.length > 0) {
           console.log('\n=== CITIES WITHOUT COUNTRY ===');
           citiesWithoutCountry.slice(0, 5).forEach(city => {
             console.log(`- ${city.title} (${city.id})`);
           });
         }
-        
       } else {
         console.error('No data found in response:', response);
       }
@@ -91,7 +100,7 @@ const req = https.request(options, (res) => {
   });
 });
 
-req.on('error', (error) => {
+req.on('error', error => {
   console.error('Request error:', error);
 });
 

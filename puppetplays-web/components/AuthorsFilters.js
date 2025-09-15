@@ -52,11 +52,18 @@ function AuthorsFilters({ filters = {}, onChange, onClearAll }) {
       // Format places to include country name for cities (same as WorksFilters)
       const formattedPlaces = places.entries.map(place => {
         // Clean title from any existing "(undefined)" or similar patterns
-        const cleanTitle = place.title.replace(/\s*\(undefined\)\s*$/i, '').trim();
-        
+        const cleanTitle = place.title
+          .replace(/\s*\(undefined\)\s*$/i, '')
+          .trim();
+
         if (place.typeHandle === 'places') {
           // It's a city, add country name for clarity
-          if (place.country && Array.isArray(place.country) && place.country.length > 0 && place.country[0].title) {
+          if (
+            place.country &&
+            Array.isArray(place.country) &&
+            place.country.length > 0 &&
+            place.country[0].title
+          ) {
             // Has a valid country (country is an array)
             const countryTitle = place.country[0].title;
             return {
