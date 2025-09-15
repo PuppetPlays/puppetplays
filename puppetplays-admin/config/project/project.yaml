@@ -1,4 +1,4 @@
-dateModified: 1757933928
+dateModified: 1757940831
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -87,6 +87,7 @@ meta:
     8e095ccd-7ed1-4c9b-99e1-b98480a0e9df: Compagnies # Compagnies
     8e72b0db-f5f6-4385-9228-33dd62285d5c: 'Registres littéraires' # Registres littéraires
     8ee13776-b19b-43b8-ac93-6a411f27e342: 'Pays/Régions Étudiés' # Pays/Régions Étudiés
+    8f5325ea-9c9a-4378-9da9-f134174edcce: Contributor # Contributor
     9cac54fd-67ff-4311-a127-785048ff9146: Publics # Publics
     09da97ae-fc6f-4555-ade3-73e42fd9bf6a: Œuvres # Œuvres
     9e670e52-0ab0-4dc1-a6e1-adc8efea5c13: 'Notice biographique' # Notice biographique
@@ -966,9 +967,3 @@ system:
   name: 'Puppetplays Ddev'
   schemaVersion: 4.15.0.0
   timeZone: America/Los_Angeles
-users:
-  allowPublicRegistration: false
-  defaultGroup: null
-  photoSubpath: null
-  photoVolumeUid: null
-  requireEmailVerification: true
