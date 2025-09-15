@@ -1,0 +1,140 @@
+description: null
+handle: contributor
+name: Contributor
+permissions:
+  - accesscp
+  - 'createentries:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+  - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'createentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'createentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'createentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Technical Documentation Entry
+  - 'createentries:374cfc9a-f44d-4173-9b1a-08ee58b72e0c' # Parcours découverte
+  - 'createentries:38c13b78-0b68-4bc2-8a3c-599601b61947' # Partenaires
+  - 'createentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'createentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'createentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'createentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'createentries:8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f' # Communications
+  - 'createentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'createentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'createentries:b7f1de9e-308c-4ccf-b8f1-db11ba23be95' # Educational Resource
+  - 'createentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'createentries:c536c595-f070-49db-989a-a78e00ec515a' # Newsletters
+  - 'createentries:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+  - 'createentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'createentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'createentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'createentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
+  - 'createentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'createentries:f462f4e5-af46-4dfe-939c-e747d81aa405' # Scientific Publications
+  - 'createentries:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+  - 'createfolders:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'createfolders:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'createfolders:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'deleteassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'deleteassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'deleteassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'deleteentries:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+  - 'deleteentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'deleteentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'deleteentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'deleteentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Technical Documentation Entry
+  - 'deleteentries:374cfc9a-f44d-4173-9b1a-08ee58b72e0c' # Parcours découverte
+  - 'deleteentries:38c13b78-0b68-4bc2-8a3c-599601b61947' # Partenaires
+  - 'deleteentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'deleteentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'deleteentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'deleteentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'deleteentries:8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f' # Communications
+  - 'deleteentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'deleteentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'deleteentries:b7f1de9e-308c-4ccf-b8f1-db11ba23be95' # Educational Resource
+  - 'deleteentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'deleteentries:c536c595-f070-49db-989a-a78e00ec515a' # Newsletters
+  - 'deleteentries:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+  - 'deleteentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'deleteentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'deleteentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'deleteentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
+  - 'deleteentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'deleteentries:f462f4e5-af46-4dfe-939c-e747d81aa405' # Scientific Publications
+  - 'deleteentries:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+  - 'editglobalset:8b494155-cca5-4c7f-baa3-292b2cf50351' # Author Identifiers
+  - 'editglobalset:cd80ffd8-f562-4ec0-952b-ce1fa2377c9a' # Technical Documentation
+  - 'editglobalset:e5103a12-53c5-42ca-8479-15e3372fc73f' # Templates
+  - 'editimages:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'editimages:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'editimages:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'editsite:397a9f9f-ff18-42c4-98ff-dbb87c17b754' # Puppetplays FR
+  - 'editsite:4cda444a-a132-4409-8e1e-5205e6a53896' # Puppetplays IT
+  - 'editsite:59986aab-e6c1-4cdf-a062-8db833d2b327' # Puppetplays EN
+  - 'editsite:bf194204-844c-4373-ad71-db3f6243b824' # Puppetplays DE
+  - 'replacefiles:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'replacefiles:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'replacefiles:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'saveassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'saveassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'saveassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'saveentries:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+  - 'saveentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'saveentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'saveentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'saveentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Technical Documentation Entry
+  - 'saveentries:374cfc9a-f44d-4173-9b1a-08ee58b72e0c' # Parcours découverte
+  - 'saveentries:38c13b78-0b68-4bc2-8a3c-599601b61947' # Partenaires
+  - 'saveentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'saveentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'saveentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'saveentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'saveentries:6b33b4ed-0b0a-4204-a2ec-8df7a965626a' # Technical Documentation
+  - 'saveentries:8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f' # Communications
+  - 'saveentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'saveentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'saveentries:b7f1de9e-308c-4ccf-b8f1-db11ba23be95' # Educational Resource
+  - 'saveentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'saveentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'saveentries:c536c595-f070-49db-989a-a78e00ec515a' # Newsletters
+  - 'saveentries:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+  - 'saveentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'saveentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'saveentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'saveentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
+  - 'saveentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'saveentries:f462f4e5-af46-4dfe-939c-e747d81aa405' # Scientific Publications
+  - 'saveentries:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+  - 'savepeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'viewassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewentries:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+  - 'viewentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+  - 'viewentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'viewentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'viewentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Technical Documentation Entry
+  - 'viewentries:374cfc9a-f44d-4173-9b1a-08ee58b72e0c' # Parcours découverte
+  - 'viewentries:38c13b78-0b68-4bc2-8a3c-599601b61947' # Partenaires
+  - 'viewentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'viewentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'viewentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'viewentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'viewentries:6b33b4ed-0b0a-4204-a2ec-8df7a965626a' # Technical Documentation
+  - 'viewentries:8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f' # Communications
+  - 'viewentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'viewentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'viewentries:b7f1de9e-308c-4ccf-b8f1-db11ba23be95' # Educational Resource
+  - 'viewentries:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
+  - 'viewentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'viewentries:c536c595-f070-49db-989a-a78e00ec515a' # Newsletters
+  - 'viewentries:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+  - 'viewentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'viewentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'viewentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'viewentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
+  - 'viewentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'viewentries:f462f4e5-af46-4dfe-939c-e747d81aa405' # Scientific Publications
+  - 'viewentries:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+  - 'viewpeerassets:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
+  - 'viewpeerassets:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
+  - 'viewpeerassets:ef2dfdac-243c-4f75-8385-ee787d2e7765' # Images
+  - 'viewpeerentrydrafts:6b33b4ed-0b0a-4204-a2ec-8df7a965626a' # Technical Documentation
+  - 'viewpeerentrydrafts:bfac270e-899c-4fde-90e4-d4fbb11f05ea' # Accueil
