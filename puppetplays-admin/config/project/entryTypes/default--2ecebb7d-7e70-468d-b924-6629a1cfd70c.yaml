@@ -227,13 +227,13 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 2d8643ae-5357-48a9-a90c-59e78c29508c # Nombre de pages
+            fieldUid: d6cea31a-a6ff-4852-ac46-f527110ee9d4 # Pages
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 7f2e9692-87d5-4524-9434-c0150f50f5e4
+            uid: 4c061aa8-b0de-4317-aa71-54ecfeb3cce1
             userCondition: null
             warning: null
             width: 100
