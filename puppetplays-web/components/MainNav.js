@@ -1,9 +1,11 @@
 import DropdownMenu from 'components/DropdownMenu';
 import useWindowSize from 'hooks/useWindowSize';
+import { getNavigationHelp } from 'lib/api';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 import styles from './mainNav.module.scss';
 
@@ -37,6 +39,17 @@ function MainNav({ inverse = false }) {
   const { t } = useTranslation(['common', 'project']);
   const { width } = useWindowSize();
   const { locale } = useRouter();
+  const [navigationHelpUrl, setNavigationHelpUrl] = useState(null);
+
+  useEffect(() => {
+    async function fetchNavigationHelp() {
+      const helpDoc = await getNavigationHelp(locale);
+      if (helpDoc?.url) {
+        setNavigationHelpUrl(helpDoc.url);
+      }
+    }
+    fetchNavigationHelp();
+  }, [locale]);
 
   const languageItems =
     width < 480
@@ -65,7 +78,9 @@ function MainNav({ inverse = false }) {
   return (
     <nav className={`${styles.nav} ${inverse ? styles.isInverse : ''}`}>
       <DropdownMenu
-        itemsCount={width < 480 ? 9 : 7}
+        itemsCount={
+          width < 480 ? (navigationHelpUrl ? 10 : 9) : navigationHelpUrl ? 8 : 7
+        }
         renderButton={NavButton}
         childrenWrapperComponent={Wrapper}
       >
@@ -101,6 +116,19 @@ function MainNav({ inverse = false }) {
               <a>{t('common:technicalDocumentation.title')}</a>
             </Link>
           </li>,
+          navigationHelpUrl && (
+            <li key="navigationHelp" className={styles.externalLink}>
+              <a
+                href={navigationHelpUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.externalLinkAnchor}
+              >
+                {t('common:navigationHelp')}
+                <span className={styles.externalLinkIcon}>↗</span>
+              </a>
+            </li>
+          ),
           <li key="tact" className={styles.externalLink}>
             <Link
               href="https://tact.demarre-shs.fr/project/41"
@@ -112,7 +140,7 @@ function MainNav({ inverse = false }) {
               <span className={styles.externalLinkIcon}>↗</span>
             </Link>
           </li>,
-        ]}
+        ].filter(Boolean)}
       </DropdownMenu>
     </nav>
   );

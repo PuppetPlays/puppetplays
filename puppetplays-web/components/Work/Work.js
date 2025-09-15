@@ -81,6 +81,7 @@ function Work(props) {
     publicDomain = false,
     additionalLicenseInformation = null,
     conservationPlace = [],
+    translatedByGraphql = null,
   } = props;
   const { t } = useTranslation();
   const { locale } = useRouter();
@@ -429,6 +430,11 @@ function Work(props) {
             </button>
             <div className={styles.permalinkHref}>{permalinkUrl}</div>
           </div>
+        </Section>
+
+        {/* Translator field from GraphQL plain text field */}
+        <Section title={t('common:translatedBy')} show={!!translatedByGraphql}>
+          {translatedByGraphql}
         </Section>
 
         {/* Translator field - will be displayed when translatedBy data is available from API */}

@@ -37,45 +37,32 @@ const PublicationItem = ({ publication }) => {
       .join(', ');
   };
 
+  // Format book editors with proper names
+  const formatBookEditors = editorsData => {
+    if (!editorsData || !Array.isArray(editorsData)) return '';
+    return editorsData
+      .map(editor => {
+        if (editor.firstName && editor.lastName) {
+          return `${editor.firstName} ${editor.lastName}`;
+        }
+        return editor.title || '';
+      })
+      .filter(name => name.trim())
+      .join(', ');
+  };
+
   const authors = formatAuthors(publication.authorAndOrcidIdentifier);
+  const bookEditors = formatBookEditors(publication.authors); // Book editors from 'authors' field
   const journal = publication.editorName;
   const bookTitle = publication.bookTitle;
-  const bookAuthor = publication.bookAuthor; // Assuming this field exists
   const volume = publication.volume;
-  const pages = publication.pagesCount;
+  const pages = publication.pages;
 
   // Get quotes based on locale
   const quotes =
     i18n.language === 'fr'
       ? { open: '« ', close: ' »' }
       : { open: '"', close: '"' };
-
-  // Format pages with padding (Pages 01 - 150 format)
-  const formatPages = pagesStr => {
-    if (!pagesStr) return '';
-
-    // Convert to string if it's not already
-    const pagesString = String(pagesStr);
-
-    // Try to extract page numbers if it's a range like "1-150" or "1 - 150"
-    const rangeMatch = pagesString.match(/(\d+)\s*[-–]\s*(\d+)/);
-    if (rangeMatch) {
-      const startPage = parseInt(rangeMatch[1]);
-      const endPage = parseInt(rangeMatch[2]);
-      const paddedStart = startPage.toString().padStart(2, '0');
-      const paddedEnd = endPage.toString().padStart(2, '0');
-      return `Pages ${paddedStart} - ${paddedEnd}`;
-    }
-
-    // If it's just a number, assume it starts from page 1
-    const pageMatch = pagesString.match(/(\d+)/);
-    if (pageMatch) {
-      const pageCount = parseInt(pageMatch[1]);
-      return `Pages 01 - ${pageCount.toString().padStart(2, '0')}`;
-    }
-
-    return `Pages ${pagesString}`;
-  };
 
   return (
     <div className={styles.publicationItem}>
@@ -97,7 +84,7 @@ const PublicationItem = ({ publication }) => {
           {(bookTitle || journal) && (
             <span className={styles.inPublication}>
               {' '}
-              dans {bookAuthor && `${bookAuthor}, `}
+              dans {bookEditors && `${bookEditors} (dir.), `}
               <em>{bookTitle || journal}</em>
             </span>
           )}
@@ -121,7 +108,7 @@ const PublicationItem = ({ publication }) => {
             {pages && (
               <span className={styles.pages}>
                 {journal || volume ? ' ' : ''}
-                {formatPages(pages)}
+                {pages}
               </span>
             )}
           </p>
