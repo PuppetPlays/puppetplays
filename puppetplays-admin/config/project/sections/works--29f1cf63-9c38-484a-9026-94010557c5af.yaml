@@ -1,5 +1,5 @@
 defaultPlacement: end
-enableVersioning: true
+enableVersioning: false
 handle: works
 name: Œuvres
 previewTargets:
