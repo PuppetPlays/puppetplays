@@ -3,6 +3,7 @@ handle: specialist
 name: Specialist
 permissions:
   - accesscp
+  - accessplugin-workflow
   - 'createentries:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
   - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'createentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
@@ -303,3 +304,4 @@ permissions:
   - 'viewpeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'viewpeerentrydrafts:f462f4e5-af46-4dfe-939c-e747d81aa405' # Scientific Publications
   - 'viewpeerentrydrafts:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+  - workflow-overview
