@@ -1,4 +1,4 @@
-dateModified: 1758013363
+dateModified: 1758106015
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -313,6 +313,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0
+  workflow:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.6.0
 project:
   dateModified: 1752071979
   elementSources:
