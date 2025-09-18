@@ -6,7 +6,6 @@ permissions:
   - 'createentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'createentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'createentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'createentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Guide de Bonnes Pratiques
   - 'createentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'createentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'createentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
@@ -17,7 +16,6 @@ permissions:
   - 'createentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'createentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'createentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'createentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
   - 'createentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - 'createfolders:37720b4b-f4c6-42b4-8400-af5f71b3e072' # Sounds
   - 'createfolders:48645943-e026-4046-ae42-c8efbe3d0b1c' # Videos
@@ -45,7 +43,6 @@ permissions:
   - 'viewentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
   - 'viewentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
   - 'viewentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
-  - 'viewentries:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Guide de Bonnes Pratiques
   - 'viewentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
   - 'viewentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
   - 'viewentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
@@ -57,5 +54,4 @@ permissions:
   - 'viewentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
   - 'viewentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
   - 'viewentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
-  - 'viewentries:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
   - 'viewentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
