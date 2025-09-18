@@ -1,7 +1,7 @@
 defaultPlacement: end
 enableVersioning: true
 handle: educationalResourceEntry
-name: 'Educational Resource'
+name: 'Parcours Découverte'
 previewTargets:
   -
     __assoc__:

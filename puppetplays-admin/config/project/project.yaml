@@ -1,4 +1,108 @@
-dateModified: 1758108288
+dateModified: 1758188733
+elementSources:
+  craft\elements\Entry:
+    -
+      key: '*'
+      type: native
+    -
+      key: singles
+      type: native
+    -
+      heading: Channels
+      type: heading
+    -
+      key: 'section:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthologie
+      type: native
+    -
+      key: 'section:f875c77d-f70a-4b8e-a854-a5a1a0ad1348' # Comite scientifique
+      type: native
+    -
+      key: 'section:8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f' # Communications
+      type: native
+    -
+      key: 'section:0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6' # Equipe
+      type: native
+    -
+      key: 'section:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+      type: native
+    -
+      key: 'section:335a9c82-6d01-484d-9dde-3ae312bcd46a' # Guide de Bonnes Pratiques
+      type: native
+    -
+      key: 'section:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+      type: native
+    -
+      key: 'section:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+      type: native
+    -
+      key: 'section:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+      type: native
+    -
+      key: 'section:c536c595-f070-49db-989a-a78e00ec515a' # Newsletters
+      type: native
+    -
+      key: 'section:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+      type: native
+    -
+      key: 'section:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      key: 'section:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+      type: native
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: true
+      key: 'section:374cfc9a-f44d-4173-9b1a-08ee58b72e0c' # Parcours découverte
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      key: 'section:b7f1de9e-308c-4ccf-b8f1-db11ba23be95' # Parcours Découverte
+      type: native
+    -
+      key: 'section:38c13b78-0b68-4bc2-8a3c-599601b61947' # Partenaires
+      type: native
+    -
+      key: 'section:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+      type: native
+    -
+      key: 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+      type: native
+    -
+      key: 'section:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+      type: native
+    -
+      key: 'section:e555024e-2651-4c00-9772-7c3b197dc24a' # Projets de Recherche
+      type: native
+    -
+      key: 'section:f462f4e5-af46-4dfe-939c-e747d81aa405' # Publications
+      type: native
+    -
+      key: 'section:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+      type: native
+    -
+      key: 'section:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+      type: native
+    -
+      key: 'section:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation
+      type: native
 email:
   fromEmail: contact@renemarceau.com
   fromName: 'Puppetplays Ddev'
@@ -140,7 +244,7 @@ meta:
     209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
     268ec30e-43a1-429e-8600-787a223ae0dc: 'Name of the editor / magazine  ' # Name of the editor / magazine  
     269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
-    335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Technical Documentation Entry
+    335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Guide de Bonnes Pratiques' # Guide de Bonnes Pratiques
     374cfc9a-f44d-4173-9b1a-08ee58b72e0c: 'Parcours découverte' # Parcours découverte
     0393d570-559e-46dc-ad27-8e37f3a63d40: 'Scientific Publications' # Scientific Publications
     397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
@@ -202,7 +306,7 @@ meta:
     b2e52632-2de4-4bfa-acc7-3108249c6790: Issn # Issn
     b3d3b5fa-565c-459c-b370-cc1dceca0750: Persons # Persons
     b3feeaa7-8778-465a-9010-dc86232c1fbb: Assets # Assets
-    b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Educational Resource
+    b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Parcours Découverte' # Parcours Découverte
     b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
     b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
     b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
@@ -226,7 +330,7 @@ meta:
     c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
     c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
     c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
-    c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
+    c57211bc-35a6-44ec-922a-839e348b5e6a: Anthologie # Anthologie
     cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e: 'Side Bar Title' # Side Bar Title
     cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
     ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
@@ -278,7 +382,7 @@ meta:
     f6c0a973-aaab-4aee-bbdc-c5f7fe02069a: IDs # IDs
     f9d69522-b5ad-442c-873f-739859f6e7f7: 'Registre(s) littéraire(s)' # Registre(s) littéraire(s)
     f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: 'Comite scientifique' # Comite scientifique
-    f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Scientific Publications
+    f462f4e5-af46-4dfe-939c-e747d81aa405: Publications # Publications
     f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Comite scientifique' # Comite scientifique
     f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
@@ -766,7 +870,7 @@ project:
       209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
       268ec30e-43a1-429e-8600-787a223ae0dc: 'Name of the editor / magazine  ' # Name of the editor / magazine  
       269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
-      335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Technical Documentation Entry
+      335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Guide de Bonnes Pratiques
       374cfc9a-f44d-4173-9b1a-08ee58b72e0c: 'Parcours découverte' # Parcours découverte
       0393d570-559e-46dc-ad27-8e37f3a63d40: 'Scientific Publications' # Scientific Publications
       397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
@@ -825,7 +929,7 @@ project:
       b2e52632-2de4-4bfa-acc7-3108249c6790: Issn # Issn
       b3d3b5fa-565c-459c-b370-cc1dceca0750: Persons # Persons
       b3feeaa7-8778-465a-9010-dc86232c1fbb: Assets # Assets
-      b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Educational Resource
+      b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Parcours Découverte
       b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
       b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
       b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
@@ -849,7 +953,7 @@ project:
       c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
       c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
       c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
-      c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
+      c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthologie
       cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
       ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
       cd80ffd8-f562-4ec0-952b-ce1fa2377c9a: 'Technical Documentation' # Technical Documentation
@@ -899,7 +1003,7 @@ project:
       f6c0a973-aaab-4aee-bbdc-c5f7fe02069a: IDs # IDs
       f9d69522-b5ad-442c-873f-739859f6e7f7: 'Registre(s) littéraire(s)' # Registre(s) littéraire(s)
       f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: 'Comite scientifique' # Comite scientifique
-      f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Scientific Publications
+      f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Publications
       f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Comite scientifique' # Comite scientifique
       f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
       fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
