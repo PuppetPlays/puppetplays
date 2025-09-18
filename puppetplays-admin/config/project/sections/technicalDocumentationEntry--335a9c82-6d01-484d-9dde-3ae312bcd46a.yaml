@@ -1,7 +1,7 @@
 defaultPlacement: end
 enableVersioning: true
 handle: technicalDocumentationEntry
-name: 'Technical Documentation Entry'
+name: 'Guide de Bonnes Pratiques'
 previewTargets:
   -
     __assoc__:

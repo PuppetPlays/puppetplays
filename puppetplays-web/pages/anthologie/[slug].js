@@ -1166,11 +1166,21 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                     </div>,
                                   );
                                 } else if (item.type === 'stage') {
-                                  elements.push(
-                                    <p key={i} className={styles.stage}>
-                                      {item.content}
-                                    </p>,
-                                  );
+                                  // Check if it's a "corps" type stage direction (should be inline)
+                                  if (item.stageType === 'corps') {
+                                    elements.push(
+                                      <span key={i} className={styles.stageInline}>
+                                        {' '}
+                                        {item.content}{' '}
+                                      </span>,
+                                    );
+                                  } else {
+                                    elements.push(
+                                      <p key={i} className={styles.stage}>
+                                        {item.content}
+                                      </p>,
+                                    );
+                                  }
                                 } else if (item.type === 'sceneCharacters') {
                                   elements.push(
                                     <div

@@ -42,8 +42,11 @@ const PublicationItem = ({ publication }) => {
     if (!editorsData || !Array.isArray(editorsData)) return '';
     return editorsData
       .map(editor => {
+        // Handle the swapped firstName/lastName issue from CraftCMS
         if (editor.firstName && editor.lastName) {
-          return `${editor.firstName} ${editor.lastName}`;
+          // CraftCMS seems to have firstName and lastName swapped
+          // So we use lastName firstName order (which is actually firstName lastName)
+          return `${editor.lastName} ${editor.firstName}`;
         }
         return editor.title || '';
       })
@@ -83,8 +86,8 @@ const PublicationItem = ({ publication }) => {
           </span>
           {(bookTitle || journal) && (
             <span className={styles.inPublication}>
-              {' '}
-              dans {bookEditors && `${bookEditors} (dir.), `}
+              , in{' '}
+              {bookEditors && `${bookEditors} (dir.) `}
               <em>{bookTitle || journal}</em>
             </span>
           )}

@@ -285,7 +285,7 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Default
-section: f462f4e5-af46-4dfe-939c-e747d81aa405 # Scientific Publications
+section: f462f4e5-af46-4dfe-939c-e747d81aa405 # Publications
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
