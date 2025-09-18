@@ -1,4 +1,4 @@
-dateModified: 1758188733
+dateModified: 1758196221
 elementSources:
   craft\elements\Entry:
     -
@@ -420,7 +420,7 @@ plugins:
   workflow:
     edition: standard
     enabled: true
-    licenseKey: EP1V3OENLL9KLM4KVV7FHXLC
+    licenseKey: KK3169LTZWONMRB8A20FU7B2
     schemaVersion: 2.6.0
     settings:
       editorNotesRequired:
