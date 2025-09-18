@@ -15,7 +15,7 @@ settings:
   selectionLabel: null
   showSiteMenu: false
   sources:
-    - 'section:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthology
+    - 'section:c57211bc-35a6-44ec-922a-839e348b5e6a' # Anthologie
   targetSiteId: null
   validateRelatedElements: false
   viewMode: null

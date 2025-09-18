@@ -1,7 +1,7 @@
 defaultPlacement: end
 enableVersioning: true
 handle: anthology
-name: Anthology
+name: Anthologie
 propagationMethod: all
 siteSettings:
   397a9f9f-ff18-42c4-98ff-dbb87c17b754: # Puppetplays FR

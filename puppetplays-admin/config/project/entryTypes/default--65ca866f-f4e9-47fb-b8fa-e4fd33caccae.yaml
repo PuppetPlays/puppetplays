@@ -97,7 +97,7 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Default
-section: c57211bc-35a6-44ec-922a-839e348b5e6a # Anthology
+section: c57211bc-35a6-44ec-922a-839e348b5e6a # Anthologie
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
