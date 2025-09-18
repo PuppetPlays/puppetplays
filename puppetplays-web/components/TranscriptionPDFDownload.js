@@ -324,15 +324,7 @@ const TranscriptionPDFDownload = ({
           currentY = marginTop;
         }
 
-        // Ajouter le numéro de page de la transcription avec style
-        pdf.setFontSize(12);
-        pdf.setFont(undefined, 'bold');
-        pdf.setTextColor(30, 58, 138); // Bleu du projet
-        pdf.text(`Page ${page.pageNumber}`, marginLeft, currentY);
-        pdf.setTextColor(0, 0, 0); // Remettre en noir
-        currentY += 12;
-
-        // Formater et ajouter le contenu
+        // Formater et ajouter le contenu directement sans numéro de page
         const formattedContent = formatContentForPDF(page.content);
 
         formattedContent.forEach((line, index) => {

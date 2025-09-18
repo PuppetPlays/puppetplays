@@ -615,6 +615,14 @@
     color: var(--color-text-secondary);
   }
 
+  // === INLINE STAGE DIRECTIONS (stage[type="corps"]) ===
+  .stageInline {
+    font-style: italic;
+    display: inline;
+    color: var(--color-text-secondary);
+    padding: 0 0.2rem;
+  }
+
   // === HEADINGS (head[type="tableau"]) ===
   .heading {
     font-size: 17pt;
@@ -691,12 +699,15 @@
     color: black;
     padding: 5px;
     margin: 1rem 0;
+    text-align: center;
 
     .castItem {
       font-size: 12pt;
       font-weight: bold;
-      text-align: left;
-      padding-left: 20pt;
+      text-align: center;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      padding-left: 0;
       display: block;
       margin: 0.5rem 0;
       color: var(--color-text);
