@@ -36,12 +36,15 @@ export async function fetchAPI(query, { variables } = {}, token) {
   }
 
   try {
-    console.log(
-      '🔍 Sending GraphQL query:',
-      queryString.substring(0, 100) + '...',
-    );
-    console.log('📊 Variables:', JSON.stringify(variables));
+    // Log de la requête GraphQL complète
+    console.log('\n' + '='.repeat(80));
+    console.log('🔍 SENDING GRAPHQL REQUEST');
+    console.log('='.repeat(80));
     console.log('🌐 API URL:', apiUrl);
+    console.log('📊 Variables:', JSON.stringify(variables, null, 2));
+    console.log('📝 Full GraphQL Query:');
+    console.log(queryString);
+    console.log('='.repeat(80));
 
     const res = await fetch(apiUrl, {
       method: 'POST',
@@ -78,10 +81,28 @@ export async function fetchAPI(query, { variables } = {}, token) {
       );
     }
 
-    console.log(
-      '✅ GraphQL response data keys:',
-      json.data ? Object.keys(json.data) : 'no data',
-    );
+    // Log complet de la réponse
+    console.log('\n' + '='.repeat(80));
+    console.log('✅ GRAPHQL RESPONSE RECEIVED');
+    console.log('='.repeat(80));
+    console.log('📦 Response data keys:', json.data ? Object.keys(json.data) : 'no data');
+    
+    // Afficher un aperçu des données (avec limite pour éviter de surcharger les logs)
+    if (json.data) {
+      const dataPreview = JSON.stringify(json.data, null, 2);
+      const maxLength = 2000; // Limite à 2000 caractères pour l'aperçu
+      
+      if (dataPreview.length > maxLength) {
+        console.log('📋 Response data preview (truncated):');
+        console.log(dataPreview.substring(0, maxLength) + '\n... [TRUNCATED]');
+        console.log(`📏 Total response size: ${dataPreview.length} characters`);
+      } else {
+        console.log('📋 Full response data:');
+        console.log(dataPreview);
+      }
+    }
+    console.log('='.repeat(80) + '\n');
+    
     return json.data;
   } catch (error) {
     console.error('🔥 API fetch error:', error.message);
