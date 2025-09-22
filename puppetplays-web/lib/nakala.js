@@ -225,22 +225,9 @@ export async function fetchNakalaItem(itemId) {
   const endpoint = `/datas/${itemId}`;
 
   try {
-    console.log(`🔍 Fetching Nakala item: ${itemId}`);
-    console.log(`📡 Endpoint: ${NAKALA_BASE_URL}${endpoint}`);
-
     const result = await fetchNakala(endpoint);
-
-    console.log(`✅ Successfully fetched Nakala item ${itemId}`);
-    console.log(`📄 Response structure:`, Object.keys(result));
-    console.log(
-      `📁 Files count:`,
-      result.files ? result.files.length : 'No files property',
-    );
-
     return result;
   } catch (error) {
-    console.error(`❌ Failed to fetch item ${itemId}:`, error.message);
-    console.error(`📍 Full error:`, error);
     throw new Error(`Failed to fetch Nakala item ${itemId}: ${error.message}`);
   }
 }
