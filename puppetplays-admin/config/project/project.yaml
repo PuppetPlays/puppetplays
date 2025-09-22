@@ -1,4 +1,4 @@
-dateModified: 1758203429
+dateModified: 1758527833
 elementSources:
   craft\elements\Entry:
     -
@@ -417,6 +417,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0
+  tag-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   workflow:
     edition: standard
     enabled: true
