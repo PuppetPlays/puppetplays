@@ -36,12 +36,14 @@ export async function fetchAPI(query, { variables } = {}, token) {
   }
 
   try {
-    console.log(
-      '🔍 Sending GraphQL query:',
-      queryString.substring(0, 100) + '...',
-    );
-    console.log('📊 Variables:', JSON.stringify(variables));
-    console.log('🌐 API URL:', apiUrl);
+    // Enhanced logging: show complete request details
+    console.log('\n' + '='.repeat(80));
+    console.log('🔍 SENDING GRAPHQL REQUEST');
+    console.log('='.repeat(80));
+    console.log(`🌐 API URL: ${apiUrl}`);
+    console.log(`📊 Variables:`, JSON.stringify(variables, null, 2));
+    console.log(`📝 Full GraphQL Query:\n${queryString}\n`);
+    console.log('='.repeat(80) + '\n');
 
     const res = await fetch(apiUrl, {
       method: 'POST',
@@ -55,39 +57,50 @@ export async function fetchAPI(query, { variables } = {}, token) {
       }),
     });
 
-    console.log('📬 Response status:', res.status, res.statusText);
+    console.log(`📬 Response status: ${res.status} ${res.statusText}`);
 
     if (!res.ok) {
-      console.error('❌ Network response error:', res.status, res.statusText);
-      const errorText = await res.text();
-      console.error('🔴 Error body:', errorText);
       throw new Error(`API responded with status: ${res.status}`);
     }
 
     const json = await res.json();
 
     if (json.errors) {
-      console.error('❌ GraphQL errors:', JSON.stringify(json.errors));
-      console.error(
-        '🔍 Full error details:',
-        JSON.stringify(json.errors, null, 2),
-      );
-      console.error('📝 Query that failed:', queryString);
+      console.error('\n' + '='.repeat(80));
+      console.error('❌ GRAPHQL ERRORS DETECTED');
+      console.error('='.repeat(80));
+      console.error('Errors:', JSON.stringify(json.errors, null, 2));
+      console.error('='.repeat(80) + '\n');
       throw new Error(
         `GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`,
       );
     }
 
-    console.log(
-      '✅ GraphQL response data keys:',
-      json.data ? Object.keys(json.data) : 'no data',
-    );
+    // Enhanced logging: show complete response data
+    console.log('\n' + '='.repeat(80));
+    console.log('✅ GRAPHQL RESPONSE RECEIVED');
+    console.log('='.repeat(80));
+    console.log(`📦 Response data keys:`, Object.keys(json.data));
+    
+    // Log the full response data (with truncation for very large responses)
+    const dataString = JSON.stringify(json.data, null, 2);
+    if (dataString.length > 5000) {
+      console.log(`📋 Response data (truncated to first 5000 chars):`);
+      console.log(dataString.substring(0, 5000) + '\n... [truncated]');
+    } else {
+      console.log(`📋 Full response data:`);
+      console.log(dataString);
+    }
+    console.log('='.repeat(80) + '\n');
+
     return json.data;
   } catch (error) {
-    console.error('🔥 API fetch error:', error.message);
-    console.error('🔥 Full error stack:', error.stack);
-    console.error('🔥 Failed query:', queryString);
-    console.error('🔥 Failed variables:', JSON.stringify(variables, null, 2));
+    console.error('\n' + '='.repeat(80));
+    console.error('💥 GRAPHQL REQUEST FAILED');
+    console.error('='.repeat(80));
+    console.error(`❌ Error message: ${error.message}`);
+    console.error(`📍 Stack trace:`, error.stack);
+    console.error('='.repeat(80) + '\n');
     throw error;
   }
 }
@@ -375,6 +388,13 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       slug,
       translatedTitle,
       translatedByGraphql,
+      translatedBy {
+        id,
+        fullName,
+        firstName,
+        lastName,
+        email
+      },
       subtitle,
       genre,
       mainImage @transform(width: 520, position: "center-center") {
@@ -1403,21 +1423,11 @@ const getTechnicalDocumentationQuery = `
 `;
 
 export async function getAllTechnicalDocumentation(locale) {
-  console.log('📄 [TechnicalDocumentation] Starting fetch for locale:', locale);
-
   try {
-    console.log('📤 [TechnicalDocumentation] Sending GraphQL query...');
     const data = await fetchAPI(getTechnicalDocumentationQuery, {
       variables: {
         locale,
       },
-    });
-
-    console.log('📥 [TechnicalDocumentation] Raw data received:', {
-      hasEntries: !!data?.entries,
-      entriesCount: data?.entries?.length || 0,
-      hasGlobalSet: !!data?.globalSet,
-      globalSetType: data?.globalSet?.__typename || 'none',
     });
 
     // Extraire et aplatir les éléments de la sidebar depuis sidebarContent
@@ -1431,47 +1441,17 @@ export async function getAllTechnicalDocumentation(locale) {
       techDocGlobalSet &&
       techDocGlobalSet.__typename === 'technicalDocumentation_GlobalSet'
     ) {
-      console.log(
-        '✅ [TechnicalDocumentation] GlobalSet found with correct type',
-      );
-
-      console.log('🔍 [TechnicalDocumentation] GlobalSet structure:', {
-        hasSidebar: !!techDocGlobalSet.sidebar,
-        sidebarLength: techDocGlobalSet.sidebar?.length || 0,
-        hasSidebarContent: !!techDocGlobalSet.sidebarContent,
-        allKeys: Object.keys(techDocGlobalSet),
-      });
-
       // La structure est SuperTable (sidebar) -> Matrix (sidebarContent)
       if (techDocGlobalSet.sidebar) {
-        console.log(
-          '📦 [TechnicalDocumentation] Processing sidebar SuperTable blocks:',
-          techDocGlobalSet.sidebar.length,
-        );
-
         // sidebar est un array de blocs SuperTable
-        techDocGlobalSet.sidebar.forEach((sidebarBlock, blockIndex) => {
-          console.log(`  📌 SuperTable Block ${blockIndex}:`, {
-            hasId: !!sidebarBlock?.id,
-            hasSidebarContent: !!sidebarBlock?.sidebarContent,
-            sidebarContentLength: sidebarBlock?.sidebarContent?.length || 0,
-            blockKeys: Object.keys(sidebarBlock || {}),
-          });
-
+        techDocGlobalSet.sidebar.forEach((sidebarBlock) => {
           // Chaque bloc SuperTable contient un champ Matrix sidebarContent
           if (sidebarBlock?.sidebarContent) {
             sidebarBlock.sidebarContent.forEach(
-              (contentBlock, contentIndex) => {
-                console.log(`    📋 Matrix Block ${contentIndex}:`, {
-                  hasTitle: !!contentBlock?.sideBarTitle,
-                  title: contentBlock?.sideBarTitle,
-                  elementsCount: contentBlock?.sidebarElements?.length || 0,
-                  contentKeys: Object.keys(contentBlock || {}),
-                });
-
+              (contentBlock) => {
                 // Process each sidebarElement row
                 if (contentBlock?.sidebarElements) {
-                  contentBlock.sidebarElements.forEach((element, elemIndex) => {
+                  contentBlock.sidebarElements.forEach((element) => {
                     const item = {
                       id: `${contentBlock.id || Math.random()}-${element.col2}`,
                       sidebarTitle: element.col1 || '',
@@ -1480,10 +1460,6 @@ export async function getAllTechnicalDocumentation(locale) {
                       type: 'element',
                       category: contentBlock.sideBarTitle || 'Uncategorized',
                     };
-                    console.log(`      → Element ${elemIndex}:`, {
-                      label: element.col1,
-                      anchor: element.col2,
-                    });
                     sidebarItems.push(item);
                   });
                 }
@@ -1493,19 +1469,9 @@ export async function getAllTechnicalDocumentation(locale) {
         });
       } else if (techDocGlobalSet.sidebarContent) {
         // Fallback: si c'est directement sidebarContent (ancienne structure)
-        console.log(
-          '📦 [TechnicalDocumentation] Processing direct sidebarContent blocks:',
-          techDocGlobalSet.sidebarContent.length,
-        );
-
-        techDocGlobalSet.sidebarContent.forEach((contentBlock, blockIndex) => {
-          console.log(`  📌 Block ${blockIndex}:`, {
-            hasTitle: !!contentBlock?.sideBarTitle,
-            elementsCount: contentBlock?.sidebarElements?.length || 0,
-          });
-
+        techDocGlobalSet.sidebarContent.forEach((contentBlock) => {
           if (contentBlock?.sidebarElements) {
-            contentBlock.sidebarElements.forEach((element, elemIndex) => {
+            contentBlock.sidebarElements.forEach((element) => {
               const item = {
                 id: `${contentBlock.id || Math.random()}-${element.col2}`,
                 sidebarTitle: element.col1 || '',
@@ -1514,35 +1480,12 @@ export async function getAllTechnicalDocumentation(locale) {
                 type: 'element',
                 category: contentBlock.sideBarTitle || 'Uncategorized',
               };
-              console.log(`    → Element ${elemIndex}:`, {
-                label: element.col1,
-                anchor: element.col2,
-              });
               sidebarItems.push(item);
             });
           }
         });
-      } else {
-        console.warn(
-          '⚠️ [TechnicalDocumentation] GlobalSet found but no sidebar or sidebarContent',
-        );
       }
-    } else if (!techDocGlobalSet) {
-      // Si le globalSet n'existe pas du tout, créer des données mock pour éviter les erreurs
-      console.warn(
-        '⚠️ [TechnicalDocumentation] GlobalSet not found in Craft CMS',
-      );
-    } else {
-      console.warn(
-        '⚠️ [TechnicalDocumentation] GlobalSet found but wrong type:',
-        techDocGlobalSet.__typename,
-      );
     }
-
-    console.log('✨ [TechnicalDocumentation] Final result:', {
-      entriesCount: data?.entries?.length || 0,
-      sidebarItemsCount: sidebarItems.length,
-    });
 
     return {
       entries: data?.entries || [],
@@ -1552,10 +1495,7 @@ export async function getAllTechnicalDocumentation(locale) {
         },
       },
     };
-  } catch (error) {
-    console.error('❌ [TechnicalDocumentation] Error fetching:', error.message);
-    console.error('Full error details:', error);
-
+  } catch {
     // Ne pas faire de fallback, juste retourner une structure vide
     return {
       entries: [],
@@ -1597,11 +1537,6 @@ export async function getNavigationHelp(locale) {
 }
 
 export async function getTechnicalDocumentationEntry(id, slug, locale) {
-  console.log('📖 [TechnicalDocEntry] Fetching entry with:', {
-    id,
-    slug,
-    locale,
-  });
 
   // Si on a un ID, ignorer le slug car il peut être différent entre les environnements
   const querySlug = id ? null : slug;
@@ -1626,7 +1561,6 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
   `;
 
   try {
-    console.log('📤 [TechnicalDocEntry] Sending query...');
     const data = await fetchAPI(query, {
       variables: {
         id,
@@ -1635,20 +1569,8 @@ export async function getTechnicalDocumentationEntry(id, slug, locale) {
       },
     });
 
-    console.log('📥 [TechnicalDocEntry] Response received:', {
-      hasEntry: !!data?.entry,
-      entryTitle: data?.entry?.title || 'none',
-      hasIntroduction: !!data?.entry?.introduction,
-      sheetTableRows: data?.entry?.sheetTable?.length || 0,
-    });
-
     return data?.entry || null;
-  } catch (error) {
-    console.error(
-      '❌ [TechnicalDocEntry] Error fetching entry:',
-      error.message,
-    );
-    console.error('Entry error details:', error);
+  } catch {
     return null;
   }
 }

@@ -593,6 +593,28 @@
     width: fit-content;
   }
 
+  // === DOC DATE (centered) ===
+  .docDateContainer {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .docDate {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    display: inline-block;
+  }
+
+  // === DOC EDITION ===
+  .docEdition {
+    text-align: center;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
   // === SPEAKERS (Noms des personnages) ===
   .speaker {
     font-weight: bold;

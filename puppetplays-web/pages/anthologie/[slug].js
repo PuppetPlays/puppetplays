@@ -6,6 +6,7 @@ import { fetchAPI } from 'lib/api';
 import { fetchNakalaItem, getNakalaEmbedUrl, getMetaValue } from 'lib/nakala';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Fragment, useState, useEffect } from 'react';
@@ -70,7 +71,6 @@ const parseXMLTranscription = xmlContent => {
       return [];
     }
 
-    console.log('🔍 [DEBUG] Starting tested XML parsing...');
 
     // Create a DOM parser
     const parser = new DOMParser();
@@ -78,7 +78,6 @@ const parseXMLTranscription = xmlContent => {
 
     // Find all page breaks using simple traversal
     const pageBreaks = getElementsByTagName(xmlDoc, 'pb');
-    console.log('🔍 [DEBUG] Found page breaks:', pageBreaks.length);
 
     if (pageBreaks.length === 0) {
       console.error('No page breaks found in XML');
@@ -88,7 +87,6 @@ const parseXMLTranscription = xmlContent => {
     // NEW APPROACH: Parse all content first, then distribute by pages
     // Step 1: Get all content elements in document order
     const allContentElements = extractAllContentElements(xmlDoc);
-    console.log(`Found ${allContentElements.length} content elements total`);
 
     // Step 2: Create page mapping based on page breaks
     const pageMapping = createPageMapping(xmlDoc, pageBreaks);
@@ -304,6 +302,18 @@ const processElement = element => {
         content: `Auteur : ${element.textContent.trim()}`,
       };
 
+    case 'docdate':
+      return {
+        type: 'docDate',
+        content: element.textContent.trim(),
+      };
+
+    case 'docedition':
+      return {
+        type: 'docEdition',
+        content: element.textContent.trim(),
+      };
+
     case 'doctitle': {
       const titleParts = getElementsByTagName(element, 'titlepart');
       const titleResults = [];
@@ -416,10 +426,8 @@ const processElement = element => {
     }
 
     case 'sp': {
-      // Speech element - process speaker, paragraphs, verses AND stage directions together
+      // Speech element - process all children in order
       const speaker = getElementByTagName(element, 'speaker');
-      const paragraphs = getElementsByTagName(element, 'p');
-      const versesInSpeech = getElementsByTagName(element, 'lg');
       const speechResults = [];
 
       if (speaker) {
@@ -429,50 +437,137 @@ const processElement = element => {
         });
       }
 
-      // Process direct stage directions in speech (not nested in p or lg)
-      const directStages = [];
-      const allStagesInSp = getElementsByTagName(element, 'stage');
-      for (const stage of allStagesInSp) {
-        // Only process if stage is direct child of sp (not nested in p or lg)
-        if (stage.parentNode === element) {
-          const stageType = stage.getAttribute('type');
-          directStages.push({
-            type: 'stage',
-            content: stage.textContent.trim(),
-            stageType: stageType || 'general',
-          });
-        }
-      }
-      speechResults.push(...directStages);
-
-      // Process each paragraph, handling nested stage directions
-      for (const p of paragraphs) {
-        const pContent = processParagramWithStage(p);
-        if (pContent) {
-          speechResults.push(...pContent);
-        }
-      }
-
-      // Process each verse group (lg) within the speech
-      for (const lg of versesInSpeech) {
-        const lines = getElementsByTagName(lg, 'l');
-        const verseLines = [];
-        for (const line of lines) {
-          verseLines.push(line.textContent.trim());
-        }
-        if (verseLines.length > 0) {
-          speechResults.push({ type: 'verse', content: verseLines });
-        }
-
-        // Also check for stage directions within the lg
-        const stagesInLg = getElementsByTagName(lg, 'stage');
-        for (const stage of stagesInLg) {
-          const stageType = stage.getAttribute('type');
-          speechResults.push({
-            type: 'stage',
-            content: stage.textContent.trim(),
-            stageType: stageType || 'general',
-          });
+      // Process all child nodes in order, combining p/stage[corps]/p sequences
+      const childNodes = Array.from(element.childNodes);
+      let i = 0;
+      
+      while (i < childNodes.length) {
+        const node = childNodes[i];
+        
+        if (node.nodeType === 1) { // Element node
+          const tagName = node.tagName.toLowerCase();
+          
+          if (tagName === 'speaker') {
+            // Already processed above
+            i++;
+            continue;
+          }
+          
+          if (tagName === 'p') {
+            // Check if next element is a stage[type="corps"] followed by another p
+            let combinedText = [];
+            let j = i;
+            
+            // Collect consecutive p and stage[type="corps"] elements
+            while (j < childNodes.length) {
+              const currentNode = childNodes[j];
+              
+              if (currentNode.nodeType === 1) {
+                const currentTag = currentNode.tagName.toLowerCase();
+                
+                if (currentTag === 'p') {
+                  // Process paragraph with any nested stage directions
+                  const pContent = processParagramWithStage(currentNode);
+                  if (pContent && pContent.length > 0) {
+                    // If we have accumulated content and this is a new paragraph starting with punctuation, combine
+                    if (combinedText.length > 0 && pContent[0].type === 'text' && pContent[0].content.trim().startsWith(',')) {
+                      // Combine with previous text
+                      const lastItem = combinedText[combinedText.length - 1];
+                      if (lastItem && lastItem.type === 'text') {
+                        lastItem.content += pContent[0].content;
+                        combinedText.push(...pContent.slice(1));
+                      } else {
+                        combinedText.push(...pContent);
+                      }
+                    } else {
+                      combinedText.push(...pContent);
+                    }
+                  }
+                  j++;
+                } else if (currentTag === 'stage') {
+                  const stageType = currentNode.getAttribute('type');
+                  if (stageType === 'corps') {
+                    // Add inline stage direction
+                    combinedText.push({
+                      type: 'stage',
+                      content: currentNode.textContent.trim(),
+                      stageType: 'corps',
+                    });
+                    j++;
+                  } else {
+                    // Non-corps stage direction, stop combining
+                    break;
+                  }
+                } else {
+                  // Different element type, stop combining
+                  break;
+                }
+              } else if (currentNode.nodeType === 3) {
+                // Skip text nodes (whitespace)
+                j++;
+              } else {
+                break;
+              }
+            }
+            
+            // Add the combined content
+            if (combinedText.length > 0) {
+              // Merge consecutive text/stage[corps] into single text elements
+              const mergedContent = [];
+              let currentMerged = null;
+              
+              for (const item of combinedText) {
+                if (item.type === 'text' || (item.type === 'stage' && item.stageType === 'corps')) {
+                  if (!currentMerged) {
+                    currentMerged = { type: 'text', content: [], isComplex: true };
+                    mergedContent.push(currentMerged);
+                  }
+                  
+                  if (item.type === 'text') {
+                    currentMerged.content.push(item.content);
+                  } else {
+                    // Inline stage direction
+                    currentMerged.content.push({
+                      type: 'inline-stage',
+                      content: item.content
+                    });
+                  }
+                } else {
+                  // Non-inline element, add as is
+                  currentMerged = null;
+                  mergedContent.push(item);
+                }
+              }
+              
+              speechResults.push(...mergedContent);
+            }
+            
+            i = j;
+          } else if (tagName === 'stage') {
+            // Standalone stage direction
+            const stageType = node.getAttribute('type');
+            speechResults.push({
+              type: 'stage',
+              content: node.textContent.trim(),
+              stageType: stageType || 'general',
+            });
+            i++;
+          } else if (tagName === 'lg') {
+            // Verse group
+            const lines = getElementsByTagName(node, 'l');
+            const verseLines = [];
+            for (const line of lines) {
+              verseLines.push(line.textContent.trim());
+            }
+            if (verseLines.length > 0) {
+              speechResults.push({ type: 'verse', content: verseLines });
+            }
+            i++;
+          } else {
+            i++;
+          }
+        } else {
+          i++;
         }
       }
 
@@ -624,6 +719,9 @@ const getAnthologyBySlugQuery = `
 
 const AnthologyDetailPage = ({ anthologyData, error }) => {
   const { t } = useTranslation(['common', 'anthology']);
+  const router = useRouter();
+  
+  
   // State management
   const [nakalaViewerUrl, setNakalaViewerUrl] = useState(null);
   const [isLoadingPages, setIsLoadingPages] = useState(true);
@@ -636,6 +734,25 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
   const [transcriptionPages, setTranscriptionPages] = useState([]);
   const [isLoadingTranscription, setIsLoadingTranscription] = useState(false);
 
+
+  // Reset states when anthology data changes
+  useEffect(() => {
+    if (anthologyData?.id) {
+      // Reset viewer states
+      setNakalaViewerUrl(null);
+      setIsLoadingPages(true);
+      setCurrentPage(1);
+      setTotalPages(0);
+      setImageUrls([]);
+      
+      // Reset transcription states  
+      setCurrentTranscriptionPage(1);
+      setTranscriptionPages([]);
+      setIsLoadingTranscription(false);
+    }
+  }, [anthologyData?.id]); // Only reset when anthology ID changes
+  
+
   // Effect to initialize viewer and fetch document metadata
   useEffect(() => {
     if (
@@ -647,15 +764,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         setIsLoadingPages(true);
 
         try {
-          console.log('🔍 [DEBUG IIIF] Initializing viewer...');
-          console.log(
-            '🔍 [DEBUG IIIF] Nakala identifier:',
-            anthologyData.nakalaIdentifier,
-          );
-          console.log(
-            '🔍 [DEBUG IIIF] File identifier:',
-            anthologyData.nakalaFileIdentifier,
-          );
 
           // Get basic viewer URL
           const baseViewerUrl = getNakalaEmbedUrl(
@@ -677,14 +785,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
               )
               .sort((a, b) => a.name.localeCompare(b.name));
 
-            console.log(
-              '🔍 [DEBUG IIIF] Image files found:',
-              imageFiles.length,
-            );
-            console.log(
-              '🔍 [DEBUG IIIF] Files:',
-              imageFiles.map(f => f.name),
-            );
 
             if (imageFiles.length > 0) {
               setTotalPages(imageFiles.length);
@@ -713,7 +813,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
 
       initializeViewer();
     }
-  }, [anthologyData]);
+  }, [anthologyData?.id, anthologyData?.nakalaIdentifier, anthologyData?.nakalaFileIdentifier]);
 
   // Effect to update viewer URL when page changes
   useEffect(() => {
@@ -723,14 +823,10 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
       imageUrls.length > 0 &&
       currentPage > 0
     ) {
-      console.log('🔍 [DEBUG IIIF] Updating viewer for page:', currentPage);
-
       // Get the file for the current page (0-indexed)
       const currentFile = imageUrls[currentPage - 1];
 
       if (currentFile) {
-        console.log('🔍 [DEBUG IIIF] Current file:', currentFile.name);
-        console.log('🔍 [DEBUG IIIF] Current file SHA1:', currentFile.sha1);
 
         // Build URL for the specific file
         const pageUrl = getNakalaEmbedUrl(
@@ -741,34 +837,23 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
           },
         );
 
-        console.log('🔍 [DEBUG IIIF] Page URL:', pageUrl);
         setNakalaViewerUrl(pageUrl);
       }
     }
-  }, [currentPage, anthologyData, imageUrls]);
+  }, [currentPage, anthologyData?.nakalaIdentifier, imageUrls]);
 
   // Effect to load and parse XML transcription
   useEffect(() => {
     const loadTranscription = async () => {
-      console.log('🔍 [DEBUG] Starting transcription loading...');
-      console.log('🔍 [DEBUG] anthologyData:', anthologyData);
-      console.log(
-        '🔍 [DEBUG] transcriptionFiles:',
-        anthologyData?.transcriptionFiles,
-      );
-
       if (!anthologyData?.transcriptionFiles?.length) {
-        console.log('🔍 [DEBUG] No transcription files found');
         return;
       }
 
       setIsLoadingTranscription(true);
       try {
         const transcriptionFile = anthologyData.transcriptionFiles[0]; // Use first XML file
-        console.log('🔍 [DEBUG] Using transcription file:', transcriptionFile);
 
         if (!transcriptionFile.url) {
-          console.error('🔍 [DEBUG] No URL found for transcription file');
           console.error(
             '🔍 [DEBUG] Available transcription file data:',
             transcriptionFile,
@@ -778,7 +863,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
           return;
         }
 
-        console.log('🔍 [DEBUG] Fetching from URL:', transcriptionFile.url);
 
         let xmlText = '';
 
@@ -795,51 +879,28 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         }
 
         xmlText = await response.text();
-        console.log('🔍 [DEBUG] XML text length:', xmlText.length);
-        console.log('🔍 [DEBUG] XML starts with:', xmlText.substring(0, 200));
 
         const pages = parseXMLTranscription(xmlText);
-        console.log('🔍 [DEBUG] Parsed pages:', pages);
         setTranscriptionPages(pages);
-
-        console.log('📖 Transcription pages loaded:', pages.length);
-        console.log(
-          '📖 First page sample:',
-          pages[0]?.content?.length,
-          'items',
-        );
-        if (pages[0]?.content?.length > 0) {
-          console.log('📖 First page first item:', pages[0].content[0]);
-        }
       } catch (error) {
-        console.error('🔍 [DEBUG] Error loading transcription:', error);
-        console.error('🔍 [DEBUG] Error details:', {
-          message: error.message,
-          stack: error.stack,
-          url: anthologyData?.transcriptionFiles?.[0]?.url,
-        });
+        // Error loading transcription
       } finally {
         setIsLoadingTranscription(false);
       }
     };
 
     loadTranscription();
-  }, [anthologyData]);
+  }, [anthologyData?.id, anthologyData?.transcriptionFiles]);
 
   // Navigation handlers
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      console.log(
-        '🔍 [DEBUG IIIF] Navigate to previous page:',
-        currentPage - 1,
-      );
       setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      console.log('🔍 [DEBUG IIIF] Navigate to next page:', currentPage + 1);
       setCurrentPage(currentPage + 1);
     }
   };
@@ -857,11 +918,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
     }
   };
 
-  const _handleGoToPage = pageNumber => {
-    if (pageNumber >= 1 && pageNumber <= totalPages) {
-      setCurrentPage(pageNumber);
-    }
-  };
 
   if (error) {
     return (
@@ -895,7 +951,7 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
   }
 
   return (
-    <Fragment>
+    <Fragment key={anthologyData.id}>
       <Layout
         title={anthologyData.title}
         metaDescription={`Anthologie: ${anthologyData.title}`}
@@ -1138,6 +1194,20 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                       {item.content}
                                     </p>,
                                   );
+                                } else if (item.type === 'docDate') {
+                                  elements.push(
+                                    <div key={i} className={styles.docDateContainer}>
+                                      <p className={styles.docDate}>
+                                        {item.content}
+                                      </p>
+                                    </div>,
+                                  );
+                                } else if (item.type === 'docEdition') {
+                                  elements.push(
+                                    <p key={i} className={styles.docEdition}>
+                                      {item.content}
+                                    </p>,
+                                  );
                                 } else if (item.type === 'heading') {
                                   elements.push(
                                     <p key={i} className={styles.heading}>
@@ -1166,15 +1236,9 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                     </div>,
                                   );
                                 } else if (item.type === 'stage') {
-                                  // Check if it's a "corps" type stage direction (should be inline)
-                                  if (item.stageType === 'corps') {
-                                    elements.push(
-                                      <span key={i} className={styles.stageInline}>
-                                        {' '}
-                                        {item.content}{' '}
-                                      </span>,
-                                    );
-                                  } else {
+                                  // Only render non-corps stage directions
+                                  // Corps stage directions are handled inline with text
+                                  if (item.stageType !== 'corps') {
                                     elements.push(
                                       <p key={i} className={styles.stage}>
                                         {item.content}
@@ -1204,23 +1268,50 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                     </p>,
                                   );
                                 } else if (item.type === 'text') {
-                                  // Check if this is a décors element
-                                  const isDecorElement = item.content.match(
-                                    /^(Prologue|Tableau [IVX]+)\s*:/,
-                                  );
-
-                                  if (isDecorElement) {
+                                  // Check if it's a complex text with inline elements
+                                  if (item.isComplex && Array.isArray(item.content)) {
+                                    // Render complex text with inline stage directions
+                                    const textElements = [];
+                                    for (let idx = 0; idx < item.content.length; idx++) {
+                                      const part = item.content[idx];
+                                      if (typeof part === 'string') {
+                                        textElements.push(part);
+                                      } else if (part && part.type === 'inline-stage') {
+                                        textElements.push(
+                                          <span key={`inline-${idx}`} className={styles.stageInline}>
+                                            {' '}{part.content}{' '}
+                                          </span>
+                                        );
+                                      }
+                                    }
                                     elements.push(
-                                      <p key={i} className={styles.decor}>
-                                        {item.content}
+                                      <p key={i} className={styles.text}>
+                                        {textElements}
                                       </p>,
                                     );
                                   } else {
-                                    elements.push(
-                                      <p key={i} className={styles.text}>
-                                        {item.content}
-                                      </p>,
+                                    // Simple text
+                                    const contentText = typeof item.content === 'string' ? item.content : 
+                                                       (Array.isArray(item.content) && item.content.length > 0 ? item.content[0] : '');
+                                    
+                                    // Check if this is a décors element
+                                    const isDecorElement = contentText.match(
+                                      /^(Prologue|Tableau [IVX]+)\s*:/,
                                     );
+
+                                    if (isDecorElement) {
+                                      elements.push(
+                                        <p key={i} className={styles.decor}>
+                                          {contentText}
+                                        </p>,
+                                      );
+                                    } else {
+                                      elements.push(
+                                        <p key={i} className={styles.text}>
+                                          {contentText}
+                                        </p>,
+                                      );
+                                    }
                                   }
                                 } else if (item.type === 'verse') {
                                   elements.push(
@@ -1291,9 +1382,13 @@ export async function getServerSideProps({ params, locale }) {
   try {
     // First, fetch the anthology entry from CraftCMS
     const siteHandle = locale === 'fr' ? 'fr' : locale;
+    
+    
     const anthologyResponse = await fetchAPI(getAnthologyBySlugQuery, {
-      slug: [slug],
-      site: [siteHandle],
+      variables: {
+        slug: [slug],
+        site: [siteHandle],
+      }
     });
 
     if (!anthologyResponse?.entries || anthologyResponse.entries.length === 0) {
@@ -1311,6 +1406,7 @@ export async function getServerSideProps({ params, locale }) {
     }
 
     const anthology = anthologyResponse.entries[0];
+    
 
     // Extract Nakala identifiers from DOI
     let nakalaIdentifier = null;
@@ -1335,30 +1431,18 @@ export async function getServerSideProps({ params, locale }) {
         nakalaData = await fetchNakalaItem(nakalaIdentifier);
 
         // Debug: Log the full Nakala response
-        console.log('=== NAKALA DEBUG START ===');
-        console.log('Nakala identifier:', nakalaIdentifier);
-        console.log('Full Nakala data:', JSON.stringify(nakalaData, null, 2));
 
-        if (nakalaData.files) {
-          console.log('Files found:', nakalaData.files.length);
-          nakalaData.files.forEach((file, index) => {
-            console.log(`File ${index}:`, {
-              name: file.name,
-              mime_type: file.mime_type,
-              sha1: file.sha1,
-              uri: file.uri,
-              size: file.size,
-            });
-          });
-        }
-        console.log('=== NAKALA DEBUG END ===');
+        // Files are available in nakalaData.files if needed for debugging
 
         // Extract useful metadata from Nakala
         if (nakalaData.metas) {
           const { metas } = nakalaData;
+          // Use the current locale for description, with fallback to the other language
+          const primaryLang = locale || 'fr';
+          const fallbackLang = primaryLang === 'fr' ? 'en' : 'fr';
           nakalaMetadata.description =
-            getMetaValue(metas, 'http://purl.org/dc/terms/description', 'fr') ||
-            getMetaValue(metas, 'http://purl.org/dc/terms/description', 'en');
+            getMetaValue(metas, 'http://purl.org/dc/terms/description', primaryLang) ||
+            getMetaValue(metas, 'http://purl.org/dc/terms/description', fallbackLang);
           nakalaMetadata.creator = getMetaValue(
             metas,
             'http://nakala.fr/terms#creator',
@@ -1378,14 +1462,8 @@ export async function getServerSideProps({ params, locale }) {
 
         // Process image and transcription files from Nakala
         if (nakalaData.files) {
-          console.log('=== PROCESSING FILES ===');
-          nakalaData.files.forEach((file, index) => {
-            console.log(
-              `Processing file ${index}:`,
-              file.name,
-              'MIME:',
-              file.mime_type,
-            );
+          nakalaData.files.forEach((file) => {
+            // Processing file
 
             // Check for image files (JPG, PNG, etc.)
             if (
@@ -1393,7 +1471,6 @@ export async function getServerSideProps({ params, locale }) {
               file.mime_type.startsWith('image/') &&
               file.sha1
             ) {
-              console.log(`✅ Adding image file: ${file.name}`);
               imageFiles.push({
                 name: safeSerialize(file.name),
                 sha1: safeSerialize(file.sha1),
@@ -1408,10 +1485,6 @@ export async function getServerSideProps({ params, locale }) {
               file.name.endsWith('.xml') ||
               file.name.toLowerCase().includes('.xml')
             ) {
-              console.log(`✅ Adding XML transcription file: ${file.name}`);
-              console.log(`🔍 [DEBUG] XML file URI: ${file.uri}`);
-              console.log(`🔍 [DEBUG] XML file SHA1: ${file.sha1}`);
-              console.log(`🔍 [DEBUG] XML file full data:`, file);
 
               // Extract language from filename if possible
               const langMatch = file.name.match(/[_-]([a-z]{2,3})\./i);
@@ -1424,7 +1497,6 @@ export async function getServerSideProps({ params, locale }) {
               if (!fileUrl && file.sha1) {
                 // Use the working Nakala URL format
                 fileUrl = `https://api.nakala.fr/data/${nakalaIdentifier}/${file.sha1}`;
-                console.log(`🔍 [DEBUG] Constructed URL: ${fileUrl}`);
               }
 
               transcriptionFiles.push({
@@ -1434,22 +1506,12 @@ export async function getServerSideProps({ params, locale }) {
                 sha1: safeSerialize(file.sha1),
               });
             } else {
-              console.log(
-                `❌ File ${file.name} doesn't match any category. MIME: ${file.mime_type}`,
-              );
+              // File doesn't match any category
             }
           });
-
-          console.log(
-            'Final counts - Images:',
-            imageFiles.length,
-            'Transcriptions:',
-            transcriptionFiles.length,
-          );
-          console.log('=== PROCESSING FILES END ===');
         }
       } catch (nakalaError) {
-        console.error('Error fetching Nakala data:', nakalaError);
+        // Error fetching Nakala data
       }
     }
 
@@ -1487,6 +1549,7 @@ export async function getServerSideProps({ params, locale }) {
         : '',
     };
 
+    
     return {
       props: {
         ...(await serverSideTranslations(locale, [
@@ -1514,4 +1577,13 @@ export async function getServerSideProps({ params, locale }) {
   }
 }
 
-export default AnthologyDetailPage;
+// Wrapper component to force remounting on slug change
+const AnthologyWrapper = (props) => {
+  const router = useRouter();
+  const slug = router.query.slug || props.anthologyData?.slug;
+  
+  // Use the slug as key to force complete remount when navigating between anthologies
+  return <AnthologyDetailPage key={slug} {...props} />;
+};
+
+export default AnthologyWrapper;

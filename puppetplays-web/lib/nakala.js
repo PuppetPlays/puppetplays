@@ -11,16 +11,22 @@ async function fetchNakala(endpoint) {
   const url = `${NAKALA_BASE_URL}${endpoint}`;
 
   try {
-    console.log(`🌐 Making request to: ${url}`);
+    // Enhanced logging: show complete request details
+    console.log('\n' + '='.repeat(80));
+    console.log('🔍 SENDING NAKALA API REQUEST');
+    console.log('='.repeat(80));
+    console.log(`📡 Full URL: ${url}`);
+    console.log(`🔗 Endpoint: ${endpoint}`);
+    console.log(`⏰ Timestamp: ${new Date().toISOString()}`);
+    console.log('='.repeat(80) + '\n');
+    
     const response = await fetch(url);
 
-    console.log(
-      `📊 Response status: ${response.status} ${response.statusText}`,
-    );
-    console.log(
-      `📋 Response headers:`,
-      Object.fromEntries(response.headers.entries()),
-    );
+    console.log('\n' + '='.repeat(80));
+    console.log('📊 NAKALA API RESPONSE RECEIVED');
+    console.log('='.repeat(80));
+    console.log(`✅ Status: ${response.status} ${response.statusText}`);
+    console.log(`📋 Headers:`, Object.fromEntries(response.headers.entries()));
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -29,12 +35,30 @@ async function fetchNakala(endpoint) {
     }
 
     const data = await response.json();
-    console.log(`✅ Successfully parsed JSON response`);
-    console.log(`📦 Response data keys:`, Object.keys(data));
+    
+    // Enhanced logging: show complete response data
+    console.log(`📦 Response type: ${typeof data}`);
+    console.log(`🔑 Response keys:`, Object.keys(data));
+    
+    // Log full response data (with truncation for very large responses)
+    const dataString = JSON.stringify(data, null, 2);
+    if (dataString.length > 10000) {
+      console.log('📄 Response Data (truncated to first 10000 chars):');
+      console.log(dataString.substring(0, 10000) + '\n... [truncated]');
+    } else {
+      console.log('📄 Complete Response Data:');
+      console.log(dataString);
+    }
+    
+    console.log('='.repeat(80) + '\n');
 
     return data;
   } catch (err) {
-    console.error(`💥 Error for ${endpoint}:`, err);
+    console.error('\n' + '='.repeat(80));
+    console.error('💥 NAKALA API ERROR');
+    console.error('='.repeat(80));
+    console.error(`❌ Error for ${endpoint}:`, err);
+    console.error('='.repeat(80) + '\n');
     throw err;
   }
 }
@@ -201,22 +225,9 @@ export async function fetchNakalaItem(itemId) {
   const endpoint = `/datas/${itemId}`;
 
   try {
-    console.log(`🔍 Fetching Nakala item: ${itemId}`);
-    console.log(`📡 Endpoint: ${NAKALA_BASE_URL}${endpoint}`);
-
     const result = await fetchNakala(endpoint);
-
-    console.log(`✅ Successfully fetched Nakala item ${itemId}`);
-    console.log(`📄 Response structure:`, Object.keys(result));
-    console.log(
-      `📁 Files count:`,
-      result.files ? result.files.length : 'No files property',
-    );
-
     return result;
   } catch (error) {
-    console.error(`❌ Failed to fetch item ${itemId}:`, error.message);
-    console.error(`📍 Full error:`, error);
     throw new Error(`Failed to fetch Nakala item ${itemId}: ${error.message}`);
   }
 }
