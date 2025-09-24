@@ -433,31 +433,29 @@ function Work(props) {
         </Section>
 
         {/* Translator field from GraphQL plain text field */}
-        <Section title={t('common:translatedBy')} show={!!translatedByGraphql}>
-          {translatedByGraphql}
-        </Section>
-
-        {/* Translator field - will be displayed when translatedBy data is available from API */}
+        {/* Display translatedBy Users if available, otherwise fallback to translatedByGraphql */}
         <Section
           title={t('common:translatedBy')}
           show={
-            translatedBy &&
-            Array.isArray(translatedBy) &&
-            translatedBy.length > 0 &&
-            (translatedBy[0]?.fullName ||
-              translatedBy[0]?.firstName ||
-              translatedBy[0]?.lastName)
+            (translatedBy &&
+              Array.isArray(translatedBy) &&
+              translatedBy.length > 0) ||
+            !!translatedByGraphql
           }
         >
           {translatedBy &&
-            Array.isArray(translatedBy) &&
+          Array.isArray(translatedBy) &&
+          translatedBy.length > 0 ? (
             translatedBy.map((translator, index) => (
               <span key={translator?.id || index}>
                 {translator?.fullName ||
                   `${translator?.firstName || ''} ${translator?.lastName || ''}`.trim()}
                 {index < translatedBy.length - 1 && ', '}
               </span>
-            ))}
+            ))
+          ) : (
+            translatedByGraphql
+          )}
         </Section>
 
         <Section
@@ -479,8 +477,11 @@ Work.propTypes = {
   translatedBy: PropTypes.arrayOf(
     PropTypes.shape({
       fullName: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
     }),
   ),
+  translatedByGraphql: PropTypes.string,
   title: PropTypes.string.isRequired,
   mainImage: PropTypes.array,
   doi: PropTypes.string,

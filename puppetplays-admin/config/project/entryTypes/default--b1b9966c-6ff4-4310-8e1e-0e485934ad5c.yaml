@@ -79,7 +79,7 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Default
-section: 335a9c82-6d01-484d-9dde-3ae312bcd46a # Guide de Bonnes Pratiques
+section: 335a9c82-6d01-484d-9dde-3ae312bcd46a # Technical Documentation Entry
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
