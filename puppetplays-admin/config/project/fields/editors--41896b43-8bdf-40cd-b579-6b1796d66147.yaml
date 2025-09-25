@@ -1,24 +1,19 @@
 columnSuffix: null
-contentColumnType: string
+contentColumnType: text
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: editors
 instructions: null
 name: Compilateur
 searchable: false
 settings:
-  allowSelfRelations: false
-  branchLimit: null
-  localizeRelations: false
-  maintainHierarchy: false
-  maxRelations: null
-  minRelations: null
-  selectionLabel: 'Sélectionner un ou plusieurs compilateur(s)'
-  showSiteMenu: true
-  sources:
-    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
-  targetSiteId: null
-  validateRelatedElements: false
-  viewMode: null
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
 translationKeyFormat: null
-translationMethod: site
-type: craft\fields\Entries
+translationMethod: none
+type: craft\fields\PlainText
