@@ -1,4 +1,4 @@
-dateModified: 1758812404
+dateModified: 1758813819
 elementSources:
   craft\elements\Entry:
     -
@@ -143,7 +143,6 @@ meta:
     1c1041b2-7307-47b5-b3da-f7da389ed14b: 'Domaine public' # Domaine public
     1d2753a1-8983-43bc-8b38-d220072c06e9: Sheet # Sheet
     1f547c74-a13e-424c-acb9-442988088084: Auteurs # Auteurs
-    02a3e612-3fca-49e3-8d6b-db1557d980d5: 'Side bar' # Side bar
     2a3117bf-dd2f-46f2-802d-42fbd2e52e0a: Pseudonyme # Pseudonyme
     2cbf68ec-55ec-4aee-bf2d-b255cad39232: Langues # Langues
     2d8643ae-5357-48a9-a90c-59e78c29508c: 'Nombre de pages' # Nombre de pages
@@ -244,7 +243,7 @@ meta:
     209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
     268ec30e-43a1-429e-8600-787a223ae0dc: 'Name of the editor / magazine  ' # Name of the editor / magazine  
     269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
-    335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Technical Documentation Entry
+    335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Guide de Bonnes Pratiques' # Guide de Bonnes Pratiques
     374cfc9a-f44d-4173-9b1a-08ee58b72e0c: 'Parcours découverte' # Parcours découverte
     0393d570-559e-46dc-ad27-8e37f3a63d40: 'Scientific Publications' # Scientific Publications
     397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
@@ -306,7 +305,7 @@ meta:
     b2e52632-2de4-4bfa-acc7-3108249c6790: Issn # Issn
     b3d3b5fa-565c-459c-b370-cc1dceca0750: Persons # Persons
     b3feeaa7-8778-465a-9010-dc86232c1fbb: Assets # Assets
-    b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Educational Resource
+    b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Parcours Découverte' # Parcours Découverte
     b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
     b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
     b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
@@ -329,8 +328,7 @@ meta:
     c39eea87-c2d5-4632-bcb0-f6e737f34e0f: Lieu # Lieu
     c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
     c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
-    c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
-    c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
+    c57211bc-35a6-44ec-922a-839e348b5e6a: Anthologie # Anthologie
     cb7c0e4b-a596-4f1a-ba5f-319d10e1df1e: 'Side Bar Title' # Side Bar Title
     cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
     ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
@@ -382,7 +380,7 @@ meta:
     f6c0a973-aaab-4aee-bbdc-c5f7fe02069a: IDs # IDs
     f9d69522-b5ad-442c-873f-739859f6e7f7: 'Registre(s) littéraire(s)' # Registre(s) littéraire(s)
     f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: 'Comite scientifique' # Comite scientifique
-    f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Scientific Publications
+    f462f4e5-af46-4dfe-939c-e747d81aa405: Publications # Publications
     f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Comite scientifique' # Comite scientifique
     f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
     fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
@@ -417,10 +415,14 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 3.0.0
+  tag-manager:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   workflow:
     edition: standard
     enabled: true
-    licenseKey: EP1V3OENLL9KLM4KVV7FHXLC
+    licenseKey: KK3169LTZWONMRB8A20FU7B2
     schemaVersion: 2.6.0
     settings:
       editorNotesRequired:
@@ -772,7 +774,7 @@ project:
       1c1041b2-7307-47b5-b3da-f7da389ed14b: 'Domaine public' # Domaine public
       1d2753a1-8983-43bc-8b38-d220072c06e9: Sheet # Sheet
       1f547c74-a13e-424c-acb9-442988088084: Auteurs # Auteurs
-      02a3e612-3fca-49e3-8d6b-db1557d980d5: 'Side bar' # Side bar
+      02a3e612-3fca-49e3-8d6b-db1557d980d5: 'Side bar'
       2a3117bf-dd2f-46f2-802d-42fbd2e52e0a: Pseudonyme # Pseudonyme
       2cbf68ec-55ec-4aee-bf2d-b255cad39232: Langues # Langues
       2d8643ae-5357-48a9-a90c-59e78c29508c: 'Nombre de pages' # Nombre de pages
@@ -870,7 +872,7 @@ project:
       209da50a-0d77-41a6-9d9c-8946eb198e71: 'Nom du personnage dans le texte' # Nom du personnage dans le texte
       268ec30e-43a1-429e-8600-787a223ae0dc: 'Name of the editor / magazine  ' # Name of the editor / magazine  
       269fbeb7-8282-427c-b9ff-7d338ab1b8ef: Date # Date
-      335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Technical Documentation Entry
+      335a9c82-6d01-484d-9dde-3ae312bcd46a: 'Technical Documentation Entry' # Guide de Bonnes Pratiques
       374cfc9a-f44d-4173-9b1a-08ee58b72e0c: 'Parcours découverte' # Parcours découverte
       0393d570-559e-46dc-ad27-8e37f3a63d40: 'Scientific Publications' # Scientific Publications
       397a9f9f-ff18-42c4-98ff-dbb87c17b754: 'Puppetplays FR' # Puppetplays FR
@@ -929,7 +931,7 @@ project:
       b2e52632-2de4-4bfa-acc7-3108249c6790: Issn # Issn
       b3d3b5fa-565c-459c-b370-cc1dceca0750: Persons # Persons
       b3feeaa7-8778-465a-9010-dc86232c1fbb: Assets # Assets
-      b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Educational Resource
+      b7f1de9e-308c-4ccf-b8f1-db11ba23be95: 'Educational Resource' # Parcours Découverte
       b37dab53-e816-48fb-aa32-daece0392d17: 'Lieu de conservation' # Lieu de conservation
       b81de301-cf42-40e7-88d2-fcce6f00cafc: 'Research Project' # Research Project
       b203ce66-4f2e-4fab-a0be-e3b6d42f7e41: 'Public Schema' # Public Schema
@@ -952,8 +954,8 @@ project:
       c39eea87-c2d5-4632-bcb0-f6e737f34e0f: Lieu # Lieu
       c117b558-d303-4933-b64d-1856bbe54d59: 'Date de la première représentation' # Date de la première représentation
       c536c595-f070-49db-989a-a78e00ec515a: Newsletters # Newsletters
-      c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block # Block
-      c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthology
+      c23261bf-eb82-4a9e-8e69-29ac0bd335eb: Block
+      c57211bc-35a6-44ec-922a-839e348b5e6a: Anthology # Anthologie
       cc187519-b38b-40f1-970a-984ee4517a17: Title # Title
       ccd48638-f531-4032-a057-8af4f24cd187: 'Procédés théâtraux' # Procédés théâtraux
       cd80ffd8-f562-4ec0-952b-ce1fa2377c9a: 'Technical Documentation' # Technical Documentation
@@ -1003,7 +1005,7 @@ project:
       f6c0a973-aaab-4aee-bbdc-c5f7fe02069a: IDs # IDs
       f9d69522-b5ad-442c-873f-739859f6e7f7: 'Registre(s) littéraire(s)' # Registre(s) littéraire(s)
       f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e: 'Comite scientifique' # Comite scientifique
-      f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Scientific Publications
+      f462f4e5-af46-4dfe-939c-e747d81aa405: 'Scientific Publications' # Publications
       f875c77d-f70a-4b8e-a854-a5a1a0ad1348: 'Comite scientifique' # Comite scientifique
       f7587c45-1123-417a-9e51-c0a292fb22e8: 'Autre(s) version(s) du même nom' # Autre(s) version(s) du même nom
       fa0087ff-5695-4bdc-8bf4-9650ee08cde6: Notice # Notice
