@@ -84,7 +84,7 @@ fieldLayouts:
 handle: default
 hasTitleField: true
 name: Default
-section: b7f1de9e-308c-4ccf-b8f1-db11ba23be95 # Educational Resource
+section: b7f1de9e-308c-4ccf-b8f1-db11ba23be95 # Parcours Découverte
 showStatusField: true
 slugTranslationKeyFormat: null
 slugTranslationMethod: site
