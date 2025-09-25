@@ -388,6 +388,13 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
       slug,
       translatedTitle,
       translatedByGraphql,
+      translatedBy {
+        id,
+        fullName,
+        firstName,
+        lastName,
+        email
+      },
       subtitle,
       genre,
       mainImage @transform(width: 520, position: "center-center") {
