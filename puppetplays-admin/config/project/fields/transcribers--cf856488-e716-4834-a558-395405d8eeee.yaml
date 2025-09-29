@@ -1,19 +1,24 @@
 columnSuffix: null
-contentColumnType: text
+contentColumnType: string
 fieldGroup: 1bddc6ff-b8f1-4708-af28-108cd6e92099 # Works
 handle: transcribers
 instructions: null
 name: Transcripteur
 searchable: false
 settings:
-  byteLimit: null
-  charLimit: null
-  code: false
-  columnType: null
-  initialRows: 4
-  multiline: false
-  placeholder: null
-  uiMode: normal
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: 'Sélectionner un ou plusieurs transcripteur(s)'
+  showSiteMenu: false
+  sources:
+    - 'section:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
 translationKeyFormat: null
-translationMethod: none
-type: craft\fields\PlainText
+translationMethod: site
+type: craft\fields\Entries
