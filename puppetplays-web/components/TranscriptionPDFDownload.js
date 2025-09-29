@@ -25,7 +25,28 @@ const TranscriptionPDFDownload = ({
   const cleanText = useCallback(text => {
     if (!text) return '';
 
-    return text
+    // Handle different input types
+    let stringValue = '';
+
+    if (typeof text === 'string') {
+      stringValue = text;
+    } else if (text && typeof text === 'object') {
+      // If it's an object, try to extract content property
+      if (text.content && typeof text.content === 'string') {
+        stringValue = text.content;
+      } else if (text.toString) {
+        // Fallback to toString if available
+        stringValue = text.toString();
+      } else {
+        // Last resort: convert to string
+        stringValue = String(text);
+      }
+    } else {
+      // Convert any other type to string
+      stringValue = String(text);
+    }
+
+    return stringValue
       .replace(/\r\n/g, '\n') // Normalise les retours à la ligne Windows
       .replace(/\r/g, '\n') // Normalise les retours à la ligne Mac
       .replace(/\n\s+/g, ' ') // Remplace retour à la ligne + espaces par un seul espace
