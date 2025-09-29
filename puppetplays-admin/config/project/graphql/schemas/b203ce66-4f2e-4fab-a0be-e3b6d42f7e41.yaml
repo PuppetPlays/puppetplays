@@ -16,12 +16,12 @@ scope:
   - 'entrytypes.f57ddb6c-0f4c-46e5-ba60-dbb7ef89de2e:read' # Comite scientifique
   - 'sections.8376e9f3-d0b5-42e1-aa50-5b42ce1c5e5f:read' # Communications
   - 'entrytypes.4c0cbfe4-a284-49a1-9bab-3fe7bdbf1f21:read' # Communications
-  - 'sections.b7f1de9e-308c-4ccf-b8f1-db11ba23be95:read' # Parcours Découverte
-  - 'entrytypes.38d4696a-e6ab-4b35-b3c7-ca0b22385bd7:read' # Default
   - 'sections.0a553f7b-fdc0-4aad-aef0-ae1ed91d4df6:read' # Equipe
   - 'entrytypes.96bbc411-e9a9-4143-9c48-7c6108ab197b:read' # Equipe
   - 'sections.22b828fc-b5e2-42a0-9050-446047f73230:read' # Formats
   - 'entrytypes.8c8213c1-75f5-4c1c-bc23-96b213711e06:read' # Formats
+  - 'sections.335a9c82-6d01-484d-9dde-3ae312bcd46a:read' # Guide de Bonnes Pratiques
+  - 'entrytypes.b1b9966c-6ff4-4310-8e1e-0e485934ad5c:read' # Default
   - 'sections.492cc09a-052e-40d6-a33b-7ca74a831805:read' # Institutions de conservation
   - 'entrytypes.e9587719-a8d4-42d6-97c2-f0259ec67922:read' # Institutions de conservation
   - 'sections.ec7faa37-6b19-44d2-95ec-2b752648c37d:read' # Langues
@@ -40,6 +40,8 @@ scope:
   - 'entrytypes.e4e23bc0-a6bd-4075-943f-4607a5fac9be:read' # Œuvres corrélées
   - 'sections.374cfc9a-f44d-4173-9b1a-08ee58b72e0c:read' # Parcours découverte
   - 'entrytypes.8bb29c67-1705-4166-95be-10680e4e36a9:read' # Par défaut
+  - 'sections.b7f1de9e-308c-4ccf-b8f1-db11ba23be95:read' # Parcours Découverte
+  - 'entrytypes.38d4696a-e6ab-4b35-b3c7-ca0b22385bd7:read' # Default
   - 'sections.38c13b78-0b68-4bc2-8a3c-599601b61947:read' # Partenaires
   - 'entrytypes.b229f07b-24d2-42a4-900e-23e1b83a5077:read' # Partenaires
   - 'sections.e205ebe8-5557-4b7c-a43f-9cf548e90c8d:read' # Pays
@@ -51,16 +53,14 @@ scope:
   - 'entrytypes.5e83af75-a401-46c6-918f-f56ab78ad797:read' # Procédés théâtraux
   - 'sections.e555024e-2651-4c00-9772-7c3b197dc24a:read' # Projets de Recherche
   - 'entrytypes.fd7f4d50-da7c-491b-9b4a-4c4dd7785ea9:read' # Par défaut
+  - 'sections.f462f4e5-af46-4dfe-939c-e747d81aa405:read' # Publications
+  - 'entrytypes.2ecebb7d-7e70-468d-b924-6629a1cfd70c:read' # Default
   - 'sections.9cac54fd-67ff-4311-a127-785048ff9146:read' # Publics
   - 'entrytypes.fa8f9cfe-9074-40b9-b300-5a58cd4ff61c:read' # Publics
   - 'sections.8e72b0db-f5f6-4385-9228-33dd62285d5c:read' # Registres littéraires
   - 'entrytypes.19568c88-e81b-48e1-bab2-ba7f106a823f:read' # Registres
-  - 'sections.f462f4e5-af46-4dfe-939c-e747d81aa405:read' # Publications
-  - 'entrytypes.2ecebb7d-7e70-468d-b924-6629a1cfd70c:read' # Default
   - 'sections.6b33b4ed-0b0a-4204-a2ec-8df7a965626a:read' # Technical Documentation
   - 'entrytypes.7545c8b5-cb57-4a29-85a9-859aab0dcd72:read' # Technical Documentation
-  - 'sections.335a9c82-6d01-484d-9dde-3ae312bcd46a:read' # Guide de Bonnes Pratiques
-  - 'entrytypes.b1b9966c-6ff4-4310-8e1e-0e485934ad5c:read' # Default
   - 'sections.1817d1f9-6682-4c22-b338-19654ae0c45c:read' # Techniques d’animation
   - 'entrytypes.48898581-e621-4ea2-bcf6-3c65ac54487f:read' # Techniques d’animation
   - 'volumes.ef2dfdac-243c-4f75-8385-ee787d2e7765:read' # Images
@@ -69,4 +69,7 @@ scope:
   - 'globalsets.e5103a12-53c5-42ca-8479-15e3372fc73f:read' # Templates
   - 'globalsets.cd80ffd8-f562-4ec0-952b-ce1fa2377c9a:read' # Technical Documentation
   - 'globalsets.8b494155-cca5-4c7f-baa3-292b2cf50351:read' # Author Identifiers
+  - 'usergroups.everyone:read'
+  - 'usergroups.8f5325ea-9c9a-4378-9da9-f134174edcce:read' # Contributor
+  - 'usergroups.9df737ef-1d03-4d90-a10c-5450864dc36b:read' # Specialist
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
