@@ -381,6 +381,13 @@ query GetWorkById($locale: [String], $id: [QueryArgument]) {
   entry(section: "works", site: $locale, id: $id) {
     id,
     title,
+    author {
+      id,
+      fullName,
+      firstName,
+      lastName,
+      email
+    },
     ... on works_works_Entry {
       doi,
       viafId,

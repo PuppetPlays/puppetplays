@@ -108,7 +108,7 @@ const WorkPage = ({ initialData }) => {
           />
         </div>
         <ContentLayout style={{ maxWidth: 1200 }}>
-          <Work {...initialData} />
+          <Work {...initialData} writtenBy={initialData?.author} />
         </ContentLayout>
       </Layout>
       {isDocumentOpen && (

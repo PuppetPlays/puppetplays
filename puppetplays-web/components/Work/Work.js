@@ -432,6 +432,13 @@ function Work(props) {
           </div>
         </Section>
 
+        <Section
+          title={t('common:writtenBy')}
+          show={writtenBy && (!!writtenBy.firstName || !!writtenBy.lastName)}
+        >
+          {writtenBy?.firstName} {writtenBy?.lastName}
+        </Section>
+
         {/* Translator field from GraphQL plain text field */}
         {/* Display translatedBy Users if available, otherwise fallback to translatedByGraphql */}
         <Section
@@ -456,13 +463,6 @@ function Work(props) {
           ) : (
             translatedByGraphql
           )}
-        </Section>
-
-        <Section
-          title={t('common:writtenBy')}
-          show={writtenBy && (!!writtenBy.firstName || !!writtenBy.lastName)}
-        >
-          {writtenBy?.firstName} {writtenBy?.lastName}
         </Section>
       </div>
     </article>
