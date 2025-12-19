@@ -241,6 +241,12 @@ const ScientificPublicationsPage = ({ initialPublications, error }) => {
               publications={groupedPublications.phds}
             />
 
+            {/* Livres / Books */}
+            <PublicationSection
+              title={t('project:scientificPublications.categories.books')}
+              publications={groupedPublications.livres}
+            />
+
             {/* Conference proceedings */}
             {groupedPublications.conferenceProceedings && (
               <section className={styles.section}>
@@ -310,7 +316,9 @@ const ScientificPublicationsPage = ({ initialPublications, error }) => {
               title={t(
                 'project:scientificPublications.categories.nonPeerReviewed',
               )}
-              publications={groupedPublications.nonPeerReviewed}
+              publications={
+                groupedPublications.publicationsNonRevuesParLesPaires
+              }
             />
           </>
         )}
