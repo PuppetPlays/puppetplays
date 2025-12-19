@@ -19,7 +19,7 @@ async function fetchNakala(endpoint) {
     console.log(`🔗 Endpoint: ${endpoint}`);
     console.log(`⏰ Timestamp: ${new Date().toISOString()}`);
     console.log('='.repeat(80) + '\n');
-    
+
     const response = await fetch(url);
 
     console.log('\n' + '='.repeat(80));
@@ -35,11 +35,11 @@ async function fetchNakala(endpoint) {
     }
 
     const data = await response.json();
-    
+
     // Enhanced logging: show complete response data
     console.log(`📦 Response type: ${typeof data}`);
     console.log(`🔑 Response keys:`, Object.keys(data));
-    
+
     // Log full response data (with truncation for very large responses)
     const dataString = JSON.stringify(data, null, 2);
     if (dataString.length > 10000) {
@@ -49,7 +49,7 @@ async function fetchNakala(endpoint) {
       console.log('📄 Complete Response Data:');
       console.log(dataString);
     }
-    
+
     console.log('='.repeat(80) + '\n');
 
     return data;
@@ -121,6 +121,55 @@ export function getMetaValues(metas, propertyUri) {
   return metas
     .filter(meta => meta.propertyUri === propertyUri)
     .map(meta => meta.value);
+}
+
+/**
+ * Filtre les fichiers vidéo en fonction de la langue courante.
+ * Sélectionne la version appropriée selon les conventions de nommage Nakala:
+ * - _VO-FR : Version originale française
+ * - _EN : Traduction anglaise (doublage)
+ * - _VO-ENG : Version originale anglaise
+ * - _VO : Version originale (langue non spécifiée)
+ *
+ * @param {Array} files - Tableau des fichiers provenant de Nakala
+ * @param {string} lang - Langue courante ('fr' ou 'en')
+ * @returns {Array} - Tableau filtré contenant le fichier vidéo approprié
+ */
+export function filterVideoFilesByLanguage(files, lang = 'fr') {
+  if (!Array.isArray(files) || files.length === 0) return [];
+
+  // Filtrer uniquement les fichiers vidéo
+  const videoFiles = files.filter(file =>
+    file.extension?.toLowerCase().match(/(mp4|webm|mov|avi|mkv)$/i),
+  );
+
+  // Si un seul fichier ou aucun, retourner tel quel
+  if (videoFiles.length <= 1) return videoFiles;
+
+  // Définir les patterns de priorité selon la langue
+  // Pour l'anglais: _EN > _VO-ENG > _VO > _VO-FR
+  // Pour le français: _VO-FR > _VO-ENG > _VO > _EN
+  const patterns =
+    lang === 'en'
+      ? [/_EN\.mp4$/i, /_VO-ENG\.mp4$/i, /_VO\.mp4$/i, /_VO-FR\.mp4$/i]
+      : [/_VO-FR\.mp4$/i, /_VO-ENG\.mp4$/i, /_VO\.mp4$/i, /_EN\.mp4$/i];
+
+  // Trouver le meilleur match selon la priorité
+  for (const pattern of patterns) {
+    const match = videoFiles.find(file => pattern.test(file.name));
+    if (match) {
+      console.log(
+        `Selected video file for lang=${lang}: ${match.name} (matched pattern: ${pattern})`,
+      );
+      return [match];
+    }
+  }
+
+  // Fallback: retourner le premier fichier vidéo
+  console.log(
+    `No language-specific video found for lang=${lang}, using first video: ${videoFiles[0].name}`,
+  );
+  return [videoFiles[0]];
 }
 
 // Fonction helper pour obtenir les détails d'une collection

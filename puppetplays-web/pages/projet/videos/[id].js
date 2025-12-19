@@ -7,6 +7,7 @@ import {
   fetchCollectionVideos,
   getMetaValue,
   getMetaValues,
+  filterVideoFilesByLanguage,
 } from 'lib/nakala';
 import { stringifyQuery } from 'lib/utils';
 import Head from 'next/head';
@@ -423,22 +424,8 @@ export async function getServerSideProps({ params, query, locale }) {
       // Views are not available
       collectionId: collectionId,
       collectionTitle: collectionTitle,
-      // Extract video files from raw data
-      videoFiles:
-        rawVideoData.files?.filter(file => {
-          const isVideoFile = file.extension
-            ?.toLowerCase()
-            .match(/(mp4|webm|mov|avi|mkv)$/i);
-          if (isVideoFile) {
-            console.log(
-              'Found video file:',
-              file.name,
-              'with sha1:',
-              file.sha1,
-            );
-          }
-          return isVideoFile;
-        }) || [],
+      // Extract video files from raw data, filtered by language
+      videoFiles: filterVideoFilesByLanguage(rawVideoData.files, currentLang),
     };
 
     // Fetch related videos (first 3 from the same collection, excluding current video)

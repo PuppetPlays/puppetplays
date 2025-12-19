@@ -5,7 +5,7 @@
   bottom: 15px;
   right: 15px;
   z-index: 10;
-  
+
   // Style compact et discret
   display: inline-flex;
   align-items: center;
@@ -13,26 +13,28 @@
   gap: 4px;
   padding: 8px 12px;
   min-width: auto;
-  
+
   // Couleurs plus discrètes
   background-color: rgba(59, 130, 246, 0.9); // Bleu semi-transparent
   color: white;
   border: none;
   border-radius: 6px;
-  
+
   // Typographie plus petite
   font-size: 12px;
   font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
   text-align: center;
   white-space: nowrap;
-  
+
   // Effets plus subtils
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s ease;
   opacity: 0.8;
-  
+
   &:hover:not(:disabled) {
     background-color: rgba(37, 99, 235, 0.95); // Bleu plus opaque au hover
     opacity: 1;
@@ -55,12 +57,12 @@
     background-color: rgba(16, 185, 129, 0.9); // Vert pendant la génération
     cursor: wait;
     opacity: 1;
-    
+
     .loadingIcon {
       animation: spin 1s linear infinite;
     }
   }
-  
+
   // Texte du bouton
   span {
     display: inline-block;

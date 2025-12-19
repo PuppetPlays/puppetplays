@@ -452,17 +452,15 @@ function Work(props) {
         >
           {translatedBy &&
           Array.isArray(translatedBy) &&
-          translatedBy.length > 0 ? (
-            translatedBy.map((translator, index) => (
-              <span key={translator?.id || index}>
-                {translator?.fullName ||
-                  `${translator?.firstName || ''} ${translator?.lastName || ''}`.trim()}
-                {index < translatedBy.length - 1 && ', '}
-              </span>
-            ))
-          ) : (
-            translatedByGraphql
-          )}
+          translatedBy.length > 0
+            ? translatedBy.map((translator, index) => (
+                <span key={translator?.id || index}>
+                  {translator?.fullName ||
+                    `${translator?.firstName || ''} ${translator?.lastName || ''}`.trim()}
+                  {index < translatedBy.length - 1 && ', '}
+                </span>
+              ))
+            : translatedByGraphql}
         </Section>
       </div>
     </article>
