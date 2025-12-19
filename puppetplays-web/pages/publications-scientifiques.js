@@ -86,8 +86,7 @@ const PublicationItem = ({ publication }) => {
           </span>
           {(bookTitle || journal) && (
             <span className={styles.inPublication}>
-              , in{' '}
-              {bookEditors && `${bookEditors} (dir.) `}
+              , in {bookEditors && `${bookEditors} (dir.) `}
               <em>{bookTitle || journal}</em>
             </span>
           )}

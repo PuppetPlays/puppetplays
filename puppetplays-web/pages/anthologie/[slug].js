@@ -71,7 +71,6 @@ const parseXMLTranscription = xmlContent => {
       return [];
     }
 
-
     // Create a DOM parser
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
@@ -440,37 +439,42 @@ const processElement = element => {
       // Process all child nodes in order, combining p/stage[corps]/p sequences
       const childNodes = Array.from(element.childNodes);
       let i = 0;
-      
+
       while (i < childNodes.length) {
         const node = childNodes[i];
-        
-        if (node.nodeType === 1) { // Element node
+
+        if (node.nodeType === 1) {
+          // Element node
           const tagName = node.tagName.toLowerCase();
-          
+
           if (tagName === 'speaker') {
             // Already processed above
             i++;
             continue;
           }
-          
+
           if (tagName === 'p') {
             // Check if next element is a stage[type="corps"] followed by another p
             let combinedText = [];
             let j = i;
-            
+
             // Collect consecutive p and stage[type="corps"] elements
             while (j < childNodes.length) {
               const currentNode = childNodes[j];
-              
+
               if (currentNode.nodeType === 1) {
                 const currentTag = currentNode.tagName.toLowerCase();
-                
+
                 if (currentTag === 'p') {
                   // Process paragraph with any nested stage directions
                   const pContent = processParagramWithStage(currentNode);
                   if (pContent && pContent.length > 0) {
                     // If we have accumulated content and this is a new paragraph starting with punctuation, combine
-                    if (combinedText.length > 0 && pContent[0].type === 'text' && pContent[0].content.trim().startsWith(',')) {
+                    if (
+                      combinedText.length > 0 &&
+                      pContent[0].type === 'text' &&
+                      pContent[0].content.trim().startsWith(',')
+                    ) {
                       // Combine with previous text
                       const lastItem = combinedText[combinedText.length - 1];
                       if (lastItem && lastItem.type === 'text') {
@@ -509,27 +513,34 @@ const processElement = element => {
                 break;
               }
             }
-            
+
             // Add the combined content
             if (combinedText.length > 0) {
               // Merge consecutive text/stage[corps] into single text elements
               const mergedContent = [];
               let currentMerged = null;
-              
+
               for (const item of combinedText) {
-                if (item.type === 'text' || (item.type === 'stage' && item.stageType === 'corps')) {
+                if (
+                  item.type === 'text' ||
+                  (item.type === 'stage' && item.stageType === 'corps')
+                ) {
                   if (!currentMerged) {
-                    currentMerged = { type: 'text', content: [], isComplex: true };
+                    currentMerged = {
+                      type: 'text',
+                      content: [],
+                      isComplex: true,
+                    };
                     mergedContent.push(currentMerged);
                   }
-                  
+
                   if (item.type === 'text') {
                     currentMerged.content.push(item.content);
                   } else {
                     // Inline stage direction
                     currentMerged.content.push({
                       type: 'inline-stage',
-                      content: item.content
+                      content: item.content,
                     });
                   }
                 } else {
@@ -538,10 +549,10 @@ const processElement = element => {
                   mergedContent.push(item);
                 }
               }
-              
+
               speechResults.push(...mergedContent);
             }
-            
+
             i = j;
           } else if (tagName === 'stage') {
             // Standalone stage direction
@@ -720,8 +731,7 @@ const getAnthologyBySlugQuery = `
 const AnthologyDetailPage = ({ anthologyData, error }) => {
   const { t } = useTranslation(['common', 'anthology']);
   const router = useRouter();
-  
-  
+
   // State management
   const [nakalaViewerUrl, setNakalaViewerUrl] = useState(null);
   const [isLoadingPages, setIsLoadingPages] = useState(true);
@@ -734,7 +744,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
   const [transcriptionPages, setTranscriptionPages] = useState([]);
   const [isLoadingTranscription, setIsLoadingTranscription] = useState(false);
 
-
   // Reset states when anthology data changes
   useEffect(() => {
     if (anthologyData?.id) {
@@ -744,14 +753,13 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
       setCurrentPage(1);
       setTotalPages(0);
       setImageUrls([]);
-      
-      // Reset transcription states  
+
+      // Reset transcription states
       setCurrentTranscriptionPage(1);
       setTranscriptionPages([]);
       setIsLoadingTranscription(false);
     }
   }, [anthologyData?.id]); // Only reset when anthology ID changes
-  
 
   // Effect to initialize viewer and fetch document metadata
   useEffect(() => {
@@ -764,7 +772,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
         setIsLoadingPages(true);
 
         try {
-
           // Get basic viewer URL
           const baseViewerUrl = getNakalaEmbedUrl(
             anthologyData.nakalaIdentifier,
@@ -784,7 +791,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                 file => file.mime_type && file.mime_type.startsWith('image/'),
               )
               .sort((a, b) => a.name.localeCompare(b.name));
-
 
             if (imageFiles.length > 0) {
               setTotalPages(imageFiles.length);
@@ -813,7 +819,11 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
 
       initializeViewer();
     }
-  }, [anthologyData?.id, anthologyData?.nakalaIdentifier, anthologyData?.nakalaFileIdentifier]);
+  }, [
+    anthologyData?.id,
+    anthologyData?.nakalaIdentifier,
+    anthologyData?.nakalaFileIdentifier,
+  ]);
 
   // Effect to update viewer URL when page changes
   useEffect(() => {
@@ -827,7 +837,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
       const currentFile = imageUrls[currentPage - 1];
 
       if (currentFile) {
-
         // Build URL for the specific file
         const pageUrl = getNakalaEmbedUrl(
           anthologyData.nakalaIdentifier,
@@ -862,7 +871,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
           setTranscriptionPages([]);
           return;
         }
-
 
         let xmlText = '';
 
@@ -917,7 +925,6 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
       setCurrentTranscriptionPage(currentTranscriptionPage + 1);
     }
   };
-
 
   if (error) {
     return (
@@ -1196,7 +1203,10 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                   );
                                 } else if (item.type === 'docDate') {
                                   elements.push(
-                                    <div key={i} className={styles.docDateContainer}>
+                                    <div
+                                      key={i}
+                                      className={styles.docDateContainer}
+                                    >
                                       <p className={styles.docDate}>
                                         {item.content}
                                       </p>
@@ -1269,18 +1279,32 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                   );
                                 } else if (item.type === 'text') {
                                   // Check if it's a complex text with inline elements
-                                  if (item.isComplex && Array.isArray(item.content)) {
+                                  if (
+                                    item.isComplex &&
+                                    Array.isArray(item.content)
+                                  ) {
                                     // Render complex text with inline stage directions
                                     const textElements = [];
-                                    for (let idx = 0; idx < item.content.length; idx++) {
+                                    for (
+                                      let idx = 0;
+                                      idx < item.content.length;
+                                      idx++
+                                    ) {
                                       const part = item.content[idx];
                                       if (typeof part === 'string') {
                                         textElements.push(part);
-                                      } else if (part && part.type === 'inline-stage') {
+                                      } else if (
+                                        part &&
+                                        part.type === 'inline-stage'
+                                      ) {
                                         textElements.push(
-                                          <span key={`inline-${idx}`} className={styles.stageInline}>
-                                            {' '}{part.content}{' '}
-                                          </span>
+                                          <span
+                                            key={`inline-${idx}`}
+                                            className={styles.stageInline}
+                                          >
+                                            {' '}
+                                            {part.content}{' '}
+                                          </span>,
                                         );
                                       }
                                     }
@@ -1291,9 +1315,14 @@ const AnthologyDetailPage = ({ anthologyData, error }) => {
                                     );
                                   } else {
                                     // Simple text
-                                    const contentText = typeof item.content === 'string' ? item.content : 
-                                                       (Array.isArray(item.content) && item.content.length > 0 ? item.content[0] : '');
-                                    
+                                    const contentText =
+                                      typeof item.content === 'string'
+                                        ? item.content
+                                        : Array.isArray(item.content) &&
+                                            item.content.length > 0
+                                          ? item.content[0]
+                                          : '';
+
                                     // Check if this is a décors element
                                     const isDecorElement = contentText.match(
                                       /^(Prologue|Tableau [IVX]+)\s*:/,
@@ -1382,13 +1411,12 @@ export async function getServerSideProps({ params, locale }) {
   try {
     // First, fetch the anthology entry from CraftCMS
     const siteHandle = locale === 'fr' ? 'fr' : locale;
-    
-    
+
     const anthologyResponse = await fetchAPI(getAnthologyBySlugQuery, {
       variables: {
         slug: [slug],
         site: [siteHandle],
-      }
+      },
     });
 
     if (!anthologyResponse?.entries || anthologyResponse.entries.length === 0) {
@@ -1406,7 +1434,6 @@ export async function getServerSideProps({ params, locale }) {
     }
 
     const anthology = anthologyResponse.entries[0];
-    
 
     // Extract Nakala identifiers from DOI
     let nakalaIdentifier = null;
@@ -1441,8 +1468,16 @@ export async function getServerSideProps({ params, locale }) {
           const primaryLang = locale || 'fr';
           const fallbackLang = primaryLang === 'fr' ? 'en' : 'fr';
           nakalaMetadata.description =
-            getMetaValue(metas, 'http://purl.org/dc/terms/description', primaryLang) ||
-            getMetaValue(metas, 'http://purl.org/dc/terms/description', fallbackLang);
+            getMetaValue(
+              metas,
+              'http://purl.org/dc/terms/description',
+              primaryLang,
+            ) ||
+            getMetaValue(
+              metas,
+              'http://purl.org/dc/terms/description',
+              fallbackLang,
+            );
           nakalaMetadata.creator = getMetaValue(
             metas,
             'http://nakala.fr/terms#creator',
@@ -1462,7 +1497,7 @@ export async function getServerSideProps({ params, locale }) {
 
         // Process image and transcription files from Nakala
         if (nakalaData.files) {
-          nakalaData.files.forEach((file) => {
+          nakalaData.files.forEach(file => {
             // Processing file
 
             // Check for image files (JPG, PNG, etc.)
@@ -1485,7 +1520,6 @@ export async function getServerSideProps({ params, locale }) {
               file.name.endsWith('.xml') ||
               file.name.toLowerCase().includes('.xml')
             ) {
-
               // Extract language from filename if possible
               const langMatch = file.name.match(/[_-]([a-z]{2,3})\./i);
               const fileLanguage = langMatch
@@ -1549,7 +1583,6 @@ export async function getServerSideProps({ params, locale }) {
         : '',
     };
 
-    
     return {
       props: {
         ...(await serverSideTranslations(locale, [
@@ -1578,10 +1611,10 @@ export async function getServerSideProps({ params, locale }) {
 }
 
 // Wrapper component to force remounting on slug change
-const AnthologyWrapper = (props) => {
+const AnthologyWrapper = props => {
   const router = useRouter();
   const slug = router.query.slug || props.anthologyData?.slug;
-  
+
   // Use the slug as key to force complete remount when navigating between anthologies
   return <AnthologyDetailPage key={slug} {...props} />;
 };

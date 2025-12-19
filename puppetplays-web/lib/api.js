@@ -81,7 +81,7 @@ export async function fetchAPI(query, { variables } = {}, token) {
     console.log('✅ GRAPHQL RESPONSE RECEIVED');
     console.log('='.repeat(80));
     console.log(`📦 Response data keys:`, Object.keys(json.data));
-    
+
     // Log the full response data (with truncation for very large responses)
     const dataString = JSON.stringify(json.data, null, 2);
     if (dataString.length > 5000) {
@@ -1451,34 +1451,32 @@ export async function getAllTechnicalDocumentation(locale) {
       // La structure est SuperTable (sidebar) -> Matrix (sidebarContent)
       if (techDocGlobalSet.sidebar) {
         // sidebar est un array de blocs SuperTable
-        techDocGlobalSet.sidebar.forEach((sidebarBlock) => {
+        techDocGlobalSet.sidebar.forEach(sidebarBlock => {
           // Chaque bloc SuperTable contient un champ Matrix sidebarContent
           if (sidebarBlock?.sidebarContent) {
-            sidebarBlock.sidebarContent.forEach(
-              (contentBlock) => {
-                // Process each sidebarElement row
-                if (contentBlock?.sidebarElements) {
-                  contentBlock.sidebarElements.forEach((element) => {
-                    const item = {
-                      id: `${contentBlock.id || Math.random()}-${element.col2}`,
-                      sidebarTitle: element.col1 || '',
-                      sidebarContent: contentBlock.sideBarTitle || '',
-                      sidebarLink: element.col2 || '',
-                      type: 'element',
-                      category: contentBlock.sideBarTitle || 'Uncategorized',
-                    };
-                    sidebarItems.push(item);
-                  });
-                }
-              },
-            );
+            sidebarBlock.sidebarContent.forEach(contentBlock => {
+              // Process each sidebarElement row
+              if (contentBlock?.sidebarElements) {
+                contentBlock.sidebarElements.forEach(element => {
+                  const item = {
+                    id: `${contentBlock.id || Math.random()}-${element.col2}`,
+                    sidebarTitle: element.col1 || '',
+                    sidebarContent: contentBlock.sideBarTitle || '',
+                    sidebarLink: element.col2 || '',
+                    type: 'element',
+                    category: contentBlock.sideBarTitle || 'Uncategorized',
+                  };
+                  sidebarItems.push(item);
+                });
+              }
+            });
           }
         });
       } else if (techDocGlobalSet.sidebarContent) {
         // Fallback: si c'est directement sidebarContent (ancienne structure)
-        techDocGlobalSet.sidebarContent.forEach((contentBlock) => {
+        techDocGlobalSet.sidebarContent.forEach(contentBlock => {
           if (contentBlock?.sidebarElements) {
-            contentBlock.sidebarElements.forEach((element) => {
+            contentBlock.sidebarElements.forEach(element => {
               const item = {
                 id: `${contentBlock.id || Math.random()}-${element.col2}`,
                 sidebarTitle: element.col1 || '',
@@ -1544,7 +1542,6 @@ export async function getNavigationHelp(locale) {
 }
 
 export async function getTechnicalDocumentationEntry(id, slug, locale) {
-
   // Si on a un ID, ignorer le slug car il peut être différent entre les environnements
   const querySlug = id ? null : slug;
 
