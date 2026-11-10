@@ -51,6 +51,19 @@ startContainer() {
   docker-compose -p "$PROJECT" up -d "$container"
 }
 
+# Run pending Craft migrations and apply project config. Without this, Craft
+# answers 503 to every API request after an update. The image has no pg_dump,
+# so Craft's own pre-migration backup is skipped; rely on the daily db backup.
+migrateCraft() {
+  info "run craft migrations and apply project config"
+  docker-compose -p "$PROJECT" exec -T puppetplays-admin php craft up --interactive=0 --noBackup=1
+}
+
+removeUnusedImages() {
+  info "remove images not used by any container"
+  docker image prune -a -f
+}
+
 # -----------------------------------------------------------------------------
 # ---- MAIN -------------------------------------------------------------------
 # -----------------------------------------------------------------------------
@@ -62,7 +75,9 @@ main() {
   stopExistingContainers
   startContainer "postgres"
   startContainer "puppetplays-admin"
+  migrateCraft
   startContainer "puppetplays-web"
+  removeUnusedImages
 
   info "$PROJECT deployed"
   exit 0;
