@@ -3,7 +3,7 @@
 const NAKALA_BASE_URL = 'https://api.nakala.fr';
 
 /**
- * Makes a request to the Nakala API with debugging
+ * Makes a request to the Nakala API
  * @param {string} endpoint - The API endpoint (starting with /)
  * @returns {Promise<any>} - The JSON response
  */
@@ -11,54 +11,16 @@ async function fetchNakala(endpoint) {
   const url = `${NAKALA_BASE_URL}${endpoint}`;
 
   try {
-    // Enhanced logging: show complete request details
-    console.log('\n' + '='.repeat(80));
-    console.log('🔍 SENDING NAKALA API REQUEST');
-    console.log('='.repeat(80));
-    console.log(`📡 Full URL: ${url}`);
-    console.log(`🔗 Endpoint: ${endpoint}`);
-    console.log(`⏰ Timestamp: ${new Date().toISOString()}`);
-    console.log('='.repeat(80) + '\n');
-
     const response = await fetch(url);
-
-    console.log('\n' + '='.repeat(80));
-    console.log('📊 NAKALA API RESPONSE RECEIVED');
-    console.log('='.repeat(80));
-    console.log(`✅ Status: ${response.status} ${response.statusText}`);
-    console.log(`📋 Headers:`, Object.fromEntries(response.headers.entries()));
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`❌ HTTP Error ${response.status}:`, errorText);
       throw new Error(`HTTP Error ${response.status}: ${errorText}`);
     }
 
-    const data = await response.json();
-
-    // Enhanced logging: show complete response data
-    console.log(`📦 Response type: ${typeof data}`);
-    console.log(`🔑 Response keys:`, Object.keys(data));
-
-    // Log full response data (with truncation for very large responses)
-    const dataString = JSON.stringify(data, null, 2);
-    if (dataString.length > 10000) {
-      console.log('📄 Response Data (truncated to first 10000 chars):');
-      console.log(dataString.substring(0, 10000) + '\n... [truncated]');
-    } else {
-      console.log('📄 Complete Response Data:');
-      console.log(dataString);
-    }
-
-    console.log('='.repeat(80) + '\n');
-
-    return data;
+    return await response.json();
   } catch (err) {
-    console.error('\n' + '='.repeat(80));
-    console.error('💥 NAKALA API ERROR');
-    console.error('='.repeat(80));
-    console.error(`❌ Error for ${endpoint}:`, err);
-    console.error('='.repeat(80) + '\n');
+    console.error(`Nakala API request failed for ${endpoint}:`, err.message);
     throw err;
   }
 }
@@ -158,17 +120,11 @@ export function filterVideoFilesByLanguage(files, lang = 'fr') {
   for (const pattern of patterns) {
     const match = videoFiles.find(file => pattern.test(file.name));
     if (match) {
-      console.log(
-        `Selected video file for lang=${lang}: ${match.name} (matched pattern: ${pattern})`,
-      );
       return [match];
     }
   }
 
   // Fallback: retourner le premier fichier vidéo
-  console.log(
-    `No language-specific video found for lang=${lang}, using first video: ${videoFiles[0].name}`,
-  );
   return [videoFiles[0]];
 }
 

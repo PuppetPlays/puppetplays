@@ -73,3 +73,5 @@ scope:
   - 'usergroups.8f5325ea-9c9a-4378-9da9-f134174edcce:read' # Contributor
   - 'usergroups.9df737ef-1d03-4d90-a10c-5450864dc36b:read' # Specialist
   - 'taggroups.18acc84f-5d36-4e13-8a6b-deff0a3d529b:read' # Mots-clé des œuvres
+  - 'directive:parseRefs'
+  - 'directive:transform'

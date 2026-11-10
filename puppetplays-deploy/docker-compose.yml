@@ -11,6 +11,11 @@ services:
     volumes:
       - ${PUPPETPLAYS_HOST_DIR}/database/postgres:/var/lib/postgresql/data
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   puppetplays-admin:
     container_name: puppetplays-admin
@@ -44,6 +49,11 @@ services:
       - ${PUPPETPLAYS_HOST_DIR}/logs:/app/storage/logs
       - ${PUPPETPLAYS_HOST_DIR}/static:/app/web/static
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   puppetplays-web:
     container_name: puppetplays-web
@@ -55,3 +65,8 @@ services:
     depends_on:
       - "puppetplays-admin"
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
