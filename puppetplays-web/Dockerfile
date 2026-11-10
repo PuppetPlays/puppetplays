@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:lts-alpine AS deps
+FROM node:24-alpine AS deps
 
 WORKDIR /opt/app
 COPY package.json yarn.lock ./
@@ -9,7 +9,7 @@ RUN yarn install --frozen-lockfile
 # This is where because may be the case that you would try
 # to build the app based on some `X_TAG` in my case (Git commit hash)
 # but the code hasn't changed.
-FROM node:lts-alpine AS builder
+FROM node:24-alpine AS builder
 
 ENV NODE_ENV=production
 ARG NEXT_PUBLIC_API_URL
@@ -22,7 +22,7 @@ RUN find /opt/app/pages \( -type d -exec mkdir -p "dist/{}" \; -o -type f -exec 
 RUN find ./pages \( -type d -exec mkdir -p "/opt/app/translateSrc/{}" \; -o -type f -exec touch "/opt/app/translateSrc/{}" \; \)
 
 # Production image, copy all the files and run next
-FROM node:lts-alpine AS runner
+FROM node:24-alpine AS runner
 
 ARG X_TAG
 WORKDIR /opt/app

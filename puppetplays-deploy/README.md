@@ -15,49 +15,73 @@ This component contains the deployment scripts and configurations for the Puppet
 
 The deployment component provides:
 - Docker Compose configuration for running the platform
-- Deployment scripts for CI/CD
+- `ppdeploy`, the tool that builds, verifies and deploys from a local machine
+- Server scripts that `ppdeploy` installs on the VM
 - Database backup scripts
 - Nginx configuration
 
+CircleCI runs the tests and builds images, but does not deploy.
+There is no staging server: `ppdeploy verify` checks a release against a local copy of production.
+
 ## Prerequisites
 
-- Docker and Docker Compose
-- Access to the target server via SSH
+- Docker with `docker compose`, `jq`, `sshpass` (`brew install hudochenkov/sshpass/sshpass`)
+- The VPN: the server accepts SSH only from allowlisted IPs
+- A personal account on the server with sudo (`mbernet` today)
 
 ## Directory Structure
 
 ```
 puppetplays-deploy/
-├── docker-compose.yml     # Docker Compose configuration
-├── deploy.sh              # Main deployment script
+├── ppdeploy               # local CLI: build, verify, ship, deploy, rollback
+├── docker-compose.yml     # services; image tags come from ADMIN_VERSION and WEB_VERSION
+├── server/                # scripts installed in /root/puppetplays-deploy on the VM
+│   ├── lib.sh             # shared helpers, secrets check
+│   ├── prepare.sh         # records the running release, .env from the containers, DB dump
+│   ├── deploy.sh          # recreates containers, runs `craft up`
+│   ├── rollback.sh        # previous release, optional DB restore
+│   ├── smoke.sh           # pages, admin login and API through nginx
+│   └── check.sh           # certificate, assets, CORS, outbound access
+├── replica/               # local copy of production for `ppdeploy verify`
+│   ├── compose.yml
+│   └── queries/           # GraphQL queries compared with production
 ├── nginx/                 # Nginx configuration files
-│   ├── admin.conf         # Admin site configuration
-│   ├── admin.staging.conf # Admin site configuration for staging
-│   ├── web.conf           # Web frontend configuration
-│   └── conf/              # Shared configurations
-└── scripts/               # Utility scripts
-    └── db-backup.sh       # Database backup script
+└── scripts/               # db-backup.sh and its cron file
 ```
 
 ## Deployment Process
 
-The deployment process is handled by CircleCI, which builds Docker images and deploys them to the appropriate environment based on the branch:
-- `develop` branch deploys to staging
-- `master` branch deploys to production
+```bash
+cd puppetplays-deploy
+./ppdeploy login                 # once: stores the SSH/sudo password in the macOS keychain
+./ppdeploy status                # what runs now
+./ppdeploy build admin           # images are tagged with the HEAD commit (clean tree required)
+./ppdeploy verify                # optional: fresh prod dump in a local replica, `craft up`,
+                                 # GraphQL answers compared with production
+./ppdeploy ship admin            # copies the image over SSH
+./ppdeploy deploy --web current --dry-run
+./ppdeploy deploy --web current  # dump, recreate, `craft up`, smoke test
+```
 
-### Manual Deployment
+`deploy` takes `--admin TAG|current` and `--web TAG|current` (default: HEAD for both).
+Before it changes anything it checks that the secrets compose resolves are the same as in the running containers.
 
-1. SSH into the server
+If the smoke test fails:
 
-2. Copy the deployment files to the server:
-   ```bash
-   scp -r puppetplays-deploy user@server:/path/to/deploy
-   ```
+```bash
+./ppdeploy rollback              # previous images
+./ppdeploy rollback --restore-db # also restores the pre-deploy dump: needed after Craft
+                                 # migrations, loses content edited since the deploy
+```
 
-3. Run the deployment script:
-   ```bash
-   ./deploy.sh
-   ```
+Notes:
+- The production `.env` lives only on the server (`/root/puppetplays-deploy/.env`, root only).
+  `prepare.sh` rebuilds it from the running containers on every deploy. Its values are literal
+  and single-quoted because two secrets start with `$`.
+- The web build renders static pages from the public API, so `build web` needs
+  `https://api.puppetplays.eu` to answer.
+- Craft answers 503 until `craft up` runs. Migrations that change project config must be run
+  first with `allowAdminChanges` enabled (dev or staging environment) and the YAML committed.
 
 ## Database Backups
 

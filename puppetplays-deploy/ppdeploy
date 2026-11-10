@@ -1,0 +1,306 @@
+#!/usr/bin/env bash
+# ppdeploy: build, verify and deploy PuppetPlays to production from a local
+# machine, without staging. Run `ppdeploy help` for the commands.
+set -euo pipefail
+
+DEPLOY_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+REPO=$(cd "$DEPLOY_DIR/.." && pwd)
+readonly DEPLOY_DIR REPO
+readonly HOST=${PP_HOST:-cchum-kvm-puppetplays.huma-num.fr}
+readonly SSH_USER=${PP_SSH_USER:-mbernet}
+readonly REMOTE_DIR=/root/puppetplays-deploy
+readonly KEYCHAIN_SERVICE=puppetplays-prod-ssh
+readonly API_URL=https://api.puppetplays.eu
+readonly REPLICA=$DEPLOY_DIR/replica
+# shellcheck disable=SC2054 # the comma is part of an ssh option value
+readonly SSH_OPTS=(-o LogLevel=ERROR -o ConnectTimeout=15 -o NumberOfPasswordPrompts=1
+                   -o PreferredAuthentications=password,keyboard-interactive -o PubkeyAuthentication=no)
+
+usage() {
+  cat <<EOF
+Usage: ppdeploy <command> [options]
+
+  login                      Store the SSH/sudo password in the macOS keychain.
+  status                     Running release, rollback target, disk, smoke test.
+  build [admin|web|all]      Build linux/amd64 images tagged with the HEAD commit.
+                             Refuses to build with uncommitted changes.
+                             The web build needs $API_URL to answer.
+  verify [--admin TAG] [--keep]
+                             Optional. Restore a fresh production dump in a local
+                             replica, run 'craft up' with the admin image (default:
+                             HEAD) and compare GraphQL answers with production.
+  ship [admin|web|all] [--tag TAG]
+                             Copy images to the server over SSH (skips images the
+                             server already has).
+  deploy [--admin TAG|current] [--web TAG|current] [--dry-run] [--yes]
+                             Default tag for both: HEAD. 'current' keeps the
+                             running image. Takes a database dump first.
+  rollback [--restore-db] [--yes]
+                             Start the release that ran before the last deploy.
+                             --restore-db also restores the pre-deploy dump (needed
+                             after Craft migrations; loses edits made since).
+  check                      Wider read-only check: certificate, assets, CORS,
+                             outbound access.
+
+Needs the VPN: the server accepts SSH only from allowlisted IPs.
+Environment: PP_SSH_PASSWORD (instead of the keychain), PP_HOST, PP_SSH_USER.
+EOF
+}
+
+die() { echo "ppdeploy: $*" >&2; exit 1; }
+say() { printf '\n\033[1m== %s\033[0m\n' "$*"; }
+
+# ---------------------------------------------------------------- connection
+
+password() {
+  if [ -n "${PP_SSH_PASSWORD:-}" ]; then printf '%s' "$PP_SSH_PASSWORD"; return; fi
+  security find-generic-password -s "$KEYCHAIN_SERVICE" -a "$SSH_USER" -w 2>/dev/null \
+    || die "no password: run 'ppdeploy login' or set PP_SSH_PASSWORD"
+}
+
+preflight() {
+  command -v sshpass >/dev/null || die "sshpass is missing (brew install hudochenkov/sshpass/sshpass)"
+  nc -z -G 8 "$HOST" 22 2>/dev/null \
+    || die "$HOST:22 does not answer. Is the VPN on? (SSH accepts only allowlisted IPs)"
+}
+
+rssh() { SSHPASS=$(password) sshpass -e ssh "${SSH_OPTS[@]}" "$SSH_USER@$HOST" "$@"; }
+rscp() { SSHPASS=$(password) sshpass -e scp -q "${SSH_OPTS[@]}" "$@"; }
+
+# as_root COMMANDS: run bash commands as root on the server. The password goes
+# to sudo on the first line of stdin; the commands follow.
+as_root() {
+  local pw; pw=$(password)
+  { printf '%s\n' "$pw"; printf '%s\n' "$1"; } \
+    | SSHPASS=$pw sshpass -e ssh "${SSH_OPTS[@]}" "$SSH_USER@$HOST" 'sudo -S -p "" bash -s'
+}
+
+# Install the server scripts and the compose file in $REMOTE_DIR.
+sync_server() {
+  local tmp; tmp=$(mktemp -d)
+  cp "$DEPLOY_DIR"/server/*.sh "$DEPLOY_DIR/docker-compose.yml" "$tmp/"
+  local payload; payload=$(COPYFILE_DISABLE=1 tar --no-xattrs --no-mac-metadata -C "$tmp" -czf - . | base64)
+  rm -r "$tmp"
+  as_root "set -e
+install -d -m 700 $REMOTE_DIR
+base64 -d <<'B64' | tar -xzf - -C $REMOTE_DIR --no-same-owner
+$payload
+B64
+chmod 700 $REMOTE_DIR/*.sh; chmod 600 $REMOTE_DIR/lib.sh $REMOTE_DIR/docker-compose.yml"
+}
+
+# ------------------------------------------------------------------- helpers
+
+head_tag() { git -C "$REPO" rev-parse HEAD; }
+
+require_clean() {
+  git -C "$REPO" diff --quiet && git -C "$REPO" diff --cached --quiet \
+    || die "uncommitted changes: commit them first, the image tag is the commit"
+}
+
+confirm() {
+  [ "${YES:-}" = 1 ] && return 0
+  read -r -p "$1 [y/N] " answer
+  [[ $answer =~ ^[yY]$ ]] || die "cancelled"
+}
+
+image() { echo "puppetplays/puppetplays-$1:$2"; }
+
+running_tag() { # running_tag admin|web
+  as_root "docker inspect --format '{{.Config.Image}}' puppetplays-$1" | sed 's/.*://'
+}
+
+which_images() {
+  case ${1:-all} in
+    admin) echo admin ;; web) echo web ;; all) echo admin web ;;
+    *) die "unknown image '$1' (admin, web or all)" ;;
+  esac
+}
+
+# ------------------------------------------------------------------ commands
+
+cmd_login() {
+  command -v security >/dev/null || die "the keychain needs macOS; use PP_SSH_PASSWORD instead"
+  local pw
+  read -r -s -p "Password of $SSH_USER@$HOST (SSH and sudo): " pw; echo
+  PP_SSH_PASSWORD=$pw preflight
+  PP_SSH_PASSWORD=$pw rssh true || die "SSH login failed"
+  security add-generic-password -U -s "$KEYCHAIN_SERVICE" -a "$SSH_USER" -w "$pw"
+  echo "Stored in the keychain as '$KEYCHAIN_SERVICE'."
+}
+
+cmd_status() {
+  preflight; sync_server
+  as_root "cd $REMOTE_DIR
+echo '== containers'; docker ps --format '  {{.Names}}\t{{.Image}}\t{{.Status}}'
+echo '== rollback target (state/previous.env)'
+if [ -f state/previous.env ]; then grep -E '^(ADMIN|WEB)_VERSION|^SAVED_AT' state/previous.env | sed 's/^/  /'; else echo '  none recorded'; fi
+echo '== disk'; df -h / | tail -1 | sed 's/^/  /'
+echo '== smoke'; ./smoke.sh"
+}
+
+cmd_check() { preflight; sync_server; as_root "$REMOTE_DIR/check.sh"; }
+
+cmd_build() {
+  require_clean
+  local tag; tag=$(head_tag)
+  for name in $(which_images "${1:-all}"); do
+    say "build $(image "$name" "$tag")"
+    if [ "$name" = web ]; then
+      curl -sf -o /dev/null --max-time 15 -H 'Content-Type: application/json' \
+        -d '{"query":"{ entryCount(section:\"works\") }"}' "$API_URL/graphql" \
+        || die "$API_URL does not answer from here. The web build renders static pages from the API, so it cannot run while the API is unreachable."
+      docker build --pull --platform linux/amd64 --build-arg NEXT_PUBLIC_API_URL="$API_URL" \
+        -t "$(image web "$tag")" "$REPO/puppetplays-web"
+    else
+      docker build --pull --platform linux/amd64 -t "$(image admin "$tag")" "$REPO/puppetplays-admin"
+    fi
+  done
+}
+
+cmd_ship() {
+  local what=all tag; tag=$(head_tag)
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --tag) tag=$2; shift 2 ;;
+      admin|web|all) what=$1; shift ;;
+      *) die "ship: unknown option $1" ;;
+    esac
+  done
+  preflight
+  for name in $(which_images "$what"); do
+    local img; img=$(image "$name" "$tag")
+    say "ship $img"
+    if [ "$(as_root "docker image inspect $img >/dev/null 2>&1 && echo yes || echo no")" = yes ]; then
+      echo "  already on the server"; continue
+    fi
+    docker image inspect "$img" >/dev/null 2>&1 || die "$img is not built locally: run 'ppdeploy build $name'"
+    local tmp remote="/tmp/ppdeploy-$name-$tag.tar.gz"
+    tmp=$(mktemp)
+    docker save "$img" | gzip -1 > "$tmp"
+    local sum; sum=$(shasum -a 256 "$tmp" | cut -d' ' -f1)
+    echo "  $(du -h "$tmp" | cut -f1) compressed, uploading"
+    rscp "$tmp" "$SSH_USER@$HOST:$remote"
+    rm -f "$tmp"
+    as_root "set -e
+echo '$sum  $remote' | sha256sum -c --quiet
+gunzip -c $remote | docker load | sed 's/^/  /'
+unlink $remote"
+  done
+}
+
+cmd_verify() {
+  local admin keep=''
+  admin=$(head_tag)
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --admin) admin=$2; shift 2 ;;
+      --keep) keep=1; shift ;;
+      *) die "verify: unknown option $1" ;;
+    esac
+  done
+  local img; img=$(image admin "$admin")
+  docker image inspect "$img" >/dev/null 2>&1 || die "$img is not built locally: run 'ppdeploy build admin'"
+  command -v jq >/dev/null || die "jq is missing"
+  preflight
+
+  local dc=(docker compose -f "$REPLICA/compose.yml")
+  export ADMIN_IMAGE=$img
+  mkdir -p "$REPLICA/.data" && chmod 700 "$REPLICA/.data"
+  local dump=$REPLICA/.data/prod.dump
+
+  say "fresh dump of production"
+  as_root "docker exec postgres sh -c 'pg_dump -U \"\$POSTGRES_USER\" -Fc \"\$POSTGRES_DB\"'" > "$dump"
+  chmod 600 "$dump"
+  [ "$(head -c 5 "$dump")" = PGDMP ] || die "the dump is not a PostgreSQL archive"
+  echo "  $(du -h "$dump" | cut -f1)"
+
+  say "replica with $img"
+  "${dc[@]}" down -v >/dev/null 2>&1 || true
+  "${dc[@]}" up -d postgres >/dev/null
+  for _ in $(seq 1 30); do "${dc[@]}" exec -T postgres pg_isready -U puppetplays >/dev/null 2>&1 && break; sleep 2; done
+  "${dc[@]}" exec -T postgres pg_restore -U puppetplays -d puppetplays --no-owner /dump/prod.dump
+  "${dc[@]}" up -d admin >/dev/null
+  sleep 5
+  "${dc[@]}" exec -T admin php craft up --interactive=0 --noBackup=1 | grep -vE '^\s+> |^\s*$' | sed 's/^/  /'
+
+  say "compare GraphQL answers: replica vs production"
+  local fail=0 q name mine theirs
+  for q in "$REPLICA"/queries/*.json; do
+    name=$(basename "$q" .json)
+    mine=$(curl -s --max-time 60 -H 'Content-Type: application/json' --data-binary @"$q" http://localhost:11000/graphql | jq -S .)
+    theirs=$(rssh "curl -s --max-time 60 --resolve api.puppetplays.eu:443:\$(getent hosts puppetplays.eu | awk '{print \$1}') -H 'Content-Type: application/json' --data-binary @- $API_URL/graphql" < "$q" | jq -S .)
+    if [ "$mine" = "$theirs" ] && ! jq -e '.errors' <<<"$mine" >/dev/null; then
+      printf '  %-14s same\n' "$name"
+    else
+      printf '  %-14s DIFFERENT\n' "$name"; fail=1
+      diff <(echo "$theirs") <(echo "$mine") | head -10 | sed 's/^/    /'
+    fi
+  done
+  local cp; cp=$(curl -s -o /dev/null -w '%{http_code}' --max-time 60 http://localhost:11000/admin/login)
+  printf '  %-14s %s\n' "admin login" "$cp"
+  [ "$cp" = 200 ] || fail=1
+
+  if [ -z "$keep" ]; then "${dc[@]}" down -v >/dev/null 2>&1; fi
+  rm -f "$dump"
+  [ $fail = 0 ] && echo "VERIFY OK ($img)" || die "verify found differences (see above)"
+}
+
+cmd_deploy() {
+  local admin web dry=''
+  admin=$(head_tag); web=$admin
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --admin) admin=$2; shift 2 ;;
+      --web) web=$2; shift 2 ;;
+      --dry-run) dry=--dry-run; shift ;;
+      --yes) YES=1; shift ;;
+      *) die "deploy: unknown option $1" ;;
+    esac
+  done
+  preflight; sync_server
+  [ "$admin" = current ] && admin=$(running_tag admin)
+  [ "$web" = current ] && web=$(running_tag web)
+
+  say "running:  admin $(running_tag admin)  web $(running_tag web)"
+  echo "   target:   admin $admin  web $web"
+  if [ -n "$dry" ]; then
+    as_root "$REMOTE_DIR/prepare.sh --no-dump && $REMOTE_DIR/deploy.sh $admin $web --dry-run"
+    return
+  fi
+  confirm "Deploy to production?"
+  as_root "$REMOTE_DIR/prepare.sh && $REMOTE_DIR/deploy.sh $admin $web"
+  say "smoke test"
+  as_root "$REMOTE_DIR/smoke.sh" \
+    || die "smoke test failed. To go back: ppdeploy rollback (add --restore-db if Craft ran migrations)"
+}
+
+cmd_rollback() {
+  local restore=''
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --restore-db) restore=--restore-db; shift ;;
+      --yes) YES=1; shift ;;
+      *) die "rollback: unknown option $1" ;;
+    esac
+  done
+  preflight; sync_server
+  as_root "grep -E '^(ADMIN|WEB)_VERSION' $REMOTE_DIR/state/previous.env" | sed 's/^/  rollback to /' \
+    || die "no previous release recorded on the server"
+  [ -n "$restore" ] && echo "  and restore the database from the pre-deploy dump (edits since the deploy are lost)"
+  confirm "Roll back production?"
+  as_root "$REMOTE_DIR/rollback.sh $restore"
+  say "smoke test"
+  as_root "$REMOTE_DIR/smoke.sh"
+}
+
+main() {
+  local cmd=${1:-help}; shift || true
+  case $cmd in
+    login|status|check|build|ship|verify|deploy|rollback) "cmd_$cmd" "$@" ;;
+    help|-h|--help) usage ;;
+    *) usage; exit 1 ;;
+  esac
+}
+
+main "$@"

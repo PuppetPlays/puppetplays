@@ -19,7 +19,7 @@ services:
 
   puppetplays-admin:
     container_name: puppetplays-admin
-    image: puppetplays/puppetplays-admin:${PUPPETPLAYS_VERSION}
+    image: puppetplays/puppetplays-admin:${ADMIN_VERSION}
     environment:
       - PHP_MEMORY_LIMIT=512M
       - PHP_POST_MAX_SIZE=25M
@@ -57,7 +57,7 @@ services:
 
   puppetplays-web:
     container_name: puppetplays-web
-    image: puppetplays/puppetplays-web:${PUPPETPLAYS_VERSION}
+    image: puppetplays/puppetplays-web:${WEB_VERSION}
     environment:
       - NEXT_PUBLIC_API_URL
     ports:
