@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Usage: prepare.sh [--no-dump]
-# Changes no running service. Records the running release, rebuilds
-# .env.base from the running containers and takes a verified database dump.
+# Changes no running service. Rebuilds .env.base from the running containers
+# and, unless --no-dump, takes a verified database dump and records it with
+# the running release in state/pending.env. deploy.sh turns pending.env into
+# the rollback target (previous.env) only when it starts changing things.
 set -euo pipefail
 # shellcheck source=lib.sh
 . /root/puppetplays-deploy/lib.sh
@@ -9,18 +11,14 @@ set -euo pipefail
 nodump=${1:-}
 umask 077
 ts=$(date +%Y%m%d-%H%M%S)
-mkdir -p "$DIR/state" "$DIR/state/inspect" "$BACKUP_DIR"
+mkdir -p "$DIR/state/inspect" "$BACKUP_DIR"
 
 say "running release"
 for c in "${CONTAINERS[@]}"; do
   docker inspect "$c" > "$DIR/state/inspect/$c-$ts.json"
   printf '  %-18s %s\n' "$c" "$(docker inspect --format '{{.Config.Image}}' "$c")"
 done
-{
-  q ADMIN_VERSION "$(image_tag puppetplays-admin)"
-  q WEB_VERSION "$(image_tag puppetplays-web)"
-  q SAVED_AT "$ts"
-} > "$DIR/state/running.env"
+find "$DIR/state/inspect" -name '*.json' -mtime +60 -delete
 
 say ".env.base from the running containers"
 val() {
@@ -30,7 +28,9 @@ val() {
   q POSTGRES_PASSWORD "$(val postgres POSTGRES_PASSWORD)"
   q POSTGRES_USER "$(val postgres POSTGRES_USER)"
   q POSTGRES_DB "$(val postgres POSTGRES_DB)"
-  q PUPPETPLAYS_HOST_DIR /var/lib/puppetplays
+  # Host directory of the data volumes, from the running postgres mount.
+  pgdata=$(docker inspect --format '{{range .Mounts}}{{if eq .Destination "/var/lib/postgresql/data"}}{{.Source}}{{end}}{{end}}' postgres)
+  q PUPPETPLAYS_HOST_DIR "${pgdata%/database/postgres}"
   for k in SECURITY_KEY PLUGIN_WORKFLOW_KEY ENVIRONMENT SITE_URL CP_URL COOKIE_DOMAIN EMAIL_HOSTNAME EMAIL_PORT EMAIL_SENDER; do
     q "$k" "$(val puppetplays-admin "$k")"
   done
@@ -49,6 +49,12 @@ if [ "$nodump" = "--no-dump" ]; then
   exit 0
 fi
 
+if [ -f "$DIR/state/in-progress" ]; then
+  echo
+  echo "  WARNING: the last deploy did not finish ($(cat "$DIR/state/in-progress"))."
+  echo "  The rollback target stays the last good release in state/previous.env."
+fi
+
 say "pre-deploy database dump"
 user=$(envget "$DIR/.env.base" POSTGRES_USER)
 db=$(envget "$DIR/.env.base" POSTGRES_DB)
@@ -57,6 +63,16 @@ docker exec postgres pg_dump -U "$user" -Fc "$db" > "$dump"
 tables=$(docker exec -i postgres pg_restore --list < "$dump" | grep -c 'TABLE DATA')
 echo "  $dump ($(du -h "$dump" | cut -f1), $tables tables with data)"
 [ "$tables" -gt 50 ] || { echo "  dump looks wrong"; exit 1; }
-ln -sfn "$dump" "$BACKUP_DIR/latest-predeploy.dump"
-find "$BACKUP_DIR" -name 'puppetplays_predeploy_*.dump' -mtime +60 -delete
+
+# The running release and the dump of its database, recorded together.
+{
+  q ADMIN_VERSION "$(image_tag puppetplays-admin)"
+  q WEB_VERSION "$(image_tag puppetplays-web)"
+  q DUMP "$dump"
+  q SAVED_AT "$ts"
+} > "$DIR/state/pending.env"
+
+# Keep 60 days of pre-deploy dumps, but never the one previous.env points to.
+keep=$( [ -f "$DIR/state/previous.env" ] && envget "$DIR/state/previous.env" DUMP || true)
+find "$BACKUP_DIR" -name 'puppetplays_predeploy_*.dump' -mtime +60 ! -path "${keep:-/none}" -delete
 echo "PREPARE OK $ts"

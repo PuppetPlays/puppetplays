@@ -1,0 +1,12 @@
+# Keep local files out of the image. ppdeploy builds from `git archive`,
+# so this mainly protects manual `docker build` runs.
+.env
+.env.*
+!.env.example
+.ddev
+.git
+storage/*
+!storage/.gitignore
+!storage/config-deltas
+web/cpresources/*
+!web/cpresources/.gitignore

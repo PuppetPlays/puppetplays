@@ -88,7 +88,7 @@ Notes:
 The `scripts/db-backup.sh` script handles automatic database backups. On the server it runs from cron:
 
 ```bash
-install -m 0755 scripts/db-backup.sh /usr/local/sbin/puppetplays-db-backup
+install -m 0700 scripts/db-backup.sh /usr/local/sbin/puppetplays-db-backup
 install -m 0644 scripts/puppetplays-db-backup.cron /etc/cron.d/puppetplays-db-backup
 ```
 

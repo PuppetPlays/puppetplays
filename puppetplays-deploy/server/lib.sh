@@ -29,10 +29,37 @@ dc_with() {
 # image_tag CONTAINER -> tag of the image the container runs
 image_tag() { docker inspect --format '{{.Config.Image}}' "$1" | sed 's/.*://'; }
 
-# env_for ADMIN_VERSION WEB_VERSION -> writes $DIR/.env from .env.base
-env_for() {
-  { cat "$DIR/.env.base"; q ADMIN_VERSION "$1"; q WEB_VERSION "$2"; } > "$DIR/.env"
-  chmod 600 "$DIR/.env"
+# env_file_for ADMIN_VERSION WEB_VERSION FILE -> FILE = .env.base + image tags
+env_file_for() {
+  (umask 077; { cat "$DIR/.env.base"; q ADMIN_VERSION "$1"; q WEB_VERSION "$2"; } > "$3")
+}
+
+# write_running ADMIN_VERSION WEB_VERSION -> state/running.env
+write_running() {
+  { q ADMIN_VERSION "$1"; q WEB_VERSION "$2"; q SAVED_AT "$(date +%Y%m%d-%H%M%S)"; } > "$DIR/state/running.env"
+}
+
+# Remove puppetplays images that are neither running nor the rollback target,
+# then dangling layers. Old releases filled the disk before.
+prune_images() {
+  local keep=() repo tag
+  keep+=("puppetplays/puppetplays-admin:$(image_tag puppetplays-admin)")
+  keep+=("puppetplays/puppetplays-web:$(image_tag puppetplays-web)")
+  if [ -f "$DIR/state/previous.env" ]; then
+    keep+=("puppetplays/puppetplays-admin:$(envget "$DIR/state/previous.env" ADMIN_VERSION)")
+    keep+=("puppetplays/puppetplays-web:$(envget "$DIR/state/previous.env" WEB_VERSION)")
+  fi
+  say "remove images that are neither running nor the rollback target"
+  while read -r repo tag; do
+    local ref="$repo:$tag"
+    if printf '%s\n' "${keep[@]}" | grep -qxF "$ref"; then
+      echo "  keep   $ref"
+    else
+      echo "  remove $ref"
+      docker rmi "$ref" >/dev/null
+    fi
+  done < <(docker images --format '{{.Repository}} {{.Tag}}' | grep -E '^puppetplays/puppetplays-(admin|web) ')
+  docker image prune -f >/dev/null
 }
 
 # verify_env FILE: fail unless compose resolves the same secrets and URLs that

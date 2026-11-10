@@ -141,20 +141,27 @@ echo '== smoke'; ./smoke.sh"
 
 cmd_check() { preflight; sync_server; as_root "$REMOTE_DIR/check.sh"; }
 
+# Build from `git archive` of the commit, never from the working tree:
+# untracked and ignored local files (.env, node_modules, .ddev...) must not
+# end up in a production image.
 cmd_build() {
   require_clean
   local tag; tag=$(head_tag)
   for name in $(which_images "${1:-all}"); do
-    say "build $(image "$name" "$tag")"
+    local dir=puppetplays-$name ctx
+    say "build $(image "$name" "$tag") from git archive"
     if [ "$name" = web ]; then
       curl -sf -o /dev/null --max-time 15 -H 'Content-Type: application/json' \
         -d '{"query":"{ entryCount(section:\"works\") }"}' "$API_URL/graphql" \
         || die "$API_URL does not answer from here. The web build renders static pages from the API, so it cannot run while the API is unreachable."
-      docker build --pull --platform linux/amd64 --build-arg NEXT_PUBLIC_API_URL="$API_URL" \
-        -t "$(image web "$tag")" "$REPO/puppetplays-web"
-    else
-      docker build --pull --platform linux/amd64 -t "$(image admin "$tag")" "$REPO/puppetplays-admin"
     fi
+    ctx=$(mktemp -d)
+    git -C "$REPO" archive "$tag" "$dir" | tar -x -C "$ctx"
+    local args=(--pull --platform linux/amd64 --label "org.opencontainers.image.revision=$tag"
+                -t "$(image "$name" "$tag")")
+    [ "$name" = web ] && args+=(--build-arg "NEXT_PUBLIC_API_URL=$API_URL")
+    docker build "${args[@]}" "$ctx/$dir" || { rm -rf "$ctx"; die "build of $name failed"; }
+    rm -rf "$ctx"
   done
 }
 
@@ -169,12 +176,17 @@ cmd_ship() {
   done
   preflight
   for name in $(which_images "$what"); do
-    local img; img=$(image "$name" "$tag")
+    local img local_id remote_id; img=$(image "$name" "$tag")
     say "ship $img"
-    if [ "$(as_root "docker image inspect $img >/dev/null 2>&1 && echo yes || echo no")" = yes ]; then
-      echo "  already on the server"; continue
+    local_id=$(docker image inspect --format '{{.Id}}' "$img" 2>/dev/null) \
+      || die "$img is not built locally: run 'ppdeploy build $name'"
+    # Compare image IDs, not tags: a rebuild of the same commit (new base
+    # image with security fixes) keeps the tag but changes the ID.
+    remote_id=$(as_root "docker image inspect --format '{{.Id}}' $img 2>/dev/null || true")
+    if [ "$remote_id" = "$local_id" ]; then
+      echo "  already on the server (${local_id:7:12})"; continue
     fi
-    docker image inspect "$img" >/dev/null 2>&1 || die "$img is not built locally: run 'ppdeploy build $name'"
+    [ -n "$remote_id" ] && echo "  server has a different build of this tag (${remote_id:7:12}), replacing it"
     local tmp remote="/tmp/ppdeploy-$name-$tag.tar.gz"
     tmp=$(mktemp)
     docker save "$img" | gzip -1 > "$tmp"
@@ -182,10 +194,13 @@ cmd_ship() {
     echo "  $(du -h "$tmp" | cut -f1) compressed, uploading"
     rscp "$tmp" "$SSH_USER@$HOST:$remote"
     rm -f "$tmp"
-    as_root "set -e
+    as_root "set -eo pipefail
+trap 'unlink $remote 2>/dev/null || true' EXIT
 echo '$sum  $remote' | sha256sum -c --quiet
 gunzip -c $remote | docker load | sed 's/^/  /'
-unlink $remote"
+loaded=\$(docker image inspect --format '{{.Id}}' $img)
+[ \"\$loaded\" = '$local_id' ] || { echo '  loaded image ID does not match'; exit 1; }
+echo '  loaded ${local_id:7:12}'" || die "loading $img on the server failed"
   done
 }
 
@@ -208,6 +223,10 @@ cmd_verify() {
   export ADMIN_IMAGE=$img
   mkdir -p "$REPLICA/.data" && chmod 700 "$REPLICA/.data"
   local dump=$REPLICA/.data/prod.dump
+  # The dump and the replica volume hold production data: remove them on any
+  # exit, also when a step fails. --keep leaves the replica running.
+  VERIFY_DUMP=$dump VERIFY_KEEP=$keep
+  trap 'rm -f "$VERIFY_DUMP"; [ -n "$VERIFY_KEEP" ] || docker compose -f "$REPLICA/compose.yml" down -v >/dev/null 2>&1' EXIT
 
   say "fresh dump of production"
   as_root "docker exec postgres sh -c 'pg_dump -U \"\$POSTGRES_USER\" -Fc \"\$POSTGRES_DB\"'" > "$dump"
@@ -228,9 +247,9 @@ cmd_verify() {
   local fail=0 q name mine theirs
   for q in "$REPLICA"/queries/*.json; do
     name=$(basename "$q" .json)
-    mine=$(curl -s --max-time 60 -H 'Content-Type: application/json' --data-binary @"$q" http://localhost:11000/graphql | jq -S .)
-    theirs=$(rssh "curl -s --max-time 60 --resolve api.puppetplays.eu:443:\$(getent hosts puppetplays.eu | awk '{print \$1}') -H 'Content-Type: application/json' --data-binary @- $API_URL/graphql" < "$q" | jq -S .)
-    if [ "$mine" = "$theirs" ] && ! jq -e '.errors' <<<"$mine" >/dev/null; then
+    mine=$(curl -s --max-time 60 -H 'Content-Type: application/json' --data-binary @"$q" http://localhost:11000/graphql | jq -S . 2>/dev/null) || mine="replica: no JSON answer"
+    theirs=$(rssh "curl -s --max-time 60 --resolve api.puppetplays.eu:443:\$(getent hosts puppetplays.eu | awk '{print \$1}') -H 'Content-Type: application/json' --data-binary @- $API_URL/graphql" < "$q" | jq -S . 2>/dev/null) || theirs="production: no JSON answer"
+    if [ "$mine" = "$theirs" ] && ! jq -e '.errors' <<<"$mine" >/dev/null 2>&1; then
       printf '  %-14s same\n' "$name"
     else
       printf '  %-14s DIFFERENT\n' "$name"; fail=1
@@ -241,8 +260,7 @@ cmd_verify() {
   printf '  %-14s %s\n' "admin login" "$cp"
   [ "$cp" = 200 ] || fail=1
 
-  if [ -z "$keep" ]; then "${dc[@]}" down -v >/dev/null 2>&1; fi
-  rm -f "$dump"
+  [ -n "$keep" ] && echo "  replica kept running on http://localhost:11000 (stop it with: docker compose -f $REPLICA/compose.yml down -v)"
   [ $fail = 0 ] && echo "VERIFY OK ($img)" || die "verify found differences (see above)"
 }
 

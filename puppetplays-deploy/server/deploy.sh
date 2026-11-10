@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Usage: deploy.sh ADMIN_VERSION WEB_VERSION [--dry-run]
 # Run prepare.sh first. Recreates the containers with the given image tags,
-# runs Craft migrations and keeps old images for rollback.
+# runs Craft migrations, then removes images that are neither running nor the
+# rollback target. --dry-run checks everything and changes nothing.
 set -euo pipefail
 # shellcheck source=lib.sh
 . /root/puppetplays-deploy/lib.sh
 
 admin=$1 web=$2 dry=${3:-}
-[ -f "$DIR/state/running.env" ] || { echo "run prepare.sh first"; exit 1; }
 
 say "target release"
 for pair in "puppetplays-admin:$admin" "puppetplays-web:$web"; do
@@ -18,20 +18,33 @@ for pair in "puppetplays-admin:$admin" "puppetplays-web:$web"; do
   fi
 done
 
-env_for "$admin" "$web"
+# The target configuration goes to .env.next; .env changes only on a real deploy.
+next=$DIR/.env.next
+env_file_for "$admin" "$web" "$next"
+trap 'unlink "$next" 2>/dev/null || true' EXIT
 say "check: compose resolves the same secrets as the running containers"
-verify_env "$DIR/.env"
-dc() { dc_with "$DIR/.env" "$@"; }
-dc config --images | sed 's/^/  /'
+verify_env "$next"
+dc_with "$next" config --images | sed 's/^/  /'
 
 if [ "$dry" = "--dry-run" ]; then
   say "dry run: nothing changed"
   exit 0
 fi
 
-# What to roll back to if this deploy is bad.
-cp "$DIR/state/running.env" "$DIR/state/previous.env"
+# Rollback target: the release that ran before, with the dump of its database.
+# After an unfinished deploy, keep the last good target instead.
+[ -f "$DIR/state/pending.env" ] || { echo "no state/pending.env: run prepare.sh first"; exit 1; }
+if [ -f "$DIR/state/in-progress" ]; then
+  echo "  last deploy did not finish: keeping state/previous.env as the rollback target"
+  unlink "$DIR/state/pending.env"
+else
+  mv "$DIR/state/pending.env" "$DIR/state/previous.env"
+fi
+echo "$admin $web $(date +%Y%m%d-%H%M%S)" > "$DIR/state/in-progress"
+mv "$next" "$DIR/.env"
+trap - EXIT
 
+dc() { dc_with "$DIR/.env" "$@"; }
 user=$(envget "$DIR/.env" POSTGRES_USER)
 say "recreate containers"
 dc up -d postgres
@@ -42,7 +55,8 @@ say "craft up (migrations + project config)"
 dc exec -T puppetplays-admin php craft up --interactive=0 --noBackup=1
 dc up -d puppetplays-web
 sleep 10
-
-{ q ADMIN_VERSION "$admin"; q WEB_VERSION "$web"; q SAVED_AT "$(date +%Y%m%d-%H%M%S)"; } > "$DIR/state/running.env"
+write_running "$admin" "$web"
+unlink "$DIR/state/in-progress"
 docker ps --format '  {{.Names}}\t{{.Image}}\t{{.Status}}'
+prune_images
 echo "DEPLOY DONE"
