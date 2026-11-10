@@ -61,17 +61,18 @@ The deployment process is handled by CircleCI, which builds Docker images and de
 
 ## Database Backups
 
-The `scripts/db-backup.sh` script handles automatic database backups. It can be configured as a cron job:
+The `scripts/db-backup.sh` script handles automatic database backups. On the server it runs from cron:
 
 ```bash
-# Add to crontab to run daily at 1 AM
-0 1 * * * /path/to/puppetplays-deploy/scripts/db-backup.sh daily
+install -m 0755 scripts/db-backup.sh /usr/local/sbin/puppetplays-db-backup
+install -m 0644 scripts/puppetplays-db-backup.cron /etc/cron.d/puppetplays-db-backup
 ```
 
-Backups are stored in:
-```
-${PUPPETPLAYS_HOST_DIR}/database/postgres-backups/daily/
-```
+The cron file name must not contain a dot: cron ignores files in `/etc/cron.d` whose name has one.
+Output goes to `/var/log/puppetplays-db-backup.log`.
+
+Backups are stored in `${PUPPETPLAYS_HOST_DIR}/database/postgres-backups/{daily,weekly,monthly}/`
+and kept for 7 days, 3 weeks and 1 year.
 
 ## Server Configuration
 

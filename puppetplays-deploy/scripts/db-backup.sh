@@ -13,6 +13,9 @@ case $BACKUP_DATE_DIR in
   'daily')
     FILE_DELETE_DELAY=+6
     ;;
+  'monthly')
+    FILE_DELETE_DELAY=+365
+    ;;
   *)
     FILE_DELETE_DELAY=+21
     ;;
