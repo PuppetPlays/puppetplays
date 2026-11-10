@@ -151,7 +151,7 @@ ddev exec php craft users/create --admin --email=you@example.com --username=admi
 
 ### GraphQL Errors
 - Check query construction in `lib/api.js`
-- API logs query details to console with full request/response
+- API errors are logged to console with the request variables; do not log full queries or responses (in production this filled the disk)
 - Verify schema permissions in Craft CMS admin
 
 ### Translation Missing
