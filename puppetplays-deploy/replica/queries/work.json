@@ -1,0 +1,1 @@
+{"query":"{ entry(section:\"works\", id:152, site:\"en\") { id title slug ... on works_works_Entry { authors { id title } } } }"}

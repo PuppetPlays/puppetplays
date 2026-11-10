@@ -1,0 +1,39 @@
+# Local copy of production used by `ppdeploy verify`.
+# Same admin image and ENVIRONMENT=production; the database is a fresh dump
+# of production restored into a throwaway volume.
+name: pp-replica
+services:
+  postgres:
+    image: postgres:13
+    platform: linux/amd64
+    environment:
+      POSTGRES_PASSWORD: replica
+      POSTGRES_USER: puppetplays
+      POSTGRES_DB: puppetplays
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./.data:/dump:ro
+  admin:
+    image: ${ADMIN_IMAGE:?set ADMIN_IMAGE}
+    platform: linux/amd64
+    environment:
+      - DB_DRIVER=pgsql
+      - DB_PASSWORD=replica
+      - DB_USER=puppetplays
+      - DB_DATABASE=puppetplays
+      - DB_SERVER=postgres
+      - DB_PORT=5432
+      - DB_SCHEMA=public
+      - SECURITY_KEY=replica-local-security-key-not-prod
+      - APP_ID=puppetplays
+      - ENVIRONMENT=production
+      - SITE_URL=http://localhost:17000
+      - CP_URL=http://localhost:11000/admin
+      - COOKIE_DOMAIN=localhost
+      - EMAIL_HOSTNAME=0.0.0.0
+      - EMAIL_PORT=1025
+      - EMAIL_SENDER=no-reply@puppetplays.eu
+    ports: ["127.0.0.1:11000:8080"]
+    depends_on: [postgres]
+volumes:
+  pgdata:

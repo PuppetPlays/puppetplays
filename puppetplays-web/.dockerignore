@@ -1,0 +1,12 @@
+# Keep local files out of the image. ppdeploy builds from `git archive`,
+# so this mainly protects manual `docker build` runs.
+node_modules
+.next
+.env
+.env.*
+!.env.example
+.git
+coverage
+cypress/downloads
+cypress/screenshots
+cypress/videos

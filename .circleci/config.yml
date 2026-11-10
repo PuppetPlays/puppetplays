@@ -172,111 +172,14 @@ jobs:
             docker pull << pipeline.parameters.admin-image >>
             docker tag << pipeline.parameters.admin-image >> << pipeline.parameters.admin-image-release >>
             docker push << pipeline.parameters.admin-image-release >>
-  deploy_staging:
-    machine:
-      image: ubuntu-2204:current
-    environment:
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD_STAGING
-      POSTGRES_USER: puppetplays
-      POSTGRES_DB: puppetplays
-      PUPPETPLAYS_VERSION: << pipeline.git.revision >>-staging
-      PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
-      SECURITY_KEY: $SECURITY_KEY_STAGING
-      PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
-      ENVIRONMENT: staging
-      SITE_URL: https://staging.puppetplays.eu
-      CP_URL: https://admin.staging.puppetplays.eu
-      COOKIE_DOMAIN: .staging.puppetplays.eu
-      EMAIL_HOSTNAME: 0.0.0.0
-      EMAIL_PORT: 1025
-      EMAIL_SENDER: no-reply@puppetplays.eu
-      NEXT_PUBLIC_API_URL: https://api.staging.puppetplays.eu
-      DOCKER_HOST: ssh://root@172.233.109.95
-      COMPOSE_PARAMIKO_SSH: 1
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:sbyvjd5h21g+HwHXo/brLWTtloKBFZ3GIyo31JJDOqQ"
-      - run: 
-          name: Deploy to staging server
-          command: |
-            mkdir -p ~/.docker
-            echo -e "$DOCKER_STAGING_TLS_CA" > ~/.docker/ca.pem
-            echo -e "$DOCKER_STAGING_TLS_CERT" > ~/.docker/cert.pem
-            echo -e "$DOCKER_STAGING_TLS_KEY" > ~/.docker/key.pem
-            # Use direct authentication with API token instead of interactive login
-            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
-              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
-              exit 1
-            fi
-            echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
-            cd ./puppetplays-deploy
-            ./deploy.sh
-      - run:
-          name: Update nginx configurations
-          command: |
-            cd ./puppetplays-deploy
-            ./update-nginx.sh
-  deploy_production:
-    machine:
-      image: ubuntu-2204:current
-    environment:
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD_PRODUCTION
-      POSTGRES_USER: puppetplays
-      POSTGRES_DB: puppetplays
-      PUPPETPLAYS_VERSION: << pipeline.git.revision >>
-      PUPPETPLAYS_HOST_DIR: /var/lib/puppetplays
-      SECURITY_KEY: $SECURITY_KEY_PRODUCTION
-      PLUGIN_WORKFLOW_KEY: KK31-69LT-ZWON-MRB8-A20F-U7B2
-      ENVIRONMENT: production
-      SITE_URL: https://puppetplays.eu
-      CP_URL: https://admin.puppetplays.eu
-      COOKIE_DOMAIN: .puppetplays.eu
-      EMAIL_HOSTNAME: relay.huma-num.fr
-      EMAIL_PORT: 25
-      EMAIL_SENDER: no-reply@puppetplays.eu
-      NEXT_PUBLIC_API_URL: https://api.puppetplays.eu
-      DOCKER_HOST: ssh://root@cchum-kvm-puppetplays.huma-num.fr
-      COMPOSE_PARAMIKO_SSH: 1
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:nSDRW9vIXtRB+MRLSZglj4Zuz6RscHkWPH/dEvaC38A"
-      - run: 
-          name: Deploy to production server
-          command: |
-          
-            # Check if environment variables are properly set
-            if [ "$POSTGRES_PASSWORD_PRODUCTION" = "\$POSTGRES_PASSWORD_PRODUCTION" ] || [ "$SECURITY_KEY_PRODUCTION" = "\$SECURITY_KEY_PRODUCTION" ]; then
-              echo "Error: POSTGRES_PASSWORD_PRODUCTION or SECURITY_KEY_PRODUCTION environment variables are not properly set in CircleCI"
-              exit 1
-            fi
-            
-            mkdir -p ~/.docker
-            echo -e "$DOCKER_PRODUCTION_TLS_CA" > ~/.docker/ca.pem
-            echo -e "$DOCKER_PRODUCTION_TLS_CERT" > ~/.docker/cert.pem
-            echo -e "$DOCKER_PRODUCTION_TLS_KEY" > ~/.docker/key.pem
-            # Use direct authentication with API token instead of interactive login
-            if [ -z "${DOCKER_PASSWORD}" ] || [ -z "${DOCKER_USER}" ]; then
-              echo "Error: DOCKER_PASSWORD or DOCKER_USER environment variables are not set in CircleCI"
-              exit 1
-            fi
-            echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
-            cd ./puppetplays-deploy
-            ./deploy.sh
-      - run:
-          name: Update nginx configurations
-          command: |
-            cd ./puppetplays-deploy
-            ./update-nginx.sh
 
 orbs:
   node: circleci/node@4.1.0
 
+# CI tests and builds images only. Production deploys run from a local
+# machine with puppetplays-deploy/ppdeploy (see puppetplays-deploy/README.md).
 workflows:
-  build_and_deploy_on_staging:
+  build_on_staging:
     jobs:
       - test_web:
           filters:
@@ -293,16 +196,7 @@ workflows:
       - docker_admin_staging:
           requires:
             - build_web_staging
-      - hold_staging_deploy:
-          type: approval
-          requires:
-            - build_web_staging
-            - docker_web_staging
-            - docker_admin_staging
-      - deploy_staging:
-          requires:
-            - hold_staging_deploy
-  build_and_deploy_on_production:
+  build_on_production:
     jobs:
       - test_web:
           filters:
@@ -317,13 +211,4 @@ workflows:
       - docker_admin_production:
           requires:
             - build_web_production
-      - hold_production_deploy:
-          type: approval
-          requires:
-            - build_web_production
-            - docker_web_production
-            - docker_admin_production
-      - deploy_production:
-          requires:
-            - hold_production_deploy
   
