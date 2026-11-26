@@ -1,0 +1,1 @@
+{"query":"{ entries(section:\"works\", site:\"fr\", limit:20, orderBy:\"title\") { id title slug dateUpdated } }"}

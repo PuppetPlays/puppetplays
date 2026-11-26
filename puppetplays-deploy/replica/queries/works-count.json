@@ -1,0 +1,1 @@
+{"query":"{ works: entryCount(section:\"works\") persons: entryCount(section:\"persons\") techniques: entryCount(section:\"animationTechniques\") }"}
