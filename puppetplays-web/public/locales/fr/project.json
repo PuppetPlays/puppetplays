@@ -300,7 +300,9 @@
       "books": "Ouvrages",
       "reports": "Rapports",
       "thesis": "Thèses",
-      "other": "Autres publications"
+      "other": "Autres publications",
+      "publicationsNonRevuesParLesPaires": "Publications sans comité de lecture",
+      "livres": "Ouvrages"
     },
     "conferences": {
       "conference1": "Conférence 1",
@@ -360,7 +362,7 @@
     "zoomIn": "Agrandir",
     "zoomOut": "Réduire",
     "resetZoom": "Réinitialiser le zoom",
-    "noPdfAvailableDesc": "Scientific publications no pdf available desc"
+    "noPdfAvailableDesc": "Le document PDF n'est pas disponible pour cette publication."
   },
   "hal": {
     "loadingMetadata": "Chargement des métadonnées HAL...",
@@ -394,6 +396,8 @@
     "pdfCannotBeDisplayed": "Le PDF ne peut pas être affiché dans votre navigateur",
     "viewerNote": "Visualisation via",
     "loadingNote": "Le chargement peut prendre quelques secondes...",
-    "open": "Ouvrir"
+    "open": "Ouvrir",
+    "readPdfOnHal": "Lire le PDF sur HAL",
+    "pdfOnHalDesc": "Le texte intégral de cette publication est en accès libre sur HAL, l'archive ouverte de la recherche."
   }
 }

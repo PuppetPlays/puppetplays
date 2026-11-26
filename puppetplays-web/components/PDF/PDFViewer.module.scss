@@ -193,6 +193,50 @@ $shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 }
 
+// PDF hosted on HAL: link card (HAL blocks server-side previews)
+.halDocument {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+
+  svg {
+    color: var(--color-brand);
+  }
+
+  p {
+    color: var(--color-text-subtle);
+    margin: 0;
+    max-width: 420px;
+  }
+
+  .primaryButton {
+    align-items: center;
+    background-color: var(--color-brand);
+    border-radius: 6px;
+    color: #fff;
+    display: inline-flex;
+    font-weight: 500;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    svg {
+      color: currentColor;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background-color: var(--color-brand-light);
+      box-shadow: $shadow-medium;
+    }
+  }
+}
+
 // No document state
 .noDocument {
   align-items: center;

@@ -300,7 +300,9 @@
       "books": "Books",
       "reports": "Reports",
       "thesis": "Thesis",
-      "other": "Other publications"
+      "other": "Other publications",
+      "publicationsNonRevuesParLesPaires": "Non-peer-reviewed Publications",
+      "livres": "Books"
     },
     "conferences": {
       "conference1": "Conference 1",
@@ -358,7 +360,7 @@
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
     "resetZoom": "Reset zoom",
-    "noPdfAvailableDesc": "Scientific publications no pdf available desc",
+    "noPdfAvailableDesc": "The PDF is not available for this publication.",
     "open": "Open",
     "downloading": "Downloading..."
   },
@@ -394,6 +396,8 @@
     "resetZoom": "Reset zoom",
     "pdfNotAvailable": "No PDF document available",
     "usingAlternativeViewer": "Using alternative viewer",
-    "pdfCannotBeDisplayed": "The PDF cannot be displayed in your browser"
+    "pdfCannotBeDisplayed": "The PDF cannot be displayed in your browser",
+    "readPdfOnHal": "Read the PDF on HAL",
+    "pdfOnHalDesc": "The full text of this publication is freely available on HAL, the open research archive."
   }
 }
