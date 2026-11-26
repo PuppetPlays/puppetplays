@@ -1,8 +1,9 @@
 import Footer from 'components/Footer';
 import Layout from 'components/Layout';
 import NoResults from 'components/NoResults';
-import PDFViewer from 'components/PDF/PDFViewerDynamic';
+import PDFViewer from 'components/PDF/PDFViewerEmbed';
 import { getScientificPublicationById } from 'lib/api';
+import { getHalPdfUrl } from 'lib/hal-config';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -66,22 +67,6 @@ const PublicationDetailPage = ({ publication, error }) => {
     }
   };
 
-  // Helper function to construct PDF URL from HAL CV Link
-  const constructHalPdfUrl = halCvLink => {
-    if (!halCvLink) {
-      return null;
-    }
-
-    // If it already ends with /document, use as is
-    if (halCvLink.endsWith('/document')) {
-      return halCvLink;
-    }
-
-    // Add /document to the end of the HAL link
-    const finalUrl = `${halCvLink}/document`;
-    return finalUrl;
-  };
-
   // Obtenir les identifiants ORCID
   const getOrcidIdentifiers = authorData => {
     if (!authorData || !Array.isArray(authorData)) return [];
@@ -117,7 +102,7 @@ const PublicationDetailPage = ({ publication, error }) => {
   };
 
   // Use real data from CraftCMS
-  const pdfUrl = constructHalPdfUrl(publication.halCvLink);
+  const pdfUrl = getHalPdfUrl(publication.halCvLink);
   const authorsList = getOrcidIdentifiers(publication.authorAndOrcidIdentifier);
   const doi = publication.doi;
   const publisher = publication.editorName;
@@ -235,8 +220,7 @@ const PublicationDetailPage = ({ publication, error }) => {
                         {t('project:scientificPublications.noPdfAvailable')}
                       </h3>
                       <p>
-                        Le document PDF n&apos;est pas disponible pour cette
-                        publication.
+                        {t('project:scientificPublications.noPdfAvailableDesc')}
                       </p>
                     </div>
                   </div>

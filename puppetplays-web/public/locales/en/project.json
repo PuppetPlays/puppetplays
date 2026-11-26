@@ -360,7 +360,7 @@
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
     "resetZoom": "Reset zoom",
-    "noPdfAvailableDesc": "Scientific publications no pdf available desc",
+    "noPdfAvailableDesc": "The PDF is not available for this publication.",
     "open": "Open",
     "downloading": "Downloading..."
   },

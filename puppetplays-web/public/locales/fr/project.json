@@ -362,7 +362,7 @@
     "zoomIn": "Agrandir",
     "zoomOut": "Réduire",
     "resetZoom": "Réinitialiser le zoom",
-    "noPdfAvailableDesc": "Scientific publications no pdf available desc"
+    "noPdfAvailableDesc": "Le document PDF n'est pas disponible pour cette publication."
   },
   "hal": {
     "loadingMetadata": "Chargement des métadonnées HAL...",
