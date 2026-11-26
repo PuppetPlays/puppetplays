@@ -41,10 +41,16 @@ ddev craft project-config/write      # Export project config
 ```
 
 ### Deployment
+There is no staging server and CI does not deploy. Production deploys run from a local
+machine with `puppetplays-deploy/ppdeploy` (needs the VPN). See `puppetplays-deploy/README.md`.
 ```bash
 cd puppetplays-deploy
-./deploy.sh staging         # Deploy to staging
-./deploy.sh production      # Deploy to production
+./ppdeploy status                       # running release and smoke test
+./ppdeploy build admin                  # image tagged with HEAD (clean tree)
+./ppdeploy verify                       # optional: local replica of production
+./ppdeploy ship admin
+./ppdeploy deploy --web current         # add --dry-run first
+./ppdeploy rollback [--restore-db]
 ```
 
 ## Architecture
@@ -151,7 +157,7 @@ ddev exec php craft users/create --admin --email=you@example.com --username=admi
 
 ### GraphQL Errors
 - Check query construction in `lib/api.js`
-- API logs query details to console with full request/response
+- API errors are logged to console with the request variables; do not log full queries or responses (in production this filled the disk)
 - Verify schema permissions in Craft CMS admin
 
 ### Translation Missing

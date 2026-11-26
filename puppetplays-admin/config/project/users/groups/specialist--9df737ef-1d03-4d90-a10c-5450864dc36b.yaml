@@ -187,3 +187,17 @@ permissions:
   - 'viewpeerentrydrafts:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
   - 'viewpeerentrydrafts:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
   - workflow-overview
+  - 'changeauthorforpeerentries:22b828fc-b5e2-42a0-9050-446047f73230' # Formats
+  - 'changeauthorforpeerentries:492cc09a-052e-40d6-a33b-7ca74a831805' # Institutions de conservation
+  - 'changeauthorforpeerentries:ec7faa37-6b19-44d2-95ec-2b752648c37d' # Langues
+  - 'changeauthorforpeerentries:6591dcc5-c98b-41db-91e2-1b3dcd8eb31b' # Lieux
+  - 'changeauthorforpeerentries:53b06a2d-abbf-4ee4-b770-ca48f26e094e' # Nom du personnage dans le texte
+  - 'changeauthorforpeerentries:bfd49b21-b009-43f4-bb18-fcb1b08f5bd5' # Nom du personnage pour l’indexation
+  - 'changeauthorforpeerentries:29f1cf63-9c38-484a-9026-94010557c5af' # Œuvres
+  - 'changeauthorforpeerentries:e2d5c38e-3607-4630-bddf-0875190aa133' # Œuvres corrélées
+  - 'changeauthorforpeerentries:e205ebe8-5557-4b7c-a43f-9cf548e90c8d' # Pays
+  - 'changeauthorforpeerentries:63ea829e-b0e4-4021-8ab5-1b0f095d3daf' # Personnes
+  - 'changeauthorforpeerentries:ccd48638-f531-4032-a057-8af4f24cd187' # Procédés théâtraux
+  - 'changeauthorforpeerentries:9cac54fd-67ff-4311-a127-785048ff9146' # Publics
+  - 'changeauthorforpeerentries:8e72b0db-f5f6-4385-9228-33dd62285d5c' # Registres littéraires
+  - 'changeauthorforpeerentries:1817d1f9-6682-4c22-b338-19654ae0c45c' # Techniques d’animation

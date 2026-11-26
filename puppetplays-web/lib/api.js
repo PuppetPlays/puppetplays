@@ -36,15 +36,6 @@ export async function fetchAPI(query, { variables } = {}, token) {
   }
 
   try {
-    // Enhanced logging: show complete request details
-    console.log('\n' + '='.repeat(80));
-    console.log('🔍 SENDING GRAPHQL REQUEST');
-    console.log('='.repeat(80));
-    console.log(`🌐 API URL: ${apiUrl}`);
-    console.log(`📊 Variables:`, JSON.stringify(variables, null, 2));
-    console.log(`📝 Full GraphQL Query:\n${queryString}\n`);
-    console.log('='.repeat(80) + '\n');
-
     const res = await fetch(apiUrl, {
       method: 'POST',
       headers: {
@@ -57,8 +48,6 @@ export async function fetchAPI(query, { variables } = {}, token) {
       }),
     });
 
-    console.log(`📬 Response status: ${res.status} ${res.statusText}`);
-
     if (!res.ok) {
       throw new Error(`API responded with status: ${res.status}`);
     }
@@ -66,41 +55,17 @@ export async function fetchAPI(query, { variables } = {}, token) {
     const json = await res.json();
 
     if (json.errors) {
-      console.error('\n' + '='.repeat(80));
-      console.error('❌ GRAPHQL ERRORS DETECTED');
-      console.error('='.repeat(80));
-      console.error('Errors:', JSON.stringify(json.errors, null, 2));
-      console.error('='.repeat(80) + '\n');
       throw new Error(
         `GraphQL error: ${json.errors[0]?.message || 'Failed to fetch API'}`,
       );
     }
 
-    // Enhanced logging: show complete response data
-    console.log('\n' + '='.repeat(80));
-    console.log('✅ GRAPHQL RESPONSE RECEIVED');
-    console.log('='.repeat(80));
-    console.log(`📦 Response data keys:`, Object.keys(json.data));
-
-    // Log the full response data (with truncation for very large responses)
-    const dataString = JSON.stringify(json.data, null, 2);
-    if (dataString.length > 5000) {
-      console.log(`📋 Response data (truncated to first 5000 chars):`);
-      console.log(dataString.substring(0, 5000) + '\n... [truncated]');
-    } else {
-      console.log(`📋 Full response data:`);
-      console.log(dataString);
-    }
-    console.log('='.repeat(80) + '\n');
-
     return json.data;
   } catch (error) {
-    console.error('\n' + '='.repeat(80));
-    console.error('💥 GRAPHQL REQUEST FAILED');
-    console.error('='.repeat(80));
-    console.error(`❌ Error message: ${error.message}`);
-    console.error(`📍 Stack trace:`, error.stack);
-    console.error('='.repeat(80) + '\n');
+    console.error(
+      `GraphQL request failed (${JSON.stringify(variables)}):`,
+      error.message,
+    );
     throw error;
   }
 }

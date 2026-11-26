@@ -11,10 +11,15 @@ services:
     volumes:
       - ${PUPPETPLAYS_HOST_DIR}/database/postgres:/var/lib/postgresql/data
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   puppetplays-admin:
     container_name: puppetplays-admin
-    image: puppetplays/puppetplays-admin:${PUPPETPLAYS_VERSION}
+    image: puppetplays/puppetplays-admin:${ADMIN_VERSION}
     environment:
       - PHP_MEMORY_LIMIT=512M
       - PHP_POST_MAX_SIZE=25M
@@ -44,10 +49,15 @@ services:
       - ${PUPPETPLAYS_HOST_DIR}/logs:/app/storage/logs
       - ${PUPPETPLAYS_HOST_DIR}/static:/app/web/static
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
 
   puppetplays-web:
     container_name: puppetplays-web
-    image: puppetplays/puppetplays-web:${PUPPETPLAYS_VERSION}
+    image: puppetplays/puppetplays-web:${WEB_VERSION}
     environment:
       - NEXT_PUBLIC_API_URL
     ports:
@@ -55,3 +65,8 @@ services:
     depends_on:
       - "puppetplays-admin"
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"

@@ -1,0 +1,1 @@
+{"query":"{ entries(section:\"works\", search:\"guignol\", site:\"fr\", limit:10) { id title } }"}

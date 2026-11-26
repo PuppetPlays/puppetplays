@@ -2,7 +2,7 @@
   "require": {
     "besteadfast/craft-preparse-field": "^2.1.2",
     "cooltronicpl/document-helpers": "^3.0.0",
-    "craftcms/cms": "^4.16.3",
+    "craftcms/cms": "^4.18.9",
     "craftcms/element-api": "^4.2.0",
     "craftcms/redactor": "^3.1.0",
     "doublesecretagency/craft-cpcss": "2.6.0",
@@ -26,7 +26,7 @@
     "sort-packages": true,
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.0.2"
+      "php": "8.2.35"
     },
     "allow-plugins": {
       "craftcms/plugin-installer": true,
@@ -38,8 +38,7 @@
       "@pre-craft-update",
       "@post-craft-update"
     ],
-    "pre-craft-update": [
-    ],
+    "pre-craft-update": [],
     "post-craft-update": [
       "@php craft install/check && php craft clear-caches/all || return 0",
       "@php craft install/check && php craft migrate/all || return 0",
