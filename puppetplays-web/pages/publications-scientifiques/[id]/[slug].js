@@ -226,11 +226,6 @@ const PublicationDetailPage = ({ publication, error }) => {
                   <PDFViewer
                     halUrl={pdfUrl}
                     title={publication.title}
-                    height="700px"
-                    showControls={true}
-                    showDownloadButton={true}
-                    showHalMetadata={true}
-                    enableMetadataFallback={true}
                     className={styles.pdfViewer}
                   />
                 ) : (
